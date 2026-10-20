@@ -1,12 +1,14 @@
-# ocr-timeline（仮称）
+# Castline
+
+名前は「詠唱（cast）で同期して進む時間軸（line）」から（2026-10-20 に ocr-timeline から改名）。
 
 FF14 のゲーム画面に表示された文字（コンテンツ名・カウントダウン・ボスの HP と詠唱）を読み取り、
 ボスのタイムラインを流す Web ツール。ゲームのクライアント・メモリ・通信には触れず、
 ブラウザの画面共有（`getDisplayMedia`）で取り込んだ画面だけを使う。
 
 - サーバー処理なしの静的なアプリ。取り込み・文字認識・再生はすべてブラウザ内で行い、画像はどこにも送らない
-- 配信: `https://vel.works/ff14tools/ocr-timeline/`（nginx は `vel.works/_nginx/vel.works.locations.conf`）
-- 開発: `https://192.168.11.100:8011/ff14tools/ocr-timeline/`
+- 配信: `https://vel.works/ff14tools/castline/`（nginx は `vel.works/_nginx/vel.works.locations.conf`）
+- 開発: `https://192.168.11.100:8011/ff14tools/castline/`
 - **画面の取り込みと最前面の小窓（Document Picture-in-Picture）は https か localhost でしか動かない。**
   http の :8010 では画像ファイルを読むところまでしか使えないので、開発中は https の :8011 で開く
   （PC 側の準備は `dev-server-php8/README.md` のポート表の 8011）
@@ -72,7 +74,7 @@ tools/fetch-models.sh   # 文字認識・検出のモデル（合わせて 21MB�
 - モデルは Apache-2.0 の変換版（huggingface `ilaylow/PP_OCRv5_mobile_onnx`）と PaddleOCR 公式の辞書。
   onnxruntime-web 1.30.0 は jsDelivr から読む（自前配信は今後）
 
-## タイムラインファイル（XML、形式 `ocr-timeline/1`）
+## タイムラインファイル（XML、形式 `castline/1`）
 
 XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`parseTimelineXml` が下の形をエンジンの形に直し、誤りを日本語で返す）、
 進め方は `public/js/timeline-engine.js`。テストは `tests/*.test.mjs` をファイルごとに
@@ -83,7 +85,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <!-- content は画面の表記どおり（contents.json の名前）。sync-window は既定の同期の窓（予定の何秒前 何秒後） -->
-<timeline format="ocr-timeline/1" content="万魔殿パンデモニウム零式：煉獄編4" title="表示名" sync-window="10 10">
+<timeline format="castline/1" content="万魔殿パンデモニウム零式：煉獄編4" title="表示名" sync-window="10 10">
   <note>出典など</note>
   <phase id="p1" name="前半">
     <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
@@ -116,12 +118,12 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 
 - 配信: `TIMELINE_BASE`（`public/js/player.js`）のフォルダの `index.xml` に一覧を書き、同じフォルダに XML を置く。
   いまは同じサイトの `public/timelines/`。GitHub のフォルダから読むときは raw の URL に変える
-- 手元のファイル: 再生画面で XML を読み込むと、このブラウザに保存する（`ocr-timeline.player.local-timelines`）。
+- 手元のファイル: 再生画面で XML を読み込むと、このブラウザに保存する（`castline.player.local-timelines`）。
   同じコンテンツなら手元のファイルを配信より優先する
 - タイムラインの作り方（cactbot・Hojoring の変換）は運営者が手元で使う道具とし、サイトの機能にはしない（2026-10-20 の方針）
 
 ```xml
-<timelines format="ocr-timeline-index/1">
+<timelines format="castline-index/1">
   <timeline file="p8s-test.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
 </timelines>
 ```
@@ -131,7 +133,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 取り込み → コンテンツ名を戦闘外だけ 5 秒ごとに読み、タイムラインを自動で選ぶ（一覧から手で選ぶこともできる）→
 カウントダウン・敵対リストで開始 → 戦闘中は詠唱バーと敵対リストの技名で同期 → これから来る技と発動までの秒を表示し、
 発動の N 秒前（既定 5）に読み上げる。表示はページと小窓（Document Picture-in-Picture）の両方に出す。
-読む範囲は試験ページで選んだもの（`ocr-timeline.lab.regions`、解像度ごと）をそのまま使う。
+読む範囲は試験ページで選んだもの（`castline.lab.regions`、解像度ごと）をそのまま使う。
 
 | ファイル | 役割 |
 |---|---|
@@ -143,7 +145,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 ## FFLogs からの生成（`generator.html`）
 
 利用者が自分の FFLogs クライアントの ID と secret を入れ（client credentials。このブラウザの localStorage
-`ocr-timeline.fflogs-keys` にだけ保存）、レポートの URL と戦闘を選ぶと XML を作る。通信はブラウザから
+`castline.fflogs-keys` にだけ保存）、レポートの URL と戦闘を選ぶと XML を作る。通信はブラウザから
 `ja.fflogs.com` へ直接（トークンと API は vel.works・localhost からの通信を許可している。2026-10-20 確認）。
 運営者のキーは使わない。クエリの作りは logs2timeline と同じ（`translate: true`、敵の詠唱は `hostilityType: Enemies`）。
 

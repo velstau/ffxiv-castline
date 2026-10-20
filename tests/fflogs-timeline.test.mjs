@@ -72,7 +72,7 @@ test('フェーズ: 次のフェーズの最初の詠唱がいまのフェーズ
 
 test('XML: 記号を escape し、詠唱時間 0 と既定値は書かない', () => {
     const xml = toTimelineXml({
-        format: 'ocr-timeline/1', content: 'A&B', title: '"題"', note: '<注>',
+        format: 'castline/1', content: 'A&B', title: '"題"', note: '<注>',
         phases: [{ id: 'p1', entries: [{ t: 1, duration: 0, name: 'x', sync: false }, { t: 2, duration: 3, name: 'y', window: [5, 5] }],
             next: [{ to: 'p1', when: { hpLost: 3 } }] }],
     });

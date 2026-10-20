@@ -3,7 +3,7 @@
 import { pickCandidate, readCast, readCountdown, parseHpPercent } from './readers.js';
 
 // 範囲は試験ページが解像度（"幅x高さ"）ごとに保存したもの
-export const STORE_REGIONS = 'ocr-timeline.lab.regions';
+export const STORE_REGIONS = 'castline.lab.regions';
 
 export function loadRegions(width, height) {
     try {

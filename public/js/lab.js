@@ -1,4 +1,5 @@
 // OCR 試験ページ。画像の上で範囲を選び、文字認識の結果と解釈を表に出す。
+import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { pickCandidate, readCast, readCountdown, parseHpPercent, CANDIDATE_MARGIN_MIN, CAST_PENALTY_MAX } from './readers.js';
@@ -10,9 +11,9 @@ const REGIONS = [
     { id: 'cast', label: '詠唱バー（技名）', color: '#c792ea' },
     { id: 'enmity', label: '敵対リスト', color: '#6fdc8c' },
 ];
-const STORE_REGIONS = 'ocr-timeline.lab.regions';
-const STORE_CANDIDATES = 'ocr-timeline.lab.candidates';
-const STORE_CAST_CANDIDATES = 'ocr-timeline.lab.cast-candidates';
+const STORE_REGIONS = 'castline.lab.regions';
+const STORE_CANDIDATES = 'castline.lab.candidates';
+const STORE_CAST_CANDIDATES = 'castline.lab.cast-candidates';
 
 const $ = (id) => document.getElementById(id);
 const state = {

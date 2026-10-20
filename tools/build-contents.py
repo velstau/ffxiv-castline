@@ -36,7 +36,7 @@ def fetch_rows():
         # Python 標準の User-Agent は 403 で弾かれる
         req = urllib.request.Request(
             f'{API}?{urllib.parse.urlencode(params)}',
-            headers={'User-Agent': 'ocr-timeline-build-contents (vel.works)'},
+            headers={'User-Agent': 'castline-build-contents (vel.works)'},
         )
         with urllib.request.urlopen(req, timeout=60) as res:
             rows = json.load(res)['rows']

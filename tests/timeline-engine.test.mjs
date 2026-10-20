@@ -9,7 +9,7 @@ const T = (s) => Date.UTC(2026, 9, 20, 10, 8, 0) + Math.round(s * 1000);
 const sec = (ms) => (ms - T(0)) / 1000;
 
 const timeline = {
-    format: 'ocr-timeline/1',
+    format: 'castline/1',
     content: '万魔殿パンデモニウム零式：煉獄編4',
     phases: [
         {

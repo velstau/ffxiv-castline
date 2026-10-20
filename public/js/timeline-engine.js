@@ -28,8 +28,8 @@ export function validateTimeline(data) {
     if (!data || typeof data !== 'object') {
         return ['JSON のオブジェクトではありません'];
     }
-    if (data.format !== 'ocr-timeline/1') {
-        errors.push('format が "ocr-timeline/1" ではありません');
+    if (data.format !== 'castline/1') {
+        errors.push('format が "castline/1" ではありません');
     }
     if (typeof data.content !== 'string' || data.content === '') {
         errors.push('content（コンテンツ名）がありません');

@@ -120,7 +120,7 @@ export function buildTimeline({ fight, actors, abilities, events, sourceIDs, con
             : [{ to: next.id, when: { time: round1((next.start - phase.start) / 1000) } }];
     });
     return {
-        format: 'ocr-timeline/1',
+        format: 'castline/1',
         content,
         title,
         note,

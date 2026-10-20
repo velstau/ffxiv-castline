@@ -1,10 +1,11 @@
 // FFLogs のレポートからタイムラインの XML を作る画面。通信はすべてブラウザから FFLogs へ直接行う。
+import './storage-migrate.js';
 import { FFLogsClient, parseReportUrl, loadReport, loadEnemyCasts } from './fflogs-api.js';
 import { buildTimeline, summarizeEnemies } from './fflogs-timeline.js';
 import { toTimelineXml } from './timeline-xml.js';
 
-const STORE_KEYS = 'ocr-timeline.fflogs-keys'; // { id, secret }（このブラウザにだけ保存する）
-const STORE_LOCAL = 'ocr-timeline.player.local-timelines'; // 再生画面の手元のファイル
+const STORE_KEYS = 'castline.fflogs-keys'; // { id, secret }（このブラウザにだけ保存する）
+const STORE_LOCAL = 'castline.player.local-timelines'; // 再生画面の手元のファイル
 
 const $ = (id) => document.getElementById(id);
 const state = {

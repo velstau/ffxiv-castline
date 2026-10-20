@@ -1,4 +1,5 @@
 // 再生画面: ゲーム画面を読み、タイムライン（これから来る技と発動までの秒）を流して読み上げる。
+import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { TimelineEngine } from './timeline-engine.js';
@@ -8,8 +9,8 @@ import { Pip, pipSupported } from './pip.js';
 
 // 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub に置くときは raw の URL（末尾 /）に変える
 const TIMELINE_BASE = new URL('timelines/', location.href).href;
-const STORE_LOCAL = 'ocr-timeline.player.local-timelines'; // [{ name, xml }]
-const STORE_SETTINGS = 'ocr-timeline.player.settings';
+const STORE_LOCAL = 'castline.player.local-timelines'; // [{ name, xml }]
+const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
 const CONTENT_EVERY_MS = 5000; // コンテンツ名は戦闘外だけ、間引いて読む
 const RENDER_EVERY_MS = 100;
