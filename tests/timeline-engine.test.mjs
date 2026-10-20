@@ -83,6 +83,21 @@ test('読み違えた秒数（外れ値）は予想に使わない', () => {
     assert.equal(sec(e.status(T(22)).predictedStart), 26.1);
 });
 
+test('吹き出しの読み遅れ: 遅れた予想より、ほかと合う早い予想を採る（2026-10-20 の実測 2 回）', () => {
+    // 1 回目: 10 秒と 5 秒の吹き出しが遅れて読めた。「戦闘開始！」は 16.2（19:42:50.3 を 0.3 とした秒）
+    let { e } = engine();
+    e.countdown(T(0.3), 16);
+    e.countdown(T(9.5), 10);
+    e.countdown(T(12.6), 5);
+    assert.equal(sec(e.predictedStart()), 16.3);
+    // 2 回目: 16 秒の吹き出しが遅れて読めた。「戦闘開始！」は 49.2
+    ({ e } = engine());
+    e.countdown(T(34.3), 16);
+    e.countdown(T(38.9), 10);
+    e.countdown(T(44.1), 5);
+    assert.equal(sec(e.predictedStart()), 48.9);
+});
+
 test('詠唱で同期する: 創世の真炎を 6.6 秒目に読んだら、予定の 6.0 秒に合わせる', () => {
     const { e, log } = engine();
     realCountdown(e);

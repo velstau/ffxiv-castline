@@ -12,7 +12,10 @@
 //                        at: 移った瞬間の、移り先フェーズでの秒（既定 0）
 
 export const DEFAULT_SYNC_WINDOW = [10, 10]; // 予定の何秒前から何秒後まで、詠唱で同期してよいか
-const COUNTDOWN_CONSISTENT_MS = 1000; // カウントダウンの予想どうしがこれ以内なら同じ予想とみなす
+const COUNTDOWN_CONSISTENT_MS = 1000; // 「戦闘開始！」の時刻と予想がこれ以内なら、早いほうを開始とする
+// カウントダウンの予想は、ほかの予想とこれ以内で合うものだけを信じる（秒数の読み違いを除く）。
+// 吹き出しは重なりなどで 1〜3 秒遅れて読めることがある（2026-10-20 実測）ので、遅れた予想どうしも合うよう広めに取る
+const COUNTDOWN_SUPPORT_MS = 1500;
 const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、カウントダウン前に殴ったとみなす
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
@@ -234,16 +237,16 @@ export class TimelineEngine {
         return predicted === null ? 0 : Math.min(0, (at - predicted) / 1000);
     }
 
-    // カウントダウンの各秒数から予想した開始時刻。読み違いに備えて中央値に近いものだけを使い、その最小を採る
-    // （吹き出しは出た瞬間ではなく次に読んだときに見えるので、どの予想も実際より遅れる。最小が一番近い）
+    // カウントダウンの各秒数から予想した開始時刻。吹き出しは出た瞬間ではなく後で読めるので、予想は実際より遅れることはあっても
+    // 早まることはない。そこで、ほかの予想と合う（読み違いではない）予想のうち最も早いものを採る。
+    // どの予想も合わない（1 つしかない、またはばらばら）ときは中央値（2 つなら早いほう）
     predictedStart() {
-        const predictions = [...this.countdownSamples].map(([seconds, at]) => at + seconds * 1000);
-        if (predictions.length === 0) {
+        const sorted = [...this.countdownSamples].map(([seconds, at]) => at + seconds * 1000).sort((a, b) => a - b);
+        if (sorted.length === 0) {
             return null;
         }
-        const sorted = [...predictions].sort((a, b) => a - b);
-        const median = sorted[Math.floor((sorted.length - 1) / 2)];
-        return Math.min(...sorted.filter((p) => Math.abs(p - median) <= COUNTDOWN_CONSISTENT_MS));
+        const supported = sorted.filter((p, i) => sorted.some((q, j) => j !== i && Math.abs(p - q) <= COUNTDOWN_SUPPORT_MS));
+        return supported[0] ?? sorted[Math.floor((sorted.length - 1) / 2)];
     }
 
     // 「戦闘開始！」を読んだ時刻と、カウントダウンからの予想のうち早いほう（どちらも実際より遅れて見えるため）
