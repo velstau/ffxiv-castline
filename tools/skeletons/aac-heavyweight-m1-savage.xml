@@ -10,21 +10,21 @@
     <entry t="26.4" castname="ヴァンプストンプ" duration="3.8"/>
     <entry t="42.6" castname="ブルータルレイン" duration="3.5"/>
     <entry t="56.0" castname="サディスティック・スクリーチ" duration="4.7"/>
-    <entry t="71.4" castname="ハーフムーン" duration="4"/>
-    <entry t="88.9" castname="ハーフムーン" duration="4"/>
-    <entry t="106.2" castname="ハーフムーン" duration="4"/>
-    <entry t="116.4" castname="ハーフムーン" duration="4"/>
+    <entry t="71.4" castname="ハーフムーン" duration="4.0"/>
+    <entry t="88.9" castname="ハーフムーン" duration="4.0"/>
+    <entry t="106.2" castname="ハーフムーン" duration="4.0"/>
+    <entry t="116.4" castname="ハーフムーン" duration="4.0"/>
     <entry t="133.6" castname="サディスティック・スクリーチ" duration="4.7"/>
     <entry t="147.9" castname="クラウドキリング" duration="0.2"/>
     <entry t="166.8" castname="フィナーレ・ファターレ" duration="4.7"/>
-    <entry t="178.9" castname="エーテルレッティング" duration="12"/>
+    <entry t="178.9" castname="エーテルレッティング" duration="12.0"/>
     <entry t="191.2" castname="エーテルレッティング" sync="false"/>
     <entry t="193.3" castname="エーテルレッティング" sync="false"/>
     <entry t="195.3" castname="エーテルレッティング" sync="false"/>
     <entry t="197.3" castname="エーテルレッティング" sync="false"/>
     <entry t="216.4" castname="ハードコア" duration="2.7"/>
     <entry t="226.5" castname="ヴァンプストンプ" duration="3.8"/>
-    <entry t="242.7" castname="ハーフムーン" duration="4"/>
+    <entry t="242.7" castname="ハーフムーン" duration="4.0"/>
     <entry t="252.8" castname="ブルータルレイン" duration="3.5"/>
     <entry t="266.0" castname="インセーシャブル・サースト" duration="2.5"/>
     <entry t="279.3" castname="サディスティック・スクリーチ" duration="4.7"/>
@@ -40,21 +40,21 @@
     <entry t="426.6" castname="スプレッドソニック" duration="4.7"/>
     <entry t="433.8" castname="アグリゲートソニック" duration="4.7"/>
     <entry t="449.9" castname="バット・デスマッチ" duration="3.5"/>
-    <entry t="459.1" castname="サングインスクラッチ" duration="2"/>
+    <entry t="459.1" castname="サングインスクラッチ" duration="2.0"/>
     <entry t="463.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="466.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="468.6" castname="サングインスクラッチ" sync="false"/>
     <entry t="471.0" castname="サングインスクラッチ" sync="false"/>
-    <entry t="477.4" castname="サングインスクラッチ" duration="2"/>
+    <entry t="477.4" castname="サングインスクラッチ" duration="2.0"/>
     <entry t="482.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="484.6" castname="サングインスクラッチ" sync="false"/>
     <entry t="487.0" castname="サングインスクラッチ" sync="false"/>
     <entry t="489.4" castname="サングインスクラッチ" sync="false"/>
     <entry t="494.8" castname="ブルータルレイン" duration="3.5"/>
     <entry t="508.0" castname="ヴァンプストンプ" duration="3.8"/>
-    <entry t="524.2" castname="ハーフムーン" duration="4"/>
+    <entry t="524.2" castname="ハーフムーン" duration="4.0"/>
     <entry t="534.3" castname="ハードコア" duration="2.7"/>
-    <entry t="548.6" castname="サングインスクラッチ" duration="2"/>
+    <entry t="548.6" castname="サングインスクラッチ" duration="2.0"/>
     <entry t="553.4" castname="サングインスクラッチ" sync="false"/>
     <entry t="555.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="558.2" castname="サングインスクラッチ" sync="false"/>

@@ -336,7 +336,8 @@ def write_castline(skeleton, path, title, note):
     for p in skeleton['phases']:
         lines.append(f'  <phase{attr(p["attrs"], ["id", "name"])}>')
         for e in p['entries']:
-            out = {**e, 'castname': e['name'], 'text': e.get('label'), 't': f'{e["_t"]:.1f}'}  # t は必ず小数点以下 1 桁
+            out = {**e, 'castname': e['name'], 'text': e.get('label'), 't': f'{e["_t"]:.1f}',
+                   'duration': f'{float(e["duration"]):.1f}' if e.get('duration') else None}  # t・duration は必ず小数点以下 1 桁
             lines.append(f'    <entry{attr(out, ENTRY_ORDER)}/>')
         for n in p['next']:
             lines.append(f'    <next{attr(n, ["to", "at", "cast", "hp", "time", "hp-lost"])}/>')

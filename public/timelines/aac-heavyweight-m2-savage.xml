@@ -11,9 +11,9 @@
     <entry t="34.2" castname="フレイムフローター" sync="false"/>
     <entry t="37.6" castname="フレイムフローター" sync="false"/>
     <entry t="40.9" castname="フレイムフローター" sync="false"/>
-    <entry t="49.1" text="AoE(散開)" castname="フレイムアリウープ" duration="4"/>
-    <entry t="58.5" text="全員集合" castname="フレイムカットバック" duration="4"/>
-    <entry t="65.0" text="頭割りx3" castname="パイロローテーション" duration="4"/>
+    <entry t="49.1" text="AoE(散開)" castname="フレイムアリウープ" duration="4.0"/>
+    <entry t="58.5" text="全員集合" castname="フレイムカットバック" duration="4.0"/>
+    <entry t="65.0" text="頭割りx3" castname="パイロローテーション" duration="4.0"/>
     <entry t="78.4" text="全体攻撃(床戻る)" castname="ファイティングスピリット" duration="4.7" window="20 20"/>
     <entry t="95.0" text="シック・スウェル(ノック予約)" castname="シック・スウェル" duration="2.7"/>
     <entry t="95.4" text="頭割りor散開確認" castname="シック・テイクオフ" sync="false"/>
@@ -46,11 +46,11 @@
     <entry t="241.3" text="全体攻撃" castname="フレイムスネーキング" duration="4.7"/>
     <entry t="241.3" castname="ハイドロスネーキング" duration="4.7"/>
     <entry t="253.8" text="青: 青担当 / 青: 扇誘導" castname="ダブルアリウープ|リバースアリウープ" duration="4.7"/>
-    <entry t="253.9" text="赤: 赤担当 / 赤: AoE捨て" castname="フレイムアリウープ" duration="4"/>
+    <entry t="253.9" text="赤: 赤担当 / 赤: AoE捨て" castname="フレイムアリウープ" duration="4.0"/>
     <entry t="261.0" castname="シック・スウェル" duration="2.7"/>
     <entry t="265.4" text="赤: タンクペア受け / 青: タンクペア受け+玉確認" castname="ホットインパクト" duration="4.7"/>
-    <entry t="271.4" text="赤: 安置へ / 青: 安置で玉処理" castname="ハイドロバリエル" duration="5"/>
-    <entry t="276.5" text="赤: AoE捨て" castname="フレイムアリウープ" duration="4"/>
+    <entry t="271.4" text="赤: 安置へ / 青: 安置で玉処理" castname="ハイドロバリエル" duration="5.0"/>
+    <entry t="276.5" text="赤: AoE捨て" castname="フレイムアリウープ" duration="4.0"/>
     <entry t="285.2" text="赤: 誘導注意" castname="フレイムエアリアル" duration="4.7"/>
     <entry t="289.9" text="青: テイクオフ" castname="シック・テイクオフ" duration="3.7"/>
     <entry t="290.5" castname="フレイムエアリアル" sync="false"/>
@@ -61,7 +61,7 @@
     <entry t="296.2" castname="赤: 誘導3回目(遠隔)" sync="false" tts=""/>
     <entry t="296.7" castname="フレイムエアリアル" sync="false"/>
     <entry t="298.2" castname="赤: 誘導4回目(近接)" sync="false" tts=""/>
-    <entry t="303.9" text="赤: 安置誘導" castname="フレイムカットバック" duration="4"/>
+    <entry t="303.9" text="赤: 安置誘導" castname="フレイムカットバック" duration="4.0"/>
     <entry t="305.9" castname="青: ノックバックと玉処理" sync="false" tts=""/>
     <entry t="306.2" castname="赤: ノックバック" sync="false" tts=""/>
     <entry t="310.2" text="青: T離れる / 青: 強攻撃" castname="ディープインパクト" duration="4.6"/>
@@ -86,9 +86,9 @@
     <entry t="410.0" castname="シック・スウェル" duration="2.7"/>
     <entry t="412.2" text="エリア分断" castname="フレイムフローター" duration="4.7" tts="エリア分かれるよ"/>
     <entry t="417.4" castname="フレイムフローター" sync="false"/>
-    <entry t="421.5" text="AoE捨て" castname="フレイムアリウープ" duration="4"/>
+    <entry t="421.5" text="AoE捨て" castname="フレイムアリウープ" duration="4.0"/>
     <entry t="426.4" text="アリウープ" castname="ダブルアリウープ|リバースアリウープ" duration="4.7"/>
-    <entry t="434.4" text="ペア頭割り" castname="フリーキー・パイロローテーション" duration="4" tts="ペア"/>
+    <entry t="434.4" text="ペア頭割り" castname="フリーキー・パイロローテーション" duration="4.0" tts="ペア"/>
     <entry t="434.6" text="青玉確認" castname="シック・テイクオフ" duration="3.7"/>
     <entry t="449.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃"/>
     <entry t="463.5" text="均等化" castname="ブラザーフッド" sync="false"/>
@@ -110,8 +110,8 @@
     <entry t="524.2" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃"/>
     <entry t="535.5" text="均等化" castname="ブラザーフッド" sync="false"/>
     <entry t="539.8" text="リバースorダブル注意 / リバースorダブル" castname="リバースアリウープ|ダブルアリウープ" duration="4.7" tts="散開注意"/>
-    <entry t="542.7" text="フレイムアリウープ" castname="フレイムアリウープ" duration="4"/>
-    <entry t="551.4" text="連続頭割り" castname="パイロローテーション" duration="4" tts="連続頭割り、移動注意"/>
+    <entry t="542.7" text="フレイムアリウープ" castname="フレイムアリウープ" duration="4.0"/>
+    <entry t="551.4" text="連続頭割り" castname="パイロローテーション" duration="4.0" tts="連続頭割り、移動注意"/>
     <entry t="551.6" text="タンク離れる / 強攻撃" castname="ディープインパクト" duration="4.6" tts="タンク離れる、強攻撃"/>
     <entry t="556.7" castname="ディープインパクト" sync="false"/>
     <entry t="564.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃"/>
