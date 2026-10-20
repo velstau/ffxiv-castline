@@ -235,7 +235,7 @@ async function readAllNow() {
         }
         if (def.id === 'enmity') {
             // 敵対リストは、文字が出ているか（戦闘中だけ表示される）と、各行の技名（詠唱中は敵の名前の横に出る）を見る
-            const list = await readCast(state.detector, state.recognizer, bitmap, rect, castCandidates(), { wholeIfNoLines: false });
+            const list = await readCast(state.detector, state.recognizer, bitmap, rect, castCandidates(), { wholeIfNoLines: false, truncated: true });
             const shown = list.lines > 0
                 ? `<span class="decided">表示あり（戦闘中、${list.lines} 行）</span>`
                 : '<span class="undecided">表示なし</span>';
@@ -516,7 +516,7 @@ async function watchTick({ bitmap: frame, at }) {
         }
     };
     if (regions.enmity) {
-        const list = await readCast(state.detector, state.recognizer, frame, regions.enmity, castCandidates(), { wholeIfNoLines: false });
+        const list = await readCast(state.detector, state.recognizer, frame, regions.enmity, castCandidates(), { wholeIfNoLines: false, truncated: true });
         record('enmity', list.lines > 0 ? 'on' : 'off',
             `敵対リスト ${list.lines > 0 ? `表示あり（${list.lines} 行）` : '表示なし'}`);
         if (list.lines > 0 || watch.last.enmityCast) {

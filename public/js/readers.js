@@ -45,36 +45,71 @@ export function pickCandidate(recognizer, read, candidates) {
 export const CAST_PENALTY_MAX = 6;
 // 同じ長さの候補どうしで、減点の差がこれ未満なら決めない
 export const CAST_MARGIN_MIN = 3;
+// 途中で切れた技名を頭の部分で照合するとき、最低これだけの文字数が要る。短い部分は 1 文字の欠けでも別の技に当たりうるので、
+// 減点も CAST_PREFIX_PENALTY_MAX までしか許さない
+export const CAST_PREFIX_MIN = 4;
+export const CAST_PREFIX_PENALTY_MAX = 3;
 
 /**
  * 詠唱バーで読んだ文字から技名を決める。範囲にはボス名やバーの模様も入るので、読んだ文字のどこか一部分に
  * 候補が含まれているかで見る（spot）。当てはまる候補が複数あれば長いほうを採る（「コンシーヴ」より
  * 「オクタフレア・コンシーヴ」）。同じ長さで僅差の候補があれば決めない。
- * @returns {{decided:string|null, ranked:{text:string,penalty:number}[]}}
+ * truncated: 敵対リストは長い技名を「テトラフレア・コ…」と途中で切って出すので、頭の部分（CAST_PREFIX_MIN 文字以上）でも照合する。
+ * 頭の部分が同じ候補が複数あってどれか決まらないときは決めない。
+ * @returns {{decided:string|null, ranked:{text:string,penalty:number,matched:string}[]}}
+ *          ranked は候補ごとに最も当てはまった部分（matched）の減点
  */
-export function pickCast(recognizer, read, candidates) {
-    const ranked = recognizer.spot(read.output, candidates);
-    const length = (c) => [...c.text].length;
-    const fits = ranked
-        .filter((c) => c.penalty >= -CAST_PENALTY_MAX)
+export function pickCast(recognizer, read, candidates, { truncated = false } = {}) {
+    // 照合する文字列（候補そのもの、truncated なら頭の部分も）→ その文字列で始まる候補
+    const owners = new Map();
+    const whole = new Set(candidates);
+    for (const text of candidates) {
+        const chars = [...text];
+        const from = truncated ? Math.min(CAST_PREFIX_MIN, chars.length) : chars.length;
+        for (let n = from; n <= chars.length; n++) {
+            const part = chars.slice(0, n).join('');
+            owners.set(part, [...new Set([...(owners.get(part) ?? []), text])]);
+        }
+    }
+    const length = (c) => [...c.matched].length;
+    const spotted = recognizer.spot(read.output, [...owners.keys()]);
+    const ranked = rankByCandidate(spotted, owners);
+    const fits = spotted
+        .map(({ text, penalty }) => ({ matched: text, owners: owners.get(text), penalty }))
+        .filter((c) => c.penalty >= -(whole.has(c.matched) ? CAST_PENALTY_MAX : CAST_PREFIX_PENALTY_MAX))
         .sort((a, b) => length(b) - length(a) || b.penalty - a.penalty);
     if (fits.length === 0) {
         return { decided: null, ranked };
     }
     const best = fits[0];
-    const rival = fits.find((c) => c !== best && length(c) === length(best) && best.penalty - c.penalty < CAST_MARGIN_MIN);
-    return { decided: rival ? null : best.text, ranked };
+    const rival = best.owners.length > 1 || fits.some((c) => c !== best && length(c) === length(best)
+        && c.owners[0] !== best.owners[0] && best.penalty - c.penalty < CAST_MARGIN_MIN);
+    return { decided: rival ? null : best.owners[0], ranked };
+}
+
+// 確認用: 候補ごとに、最も当てはまった部分の減点（減点の小さい順）
+function rankByCandidate(spotted, owners) {
+    const best = new Map();
+    for (const { text, penalty } of spotted) {
+        for (const owner of owners.get(text)) {
+            if (!best.has(owner) || penalty > best.get(owner).penalty) {
+                best.set(owner, { text: owner, penalty, matched: text });
+            }
+        }
+    }
+    return [...best.values()].sort((a, b) => b.penalty - a.penalty);
 }
 
 /**
  * 詠唱バーの範囲を読んで技名を決める。範囲にはボス名の行も入りやすく、2 行を 1 行として読むと
  * 「ア人A熾炎创火」のように混ざって崩れるので、文字検出で行を分けてから 1 行ずつ照合し、最も当てはまる行を採る。
  * 敵対リスト（各行に「敵の名前　詠唱中の技名」が出る）にも使う。
- * @param {{wholeIfNoLines?:boolean}} options 行が見つからないとき範囲全体を 1 行として読むか（敵対リストでは読まない）
+ * @param {{wholeIfNoLines?:boolean, truncated?:boolean}} options wholeIfNoLines: 行が見つからないとき範囲全体を 1 行として読むか
+ *        （敵対リストでは読まない）。truncated: 途中で切れた技名を頭の部分で照合する（敵対リスト。pickCast を参照）
  * @returns {Promise<{text:string, lines:number, result:{decided:string|null, ranked:{text:string,penalty:number}[]}, ms:number}>}
  *          text は読んだ行を「 / 」でつないだもの（確認用）、lines は見つかった行の数
  */
-export async function readCast(detector, recognizer, source, rect, candidates, { wholeIfNoLines = true } = {}) {
+export async function readCast(detector, recognizer, source, rect, candidates, { wholeIfNoLines = true, truncated = false } = {}) {
     const found = await detector.detect(source, rect);
     let ms = found.ms;
     const texts = [];
@@ -88,7 +123,7 @@ export async function readCast(detector, recognizer, source, rect, candidates, {
             continue;
         }
         texts.push(read.text);
-        const result = pickCast(recognizer, read, candidates);
+        const result = pickCast(recognizer, read, candidates, { truncated });
         // 決まった行を優先し、どちらも同じなら減点の小さい行
         if (!best
             || (result.decided && !best.decided)
