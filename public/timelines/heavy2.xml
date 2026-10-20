@@ -42,26 +42,26 @@
     <entry t="239.1" name="ブラザーフッド" label="均等化" sync="false"/>
     <entry t="241.3" duration="4.7" name="フレイムスネーキング" label="全体攻撃"/>
     <entry t="241.3" duration="4.7" name="ハイドロスネーキング"/>
-    <entry t="253.8" duration="4.7" name="ダブルアリウープ|リバースアリウープ" label="青: 青担当 / 青: 扇誘導"/>
-    <entry t="253.9" duration="4" name="フレイムアリウープ" label="赤: 赤担当 / 赤: AoE捨て"/>
+    <entry t="253.8" duration="4.7" name="ダブルアリウープ|リバースアリウープ" label="青: 青担当 / 青: 扇誘導" tts="ダブルアリウープ／リバースアリウープ"/>
+    <entry t="253.9" duration="4" name="フレイムアリウープ" label="赤: 赤担当 / 赤: AoE捨て" tts="フレイムアリウープ"/>
     <entry t="261" duration="2.7" name="シック・スウェル"/>
-    <entry t="265.4" duration="4.7" name="ホットインパクト" label="赤: タンクペア受け / 青: タンクペア受け+玉確認"/>
-    <entry t="271.4" duration="5" name="ハイドロバリエル" label="赤: 安置へ / 青: 安置で玉処理"/>
-    <entry t="276.5" duration="4" name="フレイムアリウープ" label="赤: AoE捨て"/>
-    <entry t="285.2" duration="4.7" name="フレイムエアリアル" label="赤: 誘導注意"/>
-    <entry t="289.9" duration="3.7" name="シック・テイクオフ" label="青: テイクオフ"/>
+    <entry t="265.4" duration="4.7" name="ホットインパクト" label="赤: タンクペア受け / 青: タンクペア受け+玉確認" tts="ホットインパクト"/>
+    <entry t="271.4" duration="5" name="ハイドロバリエル" label="赤: 安置へ / 青: 安置で玉処理" tts="ハイドロバリエル"/>
+    <entry t="276.5" duration="4" name="フレイムアリウープ" label="赤: AoE捨て" tts="フレイムアリウープ"/>
+    <entry t="285.2" duration="4.7" name="フレイムエアリアル" label="赤: 誘導注意" tts="フレイムエアリアル"/>
+    <entry t="289.9" duration="3.7" name="シック・テイクオフ" label="青: テイクオフ" tts="シック・テイクオフ"/>
     <entry t="290.5" name="フレイムエアリアル" sync="false"/>
-    <entry t="291.2" name="赤: 誘導1回目(タンク)" sync="false"/>
+    <entry t="291.2" name="赤: 誘導1回目(タンク)" tts="" sync="false"/>
     <entry t="292.5" name="フレイムエアリアル" sync="false"/>
-    <entry t="293.2" name="赤: 誘導2回目(ヒラ)" sync="false"/>
+    <entry t="293.2" name="赤: 誘導2回目(ヒラ)" tts="" sync="false"/>
     <entry t="294.6" name="フレイムエアリアル" sync="false"/>
-    <entry t="296.2" name="赤: 誘導3回目(遠隔)" sync="false"/>
+    <entry t="296.2" name="赤: 誘導3回目(遠隔)" tts="" sync="false"/>
     <entry t="296.7" name="フレイムエアリアル" sync="false"/>
-    <entry t="298.2" name="赤: 誘導4回目(近接)" sync="false"/>
-    <entry t="303.9" duration="4" name="フレイムカットバック" label="赤: 安置誘導"/>
-    <entry t="305.9" name="青: ノックバックと玉処理" sync="false"/>
-    <entry t="306.2" name="赤: ノックバック" sync="false"/>
-    <entry t="310.2" duration="4.6" name="ディープインパクト" label="青: T離れる / 青: 強攻撃"/>
+    <entry t="298.2" name="赤: 誘導4回目(近接)" tts="" sync="false"/>
+    <entry t="303.9" duration="4" name="フレイムカットバック" label="赤: 安置誘導" tts="フレイムカットバック"/>
+    <entry t="305.9" name="青: ノックバックと玉処理" tts="" sync="false"/>
+    <entry t="306.2" name="赤: ノックバック" tts="" sync="false"/>
+    <entry t="310.2" duration="4.6" name="ディープインパクト" label="青: T離れる / 青: 強攻撃" tts="ディープインパクト"/>
     <entry t="315.4" name="ディープインパクト" sync="false"/>
     <entry t="317.4" duration="4.7" name="ファイティングスピリット" label="全体" tts="全体攻撃"/>
     <entry t="328.7" name="ブラザーフッド" label="均等化" sync="false"/>

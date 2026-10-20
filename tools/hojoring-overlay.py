@@ -281,6 +281,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                     hit['name'] = '|'.join(it['names'] + [n for n in names if n not in it['names']])
                 add_text(hit, 'label', label, ' / ')
                 add_text(hit, 'tts', notice, '、')
+                if role and 'tts' not in hit:
+                    hit['tts'] = '／'.join(hit['name'].split('|'))  # 担当名つきの表示ではなく技名を読む
                 w = castline_window(it) if hit.get('sync') != 'false' else None
                 if w and not hit.get('window'):
                     hit['window'] = w
@@ -292,6 +294,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                 new['label'] = label
             if notice:
                 new['tts'] = notice
+            elif role:
+                new['tts'] = ''  # 担当ごとの行は読み上げない（再生画面は tts が無いと label を読む）
             entries.append(new)
             inserted.append(f'{it["time"]:g}→{at:.1f} {name}（{it["kind"]}{"・FFLogs で確認" if ev else ""}）')
         entries.sort(key=lambda e: e['_t'])
@@ -310,7 +314,8 @@ def write_castline(skeleton, path, title, note):
     a = dict(skeleton['attrs'])
     if title:
         a['title'] = title
-    attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) not in (None, ''))
+    # tts="" は「読み上げない」なので残す
+    attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) is not None and (d[k] != '' or k == 'tts'))
     lines = ['<?xml version="1.0" encoding="utf-8"?>',
              f'<timeline{attr(a, ["format", "content", "title", "sync-window"])}>',
              f'  <note>{escape(note)}</note>']
