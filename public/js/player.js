@@ -418,6 +418,7 @@ function stop() {
     state.running = false;
     state.source?.stop();
     state.source = null;
+    state.frameSize = null; // 範囲の設定は、止めたあとは指定に使っている画面の大きさで見る
     updateButtons();
     setStatus('run-status', '止めました。');
     log('── 読み取り停止');
