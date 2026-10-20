@@ -8,13 +8,13 @@
     <entry t="6.1" text="全体攻撃" castname="キング・オブ・アルカディア" duration="4.7"/>
     <entry t="16.3" text="武器確認" castname="ウェポンジェネレート：バスター" duration="1.7" tts="武器確認"/>
     <entry t="24.4" castname="ウェポンバスター" sync="false"/>
-    <entry t="36" text="設置武器確認" castname="トロフィーウェポンズ" duration="2.7"/>
+    <entry t="36.0" text="設置武器確認" castname="トロフィーウェポンズ" duration="2.7"/>
     <entry t="42.5" castname="ウェポンアサルト" duration="5.7"/>
     <entry t="48.7" castname="ウェポンアサルト" sync="false"/>
     <entry t="50.5" text="ウェポン1" castname="重打撃|重斬波|斬波" sync="false"/>
     <entry t="53.8" castname="ウェポンアサルト" sync="false"/>
     <entry t="55.7" text="ウェポン2" castname="重打撃|重斬波|斬波" sync="false"/>
-    <entry t="59" castname="ウェポンアサルト" sync="false"/>
+    <entry t="59.0" castname="ウェポンアサルト" sync="false"/>
     <entry t="60.8" text="ウェポン3" castname="重打撃|重斬波|斬波" sync="false"/>
     <entry t="70.2" castname="トロフィーウェポンズ" duration="2.7"/>
     <entry t="76.3" castname="コメットレイン" duration="3.7"/>
@@ -23,7 +23,7 @@
     <entry t="90.8" text="パンクラ" castname="ヘビーコメット" sync="false"/>
     <entry t="93.9" castname="ウェポンアサルト" sync="false"/>
     <entry t="95.7" text="ウェポン1" castname="重打撃|重斬波|斬波" sync="false"/>
-    <entry t="99" castname="ウェポンアサルト" sync="false"/>
+    <entry t="99.0" castname="ウェポンアサルト" sync="false"/>
     <entry t="100.8" text="ウェポン2" castname="重打撃|重斬波|斬波" sync="false"/>
     <entry t="104.1" castname="ウェポンアサルト" sync="false"/>
     <entry t="106.0" text="ウェポン3" castname="重打撃|重斬波|斬波" sync="false"/>
@@ -36,7 +36,7 @@
     <entry t="163.6" text="武器確認" castname="ウェポンバスター" sync="false" tts="武器確認"/>
     <entry t="165.4" castname="重斬撃" sync="false"/>
     <entry t="175.4" castname="ザ・ミールストーム" duration="4.7"/>
-    <entry t="183" text="設置武器確認" castname="アルティメット・トロフィーウェポンズ" duration="2.7"/>
+    <entry t="183.0" text="設置武器確認" castname="アルティメット・トロフィーウェポンズ" duration="2.7"/>
     <entry t="188.8" castname="ウェポンアバランチ" duration="4.7"/>
     <entry t="194.1" castname="ウェポンアサルト" sync="false"/>
     <entry t="195.9" text="ウェポン1" castname="重打撃|重斬波|斬波" sync="false"/>
@@ -60,16 +60,16 @@
     <entry t="272.5" text="MT誘導" castname="ファイア・アンド・テイル" duration="3.7"/>
     <entry t="288.9" text="メテオレイン" castname="メテオレイン" duration="4.7" tts="メテオレイン"/>
     <entry t="296.6" text="H1H2誘導＋3マーカー頭割(ファイア1)" castname="ビッグファイア" duration="4.7" tts="1回目"/>
-    <entry t="302" castname="ビッグファイア" sync="false"/>
+    <entry t="302.0" castname="ビッグファイア" sync="false"/>
     <entry t="306.6" text="D3D4誘導＋2マーカー頭割(ファイア2)" castname="ビッグファイア" duration="4.7" tts="2回目"/>
-    <entry t="312" castname="ビッグファイア" sync="false"/>
+    <entry t="312.0" castname="ビッグファイア" sync="false"/>
     <entry t="316.6" text="D1D2誘導＋3マーカー頭割(ファイア3)" castname="ビッグファイア" duration="4.7" tts="3回目"/>
-    <entry t="322" castname="ビッグファイア" sync="false"/>
+    <entry t="322.0" castname="ビッグファイア" sync="false"/>
     <entry t="326.6" text="2マーカー頭割(ファイア4)" castname="ビッグファイア" duration="4.7" tts="4回目"/>
     <entry t="331.9" castname="ビッグファイア" sync="false"/>
     <entry t="335.7" castname="トライスターズ・タイラントフォール" sync="false"/>
     <entry t="337.6" text="全体攻撃(隕石を壁に)" castname="トライスターズ・タイラントフォール" duration="6.7" tts="隕石に隠れる"/>
-    <entry t="358" text="4:4エリア分断" castname="フラットライナー" duration="3.7" tts="エリアチェンジ"/>
+    <entry t="358.0" text="4:4エリア分断" castname="フラットライナー" duration="3.7" tts="エリアチェンジ"/>
     <entry t="373.1" text="チャンピオンズ・メテオ" castname="チャンピオンズ・メテオ" duration="4.7" tts="メテオ"/>
     <entry t="397.3" text="ブレス" castname="ファイアブレス" duration="7.7" tts="ブレス"/>
     <entry t="423.3" castname="爆発" sync="false"/>
@@ -90,9 +90,9 @@
     <entry t="544.8" text="ヒュージメテオ(距離減)" castname="ヒュージメテオ" sync="false" tts="きょりげんちゅうい"/>
     <entry t="567.9" text="ツーウェイ・スピンファイア" castname="ツーウェイ・スピンファイア" duration="5.7"/>
     <entry t="570.4" castname="チャンピオンズ・メテオラース" sync="false"/>
-    <entry t="578" text="全体" castname="キング・オブ・アルカディア" duration="4.7" tts="全体攻撃"/>
+    <entry t="578.0" text="全体" castname="キング・オブ・アルカディア" duration="4.7" tts="全体攻撃"/>
     <entry t="590.9" text="ハートブレイクキックx5" castname="ハートブレイクキック" duration="4.7"/>
-    <entry t="610" text="ハートブレイクキックx6" castname="ハートブレイクキック" duration="4.7"/>
+    <entry t="610.0" text="ハートブレイクキックx6" castname="ハートブレイクキック" duration="4.7"/>
     <entry t="631.2" text="ハートブレイクキックx7" castname="ハートブレイクキック" duration="4.7"/>
     <entry t="654.3" text="時間切れ開始 / 時間切れ" castname="ハートブレイカー" duration="7.7"/>
   </phase>

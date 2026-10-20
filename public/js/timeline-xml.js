@@ -129,7 +129,8 @@ export function toTimelineXml(timeline) {
         lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
         for (const e of phase.entries) {
             // 属性の順は t・text・castname・duration・sync・tts・window で統一する（見やすさのため。2026-10-20 のユーザーの指定）
-            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('text', e.label)}${xmlAttr('castname', e.name)}`
+            // t は必ず小数点以下 1 桁（56 → 56.0。2026-10-20 のユーザーの指定）
+            lines.push(`    <entry${xmlAttr('t', Number(e.t).toFixed(1))}${xmlAttr('text', e.label)}${xmlAttr('castname', e.name)}`
                 + `${xmlAttr('duration', e.duration || undefined)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('tts', e.tts)}${xmlAttr('window', e.window)}/>`);
         }
         for (const rule of phase.next ?? []) {

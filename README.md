@@ -94,7 +94,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
   <phase id="p1" name="前半">
     <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
          発動（ダメージ）は t + duration。詠唱の無い技は duration 0（省略可） -->
-    <!-- entry の属性は t・text・castname・duration・sync・tts・window の順に書く（生成画面と道具はこの順で出す） -->
+    <!-- entry の属性は t・text・castname・duration・sync・tts・window の順に書く。t は必ず小数点以下 1 桁（6.0）（生成画面と道具はこの形で出す） -->
     <entry t="6.0" text="全体攻撃" castname="創世の真炎" duration="5"/>
     <!-- sync="false" で同期に使わない。window で窓を個別に指定。text は表示だけの文言。tts で読み上げる文を指定（tts="" で読み上げない。既定は castname） -->
     <entry t="30.0" castname="詠唱の無い技" sync="false" tts="散開"/>

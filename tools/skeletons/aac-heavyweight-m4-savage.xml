@@ -33,7 +33,7 @@
     <entry t="236.3" castname="フィクサー・オブ・アルカディア" duration="4.7"/>
     <entry t="250.5" castname="細胞付着・終期" duration="2.7"/>
     <entry t="256.7" castname="ラヴェナスリーチ" duration="0.7"/>
-    <entry t="285" castname="スプラッターシェッド" duration="2.7"/>
+    <entry t="285.0" castname="スプラッターシェッド" duration="2.7"/>
     <entry t="304.3" castname="リーサルスカージ" duration="11.7"/>
     <entry t="337.6" castname="スローターシェッド" duration="2.7"/>
     <entry t="357.4" castname="スカージブレス" sync="false"/>
@@ -47,7 +47,7 @@
     <entry t="428.9" castname="オーバーキュア・オーバーキル" duration="9.7"/>
   </phase>
   <phase id="b-p1" name="後半">
-    <entry t="11" castname="アルカディアン・フレイム" duration="4.7"/>
+    <entry t="11.0" castname="アルカディアン・フレイム" duration="4.7"/>
     <entry t="25.4" castname="レプリケーション" duration="2.7"/>
     <entry t="40.7" castname="スネークキック" duration="4.7"/>
     <entry t="64.9" castname="ダブルソバット" duration="4.7"/>
@@ -64,21 +64,21 @@
     <entry t="187.4" castname="マナスフィア" duration="2.7"/>
     <entry t="214.7" castname="マナスフィア・アウェイク" duration="2.7"/>
     <entry t="223.9" castname="ネザーワールド・ニア" duration="4.7"/>
-    <entry t="232" castname="アルカディアン・フレイム" duration="4.7"/>
+    <entry t="232.0" castname="アルカディアン・フレイム" duration="4.7"/>
     <entry t="241.3" castname="ダブルソバット" duration="4.7"/>
     <entry t="246.8" castname="ダブルソバット" sync="false"/>
     <entry t="265.1" castname="アルカディアン・ドリーム" duration="4.7"/>
     <entry t="273.3" castname="模倣細胞" duration="2.7"/>
     <entry t="287.4" castname="心象投影" duration="3.7"/>
     <entry t="294.5" castname="レプリケーション" duration="2.7"/>
-    <entry t="306" castname="心象投影" duration="3.7"/>
+    <entry t="306.0" castname="心象投影" duration="3.7"/>
     <entry t="313.1" castname="レプリケーション" duration="2.7"/>
     <entry t="331.7" castname="心象投影" duration="3.7"/>
     <entry t="339.1" castname="リンドブルム・メテオ" duration="4.7"/>
     <entry t="347.3" castname="ダウンフォール" duration="2.7"/>
     <entry t="353.4" castname="アルカディアン・アルケイナム" duration="2.7"/>
     <entry t="360.5" castname="心象投影" duration="3.7"/>
-    <entry t="391" castname="心象投影" duration="3.7"/>
+    <entry t="391.0" castname="心象投影" duration="3.7"/>
     <entry t="415.5" castname="空間裂断" duration="2.7"/>
     <entry t="427.1" castname="心象投影" duration="3.7"/>
     <entry t="434.2" castname="リエナクトメント" duration="2.7"/>

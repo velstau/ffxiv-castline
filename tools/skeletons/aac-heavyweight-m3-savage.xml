@@ -8,16 +8,16 @@
     <entry t="6.1" castname="キング・オブ・アルカディア" duration="4.7"/>
     <entry t="16.3" castname="ウェポンジェネレート：バスター" duration="1.7"/>
     <entry t="24.4" castname="ウェポンバスター" sync="false"/>
-    <entry t="36" castname="トロフィーウェポンズ" duration="2.7"/>
+    <entry t="36.0" castname="トロフィーウェポンズ" duration="2.7"/>
     <entry t="42.5" castname="ウェポンアサルト" duration="5.7"/>
     <entry t="48.7" castname="ウェポンアサルト" sync="false"/>
     <entry t="53.8" castname="ウェポンアサルト" sync="false"/>
-    <entry t="59" castname="ウェポンアサルト" sync="false"/>
+    <entry t="59.0" castname="ウェポンアサルト" sync="false"/>
     <entry t="70.2" castname="トロフィーウェポンズ" duration="2.7"/>
     <entry t="76.3" castname="コメットレイン" duration="3.7"/>
     <entry t="87.6" castname="ウェポンアサルト" duration="5.7"/>
     <entry t="93.9" castname="ウェポンアサルト" sync="false"/>
-    <entry t="99" castname="ウェポンアサルト" sync="false"/>
+    <entry t="99.0" castname="ウェポンアサルト" sync="false"/>
     <entry t="104.1" castname="ウェポンアサルト" sync="false"/>
     <entry t="118.3" castname="キング・オブ・アルカディア" duration="4.7"/>
     <entry t="133.7" castname="ウェポンジェネレート：ドミネーション" duration="1.7"/>
@@ -25,7 +25,7 @@
     <entry t="155.4" castname="ウェポンジェネレート：バスター" duration="1.7"/>
     <entry t="163.6" castname="ウェポンバスター" sync="false"/>
     <entry t="175.4" castname="ザ・ミールストーム" duration="4.7"/>
-    <entry t="183" castname="アルティメット・トロフィーウェポンズ" duration="2.7"/>
+    <entry t="183.0" castname="アルティメット・トロフィーウェポンズ" duration="2.7"/>
     <entry t="188.8" castname="ウェポンアバランチ" duration="4.7"/>
     <entry t="194.1" castname="ウェポンアサルト" sync="false"/>
     <entry t="199.2" castname="ウェポンアサルト" sync="false"/>
@@ -42,16 +42,16 @@
     <entry t="272.5" castname="ファイア・アンド・テイル" duration="3.7"/>
     <entry t="288.9" castname="メテオレイン" duration="4.7"/>
     <entry t="296.6" castname="ビッグファイア" duration="4.7"/>
-    <entry t="302" castname="ビッグファイア" sync="false"/>
+    <entry t="302.0" castname="ビッグファイア" sync="false"/>
     <entry t="306.6" castname="ビッグファイア" duration="4.7"/>
-    <entry t="312" castname="ビッグファイア" sync="false"/>
+    <entry t="312.0" castname="ビッグファイア" sync="false"/>
     <entry t="316.6" castname="ビッグファイア" duration="4.7"/>
-    <entry t="322" castname="ビッグファイア" sync="false"/>
+    <entry t="322.0" castname="ビッグファイア" sync="false"/>
     <entry t="326.6" castname="ビッグファイア" duration="4.7"/>
     <entry t="331.9" castname="ビッグファイア" sync="false"/>
     <entry t="335.7" castname="トライスターズ・タイラントフォール" sync="false"/>
     <entry t="337.6" castname="トライスターズ・タイラントフォール" duration="6.7"/>
-    <entry t="358" castname="フラットライナー" duration="3.7"/>
+    <entry t="358.0" castname="フラットライナー" duration="3.7"/>
     <entry t="373.1" castname="チャンピオンズ・メテオ" duration="4.7"/>
     <entry t="397.3" castname="ファイアブレス" duration="7.7"/>
     <entry t="429.4" castname="ファイアブレス" duration="7.7"/>
@@ -66,9 +66,9 @@
     <entry t="520.3" castname="キング・オブ・アルカディア" duration="4.7"/>
     <entry t="532.7" castname="メテオスタンピード" duration="4.7"/>
     <entry t="567.9" castname="ツーウェイ・スピンファイア" duration="5.7"/>
-    <entry t="578" castname="キング・オブ・アルカディア" duration="4.7"/>
+    <entry t="578.0" castname="キング・オブ・アルカディア" duration="4.7"/>
     <entry t="590.9" castname="ハートブレイクキック" duration="4.7"/>
-    <entry t="610" castname="ハートブレイクキック" duration="4.7"/>
+    <entry t="610.0" castname="ハートブレイクキック" duration="4.7"/>
     <entry t="631.2" castname="ハートブレイクキック" duration="4.7"/>
     <entry t="654.3" castname="ハートブレイカー" duration="7.7"/>
   </phase>

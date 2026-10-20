@@ -50,7 +50,7 @@
     <entry t="270.3" castname="集合" sync="false" tts="中央集合"/>
     <entry t="276.3" text="集合" castname="細胞爆発" sync="false" tts="移動"/>
     <entry t="281.3" castname="大爆発" sync="false"/>
-    <entry t="285" text="全体" castname="スプラッターシェッド" duration="2.7" tts="全体攻撃"/>
+    <entry t="285.0" text="全体" castname="スプラッターシェッド" duration="2.7" tts="全体攻撃"/>
     <entry t="304.3" text="リーサル1 / スカージ1" castname="リーサルスカージ" duration="11.7"/>
     <entry t="304.3" castname="玉を確認" sync="false" tts="玉を確認"/>
     <entry t="319.3" castname="リーサル2" sync="false" tts=""/>
@@ -81,7 +81,7 @@
     <entry t="449.9" castname="待機へ" sync="false" tts=""/>
   </phase>
   <phase id="b-p1" name="後半">
-    <entry t="11" text="全体攻撃" castname="アルカディアン・フレイム" duration="4.7" tts="全体攻撃"/>
+    <entry t="11.0" text="全体攻撃" castname="アルカディアン・フレイム" duration="4.7" tts="全体攻撃"/>
     <entry t="25.4" text="分身" castname="レプリケーション" duration="2.7"/>
     <entry t="35.3" castname="軽減準備" sync="false" tts=""/>
     <entry t="39.8" text="1回目" castname="トップティアスラム" sync="false" tts="バフを確認"/>
@@ -107,7 +107,7 @@
     <entry t="218.4" castname="開放1" sync="false" tts=""/>
     <entry t="223.9" text="ニア・ファー" castname="ネザーワールド・ニア|ネザーワールド・ファー" duration="4.7"/>
     <entry t="224.4" castname="開放2" sync="false" tts=""/>
-    <entry t="232" text="全体" castname="アルカディアン・フレイム" duration="4.7"/>
+    <entry t="232.0" text="全体" castname="アルカディアン・フレイム" duration="4.7"/>
     <entry t="241.3" text="T誘導" castname="ダブルソバット" duration="4.7" tts="タンク誘導、キック注意"/>
     <entry t="246.8" castname="ダブルソバット" sync="false"/>
     <entry t="265.1" text="ドリーム" castname="アルカディアン・ドリーム" duration="4.7" tts="全体攻撃"/>
@@ -115,7 +115,7 @@
     <entry t="280.3" castname="入れ替え＋マクロ押して" sync="false" tts="入れ替え確認、マクロを押して"/>
     <entry t="287.4" castname="心象投影" duration="3.7"/>
     <entry t="294.5" text="【予告】安置確認" castname="レプリケーション" duration="2.7" tts="安置を確認"/>
-    <entry t="306" castname="心象投影" duration="3.7"/>
+    <entry t="306.0" castname="心象投影" duration="3.7"/>
     <entry t="313.1" text="線取り開始" castname="レプリケーション" duration="2.7"/>
     <entry t="331.7" text="線取り終了" castname="心象投影" duration="3.7"/>
     <entry t="339.1" text="全体" castname="リンドブルム・メテオ" duration="4.7"/>
@@ -128,7 +128,7 @@
     <entry t="375.5" castname="2回目" sync="false" tts=""/>
     <entry t="380.5" castname="3回目" sync="false" tts=""/>
     <entry t="385.5" castname="4回目" sync="false" tts=""/>
-    <entry t="391" text="塔踏み" castname="心象投影" duration="3.7" tts="次は、塔踏み"/>
+    <entry t="391.0" text="塔踏み" castname="心象投影" duration="3.7" tts="次は、塔踏み"/>
     <entry t="399.4" text="塔:着弾" castname="着弾" sync="false" tts="塔発動"/>
     <entry t="410.1" text="二アファー誘導＋発動" castname="リンドブルム・グレア" sync="false" tts="二アファーわすれない"/>
     <entry t="415.5" text="空間裂断" castname="空間裂断" duration="2.7" tts="ボスを確認"/>

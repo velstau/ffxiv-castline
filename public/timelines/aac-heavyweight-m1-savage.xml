@@ -10,7 +10,7 @@
     <entry t="26.4" castname="ヴァンプストンプ" duration="3.8"/>
     <entry t="36.8" text="コウモリ処理" castname="共振波" sync="false"/>
     <entry t="42.6" text="頭割りx3" castname="ブルータルレイン" duration="3.5"/>
-    <entry t="56" text="全体攻撃＋フィールド落下" castname="サディスティック・スクリーチ" duration="4.7"/>
+    <entry t="56.0" text="全体攻撃＋フィールド落下" castname="サディスティック・スクリーチ" duration="4.7"/>
     <entry t="71.4" castname="ハーフムーン" duration="4"/>
     <entry t="76.4" text="突き出る＋半面" castname="突き出る" sync="false"/>
     <entry t="88.9" castname="ハーフムーン" duration="4"/>
@@ -33,7 +33,7 @@
     <entry t="236.9" text="コウモリ処理" castname="共振波" sync="false"/>
     <entry t="242.7" text="半面" castname="ハーフムーン" duration="4"/>
     <entry t="252.8" text="頭割りx3" castname="ブルータルレイン" duration="3.5"/>
-    <entry t="266" text="全体攻撃" castname="インセーシャブル・サースト" duration="2.5"/>
+    <entry t="266.0" text="全体攻撃" castname="インセーシャブル・サースト" duration="2.5"/>
     <entry t="279.3" text="全体攻撃＋フィールド落下" castname="サディスティック・スクリーチ" duration="4.7"/>
     <entry t="301.5" text="全体攻撃" castname="キラーボイス" duration="4.7"/>
     <entry t="319.6" text="全体攻撃" castname="キラーボイス" duration="4.7"/>
@@ -51,16 +51,16 @@
     <entry t="463.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="466.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="468.6" castname="サングインスクラッチ" sync="false"/>
-    <entry t="471" castname="サングインスクラッチ" sync="false"/>
+    <entry t="471.0" castname="サングインスクラッチ" sync="false"/>
     <entry t="474.6" text="ダイチャリ" castname="ブレイクビーツ|ブレイクダウン" sync="false"/>
     <entry t="477.4" text="ピザ避けx5＆コウモリ追従" castname="サングインスクラッチ" duration="2"/>
     <entry t="482.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="484.6" castname="サングインスクラッチ" sync="false"/>
-    <entry t="487" castname="サングインスクラッチ" sync="false"/>
+    <entry t="487.0" castname="サングインスクラッチ" sync="false"/>
     <entry t="489.4" castname="サングインスクラッチ" sync="false"/>
     <entry t="493.0" text="ダイチャリ" castname="ブレイクビーツ|ブレイクダウン" sync="false"/>
     <entry t="494.8" text="頭割りx5" castname="ブルータルレイン" duration="3.5" window="20 20"/>
-    <entry t="508" castname="ヴァンプストンプ" duration="3.8"/>
+    <entry t="508.0" castname="ヴァンプストンプ" duration="3.8"/>
     <entry t="518.6" text="コウモリ処理" castname="共振波" sync="false"/>
     <entry t="524.2" text="半面" castname="ハーフムーン" duration="4"/>
     <entry t="534.3" text="タンク強" castname="ハードコア" duration="2.7"/>
@@ -69,7 +69,7 @@
     <entry t="555.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="558.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="560.6" castname="サングインスクラッチ" sync="false"/>
-    <entry t="566" text="全体攻撃" castname="インセーシャブル・サースト" duration="2.5"/>
+    <entry t="566.0" text="全体攻撃" castname="インセーシャブル・サースト" duration="2.5"/>
     <entry t="586.1" text="全体攻撃(バフ+4)" castname="クラウドキリング" sync="false"/>
     <entry t="606.1" text="時間切れ(ワイプ確定)" castname="フィナーレ・ファターレ" sync="false"/>
   </phase>
