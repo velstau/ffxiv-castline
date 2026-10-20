@@ -1,2 +1,5 @@
 /public/models/*.onnx
 /public/models/*.txt
+
+# Hojoring などの元ファイル（第三者の作を含む。公開しない）
+/sources/
