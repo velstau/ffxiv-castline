@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>OCR 試験ページ</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main>
+    <h1>OCR 試験ページ</h1>
+    <p class="lead">ゲーム画面の画像（または取り込んだ画面）の上で読む範囲を選び、コンテンツ名・カウントダウン・HP をどこまで読めるかを確かめるページです。画像はブラウザの中だけで処理し、どこにも送りません。</p>
+
+    <section aria-labelledby="h-model">
+        <h2 id="h-model">文字認識のモデル</h2>
+        <div class="row">
+            <span id="model-status" class="status" role="status">読み込み中…</span>
+            <progress id="model-progress" max="1" value="0"></progress>
+        </div>
+    </section>
+
+    <section aria-labelledby="h-image">
+        <h2 id="h-image">画像</h2>
+        <div class="row">
+            <label>画像ファイルを開く <input type="file" id="file-input" accept="image/*" multiple></label>
+            <button type="button" id="capture-start">ゲーム画面の取り込みを始める</button>
+            <button type="button" id="capture-grab" disabled>今の画面を追加</button>
+            <button type="button" id="capture-stop" disabled>取り込みを止める</button>
+        </div>
+        <p id="capture-status" class="status" role="status"></p>
+        <div id="thumbs" class="thumbs" aria-label="読み込んだ画像"></div>
+    </section>
+
+    <section aria-labelledby="h-watch">
+        <h2 id="h-watch">連続読み取り</h2>
+        <p class="lead">ゲーム画面を取り込んでいる間、0.5 秒ごとに「読む範囲」を読み、変化があったときだけ時刻付きで下に記録します。カウントダウンのようにすぐ消える表示の確認用です。終わったら「ログをコピー」で貼り付けてください。カウントダウンを読めたとき・技名らしい文字を読んだときの画面は、上の画像の一覧にも自動で加えます（それぞれ最大 10 枚）。</p>
+        <p class="lead">「小窓を開く」は、ゲームの上に重ねて表示できるかの試験です。小窓には時計（0.1 秒刻み）と、カウントダウン・詠唱・敵対リストの最新 5 件が出ます。ゲームを前面にしても時計が止まらないか、読み上げが鳴るかを確かめてください。</p>
+        <div class="row">
+            <button type="button" id="watch-start" disabled>連続読み取りを始める</button>
+            <button type="button" id="watch-stop" disabled>止める</button>
+            <button type="button" id="watch-copy">ログをコピー</button>
+            <button type="button" id="watch-clear">ログを消す</button>
+            <button type="button" id="pip-open">小窓を開く（表示の試験）</button>
+        </div>
+        <p id="watch-status" class="status" role="status">ゲーム画面の取り込みを始めると使えます。</p>
+        <textarea id="watch-log" readonly aria-labelledby="h-watch" spellcheck="false"></textarea>
+    </section>
+
+    <section aria-labelledby="h-stage">
+        <h2 id="h-stage">読む範囲</h2>
+        <p class="lead">範囲の種類を選んでから、画像の上をドラッグして囲んでください。範囲はこのブラウザに保存されます。カウントダウンは吹き出しの行数で位置が変わるので、吹き出しより上下に広めに囲んでください（中の行は自動で分けて読みます）。</p>
+        <div id="region-picker" class="regions" role="radiogroup" aria-label="範囲の種類"></div>
+        <div class="stage">
+            <canvas id="stage" hidden></canvas>
+            <p id="stage-empty" class="empty">画像を開くか、ゲーム画面を取り込んでください。</p>
+        </div>
+    </section>
+
+    <section aria-labelledby="h-result">
+        <h2 id="h-result">読み取り結果</h2>
+        <div class="row" style="margin-bottom:8px">
+            <button type="button" id="read-all" disabled>もう一度読む</button>
+        </div>
+        <table>
+            <thead><tr><th scope="col">範囲</th><th scope="col">読み取った文字</th><th scope="col">判定</th><th scope="col">時間</th></tr></thead>
+            <tbody id="results"></tbody>
+        </table>
+    </section>
+
+    <section aria-labelledby="h-candidates">
+        <h2 id="h-candidates">コンテンツ名の候補</h2>
+        <p class="lead">1 行に 1 つ。読んだコンテンツ名はこの中から選びます。画面の表記どおりに書いてください。</p>
+        <textarea id="candidates" aria-labelledby="h-candidates" spellcheck="false"></textarea>
+        <div class="row" style="margin-top:8px">
+            <button type="button" id="candidates-reset">初期の一覧に戻す</button>
+        </div>
+    </section>
+
+    <section aria-labelledby="h-cast-candidates">
+        <h2 id="h-cast-candidates">技名の候補</h2>
+        <p class="lead">1 行に 1 つ。詠唱バーで読んだ技名をこの中から選びます（再生画面では、タイムラインファイルに書かれた技名が候補になります）。</p>
+        <textarea id="cast-candidates" aria-labelledby="h-cast-candidates" spellcheck="false" placeholder="例: デトラフレア・コンシーヴ"></textarea>
+    </section>
+
+    <footer class="notice">
+        <p>本ツールは、株式会社スクウェア・エニックスとは関係のない非公式のツールです。</p>
+        <p>ゲームのプログラム・メモリ・通信には触れず、ブラウザの画面共有で取り込んだ画面の文字を読むだけですが、スクウェア・エニックスが認めたものではありません。FINAL FANTASY XIV の利用規約では外部ツールの使用が禁止されており、本ツールは外部ツールの利用を勧めるものではありません（<a href="https://jp.finalfantasyxiv.com/lodestone/topics/detail/33dc2350ac49e2155dbc0c76ed2cdd78262e2f39" target="_blank" rel="noopener noreferrer">公式の案内「FFXIV外部ツールの是非について」<span class="sr-only">（新しいタブで開く）</span></a>）。</p>
+        <p>文字認識には PaddleOCR（Apache License 2.0）を使っています。ゲーム内の名称などの権利は株式会社スクウェア・エニックスに帰属します。<span style="white-space:nowrap">© SQUARE ENIX</span></p>
+    </footer>
+</main>
+<script type="module" src="js/lab.js"></script>
+</body>
+</html>
