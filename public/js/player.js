@@ -7,8 +7,11 @@ import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
 import { readFrame, loadRegions } from './screen-reader.js';
 import { Pip, pipSupported } from './pip.js';
 
-// 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub に置くときは raw の URL（末尾 /）に変える
-const TIMELINE_BASE = new URL('timelines/', location.href).href;
+// 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub のリポジトリの main を正とし、
+// 読めないときはサイトに同梱した写しを使う。?timelines=site でサイトの写しだけを読む（手元で直した XML の確認用）
+const TIMELINE_GITHUB = 'https://raw.githubusercontent.com/velstau/ffxiv-castline/main/public/timelines/';
+const TIMELINE_SITE = new URL('timelines/', location.href).href;
+const TIMELINE_BASES = new URLSearchParams(location.search).get('timelines') === 'site' ? [TIMELINE_SITE] : [TIMELINE_GITHUB, TIMELINE_SITE];
 const STORE_LOCAL = 'castline.player.local-timelines'; // [{ name, xml }]
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
@@ -25,6 +28,7 @@ const state = {
     contents: [], // コンテンツ名の候補（data/contents.json）
     cloud: [], // { file, content, title, timeline? }
     cloudError: '',
+    cloudBase: '', // 一覧を読めた置き場所（タイムラインの XML も同じ所から読む）
     local: [], // { name, xml, timeline }
     choice: 'auto', // 'auto' | 'cloud:<file>' | 'local:<name>'
     timeline: null,
@@ -104,17 +108,27 @@ async function loadModel() {
 
 // ── タイムライン ──
 async function loadCloudIndex() {
-    try {
-        const res = await fetch(new URL('index.xml', TIMELINE_BASE), { cache: 'no-cache' });
-        if (!res.ok) {
-            throw new Error(`HTTP ${res.status}`);
+    const failures = [];
+    for (const base of TIMELINE_BASES) {
+        try {
+            const res = await fetch(new URL('index.xml', base), { cache: 'no-cache' });
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}`);
+            }
+            state.cloud = parseTimelineIndex(await res.text());
+            state.cloudBase = base;
+            state.cloudError = '';
+            if (failures.length > 0) {
+                log(`GitHub の一覧を読めなかったので（${failures.join(' / ')}）、サイトの写しを使います。最新でない場合があります。`);
+            }
+            return;
+        } catch (e) {
+            failures.push(e.message);
         }
-        state.cloud = parseTimelineIndex(await res.text());
-        state.cloudError = '';
-    } catch (e) {
-        state.cloud = [];
-        state.cloudError = `配信のタイムライン一覧を読めませんでした（${e.message}）。手元の XML は使えます。`;
     }
+    state.cloud = [];
+    state.cloudBase = '';
+    state.cloudError = `配信のタイムライン一覧を読めませんでした（${failures.join(' / ')}）。手元の XML は使えます。`;
 }
 
 function loadLocal() {
@@ -145,7 +159,7 @@ function renderSelect() {
 
 async function cloudTimeline(item) {
     if (!item.timeline) {
-        const res = await fetch(new URL(item.file, TIMELINE_BASE), { cache: 'no-cache' });
+        const res = await fetch(new URL(item.file, state.cloudBase), { cache: 'no-cache' });
         if (!res.ok) {
             throw new Error(`${item.file} を読めません（HTTP ${res.status}）`);
         }

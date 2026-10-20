@@ -116,8 +116,9 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 
 ### 配信と手元のファイル
 
-- 配信: `TIMELINE_BASE`（`public/js/player.js`）のフォルダの `index.xml` に一覧を書き、同じフォルダに XML を置く。
-  いまは同じサイトの `public/timelines/`。GitHub のフォルダから読むときは raw の URL に変える
+- 配信: `public/timelines/` の `index.xml` に一覧を書き、同じフォルダに XML を置く。
+  再生画面は GitHub（`velstau/ffxiv-castline` の main）の raw から読むので、タイムラインの更新は push だけで届く（サイトの反映は要らない。raw は最大 5 分キャッシュされる）。
+  GitHub を読めないときはサイトに同梱した写しを使う。`player.html?timelines=site` でサイトの写しだけを読む（push 前の確認用）
 - 手元のファイル: 再生画面で XML を読み込むと、このブラウザに保存する（`castline.player.local-timelines`）。
   同じコンテンツなら手元のファイルを配信より優先する
 - タイムラインの作り方（cactbot・Hojoring の変換）は運営者が手元で使う道具とし、サイトの機能にはしない（2026-10-20 の方針）
@@ -173,7 +174,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 範囲の選択を再生画面でもできるようにする、Hojoring・cactbot のタイムラインの変換（運営者の手元の道具。発動の時刻から
 FFLogs で得た詠唱時間を引いて詠唱開始にする。元のファイルは `sources/`（git の対象外。公開しない）、ライセンスは各ファイルの CC BY-SA）、
 技名の言い換え（どちらかの技名で同期する）、
-GitHub のフォルダからの配信、チャット欄からのカウントダウン、複数の敵の HP、読み取りの遅れを引く処理、試験ページを screen-reader.js に寄せる
+チャット欄からのカウントダウン、複数の敵の HP、読み取りの遅れを引く処理、試験ページを screen-reader.js に寄せる
 
 ## 決まり（vel.works の FF14 関連）
 
