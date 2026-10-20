@@ -60,7 +60,8 @@ function linesOf(textareaId) {
     return $(textareaId).value.split('\n').map((s) => s.trim()).filter(Boolean);
 }
 const candidates = () => linesOf('candidates');
-const castCandidates = () => linesOf('cast-candidates');
+// 技名は「、」や「,」で区切って 1 行に並べてもよい（技名に読点は使われない）
+const castCandidates = () => linesOf('cast-candidates').flatMap((line) => line.split(/[、,，]/)).map((s) => s.trim()).filter(Boolean);
 
 // ── モデル ──
 async function loadModel() {
@@ -505,8 +506,7 @@ async function watchTick({ bitmap: frame, at }) {
         }
         const top = result.ranked[0];
         const hint = top ? `、最も近い候補 ${top.text}（減点 ${top.penalty.toFixed(1)}）` : '';
-        // 敵対リストは詠唱していなくても敵の名前が出ているので、決まったときと決まらなかったときだけを区別して記録する
-        const key = result.decided ?? (id === 'cast' ? `?${cast.text}` : '?');
+        const key = result.decided ?? `?${cast.text}`;
         // 戦闘前に範囲の模様を英字として読むことがあるので、かな・漢字を含むときだけ画面を残す
         keep.cast = record(id, key, `${label} ${result.decided ? `決定 ${result.decided}` : `候補と一致せず${hint}`}「${cast.text}」`)
             || keep.cast;
