@@ -118,3 +118,60 @@ export function contentRegionFrom(box, name, names, width, height) {
     const bottom = Math.min(height, box.y + box.h * 1.1);
     return { x: Math.round(left), y: Math.round(top), w: Math.round(right - left), h: Math.round(bottom - top) };
 }
+
+// ── 範囲の設定のときの試し読み ──
+
+/**
+ * 範囲を 1 つ試しに読み、指定の良し悪しが分かる短い文にする（範囲の設定画面に出す）。
+ * ok: true 読めた / false 指定を直したほうがよい / null いまの画面では判断できない（その場面でしか出ない表示）
+ * @returns {Promise<{ok:boolean|null, text:string}>}
+ */
+export async function checkRegion(ocr, frame, id, rect, names = []) {
+    if (id === 'content') {
+        const read = await readContent(ocr, frame, rect, names);
+        if (read.decided) {
+            return { ok: true, text: `読めた: ${read.decided}` };
+        }
+        return read.text
+            ? { ok: false, text: `「${read.text}」と読めましたが、コンテンツ名の一覧にありません。名前の行だけが入るように直してください` }
+            : { ok: false, text: '文字が読めません。コンテンツの中で、コンテンツ名の行を囲んでください' };
+    }
+    if (id === 'countdown') {
+        const cd = (await readCountdown(ocr.detector, ocr.recognizer, frame, rect)).countdown;
+        if (cd?.started) {
+            return { ok: true, text: '読めた: 戦闘開始！' };
+        }
+        return cd ? { ok: true, text: `読めた: 残り ${cd.seconds} 秒` } : { ok: null, text: 'カウントダウン中だけ読めます（いまの画面では確かめられません）' };
+    }
+    const boxes = (await ocr.detector.detect(frame, rect)).boxes;
+    const texts = [];
+    for (const box of boxes) {
+        const text = (await ocr.recognizer.read(frame, box)).text;
+        if (text) {
+            texts.push(text);
+        }
+    }
+    if (id === 'hp') {
+        const hp = parseHpPercent(texts.join(''));
+        if (hp !== null) {
+            return { ok: true, text: `読めた: HP ${hp}%` };
+        }
+        return texts.length > 0
+            ? { ok: false, text: `「${texts.join(' ')}」と読めましたが、% の数字ではありません` }
+            : { ok: null, text: 'ターゲットしているときだけ読めます（いまは文字がありません）' };
+    }
+    if (id === 'cast') {
+        if (texts.length === 0) {
+            return { ok: null, text: '詠唱中だけ読めます（いまは文字がありません）' };
+        }
+        return texts.length > 1
+            ? { ok: false, text: `${texts.length} 行入っています（「${texts.join('」「')}」）。技名の 1 行だけにしてください` }
+            : { ok: true, text: `読めた: ${texts[0]}` };
+    }
+    if (id === 'enmity') {
+        return texts.length > 0
+            ? { ok: true, text: `${texts.length} 行読めた: ${texts.join('／')}` }
+            : { ok: null, text: '敵がいるときだけ読めます（いまは文字がありません）' };
+    }
+    return { ok: null, text: '' };
+}

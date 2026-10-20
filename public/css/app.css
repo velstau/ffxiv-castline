@@ -128,3 +128,12 @@ textarea { width: 100%; min-height: 15em; background: var(--bg); border: 1px sol
 .tl-list li.casting { color: var(--warn); }
 .tl-list li.done { color: var(--muted); }
 .pip .tl-panel, body > .tl-panel { padding: 8px 12px; }
+
+/* 範囲の設定（region-editor.js） */
+summary { cursor: pointer; }
+.re-h { font-size: 1rem; margin: 16px 0 4px; }
+.re-rule { margin: 8px 0; }
+.re-numbers input { width: 6em; }
+.re-zoom { display: block; max-width: 100%; border: 1px solid var(--line); image-rendering: pixelated; cursor: crosshair; }
+.re-zoom:focus { outline: 2px solid var(--accent); }
+.re-overview { cursor: crosshair; }

@@ -4,8 +4,9 @@ import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
-import { readFrame } from './screen-reader.js';
-import { regionsFor } from './regions.js';
+import { readFrame, checkRegion, findContent } from './screen-reader.js';
+import { regionsFor, setRegion, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
+import { RegionEditor } from './region-editor.js';
 import { Pip, pipSupported } from './pip.js';
 
 // 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub のリポジトリの main を正とし、
@@ -46,6 +47,15 @@ const state = {
 };
 const settings = { tts: true, lead: 5, ...load(STORE_SETTINGS, {}) };
 const pip = new Pip();
+let editor = null; // 範囲の設定（RegionEditor）
+
+// 文字認識は 1 つずつ順に行う（読み取りの繰り返しと、範囲の設定の試し読み・自動判定が同じモデルを並行して使わないように）
+let ocrQueue = Promise.resolve();
+function withOcr(fn) {
+    const run = ocrQueue.then(fn);
+    ocrQueue = run.catch(() => {});
+    return run;
+}
 
 // ── 保存（localStorage は使えない環境があるので、失敗しても動くようにする） ──
 function load(key, fallback) {
@@ -269,6 +279,98 @@ function updateButtons() {
     $('start').disabled = state.running || !state.ocr;
     $('stop').disabled = !state.running;
     $('reset').disabled = !state.engine;
+    $('regions-grab').disabled = !state.running;
+    $('regions-find').disabled = !state.ocr || !editor?.frame;
+}
+
+// ── 読む範囲 ──
+
+// 指定していない範囲と、そのためにできないこと（画面の大きさは取り込み中の画面、無ければ範囲の設定に使っている画面）
+function renderMissing() {
+    const size = state.frameSize ?? (editor?.frame && { width: editor.frame.width, height: editor.frame.height });
+    if (!size) {
+        $('regions-missing').textContent = '';
+        return;
+    }
+    const missing = missingRegions(regionsFor(size.width, size.height));
+    $('regions-missing').textContent = missing.length === 0
+        ? `画面 ${screenKey(size.width, size.height)} の範囲はすべて指定してあります。`
+        : `画面 ${screenKey(size.width, size.height)} で未指定: ${missing.map((m) => `${m.label}（${m.lost}）`).join('、')}`;
+    $('regions-missing').className = `status ${missing.length === 0 ? 'ok' : 'ng'}`;
+}
+
+function regionsChanged() {
+    state.regionsKey = ''; // 次のフレームで読み直す
+    renderMissing();
+    updateButtons();
+}
+
+async function grabForRegions() {
+    const grabbed = await state.source?.grab(0);
+    if (!grabbed) {
+        return;
+    }
+    editor.setFrame(grabbed.bitmap); // 範囲の設定が持つ（次に替えたときに閉じる）
+    setStatus('regions-status', `いまのゲーム画面（${screenKey(grabbed.bitmap.width, grabbed.bitmap.height)}）を使います。`, 'ok');
+    regionsChanged();
+}
+
+async function imageForRegions(file) {
+    try {
+        editor.setFrame(await createImageBitmap(file));
+    } catch {
+        setStatus('regions-status', `${file.name} を画像として読めませんでした。`, 'ng');
+        return;
+    }
+    const key = screenKey(editor.frame.width, editor.frame.height);
+    setStatus('regions-status', `${file.name}（${key}）を使います。取り込む画面と大きさが違うと、ここで指定した範囲は使われません。`, 'ok');
+    regionsChanged();
+}
+
+async function findContentRegion() {
+    const frame = editor.frame;
+    $('regions-find').disabled = true;
+    try {
+        const found = await withOcr(() => findContent(state.ocr, frame, state.contents,
+            (done, total) => setStatus('regions-status', `コンテンツ名を探しています… ${done}/${total}`)));
+        if (!found) {
+            setStatus('regions-status', '見つかりませんでした。コンテンツの中で、画面に「コンテンツ情報」が出ている状態の画面で試してください。', 'ng');
+            return;
+        }
+        setRegion(frame.width, frame.height, 'content', found.rect);
+        editor.refresh();
+        editor.select('content');
+        setStatus('regions-status', `「${found.name}」を見つけ、その行を長い名前も入る幅に広げて保存しました。拡大図で確かめ、ずれていれば直してください。`, 'ok');
+        regionsChanged();
+    } finally {
+        updateButtons();
+    }
+}
+
+function exportRegionsFile() {
+    const all = loadAll();
+    if (Object.keys(all).length === 0) {
+        setStatus('regions-status', '書き出す範囲がありません。', 'ng');
+        return;
+    }
+    const url = URL.createObjectURL(new Blob([exportRegions(all)], { type: 'application/json' }));
+    Object.assign(document.createElement('a'), { href: url, download: 'castline-regions.json' }).click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setStatus('regions-status', `範囲を castline-regions.json に書き出しました（画面 ${Object.keys(all).join('・')}）。`, 'ok');
+}
+
+async function importRegionsFile(file) {
+    const { screens, errors } = importRegions(await file.text());
+    if (errors.length > 0) {
+        setStatus('regions-status', `${file.name} を読み込めませんでした: ${errors.join(' / ')}`, 'ng');
+        return;
+    }
+    editor.refresh();
+    const size = state.frameSize ?? editor.frame;
+    const current = size && screenKey(size.width, size.height);
+    setStatus('regions-status', `${file.name} から画面 ${screens.join('・')} の範囲を読み込みました。`
+        + (current && !screens.includes(current) ? `いまの画面（${current}）の範囲は入っていません。` : ''), current && !screens.includes(current) ? 'ng' : 'ok');
+    regionsChanged();
 }
 
 async function start() {
@@ -326,12 +428,14 @@ async function tick({ bitmap: frame, at }) {
     if (key !== state.regionsKey) {
         state.regionsKey = key;
         state.regions = regionsFor(frame.width, frame.height);
+        state.frameSize = { width: frame.width, height: frame.height };
         const names = Object.keys(state.regions);
         if (names.length === 0) {
-            setStatus('run-status', `画面 ${key} の範囲がありません。試験ページ（lab.html）で、この解像度の画面の上で範囲を選んでください。`, 'ng');
+            setStatus('run-status', `画面 ${key} の範囲がありません。下の「読む範囲」で「いまのゲーム画面を使う」を押して指定してください。`, 'ng');
         } else {
-            setStatus('run-status', `読み取り中です（画面 ${key}、範囲 ${names.length} 種類${state.regions.enmity ? '' : '。敵対リストの範囲がないので、戦闘の終わりは判定しません'}）。`, 'ok');
+            setStatus('run-status', `読み取り中です（画面 ${key}、範囲 ${names.length} 種類）。`, 'ok');
         }
+        renderMissing();
         if (state.engine) {
             state.engine.hasEnmity = Boolean(state.regions.enmity);
         }
@@ -342,12 +446,12 @@ async function tick({ bitmap: frame, at }) {
     if (wantContent) {
         state.lastContentAt = at;
     }
-    const obs = await readFrame(state.ocr, frame, state.regions, {
+    const obs = await withOcr(() => readFrame(state.ocr, frame, state.regions, {
         content: wantContent ? state.contents : null,
         countdown: !inCombat,
         // 技名は戦闘中だけ、いまの時刻の前後にある技に絞って照合する
         castCandidates: inCombat ? engine.castCandidates(at) : [],
-    });
+    }));
 
     if (obs.content?.decided && obs.content.decided !== state.detectedContent) {
         state.detectedContent = obs.content.decided;
@@ -533,6 +637,27 @@ async function init() {
         updateButtons();
     });
     $('local-remove').addEventListener('click', removeLocal);
+    editor = new RegionEditor($('region-editor'), {
+        check: (id, rect, frame) => (state.ocr
+            ? withOcr(() => checkRegion(state.ocr, frame, id, rect, state.contents))
+            : Promise.resolve({ ok: null, text: '文字認識のモデルを読み込み中です' })),
+        onChange: regionsChanged,
+    });
+    $('regions-grab').addEventListener('click', grabForRegions);
+    $('regions-image').addEventListener('change', async (ev) => {
+        if (ev.target.files[0]) {
+            await imageForRegions(ev.target.files[0]);
+        }
+        ev.target.value = '';
+    });
+    $('regions-find').addEventListener('click', findContentRegion);
+    $('regions-export').addEventListener('click', exportRegionsFile);
+    $('regions-import').addEventListener('change', async (ev) => {
+        if (ev.target.files[0]) {
+            await importRegionsFile(ev.target.files[0]);
+        }
+        ev.target.value = '';
+    });
     $('log-copy').addEventListener('click', async () => {
         try {
             await navigator.clipboard.writeText($('log').value);

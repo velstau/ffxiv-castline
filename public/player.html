@@ -10,7 +10,7 @@
 <body>
 <main>
     <h1>Castline 再生（開発中）</h1>
-    <p class="lead">ゲーム画面を読み取り、ボスのタイムライン（これから来る技と発動までの秒）を流します。画像はブラウザの中だけで処理し、どこにも送りません。読む範囲は<a href="lab.html" style="color:var(--accent)">試験ページ</a>で選んだものを使います。</p>
+    <p class="lead">ゲーム画面を読み取り、ボスのタイムライン（これから来る技と発動までの秒）を流します。画像はブラウザの中だけで処理し、どこにも送りません。読む範囲は下の「読む範囲」で指定します（このブラウザに画面の大きさごとに記憶し、ファイルに書き出して残せます）。</p>
 
     <section aria-labelledby="h-run">
         <h2 id="h-run">読み取り</h2>
@@ -24,6 +24,25 @@
             <button type="button" id="reset" disabled>リセット</button>
         </div>
         <p id="run-status" class="status" role="status"></p>
+    </section>
+
+    <section aria-labelledby="h-regions">
+        <h2 id="h-regions">読む範囲</h2>
+        <p id="regions-missing" class="status" role="status"></p>
+        <details id="regions-details" open>
+            <summary>範囲を指定する・確かめる</summary>
+            <div class="row" style="margin-top:8px">
+                <button type="button" id="regions-grab" disabled>いまのゲーム画面を使う</button>
+                <label>スクリーンショットを使う <input type="file" id="regions-image" accept="image/*"></label>
+                <button type="button" id="regions-find" disabled>コンテンツ名を自動で探す</button>
+            </div>
+            <div class="row" style="margin-top:8px">
+                <button type="button" id="regions-export">範囲をファイルに書き出す</button>
+                <label>ファイルから読み込む <input type="file" id="regions-import" accept=".json,application/json"></label>
+            </div>
+            <p id="regions-status" class="status" role="status"></p>
+            <div id="region-editor"></div>
+        </details>
     </section>
 
     <section aria-labelledby="h-timeline">
