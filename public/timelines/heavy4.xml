@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<timeline format="castline/1" content="至天の座アルカディア零式：ヘビー級4" title="至天の座アルカディア零式：ヘビー級4（FFLogs から生成、前半・後半）">
-  <note>前半: FFLogs の討伐の記録（7:17）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ） ／ 後半: FFLogs の討伐の記録（9:13）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+<timeline format="castline/1" content="至天の座アルカディア零式：ヘビー級4" title="至天の座アルカディア零式：ヘビー級4（FFLogs ＋ Hojoring 用タイムラインの文言）">
+  <note>前半: FFLogs の討伐の記録（7:17）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） ／ 後半: FFLogs の討伐の記録（9:13）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） 表示（label）と読み上げ（tts）の文言は、Vel の Hojoring 用タイムライン「ヘビー級4層」TEST30（CC BY-SA）から取った。表示だけの予定（sync="false"）には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="start" name="開始待ち">
     <next to="a-p1" at="10.9" cast="フィクサー・オブ・アルカディア"/>
     <next to="a-p1" at="29.3" cast="リーサルスカージ"/>
@@ -8,85 +8,140 @@
     <next to="b-p1" at="25.4" cast="レプリケーション"/>
   </phase>
   <phase id="a-p1" name="前半">
-    <entry t="10.9" duration="4.7" name="フィクサー・オブ・アルカディア"/>
-    <entry t="29.3" duration="11.7" name="リーサルスカージ"/>
-    <entry t="67.7" duration="2.7" name="細胞付着・前期"/>
+    <entry t="10.9" duration="4.7" name="フィクサー・オブ・アルカディア" label="全体" tts="全体攻撃"/>
+    <entry t="29.3" duration="11.7" name="リーサルスカージ" label="玉を確認 / リーサル1" tts="玉を確認"/>
+    <entry t="44.4" name="リーサル2" tts="" sync="false"/>
+    <entry t="47.4" name="リーサル3" tts="" sync="false"/>
+    <entry t="50.4" name="リーサル4" tts="" sync="false"/>
+    <entry t="67.7" duration="2.7" name="細胞付着・前期" label="集合 / 細胞付着・前期" tts="細胞付着・前期"/>
     <entry t="76.9" duration="0.7" name="ラヴェナスリーチ"/>
-    <entry t="103.2" duration="4.7" name="フィクサー・オブ・アルカディア"/>
-    <entry t="117.4" duration="2.7" name="細胞付着・中期"/>
-    <entry t="132.6" duration="2.7" name="クルエルコイル"/>
+    <entry t="88.9" name="細胞爆発" tts="細胞爆発" sync="false"/>
+    <entry t="98.2" name="細胞重爆" label="頭割+T強" tts="頭割りと強攻撃" sync="false"/>
+    <entry t="103.2" duration="4.7" name="フィクサー・オブ・アルカディア" label="全体" tts="全体攻撃"/>
+    <entry t="117.4" duration="2.7" name="細胞付着・中期" label="細胞付着・中期" tts="細胞付着・中期"/>
+    <entry t="132.6" duration="2.7" name="クルエルコイル" label="回転開始" tts="クルエルコイル"/>
     <entry t="141.6" name="スキンスプリッター" sync="false"/>
     <entry t="146.6" name="スキンスプリッター" sync="false"/>
     <entry t="151.5" name="スキンスプリッター" sync="false"/>
+    <entry t="153.4" name="細胞変異" label="変異1" tts="細胞変異" sync="false"/>
     <entry t="156.5" name="スキンスプリッター" sync="false"/>
+    <entry t="158.4" name="細胞変異" label="変異2" tts="細胞変異" sync="false"/>
     <entry t="161.5" name="スキンスプリッター" sync="false"/>
+    <entry t="163.4" name="細胞変異" label="変異3" tts="細胞変異" sync="false"/>
     <entry t="166.4" name="スキンスプリッター" sync="false"/>
+    <entry t="168.4" name="細胞変異" label="変異4" tts="細胞変異" sync="false"/>
     <entry t="171.4" name="スキンスプリッター" sync="false"/>
-    <entry t="176.3" name="コンストリクター" sync="false"/>
-    <entry t="183.5" duration="2.7" name="スプラッターシェッド"/>
-    <entry t="203.7" duration="2.7" name="細胞付着・後期"/>
-    <entry t="209.9" duration="1.7" name="フェラルフィッション"/>
-    <entry t="216.1" name="ブリングダウン・ハウス" sync="false"/>
-    <entry t="236.3" duration="4.7" name="フィクサー・オブ・アルカディア"/>
-    <entry t="250.5" duration="2.7" name="細胞付着・終期"/>
-    <entry t="256.7" duration="0.7" name="ラヴェナスリーチ"/>
-    <entry t="285" duration="2.7" name="スプラッターシェッド"/>
-    <entry t="304.3" duration="11.7" name="リーサルスカージ"/>
-    <entry t="337.6" duration="2.7" name="スローターシェッド"/>
+    <entry t="176.3" name="コンストリクター" label="コンストリクター" tts="コンストリクター" sync="false"/>
+    <entry t="183.5" duration="2.7" name="スプラッターシェッド" label="全体" tts="スプラッターシェッド"/>
+    <entry t="203.7" duration="2.7" name="細胞付着・後期" label="細胞付着・後期" tts="細胞付着・後期"/>
+    <entry t="209.9" duration="1.7" name="フェラルフィッション" label="フェラルフィッション" tts="フェラルフィッション"/>
+    <entry t="216.1" name="ブリングダウン・ハウス" label="エリアチェンジ" tts="ブリングダウン・ハウス" sync="false"/>
+    <entry t="219.4" name="細胞飛散" label="バインド" tts="細胞飛散" sync="false"/>
+    <entry t="223.4" name="散開注意" tts="" sync="false"/>
+    <entry t="229.6" name="スプリットスカージ" label="ブレス誘導" tts="ブレス" sync="false"/>
+    <entry t="232.1" name="ドロップスカージ" label="AoE誘導" tts="ドロップ" sync="false"/>
+    <entry t="236.3" duration="4.7" name="フィクサー・オブ・アルカディア" label="全体" tts="全体攻撃"/>
+    <entry t="250.5" duration="2.7" name="細胞付着・終期" label="細胞付着・終期" tts="細胞付着・終期"/>
+    <entry t="256.7" duration="0.7" name="ラヴェナスリーチ" label="AoE誘導" tts="ラヴェナスリーチ"/>
+    <entry t="268.3" name="ラヴェナスリーチ" label="リーチ" tts="ラヴェナスリーチ" sync="false"/>
+    <entry t="270.3" name="集合" tts="中央集合" sync="false"/>
+    <entry t="276.3" name="細胞爆発" label="集合" tts="移動" sync="false"/>
+    <entry t="281.3" name="大爆発" tts="大爆発" sync="false"/>
+    <entry t="285" duration="2.7" name="スプラッターシェッド" label="全体" tts="全体攻撃"/>
+    <entry t="304.3" duration="11.7" name="リーサルスカージ" label="リーサル1 / スカージ1" tts="リーサルスカージ"/>
+    <entry t="304.3" name="玉を確認" tts="玉を確認" sync="false"/>
+    <entry t="319.3" name="リーサル2" tts="" sync="false"/>
+    <entry t="319.4" name="リーサル2" tts="" sync="false"/>
+    <entry t="322.3" name="リーサル3" tts="" sync="false"/>
+    <entry t="322.4" name="リーサル3" tts="" sync="false"/>
+    <entry t="325.3" name="リーサル4" tts="" sync="false"/>
+    <entry t="325.4" name="リーサル4" tts="" sync="false"/>
+    <entry t="337.6" duration="2.7" name="スローターシェッド" label="全体" tts="全体攻撃"/>
+    <entry t="352.2" name="大爆発" tts="大爆発" sync="false"/>
     <entry t="357.4" name="スカージブレス" sync="false"/>
+    <entry t="358.2" name="腕1" tts="" sync="false"/>
     <entry t="361.9" name="スカージブレス" sync="false"/>
-    <entry t="366.5" duration="2.7" name="スローターシェッド"/>
+    <entry t="362.2" name="腕2" tts="" sync="false"/>
+    <entry t="366.5" duration="2.7" name="スローターシェッド" label="全体" tts="全体攻撃"/>
+    <entry t="381.1" name="大爆発" tts="大爆発" sync="false"/>
     <entry t="386.2" name="スカージブレス" sync="false"/>
+    <entry t="387.1" name="腕1" tts="" sync="false"/>
     <entry t="390.8" name="スカージブレス" sync="false"/>
-    <entry t="395.4" duration="2.7" name="スローターシェッド"/>
+    <entry t="391.1" name="腕2" tts="" sync="false"/>
+    <entry t="395.4" duration="2.7" name="スローターシェッド" label="全体" tts="全体攻撃"/>
+    <entry t="410.0" name="大爆発" tts="大爆発" sync="false"/>
     <entry t="415.2" name="ラプターナックル" sync="false"/>
+    <entry t="416.0" name="腕1" tts="" sync="false"/>
     <entry t="419.8" name="ラプターナックル" sync="false"/>
-    <entry t="428.9" duration="9.7" name="オーバーキュア・オーバーキル"/>
+    <entry t="420.0" name="腕2" tts="" sync="false"/>
+    <entry t="428.9" duration="9.7" name="オーバーキュア・オーバーキル" label="時間切れ開始 / 時間切れ" tts="オーバーキュア・オーバーキル"/>
+    <entry t="449.9" name="待機へ" tts="" sync="false"/>
   </phase>
   <phase id="b-p1" name="後半">
-    <entry t="11" duration="4.7" name="アルカディアン・フレイム"/>
-    <entry t="25.4" duration="2.7" name="レプリケーション"/>
-    <entry t="40.7" duration="4.7" name="スネークキック"/>
-    <entry t="64.9" duration="4.7" name="ダブルソバット"/>
+    <entry t="11" duration="4.7" name="アルカディアン・フレイム" label="全体攻撃" tts="全体攻撃"/>
+    <entry t="25.4" duration="2.7" name="レプリケーション" label="分身" tts="レプリケーション"/>
+    <entry t="35.3" name="軽減準備" tts="" sync="false"/>
+    <entry t="39.8" name="トップティアスラム" label="1回目" tts="バフを確認" sync="false"/>
+    <entry t="40.7" duration="4.7" name="スネークキック" label="キック" tts="スネークキック"/>
+    <entry t="61.5" name="トップティアスラム" label="2回目" tts="トップティアスラム" sync="false"/>
+    <entry t="64.9" duration="4.7" name="ダブルソバット" label="T誘導" tts="タンク誘導、キック注意"/>
     <entry t="70.5" name="ダブルソバット" sync="false"/>
-    <entry t="88.7" duration="2.7" name="模倣細胞"/>
-    <entry t="102.9" duration="2.7" name="レプリケーション"/>
-    <entry t="122.5" duration="5.4" name="ファイアフォール・スプラッシュ"/>
+    <entry t="88.7" duration="2.7" name="模倣細胞" label="模倣細胞" tts="模倣細胞"/>
+    <entry t="102.9" duration="2.7" name="レプリケーション" label="レプリケーション" tts="レプリケーション"/>
+    <entry t="122.5" duration="5.4" name="ファイアフォール・スプラッシュ" label="【4/扇】扇誘導" tts="誘導注意"/>
     <entry t="128.3" name="ファイアフォール・スプラッシュ" sync="false"/>
     <entry t="129.2" name="マナバースト" sync="false"/>
-    <entry t="136.5" duration="4.7" name="スネークキック"/>
-    <entry t="148.7" duration="2.7" name="リエナクトメント"/>
-    <entry t="154.9" duration="4.7" name="ネザーレイジ・ニア"/>
-    <entry t="181.2" duration="2.7" name="変異細胞"/>
-    <entry t="187.4" duration="2.7" name="マナスフィア"/>
+    <entry t="136.5" duration="4.7" name="スネークキック" label="頭割 / キック" tts="頭割り、扇注意"/>
+    <entry t="148.7" duration="2.7" name="リエナクトメント" label="リバース開始" tts="リバース開始"/>
+    <entry t="154.9" duration="4.7" name="ネザーレイジ・ニア|ネザーレイジ・ファー" label="ニア・ファー" tts="ネザーレイジ・ニア／ネザーレイジ・ファー"/>
+    <entry t="163.8" name="ヘビースラム" label="【ボ単】頭割り1" tts="頭割り" sync="false"/>
+    <entry t="167.8" name="【4/扇】扇誘導" tts="扇誘導" sync="false"/>
+    <entry t="171.8" name="ヘビースラム" label="【ボ単】頭割り２" tts="頭割り" sync="false"/>
+    <entry t="181.2" duration="2.7" name="変異細胞" label="変異細胞" tts="変異細胞"/>
+    <entry t="187.4" duration="2.7" name="マナスフィア" label="スフィア" tts="マナスフィア"/>
+    <entry t="201.4" name="魔力放散" tts="魔力放散" sync="false"/>
     <entry t="214.7" duration="2.7" name="マナスフィア・アウェイク"/>
-    <entry t="223.9" duration="4.7" name="ネザーワールド・ニア"/>
-    <entry t="232" duration="4.7" name="アルカディアン・フレイム"/>
-    <entry t="241.3" duration="4.7" name="ダブルソバット"/>
+    <entry t="218.4" name="開放1" tts="" sync="false"/>
+    <entry t="223.9" duration="4.7" name="ネザーワールド・ニア|ネザーワールド・ファー" label="ニア・ファー" tts="ネザーワールド・ニア／ネザーワールド・ファー"/>
+    <entry t="224.4" name="開放2" tts="" sync="false"/>
+    <entry t="232" duration="4.7" name="アルカディアン・フレイム" label="全体" tts="アルカディアン・フレイム"/>
+    <entry t="241.3" duration="4.7" name="ダブルソバット" label="T誘導" tts="タンク誘導、キック注意"/>
     <entry t="246.8" name="ダブルソバット" sync="false"/>
-    <entry t="265.1" duration="4.7" name="アルカディアン・ドリーム"/>
-    <entry t="273.3" duration="2.7" name="模倣細胞"/>
+    <entry t="265.1" duration="4.7" name="アルカディアン・ドリーム" label="ドリーム" tts="全体攻撃"/>
+    <entry t="273.3" duration="2.7" name="模倣細胞" label="自機確認" tts="位置を確認"/>
+    <entry t="280.3" name="入れ替え＋マクロ押して" tts="入れ替え確認、マクロを押して" sync="false"/>
     <entry t="287.4" duration="3.7" name="心象投影"/>
-    <entry t="294.5" duration="2.7" name="レプリケーション"/>
+    <entry t="294.5" duration="2.7" name="レプリケーション" label="【予告】安置確認" tts="安置を確認"/>
     <entry t="306" duration="3.7" name="心象投影"/>
-    <entry t="313.1" duration="2.7" name="レプリケーション"/>
-    <entry t="331.7" duration="3.7" name="心象投影"/>
-    <entry t="339.1" duration="4.7" name="リンドブルム・メテオ"/>
-    <entry t="347.3" duration="2.7" name="ダウンフォール"/>
-    <entry t="353.4" duration="2.7" name="アルカディアン・アルケイナム"/>
-    <entry t="360.5" duration="3.7" name="心象投影"/>
-    <entry t="391" duration="3.7" name="心象投影"/>
-    <entry t="415.5" duration="2.7" name="空間裂断"/>
-    <entry t="427.1" duration="3.7" name="心象投影"/>
-    <entry t="434.2" duration="2.7" name="リエナクトメント"/>
-    <entry t="442.4" duration="3.7" name="心象投影"/>
-    <entry t="449.9" duration="3.7" name="心象投影"/>
-    <entry t="467.4" duration="4.7" name="アルカディアン・ドリーム"/>
-    <entry t="475.6" duration="4.7" name="ダブルソバット"/>
+    <entry t="313.1" duration="2.7" name="レプリケーション" label="線取り開始" tts="レプリケーション"/>
+    <entry t="331.7" duration="3.7" name="心象投影" label="線取り終了" tts="心象投影"/>
+    <entry t="339.1" duration="4.7" name="リンドブルム・メテオ" label="全体" tts="リンドブルム・メテオ"/>
+    <entry t="339.1" name="パワーガッシャー" label="【発動】安置へ" tts="安置へ移動" sync="false"/>
+    <entry t="345.1" name="エリアチェンジ" tts="担当の島へ移動" sync="false"/>
+    <entry t="347.3" duration="2.7" name="ダウンフォール" label="【予告】隕石" tts="ダウンフォール"/>
+    <entry t="353.4" duration="2.7" name="アルカディアン・アルケイナム" label="デバフ付与" tts="アルカディアン・アルケイナム"/>
+    <entry t="360.5" duration="3.7" name="心象投影" label="範囲捨てor頭割り開始" tts="頭割りと範囲捨て"/>
+    <entry t="370.5" name="1回目" tts="" sync="false"/>
+    <entry t="375.5" name="2回目" tts="" sync="false"/>
+    <entry t="380.5" name="3回目" tts="" sync="false"/>
+    <entry t="385.5" name="4回目" tts="" sync="false"/>
+    <entry t="391" duration="3.7" name="心象投影" label="塔踏み" tts="次は、塔踏み"/>
+    <entry t="399.4" name="着弾" label="塔:着弾" tts="塔発動" sync="false"/>
+    <entry t="410.1" name="リンドブルム・グレア" label="二アファー誘導＋発動" tts="二アファーわすれない" sync="false"/>
+    <entry t="415.5" duration="2.7" name="空間裂断" label="空間裂断" tts="ボスを確認"/>
+    <entry t="427.1" duration="3.7" name="心象投影" label="散開位置へ" tts="移動先を確認"/>
+    <entry t="434.2" duration="2.7" name="リエナクトメント" label="ダミー攻撃:前半" tts="リエナクトメント"/>
+    <entry t="439.3" name="ヘビースラム" label="頭割り(4:4)" tts="よんよん" sync="false"/>
+    <entry t="442.4" duration="3.7" name="心象投影" label="島安置へ" tts="心象投影"/>
+    <entry t="449.9" duration="3.7" name="心象投影" label="ダミー攻撃:後半" tts="心象投影"/>
+    <entry t="460.2" name="ヘビースラム" label="頭割り(4:4)" tts="よんよん" sync="false"/>
+    <entry t="465.3" name="パワーガッシャー" label="安置へ" tts="パワーガッシャー" sync="false"/>
+    <entry t="467.4" duration="4.7" name="アルカディアン・ドリーム" label="全体" tts="アルカディアン・ドリーム"/>
+    <entry t="475.6" duration="4.7" name="ダブルソバット" label="T誘導" tts="タンク誘導、キック注意"/>
     <entry t="481.1" name="ダブルソバット" sync="false"/>
     <entry t="496.9" duration="4.7" name="レプリケーション"/>
-    <entry t="510.4" duration="4.7" name="アルカディアン・ヘル"/>
-    <entry t="526.7" duration="4.7" name="アルカディアン・ヘル"/>
-    <entry t="544.5" duration="9.7" name="アルカディアン・ヘル"/>
+    <entry t="510.4" duration="4.7" name="アルカディアン・ヘル" label="全体1" tts="アルカディアン・ヘル"/>
+    <entry t="526.7" duration="4.7" name="アルカディアン・ヘル" label="全体2" tts="アルカディアン・ヘル"/>
+    <entry t="544.5" duration="9.7" name="アルカディアン・ヘル" label="時間切れ開始 / 時間切れ" tts="アルカディアン・ヘル"/>
   </phase>
 </timeline>

@@ -7,7 +7,8 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）な
 - 照合の相手は FFLogs の同じ戦闘の全部の技（補助の敵も含む。tools/fflogs-events.py で抜き出した *.events.json）。
   Hojoring 本体と同じく、技が合うたびにずれを合わせ直す（記録した戦闘ごとにフェーズの進み方が違うため）。
   窓は Hojoring の sync-s / sync-e（既定は <default>）。区間の最初のずれは、同じ技名の差が最も多くそろう値
-- 合った技が骨組みの予定（同名で、詠唱の終わりから AFTER_CAST_MAX 秒以内に当たったもの）なら、text を label、notice を tts として付ける。
+- 合った技が骨組みの予定（同名で、詠唱の終わりから AFTER_CAST_MAX 秒以内に当たったもの）なら、text を label（表示だけ）、notice を tts として付ける。
+  Hojoring と同じく読み上げるのは notice だけ。notice の無い予定は技名を読む（技名の無い行は読まない）
   Hojoring で「(A|B)」と書かれた技は、骨組みの技名を「A|B」に広げる（ログには片方しか残らないため）
 - 骨組みに無い技（補助の敵の技など）・台詞・ログ ID・バフで合わせているもの・同期なしの行は、
   その時刻に表示だけの予定（sync="false"）として足す
@@ -280,9 +281,9 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                     names = hit['name'].split('|')
                     hit['name'] = '|'.join(it['names'] + [n for n in names if n not in it['names']])
                 add_text(hit, 'label', label, ' / ')
-                add_text(hit, 'tts', notice, '、')
-                if role and 'tts' not in hit:
-                    hit['tts'] = '／'.join(hit['name'].split('|'))  # 担当名つきの表示ではなく技名を読む
+                hit.setdefault('_notices', [])
+                if notice and notice not in hit['_notices']:
+                    hit['_notices'].append(notice)
                 w = castline_window(it) if hit.get('sync') != 'false' else None
                 if w and not hit.get('window'):
                     hit['window'] = w
@@ -292,10 +293,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
             new = {'t': f'{at:.1f}', 'name': name, 'sync': 'false', '_t': at, '_hit': at, '_added': True}
             if label and label != name:
                 new['label'] = label
-            if notice:
-                new['tts'] = notice
-            elif role:
-                new['tts'] = ''  # 担当ごとの行は読み上げない（再生画面は tts が無いと label を読む）
+            new['_notices'] = [notice] if notice else []
+            new['_no_name'] = not it['names']  # 技名が無い（台詞・同期なしの行）
             entries.append(new)
             inserted.append(f'{it["time"]:g}→{at:.1f} {name}（{it["kind"]}{"・FFLogs で確認" if ev else ""}）')
         entries.sort(key=lambda e: e['_t'])
@@ -307,6 +306,12 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         report += [f'    FFLogs に無いが同名の予定に付けた: {x}' for x in loose]
         report += [f'    見つからない: {x}' for x in missed]
         report += [f'    足した: {x}' for x in inserted]
+    # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使い、notice が無ければ技名を読む（技名の無い行は読まない）。
+    # 再生画面は tts が無いと label を読むので、文言を付けた予定には tts を必ず書く（2026-10-20 のユーザーの決定）
+    for phase in skeleton['phases']:
+        for e in phase['entries']:
+            if '_notices' in e:
+                e['tts'] = '、'.join(e['_notices']) or ('' if e.get('_no_name') else '／'.join(e['name'].split('|')))
     return report
 
 
