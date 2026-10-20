@@ -34,6 +34,7 @@ OFFSET_TOLERANCE = 1.5  # 区間の最初のずれの推定で「そろってい
 SKELETON_TOLERANCE = 1.5  # FFLogs の技と骨組みの予定（詠唱開始＋詠唱時間）を同じものとみなす差
 AFTER_CAST_MAX = 6.0  # 詠唱の終わりからこれ以内に当たった同名の技は、その詠唱の予定に付ける（2 撃目・遅れて当たる技）
 SYNC_WINDOW_DEFAULT = 10  # Castline の既定の同期の窓（これより広い指定だけ window に移す）
+ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window"]  # timeline-xml.js の toTimelineXml と同じ順
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
 
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')
@@ -336,7 +337,7 @@ def write_castline(skeleton, path, title, note):
         lines.append(f'  <phase{attr(p["attrs"], ["id", "name"])}>')
         for e in p['entries']:
             out = {**e, 'castname': e['name'], 'text': e.get('label')}
-            lines.append(f'    <entry{attr(out, ["t", "duration", "castname", "text", "tts", "sync", "window"])}/>')
+            lines.append(f'    <entry{attr(out, ENTRY_ORDER)}/>')
         for n in p['next']:
             lines.append(f'    <next{attr(n, ["to", "at", "cast", "hp", "time", "hp-lost"])}/>')
         lines.append('  </phase>')

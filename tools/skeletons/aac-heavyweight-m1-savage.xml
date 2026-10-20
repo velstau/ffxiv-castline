@@ -5,60 +5,60 @@
   <title>至天の座アルカディア零式：ヘビー級1（FFLogs から生成）</title>
   <note>FFLogs の討伐の記録（9:39）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
-    <entry t="6.1" duration="4.7" castname="キラーボイス"/>
-    <entry t="16.2" duration="2.7" castname="ハードコア"/>
-    <entry t="26.4" duration="3.8" castname="ヴァンプストンプ"/>
-    <entry t="42.6" duration="3.5" castname="ブルータルレイン"/>
-    <entry t="56" duration="4.7" castname="サディスティック・スクリーチ"/>
-    <entry t="71.4" duration="4" castname="ハーフムーン"/>
-    <entry t="88.9" duration="4" castname="ハーフムーン"/>
-    <entry t="106.2" duration="4" castname="ハーフムーン"/>
-    <entry t="116.4" duration="4" castname="ハーフムーン"/>
-    <entry t="133.6" duration="4.7" castname="サディスティック・スクリーチ"/>
-    <entry t="147.9" duration="0.2" castname="クラウドキリング"/>
-    <entry t="166.8" duration="4.7" castname="フィナーレ・ファターレ"/>
-    <entry t="178.9" duration="12" castname="エーテルレッティング"/>
+    <entry t="6.1" castname="キラーボイス" duration="4.7"/>
+    <entry t="16.2" castname="ハードコア" duration="2.7"/>
+    <entry t="26.4" castname="ヴァンプストンプ" duration="3.8"/>
+    <entry t="42.6" castname="ブルータルレイン" duration="3.5"/>
+    <entry t="56" castname="サディスティック・スクリーチ" duration="4.7"/>
+    <entry t="71.4" castname="ハーフムーン" duration="4"/>
+    <entry t="88.9" castname="ハーフムーン" duration="4"/>
+    <entry t="106.2" castname="ハーフムーン" duration="4"/>
+    <entry t="116.4" castname="ハーフムーン" duration="4"/>
+    <entry t="133.6" castname="サディスティック・スクリーチ" duration="4.7"/>
+    <entry t="147.9" castname="クラウドキリング" duration="0.2"/>
+    <entry t="166.8" castname="フィナーレ・ファターレ" duration="4.7"/>
+    <entry t="178.9" castname="エーテルレッティング" duration="12"/>
     <entry t="191.2" castname="エーテルレッティング" sync="false"/>
     <entry t="193.3" castname="エーテルレッティング" sync="false"/>
     <entry t="195.3" castname="エーテルレッティング" sync="false"/>
     <entry t="197.3" castname="エーテルレッティング" sync="false"/>
-    <entry t="216.4" duration="2.7" castname="ハードコア"/>
-    <entry t="226.5" duration="3.8" castname="ヴァンプストンプ"/>
-    <entry t="242.7" duration="4" castname="ハーフムーン"/>
-    <entry t="252.8" duration="3.5" castname="ブルータルレイン"/>
-    <entry t="266" duration="2.5" castname="インセーシャブル・サースト"/>
-    <entry t="279.3" duration="4.7" castname="サディスティック・スクリーチ"/>
-    <entry t="301.5" duration="4.7" castname="キラーボイス"/>
-    <entry t="319.6" duration="4.7" castname="キラーボイス"/>
-    <entry t="351.8" duration="4.7" castname="サディスティック・スクリーチ"/>
-    <entry t="366.1" duration="0.2" castname="クラウドキリング"/>
-    <entry t="384.9" duration="4.7" castname="フィナーレ・ファターレ"/>
-    <entry t="397.1" duration="3.5" castname="ヘル・イン・ア・セル"/>
-    <entry t="404.2" duration="4.7" castname="アグリゲートソニック"/>
-    <entry t="411.3" duration="4.7" castname="スプレッドソニック"/>
-    <entry t="419.5" duration="3.5" castname="ヘル・イン・ア・セル"/>
-    <entry t="426.6" duration="4.7" castname="スプレッドソニック"/>
-    <entry t="433.8" duration="4.7" castname="アグリゲートソニック"/>
-    <entry t="449.9" duration="3.5" castname="バット・デスマッチ"/>
-    <entry t="459.1" duration="2" castname="サングインスクラッチ"/>
+    <entry t="216.4" castname="ハードコア" duration="2.7"/>
+    <entry t="226.5" castname="ヴァンプストンプ" duration="3.8"/>
+    <entry t="242.7" castname="ハーフムーン" duration="4"/>
+    <entry t="252.8" castname="ブルータルレイン" duration="3.5"/>
+    <entry t="266" castname="インセーシャブル・サースト" duration="2.5"/>
+    <entry t="279.3" castname="サディスティック・スクリーチ" duration="4.7"/>
+    <entry t="301.5" castname="キラーボイス" duration="4.7"/>
+    <entry t="319.6" castname="キラーボイス" duration="4.7"/>
+    <entry t="351.8" castname="サディスティック・スクリーチ" duration="4.7"/>
+    <entry t="366.1" castname="クラウドキリング" duration="0.2"/>
+    <entry t="384.9" castname="フィナーレ・ファターレ" duration="4.7"/>
+    <entry t="397.1" castname="ヘル・イン・ア・セル" duration="3.5"/>
+    <entry t="404.2" castname="アグリゲートソニック" duration="4.7"/>
+    <entry t="411.3" castname="スプレッドソニック" duration="4.7"/>
+    <entry t="419.5" castname="ヘル・イン・ア・セル" duration="3.5"/>
+    <entry t="426.6" castname="スプレッドソニック" duration="4.7"/>
+    <entry t="433.8" castname="アグリゲートソニック" duration="4.7"/>
+    <entry t="449.9" castname="バット・デスマッチ" duration="3.5"/>
+    <entry t="459.1" castname="サングインスクラッチ" duration="2"/>
     <entry t="463.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="466.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="468.6" castname="サングインスクラッチ" sync="false"/>
     <entry t="471" castname="サングインスクラッチ" sync="false"/>
-    <entry t="477.4" duration="2" castname="サングインスクラッチ"/>
+    <entry t="477.4" castname="サングインスクラッチ" duration="2"/>
     <entry t="482.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="484.6" castname="サングインスクラッチ" sync="false"/>
     <entry t="487" castname="サングインスクラッチ" sync="false"/>
     <entry t="489.4" castname="サングインスクラッチ" sync="false"/>
-    <entry t="494.8" duration="3.5" castname="ブルータルレイン"/>
-    <entry t="508" duration="3.8" castname="ヴァンプストンプ"/>
-    <entry t="524.2" duration="4" castname="ハーフムーン"/>
-    <entry t="534.3" duration="2.7" castname="ハードコア"/>
-    <entry t="548.6" duration="2" castname="サングインスクラッチ"/>
+    <entry t="494.8" castname="ブルータルレイン" duration="3.5"/>
+    <entry t="508" castname="ヴァンプストンプ" duration="3.8"/>
+    <entry t="524.2" castname="ハーフムーン" duration="4"/>
+    <entry t="534.3" castname="ハードコア" duration="2.7"/>
+    <entry t="548.6" castname="サングインスクラッチ" duration="2"/>
     <entry t="553.4" castname="サングインスクラッチ" sync="false"/>
     <entry t="555.8" castname="サングインスクラッチ" sync="false"/>
     <entry t="558.2" castname="サングインスクラッチ" sync="false"/>
     <entry t="560.6" castname="サングインスクラッチ" sync="false"/>
-    <entry t="566" duration="2.5" castname="インセーシャブル・サースト"/>
+    <entry t="566" castname="インセーシャブル・サースト" duration="2.5"/>
   </phase>
 </timeline>

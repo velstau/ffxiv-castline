@@ -128,8 +128,9 @@ export function toTimelineXml(timeline) {
     for (const phase of timeline.phases) {
         lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
         for (const e of phase.entries) {
-            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('duration', e.duration || undefined)}${xmlAttr('castname', e.name)}`
-                + `${xmlAttr('text', e.label)}${xmlAttr('tts', e.tts)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('window', e.window)}/>`);
+            // 属性の順は t・text・castname・duration・sync・tts・window で統一する（見やすさのため。2026-10-20 のユーザーの指定）
+            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('text', e.label)}${xmlAttr('castname', e.name)}`
+                + `${xmlAttr('duration', e.duration || undefined)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('tts', e.tts)}${xmlAttr('window', e.window)}/>`);
         }
         for (const rule of phase.next ?? []) {
             const w = rule.when;

@@ -5,104 +5,104 @@
   <title>至天の座アルカディア零式：ヘビー級2（FFLogs から生成）</title>
   <note>FFLogs の討伐の記録（9:51）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
-    <entry t="10.1" duration="4.7" castname="ホットインパクト"/>
-    <entry t="23.5" duration="6.7" castname="フレイムフローター"/>
+    <entry t="10.1" castname="ホットインパクト" duration="4.7"/>
+    <entry t="23.5" castname="フレイムフローター" duration="6.7"/>
     <entry t="30.9" castname="フレイムフローター" sync="false"/>
     <entry t="34.2" castname="フレイムフローター" sync="false"/>
     <entry t="37.6" castname="フレイムフローター" sync="false"/>
     <entry t="40.9" castname="フレイムフローター" sync="false"/>
-    <entry t="49.1" duration="4" castname="フレイムアリウープ"/>
-    <entry t="58.5" duration="4" castname="フレイムカットバック"/>
-    <entry t="65" duration="4" castname="パイロローテーション"/>
-    <entry t="78.4" duration="4.7" castname="ファイティングスピリット"/>
-    <entry t="95" duration="2.7" castname="シック・スウェル"/>
-    <entry t="103.2" duration="3.7" castname="シック・テイクオフ"/>
-    <entry t="121.4" duration="4.7" castname="ダブルアリウープ"/>
-    <entry t="132.6" duration="4.6" castname="ディープインパクト"/>
+    <entry t="49.1" castname="フレイムアリウープ" duration="4"/>
+    <entry t="58.5" castname="フレイムカットバック" duration="4"/>
+    <entry t="65" castname="パイロローテーション" duration="4"/>
+    <entry t="78.4" castname="ファイティングスピリット" duration="4.7"/>
+    <entry t="95" castname="シック・スウェル" duration="2.7"/>
+    <entry t="103.2" castname="シック・テイクオフ" duration="3.7"/>
+    <entry t="121.4" castname="ダブルアリウープ" duration="4.7"/>
+    <entry t="132.6" castname="ディープインパクト" duration="4.6"/>
     <entry t="137.7" castname="ディープインパクト" sync="false"/>
-    <entry t="139.8" duration="4.7" castname="ファイティングスピリット"/>
-    <entry t="158.4" duration="3.7" castname="エクストリーム・スペクタクル"/>
+    <entry t="139.8" castname="ファイティングスピリット" duration="4.7"/>
+    <entry t="158.4" castname="エクストリーム・スペクタクル" duration="3.7"/>
     <entry t="180" castname="ブラザーフッド" sync="false"/>
-    <entry t="189.9" duration="5.6" castname="インセインエアー"/>
+    <entry t="189.9" castname="インセインエアー" duration="5.6"/>
     <entry t="197.7" castname="フレイムバーティカル" sync="false"/>
     <entry t="197.7" castname="ハイドロスナップ" sync="false"/>
-    <entry t="199.3" duration="3.6" castname="インセインエアー"/>
+    <entry t="199.3" castname="インセインエアー" duration="3.6"/>
     <entry t="205" castname="フレイムスナップ" sync="false"/>
     <entry t="205" castname="ハイドロリエントリー" sync="false"/>
-    <entry t="206.6" duration="3.6" castname="インセインエアー"/>
+    <entry t="206.6" castname="インセインエアー" duration="3.6"/>
     <entry t="212.4" castname="フレイムリエントリー" sync="false"/>
     <entry t="212.4" castname="ハイドロスナップ" sync="false"/>
-    <entry t="214" duration="3.6" castname="インセインエアー"/>
+    <entry t="214" castname="インセインエアー" duration="3.6"/>
     <entry t="219.7" castname="フレイムスナップ" sync="false"/>
     <entry t="219.7" castname="ハイドロバーティカル" sync="false"/>
-    <entry t="225.6" duration="4.7" castname="ファイティングスピリット"/>
+    <entry t="225.6" castname="ファイティングスピリット" duration="4.7"/>
     <entry t="239.1" castname="ブラザーフッド" sync="false"/>
-    <entry t="241.3" duration="4.7" castname="フレイムスネーキング"/>
-    <entry t="241.3" duration="4.7" castname="ハイドロスネーキング"/>
-    <entry t="253.8" duration="4.7" castname="リバースアリウープ"/>
-    <entry t="253.9" duration="4" castname="フレイムアリウープ"/>
-    <entry t="261" duration="2.7" castname="シック・スウェル"/>
-    <entry t="265.4" duration="4.7" castname="ホットインパクト"/>
-    <entry t="271.4" duration="5" castname="ハイドロバリエル"/>
-    <entry t="276.5" duration="4" castname="フレイムアリウープ"/>
-    <entry t="285.2" duration="4.7" castname="フレイムエアリアル"/>
-    <entry t="289.9" duration="3.7" castname="シック・テイクオフ"/>
+    <entry t="241.3" castname="フレイムスネーキング" duration="4.7"/>
+    <entry t="241.3" castname="ハイドロスネーキング" duration="4.7"/>
+    <entry t="253.8" castname="リバースアリウープ" duration="4.7"/>
+    <entry t="253.9" castname="フレイムアリウープ" duration="4"/>
+    <entry t="261" castname="シック・スウェル" duration="2.7"/>
+    <entry t="265.4" castname="ホットインパクト" duration="4.7"/>
+    <entry t="271.4" castname="ハイドロバリエル" duration="5"/>
+    <entry t="276.5" castname="フレイムアリウープ" duration="4"/>
+    <entry t="285.2" castname="フレイムエアリアル" duration="4.7"/>
+    <entry t="289.9" castname="シック・テイクオフ" duration="3.7"/>
     <entry t="290.5" castname="フレイムエアリアル" sync="false"/>
     <entry t="292.5" castname="フレイムエアリアル" sync="false"/>
     <entry t="294.6" castname="フレイムエアリアル" sync="false"/>
     <entry t="296.7" castname="フレイムエアリアル" sync="false"/>
-    <entry t="303.9" duration="4" castname="フレイムカットバック"/>
-    <entry t="310.2" duration="4.6" castname="ディープインパクト"/>
+    <entry t="303.9" castname="フレイムカットバック" duration="4"/>
+    <entry t="310.2" castname="ディープインパクト" duration="4.6"/>
     <entry t="315.4" castname="ディープインパクト" sync="false"/>
-    <entry t="317.4" duration="4.7" castname="ファイティングスピリット"/>
+    <entry t="317.4" castname="ファイティングスピリット" duration="4.7"/>
     <entry t="328.7" castname="ブラザーフッド" sync="false"/>
-    <entry t="331" duration="4.7" castname="ハイドロエアリアル"/>
-    <entry t="343.1" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="331" castname="ハイドロエアリアル" duration="4.7"/>
+    <entry t="343.1" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="348.3" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="351.7" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="351.7" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="356.9" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="360.2" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="360.2" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="365.4" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="368.8" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="368.8" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="374" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="377.4" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="377.4" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="382.6" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="385.9" duration="4.6" castname="エクストリームウェーブ"/>
+    <entry t="385.9" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="391.1" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="396.4" duration="4.7" castname="ファイティングスピリット"/>
+    <entry t="396.4" castname="ファイティングスピリット" duration="4.7"/>
     <entry t="407.6" castname="ブラザーフッド" sync="false"/>
-    <entry t="410" duration="2.7" castname="シック・スウェル"/>
-    <entry t="412.2" duration="4.7" castname="フレイムフローター"/>
+    <entry t="410" castname="シック・スウェル" duration="2.7"/>
+    <entry t="412.2" castname="フレイムフローター" duration="4.7"/>
     <entry t="417.4" castname="フレイムフローター" sync="false"/>
-    <entry t="421.5" duration="4" castname="フレイムアリウープ"/>
-    <entry t="426.4" duration="4.7" castname="リバースアリウープ"/>
-    <entry t="434.4" duration="4" castname="フリーキー・パイロローテーション"/>
-    <entry t="434.6" duration="3.7" castname="シック・テイクオフ"/>
-    <entry t="449.9" duration="4.7" castname="ファイティングスピリット"/>
+    <entry t="421.5" castname="フレイムアリウープ" duration="4"/>
+    <entry t="426.4" castname="リバースアリウープ" duration="4.7"/>
+    <entry t="434.4" castname="フリーキー・パイロローテーション" duration="4"/>
+    <entry t="434.6" castname="シック・テイクオフ" duration="3.7"/>
+    <entry t="449.9" castname="ファイティングスピリット" duration="4.7"/>
     <entry t="463.5" castname="ブラザーフッド" sync="false"/>
-    <entry t="465.7" duration="4.7" castname="エクストリーム・フレイムスネーキング"/>
-    <entry t="465.7" duration="4.7" castname="エクストリーム・ハイドロスネーキング"/>
-    <entry t="478.6" duration="6.6" castname="インセインエアー"/>
+    <entry t="465.7" castname="エクストリーム・フレイムスネーキング" duration="4.7"/>
+    <entry t="465.7" castname="エクストリーム・ハイドロスネーキング" duration="4.7"/>
+    <entry t="478.6" castname="インセインエアー" duration="6.6"/>
     <entry t="487.4" castname="フレイムリエントリー" sync="false"/>
     <entry t="487.4" castname="ハイドロリエントリー" sync="false"/>
-    <entry t="489" duration="6.6" castname="インセインエアー"/>
+    <entry t="489" castname="インセインエアー" duration="6.6"/>
     <entry t="497.7" castname="フレイムスナップ" sync="false"/>
     <entry t="497.7" castname="ハイドロスナップ" sync="false"/>
-    <entry t="499.3" duration="6.6" castname="インセインエアー"/>
+    <entry t="499.3" castname="インセインエアー" duration="6.6"/>
     <entry t="508" castname="フレイムバーティカル" sync="false"/>
     <entry t="508" castname="ハイドロバーティカル" sync="false"/>
-    <entry t="509.7" duration="6.6" castname="インセインエアー"/>
+    <entry t="509.7" castname="インセインエアー" duration="6.6"/>
     <entry t="518.4" castname="フレイムスナップ" sync="false"/>
     <entry t="518.4" castname="ハイドロスナップ" sync="false"/>
-    <entry t="524.2" duration="4.7" castname="ファイティングスピリット"/>
+    <entry t="524.2" castname="ファイティングスピリット" duration="4.7"/>
     <entry t="535.5" castname="ブラザーフッド" sync="false"/>
-    <entry t="539.8" duration="4.7" castname="リバースアリウープ"/>
-    <entry t="542.7" duration="4" castname="フレイムアリウープ"/>
-    <entry t="551.4" duration="4" castname="パイロローテーション"/>
-    <entry t="551.6" duration="4.6" castname="ディープインパクト"/>
+    <entry t="539.8" castname="リバースアリウープ" duration="4.7"/>
+    <entry t="542.7" castname="フレイムアリウープ" duration="4"/>
+    <entry t="551.4" castname="パイロローテーション" duration="4"/>
+    <entry t="551.6" castname="ディープインパクト" duration="4.6"/>
     <entry t="556.7" castname="ディープインパクト" sync="false"/>
-    <entry t="564.9" duration="4.7" castname="ファイティングスピリット"/>
-    <entry t="574" duration="4.7" castname="ファイティングスピリット"/>
-    <entry t="591.4" duration="8.7" castname="オーバー・ザ・フォール"/>
+    <entry t="564.9" castname="ファイティングスピリット" duration="4.7"/>
+    <entry t="574" castname="ファイティングスピリット" duration="4.7"/>
+    <entry t="591.4" castname="オーバー・ザ・フォール" duration="8.7"/>
   </phase>
 </timeline>
