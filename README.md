@@ -84,8 +84,12 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<!-- content は画面の表記どおり（contents.json の名前）。sync-window は既定の同期の窓（予定の何秒前 何秒後） -->
-<timeline format="castline/1" content="万魔殿パンデモニウム零式：煉獄編4" title="表示名" sync-window="10 10">
+<timeline>
+  <!-- 先頭の情報は 1 行ずつの子要素。content は画面の表記どおり（contents.json の名前） -->
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：煉獄編4</content>
+  <title>表示名</title>
+  <sync-window>10 10</sync-window>  <!-- 既定の同期の窓（予定の何秒前 何秒後）。省略可 -->
   <note>出典など</note>
   <phase id="p1" name="前半">
     <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。

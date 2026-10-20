@@ -41,11 +41,12 @@ export function parseTimelineXml(text) {
         }
         return value;
     };
-    const pair = (el, name, where) => {
-        if (!el.hasAttribute(name)) {
+    const pair = (el, name, where) => (el.hasAttribute(name) ? pairOf(el.getAttribute(name), name, where) : undefined);
+    const pairOf = (text, name, where) => {
+        if (text === undefined) {
             return undefined;
         }
-        const values = el.getAttribute(name).trim().split(/[\s,]+/).map(Number);
+        const values = text.trim().split(/[\s,]+/).map(Number);
         if (values.length !== 2 || !values.every(Number.isFinite)) {
             errors.push(`${where}: ${name} は「前 後」の 2 つの秒で書いてください（例: "10 10"）`);
         }
@@ -54,12 +55,14 @@ export function parseTimelineXml(text) {
     const attr = (el, name) => (el.hasAttribute(name) ? el.getAttribute(name) : undefined);
     const clean = (obj) => Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
 
+    // 先頭の情報は 1 行ずつの子要素（<format> <content> <title> <sync-window> <note>）
+    const field = (name) => children(root, name)[0]?.textContent.trim();
     const timeline = clean({
-        format: attr(root, 'format'),
-        content: attr(root, 'content'),
-        title: attr(root, 'title'),
-        note: children(root, 'note')[0]?.textContent.trim(),
-        syncWindow: pair(root, 'sync-window', '<timeline>'),
+        format: field('format'),
+        content: field('content'),
+        title: field('title'),
+        note: field('note'),
+        syncWindow: pairOf(field('sync-window'), 'sync-window', '<timeline>'),
         phases: children(root, 'phase').map((p, i) => {
             const where = `<phase> ${i + 1} 番目（${attr(p, 'id') ?? 'id なし'}）`;
             return clean({
@@ -115,9 +118,12 @@ const xmlAttr = (name, value) => (value === undefined || value === null ? '' : `
 /** エンジンの形のタイムラインを XML にする（parseTimelineXml の逆） */
 export function toTimelineXml(timeline) {
     const lines = ['<?xml version="1.0" encoding="utf-8"?>'];
-    lines.push(`<timeline${xmlAttr('format', timeline.format)}${xmlAttr('content', timeline.content)}${xmlAttr('title', timeline.title)}${xmlAttr('sync-window', timeline.syncWindow)}>`);
-    if (timeline.note) {
-        lines.push(`  <note>${escapeXml(timeline.note)}</note>`);
+    lines.push('<timeline>');
+    for (const [name, value] of [['format', timeline.format], ['content', timeline.content], ['title', timeline.title],
+        ['sync-window', timeline.syncWindow?.join(' ')], ['note', timeline.note]]) {
+        if (value !== undefined && value !== null && value !== '') {
+            lines.push(`  <${name}>${escapeXml(value)}</${name}>`);
+        }
     }
     for (const phase of timeline.phases) {
         lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);

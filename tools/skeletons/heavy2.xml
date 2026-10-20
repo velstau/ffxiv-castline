@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<timeline format="castline/1" content="至天の座アルカディア零式：ヘビー級2" title="至天の座アルカディア零式：ヘビー級2（FFLogs から生成）">
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ヘビー級2</content>
+  <title>至天の座アルカディア零式：ヘビー級2（FFLogs から生成）</title>
   <note>FFLogs の討伐の記録（9:51）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="10.1" duration="4.7" castname="ホットインパクト"/>

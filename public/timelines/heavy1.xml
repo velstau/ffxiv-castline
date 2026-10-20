@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<timeline format="castline/1" content="至天の座アルカディア零式：ヘビー級1" title="至天の座アルカディア零式：ヘビー級1（FFLogs ＋ Hojoring 用タイムラインの文言）">
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ヘビー級1</content>
+  <title>至天の座アルカディア零式：ヘビー級1</title>
   <note>FFLogs の討伐の記録（9:39）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="6.1" duration="4.7" castname="キラーボイス" text="全体攻撃"/>

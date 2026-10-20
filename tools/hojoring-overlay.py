@@ -113,7 +113,8 @@ def load_hojoring(path):
 def load_skeleton(path):
     root = ET.parse(path).getroot()
     tl = {
-        'attrs': dict(root.attrib),
+        # 先頭の情報は 1 行ずつの子要素
+        'head': {k: (root.findtext(k) or '').strip() for k in ('format', 'content', 'title', 'sync-window')},
         'note': (root.findtext('note') or '').strip(),
         'phases': [],
     }
@@ -322,14 +323,15 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
 
 
 def write_castline(skeleton, path, title, note):
-    a = dict(skeleton['attrs'])
+    head = dict(skeleton['head'])
     if title:
-        a['title'] = title
+        head['title'] = title
     # tts="" は「読み上げない」なので残す
     attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) is not None and (d[k] != '' or k == 'tts'))
     lines = ['<?xml version="1.0" encoding="utf-8"?>',
-             f'<timeline{attr(a, ["format", "content", "title", "sync-window"])}>',
-             f'  <note>{escape(note)}</note>']
+             '<timeline>']
+    lines += [f'  <{k}>{escape(head[k])}</{k}>' for k in ('format', 'content', 'title', 'sync-window') if head.get(k)]
+    lines += [f'  <note>{escape(note)}</note>']
     for p in skeleton['phases']:
         lines.append(f'  <phase{attr(p["attrs"], ["id", "name"])}>')
         for e in p['entries']:
