@@ -8,7 +8,7 @@ import { readFrame, checkRegion, findContent, scanLines, tilesOf } from './scree
 import {
     countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
 } from './region-finder.js';
-import { REGION_KINDS, regionsFor, setRegion, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
+import { REGION_KINDS, regionsFor, setRegion, clearRegions, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
 import { RegionEditor } from './region-editor.js';
 import { Pip, pipSupported } from './pip.js';
 
@@ -353,6 +353,28 @@ async function findContentRegion() {
     } finally {
         updateButtons();
     }
+}
+
+// いまの画面の大きさの範囲を全部消す（ずれた範囲が残っていると、自動では探さないため）
+function clearScreenRegions() {
+    const size = state.frameSize ?? editor.frame;
+    if (!size) {
+        setStatus('regions-status', '先に「ゲーム画面の取り込みを始める」を押してください（どの画面の大きさの範囲を消すかが決まります）。', 'ng');
+        return;
+    }
+    const key = screenKey(size.width, size.height);
+    if (Object.keys(regionsFor(size.width, size.height)).length === 0) {
+        setStatus('regions-status', `画面 ${key} の範囲はもうありません。`, 'ok');
+        return;
+    }
+    if (!confirm(`画面 ${key} の範囲を全部消します。よろしいですか？（残したい場合は先に「範囲をファイルに書き出す」）`)) {
+        return;
+    }
+    clearRegions(size.width, size.height);
+    editor.refresh();
+    log(`画面 ${key} の範囲を全部消しました`);
+    setStatus('regions-status', `画面 ${key} の範囲を全部消しました。${state.running && settings.autoRegions ? 'ゲーム画面に出たものから自動で探します。' : ''}`, 'ok');
+    regionsChanged();
 }
 
 function exportRegionsFile() {
@@ -811,6 +833,7 @@ async function init() {
     });
     $('regions-find').addEventListener('click', findContentRegion);
     $('regions-export').addEventListener('click', exportRegionsFile);
+    $('regions-clear').addEventListener('click', clearScreenRegions);
     $('regions-import').addEventListener('change', async (ev) => {
         if (ev.target.files[0]) {
             await importRegionsFile(ev.target.files[0]);

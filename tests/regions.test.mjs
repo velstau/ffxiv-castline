@@ -1,7 +1,7 @@
 // 範囲の保存・書き出し・読み込みのテスト。実行: node --test tests/
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { setRegion, regionsFor, exportRegions, parseRegions, importRegions, loadAll, missingRegions } from '../public/js/regions.js';
+import { setRegion, regionsFor, exportRegions, parseRegions, importRegions, loadAll, missingRegions, clearRegions } from '../public/js/regions.js';
 
 function memoryStorage() {
     const data = new Map();
@@ -48,4 +48,14 @@ test('指定していない範囲と、できなくなること', () => {
     assert.equal(none[0].id, 'start');
     assert.ok(!none.some((m) => m.id === 'countdown'));
     assert.deepEqual(missingRegions({ countdown: {}, content: {}, hp: {} }).map((m) => m.id), ['cast', 'enmity']);
+});
+
+test('画面の大きさの範囲を全部消す（ほかの大きさは残す）', () => {
+    const s = memoryStorage();
+    setRegion(2560, 1032, 'content', { x: 1, y: 2, w: 3, h: 4 }, s);
+    setRegion(2560, 1032, 'hp', { x: 1, y: 2, w: 3, h: 4 }, s);
+    setRegion(1920, 1080, 'cast', { x: 5, y: 6, w: 7, h: 8 }, s);
+    clearRegions(2560, 1032, s);
+    assert.deepEqual(regionsFor(2560, 1032, s), {});
+    assert.deepEqual(Object.keys(loadAll(s)), ['1920x1080']);
 });

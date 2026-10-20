@@ -90,6 +90,13 @@ export function setRegion(width, height, id, rect, storage = defaultStorage()) {
     return saveAll(all, storage);
 }
 
+/** その画面の大きさの範囲を全部消す（ほかの画面の大きさの範囲は残す） */
+export function clearRegions(width, height, storage = defaultStorage()) {
+    const all = loadAll(storage);
+    delete all[screenKey(width, height)];
+    return saveAll(all, storage);
+}
+
 const roundRect = (r) => ({ x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.w), h: Math.round(r.h) });
 
 /** 書き出すファイルの中身（JSON。読みやすいよう範囲 1 つを 1 行に書く） */
