@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>OCR タイムライン 再生</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main>
+    <h1>OCR タイムライン 再生（開発中）</h1>
+    <p class="lead">ゲーム画面を読み取り、ボスのタイムライン（これから来る技と発動までの秒）を流します。画像はブラウザの中だけで処理し、どこにも送りません。読む範囲は<a href="lab.html" style="color:var(--accent)">試験ページ</a>で選んだものを使います。</p>
+
+    <section aria-labelledby="h-run">
+        <h2 id="h-run">読み取り</h2>
+        <div class="row">
+            <span id="model-status" class="status" role="status">文字認識のモデルを読み込み中…</span>
+            <progress id="model-progress" max="1" value="0"></progress>
+        </div>
+        <div class="row" style="margin-top:8px">
+            <button type="button" id="start" disabled>ゲーム画面の取り込みを始める</button>
+            <button type="button" id="stop" disabled>止める</button>
+            <button type="button" id="reset" disabled>リセット</button>
+        </div>
+        <p id="run-status" class="status" role="status"></p>
+    </section>
+
+    <section aria-labelledby="h-timeline">
+        <h2 id="h-timeline">タイムライン</h2>
+        <div class="row">
+            <label for="timeline-select">使うタイムライン</label>
+            <select id="timeline-select"></select>
+        </div>
+        <div class="row" style="margin-top:8px">
+            <label>手元の XML を読み込む <input type="file" id="local-file" accept=".xml,application/xml,text/xml" multiple></label>
+            <button type="button" id="local-remove" disabled>選んでいる手元のファイルを消す</button>
+        </div>
+        <p id="timeline-status" class="status" role="status"></p>
+    </section>
+
+    <section aria-labelledby="h-panel">
+        <h2 id="h-panel">表示</h2>
+        <div class="row">
+            <button type="button" id="pip-open">小窓で開く（ゲームの上に表示）</button>
+            <label><input type="checkbox" id="tts"> 技の前に読み上げる</label>
+            <label>発動の <input type="number" id="lead" min="0" max="30" step="1" style="width:4em"> 秒前</label>
+            <button type="button" id="tts-test">読み上げの試験</button>
+        </div>
+        <div id="panel" aria-live="off"></div>
+    </section>
+
+    <section aria-labelledby="h-log">
+        <h2 id="h-log">ログ</h2>
+        <div class="row" style="margin-bottom:8px">
+            <button type="button" id="log-copy">ログをコピー</button>
+        </div>
+        <textarea id="log" readonly aria-labelledby="h-log" spellcheck="false"></textarea>
+    </section>
+
+    <footer class="notice">
+        <p>本ツールは、株式会社スクウェア・エニックスとは関係のない非公式のツールです。</p>
+        <p>ゲームのプログラム・メモリ・通信には触れず、ブラウザの画面共有で取り込んだ画面の文字を読むだけですが、スクウェア・エニックスが認めたものではありません。FINAL FANTASY XIV の利用規約では外部ツールの使用が禁止されており、本ツールは外部ツールの利用を勧めるものではありません（<a href="https://jp.finalfantasyxiv.com/lodestone/topics/detail/33dc2350ac49e2155dbc0c76ed2cdd78262e2f39" target="_blank" rel="noopener noreferrer">公式の案内「FFXIV外部ツールの是非について」<span class="sr-only">（新しいタブで開く）</span></a>）。</p>
+        <p>文字認識には PaddleOCR（Apache License 2.0）を使っています。ゲーム内の名称などの権利は株式会社スクウェア・エニックスに帰属します。<span style="white-space:nowrap">© SQUARE ENIX</span></p>
+    </footer>
+</main>
+<script type="module" src="js/player.js"></script>
+</body>
+</html>

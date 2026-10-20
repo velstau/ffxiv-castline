@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 配信するタイムラインの一覧。file はこのファイルからの相対パス -->
+<timelines format="ocr-timeline-index/1">
+  <timeline file="p8s-test.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
+</timelines>

@@ -110,3 +110,14 @@ textarea { width: 100%; min-height: 15em; background: var(--bg); border: 1px sol
 .pip { padding: 12px; }
 .pip-clock { font-size: 2.5rem; font-variant-numeric: tabular-nums; line-height: 1.2; }
 .pip-lines { margin: 8px 0; padding-left: 1.2em; }
+
+/* 再生画面のタイムライン表示（ページと小窓で共用） */
+.tl-panel { padding: 8px 0; }
+.tl-head { font-size: 1.5rem; line-height: 1.3; }
+.tl-sub { color: var(--muted); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.tl-list { list-style: none; margin: 8px 0 0; padding: 0; font-size: 1.25rem; }
+.tl-list li { display: flex; gap: 12px; padding: 2px 0; border-bottom: 1px solid var(--line); }
+.tl-list .tl-in { min-width: 3.5em; text-align: right; font-variant-numeric: tabular-nums; }
+.tl-list li.casting { color: var(--warn); }
+.tl-list li.done { color: var(--muted); }
+.pip .tl-panel, body > .tl-panel { padding: 8px 12px; }

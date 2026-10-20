@@ -15,9 +15,8 @@ FF14 のゲーム画面に表示された文字（コンテンツ名・カウン
 
 | ページ | 内容 |
 |---|---|
+| `player.html` | 再生画面。ゲーム画面を読み取り、タイムラインを流して読み上げる（下の「再生画面」） |
 | `lab.html` | OCR 試験ページ。画像（または取り込んだ画面）の上で読む範囲を選び、読み取りと解釈の結果を表に出す |
-
-再生画面・タイムラインの形式・FFLogs からの生成は未着手。
 
 ## セットアップ
 
@@ -72,51 +71,78 @@ tools/fetch-models.sh   # 文字認識・検出のモデル（合わせて 21MB�
 - モデルは Apache-2.0 の変換版（huggingface `ilaylow/PP_OCRv5_mobile_onnx`）と PaddleOCR 公式の辞書。
   onnxruntime-web 1.30.0 は jsDelivr から読む（自前配信は今後）
 
-## タイムラインファイル（形式 `ocr-timeline/1`）
+## タイムラインファイル（XML、形式 `ocr-timeline/1`）
 
-JSON 1 つが 1 コンテンツ。進め方は `public/js/timeline-engine.js`（テストは `tests/*.test.mjs`。ファイルごとに
-`docker run --rm -u 1000:1000 -v "$PWD":/w -w /w node:24-alpine node --test tests/timeline-engine.test.mjs`、
-`tests/readers.test.mjs` も同様。ディレクトリを渡すと失敗する）。
+XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`parseTimelineXml` が下の形をエンジンの形に直し、誤りを日本語で返す）、
+進め方は `public/js/timeline-engine.js`。テストは `tests/*.test.mjs` をファイルごとに
+`docker run --rm -u 1000:1000 -v "$PWD":/w -w /w node:24-alpine node --test tests/timeline-engine.test.mjs`
+（`tests/readers.test.mjs` も同様。ディレクトリを渡すと失敗する）。XML の読み込みはブラウザの DOMParser を使うので node のテストは無く、
+再生画面の確認（取り込みを模したブラウザ試験）で見ている。
 
-```jsonc
-{
-  "format": "ocr-timeline/1",
-  "content": "万魔殿パンデモニウム零式：煉獄編4",   // 画面の表記どおり（contents.json の名前）
-  "title": "表示名", "note": "出典など",
-  "syncWindow": [10, 10],                         // 既定の同期の窓（予定の何秒前〜何秒後）
-  "phases": [
-    {
-      "id": "p1", "name": "前半",
-      "entries": [
-        // t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
-        // 発動（ダメージ）は t + duration。詠唱の無い技は duration 0。FFLogs なら begincast の時刻
-        { "t": 6.0, "duration": 5, "name": "創世の真炎", "label": "全体攻撃", "type": "raidwide" },
-        { "t": 30.0, "name": "詠唱の無い技", "sync": false }        // sync: false で同期に使わない。window で窓を個別に指定
-      ],
-      // 上から順に見て、最初に満たしたものに移る。at は移った瞬間の、移り先での秒（既定 0）
-      "next": [
-        { "to": "p2", "when": { "cast": "移行技" } },
-        { "to": "p2", "when": { "hp": 50 } },        // HP が 50% 以下
-        { "to": "p2", "when": { "time": 180 } },     // フェーズ内 180 秒（時間切れ）
-        { "to": "p2", "when": { "hpLost": 3 } }      // HP が 3 秒以上読めない（ボスが消えた。このフェーズに入ってから数える）
-      ]
-    }
-  ]
-}
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<!-- content は画面の表記どおり（contents.json の名前）。sync-window は既定の同期の窓（予定の何秒前 何秒後） -->
+<timeline format="ocr-timeline/1" content="万魔殿パンデモニウム零式：煉獄編4" title="表示名" sync-window="10 10">
+  <note>出典など</note>
+  <phase id="p1" name="前半">
+    <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
+         発動（ダメージ）は t + duration。詠唱の無い技は duration 0（省略可） -->
+    <entry t="6.0" duration="5" name="創世の真炎" label="全体攻撃"/>
+    <!-- sync="false" で同期に使わない。window で窓を個別に指定。tts で読み上げる文を指定（tts="" で読み上げない。既定は label、無ければ name） -->
+    <entry t="30.0" name="詠唱の無い技" sync="false" tts="散開"/>
+    <!-- 上から順に見て、最初に満たしたものに移る。at は移った瞬間の、移り先での秒（既定 0） -->
+    <next to="p2" cast="移行技"/>
+    <next to="p2" hp="50"/>        <!-- HP が 50% 以下 -->
+    <next to="p2" time="180"/>     <!-- フェーズ内 180 秒（時間切れ） -->
+    <next to="p2" hp-lost="3"/>    <!-- HP が 3 秒以上読めない（ボスが消えた。このフェーズに入ってから数える） -->
+  </phase>
+  <phase id="p2" name="後半">…</phase>
+</timeline>
 ```
 
 - 詠唱バーで照合する候補は、全技ではなく「同期の窓に入っている予定」と「移り方の技名」だけに絞る（`castCandidates`）
 - 同じ予定では 1 度しか同期しない（詠唱バーが出ている間、何度読めても合わせ直さない）
-- 開始: カウントダウンの各秒数を最初に見た時刻から開始を予想し（中央値から 1 秒以内の予想の最小）、「戦闘開始！」で確定。
-  読み逃しても予想時刻で開始。敵対リストを読む場合は、予想より 1 秒以上早く出たら早い開始、予想の 5 秒後までに出なければ取り消し。
-  カウントダウンなしで敵対リストが出たら、その時刻で開始
+- 開始: カウントダウンの各秒数を最初に見た時刻から開始を予想し（ほかの予想と 1.5 秒以内で合う予想のうち最も早いもの）、
+  「戦闘開始！」で確定。読み逃しても予想時刻で開始。敵対リストを読む場合は、1 秒以上続けて出たときだけ「出た」とみなし、
+  予想より 1 秒以上早く出たら早い開始、予想の 5 秒後までに出なければ取り消し。カウントダウンなしで敵対リストが出たら、その時刻で開始
 - 終了: 敵対リストが 3 秒以上消えたら終了（全滅・討伐）。敵対リストを読まない場合は終了を判定しない（手動でリセット）
 - 制約: HP は 1 体分しか読まない（複数の敵がいるときは、読んでいる範囲の敵の HP）
+- **時刻の基準**: 同期は「技名が読めた時刻」を予定の t に合わせる。読めるのは詠唱バーが出てから 0.3〜0.7 秒ほど後なので、
+  ログの begincast など本当の詠唱開始で t を作ると、表示がその分遅れる（読み取りの遅れを引く処理は未着手）。
+  `timelines/p8s-test.xml` は読めた時刻で作ってあるので、この遅れは打ち消し合う
+
+### 配信と手元のファイル
+
+- 配信: `TIMELINE_BASE`（`public/js/player.js`）のフォルダの `index.xml` に一覧を書き、同じフォルダに XML を置く。
+  いまは同じサイトの `public/timelines/`。GitHub のフォルダから読むときは raw の URL に変える
+- 手元のファイル: 再生画面で XML を読み込むと、このブラウザに保存する（`ocr-timeline.player.local-timelines`）。
+  同じコンテンツなら手元のファイルを配信より優先する
+- タイムラインの作り方（cactbot・Hojoring の変換）は運営者が手元で使う道具とし、サイトの機能にはしない（2026-10-20 の方針）
+
+```xml
+<timelines format="ocr-timeline-index/1">
+  <timeline file="p8s-test.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
+</timelines>
+```
+
+## 再生画面（`player.html`）
+
+取り込み → コンテンツ名を戦闘外だけ 5 秒ごとに読み、タイムラインを自動で選ぶ（一覧から手で選ぶこともできる）→
+カウントダウン・敵対リストで開始 → 戦闘中は詠唱バーと敵対リストの技名で同期 → これから来る技と発動までの秒を表示し、
+発動の N 秒前（既定 5）に読み上げる。表示はページと小窓（Document Picture-in-Picture）の両方に出す。
+読む範囲は試験ページで選んだもの（`ocr-timeline.lab.regions`、解像度ごと）をそのまま使う。
+
+| ファイル | 役割 |
+|---|---|
+| `public/js/player.js` | 再生画面 |
+| `public/js/screen-reader.js` | 1 フレームを範囲ごとに読んで観測にまとめる（`readFrame`）。読み方は試験ページの連続読み取りと同じ（試験ページはまだ自前の実装のまま） |
+| `public/js/pip.js` | 小窓と読み上げ。試験ページで動作を確かめた作りをそのまま使う |
+| `public/js/timeline-xml.js` | タイムラインと一覧の XML の読み込み |
 
 ## 未着手
 
-再生画面（小窓・読み上げ）、クラウドとローカルのタイムライン、FFLogs からの生成（PKCE）、cactbot のタイムラインの取り込み、
-チャット欄からのカウントダウン、複数の敵の HP、タイムラインの編集画面
+範囲の選択を再生画面でもできるようにする、cactbot・Hojoring のタイムラインの変換（運営者の手元の道具）、
+GitHub のフォルダからの配信、チャット欄からのカウントダウン、複数の敵の HP、読み取りの遅れを引く処理、試験ページを screen-reader.js に寄せる
 
 ## 決まり（vel.works の FF14 関連）
 
