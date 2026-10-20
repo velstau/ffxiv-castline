@@ -3,15 +3,7 @@ import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { pickCandidate, readCast, readCountdown, parseHpPercent, CANDIDATE_MARGIN_MIN, CAST_PENALTY_MAX } from './readers.js';
-
-const REGIONS = [
-    { id: 'content', label: 'コンテンツ名', color: '#f5c542' },
-    { id: 'countdown', label: 'カウントダウン', color: '#4fc3f7' },
-    { id: 'hp', label: 'HP（%）', color: '#ff7b72' },
-    { id: 'cast', label: '詠唱バー（技名）', color: '#c792ea' },
-    { id: 'enmity', label: '敵対リスト', color: '#6fdc8c' },
-];
-const STORE_REGIONS = 'castline.lab.regions';
+import { REGION_KINDS as REGIONS, regionsFor as storedRegions, setRegion as storeRegion } from './regions.js';
 const STORE_CANDIDATES = 'castline.lab.candidates';
 const STORE_CAST_CANDIDATES = 'castline.lab.cast-candidates';
 
@@ -43,18 +35,12 @@ function save(key, value) {
     }
 }
 
-// 範囲は解像度ごとに持つ（解像度が変わると HUD の位置も変わるため）
-function resolutionKey(bitmap) {
-    return `${bitmap.width}x${bitmap.height}`;
-}
+// 範囲は解像度ごとに持つ（解像度が変わると HUD の位置も変わるため。保存は regions.js）
 function regionsFor(bitmap) {
-    return load(STORE_REGIONS, {})[resolutionKey(bitmap)] ?? {};
+    return storedRegions(bitmap.width, bitmap.height);
 }
 function setRegion(bitmap, id, rect) {
-    const all = load(STORE_REGIONS, {});
-    const key = resolutionKey(bitmap);
-    all[key] = { ...(all[key] ?? {}), [id]: rect };
-    save(STORE_REGIONS, all);
+    storeRegion(bitmap.width, bitmap.height, id, rect);
 }
 
 function linesOf(textareaId) {

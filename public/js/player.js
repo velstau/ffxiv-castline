@@ -4,7 +4,8 @@ import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
-import { readFrame, loadRegions } from './screen-reader.js';
+import { readFrame } from './screen-reader.js';
+import { regionsFor } from './regions.js';
 import { Pip, pipSupported } from './pip.js';
 
 // 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub のリポジトリの main を正とし、
@@ -324,7 +325,7 @@ async function tick({ bitmap: frame, at }) {
     const key = `${frame.width}x${frame.height}`;
     if (key !== state.regionsKey) {
         state.regionsKey = key;
-        state.regions = loadRegions(frame.width, frame.height);
+        state.regions = regionsFor(frame.width, frame.height);
         const names = Object.keys(state.regions);
         if (names.length === 0) {
             setStatus('run-status', `画面 ${key} の範囲がありません。試験ページ（lab.html）で、この解像度の画面の上で範囲を選んでください。`, 'ng');

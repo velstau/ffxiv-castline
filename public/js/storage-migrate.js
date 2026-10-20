@@ -11,6 +11,14 @@ try {
             localStorage.removeItem(key);
         }
     }
+    // 2026-10-21: 範囲は試験ページ専用ではなくなったので castline.lab.regions → castline.regions
+    const oldRegions = localStorage.getItem('castline.lab.regions');
+    if (oldRegions !== null) {
+        if (localStorage.getItem('castline.regions') === null) {
+            localStorage.setItem('castline.regions', oldRegions);
+        }
+        localStorage.removeItem('castline.lab.regions');
+    }
 } catch {
     // 保存が使えない環境では移すものも無い
 }
