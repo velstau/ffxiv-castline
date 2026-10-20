@@ -137,3 +137,22 @@ summary { cursor: pointer; }
 .re-zoom { display: block; max-width: 100%; border: 1px solid var(--line); image-rendering: pixelated; cursor: crosshair; }
 .re-zoom:focus { outline: 2px solid var(--accent); }
 .re-overview { cursor: crosshair; }
+
+/* 初期設定の手順（setup.html） */
+.steps { list-style: none; margin: 12px 0 0; padding: 0; }
+.steps > li { display: flex; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 8px; }
+.steps > li > div { flex: 1; min-width: 0; }
+.steps > li.current { border-color: var(--accent); }
+.steps > li.done { border-color: var(--ok); }
+.steps > li.todo { opacity: .7; }
+.step-mark { flex: none; width: 1.5em; font-size: 1.25rem; text-align: center; }
+.steps > li.current .step-mark { color: var(--accent); }
+.steps > li.done .step-mark { color: var(--ok); }
+.step-title { margin: 0; font-weight: 700; font-size: 1.1rem; }
+.step-help { margin: 4px 0 8px; color: var(--muted); }
+.step-state { margin: 8px 0 0; }
+.step-items { list-style: none; margin: 8px 0 0; padding: 0; color: var(--muted); }
+.step-items li.done { color: var(--ok); }
+#h-more ~ details { margin-top: 8px; }
+.button-link { display: inline-block; padding: 8px 16px; border: 1px solid var(--accent); border-radius: 6px; color: var(--fg); background: var(--panel); text-decoration: none; }
+.button-link:hover { background: var(--line); }

@@ -3,21 +3,12 @@ import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
-import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
-import { tilesOf } from './screen-reader.js';
-import {
-    countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
-} from './region-finder.js';
-import { REGION_KINDS, regionsFor, setRegion, clearRegions, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
-import { RegionEditor } from './region-editor.js';
+import { parseTimelineXml } from './timeline-xml.js';
+import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
+import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
+import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey } from './regions.js';
 import { Pip, pipSupported } from './pip.js';
 
-// 配信するタイムラインの置き場所（index.xml とタイムラインの XML）。GitHub のリポジトリの main を正とし、
-// 読めないときはサイトに同梱した写しを使う。?timelines=site でサイトの写しだけを読む（手元で直した XML の確認用）
-const TIMELINE_GITHUB = 'https://raw.githubusercontent.com/velstau/ffxiv-castline/main/public/timelines/';
-const TIMELINE_SITE = new URL('timelines/', location.href).href;
-const TIMELINE_BASES = new URLSearchParams(location.search).get('timelines') === 'site' ? [TIMELINE_SITE] : [TIMELINE_GITHUB, TIMELINE_SITE];
-const STORE_LOCAL = 'castline.player.local-timelines'; // [{ name, xml }]
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
 const CONTENT_EVERY_MS = 5000; // コンテンツ名は戦闘外だけ、間引いて読む
@@ -55,7 +46,6 @@ const state = {
 };
 const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS, {}) };
 const pip = new Pip();
-let editor = null; // 範囲の設定（RegionEditor）
 
 // 文字認識は別スレッド（ocr-client.js）で、依頼の届いた順に 1 つずつ行う。画面全体を読む自動の範囲指定も区画ごとに
 // 依頼するので、その間に読み取りの依頼が入れる
@@ -125,33 +115,17 @@ async function loadModel() {
 
 // ── タイムライン ──
 async function loadCloudIndex() {
-    const failures = [];
-    for (const base of TIMELINE_BASES) {
-        try {
-            const res = await fetch(new URL('index.xml', base), { cache: 'no-cache' });
-            if (!res.ok) {
-                throw new Error(`HTTP ${res.status}`);
-            }
-            state.cloud = parseTimelineIndex(await res.text());
-            state.cloudBase = base;
-            state.cloudError = '';
-            if (failures.length > 0) {
-                log(`GitHub の一覧を読めなかったので（${failures.join(' / ')}）、サイトの写しを使います。最新でない場合があります。`);
-            }
-            return;
-        } catch (e) {
-            failures.push(e.message);
-        }
+    const index = await loadTimelineIndex();
+    state.cloud = index.items;
+    state.cloudBase = index.base;
+    state.cloudError = index.error;
+    if (!index.error && index.failures.length > 0) {
+        log(`GitHub の一覧を読めなかったので（${index.failures.join(' / ')}）、サイトの写しを使います。最新でない場合があります。`);
     }
-    state.cloud = [];
-    state.cloudBase = '';
-    state.cloudError = `配信のタイムライン一覧を読めませんでした（${failures.join(' / ')}）。手元の XML は使えます。`;
 }
 
 function loadLocal() {
-    state.local = load(STORE_LOCAL, [])
-        .map(({ name, xml }) => ({ name, xml, timeline: parseTimelineXml(xml).timeline }))
-        .filter((t) => t.timeline);
+    state.local = loadLocalTimelines();
 }
 
 function renderSelect() {
@@ -174,20 +148,7 @@ function renderSelect() {
     $('local-remove').disabled = !state.choice.startsWith('local:');
 }
 
-async function cloudTimeline(item) {
-    if (!item.timeline) {
-        const res = await fetch(new URL(item.file, state.cloudBase), { cache: 'no-cache' });
-        if (!res.ok) {
-            throw new Error(`${item.file} を読めません（HTTP ${res.status}）`);
-        }
-        const { timeline, errors } = parseTimelineXml(await res.text());
-        if (!timeline) {
-            throw new Error(`${item.file} の形式に誤りがあります: ${errors.join(' / ')}`);
-        }
-        item.timeline = timeline;
-    }
-    return item.timeline;
-}
+const cloudTimeline = (item) => fetchTimeline(item, state.cloudBase);
 
 // 選択（または読み取ったコンテンツ名）から使うタイムラインを決める。手元のファイルを配信より優先する
 async function resolveTimeline() {
@@ -282,124 +243,31 @@ function updateButtons() {
     $('start').disabled = state.running || !state.ocr;
     $('stop').disabled = !state.running;
     $('reset').disabled = !state.engine;
-    $('regions-grab').disabled = !state.running;
-    $('regions-find').disabled = !state.ocr || !editor?.frame;
 }
 
 // ── 読む範囲 ──
 
-// 指定していない範囲と、そのためにできないこと（画面の大きさは取り込み中の画面、無ければ範囲の設定に使っている画面）
+// 指定していない範囲と、そのためにできないこと（取り込み中の画面の大きさで見る。範囲の指定は初期設定の画面 setup.html）
 function renderMissing() {
-    const size = state.frameSize ?? (editor?.frame && { width: editor.frame.width, height: editor.frame.height });
+    const size = state.frameSize;
+    const el = $('regions-missing');
     if (!size) {
-        $('regions-missing').textContent = '';
+        el.textContent = '取り込みを始めると、その画面の大きさで指定した範囲を確かめます。';
+        el.className = 'status';
         return;
     }
+    const key = screenKey(size.width, size.height);
     const missing = missingRegions(regionsFor(size.width, size.height));
-    $('regions-missing').textContent = missing.length === 0
-        ? `画面 ${screenKey(size.width, size.height)} の範囲はすべて指定してあります。`
-        : `画面 ${screenKey(size.width, size.height)} で未指定: ${missing.map((m) => `${m.label}（${m.lost}）`).join('、')}`;
-    $('regions-missing').className = `status ${missing.length === 0 ? 'ok' : 'ng'}`;
+    el.textContent = missing.length === 0
+        ? `画面 ${key} の範囲はすべて指定してあります。`
+        : `画面 ${key} で未指定: ${missing.map((m) => `${m.label}（${m.lost}）`).join('、')}。`
+            + '初期設定の画面で指定してください（取り込み中に画面に出れば、ここでも自動で探します）。';
+    el.className = `status ${missing.length === 0 ? 'ok' : 'ng'}`;
 }
 
 function regionsChanged() {
     state.regionsKey = ''; // 次のフレームで読み直す
     renderMissing();
-    updateButtons();
-}
-
-async function grabForRegions() {
-    const grabbed = await state.source?.grab(0);
-    if (!grabbed) {
-        return;
-    }
-    editor.setFrame(grabbed.bitmap); // 範囲の設定が持つ（次に替えたときに閉じる）
-    setStatus('regions-status', `いまのゲーム画面（${screenKey(grabbed.bitmap.width, grabbed.bitmap.height)}）を使います。`, 'ok');
-    regionsChanged();
-}
-
-async function imageForRegions(file) {
-    try {
-        editor.setFrame(await createImageBitmap(file));
-    } catch {
-        setStatus('regions-status', `${file.name} を画像として読めませんでした。`, 'ng');
-        return;
-    }
-    const key = screenKey(editor.frame.width, editor.frame.height);
-    setStatus('regions-status', `${file.name}（${key}）を使います。取り込む画面と大きさが違うと、ここで指定した範囲は使われません。`, 'ok');
-    regionsChanged();
-}
-
-async function findContentRegion() {
-    const frame = editor.frame;
-    $('regions-find').disabled = true;
-    try {
-        const found = await state.ocr.findContent(frame, state.contents,
-            (done, total) => setStatus('regions-status', `コンテンツ名を探しています… ${done}/${total}`));
-        if (!found) {
-            setStatus('regions-status', '見つかりませんでした。コンテンツの中で、画面に「コンテンツ情報」が出ている状態の画面で試してください。', 'ng');
-            return;
-        }
-        setRegion(frame.width, frame.height, 'content', found.rect);
-        editor.refresh();
-        editor.select('content');
-        setStatus('regions-status', `「${found.name}」を見つけ、その行を長い名前も入る幅に広げて保存しました。拡大図で確かめ、ずれていれば直してください。`, 'ok');
-        regionsChanged();
-    } finally {
-        updateButtons();
-    }
-}
-
-// いまの画面の大きさの範囲を全部消す（ずれた範囲が残っていると、自動では探さないため）
-function clearScreenRegions() {
-    const size = state.frameSize ?? editor.frame;
-    if (!size) {
-        setStatus('regions-status', '先に「ゲーム画面の取り込みを始める」を押してください（どの画面の大きさの範囲を消すかが決まります）。', 'ng');
-        return;
-    }
-    const key = screenKey(size.width, size.height);
-    if (Object.keys(regionsFor(size.width, size.height)).length === 0) {
-        setStatus('regions-status', `画面 ${key} の範囲はもうありません。`, 'ok');
-        return;
-    }
-    if (!confirm(`画面 ${key} の範囲を全部消します。よろしいですか？（残したい場合は先に「範囲をファイルに書き出す」）`)) {
-        return;
-    }
-    clearRegions(size.width, size.height);
-    editor.refresh();
-    log(`画面 ${key} の範囲を全部消しました`);
-    // 消した範囲で判定した戦闘の状態（ずれた範囲での誤った戦闘開始など）は当てにならないので、最初からにする
-    if (state.engine) {
-        reset();
-    }
-    setStatus('regions-status', `画面 ${key} の範囲を全部消しました。${state.running && settings.autoRegions ? 'ゲーム画面に出たものから自動で探します。' : ''}`, 'ok');
-    regionsChanged();
-}
-
-function exportRegionsFile() {
-    const all = loadAll();
-    if (Object.keys(all).length === 0) {
-        setStatus('regions-status', '書き出す範囲がありません。', 'ng');
-        return;
-    }
-    const url = URL.createObjectURL(new Blob([exportRegions(all)], { type: 'application/json' }));
-    Object.assign(document.createElement('a'), { href: url, download: 'castline-regions.json' }).click();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    setStatus('regions-status', `範囲を castline-regions.json に書き出しました（画面 ${Object.keys(all).join('・')}）。`, 'ok');
-}
-
-async function importRegionsFile(file) {
-    const { screens, errors } = importRegions(await file.text());
-    if (errors.length > 0) {
-        setStatus('regions-status', `${file.name} を読み込めませんでした: ${errors.join(' / ')}`, 'ng');
-        return;
-    }
-    editor.refresh();
-    const size = state.frameSize ?? editor.frame;
-    const current = size && screenKey(size.width, size.height);
-    setStatus('regions-status', `${file.name} から画面 ${screens.join('・')} の範囲を読み込みました。`
-        + (current && !screens.includes(current) ? `いまの画面（${current}）の範囲は入っていません。` : ''), current && !screens.includes(current) ? 'ng' : 'ok');
-    regionsChanged();
 }
 
 async function start() {
@@ -413,6 +281,8 @@ async function start() {
         setStatus('run-status', `取り込みを始められませんでした（${e.name}）`, 'ng');
         return;
     }
+    // 自動で探すかは初期設定の画面で切り替える（別のタブで変えたものを使う）
+    settings.autoRegions = load(STORE_SETTINGS, {}).autoRegions ?? true;
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
@@ -464,8 +334,8 @@ async function tick({ bitmap: frame, at }) {
         const names = Object.keys(state.regions);
         if (names.length === 0) {
             setStatus('run-status', settings.autoRegions
-                ? `画面 ${key} の範囲はまだありません。画面に出たものから自動で探します（下の「読む範囲」）。`
-                : `画面 ${key} の範囲がありません。下の「読む範囲」で「いまのゲーム画面を使う」を押して指定してください。`, 'ng');
+                ? `画面 ${key} の範囲はまだありません。初期設定の画面で指定してください（画面に出たものから、ここでも自動で探します）。`
+                : `画面 ${key} の範囲がありません。初期設定の画面で指定してください。`, 'ng');
         } else {
             setStatus('run-status', `読み取り中です（画面 ${key}、範囲 ${names.length} 種類）。`, 'ok');
         }
@@ -551,33 +421,14 @@ async function tick({ bitmap: frame, at }) {
 // コンテンツ名は入った直後、カウントダウンは告知が出たとき、HP・敵対リスト・詠唱バーは殴って戦闘になってから見つかる。
 // 文字認識は区画ごとに順番待ちするので、探している間も読み取りは止まらない（間隔は空く）。
 const AUTO_EVERY_MS = 1000;
-const AUTO_CONTENT_EVERY_MS = 5000;
-const AUTO_FULL_EVERY_MS = 6000; // 画面全体を読む間隔（数秒かかる）
-// 戦闘外の間隔。HP の % は殴ったあとにしか出ないので戦闘外は間を空けるが、止めはしない
-// （敵対リストもカウントダウンも無いと、殴っても戦闘になったと分からないため）
-const AUTO_FULL_IDLE_EVERY_MS = 15000;
-const AUTO_NEAR_EVERY_MS = 2000;
-// カウントダウンを探す間隔。戦闘中と判定していても探す（ずれた範囲で戦闘中と誤って判定していることがあるため。
-// 2026-10-21 実測: 古い敵対リストの範囲で戦闘開始になり、範囲を消したあとも戦闘中のままで、カウントダウンを探さなかった）
-const AUTO_COUNTDOWN_EVERY_MS = 1000;
-const AUTO_COUNTDOWN_COMBAT_EVERY_MS = 3000; // 詠唱バーだけ残ったら、HP の近くを短い間隔で読む（詠唱は数秒で消えるため）
-const auto = { lastContent: 0, lastFull: 0, lastNear: 0, lastCountdown: 0, enemyName: null };
-
-// タイムラインの技名のうち、詠唱バーに出るもの（詠唱のある技）
-function timelineCasts() {
-    const names = new Set();
-    for (const phase of state.timeline?.phases ?? []) {
-        for (const e of phase.entries) {
-            if (e.duration > 0 && e.sync !== false) {
-                castNames(e.name).forEach((n) => names.add(n));
-            }
-        }
-    }
-    return [...names];
-}
-
 async function autoFindLoop(source) {
-    Object.assign(auto, { lastContent: 0, lastFull: 0, lastNear: 0, lastCountdown: 0, enemyName: null });
+    const finder = new RegionAutoFinder({
+        ocr: state.ocr,
+        contents: () => state.contents,
+        casts: () => castNamesOf(state.timeline),
+        status: (at) => state.engine?.status(at).state ?? null,
+    });
+    const live = () => state.running && state.source === source && settings.autoRegions;
     let nextAt = 0;
     while (state.running && state.source === source) {
         const grabbed = await source.grab(nextAt);
@@ -586,96 +437,19 @@ async function autoFindLoop(source) {
         }
         nextAt = grabbed.at + AUTO_EVERY_MS;
         try {
-            if (settings.autoRegions && state.ocr) {
-                await autoFindStep(grabbed.bitmap, grabbed.at, source);
+            if (settings.autoRegions) {
+                const found = await finder.step(grabbed.bitmap, grabbed.at, live);
+                if (found.length > 0) {
+                    log(`範囲を自動で指定: ${found.map((f) => f.label).join('・')}`, grabbed.at);
+                    found.forEach((f) => log(`　${foundDetail(f)}`, grabbed.at));
+                    regionsChanged();
+                }
             }
         } catch (e) {
             log(`範囲の自動指定でエラー: ${e.message}`);
         } finally {
             grabbed.bitmap.close();
         }
-    }
-}
-
-async function autoFindStep(frame, at, source) {
-    const { width, height } = frame;
-    const regions = regionsFor(width, height);
-    const live = () => state.running && state.source === source && settings.autoRegions;
-    const found = [];
-    const details = []; // ログ用: 範囲を決めた行の文字と位置
-    const store = (id, rect, label, line = null) => {
-        setRegion(width, height, id, rect);
-        found.push(label);
-        details.push(`${label}: ${line ? `「${line.text}」の行（x ${Math.round(line.x)}・y ${Math.round(line.y)}）から` : ''}`
-            + `範囲 x ${rect.x}・y ${rect.y}・幅 ${rect.w}・高さ ${rect.h}`);
-    };
-    const status = state.engine?.status(at).state;
-
-    // カウントダウンは出ている時間が短い（15 秒ほど）ので、コンテンツ名より先に探す
-    if (!regions.countdown && live()
-        && at - auto.lastCountdown >= (status === 'combat' ? AUTO_COUNTDOWN_COMBAT_EVERY_MS : AUTO_COUNTDOWN_EVERY_MS)) {
-        auto.lastCountdown = at;
-        const lines = await state.ocr.scanLines(frame, countdownSearchArea(width, height));
-        const line = findCountdownLine(lines);
-        if (line && live()) {
-            store('countdown', countdownRegionFrom(line, width, height), 'カウントダウン', line);
-        }
-    }
-    // カウントダウンを見つけた回とカウントダウン中は、ほかを探さない（文字認識を読み取りに空け、残り秒数を読み逃さない）
-    const countdownNow = found.length > 0 || status === 'countdown';
-
-    if (!countdownNow && !regions.content && at - auto.lastContent >= AUTO_CONTENT_EVERY_MS) {
-        auto.lastContent = at;
-        const hit = await state.ocr.findContent(frame, state.contents);
-        if (hit && live()) {
-            store('content', hit.rect, `コンテンツ名（${hit.name}）`);
-        }
-    }
-    const casts = timelineCasts();
-    const want = new Set(['hp', 'enmity', 'cast'].filter((id) => !regions[id] && (id !== 'cast' || casts.length > 0)));
-    if (want.size > 0 && !countdownNow && live()) {
-        const longestCast = Math.max(1, ...casts.map((n) => [...n].length));
-        let lines = null;
-        if (want.size === 1 && want.has('cast') && regions.hp && at - auto.lastNear >= AUTO_NEAR_EVERY_MS) {
-            auto.lastNear = at;
-            lines = await state.ocr.scanLines(frame, castSearchAreaNear(regions.hp, width, height), casts);
-        } else if (at - auto.lastFull >= (status === 'combat' || !state.engine ? AUTO_FULL_EVERY_MS : AUTO_FULL_IDLE_EVERY_MS)) {
-            auto.lastFull = at;
-            lines = [];
-            for (const tile of tilesOf(frame)) {
-                if (!live()) {
-                    return;
-                }
-                const part = await state.ocr.scanLines(frame, tile, want.has('cast') ? casts : []);
-                // 区画の重なりで同じ行を 2 回読んだものは 1 つにする
-                lines.push(...part.filter((l) => !lines.some((o) => o.text === l.text
-                    && Math.abs(o.x - l.x) < l.h && Math.abs(o.y - l.y) < l.h / 2)));
-            }
-        }
-        if (lines && live()) {
-            const r = classifyCombatLines(lines, { want, width, height, longestCast, hpRect: regions.hp ?? null, enemyName: auto.enemyName });
-            auto.enemyName = r.enemyName ?? auto.enemyName;
-            if (r.hp) {
-                store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`, r.hp.line);
-            }
-            if (r.enmity) {
-                store('enmity', r.enmity.rect, '敵対リスト', r.enmity.line);
-            }
-            if (r.cast) {
-                store('cast', r.cast.rect, `詠唱バー（${r.cast.name}）`, r.cast.line);
-            }
-        }
-    }
-
-    if (found.length > 0) {
-        log(`範囲を自動で指定: ${found.join('・')}`, at);
-        details.forEach((d) => log(`　${d}`, at));
-        setStatus('regions-status', `画面 ${screenKey(width, height)} の ${found.join('・')} を自動で指定しました。`
-            + 'ずれていれば下で直してください（「この範囲を消す」で消すと、また自動で探します）。', 'ok');
-        if (editor.frame?.width === width && editor.frame?.height === height) {
-            editor.refresh();
-        }
-        regionsChanged();
     }
 }
 
@@ -829,32 +603,11 @@ async function init() {
         updateButtons();
     });
     $('local-remove').addEventListener('click', removeLocal);
-    editor = new RegionEditor($('region-editor'), {
-        check: (id, rect, frame) => (state.ocr
-            ? state.ocr.checkRegion(frame, id, rect, state.contents)
-            : Promise.resolve({ ok: null, text: '文字認識のモデルを読み込み中です' })),
-        onChange: regionsChanged,
-    });
-    $('regions-auto').checked = settings.autoRegions;
-    $('regions-auto').addEventListener('change', (ev) => {
-        settings.autoRegions = ev.target.checked;
-        save(STORE_SETTINGS, settings);
-    });
-    $('regions-grab').addEventListener('click', grabForRegions);
-    $('regions-image').addEventListener('change', async (ev) => {
-        if (ev.target.files[0]) {
-            await imageForRegions(ev.target.files[0]);
+    // 初期設定の画面（別のタブ）で範囲を変えたら、次のフレームから使う
+    window.addEventListener('storage', (ev) => {
+        if (ev.key === STORE_REGIONS) {
+            regionsChanged();
         }
-        ev.target.value = '';
-    });
-    $('regions-find').addEventListener('click', findContentRegion);
-    $('regions-export').addEventListener('click', exportRegionsFile);
-    $('regions-clear').addEventListener('click', clearScreenRegions);
-    $('regions-import').addEventListener('change', async (ev) => {
-        if (ev.target.files[0]) {
-            await importRegionsFile(ev.target.files[0]);
-        }
-        ev.target.value = '';
     });
     $('log-copy').addEventListener('click', async () => {
         try {

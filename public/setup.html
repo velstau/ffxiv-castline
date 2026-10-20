@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Castline 初期設定</title>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main>
+    <h1>Castline 初期設定（開発中）</h1>
+    <p class="lead">ゲーム画面のどこを読むか（読む範囲）を決めます。上から順に進めると、画面に出たものから自動で見つけて、このブラウザに保存します。
+        画面の大きさ（解像度）を変えたときだけ、もう一度行ってください。画像はブラウザの中だけで処理し、どこにも送りません。</p>
+
+    <section aria-labelledby="h-steps">
+        <h2 id="h-steps">手順</h2>
+        <div class="row">
+            <span id="model-status" class="status" role="status">文字認識のモデルを読み込み中…</span>
+            <progress id="model-progress" max="1" value="0"></progress>
+        </div>
+        <ol class="steps" id="steps">
+            <li id="step-capture">
+                <span class="step-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="step-title">1. ゲーム画面の取り込みを始める</p>
+                    <p class="step-help">ボタンを押して、FF14 の画面（ウィンドウ）を選びます。</p>
+                    <div class="row">
+                        <button type="button" id="start" disabled>ゲーム画面の取り込みを始める</button>
+                        <button type="button" id="stop" disabled>止める</button>
+                    </div>
+                    <p class="status step-state" role="status"></p>
+                </div>
+            </li>
+            <li id="step-content">
+                <span class="step-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="step-title">2. コンテンツに入る</p>
+                    <p class="step-help">入ったらそのまま待ちます。右上の「コンテンツ情報」からコンテンツ名を見つけます（入りたてでメッセージが多いときは、少しかかります）。</p>
+                    <p class="status step-state" role="status"></p>
+                </div>
+            </li>
+            <li id="step-countdown">
+                <span class="step-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="step-title">3. カウントダウンをする</p>
+                    <p class="step-help">15 秒のカウントダウンをします（<code>/cd 15</code>）。画面中央の「戦闘開始まで 15 秒！」を見つけます。</p>
+                    <p class="status step-state" role="status"></p>
+                </div>
+            </li>
+            <li id="step-combat">
+                <span class="step-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="step-title">4. ボスをフォーカスして殴る</p>
+                    <p class="step-help">戦闘が始まったら、ボスをフォーカスターゲットにして殴ります。HP・敵対リスト・ボスの詠唱バーを見つけます（30 秒ほど）。</p>
+                    <ul class="step-items">
+                        <li id="item-hp"></li>
+                        <li id="item-enmity"></li>
+                        <li id="item-cast"></li>
+                    </ul>
+                </div>
+            </li>
+            <li id="step-done">
+                <span class="step-mark" aria-hidden="true"></span>
+                <div>
+                    <p class="step-title">5. 完了</p>
+                    <p class="status step-state" role="status"></p>
+                    <div class="row">
+                        <a class="button-link" href="player.html">再生画面へ</a>
+                        <button type="button" id="export-done">範囲をファイルに書き出しておく</button>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <section aria-labelledby="h-more">
+        <h2 id="h-more">うまくいかないとき</h2>
+        <details>
+            <summary>範囲を手で直す（拡大図）</summary>
+            <p class="status">見つけた範囲がずれているときや、自動で見つからないときに使います。</p>
+            <div class="row" style="margin-top:8px">
+                <button type="button" id="regions-grab" disabled>いまのゲーム画面を使う</button>
+                <label>スクリーンショットを使う <input type="file" id="regions-image" accept="image/*"></label>
+                <button type="button" id="regions-find" disabled>コンテンツ名を自動で探す</button>
+            </div>
+            <p id="editor-status" class="status" role="status"></p>
+            <div id="region-editor"></div>
+        </details>
+        <details>
+            <summary>やり直す・ファイルに残す</summary>
+            <div class="row" style="margin-top:8px">
+                <button type="button" id="regions-clear">この画面の範囲を全部消して、やり直す</button>
+            </div>
+            <div class="row" style="margin-top:8px">
+                <button type="button" id="regions-export">範囲をファイルに書き出す</button>
+                <label>ファイルから読み込む <input type="file" id="regions-import" accept=".json,application/json"></label>
+            </div>
+            <p class="row" style="margin-top:8px"><label><input type="checkbox" id="regions-auto"> 再生画面でも、足りない範囲を自動で探す</label></p>
+            <p id="file-status" class="status" role="status"></p>
+        </details>
+        <details>
+            <summary>記録（問い合わせのときに貼ってください）</summary>
+            <div class="row" style="margin:8px 0">
+                <button type="button" id="log-copy">記録をコピー</button>
+            </div>
+            <textarea id="log" readonly aria-label="記録" spellcheck="false"></textarea>
+        </details>
+    </section>
+
+    <footer class="notice">
+        <p>本ツールは、株式会社スクウェア・エニックスとは関係のない非公式のツールです。</p>
+        <p>ゲームのプログラム・メモリ・通信には触れず、ブラウザの画面共有で取り込んだ画面の文字を読むだけですが、スクウェア・エニックスが認めたものではありません。FINAL FANTASY XIV の利用規約では外部ツールの使用が禁止されており、本ツールは外部ツールの利用を勧めるものではありません（<a href="https://jp.finalfantasyxiv.com/lodestone/topics/detail/33dc2350ac49e2155dbc0c76ed2cdd78262e2f39" target="_blank" rel="noopener noreferrer">公式の案内「FFXIV外部ツールの是非について」<span class="sr-only">（新しいタブで開く）</span></a>）。</p>
+        <p>文字認識には PaddleOCR（Apache License 2.0）を使っています。ゲーム内の名称などの権利は株式会社スクウェア・エニックスに帰属します。<span style="white-space:nowrap">© SQUARE ENIX</span></p>
+    </footer>
+</main>
+<script type="module" src="js/setup.js"></script>
+</body>
+</html>
