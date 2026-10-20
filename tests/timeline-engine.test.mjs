@@ -2,7 +2,7 @@
 // 時刻は 2026-10-20 の連続読み取りの実測ログ（煉獄編4 零式、カウントダウン 16 秒）をもとにしている。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TimelineEngine, validateTimeline, ENMITY_OFF_END_MS } from '../public/js/timeline-engine.js';
+import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS } from '../public/js/timeline-engine.js';
 
 // 19:08:00.0 を 0 とした ms
 const T = (s) => Date.UTC(2026, 9, 20, 10, 8, 0) + Math.round(s * 1000);
@@ -217,4 +217,23 @@ test('これから来る予定: 発動までの秒を返し、発動から 2 秒
         ['熾炎創火', 13],
     ]);
     assert.equal(e.upcoming(T(14), 1)[0].entry.name, 'オクタフレア・コンシーヴ');
+});
+
+test('毎回どれかが出る技（A|B）: どちらが読めても同期し、候補には両方を出す', () => {
+    assert.deepEqual(castNames('アグリゲートソニック| スプレッドソニック'), ['アグリゲートソニック', 'スプレッドソニック']);
+    const alt = {
+        format: 'castline/1',
+        content: 'テスト',
+        phases: [
+            { id: 'p1', entries: [{ t: 10, name: 'アグリゲートソニック|スプレッドソニック', duration: 4 }], next: [{ to: 'p2', when: { cast: 'ブレイクビーツ|ブレイクダウン' } }] },
+            { id: 'p2', entries: [] },
+        ],
+    };
+    const e = new TimelineEngine(alt);
+    e.started(T(0));
+    assert.deepEqual(e.castCandidates(T(5)).sort(), ['アグリゲートソニック', 'スプレッドソニック', 'ブレイクダウン', 'ブレイクビーツ'].sort());
+    e.cast(T(11), 'スプレッドソニック');
+    assert.equal(e.status(T(11)).phaseTime.toFixed(1), '10.0');
+    e.cast(T(20), 'ブレイクダウン');
+    assert.equal(e.status(T(20)).phase.id, 'p2');
 });

@@ -2,7 +2,7 @@
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
-import { TimelineEngine } from './timeline-engine.js';
+import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
 import { readFrame, loadRegions } from './screen-reader.js';
 import { Pip, pipSupported } from './pip.js';
@@ -62,6 +62,9 @@ function save(key, value) {
         // 保存できなくても、このページを開いている間は使える
     }
 }
+
+// 別名つきの技名（「A|B」）の表示
+const showName = (name) => castNames(name).join('／');
 
 function clockText(date = new Date()) {
     const pad = (n) => String(n).padStart(2, '0');
@@ -409,7 +412,7 @@ function buildView(now) {
     }
     const items = engine.upcoming(now, UPCOMING_COUNT).map((u) => ({
         in: u.hitIn > 0 ? secondsText(u.hitIn) : '発動',
-        name: u.entry.label ? `${u.entry.name}（${u.entry.label}）` : u.entry.name,
+        name: u.entry.label ? `${showName(u.entry.name)}（${u.entry.label}）` : showName(u.entry.name),
         kind: u.hitIn <= 0 ? 'done' : u.castIn <= 0 ? 'casting' : '',
     }));
     return { head: STATE_TEXT[s.state], sub, items, status: s };
@@ -460,7 +463,7 @@ function speech(now) {
         }
         state.spoken.add(e);
         if (late <= SPEAK_LATE_MAX_S && e.tts !== '') {
-            pip.speak(e.tts ?? e.label ?? e.name);
+            pip.speak(e.tts ?? e.label ?? showName(e.name));
         }
     }
 }

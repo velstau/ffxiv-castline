@@ -5,11 +5,17 @@
 // タイムラインファイルの形式は README の「タイムラインファイル」を参照。要点:
 //   entries[].t        … 詠唱が始まる時刻（フェーズ開始からの秒）。画面の詠唱バーに技名が出る瞬間なので、同期の基準になる
 //   entries[].duration … 詠唱の長さ（秒）。t + duration が技の発動。詠唱の無い技は 0
-//   entries[].name     … ゲーム内の技名（詠唱バーの表記）。sync が false でなければ、詠唱バーで読めたときに同期する
+//   entries[].name     … ゲーム内の技名（詠唱バーの表記）。sync が false でなければ、詠唱バーで読めたときに同期する。
+//                        毎回どれかが出る技は「A|B」と書く（どちらが読めても同期する）
 //   phases[].next      … フェーズの移り方。上から順に見て、最初に満たしたものに移る
-//                        when: { cast: 技名 } / { hp: 50 }（以下になったら）/ { time: 180 }（フェーズ内の秒）/
+//                        when: { cast: 技名（A|B も可） } / { hp: 50 }（以下になったら）/ { time: 180 }（フェーズ内の秒）/
 //                              { hpLost: 3 }（HP が 3 秒以上読めない＝ボスが消えた）
 //                        at: 移った瞬間の、移り先フェーズでの秒（既定 0）
+
+/** 技名の欄（「A|B」）を、照合する名前の配列にする */
+export function castNames(name) {
+    return String(name).split('|').map((n) => n.trim()).filter(Boolean);
+}
 
 export const DEFAULT_SYNC_WINDOW = [10, 10]; // 予定の何秒前から何秒後まで、詠唱で同期してよいか
 const COUNTDOWN_CONSISTENT_MS = 1000; // 「戦闘開始！」の時刻と予想がこれ以内なら、早いほうを開始とする
@@ -157,7 +163,7 @@ export class TimelineEngine {
         if (this.state !== 'combat') {
             return;
         }
-        const rule = this.findRule((w) => w.cast === name);
+        const rule = this.findRule((w) => w.cast !== undefined && castNames(w.cast).includes(name));
         if (rule) {
             this.transition(rule, at, `詠唱 ${name}`);
             return;
@@ -214,12 +220,12 @@ export class TimelineEngine {
         for (const e of phase.entries) {
             const [before, after] = e.window ?? this.syncWindow;
             if (e.sync !== false && !this.synced.has(e) && now >= e.t - before && now <= e.t + after) {
-                names.add(e.name);
+                castNames(e.name).forEach((n) => names.add(n));
             }
         }
         for (const rule of phase.next ?? []) {
             if (rule.when.cast) {
-                names.add(rule.when.cast);
+                castNames(rule.when.cast).forEach((n) => names.add(n));
             }
         }
         return [...names];
@@ -285,7 +291,7 @@ export class TimelineEngine {
         let best = null;
         for (const e of this.phase.entries) {
             const [before, after] = e.window ?? this.syncWindow;
-            if (e.name !== name || e.sync === false || this.synced.has(e) || now < e.t - before || now > e.t + after) {
+            if (!castNames(e.name).includes(name) || e.sync === false || this.synced.has(e) || now < e.t - before || now > e.t + after) {
                 continue;
             }
             if (!best || Math.abs(e.t - now) < Math.abs(best.t - now)) {

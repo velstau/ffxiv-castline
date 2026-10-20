@@ -93,6 +93,8 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
     <entry t="6.0" duration="5" name="創世の真炎" label="全体攻撃"/>
     <!-- sync="false" で同期に使わない。window で窓を個別に指定。tts で読み上げる文を指定（tts="" で読み上げない。既定は label、無ければ name） -->
     <entry t="30.0" name="詠唱の無い技" sync="false" tts="散開"/>
+    <!-- 毎回どれかが出る技は name を「|」で区切る（どれが読めても同期する。表示は「／」区切り） -->
+    <entry t="40.0" duration="4" name="アグリゲートソニック|スプレッドソニック" label="頭割りorロール"/>
     <!-- 上から順に見て、最初に満たしたものに移る。at は移った瞬間の、移り先での秒（既定 0） -->
     <next to="p2" cast="移行技"/>
     <next to="p2" hp="50"/>        <!-- HP が 50% 以下 -->
