@@ -175,9 +175,10 @@ export async function readCountdown(detector, recognizer, source, rect) {
     return { text: texts.join(' / '), countdown: null, ms };
 }
 
-// HP の「99.0%」を数値にする。隣のアイコンが写り込んで末尾に文字が付くことがあるので、数字と % だけを拾う
+// HP の「99.0%」を数値にする。隣のアイコンが写り込んで末尾に文字が付くことがあるので、数字と % だけを拾う。
+// % は全角の「％」に読めることがある（2026-10-20 実測）
 export function parseHpPercent(text) {
-    const m = text.match(/(\d{1,3}(?:\.\d)?)\s*%/);
+    const m = text.match(/(\d{1,3}(?:\.\d)?)\s*[%％]/);
     if (!m) {
         return null;
     }

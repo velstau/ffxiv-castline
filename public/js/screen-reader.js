@@ -1,6 +1,6 @@
 // 取り込んだ 1 フレームを範囲ごとに読み、タイムラインに渡す観測にまとめる（再生画面用）。
 // 読み方は試験ページの連続読み取り（lab.js の watchTick）と同じ。範囲は regions.js が画面の大きさごとに保存したもの。
-import { pickCandidate, readCast, readCountdown, parseHpPercent } from './readers.js';
+import { pickCandidate, pickCast, readCast, readCountdown, parseHpPercent } from './readers.js';
 
 
 /**
@@ -74,33 +74,69 @@ export async function readContent(ocr, frame, rect, names) {
 const FIND_TILE = 960; // 検出のモデルは 1 辺 960px まで縮めずに読める
 const FIND_OVERLAP = 64;
 
+/** 範囲（既定は画面全体）を、検出のモデルが縮めずに読める区画に分ける。上の段から、右から */
+export function tilesOf(frame, area = { x: 0, y: 0, w: frame.width, h: frame.height }) {
+    const tiles = [];
+    for (let y = area.y; y < area.y + area.h; y += FIND_TILE - FIND_OVERLAP) {
+        for (let x = area.x; x < area.x + area.w; x += FIND_TILE - FIND_OVERLAP) {
+            tiles.push({ x, y, w: Math.min(FIND_TILE, area.x + area.w - x), h: Math.min(FIND_TILE, area.y + area.h - y) });
+            if (x + FIND_TILE >= area.x + area.w) {
+                break;
+            }
+        }
+        if (y + FIND_TILE >= area.y + area.h) {
+            break;
+        }
+    }
+    return tiles.sort((a, b) => a.y - b.y || b.x - a.x);
+}
+
 /**
  * 画面全体からコンテンツ名（「コンテンツ情報」の下の行）を探す。既定の位置の右上から順に、見つかったところで止める。
  * @param {(done:number, total:number) => void} [onProgress]
+ * @param {{lock?: (fn) => Promise}} [options] lock: 区画ごとに文字認識を順番待ちさせる（再生中の読み取りを止めないため）
  * @returns {Promise<{name:string, box:{x,y,w,h}, rect:{x,y,w,h}}|null>} rect は保存する範囲（長い名前も入るよう広げたもの）
  */
-export async function findContent(ocr, frame, names, onProgress = () => {}) {
-    const tiles = [];
-    for (let y = 0; y < frame.height; y += FIND_TILE - FIND_OVERLAP) {
-        for (let x = 0; x < frame.width; x += FIND_TILE - FIND_OVERLAP) {
-            tiles.push({ x, y, w: Math.min(FIND_TILE, frame.width - x), h: Math.min(FIND_TILE, frame.height - y) });
-        }
-    }
-    tiles.sort((a, b) => a.y - b.y || b.x - a.x); // 上の段から、右から
+export async function findContent(ocr, frame, names, onProgress = () => {}, { lock = (fn) => fn() } = {}) {
+    const tiles = tilesOf(frame);
     for (const [i, tile] of tiles.entries()) {
         onProgress(i, tiles.length);
-        const boxes = (await ocr.detector.detect(frame, tile)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
-        for (const box of boxes) {
-            const read = await ocr.recognizer.read(frame, box);
-            const decided = read.text === '' ? null : pickCandidate(ocr.recognizer, read, names).decided;
-            if (decided) {
-                onProgress(tiles.length, tiles.length);
-                return { name: decided, box, rect: contentRegionFrom(box, decided, names, frame.width, frame.height) };
+        const decided = await lock(async () => {
+            const boxes = (await ocr.detector.detect(frame, tile)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
+            for (const box of boxes) {
+                const read = await ocr.recognizer.read(frame, box);
+                const name = read.text === '' ? null : pickCandidate(ocr.recognizer, read, names).decided;
+                if (name) {
+                    return { name, box };
+                }
             }
+            return null;
+        });
+        if (decided) {
+            onProgress(tiles.length, tiles.length);
+            return { ...decided, rect: contentRegionFrom(decided.box, decided.name, names, frame.width, frame.height) };
         }
     }
     onProgress(tiles.length, tiles.length);
     return null;
+}
+
+/**
+ * 区画の中の文字の行を全部探して読む（自動の範囲指定用。何の行かは region-finder.js が決める）。
+ * castCandidates があれば、各行を詠唱バーとして照合した技名も付ける。
+ * @returns {Promise<{x,y,w,h,text:string,cast:string|null}[]>}
+ */
+export async function scanLines(ocr, frame, area, castCandidates = []) {
+    const lines = [];
+    for (const box of (await ocr.detector.detect(frame, area)).boxes) {
+        const read = await ocr.recognizer.read(frame, box);
+        if (read.text === '') {
+            continue;
+        }
+        const cast = castCandidates.length > 0 ? pickCast(ocr.recognizer, read, castCandidates).decided : null;
+        lines.push({ x: box.x, y: box.y, w: box.w, h: box.h, text: read.text, cast });
+    }
+    return lines;
 }
 
 /**

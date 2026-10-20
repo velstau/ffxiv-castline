@@ -4,7 +4,10 @@ import { FrameSource } from './capture.js';
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
-import { readFrame, checkRegion, findContent } from './screen-reader.js';
+import { readFrame, checkRegion, findContent, scanLines, tilesOf } from './screen-reader.js';
+import {
+    countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
+} from './region-finder.js';
 import { regionsFor, setRegion, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
 import { RegionEditor } from './region-editor.js';
 import { Pip, pipSupported } from './pip.js';
@@ -45,7 +48,7 @@ const state = {
     spokenStartAt: null,
     lastRender: 0,
 };
-const settings = { tts: true, lead: 5, ...load(STORE_SETTINGS, {}) };
+const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS, {}) };
 const pip = new Pip();
 let editor = null; // 範囲の設定（RegionEditor）
 
@@ -390,6 +393,7 @@ async function start() {
     updateButtons();
     setStatus('run-status', '読み取り中です。', 'ok');
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
+    autoFindLoop(state.source);
 
     let nextAt = 0;
     while (state.running && state.source) {
@@ -432,7 +436,9 @@ async function tick({ bitmap: frame, at }) {
         state.frameSize = { width: frame.width, height: frame.height };
         const names = Object.keys(state.regions);
         if (names.length === 0) {
-            setStatus('run-status', `画面 ${key} の範囲がありません。下の「読む範囲」で「いまのゲーム画面を使う」を押して指定してください。`, 'ng');
+            setStatus('run-status', settings.autoRegions
+                ? `画面 ${key} の範囲はまだありません。画面に出たものから自動で探します（下の「読む範囲」）。`
+                : `画面 ${key} の範囲がありません。下の「読む範囲」で「いまのゲーム画面を使う」を押して指定してください。`, 'ng');
         } else {
             setStatus('run-status', `読み取り中です（画面 ${key}、範囲 ${names.length} 種類）。`, 'ok');
         }
@@ -486,6 +492,127 @@ async function tick({ bitmap: frame, at }) {
     }
     updateButtons();
     update(true);
+}
+
+// ── 範囲の自動指定 ──
+// 取り込み中、まだ無い範囲を画面に出たものから探して保存する（読み取りとは別のフレームで、間を空けて行う）。
+// コンテンツ名は入った直後、カウントダウンは告知が出たとき、HP・敵対リスト・詠唱バーは殴って戦闘になってから見つかる。
+// 文字認識は区画ごとに順番待ちするので、探している間も読み取りは止まらない（間隔は空く）。
+const AUTO_EVERY_MS = 1000;
+const AUTO_CONTENT_EVERY_MS = 5000;
+const AUTO_FULL_EVERY_MS = 6000; // 画面全体を読む間隔（数秒かかる）
+// 戦闘外の間隔。HP の % は殴ったあとにしか出ないので戦闘外は間を空けるが、止めはしない
+// （敵対リストもカウントダウンも無いと、殴っても戦闘になったと分からないため）
+const AUTO_FULL_IDLE_EVERY_MS = 15000;
+const AUTO_NEAR_EVERY_MS = 2000; // 詠唱バーだけ残ったら、HP の近くを短い間隔で読む（詠唱は数秒で消えるため）
+const auto = { lastContent: 0, lastFull: 0, lastNear: 0, enemyName: null };
+
+// タイムラインの技名のうち、詠唱バーに出るもの（詠唱のある技）
+function timelineCasts() {
+    const names = new Set();
+    for (const phase of state.timeline?.phases ?? []) {
+        for (const e of phase.entries) {
+            if (e.duration > 0 && e.sync !== false) {
+                castNames(e.name).forEach((n) => names.add(n));
+            }
+        }
+    }
+    return [...names];
+}
+
+async function autoFindLoop(source) {
+    Object.assign(auto, { lastContent: 0, lastFull: 0, lastNear: 0 });
+    let nextAt = 0;
+    while (state.running && state.source === source) {
+        const grabbed = await source.grab(nextAt);
+        if (!grabbed) {
+            break;
+        }
+        nextAt = grabbed.at + AUTO_EVERY_MS;
+        try {
+            if (settings.autoRegions && state.ocr) {
+                await autoFindStep(grabbed.bitmap, grabbed.at, source);
+            }
+        } catch (e) {
+            log(`範囲の自動指定でエラー: ${e.message}`);
+        } finally {
+            grabbed.bitmap.close();
+        }
+    }
+}
+
+async function autoFindStep(frame, at, source) {
+    const { width, height } = frame;
+    const regions = regionsFor(width, height);
+    const live = () => state.running && state.source === source && settings.autoRegions;
+    const found = [];
+    const store = (id, rect, label) => {
+        setRegion(width, height, id, rect);
+        found.push(label);
+    };
+    const status = state.engine?.status(at).state;
+
+    if (!regions.content && at - auto.lastContent >= AUTO_CONTENT_EVERY_MS) {
+        auto.lastContent = at;
+        const hit = await findContent(state.ocr, frame, state.contents, undefined, { lock: withOcr });
+        if (hit && live()) {
+            store('content', hit.rect, `コンテンツ名（${hit.name}）`);
+        }
+    }
+    if (!regions.countdown && status !== 'combat' && live()) {
+        const lines = await withOcr(() => scanLines(state.ocr, frame, countdownSearchArea(width, height)));
+        const line = findCountdownLine(lines);
+        if (line && live()) {
+            store('countdown', countdownRegionFrom(line, width, height), 'カウントダウン');
+        }
+    }
+
+    const casts = timelineCasts();
+    const want = new Set(['hp', 'enmity', 'cast'].filter((id) => !regions[id] && (id !== 'cast' || casts.length > 0)));
+    // カウントダウン中は読み取りを優先する（開始の時刻を外さないため）
+    if (want.size > 0 && status !== 'countdown' && live()) {
+        const longestCast = Math.max(1, ...casts.map((n) => [...n].length));
+        let lines = null;
+        if (want.size === 1 && want.has('cast') && regions.hp && at - auto.lastNear >= AUTO_NEAR_EVERY_MS) {
+            auto.lastNear = at;
+            lines = await withOcr(() => scanLines(state.ocr, frame, castSearchAreaNear(regions.hp, width, height), casts));
+        } else if (at - auto.lastFull >= (status === 'combat' || !state.engine ? AUTO_FULL_EVERY_MS : AUTO_FULL_IDLE_EVERY_MS)) {
+            auto.lastFull = at;
+            lines = [];
+            for (const tile of tilesOf(frame)) {
+                if (!live()) {
+                    return;
+                }
+                const part = await withOcr(() => scanLines(state.ocr, frame, tile, want.has('cast') ? casts : []));
+                // 区画の重なりで同じ行を 2 回読んだものは 1 つにする
+                lines.push(...part.filter((l) => !lines.some((o) => o.text === l.text
+                    && Math.abs(o.x - l.x) < l.h && Math.abs(o.y - l.y) < l.h / 2)));
+            }
+        }
+        if (lines && live()) {
+            const r = classifyCombatLines(lines, { want, width, height, longestCast, hpRect: regions.hp ?? null, enemyName: auto.enemyName });
+            auto.enemyName = r.enemyName ?? auto.enemyName;
+            if (r.hp) {
+                store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`);
+            }
+            if (r.enmity) {
+                store('enmity', r.enmity.rect, '敵対リスト');
+            }
+            if (r.cast) {
+                store('cast', r.cast.rect, `詠唱バー（${r.cast.name}）`);
+            }
+        }
+    }
+
+    if (found.length > 0) {
+        log(`範囲を自動で指定: ${found.join('・')}`, at);
+        setStatus('regions-status', `画面 ${screenKey(width, height)} の ${found.join('・')} を自動で指定しました。`
+            + 'ずれていれば下で直してください（「この範囲を消す」で消すと、また自動で探します）。', 'ok');
+        if (editor.frame?.width === width && editor.frame?.height === height) {
+            editor.refresh();
+        }
+        regionsChanged();
+    }
 }
 
 // ── 表示と読み上げ ──
@@ -643,6 +770,11 @@ async function init() {
             ? withOcr(() => checkRegion(state.ocr, frame, id, rect, state.contents))
             : Promise.resolve({ ok: null, text: '文字認識のモデルを読み込み中です' })),
         onChange: regionsChanged,
+    });
+    $('regions-auto').checked = settings.autoRegions;
+    $('regions-auto').addEventListener('change', (ev) => {
+        settings.autoRegions = ev.target.checked;
+        save(STORE_SETTINGS, settings);
     });
     $('regions-grab').addEventListener('click', grabForRegions);
     $('regions-image').addEventListener('change', async (ev) => {
