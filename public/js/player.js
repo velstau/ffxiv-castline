@@ -8,7 +8,7 @@ import { readFrame, checkRegion, findContent, scanLines, tilesOf } from './scree
 import {
     countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
 } from './region-finder.js';
-import { regionsFor, setRegion, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
+import { REGION_KINDS, regionsFor, setRegion, missingRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
 import { RegionEditor } from './region-editor.js';
 import { Pip, pipSupported } from './pip.js';
 
@@ -21,6 +21,8 @@ const STORE_LOCAL = 'castline.player.local-timelines'; // [{ name, xml }]
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
 const CONTENT_EVERY_MS = 5000; // コンテンツ名は戦闘外だけ、間引いて読む
+// コンテンツ名の範囲があるのにこれだけ読めなければ、範囲がずれているかもしれないとログに出す（範囲があると自動では探さないため）
+const CONTENT_MISS_WARN_MS = 60000;
 const RENDER_EVERY_MS = 100;
 const SPEAK_LATE_MAX_S = 2; // 読み上げる時刻をこれ以上過ぎた予定は読まない（同期で時刻が飛んだとき）
 const UPCOMING_COUNT = 6;
@@ -43,6 +45,9 @@ const state = {
     regionsKey: '',
     detectedContent: null,
     lastContentAt: 0,
+    contentMissSince: null,
+    contentMissWarned: false,
+    regionsLogged: '',
     lastCast: {}, // 読み取り元ごとに、最後に記録した技名（ログは変わったときだけ）
     spoken: new Set(),
     spokenStartAt: null,
@@ -390,6 +395,7 @@ async function start() {
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
+    Object.assign(state, { contentMissSince: null, contentMissWarned: false, regionsLogged: '' });
     updateButtons();
     setStatus('run-status', '読み取り中です。', 'ok');
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
@@ -446,6 +452,15 @@ async function tick({ bitmap: frame, at }) {
         if (state.engine) {
             state.engine.hasEnmity = Boolean(state.regions.enmity);
         }
+        // どの範囲を使い、どれを自動で探すかをログに残す（変わったときだけ）
+        const labels = (ids) => ids.map((id) => REGION_KINDS.find((k) => k.id === id).label).join('・') || 'なし';
+        const absent = REGION_KINDS.map((k) => k.id).filter((id) => !state.regions[id]);
+        const summary = `画面 ${key}: 指定済みの範囲 ${labels(names)}`
+            + (absent.length === 0 ? '' : settings.autoRegions ? `／自動で探す ${labels(absent)}` : `／未指定 ${labels(absent)}（自動で探すのは切ってあります）`);
+        if (summary !== state.regionsLogged) {
+            state.regionsLogged = summary;
+            log(summary, at);
+        }
     }
     const engine = state.engine;
     const inCombat = engine?.status(at).state === 'combat';
@@ -460,6 +475,17 @@ async function tick({ bitmap: frame, at }) {
         castCandidates: inCombat ? engine.castCandidates(at) : [],
     }));
 
+    if (wantContent && state.regions.content && !state.detectedContent && !state.contentMissWarned) {
+        if (obs.content?.decided) {
+            state.contentMissSince = null;
+        } else if (state.contentMissSince === null) {
+            state.contentMissSince = at;
+        } else if (at - state.contentMissSince >= CONTENT_MISS_WARN_MS) {
+            state.contentMissWarned = true;
+            log(`コンテンツ名の範囲を ${CONTENT_MISS_WARN_MS / 1000} 秒読めていません（読めた文字: ${obs.content?.text || 'なし'}）。`
+                + 'コンテンツの中なら範囲がずれています。「読む範囲」でコンテンツ名を選んで「この範囲を消す」を押すと、自動で探し直します', at);
+        }
+    }
     if (obs.content?.decided && obs.content.decided !== state.detectedContent) {
         state.detectedContent = obs.content.decided;
         log(`コンテンツ名 ${obs.content.decided}`, at);
