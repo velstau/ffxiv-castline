@@ -35,7 +35,7 @@ tools/fetch-models.sh   # 文字認識・検出のモデル（合わせて 21MB�
 | `public/js/readers.js` | 読んだ文字の解釈。コンテンツ名・技名の決定（`pickCandidate`）、カウントダウン（`readCountdown`）、HP%。再生画面と試験ページで共用する |
 | `public/js/capture.js` | 画面の取り込み（`FrameSource`）。MediaStreamTrackProcessor で届いたフレームの最新 1 枚を持ち、届いた時刻と一緒に渡す。**ゲームを前面にするとページは非表示とみなされ、タイマーは 1 秒 1 回に間引かれ、`<video>` 要素の映像は遅れる**（実測で 16 秒のカウントダウンが 9 秒に縮んで記録された）ため、タイマーも `<video>` も使わずフレームの到着で処理を進める |
 | `public/js/lab.js` | 試験ページの画面。連続読み取り（0.5 秒ごとに読み、変化だけを時刻付きで記録してコピーできる）もここ |
-| `public/data/contents.json` | コンテンツ名の候補（`territory` は場所の番号で、FFLogs の gameZone.id から名前を引くのに使う）。`tools/build-contents.py` が XIVAPI v2 の ContentFinderCondition（日本語名）から、討伐・討滅戦／レイド／絶／滅アライアンスだけを抜いて作る（手で書き換えない。パッチで増えたら実行し直す） |
+| `public/data/contents.json` | コンテンツ名の候補（`territory` は場所の番号で、FFLogs の gameZone.id から名前を引くのに使う。`en` は英語の正式名、`file` はタイムラインのファイル名）。`tools/build-contents.py` が XIVAPI v2 の ContentFinderCondition（日本語名）から、討伐・討滅戦／レイド／絶／滅アライアンスだけを抜いて作る（手で書き換えない。パッチで増えたら実行し直す） |
 
 ## 文字認識の選定（2026-10-20）
 
@@ -118,11 +118,15 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 - 制約: HP は 1 体分しか読まない（複数の敵がいるときは、読んでいる範囲の敵の HP）
 - **時刻の基準**: 同期は「技名が読めた時刻」を予定の t に合わせる。読めるのは詠唱バーが出てから 0.3〜0.7 秒ほど後なので、
   ログの begincast など本当の詠唱開始で t を作ると、表示がその分遅れる（読み取りの遅れを引く処理は未着手）。
-  `timelines/p8s-test.xml` は読めた時刻で作ってあるので、この遅れは打ち消し合う
+  `timelines/abyssos-the-eighth-circle-savage.xml`（煉獄編4 零式のテスト用）は読めた時刻で作ってあるので、この遅れは打ち消し合う
 
 ### 配信と手元のファイル
 
 - 配信: `public/timelines/` の `index.xml` に一覧を書き、同じフォルダに XML を置く。
+- **ファイル名は英語の正式名＋難易度**（`contents.json` の `file`。例: `aac-heavyweight-m1-savage.xml`・`futures-rewritten-ultimate.xml`・`worqor-lar-dor-extreme.xml`）。
+  英語名の難易度の括弧を外して小文字・ハイフンにし、難易度を後ろに付ける。難易度は normal / savage / ultimate / extreme / chaotic（英語名どおり hard・unreal もある）。
+  極の一部は英語名が「The Minstrel's Ballad: 名前」なので extreme とする。8.0 の新しい難易度（中間層）は英語名が分かったら同じ規則で付く（2026-10-20 のユーザーの指定）。
+  生成画面の保存名も同じ
   再生画面は GitHub（`velstau/ffxiv-castline` の main）の raw から読むので、タイムラインの更新は push だけで届く（サイトの反映は要らない。raw は最大 5 分キャッシュされる）。
   GitHub を読めないときはサイトに同梱した写しを使う。`player.html?timelines=site` でサイトの写しだけを読む（push 前の確認用）
 - 手元のファイル: 再生画面で XML を読み込むと、このブラウザに保存する（`castline.player.local-timelines`）。
@@ -131,7 +135,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 
 ```xml
 <timelines format="castline-index/1">
-  <timeline file="p8s-test.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
+  <timeline file="abyssos-the-eighth-circle-savage.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
 </timelines>
 ```
 
@@ -173,7 +177,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 - 敵の既定は戦闘名と同じ名前の敵。戦闘名が英語のまま（ヘビー級2「Red Hot and Deep Blue」）で見つからなければ、最も詠唱の多い敵とその 3 割以上詠唱する敵
 - **前後半に分かれたコンテンツ**（ヘビー級4。FFLogs では別の戦闘・別の encounter だが場所は同じ）は、片方を作って「保持」し、もう一方を作ると
   1 つにまとめる（`mergeParts`）。先頭に予定の無い「開始待ち」フェーズを置き、各パートの最初の 2 つの詠唱（ほかのパートにも出る技は除く）でそのパートへ移る
-- `public/timelines/heavy1〜4.xml` の骨組みは 2026-10-20 にユーザーが選んだ討伐ログから生成した（`tools/skeletons/`）
+- ヘビー級1〜4 零式（`public/timelines/aac-heavyweight-m1〜m4-savage.xml`）の骨組みは 2026-10-20 にユーザーが選んだ討伐ログから生成した（`tools/skeletons/`）
 
 ## Hojoring 用タイムラインの文言を重ねる（運営者の手元の道具）
 
@@ -181,13 +185,13 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）で
 詠唱バーでの同期に使えない。そこで変換ではなく、**FFLogs から作った骨組みを正とし、Hojoring からは表示と読み上げの文言だけを重ねる**。
 
 ```sh
-tools/build-timelines.sh   # public/timelines/heavy1〜3.xml を作り直す（sources/ が要る）
+tools/build-timelines.sh   # ヘビー級1〜4 零式を作り直す（sources/ が要る）
 ```
 
 | ファイル | 役割 |
 |---|---|
-| `tools/skeletons/heavyN.xml` | 骨組み。生成画面で作ったものをそのまま置く（作り直すときは差し替える） |
-| `tools/skeletons/heavyN.events.json` | 同じ戦闘の敵の全部の技（補助の敵も含む）の時刻と名前。`tools/fflogs-events.py` で作る（キーは環境変数。レポートの番号は書かない） |
+| `tools/skeletons/<file>.xml` | 骨組み。生成画面で作ったものをそのまま置く（作り直すときは差し替える） |
+| `tools/skeletons/<file>.events.json` | 同じ戦闘の敵の全部の技（補助の敵も含む）の時刻と名前。`tools/fflogs-events.py` で作る（キーは環境変数。レポートの番号は書かない） |
 | `tools/hojoring-overlay.py` | 重ねる処理。区間ごとのずれ・合わせ直し・付けた行／足した行／見つからない行を報告する |
 | `sources/` | Hojoring の元ファイル（第三者の作を含む。git の対象外で公開しない） |
 

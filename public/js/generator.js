@@ -199,8 +199,10 @@ function generate() {
         result = merged.timeline;
     }
     state.xml = toTimelineXml(result);
-    // ファイル名もコンテンツ名だけ（同じコンテンツを作り直すと、再生画面の手元のファイルは置き換わる）
-    state.fileName = `${content.replace(/[\\/:*?"<>|：]/g, '_')}.xml`;
+    // ファイル名は英語の正式名＋難易度（contents.json の file。例: aac-heavyweight-m1-savage.xml）。
+    // 候補に無いコンテンツ名は日本語名のまま。同じコンテンツを作り直すと、再生画面の手元のファイルは置き換わる
+    const known = state.contents.find((c) => c.name === content);
+    state.fileName = `${known?.file ?? content.replace(/[\\/:*?"<>|：]/g, '_')}.xml`;
     $('xml-output').value = state.xml;
     renderPreview(result);
     $('result-section').hidden = false;

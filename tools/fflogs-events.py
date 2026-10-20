@@ -5,9 +5,9 @@
 出力にレポートの番号は書かない（2026-10-20 の方針）。
 
     # FFLogs から取る（キーは環境変数 FFLOGS_CLIENT_ID / FFLOGS_CLIENT_SECRET。画面にもファイルにも出さない）
-    python3 tools/fflogs-events.py 'https://ja.fflogs.com/reports/XXXX?fight=2' tools/skeletons/heavy1.events.json
+    python3 tools/fflogs-events.py 'https://ja.fflogs.com/reports/XXXX?fight=2' tools/skeletons/aac-heavyweight-m1-savage.events.json
     # 取得済みの JSON（fight・master・events）から作る
-    python3 tools/fflogs-events.py --from-json dump.json tools/skeletons/heavy1.events.json
+    python3 tools/fflogs-events.py --from-json dump.json tools/skeletons/aac-heavyweight-m1-savage.events.json
 
 出力: {"fight": 戦闘名, "kill": 討伐か, "length": 秒, "events": [[秒, "b"|"c", 技名], ...]}
 （b は詠唱開始、c は技の発動。秒は戦闘開始から）

@@ -5,10 +5,16 @@
 「コンテンツ情報」に出る名前）。ボスのタイムラインを流す対象になる種類だけを残す。
 パッチで新しいコンテンツが増えたら実行し直す。
 
+file はタイムラインのファイル名（拡張子なし）。英語の正式名から難易度の括弧を外して小文字・ハイフンにし、
+難易度を後ろに付ける（AAC Heavyweight M1 (Savage) → aac-heavyweight-m1-savage。括弧の無いものは normal）。
+難易度の英語名: ノーマル Normal / 零式 Savage / 絶 Ultimate / 極 Extreme / 滅 Chaotic（2026-10-20 のユーザーの指定）
+
     python3 tools/build-contents.py
 """
 import json
 import pathlib
+import re
+import unicodedata
 import urllib.parse
 import urllib.request
 
@@ -27,7 +33,7 @@ def fetch_rows():
     after = None
     while True:
         params = {
-            'fields': 'Name,ClassJobLevelRequired,ContentType@as(raw),TerritoryType@as(raw)',
+            'fields': 'Name,Name@lang(en),ClassJobLevelRequired,ContentType@as(raw),TerritoryType@as(raw)',
             'language': 'ja',
             'limit': '500',
         }
@@ -46,6 +52,20 @@ def fetch_rows():
         after = rows[-1]['row_id']
 
 
+def file_name(english):
+    """英語の正式名から、難易度つきのファイル名（拡張子なし）を作る"""
+    # 難易度の括弧は名前の途中にもある（the Second Coil of Bahamut (Savage) - Turn 1）
+    m = re.search(r'\s*\((\w+)\)', english)
+    base, difficulty = (english[:m.start()] + english[m.end():], m.group(1).lower()) if m else (english, 'normal')
+    # 極の一部は括弧ではなく「The Minstrel's Ballad: 名前」（極ハーデス・極エターナルクイーンなど）
+    ballad = re.match(r"^the minstrel['’]s ballad:\s*(.+)$", base, re.IGNORECASE)
+    if ballad:
+        base, difficulty = ballad.group(1), 'extreme'
+    base = unicodedata.normalize('NFKD', base).encode('ascii', 'ignore').decode()
+    base = re.sub(r"['’]", '', base.lower())
+    return f"{re.sub(r'[^a-z0-9]+', '-', base).strip('-')}-{difficulty}"
+
+
 def main():
     contents = []
     seen = set()
@@ -59,14 +79,27 @@ def main():
         contents.append({
             'id': row['row_id'],
             'name': name,
+            'en': (f.get('Name@lang(en)') or '').strip(),
             'type': TYPES[type_id],
             'level': f.get('ClassJobLevelRequired'),
             # 場所（TerritoryType）の行番号。FFLogs の fights.gameZone.id・cactbot の zoneId と同じ番号で、そこからコンテンツ名を引く
             'territory': f.get('TerritoryType@as(raw)'),
         })
+    for c in contents:
+        c['file'] = file_name(c['en']) if c['en'] else None
+    # 日本語名の目印と英語名の難易度が食い違うものを知らせる
+    marks = (('絶', 'ultimate'), ('極', 'extreme'), ('滅', 'chaotic'), ('零式', 'savage'))
+    for c in contents:
+        want = next((d for k, d in marks if c['name'].startswith(k) or k == '零式' and k in c['name']), None)
+        if want and c['file'] and not c['file'].endswith('-' + want):
+            print(f'難易度の食い違い: {c["name"]} / {c["en"]} → {c["file"]}')
+    files = [c['file'] for c in contents if c['file']]
+    dups = sorted({f for f in files if files.count(f) > 1})
+    if dups:
+        print(f'ファイル名が重なるもの: {dups}')
     contents.sort(key=lambda c: (-(c['level'] or 0), c['id']))
     OUT.write_text(json.dumps({
-        '_readme': 'コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）',
+        '_readme': 'コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。en は英語の正式名、file はタイムラインのファイル名（英語名＋難易度）、id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）',
         'contents': contents,
     }, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'{len(contents)} 件を {OUT} に書きました')

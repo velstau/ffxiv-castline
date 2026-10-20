@@ -14,8 +14,8 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）な
   その時刻に表示だけの予定（sync="false"）として足す
 - 同期の目印だけの行（text が 同期 など）、<t> のトリガー、v-notice、icon は使わない（件数を報告する）
 
-    python3 tools/hojoring-overlay.py tools/skeletons/heavy1.xml "sources/AAC_Heavyweight_M1_(Savage).xml" \\
-        public/timelines/heavy1.xml --events p1=tools/skeletons/heavy1.events.json --title "…"
+    python3 tools/hojoring-overlay.py tools/skeletons/aac-heavyweight-m1-savage.xml "sources/AAC_Heavyweight_M1_(Savage).xml" \\
+        public/timelines/aac-heavyweight-m1-savage.xml --events p1=tools/skeletons/aac-heavyweight-m1-savage.events.json --title "…"
 
 元ファイル（sources/）は第三者の作を含むので公開しない（.gitignore）。
 """

@@ -1,1888 +1,2426 @@
 {
- "_readme": "コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）",
+ "_readme": "コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。en は英語の正式名、file はタイムラインのファイル名（英語名＋難易度）、id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）",
  "contents": [
   {
    "id": 833,
    "name": "極ヴァリガルマンダ討滅戦",
+   "en": "Worqor Lar Dor (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1196
+   "territory": 1196,
+   "file": "worqor-lar-dor-extreme"
   },
   {
    "id": 984,
    "name": "エターナルクイーン討滅戦",
+   "en": "the Interphos",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1202
+   "territory": 1202,
+   "file": "the-interphos-normal"
   },
   {
    "id": 985,
    "name": "至天の座アルカディア：ライトヘビー級1",
+   "en": "AAC Light-heavyweight M1",
    "type": "レイド",
    "level": 100,
-   "territory": 1225
+   "territory": 1225,
+   "file": "aac-light-heavyweight-m1-normal"
   },
   {
    "id": 986,
    "name": "至天の座アルカディア零式：ライトヘビー級1",
+   "en": "AAC Light-heavyweight M1 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1226
+   "territory": 1226,
+   "file": "aac-light-heavyweight-m1-savage"
   },
   {
    "id": 987,
    "name": "至天の座アルカディア：ライトヘビー級2",
+   "en": "AAC Light-heavyweight M2",
    "type": "レイド",
    "level": 100,
-   "territory": 1227
+   "territory": 1227,
+   "file": "aac-light-heavyweight-m2-normal"
   },
   {
    "id": 988,
    "name": "至天の座アルカディア零式：ライトヘビー級2",
+   "en": "AAC Light-heavyweight M2 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1228
+   "territory": 1228,
+   "file": "aac-light-heavyweight-m2-savage"
   },
   {
    "id": 989,
    "name": "至天の座アルカディア：ライトヘビー級3",
+   "en": "AAC Light-heavyweight M3",
    "type": "レイド",
    "level": 100,
-   "territory": 1229
+   "territory": 1229,
+   "file": "aac-light-heavyweight-m3-normal"
   },
   {
    "id": 990,
    "name": "至天の座アルカディア零式：ライトヘビー級3",
+   "en": "AAC Light-heavyweight M3 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1230
+   "territory": 1230,
+   "file": "aac-light-heavyweight-m3-savage"
   },
   {
    "id": 991,
    "name": "至天の座アルカディア：ライトヘビー級4",
+   "en": "AAC Light-heavyweight M4",
    "type": "レイド",
    "level": 100,
-   "territory": 1231
+   "territory": 1231,
+   "file": "aac-light-heavyweight-m4-normal"
   },
   {
    "id": 992,
    "name": "至天の座アルカディア零式：ライトヘビー級4",
+   "en": "AAC Light-heavyweight M4 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1232
+   "territory": 1232,
+   "file": "aac-light-heavyweight-m4-savage"
   },
   {
    "id": 996,
    "name": "極ゾラージャ討滅戦",
+   "en": "Everkeep (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1201
+   "territory": 1201,
+   "file": "everkeep-extreme"
   },
   {
    "id": 1006,
    "name": "絶もうひとつの未来",
+   "en": "Futures Rewritten (Ultimate)",
    "type": "絶レイド",
    "level": 100,
-   "territory": 1238
+   "territory": 1238,
+   "file": "futures-rewritten-ultimate"
   },
   {
    "id": 1010,
    "name": "滅暗闇の雲激闘戦",
+   "en": "the Cloud of Darkness (Chaotic)",
    "type": "滅アライアンスレイド",
    "level": 100,
-   "territory": 1241
+   "territory": 1241,
+   "file": "the-cloud-of-darkness-chaotic"
   },
   {
    "id": 1015,
    "name": "ジュノ：ザ・ファーストウォーク",
+   "en": "Jeuno: The First Walk",
    "type": "レイド",
    "level": 100,
-   "territory": 1248
+   "territory": 1248,
+   "file": "jeuno-the-first-walk-normal"
   },
   {
    "id": 1017,
    "name": "極エターナルクイーン討滅戦",
+   "en": "the Minstrel's Ballad: Sphene's Burden",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1243
+   "territory": 1243,
+   "file": "sphenes-burden-extreme"
   },
   {
    "id": 1019,
    "name": "至天の座アルカディア：クルーザー級1",
+   "en": "AAC Cruiserweight M1",
    "type": "レイド",
    "level": 100,
-   "territory": 1256
+   "territory": 1256,
+   "file": "aac-cruiserweight-m1-normal"
   },
   {
    "id": 1020,
    "name": "至天の座アルカディア零式：クルーザー級1",
+   "en": "AAC Cruiserweight M1 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1257
+   "territory": 1257,
+   "file": "aac-cruiserweight-m1-savage"
   },
   {
    "id": 1021,
    "name": "至天の座アルカディア：クルーザー級2",
+   "en": "AAC Cruiserweight M2",
    "type": "レイド",
    "level": 100,
-   "territory": 1258
+   "territory": 1258,
+   "file": "aac-cruiserweight-m2-normal"
   },
   {
    "id": 1022,
    "name": "至天の座アルカディア零式：クルーザー級2",
+   "en": "AAC Cruiserweight M2 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1259
+   "territory": 1259,
+   "file": "aac-cruiserweight-m2-savage"
   },
   {
    "id": 1023,
    "name": "至天の座アルカディア：クルーザー級3",
+   "en": "AAC Cruiserweight M3",
    "type": "レイド",
    "level": 100,
-   "territory": 1260
+   "territory": 1260,
+   "file": "aac-cruiserweight-m3-normal"
   },
   {
    "id": 1024,
    "name": "至天の座アルカディア零式：クルーザー級3",
+   "en": "AAC Cruiserweight M3 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1261
+   "territory": 1261,
+   "file": "aac-cruiserweight-m3-savage"
   },
   {
    "id": 1025,
    "name": "至天の座アルカディア：クルーザー級4",
+   "en": "AAC Cruiserweight M4",
    "type": "レイド",
    "level": 100,
-   "territory": 1262
+   "territory": 1262,
+   "file": "aac-cruiserweight-m4-normal"
   },
   {
    "id": 1026,
    "name": "至天の座アルカディア零式：クルーザー級4",
+   "en": "AAC Cruiserweight M4 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1263
+   "territory": 1263,
+   "file": "aac-cruiserweight-m4-savage"
   },
   {
    "id": 1030,
    "name": "ゼレニア討滅戦",
+   "en": "Recollection",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1270
+   "territory": 1270,
+   "file": "recollection-normal"
   },
   {
    "id": 1031,
    "name": "極ゼレニア討滅戦",
+   "en": "Recollection (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1271
+   "territory": 1271,
+   "file": "recollection-extreme"
   },
   {
    "id": 1043,
    "name": "護竜アルシュベルド狩猟戦",
+   "en": "the Windward Wilds",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1300
+   "territory": 1300,
+   "file": "the-windward-wilds-normal"
   },
   {
    "id": 1044,
    "name": "極護竜アルシュベルド狩猟戦",
+   "en": "the Windward Wilds (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1306
+   "territory": 1306,
+   "file": "the-windward-wilds-extreme"
   },
   {
    "id": 1058,
    "name": "サンドリア：ザ・セカンドウォーク",
+   "en": "San d'Oria: The Second Walk",
    "type": "レイド",
    "level": 100,
-   "territory": 1304
+   "territory": 1304,
+   "file": "san-doria-the-second-walk-normal"
   },
   {
    "id": 1061,
    "name": "永遠の闇討滅戦",
+   "en": "the Ageless Necropolis",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1295
+   "territory": 1295,
+   "file": "the-ageless-necropolis-normal"
   },
   {
    "id": 1062,
    "name": "極永遠の闇討滅戦",
+   "en": "the Minstrel's Ballad: Necron's Embrace",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1296
+   "territory": 1296,
+   "file": "necrons-embrace-extreme"
   },
   {
    "id": 1068,
    "name": "至天の座アルカディア：ヘビー級1",
+   "en": "AAC Heavyweight M1",
    "type": "レイド",
    "level": 100,
-   "territory": 1320
+   "territory": 1320,
+   "file": "aac-heavyweight-m1-normal"
   },
   {
    "id": 1069,
    "name": "至天の座アルカディア零式：ヘビー級1",
+   "en": "AAC Heavyweight M1 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1321
+   "territory": 1321,
+   "file": "aac-heavyweight-m1-savage"
   },
   {
    "id": 1070,
    "name": "至天の座アルカディア：ヘビー級2",
+   "en": "AAC Heavyweight M2",
    "type": "レイド",
    "level": 100,
-   "territory": 1322
+   "territory": 1322,
+   "file": "aac-heavyweight-m2-normal"
   },
   {
    "id": 1071,
    "name": "至天の座アルカディア零式：ヘビー級2",
+   "en": "AAC Heavyweight M2 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1323
+   "territory": 1323,
+   "file": "aac-heavyweight-m2-savage"
   },
   {
    "id": 1072,
    "name": "至天の座アルカディア：ヘビー級3",
+   "en": "AAC Heavyweight M3",
    "type": "レイド",
    "level": 100,
-   "territory": 1324
+   "territory": 1324,
+   "file": "aac-heavyweight-m3-normal"
   },
   {
    "id": 1073,
    "name": "至天の座アルカディア零式：ヘビー級3",
+   "en": "AAC Heavyweight M3 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1325
+   "territory": 1325,
+   "file": "aac-heavyweight-m3-savage"
   },
   {
    "id": 1074,
    "name": "至天の座アルカディア：ヘビー級4",
+   "en": "AAC Heavyweight M4",
    "type": "レイド",
    "level": 100,
-   "territory": 1326
+   "territory": 1326,
+   "file": "aac-heavyweight-m4-normal"
   },
   {
    "id": 1075,
    "name": "至天の座アルカディア零式：ヘビー級4",
+   "en": "AAC Heavyweight M4 (Savage)",
    "type": "レイド",
    "level": 100,
-   "territory": 1327
+   "territory": 1327,
+   "file": "aac-heavyweight-m4-savage"
   },
   {
    "id": 1076,
    "name": "グラシャラボラス討滅戦",
+   "en": "Hell on Rails",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1307
+   "territory": 1307,
+   "file": "hell-on-rails-normal"
   },
   {
    "id": 1077,
    "name": "極グラシャラボラス討滅戦",
+   "en": "Hell on Rails (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1308
+   "territory": 1308,
+   "file": "hell-on-rails-extreme"
   },
   {
    "id": 1094,
    "name": "絶妖星乱舞",
+   "en": "Dancing Mad (Ultimate)",
    "type": "絶レイド",
    "level": 100,
-   "territory": 1363
+   "territory": 1363,
+   "file": "dancing-mad-ultimate"
   },
   {
    "id": 1115,
    "name": "エヌオー討滅戦",
+   "en": "the Unmaking",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1361
+   "territory": 1361,
+   "file": "the-unmaking-normal"
   },
   {
    "id": 1116,
    "name": "極エヌオー討滅戦",
+   "en": "the Unmaking (Extreme)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1362
+   "territory": 1362,
+   "file": "the-unmaking-extreme"
   },
   {
    "id": 1117,
    "name": "ウィンダス：ザ・サードウォーク",
+   "en": "Windurst: The Third Walk",
    "type": "レイド",
    "level": 100,
-   "territory": 1368
+   "territory": 1368,
+   "file": "windurst-the-third-walk-normal"
   },
   {
    "id": 1118,
    "name": "幻神龍討滅戦",
+   "en": "Shinryu's Domain (Unreal)",
    "type": "討伐・討滅戦",
    "level": 100,
-   "territory": 1372
+   "territory": 1372,
+   "file": "shinryus-domain-unreal"
   },
   {
    "id": 995,
    "name": "ゾラージャ討滅戦",
+   "en": "Everkeep",
    "type": "討伐・討滅戦",
    "level": 99,
-   "territory": 1200
+   "territory": 1200,
+   "file": "everkeep-normal"
   },
   {
    "id": 832,
    "name": "ヴァリガルマンダ討滅戦",
+   "en": "Worqor Lar Dor",
    "type": "討伐・討滅戦",
    "level": 93,
-   "territory": 1195
+   "territory": 1195,
+   "file": "worqor-lar-dor-normal"
   },
   {
    "id": 69,
    "name": "アスラ討滅戦",
+   "en": "The Gilded Araya",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 509
+   "territory": 509,
+   "file": "the-gilded-araya-normal"
   },
   {
    "id": 788,
    "name": "絶竜詩戦争",
+   "en": "Dragonsong's Reprise (Ultimate)",
    "type": "絶レイド",
    "level": 90,
-   "territory": 968
+   "territory": 968,
+   "file": "dragonsongs-reprise-ultimate"
   },
   {
    "id": 791,
    "name": "極ハイデリン討滅戦",
+   "en": "the Minstrel's Ballad: Hydaelyn's Call",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 996
+   "territory": 996,
+   "file": "hydaelyns-call-extreme"
   },
   {
    "id": 796,
    "name": "終焉の戦い",
+   "en": "the Final Day",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 997
+   "territory": 997,
+   "file": "the-final-day-normal"
   },
   {
    "id": 800,
    "name": "万魔殿パンデモニウム：辺獄編4",
+   "en": "Asphodelos: The Fourth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1008
+   "territory": 1008,
+   "file": "asphodelos-the-fourth-circle-normal"
   },
   {
    "id": 801,
    "name": "万魔殿パンデモニウム零式：辺獄編4",
+   "en": "Asphodelos: The Fourth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1009
+   "territory": 1009,
+   "file": "asphodelos-the-fourth-circle-savage"
   },
   {
    "id": 803,
    "name": "極ゾディアーク討滅戦",
+   "en": "the Minstrel's Ballad: Zodiark's Fall",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 993
+   "territory": 993,
+   "file": "zodiarks-fall-extreme"
   },
   {
    "id": 806,
    "name": "万魔殿パンデモニウム：辺獄編3",
+   "en": "Asphodelos: The Third Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1006
+   "territory": 1006,
+   "file": "asphodelos-the-third-circle-normal"
   },
   {
    "id": 807,
    "name": "万魔殿パンデモニウム零式：辺獄編3",
+   "en": "Asphodelos: The Third Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1007
+   "territory": 1007,
+   "file": "asphodelos-the-third-circle-savage"
   },
   {
    "id": 808,
    "name": "万魔殿パンデモニウム：辺獄編1",
+   "en": "Asphodelos: The First Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1002
+   "territory": 1002,
+   "file": "asphodelos-the-first-circle-normal"
   },
   {
    "id": 809,
    "name": "万魔殿パンデモニウム零式：辺獄編1",
+   "en": "Asphodelos: The First Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1003
+   "territory": 1003,
+   "file": "asphodelos-the-first-circle-savage"
   },
   {
    "id": 810,
    "name": "万魔殿パンデモニウム：辺獄編2",
+   "en": "Asphodelos: The Second Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1004
+   "territory": 1004,
+   "file": "asphodelos-the-second-circle-normal"
   },
   {
    "id": 811,
    "name": "万魔殿パンデモニウム零式：辺獄編2",
+   "en": "Asphodelos: The Second Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1005
+   "territory": 1005,
+   "file": "asphodelos-the-second-circle-savage"
   },
   {
    "id": 846,
    "name": "終極の戦い",
+   "en": "the Minstrel's Ballad: Endsinger's Aria",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 998
+   "territory": 998,
+   "file": "endsingers-aria-extreme"
   },
   {
    "id": 866,
    "name": "輝ける神域 アグライア",
+   "en": "Aglaia",
    "type": "レイド",
    "level": 90,
-   "territory": 1054
+   "territory": 1054,
+   "file": "aglaia-normal"
   },
   {
    "id": 870,
    "name": "バルバリシア討滅戦",
+   "en": "Storm's Crown",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1071
+   "territory": 1071,
+   "file": "storms-crown-normal"
   },
   {
    "id": 871,
    "name": "極バルバリシア討滅戦",
+   "en": "Storm's Crown (Extreme)",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1072
+   "territory": 1072,
+   "file": "storms-crown-extreme"
   },
   {
    "id": 872,
    "name": "万魔殿パンデモニウム：煉獄編1",
+   "en": "Abyssos: The Fifth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1081
+   "territory": 1081,
+   "file": "abyssos-the-fifth-circle-normal"
   },
   {
    "id": 873,
    "name": "万魔殿パンデモニウム零式：煉獄編1",
+   "en": "Abyssos: The Fifth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1082
+   "territory": 1082,
+   "file": "abyssos-the-fifth-circle-savage"
   },
   {
    "id": 876,
    "name": "万魔殿パンデモニウム：煉獄編3",
+   "en": "Abyssos: The Seventh Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1085
+   "territory": 1085,
+   "file": "abyssos-the-seventh-circle-normal"
   },
   {
    "id": 877,
    "name": "万魔殿パンデモニウム零式：煉獄編3",
+   "en": "Abyssos: The Seventh Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1086
+   "territory": 1086,
+   "file": "abyssos-the-seventh-circle-savage"
   },
   {
    "id": 880,
    "name": "万魔殿パンデモニウム：煉獄編2",
+   "en": "Abyssos: The Sixth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1083
+   "territory": 1083,
+   "file": "abyssos-the-sixth-circle-normal"
   },
   {
    "id": 881,
    "name": "万魔殿パンデモニウム零式：煉獄編2",
+   "en": "Abyssos: The Sixth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1084
+   "territory": 1084,
+   "file": "abyssos-the-sixth-circle-savage"
   },
   {
    "id": 883,
    "name": "万魔殿パンデモニウム：煉獄編4",
+   "en": "Abyssos: The Eighth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1087
+   "territory": 1087,
+   "file": "abyssos-the-eighth-circle-normal"
   },
   {
    "id": 884,
    "name": "万魔殿パンデモニウム零式：煉獄編4",
+   "en": "Abyssos: The Eighth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1088
+   "territory": 1088,
+   "file": "abyssos-the-eighth-circle-savage"
   },
   {
    "id": 886,
    "name": "ルビカンテ討滅戦",
+   "en": "Mount Ordeals",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1095
+   "territory": 1095,
+   "file": "mount-ordeals-normal"
   },
   {
    "id": 908,
    "name": "絶オメガ検証戦",
+   "en": "the Omega Protocol (Ultimate)",
    "type": "絶レイド",
    "level": 90,
-   "territory": 1122
+   "territory": 1122,
+   "file": "the-omega-protocol-ultimate"
   },
   {
    "id": 911,
    "name": "喜びの神域 エウプロシュネ",
+   "en": "Euphrosyne",
    "type": "レイド",
    "level": 90,
-   "territory": 1118
+   "territory": 1118,
+   "file": "euphrosyne-normal"
   },
   {
    "id": 924,
    "name": "極ルビカンテ討滅戦",
+   "en": "Mount Ordeals (Extreme)",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1096
+   "territory": 1096,
+   "file": "mount-ordeals-extreme"
   },
   {
    "id": 936,
    "name": "万魔殿パンデモニウム：天獄編1",
+   "en": "Anabaseios: The Ninth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1147
+   "territory": 1147,
+   "file": "anabaseios-the-ninth-circle-normal"
   },
   {
    "id": 937,
    "name": "万魔殿パンデモニウム零式：天獄編1",
+   "en": "Anabaseios: The Ninth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1148
+   "territory": 1148,
+   "file": "anabaseios-the-ninth-circle-savage"
   },
   {
    "id": 938,
    "name": "万魔殿パンデモニウム：天獄編2",
+   "en": "Anabaseios: The Tenth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1149
+   "territory": 1149,
+   "file": "anabaseios-the-tenth-circle-normal"
   },
   {
    "id": 939,
    "name": "万魔殿パンデモニウム零式：天獄編2",
+   "en": "Anabaseios: The Tenth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1150
+   "territory": 1150,
+   "file": "anabaseios-the-tenth-circle-savage"
   },
   {
    "id": 940,
    "name": "万魔殿パンデモニウム：天獄編3",
+   "en": "Anabaseios: The Eleventh Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1151
+   "territory": 1151,
+   "file": "anabaseios-the-eleventh-circle-normal"
   },
   {
    "id": 941,
    "name": "万魔殿パンデモニウム零式：天獄編3",
+   "en": "Anabaseios: The Eleventh Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1152
+   "territory": 1152,
+   "file": "anabaseios-the-eleventh-circle-savage"
   },
   {
    "id": 942,
    "name": "万魔殿パンデモニウム：天獄編4",
+   "en": "Anabaseios: The Twelfth Circle",
    "type": "レイド",
    "level": 90,
-   "territory": 1153
+   "territory": 1153,
+   "file": "anabaseios-the-twelfth-circle-normal"
   },
   {
    "id": 943,
    "name": "万魔殿パンデモニウム零式：天獄編4",
+   "en": "Anabaseios: The Twelfth Circle (Savage)",
    "type": "レイド",
    "level": 90,
-   "territory": 1154
+   "territory": 1154,
+   "file": "anabaseios-the-twelfth-circle-savage"
   },
   {
    "id": 949,
    "name": "ゴルベーザ討滅戦",
+   "en": "the Voidcast Dais",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1140
+   "territory": 1140,
+   "file": "the-voidcast-dais-normal"
   },
   {
    "id": 950,
    "name": "極ゴルベーザ討滅戦",
+   "en": "the Voidcast Dais (Extreme)",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1141
+   "territory": 1141,
+   "file": "the-voidcast-dais-extreme"
   },
   {
    "id": 962,
    "name": "華めく神域 タレイア",
+   "en": "Thaleia",
    "type": "レイド",
    "level": 90,
-   "territory": 1178
+   "territory": 1178,
+   "file": "thaleia-normal"
   },
   {
    "id": 964,
    "name": "ゼロムス討滅戦",
+   "en": "the Abyssal Fracture",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1168
+   "territory": 1168,
+   "file": "the-abyssal-fracture-normal"
   },
   {
    "id": 965,
    "name": "極ゼロムス討滅戦",
+   "en": "the Abyssal Fracture (Extreme)",
    "type": "討伐・討滅戦",
    "level": 90,
-   "territory": 1169
+   "territory": 1169,
+   "file": "the-abyssal-fracture-extreme"
   },
   {
    "id": 790,
    "name": "ハイデリン討滅戦",
+   "en": "the Mothercrystal",
    "type": "討伐・討滅戦",
    "level": 89,
-   "territory": 995
+   "territory": 995,
+   "file": "the-mothercrystal-normal"
   },
   {
    "id": 802,
    "name": "ゾディアーク討滅戦",
+   "en": "the Dark Inside",
    "type": "討伐・討滅戦",
    "level": 83,
-   "territory": 992
+   "territory": 992,
+   "file": "the-dark-inside-normal"
   },
   {
    "id": 653,
    "name": "希望の園エデン：覚醒編1",
+   "en": "Eden's Gate: Resurrection",
    "type": "レイド",
    "level": 80,
-   "territory": 849
+   "territory": 849,
+   "file": "edens-gate-resurrection-normal"
   },
   {
    "id": 654,
    "name": "希望の園エデン零式：覚醒編1",
+   "en": "Eden's Gate: Resurrection (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 853
+   "territory": 853,
+   "file": "edens-gate-resurrection-savage"
   },
   {
    "id": 658,
    "name": "極ティターニア討滅戦",
+   "en": "the Dancing Plague (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 858
+   "territory": 858,
+   "file": "the-dancing-plague-extreme"
   },
   {
    "id": 667,
    "name": "極イノセンス討滅戦",
+   "en": "the Crown of the Immaculate (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 848
+   "territory": 848,
+   "file": "the-crown-of-the-immaculate-extreme"
   },
   {
    "id": 682,
    "name": "希望の園エデン：覚醒編3",
+   "en": "Eden's Gate: Inundation",
    "type": "レイド",
    "level": 80,
-   "territory": 851
+   "territory": 851,
+   "file": "edens-gate-inundation-normal"
   },
   {
    "id": 683,
    "name": "希望の園エデン零式：覚醒編3",
+   "en": "Eden's Gate: Inundation (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 855
+   "territory": 855,
+   "file": "edens-gate-inundation-savage"
   },
   {
    "id": 684,
    "name": "希望の園エデン：覚醒編2",
+   "en": "Eden's Gate: Descent",
    "type": "レイド",
    "level": 80,
-   "territory": 850
+   "territory": 850,
+   "file": "edens-gate-descent-normal"
   },
   {
    "id": 685,
    "name": "希望の園エデン零式：覚醒編2",
+   "en": "Eden's Gate: Descent (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 854
+   "territory": 854,
+   "file": "edens-gate-descent-savage"
   },
   {
    "id": 687,
    "name": "ハーデス討滅戦",
+   "en": "the Dying Gasp",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 847
+   "territory": 847,
+   "file": "the-dying-gasp-normal"
   },
   {
    "id": 689,
    "name": "希望の園エデン：覚醒編4",
+   "en": "Eden's Gate: Sepulture",
    "type": "レイド",
    "level": 80,
-   "territory": 852
+   "territory": 852,
+   "file": "edens-gate-sepulture-normal"
   },
   {
    "id": 690,
    "name": "希望の園エデン零式：覚醒編4",
+   "en": "Eden's Gate: Sepulture (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 856
+   "territory": 856,
+   "file": "edens-gate-sepulture-savage"
   },
   {
    "id": 693,
    "name": "極ハーデス討滅戦",
+   "en": "the Minstrel's Ballad: Hades's Elegy",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 885
+   "territory": 885,
+   "file": "hadess-elegy-extreme"
   },
   {
    "id": 694,
    "name": "絶アレキサンダー討滅戦",
+   "en": "the Epic of Alexander (Ultimate)",
    "type": "絶レイド",
    "level": 80,
-   "territory": 887
+   "territory": 887,
+   "file": "the-epic-of-alexander-ultimate"
   },
   {
    "id": 700,
    "name": "複製サレタ工場廃墟",
+   "en": "the Copied Factory",
    "type": "レイド",
    "level": 80,
-   "territory": 882
+   "territory": 882,
+   "file": "the-copied-factory-normal"
   },
   {
    "id": 715,
    "name": "希望の園エデン：共鳴編1",
+   "en": "Eden's Verse: Fulmination",
    "type": "レイド",
    "level": 80,
-   "territory": 902
+   "territory": 902,
+   "file": "edens-verse-fulmination-normal"
   },
   {
    "id": 716,
    "name": "希望の園エデン零式：共鳴編1",
+   "en": "Eden's Verse: Fulmination (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 906
+   "territory": 906,
+   "file": "edens-verse-fulmination-savage"
   },
   {
    "id": 717,
    "name": "ルビーウェポン破壊作戦",
+   "en": "Cinder Drift",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 897
+   "territory": 897,
+   "file": "cinder-drift-normal"
   },
   {
    "id": 718,
    "name": "極ルビーウェポン破壊作戦",
+   "en": "Cinder Drift (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 912
+   "territory": 912,
+   "file": "cinder-drift-extreme"
   },
   {
    "id": 719,
    "name": "希望の園エデン：共鳴編2",
+   "en": "Eden's Verse: Furor",
    "type": "レイド",
    "level": 80,
-   "territory": 903
+   "territory": 903,
+   "file": "edens-verse-furor-normal"
   },
   {
    "id": 720,
    "name": "希望の園エデン零式：共鳴編2",
+   "en": "Eden's Verse: Furor (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 907
+   "territory": 907,
+   "file": "edens-verse-furor-savage"
   },
   {
    "id": 725,
    "name": "極シタデル・ボズヤ追憶戦",
+   "en": "Memoria Misera (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 913
+   "territory": 913,
+   "file": "memoria-misera-extreme"
   },
   {
    "id": 726,
    "name": "希望の園エデン：共鳴編3",
+   "en": "Eden's Verse: Iconoclasm",
    "type": "レイド",
    "level": 80,
-   "territory": 904
+   "territory": 904,
+   "file": "edens-verse-iconoclasm-normal"
   },
   {
    "id": 727,
    "name": "希望の園エデン零式：共鳴編3",
+   "en": "Eden's Verse: Iconoclasm (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 908
+   "territory": 908,
+   "file": "edens-verse-iconoclasm-savage"
   },
   {
    "id": 728,
    "name": "希望の園エデン：共鳴編4",
+   "en": "Eden's Verse: Refulgence",
    "type": "レイド",
    "level": 80,
-   "territory": 905
+   "territory": 905,
+   "file": "edens-verse-refulgence-normal"
   },
   {
    "id": 729,
    "name": "希望の園エデン零式：共鳴編4",
+   "en": "Eden's Verse: Refulgence (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 909
+   "territory": 909,
+   "file": "edens-verse-refulgence-savage"
   },
   {
    "id": 736,
    "name": "人形タチノ軍事基地",
+   "en": "the Puppets' Bunker",
    "type": "レイド",
    "level": 80,
-   "territory": 917
+   "territory": 917,
+   "file": "the-puppets-bunker-normal"
   },
   {
    "id": 738,
    "name": "ウォーリア・オブ・ライト討滅戦",
+   "en": "the Seat of Sacrifice",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 922
+   "territory": 922,
+   "file": "the-seat-of-sacrifice-normal"
   },
   {
    "id": 739,
    "name": "極ウォーリア・オブ・ライト討滅戦",
+   "en": "the Seat of Sacrifice (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 923
+   "territory": 923,
+   "file": "the-seat-of-sacrifice-extreme"
   },
   {
    "id": 747,
    "name": "希望の園エデン：再生編2",
+   "en": "Eden's Promise: Litany",
    "type": "レイド",
    "level": 80,
-   "territory": 943
+   "territory": 943,
+   "file": "edens-promise-litany-normal"
   },
   {
    "id": 748,
    "name": "希望の園エデン零式：再生編2",
+   "en": "Eden's Promise: Litany (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 947
+   "territory": 947,
+   "file": "edens-promise-litany-savage"
   },
   {
    "id": 749,
    "name": "希望の園エデン：再生編1",
+   "en": "Eden's Promise: Umbra",
    "type": "レイド",
    "level": 80,
-   "territory": 942
+   "territory": 942,
+   "file": "edens-promise-umbra-normal"
   },
   {
    "id": 750,
    "name": "希望の園エデン零式：再生編1",
+   "en": "Eden's Promise: Umbra (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 946
+   "territory": 946,
+   "file": "edens-promise-umbra-savage"
   },
   {
    "id": 751,
    "name": "希望の園エデン：再生編3",
+   "en": "Eden's Promise: Anamorphosis",
    "type": "レイド",
    "level": 80,
-   "territory": 944
+   "territory": 944,
+   "file": "edens-promise-anamorphosis-normal"
   },
   {
    "id": 752,
    "name": "希望の園エデン零式：再生編3",
+   "en": "Eden's Promise: Anamorphosis (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 948
+   "territory": 948,
+   "file": "edens-promise-anamorphosis-savage"
   },
   {
    "id": 758,
    "name": "希望の園エデン：再生編4",
+   "en": "Eden's Promise: Eternity",
    "type": "レイド",
    "level": 80,
-   "territory": 945
+   "territory": 945,
+   "file": "edens-promise-eternity-normal"
   },
   {
    "id": 759,
    "name": "希望の園エデン零式：再生編4",
+   "en": "Eden's Promise: Eternity (Savage)",
    "type": "レイド",
    "level": 80,
-   "territory": 949
+   "territory": 949,
+   "file": "edens-promise-eternity-savage"
   },
   {
    "id": 762,
    "name": "エメラルドウェポン破壊作戦",
+   "en": "Castrum Marinum",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 934
+   "territory": 934,
+   "file": "castrum-marinum-normal"
   },
   {
    "id": 763,
    "name": "極エメラルドウェポン破壊作戦",
+   "en": "Castrum Marinum (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 935
+   "territory": 935,
+   "file": "castrum-marinum-extreme"
   },
   {
    "id": 779,
    "name": "希望ノ砲台：「塔」",
+   "en": "the Tower at Paradigm's Breach",
    "type": "レイド",
    "level": 80,
-   "territory": 966
+   "territory": 966,
+   "file": "the-tower-at-paradigms-breach-normal"
   },
   {
    "id": 781,
    "name": "ダイヤウェポン捕獲作戦",
+   "en": "the Cloud Deck",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 950
+   "territory": 950,
+   "file": "the-cloud-deck-normal"
   },
   {
    "id": 782,
    "name": "極ダイヤウェポン捕獲作戦",
+   "en": "the Cloud Deck (Extreme)",
    "type": "討伐・討滅戦",
    "level": 80,
-   "territory": 951
+   "territory": 951,
+   "file": "the-cloud-deck-extreme"
   },
   {
    "id": 666,
    "name": "イノセンス討滅戦",
+   "en": "the Crown of the Immaculate",
    "type": "討伐・討滅戦",
    "level": 79,
-   "territory": 846
+   "territory": 846,
+   "file": "the-crown-of-the-immaculate-normal"
   },
   {
    "id": 71,
    "name": "イベント用コンテンツ：2",
+   "en": "Special Event II",
    "type": "討伐・討滅戦",
    "level": 73,
-   "territory": 354
+   "territory": 354,
+   "file": "special-event-ii-normal"
   },
   {
    "id": 657,
    "name": "ティターニア討滅戦",
+   "en": "the Dancing Plague",
    "type": "討伐・討滅戦",
    "level": 73,
-   "territory": 845
+   "territory": 845,
+   "file": "the-dancing-plague-normal"
   },
   {
    "id": 70,
    "name": "イベント用コンテンツ：1",
+   "en": "Special Event I",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 353
+   "territory": 353,
+   "file": "special-event-i-normal"
   },
   {
    "id": 239,
    "name": "神龍討滅戦",
+   "en": "the Royal Menagerie",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 679
+   "territory": 679,
+   "file": "the-royal-menagerie-normal"
   },
   {
    "id": 244,
    "name": "極スサノオ討滅戦",
+   "en": "the Pool of Tribute (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 677
+   "territory": 677,
+   "file": "the-pool-of-tribute-extreme"
   },
   {
    "id": 252,
    "name": "次元の狭間オメガ：デルタ編1",
+   "en": "Deltascape V1.0",
    "type": "レイド",
    "level": 70,
-   "territory": 691
+   "territory": 691,
+   "file": "deltascape-v1-0-normal"
   },
   {
    "id": 253,
    "name": "次元の狭間オメガ：デルタ編2",
+   "en": "Deltascape V2.0",
    "type": "レイド",
    "level": 70,
-   "territory": 692
+   "territory": 692,
+   "file": "deltascape-v2-0-normal"
   },
   {
    "id": 254,
    "name": "次元の狭間オメガ：デルタ編3",
+   "en": "Deltascape V3.0",
    "type": "レイド",
    "level": 70,
-   "territory": 693
+   "territory": 693,
+   "file": "deltascape-v3-0-normal"
   },
   {
    "id": 255,
    "name": "次元の狭間オメガ：デルタ編4",
+   "en": "Deltascape V4.0",
    "type": "レイド",
    "level": 70,
-   "territory": 694
+   "territory": 694,
+   "file": "deltascape-v4-0-normal"
   },
   {
    "id": 256,
    "name": "次元の狭間オメガ零式：デルタ編1",
+   "en": "Deltascape V1.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 695
+   "territory": 695,
+   "file": "deltascape-v1-0-savage"
   },
   {
    "id": 257,
    "name": "次元の狭間オメガ零式：デルタ編2",
+   "en": "Deltascape V2.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 696
+   "territory": 696,
+   "file": "deltascape-v2-0-savage"
   },
   {
    "id": 258,
    "name": "次元の狭間オメガ零式：デルタ編3",
+   "en": "Deltascape V3.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 697
+   "territory": 697,
+   "file": "deltascape-v3-0-savage"
   },
   {
    "id": 259,
    "name": "次元の狭間オメガ零式：デルタ編4",
+   "en": "Deltascape V4.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 698
+   "territory": 698,
+   "file": "deltascape-v4-0-savage"
   },
   {
    "id": 264,
    "name": "極ラクシュミ討滅戦",
+   "en": "Emanation (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 720
+   "territory": 720,
+   "file": "emanation-extreme"
   },
   {
    "id": 278,
    "name": "極神龍討滅戦",
+   "en": "the Minstrel's Ballad: Shinryu's Domain",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 730
+   "territory": 730,
+   "file": "shinryus-domain-extreme"
   },
   {
    "id": 280,
    "name": "絶バハムート討滅戦",
+   "en": "the Unending Coil of Bahamut (Ultimate)",
    "type": "絶レイド",
    "level": 70,
-   "territory": 733
+   "territory": 733,
+   "file": "the-unending-coil-of-bahamut-ultimate"
   },
   {
    "id": 281,
    "name": "失われた都 ラバナスタ",
+   "en": "the Royal City of Rabanastre",
    "type": "レイド",
    "level": 70,
-   "territory": 734
+   "territory": 734,
+   "file": "the-royal-city-of-rabanastre-normal"
   },
   {
    "id": 286,
    "name": "次元の狭間オメガ：シグマ編1",
+   "en": "Sigmascape V1.0",
    "type": "レイド",
    "level": 70,
-   "territory": 748
+   "territory": 748,
+   "file": "sigmascape-v1-0-normal"
   },
   {
    "id": 287,
    "name": "次元の狭間オメガ：シグマ編2",
+   "en": "Sigmascape V2.0",
    "type": "レイド",
    "level": 70,
-   "territory": 749
+   "territory": 749,
+   "file": "sigmascape-v2-0-normal"
   },
   {
    "id": 288,
    "name": "次元の狭間オメガ：シグマ編3",
+   "en": "Sigmascape V3.0",
    "type": "レイド",
    "level": 70,
-   "territory": 750
+   "territory": 750,
+   "file": "sigmascape-v3-0-normal"
   },
   {
    "id": 289,
    "name": "次元の狭間オメガ：シグマ編4",
+   "en": "Sigmascape V4.0",
    "type": "レイド",
    "level": 70,
-   "territory": 751
+   "territory": 751,
+   "file": "sigmascape-v4-0-normal"
   },
   {
    "id": 290,
    "name": "白虎征魂戦",
+   "en": "the Jade Stoa",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 746
+   "territory": 746,
+   "file": "the-jade-stoa-normal"
   },
   {
    "id": 291,
    "name": "極白虎征魂戦",
+   "en": "the Jade Stoa (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 758
+   "territory": 758,
+   "file": "the-jade-stoa-extreme"
   },
   {
    "id": 292,
    "name": "次元の狭間オメガ零式：シグマ編1",
+   "en": "Sigmascape V1.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 752
+   "territory": 752,
+   "file": "sigmascape-v1-0-savage"
   },
   {
    "id": 293,
    "name": "次元の狭間オメガ零式：シグマ編2",
+   "en": "Sigmascape V2.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 753
+   "territory": 753,
+   "file": "sigmascape-v2-0-savage"
   },
   {
    "id": 294,
    "name": "次元の狭間オメガ零式：シグマ編3",
+   "en": "Sigmascape V3.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 754
+   "territory": 754,
+   "file": "sigmascape-v3-0-savage"
   },
   {
    "id": 295,
    "name": "次元の狭間オメガ零式：シグマ編4",
+   "en": "Sigmascape V4.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 755
+   "territory": 755,
+   "file": "sigmascape-v4-0-savage"
   },
   {
    "id": 474,
    "name": "リオレウス狩猟戦",
+   "en": "the Great Hunt",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 761
+   "territory": 761,
+   "file": "the-great-hunt-normal"
   },
   {
    "id": 475,
    "name": "極リオレウス狩猟戦",
+   "en": "the Great Hunt (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 762
+   "territory": 762,
+   "file": "the-great-hunt-extreme"
   },
   {
    "id": 537,
    "name": "ツクヨミ討滅戦",
+   "en": "Castrum Fluminis",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 778
+   "territory": 778,
+   "file": "castrum-fluminis-normal"
   },
   {
    "id": 538,
    "name": "極ツクヨミ討滅戦",
+   "en": "the Minstrel's Ballad: Tsukuyomi's Pain",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 779
+   "territory": 779,
+   "file": "tsukuyomis-pain-extreme"
   },
   {
    "id": 539,
    "name": "絶アルテマウェポン破壊作戦",
+   "en": "the Weapon's Refrain (Ultimate)",
    "type": "絶レイド",
    "level": 70,
-   "territory": 777
+   "territory": 777,
+   "file": "the-weapons-refrain-ultimate"
   },
   {
    "id": 550,
    "name": "封じられた聖塔 リドルアナ",
+   "en": "the Ridorana Lighthouse",
    "type": "レイド",
    "level": 70,
-   "territory": 776
+   "territory": 776,
+   "file": "the-ridorana-lighthouse-normal"
   },
   {
    "id": 587,
    "name": "次元の狭間オメガ：アルファ編1",
+   "en": "Alphascape V1.0",
    "type": "レイド",
    "level": 70,
-   "territory": 798
+   "territory": 798,
+   "file": "alphascape-v1-0-normal"
   },
   {
    "id": 588,
    "name": "次元の狭間オメガ：アルファ編2",
+   "en": "Alphascape V2.0",
    "type": "レイド",
    "level": 70,
-   "territory": 799
+   "territory": 799,
+   "file": "alphascape-v2-0-normal"
   },
   {
    "id": 589,
    "name": "次元の狭間オメガ：アルファ編3",
+   "en": "Alphascape V3.0",
    "type": "レイド",
    "level": 70,
-   "territory": 800
+   "territory": 800,
+   "file": "alphascape-v3-0-normal"
   },
   {
    "id": 590,
    "name": "次元の狭間オメガ：アルファ編4",
+   "en": "Alphascape V4.0",
    "type": "レイド",
    "level": 70,
-   "territory": 801
+   "territory": 801,
+   "file": "alphascape-v4-0-normal"
   },
   {
    "id": 591,
    "name": "次元の狭間オメガ零式：アルファ編1",
+   "en": "Alphascape V1.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 802
+   "territory": 802,
+   "file": "alphascape-v1-0-savage"
   },
   {
    "id": 592,
    "name": "次元の狭間オメガ零式：アルファ編2",
+   "en": "Alphascape V2.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 803
+   "territory": 803,
+   "file": "alphascape-v2-0-savage"
   },
   {
    "id": 593,
    "name": "次元の狭間オメガ零式：アルファ編3",
+   "en": "Alphascape V3.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 804
+   "territory": 804,
+   "file": "alphascape-v3-0-savage"
   },
   {
    "id": 594,
    "name": "次元の狭間オメガ零式：アルファ編4",
+   "en": "Alphascape V4.0 (Savage)",
    "type": "レイド",
    "level": 70,
-   "territory": 805
+   "territory": 805,
+   "file": "alphascape-v4-0-savage"
   },
   {
    "id": 595,
    "name": "真ヨウジンボウ討滅戦",
+   "en": "Kugane Ohashi",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 806
+   "territory": 806,
+   "file": "kugane-ohashi-normal"
   },
   {
    "id": 596,
    "name": "朱雀征魂戦",
+   "en": "Hells' Kier",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 810
+   "territory": 810,
+   "file": "hells-kier-normal"
   },
   {
    "id": 597,
    "name": "極朱雀征魂戦",
+   "en": "Hells' Kier (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 811
+   "territory": 811,
+   "file": "hells-kier-extreme"
   },
   {
    "id": 636,
    "name": "楽欲の僧院 オーボンヌ",
+   "en": "the Orbonne Monastery",
    "type": "レイド",
    "level": 70,
-   "territory": 826
+   "territory": 826,
+   "file": "the-orbonne-monastery-normal"
   },
   {
    "id": 637,
    "name": "青龍征魂戦",
+   "en": "the Wreath of Snakes",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 824
+   "territory": 824,
+   "file": "the-wreath-of-snakes-normal"
   },
   {
    "id": 638,
    "name": "極青龍征魂戦",
+   "en": "the Wreath of Snakes (Extreme)",
    "type": "討伐・討滅戦",
    "level": 70,
-   "territory": 825
+   "territory": 825,
+   "file": "the-wreath-of-snakes-extreme"
   },
   {
    "id": 263,
    "name": "ラクシュミ討滅戦",
+   "en": "Emanation",
    "type": "討伐・討滅戦",
    "level": 67,
-   "territory": 719
+   "territory": 719,
+   "file": "emanation-normal"
   },
   {
    "id": 243,
    "name": "スサノオ討滅戦",
+   "en": "the Pool of Tribute",
    "type": "討伐・討滅戦",
    "level": 63,
-   "territory": 674
+   "territory": 674,
+   "file": "the-pool-of-tribute-normal"
   },
   {
    "id": 87,
    "name": "極ラーヴァナ討滅戦",
+   "en": "Thok ast Thok (Extreme)",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 446
+   "territory": 446,
+   "file": "thok-ast-thok-extreme"
   },
   {
    "id": 89,
    "name": "極ビスマルク討滅戦",
+   "en": "the Limitless Blue (Extreme)",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 447
+   "territory": 447,
+   "file": "the-limitless-blue-extreme"
   },
   {
    "id": 90,
    "name": "ナイツ・オブ・ラウンド討滅戦",
+   "en": "the Singularity Reactor",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 437
+   "territory": 437,
+   "file": "the-singularity-reactor-normal"
   },
   {
    "id": 91,
    "name": "蒼天幻想 ナイツ・オブ・ラウンド討滅戦",
+   "en": "the Minstrel's Ballad: Thordan's Reign",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 448
+   "territory": 448,
+   "file": "thordans-reign-extreme"
   },
   {
    "id": 112,
    "name": "機工城アレキサンダー：起動編1",
+   "en": "Alexander - The Fist of the Father",
    "type": "レイド",
    "level": 60,
-   "territory": 442
+   "territory": 442,
+   "file": "alexander-the-fist-of-the-father-normal"
   },
   {
    "id": 113,
    "name": "機工城アレキサンダー：起動編2",
+   "en": "Alexander - The Cuff of the Father",
    "type": "レイド",
    "level": 60,
-   "territory": 443
+   "territory": 443,
+   "file": "alexander-the-cuff-of-the-father-normal"
   },
   {
    "id": 114,
    "name": "機工城アレキサンダー：起動編3",
+   "en": "Alexander - The Arm of the Father",
    "type": "レイド",
    "level": 60,
-   "territory": 444
+   "territory": 444,
+   "file": "alexander-the-arm-of-the-father-normal"
   },
   {
    "id": 115,
    "name": "機工城アレキサンダー：起動編4",
+   "en": "Alexander - The Burden of the Father",
    "type": "レイド",
    "level": 60,
-   "territory": 445
+   "territory": 445,
+   "file": "alexander-the-burden-of-the-father-normal"
   },
   {
    "id": 116,
    "name": "機工城アレキサンダー零式：起動編1",
+   "en": "Alexander - The Fist of the Father (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 449
+   "territory": 449,
+   "file": "alexander-the-fist-of-the-father-savage"
   },
   {
    "id": 117,
    "name": "機工城アレキサンダー零式：起動編2",
+   "en": "Alexander - The Cuff of the Father (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 450
+   "territory": 450,
+   "file": "alexander-the-cuff-of-the-father-savage"
   },
   {
    "id": 118,
    "name": "機工城アレキサンダー零式：起動編3",
+   "en": "Alexander - The Arm of the Father (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 451
+   "territory": 451,
+   "file": "alexander-the-arm-of-the-father-savage"
   },
   {
    "id": 119,
    "name": "機工城アレキサンダー零式：起動編4",
+   "en": "Alexander - The Burden of the Father (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 452
+   "territory": 452,
+   "file": "alexander-the-burden-of-the-father-savage"
   },
   {
    "id": 120,
    "name": "魔航船ヴォイドアーク",
+   "en": "the Void Ark",
    "type": "レイド",
    "level": 60,
-   "territory": 508
+   "territory": 508,
+   "file": "the-void-ark-normal"
   },
   {
    "id": 134,
    "name": "魔神セフィロト討滅戦",
+   "en": "Containment Bay S1T7",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 517
+   "territory": 517,
+   "file": "containment-bay-s1t7-normal"
   },
   {
    "id": 135,
    "name": "極魔神セフィロト討滅戦",
+   "en": "Containment Bay S1T7 (Extreme)",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 524
+   "territory": 524,
+   "file": "containment-bay-s1t7-extreme"
   },
   {
    "id": 136,
    "name": "機工城アレキサンダー：律動編1",
+   "en": "Alexander - The Fist of the Son",
    "type": "レイド",
    "level": 60,
-   "territory": 520
+   "territory": 520,
+   "file": "alexander-the-fist-of-the-son-normal"
   },
   {
    "id": 137,
    "name": "機工城アレキサンダー：律動編2",
+   "en": "Alexander - The Cuff of the Son",
    "type": "レイド",
    "level": 60,
-   "territory": 521
+   "territory": 521,
+   "file": "alexander-the-cuff-of-the-son-normal"
   },
   {
    "id": 138,
    "name": "機工城アレキサンダー：律動編3",
+   "en": "Alexander - The Arm of the Son",
    "type": "レイド",
    "level": 60,
-   "territory": 522
+   "territory": 522,
+   "file": "alexander-the-arm-of-the-son-normal"
   },
   {
    "id": 139,
    "name": "機工城アレキサンダー：律動編4",
+   "en": "Alexander - The Burden of the Son",
    "type": "レイド",
    "level": 60,
-   "territory": 523
+   "territory": 523,
+   "file": "alexander-the-burden-of-the-son-normal"
   },
   {
    "id": 147,
    "name": "機工城アレキサンダー零式：律動編1",
+   "en": "Alexander - The Fist of the Son (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 529
+   "territory": 529,
+   "file": "alexander-the-fist-of-the-son-savage"
   },
   {
    "id": 148,
    "name": "機工城アレキサンダー零式：律動編2",
+   "en": "Alexander - The Cuff of the Son (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 530
+   "territory": 530,
+   "file": "alexander-the-cuff-of-the-son-savage"
   },
   {
    "id": 149,
    "name": "機工城アレキサンダー零式：律動編3",
+   "en": "Alexander - The Arm of the Son (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 531
+   "territory": 531,
+   "file": "alexander-the-arm-of-the-son-savage"
   },
   {
    "id": 150,
    "name": "機工城アレキサンダー零式：律動編4",
+   "en": "Alexander - The Burden of the Son (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 532
+   "territory": 532,
+   "file": "alexander-the-burden-of-the-son-savage"
   },
   {
    "id": 168,
    "name": "禁忌都市マハ",
+   "en": "the Weeping City of Mhach",
    "type": "レイド",
    "level": 60,
-   "territory": 556
+   "territory": 556,
+   "file": "the-weeping-city-of-mhach-normal"
   },
   {
    "id": 169,
    "name": "ニーズヘッグ征竜戦",
+   "en": "the Final Steps of Faith",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 559
+   "territory": 559,
+   "file": "the-final-steps-of-faith-normal"
   },
   {
    "id": 170,
    "name": "極ニーズヘッグ征竜戦",
+   "en": "the Minstrel's Ballad: Nidhogg's Rage",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 566
+   "territory": 566,
+   "file": "nidhoggs-rage-extreme"
   },
   {
    "id": 183,
    "name": "女神ソフィア討滅戦",
+   "en": "Containment Bay P1T6",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 576
+   "territory": 576,
+   "file": "containment-bay-p1t6-normal"
   },
   {
    "id": 184,
    "name": "極女神ソフィア討滅戦",
+   "en": "Containment Bay P1T6 (Extreme)",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 577
+   "territory": 577,
+   "file": "containment-bay-p1t6-extreme"
   },
   {
    "id": 186,
    "name": "機工城アレキサンダー：天動編1",
+   "en": "Alexander - The Eyes of the Creator",
    "type": "レイド",
    "level": 60,
-   "territory": 580
+   "territory": 580,
+   "file": "alexander-the-eyes-of-the-creator-normal"
   },
   {
    "id": 187,
    "name": "機工城アレキサンダー：天動編2",
+   "en": "Alexander - The Breath of the Creator",
    "type": "レイド",
    "level": 60,
-   "territory": 581
+   "territory": 581,
+   "file": "alexander-the-breath-of-the-creator-normal"
   },
   {
    "id": 188,
    "name": "機工城アレキサンダー：天動編3",
+   "en": "Alexander - The Heart of the Creator",
    "type": "レイド",
    "level": 60,
-   "territory": 582
+   "territory": 582,
+   "file": "alexander-the-heart-of-the-creator-normal"
   },
   {
    "id": 189,
    "name": "機工城アレキサンダー：天動編4",
+   "en": "Alexander - The Soul of the Creator",
    "type": "レイド",
    "level": 60,
-   "territory": 583
+   "territory": 583,
+   "file": "alexander-the-soul-of-the-creator-normal"
   },
   {
    "id": 190,
    "name": "機工城アレキサンダー零式：天動編1",
+   "en": "Alexander - The Eyes of the Creator (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 584
+   "territory": 584,
+   "file": "alexander-the-eyes-of-the-creator-savage"
   },
   {
    "id": 191,
    "name": "機工城アレキサンダー零式：天動編2",
+   "en": "Alexander - The Breath of the Creator (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 585
+   "territory": 585,
+   "file": "alexander-the-breath-of-the-creator-savage"
   },
   {
    "id": 192,
    "name": "機工城アレキサンダー零式：天動編3",
+   "en": "Alexander - The Heart of the Creator (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 586
+   "territory": 586,
+   "file": "alexander-the-heart-of-the-creator-savage"
   },
   {
    "id": 193,
    "name": "機工城アレキサンダー零式：天動編4",
+   "en": "Alexander - The Soul of the Creator (Savage)",
    "type": "レイド",
    "level": 60,
-   "territory": 587
+   "territory": 587,
+   "file": "alexander-the-soul-of-the-creator-savage"
   },
   {
    "id": 220,
    "name": "影の国ダン・スカー",
+   "en": "Dun Scaith",
    "type": "レイド",
    "level": 60,
-   "territory": 627
+   "territory": 627,
+   "file": "dun-scaith-normal"
   },
   {
    "id": 223,
    "name": "鬼神ズルワーン討滅戦",
+   "en": "Containment Bay Z1T9",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 637
+   "territory": 637,
+   "file": "containment-bay-z1t9-normal"
   },
   {
    "id": 224,
    "name": "極鬼神ズルワーン討滅戦",
+   "en": "Containment Bay Z1T9 (Extreme)",
    "type": "討伐・討滅戦",
    "level": 60,
-   "territory": 638
+   "territory": 638,
+   "file": "containment-bay-z1t9-extreme"
   },
   {
    "id": 88,
    "name": "真ビスマルク討滅戦",
+   "en": "the Limitless Blue (Hard)",
    "type": "討伐・討滅戦",
    "level": 57,
-   "territory": 436
+   "territory": 436,
+   "file": "the-limitless-blue-hard"
   },
   {
    "id": 86,
    "name": "真ラーヴァナ討滅戦",
+   "en": "Thok ast Thok (Hard)",
    "type": "討伐・討滅戦",
    "level": 53,
-   "territory": 432
+   "territory": 432,
+   "file": "thok-ast-thok-hard"
   },
   {
    "id": 59,
    "name": "真イフリート討滅戦",
+   "en": "the Bowl of Embers (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 292
+   "territory": 292,
+   "file": "the-bowl-of-embers-hard"
   },
   {
    "id": 60,
    "name": "真タイタン討滅戦",
+   "en": "the Navel (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 293
+   "territory": 293,
+   "file": "the-navel-hard"
   },
   {
    "id": 61,
    "name": "真ガルーダ討滅戦",
+   "en": "the Howling Eye (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 294
+   "territory": 294,
+   "file": "the-howling-eye-hard"
   },
   {
    "id": 63,
    "name": "極イフリート討滅戦",
+   "en": "the Bowl of Embers (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 295
+   "territory": 295,
+   "file": "the-bowl-of-embers-extreme"
   },
   {
    "id": 64,
    "name": "極タイタン討滅戦",
+   "en": "the Navel (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 296
+   "territory": 296,
+   "file": "the-navel-extreme"
   },
   {
    "id": 65,
    "name": "極ガルーダ討滅戦",
+   "en": "the Howling Eye (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 297
+   "territory": 297,
+   "file": "the-howling-eye-extreme"
   },
   {
    "id": 66,
    "name": "善王モグル・モグXII世討滅戦",
+   "en": "Thornmarch (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 1067
+   "territory": 1067,
+   "file": "thornmarch-hard"
   },
   {
    "id": 67,
    "name": "極王モグル・モグXII世討滅戦",
+   "en": "Thornmarch (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 364
+   "territory": 364,
+   "file": "thornmarch-extreme"
   },
   {
    "id": 68,
    "name": "究極幻想 アルテマウェポン破壊作戦",
+   "en": "the Minstrel's Ballad: Ultima's Bane",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 348
+   "territory": 348,
+   "file": "ultimas-bane-extreme"
   },
   {
    "id": 72,
    "name": "真リヴァイアサン討滅戦",
+   "en": "the Whorleater (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 281
+   "territory": 281,
+   "file": "the-whorleater-hard"
   },
   {
    "id": 73,
    "name": "極リヴァイアサン討滅戦",
+   "en": "the Whorleater (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 359
+   "territory": 359,
+   "file": "the-whorleater-extreme"
   },
   {
    "id": 74,
    "name": "ドルムキマイラ討伐戦",
+   "en": "A Relic Reborn: the Chimera",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 368
+   "territory": 368,
+   "file": "a-relic-reborn-the-chimera-normal"
   },
   {
    "id": 75,
    "name": "ハイドラ討伐戦",
+   "en": "A Relic Reborn: the Hydra",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 369
+   "territory": 369,
+   "file": "a-relic-reborn-the-hydra-normal"
   },
   {
    "id": 76,
    "name": "ギルガメッシュ討伐戦",
+   "en": "Battle on the Big Bridge",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 366
+   "territory": 366,
+   "file": "battle-on-the-big-bridge-normal"
   },
   {
    "id": 77,
    "name": "真ラムウ討滅戦",
+   "en": "the Striking Tree (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 374
+   "territory": 374,
+   "file": "the-striking-tree-hard"
   },
   {
    "id": 78,
    "name": "極ラムウ討滅戦",
+   "en": "the Striking Tree (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 375
+   "territory": 375,
+   "file": "the-striking-tree-extreme"
   },
   {
    "id": 79,
    "name": "真シヴァ討滅戦",
+   "en": "the Akh Afah Amphitheatre (Hard)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 377
+   "territory": 377,
+   "file": "the-akh-afah-amphitheatre-hard"
   },
   {
    "id": 80,
    "name": "極シヴァ討滅戦",
+   "en": "the Akh Afah Amphitheatre (Extreme)",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 378
+   "territory": 378,
+   "file": "the-akh-afah-amphitheatre-extreme"
   },
   {
    "id": 81,
    "name": "アマジナ杯闘技会決勝戦",
+   "en": "the Dragon's Neck",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 142
+   "territory": 142,
+   "file": "the-dragons-neck-normal"
   },
   {
    "id": 82,
    "name": "闘神オーディン討滅戦",
+   "en": "Urth's Fount",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 394
+   "territory": 394,
+   "file": "urths-fount-normal"
   },
   {
    "id": 84,
    "name": "アシエン・ナプリアレス討伐戦",
+   "en": "the Chrysalis",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 426
+   "territory": 426,
+   "file": "the-chrysalis-normal"
   },
   {
    "id": 85,
    "name": "真ギルガメッシュ討滅戦",
+   "en": "Battle in the Big Keep",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 396
+   "territory": 396,
+   "file": "battle-in-the-big-keep-normal"
   },
   {
    "id": 92,
    "name": "クリスタルタワー：古代の民の迷宮",
+   "en": "the Labyrinth of the Ancients",
    "type": "レイド",
    "level": 50,
-   "territory": 174
+   "territory": 174,
+   "file": "the-labyrinth-of-the-ancients-normal"
   },
   {
    "id": 93,
    "name": "大迷宮バハムート：邂逅編1",
+   "en": "the Binding Coil of Bahamut - Turn 1",
    "type": "レイド",
    "level": 50,
-   "territory": 241
+   "territory": 241,
+   "file": "the-binding-coil-of-bahamut-turn-1-normal"
   },
   {
    "id": 94,
    "name": "大迷宮バハムート：邂逅編2",
+   "en": "the Binding Coil of Bahamut - Turn 2",
    "type": "レイド",
    "level": 50,
-   "territory": 242
+   "territory": 242,
+   "file": "the-binding-coil-of-bahamut-turn-2-normal"
   },
   {
    "id": 95,
    "name": "大迷宮バハムート：邂逅編3",
+   "en": "the Binding Coil of Bahamut - Turn 3",
    "type": "レイド",
    "level": 50,
-   "territory": 243
+   "territory": 243,
+   "file": "the-binding-coil-of-bahamut-turn-3-normal"
   },
   {
    "id": 96,
    "name": "大迷宮バハムート：邂逅編4",
+   "en": "the Binding Coil of Bahamut - Turn 4",
    "type": "レイド",
    "level": 50,
-   "territory": 244
+   "territory": 244,
+   "file": "the-binding-coil-of-bahamut-turn-4-normal"
   },
   {
    "id": 97,
    "name": "大迷宮バハムート：邂逅編5",
+   "en": "the Binding Coil of Bahamut - Turn 5",
    "type": "レイド",
    "level": 50,
-   "territory": 245
+   "territory": 245,
+   "file": "the-binding-coil-of-bahamut-turn-5-normal"
   },
   {
    "id": 98,
    "name": "大迷宮バハムート：侵攻編1",
+   "en": "the Second Coil of Bahamut - Turn 1",
    "type": "レイド",
    "level": 50,
-   "territory": 355
+   "territory": 355,
+   "file": "the-second-coil-of-bahamut-turn-1-normal"
   },
   {
    "id": 99,
    "name": "大迷宮バハムート：侵攻編2",
+   "en": "the Second Coil of Bahamut - Turn 2",
    "type": "レイド",
    "level": 50,
-   "territory": 356
+   "territory": 356,
+   "file": "the-second-coil-of-bahamut-turn-2-normal"
   },
   {
    "id": 100,
    "name": "大迷宮バハムート：侵攻編3",
+   "en": "the Second Coil of Bahamut - Turn 3",
    "type": "レイド",
    "level": 50,
-   "territory": 357
+   "territory": 357,
+   "file": "the-second-coil-of-bahamut-turn-3-normal"
   },
   {
    "id": 101,
    "name": "大迷宮バハムート：侵攻編4",
+   "en": "the Second Coil of Bahamut - Turn 4",
    "type": "レイド",
    "level": 50,
-   "territory": 358
+   "territory": 358,
+   "file": "the-second-coil-of-bahamut-turn-4-normal"
   },
   {
    "id": 102,
    "name": "クリスタルタワー：シルクスの塔",
+   "en": "Syrcus Tower",
    "type": "レイド",
    "level": 50,
-   "territory": 372
+   "territory": 372,
+   "file": "syrcus-tower-normal"
   },
   {
    "id": 103,
    "name": "大迷宮バハムート零式：侵攻編1",
+   "en": "the Second Coil of Bahamut (Savage) - Turn 1",
    "type": "レイド",
    "level": 50,
-   "territory": 380
+   "territory": 380,
+   "file": "the-second-coil-of-bahamut-turn-1-savage"
   },
   {
    "id": 104,
    "name": "大迷宮バハムート零式：侵攻編2",
+   "en": "the Second Coil of Bahamut (Savage) - Turn 2",
    "type": "レイド",
    "level": 50,
-   "territory": 381
+   "territory": 381,
+   "file": "the-second-coil-of-bahamut-turn-2-savage"
   },
   {
    "id": 105,
    "name": "大迷宮バハムート零式：侵攻編3",
+   "en": "the Second Coil of Bahamut (Savage) - Turn 3",
    "type": "レイド",
    "level": 50,
-   "territory": 382
+   "territory": 382,
+   "file": "the-second-coil-of-bahamut-turn-3-savage"
   },
   {
    "id": 106,
    "name": "大迷宮バハムート零式：侵攻編4",
+   "en": "the Second Coil of Bahamut (Savage) - Turn 4",
    "type": "レイド",
    "level": 50,
-   "territory": 383
+   "territory": 383,
+   "file": "the-second-coil-of-bahamut-turn-4-savage"
   },
   {
    "id": 107,
    "name": "大迷宮バハムート：真成編1",
+   "en": "the Final Coil of Bahamut - Turn 1",
    "type": "レイド",
    "level": 50,
-   "territory": 193
+   "territory": 193,
+   "file": "the-final-coil-of-bahamut-turn-1-normal"
   },
   {
    "id": 108,
    "name": "大迷宮バハムート：真成編2",
+   "en": "the Final Coil of Bahamut - Turn 2",
    "type": "レイド",
    "level": 50,
-   "territory": 194
+   "territory": 194,
+   "file": "the-final-coil-of-bahamut-turn-2-normal"
   },
   {
    "id": 109,
    "name": "大迷宮バハムート：真成編3",
+   "en": "the Final Coil of Bahamut - Turn 3",
    "type": "レイド",
    "level": 50,
-   "territory": 195
+   "territory": 195,
+   "file": "the-final-coil-of-bahamut-turn-3-normal"
   },
   {
    "id": 110,
    "name": "大迷宮バハムート：真成編4",
+   "en": "the Final Coil of Bahamut - Turn 4",
    "type": "レイド",
    "level": 50,
-   "territory": 196
+   "territory": 196,
+   "file": "the-final-coil-of-bahamut-turn-4-normal"
   },
   {
    "id": 111,
    "name": "クリスタルタワー：闇の世界",
+   "en": "the World of Darkness",
    "type": "レイド",
    "level": 50,
-   "territory": 151
+   "territory": 151,
+   "file": "the-world-of-darkness-normal"
   },
   {
    "id": 830,
    "name": "アルテマウェポン破壊作戦",
+   "en": "the Porta Decumana",
    "type": "討伐・討滅戦",
    "level": 50,
-   "territory": 1048
+   "territory": 1048,
+   "file": "the-porta-decumana-normal"
   },
   {
    "id": 58,
    "name": "ガルーダ討伐戦",
+   "en": "the Howling Eye",
    "type": "討伐・討滅戦",
    "level": 44,
-   "territory": 1047
+   "territory": 1047,
+   "file": "the-howling-eye-normal"
   },
   {
    "id": 57,
    "name": "タイタン討伐戦",
+   "en": "the Navel",
    "type": "討伐・討滅戦",
    "level": 34,
-   "territory": 1046
+   "territory": 1046,
+   "file": "the-navel-normal"
   },
   {
    "id": 56,
    "name": "イフリート討伐戦",
+   "en": "the Bowl of Embers",
    "type": "討伐・討滅戦",
    "level": 20,
-   "territory": 1045
+   "territory": 1045,
+   "file": "the-bowl-of-embers-normal"
   }
  ]
 }
