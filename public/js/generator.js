@@ -1,7 +1,7 @@
 // FFLogs のレポートからタイムラインの XML を作る画面。通信はすべてブラウザから FFLogs へ直接行う。
 import './storage-migrate.js';
 import { FFLogsClient, parseReportUrl, loadReport, loadEnemyCasts } from './fflogs-api.js';
-import { buildTimeline, summarizeEnemies } from './fflogs-timeline.js';
+import { buildTimeline, summarizeEnemies, defaultEnemyIds, mergeParts } from './fflogs-timeline.js';
 import { toTimelineXml } from './timeline-xml.js';
 
 const STORE_KEYS = 'castline.fflogs-keys'; // { id, secret }（このブラウザにだけ保存する）
@@ -16,6 +16,9 @@ const state = {
     events: null,
     xml: '',
     fileName: '',
+    // 前半・後半のように別の戦闘に分かれたコンテンツで、先に作って保持しているパート { timeline, code, fightId }
+    parts: [],
+    current: null, // いま作ったパート（保持する候補）
 };
 
 function load(key, fallback) {
@@ -74,6 +77,11 @@ async function loadReportFromUrl() {
         return;
     }
     setStatus('report-status', '読み込み中…');
+    // 前のレポートの戦闘と結果を消す（読み込みが終わるまで古い内容で作れないように）
+    $('fight-section').hidden = true;
+    $('result-section').hidden = true;
+    setStatus('fight-status', '');
+    state.events = null;
     $('report-load').disabled = true;
     try {
         state.code = parsed.code;
@@ -123,11 +131,12 @@ async function loadFight() {
 }
 
 function renderEnemies(enemies, fight) {
+    const defaults = defaultEnemyIds(enemies, fight.name);
     $('enemy-list').replaceChildren(...enemies.map((e) => {
         const label = document.createElement('label');
         const box = Object.assign(document.createElement('input'), { type: 'checkbox', value: String(e.id) });
-        // 既定は戦闘名と同じ名前の敵（ボス本体）
-        box.checked = e.name === fight.name;
+        // 既定はボス本体（defaultEnemyIds）
+        box.checked = defaults.has(e.id);
         label.append(box, ` ${e.name}（詠唱 ${e.casts}・詠唱なし ${e.instants}）`);
         const li = document.createElement('li');
         li.append(label);
@@ -137,6 +146,11 @@ function renderEnemies(enemies, fight) {
 
 // ── 生成 ──
 function generate() {
+    $('result-section').hidden = true;
+    if (!state.events) {
+        setStatus('fight-status', '敵の詠唱を読み込んでから作ってください。', 'ng');
+        return;
+    }
     const content = $('content-input').value.trim();
     if (!content) {
         setStatus('fight-status', 'コンテンツ名を入れてください（画面の「コンテンツ情報」の表記どおり）。', 'ng');
@@ -160,15 +174,61 @@ function generate() {
         phaseNames,
         includeInstant: $('include-instant').checked,
         title: `${content}（FFLogs から生成）`,
-        note: `FFLogs のレポート ${state.code} の戦闘 #${fight.id}（${fight.kill ? '討伐' : 'ワイプ'}、${fmtSeconds(fight.endTime - fight.startTime)}）から ${today} に生成。`
+        // レポートの番号は入れない（2026-10-20 のユーザーの指示）
+        note: `FFLogs の${fight.kill ? '討伐' : 'ワイプ'}の記録（${fmtSeconds(fight.endTime - fight.startTime)}）から ${today} に生成。`
             + 't は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ）',
     });
-    state.xml = toTimelineXml(timeline);
-    state.fileName = `${content.replace(/[\\/:*?"<>|：]/g, '_')}_${state.code}_${fight.id}.xml`;
+    state.current = { timeline, code: state.code, fightId: fight.id };
+    let result = timeline;
+    if (state.parts.length > 0) {
+        const all = [...state.parts, state.current];
+        if (all.some((p) => p.timeline.content !== content)) {
+            setStatus('fight-status', `保持しているパートとコンテンツ名が違います（${state.parts[0].timeline.content}）。同じコンテンツの戦闘を選ぶか、保持を消してください。`, 'ng');
+            return;
+        }
+        const labels = all.length === 2 ? ['前半', '後半'] : all.map((_, i) => `パート${i + 1}`);
+        const merged = mergeParts(all.map((p, i) => ({ label: labels[i], timeline: p.timeline })), {
+            content,
+            title: `${content}（FFLogs から生成、${labels.join('・')}）`,
+            note: all.map((p, i) => `${labels[i]}: ${p.timeline.note}`).join(' ／ '),
+        });
+        if (!merged.timeline) {
+            setStatus('fight-status', merged.error, 'ng');
+            return;
+        }
+        result = merged.timeline;
+    }
+    state.xml = toTimelineXml(result);
+    // ファイル名もコンテンツ名だけ（同じコンテンツを作り直すと、再生画面の手元のファイルは置き換わる）
+    state.fileName = `${content.replace(/[\\/:*?"<>|：]/g, '_')}.xml`;
     $('xml-output').value = state.xml;
-    renderPreview(timeline);
+    renderPreview(result);
     $('result-section').hidden = false;
-    setStatus('result-status', `予定 ${timeline.phases.reduce((n, p) => n + p.entries.length, 0)} 件、フェーズ ${timeline.phases.length} 件のタイムラインを作りました。`, 'ok');
+    setStatus('result-status', `予定 ${result.phases.reduce((n, p) => n + p.entries.length, 0)} 件、フェーズ ${result.phases.length} 件のタイムラインを作りました。`, 'ok');
+}
+
+// 前半・後半のように別の戦闘に分かれたコンテンツ: いま作ったものを保持し、もう一方の戦闘を読み込んでもらう
+function keepPart() {
+    if (!state.current) {
+        return;
+    }
+    state.parts.push(state.current);
+    state.current = null;
+    renderParts();
+    $('result-section').hidden = true;
+    setStatus('report-status', 'もう一方（後半など）の戦闘のレポートを読み込み、「タイムラインを作る」を押すと、保持したものと 1 つにまとめます。', 'ok');
+}
+
+function clearParts() {
+    state.parts = [];
+    renderParts();
+}
+
+function renderParts() {
+    $('parts-status').textContent = state.parts.length === 0
+        ? ''
+        : `保持中: ${state.parts.map((p, i) => `${i + 1}. ${p.timeline.content}（${p.code} #${p.fightId}、予定 ${p.timeline.phases.reduce((n, ph) => n + ph.entries.length, 0)} 件）`).join(' ／ ')}`;
+    $('parts-clear').hidden = state.parts.length === 0;
 }
 
 function renderPreview(timeline) {
@@ -229,6 +289,8 @@ async function init() {
     $('generate').addEventListener('click', generate);
     $('download').addEventListener('click', download);
     $('use-in-player').addEventListener('click', useInPlayer);
+    $('part-keep').addEventListener('click', keepPart);
+    $('parts-clear').addEventListener('click', clearParts);
     try {
         state.contents = (await (await fetch('data/contents.json')).json()).contents;
     } catch {

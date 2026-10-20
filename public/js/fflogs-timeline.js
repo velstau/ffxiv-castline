@@ -127,3 +127,53 @@ export function buildTimeline({ fight, actors, abilities, events, sourceIDs, con
         phases: phases.map(({ start, ...p }) => p),
     };
 }
+
+/**
+ * 予定に入れる敵の既定。戦闘名と同じ名前の敵（ボス本体）。戦闘名が英語のまま等で見つからなければ、
+ * 最も詠唱の多い敵と、その 3 割以上詠唱する敵（2 体で戦うボス。ヘビー級2 のレッドホットとディープブルーは 41 件ずつ）
+ */
+export function defaultEnemyIds(enemies, fightName) {
+    const named = enemies.filter((e) => e.name === fightName);
+    if (named.length > 0) {
+        return new Set(named.map((e) => e.id));
+    }
+    const most = Math.max(0, ...enemies.map((e) => e.casts));
+    return new Set(enemies.filter((e) => most > 0 && e.casts >= most * 0.3).map((e) => e.id));
+}
+
+const BRANCH_CASTS = 2; // 各パートの最初の何個の詠唱で、どのパートかを判定するか（1 つ目を読み逃しても 2 つ目で入れる）
+
+/**
+ * 前半・後半のように別の戦闘に分かれたコンテンツ（ヘビー級4 など）を 1 つのタイムラインにまとめる。
+ * 先頭に予定の無い「開始待ち」フェーズを置き、各パートの最初の詠唱で、そのパートの最初のフェーズへ移る。
+ * @param {{label:string, timeline:object}[]} parts
+ * @returns {{timeline:object|null, error:string|null}}
+ */
+export function mergeParts(parts, { content, title, note }) {
+    const firsts = parts.map((part) => part.timeline.phases[0].entries.filter((e) => e.sync !== false).slice(0, BRANCH_CASTS));
+    const count = new Map();
+    for (const name of firsts.flatMap((list) => [...new Set(list.map((e) => e.name))])) {
+        count.set(name, (count.get(name) ?? 0) + 1);
+    }
+    const start = { id: 'start', name: '開始待ち', entries: [], next: [] };
+    const phases = [start];
+    for (const [i, part] of parts.entries()) {
+        const prefix = `${String.fromCharCode(97 + i)}-`; // a-, b-, …
+        // ほかのパートの最初にも出てくる技では判定できない
+        const rules = firsts[i].filter((e) => count.get(e.name) === 1)
+            .map((e) => ({ to: `${prefix}${part.timeline.phases[0].id}`, at: e.t, when: { cast: e.name } }));
+        if (rules.length === 0) {
+            return { timeline: null, error: `「${part.label}」の最初の詠唱がほかのパートと同じなので、どちらのパートか判定できません` };
+        }
+        start.next.push(...rules);
+        for (const phase of part.timeline.phases) {
+            phases.push({
+                ...phase,
+                id: `${prefix}${phase.id}`,
+                name: phase.name ? `${part.label} ${phase.name}` : part.label,
+                ...(phase.next ? { next: phase.next.map((r) => ({ ...r, to: `${prefix}${r.to}` })) } : {}),
+            });
+        }
+    }
+    return { timeline: { format: 'castline/1', content, title, note, phases }, error: null };
+}

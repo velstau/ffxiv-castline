@@ -82,3 +82,36 @@ test('XML: 記号を escape し、詠唱時間 0 と既定値は書かない', (
     assert.match(xml, /<entry t="2" duration="3" name="y" window="5 5"\/>/);
     assert.match(xml, /<next to="p1" hp-lost="3"\/>/);
 });
+
+test('既定の敵: 戦闘名と同じ名前の敵。無ければ詠唱の多い敵とその 3 割以上の敵', async () => {
+    const { defaultEnemyIds } = await import('../public/js/fflogs-timeline.js');
+    const enemies = [{ id: 1, name: 'レッドホット', casts: 41 }, { id: 2, name: 'ディープブルー', casts: 41 }, { id: 3, name: '水牢', casts: 6 }];
+    assert.deepEqual([...defaultEnemyIds(enemies, 'Red Hot and Deep Blue')], [1, 2]);
+    assert.deepEqual([...defaultEnemyIds(enemies, '水牢')], [3]);
+    assert.deepEqual([...defaultEnemyIds([], 'x')], []);
+});
+
+test('前後半をまとめる: 最初の詠唱で判定し、エンジンはその詠唱でそのパートへ移る', async () => {
+    const { mergeParts } = await import('../public/js/fflogs-timeline.js');
+    const { TimelineEngine } = await import('../public/js/timeline-engine.js');
+    const part = (names) => ({ format: 'castline/1', content: 'c', phases: [{ id: 'p1', entries: names.map(([t, name]) => ({ t, duration: 3, name })) }] });
+    const first = part([[10.9, 'フィクサー・オブ・アルカディア'], [29.3, 'リーサルスカージ']]);
+    const second = part([[11.0, 'アルカディアン・フレイム'], [25.4, 'レプリケーション'], [40.7, 'スネークキック']]);
+    const { timeline, error } = mergeParts([{ label: '前半', timeline: first }, { label: '後半', timeline: second }], { content: 'c', title: 't', note: 'n' });
+    assert.equal(error, null);
+    assert.deepEqual(validateTimeline(timeline), []);
+    assert.deepEqual(timeline.phases.map((p) => [p.id, p.name]), [['start', '開始待ち'], ['a-p1', '前半'], ['b-p1', '後半']]);
+    assert.deepEqual(timeline.phases[0].next.map((r) => [r.to, r.at, r.when.cast]), [
+        ['a-p1', 10.9, 'フィクサー・オブ・アルカディア'], ['a-p1', 29.3, 'リーサルスカージ'],
+        ['b-p1', 11, 'アルカディアン・フレイム'], ['b-p1', 25.4, 'レプリケーション'],
+    ]);
+    const e = new TimelineEngine(timeline);
+    e.started(1000);
+    assert.ok(e.castCandidates(1000).includes('アルカディアン・フレイム'));
+    e.cast(1000 + 11500, 'アルカディアン・フレイム');
+    const s = e.status(1000 + 11500);
+    assert.equal(s.phase.id, 'b-p1');
+    assert.equal(s.phaseTime, 11);
+    // 最初の詠唱が同じパートどうしは判定できない
+    assert.match(mergeParts([{ label: 'A', timeline: first }, { label: 'B', timeline: first }], { content: 'c' }).error, /判定できません/);
+});

@@ -54,6 +54,10 @@
             <button type="button" id="generate">タイムラインを作る</button>
         </div>
         <p id="fight-status" class="status" role="status"></p>
+        <div class="row">
+            <span id="parts-status" class="status"></span>
+            <button type="button" id="parts-clear" hidden>保持を消す</button>
+        </div>
     </section>
 
     <section aria-labelledby="h-result" id="result-section" hidden>
@@ -62,6 +66,9 @@
             <button type="button" id="download">XML を保存</button>
             <button type="button" id="use-in-player">再生画面の「手元のファイル」に入れる</button>
             <a href="player.html" style="color:var(--accent)">再生画面を開く</a>
+        </div>
+        <div class="row" style="margin-top:8px">
+            <button type="button" id="part-keep">前後半に分かれたコンテンツ: これを保持して、もう一方の戦闘を読み込む</button>
         </div>
         <p id="result-status" class="status" role="status"></p>
         <table>
