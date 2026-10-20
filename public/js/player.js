@@ -1,10 +1,10 @@
 // 再生画面: ゲーム画面を読み、タイムライン（これから来る技と発動までの秒）を流して読み上げる。
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
-import { TextDetector, TextRecognizer } from './ocr.js';
+import { OcrClient } from './ocr-client.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml, parseTimelineIndex } from './timeline-xml.js';
-import { readFrame, checkRegion, findContent, scanLines, tilesOf } from './screen-reader.js';
+import { tilesOf } from './screen-reader.js';
 import {
     countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
 } from './region-finder.js';
@@ -57,13 +57,8 @@ const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS
 const pip = new Pip();
 let editor = null; // 範囲の設定（RegionEditor）
 
-// 文字認識は 1 つずつ順に行う（読み取りの繰り返しと、範囲の設定の試し読み・自動判定が同じモデルを並行して使わないように）
-let ocrQueue = Promise.resolve();
-function withOcr(fn) {
-    const run = ocrQueue.then(fn);
-    ocrQueue = run.catch(() => {});
-    return run;
-}
+// 文字認識は別スレッド（ocr-client.js）で、依頼の届いた順に 1 つずつ行う。画面全体を読む自動の範囲指定も区画ごとに
+// 依頼するので、その間に読み取りの依頼が入れる
 
 // ── 保存（localStorage は使えない環境があるので、失敗しても動くようにする） ──
 function load(key, fallback) {
@@ -115,11 +110,11 @@ async function loadModel() {
                 setStatus('model-status', `文字認識のモデルをダウンロード中… ${(sumGot / 1e6).toFixed(1)} / ${(sumTotal / 1e6).toFixed(1)} MB`);
             }
         };
-        const [recognizer, detector] = await Promise.all([
-            TextRecognizer.load('models/ppocrv5_rec.onnx', 'models/ppocrv5_dict.txt', onProgress('rec')),
-            TextDetector.load('models/ppocrv5_det.onnx', onProgress('det')),
-        ]);
-        state.ocr = { recognizer, detector };
+        const url = (path) => new URL(path, location.href).href;
+        state.ocr = await OcrClient.load(
+            { rec: url('models/ppocrv5_rec.onnx'), dict: url('models/ppocrv5_dict.txt'), det: url('models/ppocrv5_det.onnx') },
+            (name, received, size) => onProgress(name)(received, size),
+        );
         progress.hidden = true;
         setStatus('model-status', '文字認識の準備ができました。', 'ok');
     } catch (e) {
@@ -339,8 +334,8 @@ async function findContentRegion() {
     const frame = editor.frame;
     $('regions-find').disabled = true;
     try {
-        const found = await withOcr(() => findContent(state.ocr, frame, state.contents,
-            (done, total) => setStatus('regions-status', `コンテンツ名を探しています… ${done}/${total}`)));
+        const found = await state.ocr.findContent(frame, state.contents,
+            (done, total) => setStatus('regions-status', `コンテンツ名を探しています… ${done}/${total}`));
         if (!found) {
             setStatus('regions-status', '見つかりませんでした。コンテンツの中で、画面に「コンテンツ情報」が出ている状態の画面で試してください。', 'ng');
             return;
@@ -373,6 +368,10 @@ function clearScreenRegions() {
     clearRegions(size.width, size.height);
     editor.refresh();
     log(`画面 ${key} の範囲を全部消しました`);
+    // 消した範囲で判定した戦闘の状態（ずれた範囲での誤った戦闘開始など）は当てにならないので、最初からにする
+    if (state.engine) {
+        reset();
+    }
     setStatus('regions-status', `画面 ${key} の範囲を全部消しました。${state.running && settings.autoRegions ? 'ゲーム画面に出たものから自動で探します。' : ''}`, 'ok');
     regionsChanged();
 }
@@ -490,12 +489,17 @@ async function tick({ bitmap: frame, at }) {
     if (wantContent) {
         state.lastContentAt = at;
     }
-    const obs = await withOcr(() => readFrame(state.ocr, frame, state.regions, {
+    const obs = await state.ocr.readFrame(frame, state.regions, {
         content: wantContent ? state.contents : null,
         countdown: !inCombat,
         // 技名は戦闘中だけ、いまの時刻の前後にある技に絞って照合する
         castCandidates: inCombat ? engine.castCandidates(at) : [],
-    }));
+    });
+    // 読んでいる間に範囲が変わった（消した・自動で指定した）ら、古い範囲で読んだ結果は使わない
+    // （消す前の範囲で読んだ「敵対リストあり」が、リセットのあとに戦闘開始として届くことがあった）
+    if (state.regionsKey !== key) {
+        return;
+    }
 
     if (wantContent && state.regions.content && !state.detectedContent && !state.contentMissWarned) {
         if (obs.content?.decided) {
@@ -552,8 +556,12 @@ const AUTO_FULL_EVERY_MS = 6000; // 画面全体を読む間隔（数秒かか�
 // 戦闘外の間隔。HP の % は殴ったあとにしか出ないので戦闘外は間を空けるが、止めはしない
 // （敵対リストもカウントダウンも無いと、殴っても戦闘になったと分からないため）
 const AUTO_FULL_IDLE_EVERY_MS = 15000;
-const AUTO_NEAR_EVERY_MS = 2000; // 詠唱バーだけ残ったら、HP の近くを短い間隔で読む（詠唱は数秒で消えるため）
-const auto = { lastContent: 0, lastFull: 0, lastNear: 0, enemyName: null };
+const AUTO_NEAR_EVERY_MS = 2000;
+// カウントダウンを探す間隔。戦闘中と判定していても探す（ずれた範囲で戦闘中と誤って判定していることがあるため。
+// 2026-10-21 実測: 古い敵対リストの範囲で戦闘開始になり、範囲を消したあとも戦闘中のままで、カウントダウンを探さなかった）
+const AUTO_COUNTDOWN_EVERY_MS = 1000;
+const AUTO_COUNTDOWN_COMBAT_EVERY_MS = 3000; // 詠唱バーだけ残ったら、HP の近くを短い間隔で読む（詠唱は数秒で消えるため）
+const auto = { lastContent: 0, lastFull: 0, lastNear: 0, lastCountdown: 0, enemyName: null };
 
 // タイムラインの技名のうち、詠唱バーに出るもの（詠唱のある技）
 function timelineCasts() {
@@ -569,7 +577,7 @@ function timelineCasts() {
 }
 
 async function autoFindLoop(source) {
-    Object.assign(auto, { lastContent: 0, lastFull: 0, lastNear: 0 });
+    Object.assign(auto, { lastContent: 0, lastFull: 0, lastNear: 0, lastCountdown: 0, enemyName: null });
     let nextAt = 0;
     while (state.running && state.source === source) {
         const grabbed = await source.grab(nextAt);
@@ -603,30 +611,34 @@ async function autoFindStep(frame, at, source) {
     };
     const status = state.engine?.status(at).state;
 
-    if (!regions.content && at - auto.lastContent >= AUTO_CONTENT_EVERY_MS) {
-        auto.lastContent = at;
-        const hit = await findContent(state.ocr, frame, state.contents, undefined, { lock: withOcr });
-        if (hit && live()) {
-            store('content', hit.rect, `コンテンツ名（${hit.name}）`);
-        }
-    }
-    if (!regions.countdown && status !== 'combat' && live()) {
-        const lines = await withOcr(() => scanLines(state.ocr, frame, countdownSearchArea(width, height)));
+    // カウントダウンは出ている時間が短い（15 秒ほど）ので、コンテンツ名より先に探す
+    if (!regions.countdown && live()
+        && at - auto.lastCountdown >= (status === 'combat' ? AUTO_COUNTDOWN_COMBAT_EVERY_MS : AUTO_COUNTDOWN_EVERY_MS)) {
+        auto.lastCountdown = at;
+        const lines = await state.ocr.scanLines(frame, countdownSearchArea(width, height));
         const line = findCountdownLine(lines);
         if (line && live()) {
             store('countdown', countdownRegionFrom(line, width, height), 'カウントダウン', line);
         }
     }
+    // カウントダウンを見つけた回とカウントダウン中は、ほかを探さない（文字認識を読み取りに空け、残り秒数を読み逃さない）
+    const countdownNow = found.length > 0 || status === 'countdown';
 
+    if (!countdownNow && !regions.content && at - auto.lastContent >= AUTO_CONTENT_EVERY_MS) {
+        auto.lastContent = at;
+        const hit = await state.ocr.findContent(frame, state.contents);
+        if (hit && live()) {
+            store('content', hit.rect, `コンテンツ名（${hit.name}）`);
+        }
+    }
     const casts = timelineCasts();
     const want = new Set(['hp', 'enmity', 'cast'].filter((id) => !regions[id] && (id !== 'cast' || casts.length > 0)));
-    // カウントダウン中は読み取りを優先する（開始の時刻を外さないため）
-    if (want.size > 0 && status !== 'countdown' && live()) {
+    if (want.size > 0 && !countdownNow && live()) {
         const longestCast = Math.max(1, ...casts.map((n) => [...n].length));
         let lines = null;
         if (want.size === 1 && want.has('cast') && regions.hp && at - auto.lastNear >= AUTO_NEAR_EVERY_MS) {
             auto.lastNear = at;
-            lines = await withOcr(() => scanLines(state.ocr, frame, castSearchAreaNear(regions.hp, width, height), casts));
+            lines = await state.ocr.scanLines(frame, castSearchAreaNear(regions.hp, width, height), casts);
         } else if (at - auto.lastFull >= (status === 'combat' || !state.engine ? AUTO_FULL_EVERY_MS : AUTO_FULL_IDLE_EVERY_MS)) {
             auto.lastFull = at;
             lines = [];
@@ -634,7 +646,7 @@ async function autoFindStep(frame, at, source) {
                 if (!live()) {
                     return;
                 }
-                const part = await withOcr(() => scanLines(state.ocr, frame, tile, want.has('cast') ? casts : []));
+                const part = await state.ocr.scanLines(frame, tile, want.has('cast') ? casts : []);
                 // 区画の重なりで同じ行を 2 回読んだものは 1 つにする
                 lines.push(...part.filter((l) => !lines.some((o) => o.text === l.text
                     && Math.abs(o.x - l.x) < l.h && Math.abs(o.y - l.y) < l.h / 2)));
@@ -819,7 +831,7 @@ async function init() {
     $('local-remove').addEventListener('click', removeLocal);
     editor = new RegionEditor($('region-editor'), {
         check: (id, rect, frame) => (state.ocr
-            ? withOcr(() => checkRegion(state.ocr, frame, id, rect, state.contents))
+            ? state.ocr.checkRegion(frame, id, rect, state.contents)
             : Promise.resolve({ ok: null, text: '文字認識のモデルを読み込み中です' })),
         onChange: regionsChanged,
     });

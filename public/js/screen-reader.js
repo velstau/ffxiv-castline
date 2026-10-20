@@ -101,23 +101,26 @@ export async function findContent(ocr, frame, names, onProgress = () => {}, { lo
     const tiles = tilesOf(frame);
     for (const [i, tile] of tiles.entries()) {
         onProgress(i, tiles.length);
-        const decided = await lock(async () => {
-            const boxes = (await ocr.detector.detect(frame, tile)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
-            for (const box of boxes) {
-                const read = await ocr.recognizer.read(frame, box);
-                const name = read.text === '' ? null : pickCandidate(ocr.recognizer, read, names).decided;
-                if (name) {
-                    return { name, box };
-                }
-            }
-            return null;
-        });
+        const decided = await lock(() => readContentLines(ocr, frame, tile, names));
         if (decided) {
             onProgress(tiles.length, tiles.length);
             return { ...decided, rect: contentRegionFrom(decided.box, decided.name, names, frame.width, frame.height) };
         }
     }
     onProgress(tiles.length, tiles.length);
+    return null;
+}
+
+/** 区画の中の行を順に読み、コンテンツ名に決まった最初の行を返す（findContent の 1 区画分） */
+export async function readContentLines(ocr, frame, area, names) {
+    const boxes = (await ocr.detector.detect(frame, area)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
+    for (const box of boxes) {
+        const read = await ocr.recognizer.read(frame, box);
+        const name = read.text === '' ? null : pickCandidate(ocr.recognizer, read, names).decided;
+        if (name) {
+            return { name, box: { x: box.x, y: box.y, w: box.w, h: box.h } };
+        }
+    }
     return null;
 }
 
