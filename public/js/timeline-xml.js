@@ -107,3 +107,30 @@ export function parseTimelineIndex(text) {
         .map((t) => ({ file: t.getAttribute('file'), content: t.getAttribute('content'), title: t.getAttribute('title') ?? t.getAttribute('file') }))
         .filter((t) => t.file && t.content);
 }
+
+const escapeXml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const xmlAttr = (name, value) => (value === undefined || value === null ? '' : ` ${name}="${escapeXml(Array.isArray(value) ? value.join(' ') : value)}"`);
+
+/** エンジンの形のタイムラインを XML にする（parseTimelineXml の逆） */
+export function toTimelineXml(timeline) {
+    const lines = ['<?xml version="1.0" encoding="utf-8"?>'];
+    lines.push(`<timeline${xmlAttr('format', timeline.format)}${xmlAttr('content', timeline.content)}${xmlAttr('title', timeline.title)}${xmlAttr('sync-window', timeline.syncWindow)}>`);
+    if (timeline.note) {
+        lines.push(`  <note>${escapeXml(timeline.note)}</note>`);
+    }
+    for (const phase of timeline.phases) {
+        lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
+        for (const e of phase.entries) {
+            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('duration', e.duration || undefined)}${xmlAttr('name', e.name)}`
+                + `${xmlAttr('label', e.label)}${xmlAttr('tts', e.tts)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('window', e.window)}/>`);
+        }
+        for (const rule of phase.next ?? []) {
+            const w = rule.when;
+            lines.push(`    <next${xmlAttr('to', rule.to)}${xmlAttr('at', rule.at)}${xmlAttr('cast', w.cast)}${xmlAttr('hp', w.hp)}`
+                + `${xmlAttr('time', w.time)}${xmlAttr('hp-lost', w.hpLost)}/>`);
+        }
+        lines.push('  </phase>');
+    }
+    lines.push('</timeline>', '');
+    return lines.join('\n');
+}

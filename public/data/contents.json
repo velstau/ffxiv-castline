@@ -1,1619 +1,1888 @@
 {
- "_readme": "コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号",
+ "_readme": "コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）",
  "contents": [
   {
    "id": 833,
    "name": "極ヴァリガルマンダ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1196
   },
   {
    "id": 984,
    "name": "エターナルクイーン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1202
   },
   {
    "id": 985,
    "name": "至天の座アルカディア：ライトヘビー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1225
   },
   {
    "id": 986,
    "name": "至天の座アルカディア零式：ライトヘビー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1226
   },
   {
    "id": 987,
    "name": "至天の座アルカディア：ライトヘビー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1227
   },
   {
    "id": 988,
    "name": "至天の座アルカディア零式：ライトヘビー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1228
   },
   {
    "id": 989,
    "name": "至天の座アルカディア：ライトヘビー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1229
   },
   {
    "id": 990,
    "name": "至天の座アルカディア零式：ライトヘビー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1230
   },
   {
    "id": 991,
    "name": "至天の座アルカディア：ライトヘビー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1231
   },
   {
    "id": 992,
    "name": "至天の座アルカディア零式：ライトヘビー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1232
   },
   {
    "id": 996,
    "name": "極ゾラージャ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1201
   },
   {
    "id": 1006,
    "name": "絶もうひとつの未来",
    "type": "絶レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1238
   },
   {
    "id": 1010,
    "name": "滅暗闇の雲激闘戦",
    "type": "滅アライアンスレイド",
-   "level": 100
+   "level": 100,
+   "territory": 1241
   },
   {
    "id": 1015,
    "name": "ジュノ：ザ・ファーストウォーク",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1248
   },
   {
    "id": 1017,
    "name": "極エターナルクイーン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1243
   },
   {
    "id": 1019,
    "name": "至天の座アルカディア：クルーザー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1256
   },
   {
    "id": 1020,
    "name": "至天の座アルカディア零式：クルーザー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1257
   },
   {
    "id": 1021,
    "name": "至天の座アルカディア：クルーザー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1258
   },
   {
    "id": 1022,
    "name": "至天の座アルカディア零式：クルーザー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1259
   },
   {
    "id": 1023,
    "name": "至天の座アルカディア：クルーザー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1260
   },
   {
    "id": 1024,
    "name": "至天の座アルカディア零式：クルーザー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1261
   },
   {
    "id": 1025,
    "name": "至天の座アルカディア：クルーザー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1262
   },
   {
    "id": 1026,
    "name": "至天の座アルカディア零式：クルーザー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1263
   },
   {
    "id": 1030,
    "name": "ゼレニア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1270
   },
   {
    "id": 1031,
    "name": "極ゼレニア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1271
   },
   {
    "id": 1043,
    "name": "護竜アルシュベルド狩猟戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1300
   },
   {
    "id": 1044,
    "name": "極護竜アルシュベルド狩猟戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1306
   },
   {
    "id": 1058,
    "name": "サンドリア：ザ・セカンドウォーク",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1304
   },
   {
    "id": 1061,
    "name": "永遠の闇討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1295
   },
   {
    "id": 1062,
    "name": "極永遠の闇討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1296
   },
   {
    "id": 1068,
    "name": "至天の座アルカディア：ヘビー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1320
   },
   {
    "id": 1069,
    "name": "至天の座アルカディア零式：ヘビー級1",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1321
   },
   {
    "id": 1070,
    "name": "至天の座アルカディア：ヘビー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1322
   },
   {
    "id": 1071,
    "name": "至天の座アルカディア零式：ヘビー級2",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1323
   },
   {
    "id": 1072,
    "name": "至天の座アルカディア：ヘビー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1324
   },
   {
    "id": 1073,
    "name": "至天の座アルカディア零式：ヘビー級3",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1325
   },
   {
    "id": 1074,
    "name": "至天の座アルカディア：ヘビー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1326
   },
   {
    "id": 1075,
    "name": "至天の座アルカディア零式：ヘビー級4",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1327
   },
   {
    "id": 1076,
    "name": "グラシャラボラス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1307
   },
   {
    "id": 1077,
    "name": "極グラシャラボラス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1308
   },
   {
    "id": 1094,
    "name": "絶妖星乱舞",
    "type": "絶レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1363
   },
   {
    "id": 1115,
    "name": "エヌオー討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1361
   },
   {
    "id": 1116,
    "name": "極エヌオー討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1362
   },
   {
    "id": 1117,
    "name": "ウィンダス：ザ・サードウォーク",
    "type": "レイド",
-   "level": 100
+   "level": 100,
+   "territory": 1368
   },
   {
    "id": 1118,
    "name": "幻神龍討滅戦",
    "type": "討伐・討滅戦",
-   "level": 100
+   "level": 100,
+   "territory": 1372
   },
   {
    "id": 995,
    "name": "ゾラージャ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 99
+   "level": 99,
+   "territory": 1200
   },
   {
    "id": 832,
    "name": "ヴァリガルマンダ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 93
+   "level": 93,
+   "territory": 1195
   },
   {
    "id": 69,
    "name": "アスラ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 509
   },
   {
    "id": 788,
    "name": "絶竜詩戦争",
    "type": "絶レイド",
-   "level": 90
+   "level": 90,
+   "territory": 968
   },
   {
    "id": 791,
    "name": "極ハイデリン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 996
   },
   {
    "id": 796,
    "name": "終焉の戦い",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 997
   },
   {
    "id": 800,
    "name": "万魔殿パンデモニウム：辺獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1008
   },
   {
    "id": 801,
    "name": "万魔殿パンデモニウム零式：辺獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1009
   },
   {
    "id": 803,
    "name": "極ゾディアーク討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 993
   },
   {
    "id": 806,
    "name": "万魔殿パンデモニウム：辺獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1006
   },
   {
    "id": 807,
    "name": "万魔殿パンデモニウム零式：辺獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1007
   },
   {
    "id": 808,
    "name": "万魔殿パンデモニウム：辺獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1002
   },
   {
    "id": 809,
    "name": "万魔殿パンデモニウム零式：辺獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1003
   },
   {
    "id": 810,
    "name": "万魔殿パンデモニウム：辺獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1004
   },
   {
    "id": 811,
    "name": "万魔殿パンデモニウム零式：辺獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1005
   },
   {
    "id": 846,
    "name": "終極の戦い",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 998
   },
   {
    "id": 866,
    "name": "輝ける神域 アグライア",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1054
   },
   {
    "id": 870,
    "name": "バルバリシア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1071
   },
   {
    "id": 871,
    "name": "極バルバリシア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1072
   },
   {
    "id": 872,
    "name": "万魔殿パンデモニウム：煉獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1081
   },
   {
    "id": 873,
    "name": "万魔殿パンデモニウム零式：煉獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1082
   },
   {
    "id": 876,
    "name": "万魔殿パンデモニウム：煉獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1085
   },
   {
    "id": 877,
    "name": "万魔殿パンデモニウム零式：煉獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1086
   },
   {
    "id": 880,
    "name": "万魔殿パンデモニウム：煉獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1083
   },
   {
    "id": 881,
    "name": "万魔殿パンデモニウム零式：煉獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1084
   },
   {
    "id": 883,
    "name": "万魔殿パンデモニウム：煉獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1087
   },
   {
    "id": 884,
    "name": "万魔殿パンデモニウム零式：煉獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1088
   },
   {
    "id": 886,
    "name": "ルビカンテ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1095
   },
   {
    "id": 908,
    "name": "絶オメガ検証戦",
    "type": "絶レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1122
   },
   {
    "id": 911,
    "name": "喜びの神域 エウプロシュネ",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1118
   },
   {
    "id": 924,
    "name": "極ルビカンテ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1096
   },
   {
    "id": 936,
    "name": "万魔殿パンデモニウム：天獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1147
   },
   {
    "id": 937,
    "name": "万魔殿パンデモニウム零式：天獄編1",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1148
   },
   {
    "id": 938,
    "name": "万魔殿パンデモニウム：天獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1149
   },
   {
    "id": 939,
    "name": "万魔殿パンデモニウム零式：天獄編2",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1150
   },
   {
    "id": 940,
    "name": "万魔殿パンデモニウム：天獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1151
   },
   {
    "id": 941,
    "name": "万魔殿パンデモニウム零式：天獄編3",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1152
   },
   {
    "id": 942,
    "name": "万魔殿パンデモニウム：天獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1153
   },
   {
    "id": 943,
    "name": "万魔殿パンデモニウム零式：天獄編4",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1154
   },
   {
    "id": 949,
    "name": "ゴルベーザ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1140
   },
   {
    "id": 950,
    "name": "極ゴルベーザ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1141
   },
   {
    "id": 962,
    "name": "華めく神域 タレイア",
    "type": "レイド",
-   "level": 90
+   "level": 90,
+   "territory": 1178
   },
   {
    "id": 964,
    "name": "ゼロムス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1168
   },
   {
    "id": 965,
    "name": "極ゼロムス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 90
+   "level": 90,
+   "territory": 1169
   },
   {
    "id": 790,
    "name": "ハイデリン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 89
+   "level": 89,
+   "territory": 995
   },
   {
    "id": 802,
    "name": "ゾディアーク討滅戦",
    "type": "討伐・討滅戦",
-   "level": 83
+   "level": 83,
+   "territory": 992
   },
   {
    "id": 653,
    "name": "希望の園エデン：覚醒編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 849
   },
   {
    "id": 654,
    "name": "希望の園エデン零式：覚醒編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 853
   },
   {
    "id": 658,
    "name": "極ティターニア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 858
   },
   {
    "id": 667,
    "name": "極イノセンス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 848
   },
   {
    "id": 682,
    "name": "希望の園エデン：覚醒編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 851
   },
   {
    "id": 683,
    "name": "希望の園エデン零式：覚醒編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 855
   },
   {
    "id": 684,
    "name": "希望の園エデン：覚醒編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 850
   },
   {
    "id": 685,
    "name": "希望の園エデン零式：覚醒編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 854
   },
   {
    "id": 687,
    "name": "ハーデス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 847
   },
   {
    "id": 689,
    "name": "希望の園エデン：覚醒編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 852
   },
   {
    "id": 690,
    "name": "希望の園エデン零式：覚醒編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 856
   },
   {
    "id": 693,
    "name": "極ハーデス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 885
   },
   {
    "id": 694,
    "name": "絶アレキサンダー討滅戦",
    "type": "絶レイド",
-   "level": 80
+   "level": 80,
+   "territory": 887
   },
   {
    "id": 700,
    "name": "複製サレタ工場廃墟",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 882
   },
   {
    "id": 715,
    "name": "希望の園エデン：共鳴編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 902
   },
   {
    "id": 716,
    "name": "希望の園エデン零式：共鳴編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 906
   },
   {
    "id": 717,
    "name": "ルビーウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 897
   },
   {
    "id": 718,
    "name": "極ルビーウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 912
   },
   {
    "id": 719,
    "name": "希望の園エデン：共鳴編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 903
   },
   {
    "id": 720,
    "name": "希望の園エデン零式：共鳴編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 907
   },
   {
    "id": 725,
    "name": "極シタデル・ボズヤ追憶戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 913
   },
   {
    "id": 726,
    "name": "希望の園エデン：共鳴編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 904
   },
   {
    "id": 727,
    "name": "希望の園エデン零式：共鳴編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 908
   },
   {
    "id": 728,
    "name": "希望の園エデン：共鳴編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 905
   },
   {
    "id": 729,
    "name": "希望の園エデン零式：共鳴編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 909
   },
   {
    "id": 736,
    "name": "人形タチノ軍事基地",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 917
   },
   {
    "id": 738,
    "name": "ウォーリア・オブ・ライト討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 922
   },
   {
    "id": 739,
    "name": "極ウォーリア・オブ・ライト討滅戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 923
   },
   {
    "id": 747,
    "name": "希望の園エデン：再生編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 943
   },
   {
    "id": 748,
    "name": "希望の園エデン零式：再生編2",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 947
   },
   {
    "id": 749,
    "name": "希望の園エデン：再生編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 942
   },
   {
    "id": 750,
    "name": "希望の園エデン零式：再生編1",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 946
   },
   {
    "id": 751,
    "name": "希望の園エデン：再生編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 944
   },
   {
    "id": 752,
    "name": "希望の園エデン零式：再生編3",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 948
   },
   {
    "id": 758,
    "name": "希望の園エデン：再生編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 945
   },
   {
    "id": 759,
    "name": "希望の園エデン零式：再生編4",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 949
   },
   {
    "id": 762,
    "name": "エメラルドウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 934
   },
   {
    "id": 763,
    "name": "極エメラルドウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 935
   },
   {
    "id": 779,
    "name": "希望ノ砲台：「塔」",
    "type": "レイド",
-   "level": 80
+   "level": 80,
+   "territory": 966
   },
   {
    "id": 781,
    "name": "ダイヤウェポン捕獲作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 950
   },
   {
    "id": 782,
    "name": "極ダイヤウェポン捕獲作戦",
    "type": "討伐・討滅戦",
-   "level": 80
+   "level": 80,
+   "territory": 951
   },
   {
    "id": 666,
    "name": "イノセンス討滅戦",
    "type": "討伐・討滅戦",
-   "level": 79
+   "level": 79,
+   "territory": 846
   },
   {
    "id": 71,
    "name": "イベント用コンテンツ：2",
    "type": "討伐・討滅戦",
-   "level": 73
+   "level": 73,
+   "territory": 354
   },
   {
    "id": 657,
    "name": "ティターニア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 73
+   "level": 73,
+   "territory": 845
   },
   {
    "id": 70,
    "name": "イベント用コンテンツ：1",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 353
   },
   {
    "id": 239,
    "name": "神龍討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 679
   },
   {
    "id": 244,
    "name": "極スサノオ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 677
   },
   {
    "id": 252,
    "name": "次元の狭間オメガ：デルタ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 691
   },
   {
    "id": 253,
    "name": "次元の狭間オメガ：デルタ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 692
   },
   {
    "id": 254,
    "name": "次元の狭間オメガ：デルタ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 693
   },
   {
    "id": 255,
    "name": "次元の狭間オメガ：デルタ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 694
   },
   {
    "id": 256,
    "name": "次元の狭間オメガ零式：デルタ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 695
   },
   {
    "id": 257,
    "name": "次元の狭間オメガ零式：デルタ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 696
   },
   {
    "id": 258,
    "name": "次元の狭間オメガ零式：デルタ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 697
   },
   {
    "id": 259,
    "name": "次元の狭間オメガ零式：デルタ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 698
   },
   {
    "id": 264,
    "name": "極ラクシュミ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 720
   },
   {
    "id": 278,
    "name": "極神龍討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 730
   },
   {
    "id": 280,
    "name": "絶バハムート討滅戦",
    "type": "絶レイド",
-   "level": 70
+   "level": 70,
+   "territory": 733
   },
   {
    "id": 281,
    "name": "失われた都 ラバナスタ",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 734
   },
   {
    "id": 286,
    "name": "次元の狭間オメガ：シグマ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 748
   },
   {
    "id": 287,
    "name": "次元の狭間オメガ：シグマ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 749
   },
   {
    "id": 288,
    "name": "次元の狭間オメガ：シグマ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 750
   },
   {
    "id": 289,
    "name": "次元の狭間オメガ：シグマ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 751
   },
   {
    "id": 290,
    "name": "白虎征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 746
   },
   {
    "id": 291,
    "name": "極白虎征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 758
   },
   {
    "id": 292,
    "name": "次元の狭間オメガ零式：シグマ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 752
   },
   {
    "id": 293,
    "name": "次元の狭間オメガ零式：シグマ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 753
   },
   {
    "id": 294,
    "name": "次元の狭間オメガ零式：シグマ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 754
   },
   {
    "id": 295,
    "name": "次元の狭間オメガ零式：シグマ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 755
   },
   {
    "id": 474,
    "name": "リオレウス狩猟戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 761
   },
   {
    "id": 475,
    "name": "極リオレウス狩猟戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 762
   },
   {
    "id": 537,
    "name": "ツクヨミ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 778
   },
   {
    "id": 538,
    "name": "極ツクヨミ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 779
   },
   {
    "id": 539,
    "name": "絶アルテマウェポン破壊作戦",
    "type": "絶レイド",
-   "level": 70
+   "level": 70,
+   "territory": 777
   },
   {
    "id": 550,
    "name": "封じられた聖塔 リドルアナ",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 776
   },
   {
    "id": 587,
    "name": "次元の狭間オメガ：アルファ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 798
   },
   {
    "id": 588,
    "name": "次元の狭間オメガ：アルファ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 799
   },
   {
    "id": 589,
    "name": "次元の狭間オメガ：アルファ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 800
   },
   {
    "id": 590,
    "name": "次元の狭間オメガ：アルファ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 801
   },
   {
    "id": 591,
    "name": "次元の狭間オメガ零式：アルファ編1",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 802
   },
   {
    "id": 592,
    "name": "次元の狭間オメガ零式：アルファ編2",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 803
   },
   {
    "id": 593,
    "name": "次元の狭間オメガ零式：アルファ編3",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 804
   },
   {
    "id": 594,
    "name": "次元の狭間オメガ零式：アルファ編4",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 805
   },
   {
    "id": 595,
    "name": "真ヨウジンボウ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 806
   },
   {
    "id": 596,
    "name": "朱雀征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 810
   },
   {
    "id": 597,
    "name": "極朱雀征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 811
   },
   {
    "id": 636,
    "name": "楽欲の僧院 オーボンヌ",
    "type": "レイド",
-   "level": 70
+   "level": 70,
+   "territory": 826
   },
   {
    "id": 637,
    "name": "青龍征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 824
   },
   {
    "id": 638,
    "name": "極青龍征魂戦",
    "type": "討伐・討滅戦",
-   "level": 70
+   "level": 70,
+   "territory": 825
   },
   {
    "id": 263,
    "name": "ラクシュミ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 67
+   "level": 67,
+   "territory": 719
   },
   {
    "id": 243,
    "name": "スサノオ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 63
+   "level": 63,
+   "territory": 674
   },
   {
    "id": 87,
    "name": "極ラーヴァナ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 446
   },
   {
    "id": 89,
    "name": "極ビスマルク討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 447
   },
   {
    "id": 90,
    "name": "ナイツ・オブ・ラウンド討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 437
   },
   {
    "id": 91,
    "name": "蒼天幻想 ナイツ・オブ・ラウンド討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 448
   },
   {
    "id": 112,
    "name": "機工城アレキサンダー：起動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 442
   },
   {
    "id": 113,
    "name": "機工城アレキサンダー：起動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 443
   },
   {
    "id": 114,
    "name": "機工城アレキサンダー：起動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 444
   },
   {
    "id": 115,
    "name": "機工城アレキサンダー：起動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 445
   },
   {
    "id": 116,
    "name": "機工城アレキサンダー零式：起動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 449
   },
   {
    "id": 117,
    "name": "機工城アレキサンダー零式：起動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 450
   },
   {
    "id": 118,
    "name": "機工城アレキサンダー零式：起動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 451
   },
   {
    "id": 119,
    "name": "機工城アレキサンダー零式：起動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 452
   },
   {
    "id": 120,
    "name": "魔航船ヴォイドアーク",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 508
   },
   {
    "id": 134,
    "name": "魔神セフィロト討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 517
   },
   {
    "id": 135,
    "name": "極魔神セフィロト討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 524
   },
   {
    "id": 136,
    "name": "機工城アレキサンダー：律動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 520
   },
   {
    "id": 137,
    "name": "機工城アレキサンダー：律動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 521
   },
   {
    "id": 138,
    "name": "機工城アレキサンダー：律動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 522
   },
   {
    "id": 139,
    "name": "機工城アレキサンダー：律動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 523
   },
   {
    "id": 147,
    "name": "機工城アレキサンダー零式：律動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 529
   },
   {
    "id": 148,
    "name": "機工城アレキサンダー零式：律動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 530
   },
   {
    "id": 149,
    "name": "機工城アレキサンダー零式：律動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 531
   },
   {
    "id": 150,
    "name": "機工城アレキサンダー零式：律動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 532
   },
   {
    "id": 168,
    "name": "禁忌都市マハ",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 556
   },
   {
    "id": 169,
    "name": "ニーズヘッグ征竜戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 559
   },
   {
    "id": 170,
    "name": "極ニーズヘッグ征竜戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 566
   },
   {
    "id": 183,
    "name": "女神ソフィア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 576
   },
   {
    "id": 184,
    "name": "極女神ソフィア討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 577
   },
   {
    "id": 186,
    "name": "機工城アレキサンダー：天動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 580
   },
   {
    "id": 187,
    "name": "機工城アレキサンダー：天動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 581
   },
   {
    "id": 188,
    "name": "機工城アレキサンダー：天動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 582
   },
   {
    "id": 189,
    "name": "機工城アレキサンダー：天動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 583
   },
   {
    "id": 190,
    "name": "機工城アレキサンダー零式：天動編1",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 584
   },
   {
    "id": 191,
    "name": "機工城アレキサンダー零式：天動編2",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 585
   },
   {
    "id": 192,
    "name": "機工城アレキサンダー零式：天動編3",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 586
   },
   {
    "id": 193,
    "name": "機工城アレキサンダー零式：天動編4",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 587
   },
   {
    "id": 220,
    "name": "影の国ダン・スカー",
    "type": "レイド",
-   "level": 60
+   "level": 60,
+   "territory": 627
   },
   {
    "id": 223,
    "name": "鬼神ズルワーン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 637
   },
   {
    "id": 224,
    "name": "極鬼神ズルワーン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 60
+   "level": 60,
+   "territory": 638
   },
   {
    "id": 88,
    "name": "真ビスマルク討滅戦",
    "type": "討伐・討滅戦",
-   "level": 57
+   "level": 57,
+   "territory": 436
   },
   {
    "id": 86,
    "name": "真ラーヴァナ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 53
+   "level": 53,
+   "territory": 432
   },
   {
    "id": 59,
    "name": "真イフリート討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 292
   },
   {
    "id": 60,
    "name": "真タイタン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 293
   },
   {
    "id": 61,
    "name": "真ガルーダ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 294
   },
   {
    "id": 63,
    "name": "極イフリート討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 295
   },
   {
    "id": 64,
    "name": "極タイタン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 296
   },
   {
    "id": 65,
    "name": "極ガルーダ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 297
   },
   {
    "id": 66,
    "name": "善王モグル・モグXII世討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 1067
   },
   {
    "id": 67,
    "name": "極王モグル・モグXII世討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 364
   },
   {
    "id": 68,
    "name": "究極幻想 アルテマウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 348
   },
   {
    "id": 72,
    "name": "真リヴァイアサン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 281
   },
   {
    "id": 73,
    "name": "極リヴァイアサン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 359
   },
   {
    "id": 74,
    "name": "ドルムキマイラ討伐戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 368
   },
   {
    "id": 75,
    "name": "ハイドラ討伐戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 369
   },
   {
    "id": 76,
    "name": "ギルガメッシュ討伐戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 366
   },
   {
    "id": 77,
    "name": "真ラムウ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 374
   },
   {
    "id": 78,
    "name": "極ラムウ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 375
   },
   {
    "id": 79,
    "name": "真シヴァ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 377
   },
   {
    "id": 80,
    "name": "極シヴァ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 378
   },
   {
    "id": 81,
    "name": "アマジナ杯闘技会決勝戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 142
   },
   {
    "id": 82,
    "name": "闘神オーディン討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 394
   },
   {
    "id": 84,
    "name": "アシエン・ナプリアレス討伐戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 426
   },
   {
    "id": 85,
    "name": "真ギルガメッシュ討滅戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 396
   },
   {
    "id": 92,
    "name": "クリスタルタワー：古代の民の迷宮",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 174
   },
   {
    "id": 93,
    "name": "大迷宮バハムート：邂逅編1",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 241
   },
   {
    "id": 94,
    "name": "大迷宮バハムート：邂逅編2",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 242
   },
   {
    "id": 95,
    "name": "大迷宮バハムート：邂逅編3",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 243
   },
   {
    "id": 96,
    "name": "大迷宮バハムート：邂逅編4",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 244
   },
   {
    "id": 97,
    "name": "大迷宮バハムート：邂逅編5",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 245
   },
   {
    "id": 98,
    "name": "大迷宮バハムート：侵攻編1",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 355
   },
   {
    "id": 99,
    "name": "大迷宮バハムート：侵攻編2",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 356
   },
   {
    "id": 100,
    "name": "大迷宮バハムート：侵攻編3",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 357
   },
   {
    "id": 101,
    "name": "大迷宮バハムート：侵攻編4",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 358
   },
   {
    "id": 102,
    "name": "クリスタルタワー：シルクスの塔",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 372
   },
   {
    "id": 103,
    "name": "大迷宮バハムート零式：侵攻編1",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 380
   },
   {
    "id": 104,
    "name": "大迷宮バハムート零式：侵攻編2",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 381
   },
   {
    "id": 105,
    "name": "大迷宮バハムート零式：侵攻編3",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 382
   },
   {
    "id": 106,
    "name": "大迷宮バハムート零式：侵攻編4",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 383
   },
   {
    "id": 107,
    "name": "大迷宮バハムート：真成編1",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 193
   },
   {
    "id": 108,
    "name": "大迷宮バハムート：真成編2",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 194
   },
   {
    "id": 109,
    "name": "大迷宮バハムート：真成編3",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 195
   },
   {
    "id": 110,
    "name": "大迷宮バハムート：真成編4",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 196
   },
   {
    "id": 111,
    "name": "クリスタルタワー：闇の世界",
    "type": "レイド",
-   "level": 50
+   "level": 50,
+   "territory": 151
   },
   {
    "id": 830,
    "name": "アルテマウェポン破壊作戦",
    "type": "討伐・討滅戦",
-   "level": 50
+   "level": 50,
+   "territory": 1048
   },
   {
    "id": 58,
    "name": "ガルーダ討伐戦",
    "type": "討伐・討滅戦",
-   "level": 44
+   "level": 44,
+   "territory": 1047
   },
   {
    "id": 57,
    "name": "タイタン討伐戦",
    "type": "討伐・討滅戦",
-   "level": 34
+   "level": 34,
+   "territory": 1046
   },
   {
    "id": 56,
    "name": "イフリート討伐戦",
    "type": "討伐・討滅戦",
-   "level": 20
+   "level": 20,
+   "territory": 1045
   }
  ]
 }

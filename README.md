@@ -16,6 +16,7 @@ FF14 のゲーム画面に表示された文字（コンテンツ名・カウン
 | ページ | 内容 |
 |---|---|
 | `player.html` | 再生画面。ゲーム画面を読み取り、タイムラインを流して読み上げる（下の「再生画面」） |
+| `generator.html` | FFLogs の公開レポートからタイムラインの XML を作る（下の「FFLogs からの生成」） |
 | `lab.html` | OCR 試験ページ。画像（または取り込んだ画面）の上で読む範囲を選び、読み取りと解釈の結果を表に出す |
 
 ## セットアップ
@@ -32,7 +33,7 @@ tools/fetch-models.sh   # 文字認識・検出のモデル（合わせて 21MB�
 | `public/js/readers.js` | 読んだ文字の解釈。コンテンツ名・技名の決定（`pickCandidate`）、カウントダウン（`readCountdown`）、HP%。再生画面と試験ページで共用する |
 | `public/js/capture.js` | 画面の取り込み（`FrameSource`）。MediaStreamTrackProcessor で届いたフレームの最新 1 枚を持ち、届いた時刻と一緒に渡す。**ゲームを前面にするとページは非表示とみなされ、タイマーは 1 秒 1 回に間引かれ、`<video>` 要素の映像は遅れる**（実測で 16 秒のカウントダウンが 9 秒に縮んで記録された）ため、タイマーも `<video>` も使わずフレームの到着で処理を進める |
 | `public/js/lab.js` | 試験ページの画面。連続読み取り（0.5 秒ごとに読み、変化だけを時刻付きで記録してコピーできる）もここ |
-| `public/data/contents.json` | コンテンツ名の候補。`tools/build-contents.py` が XIVAPI v2 の ContentFinderCondition（日本語名）から、討伐・討滅戦／レイド／絶／滅アライアンスだけを抜いて作る（手で書き換えない。パッチで増えたら実行し直す） |
+| `public/data/contents.json` | コンテンツ名の候補（`territory` は場所の番号で、FFLogs の gameZone.id から名前を引くのに使う）。`tools/build-contents.py` が XIVAPI v2 の ContentFinderCondition（日本語名）から、討伐・討滅戦／レイド／絶／滅アライアンスだけを抜いて作る（手で書き換えない。パッチで増えたら実行し直す） |
 
 ## 文字認識の選定（2026-10-20）
 
@@ -139,9 +140,33 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 | `public/js/pip.js` | 小窓と読み上げ。試験ページで動作を確かめた作りをそのまま使う |
 | `public/js/timeline-xml.js` | タイムラインと一覧の XML の読み込み |
 
+## FFLogs からの生成（`generator.html`）
+
+利用者が自分の FFLogs クライアントの ID と secret を入れ（client credentials。このブラウザの localStorage
+`ocr-timeline.fflogs-keys` にだけ保存）、レポートの URL と戦闘を選ぶと XML を作る。通信はブラウザから
+`ja.fflogs.com` へ直接（トークンと API は vel.works・localhost からの通信を許可している。2026-10-20 確認）。
+運営者のキーは使わない。クエリの作りは logs2timeline と同じ（`translate: true`、敵の詠唱は `hostilityType: Enemies`）。
+
+| ファイル | 役割 |
+|---|---|
+| `public/js/fflogs-api.js` | トークン・GraphQL・レポートと敵の詠唱の読み込み |
+| `public/js/fflogs-timeline.js` | 敵の詠唱からタイムラインを組み立てる（DOM なし、`tests/fflogs-timeline.test.mjs`） |
+| `public/js/generator.js` | 生成画面 |
+
+- **t は begincast の時刻、duration は begincast の `duration`（詠唱時間 ms）**。画面で読める詠唱開始と同じ基準なので、そのまま同期に使える
+- **見えない補助の敵の詠唱は使わない**。ヘビー級1 では本体と同じ名前の補助が別の技 ID・別の詠唱時間で同時に詠唱する
+  （「ハードコア」本体 2.7 秒・補助 4.7 秒）。補助は `sourceInstance` が付くので、付かない 1 体目だけを使う
+- 詠唱の無い技（begincast の無い cast）は `sync="false"` の表示だけの予定。オートアタック（ID 1・7）と名前の無い技は除く。1 秒以内の同じ技はまとめる
+- フェーズは FFLogs の `phaseTransitions` が 2 つ以上あるときだけ分け、次のフェーズの最初の詠唱がいまのフェーズに無ければその詠唱で、あれば経過時間で移る
+- コンテンツ名は戦闘の `gameZone.id`（TerritoryType の番号）から `contents.json` の `territory` で引く
+- 敵は既定で戦闘名と同じ名前の敵（ボス本体）だけ。ほかの敵（雑魚・分身）は画面で選べる
+- 同じ場面で技が入れ替わる（アグリゲートソニック／スプレッドソニック）ものは、生成したログで出た方の名前になる
+
 ## 未着手
 
-範囲の選択を再生画面でもできるようにする、cactbot・Hojoring のタイムラインの変換（運営者の手元の道具）、
+範囲の選択を再生画面でもできるようにする、Hojoring・cactbot のタイムラインの変換（運営者の手元の道具。発動の時刻から
+FFLogs で得た詠唱時間を引いて詠唱開始にする。元のファイルは `sources/hojoring/`、ライセンスは各ファイルの CC BY-SA）、
+技名の言い換え（どちらかの技名で同期する）、
 GitHub のフォルダからの配信、チャット欄からのカウントダウン、複数の敵の HP、読み取りの遅れを引く処理、試験ページを screen-reader.js に寄せる
 
 ## 決まり（vel.works の FF14 関連）

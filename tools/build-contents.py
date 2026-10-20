@@ -27,7 +27,7 @@ def fetch_rows():
     after = None
     while True:
         params = {
-            'fields': 'Name,ClassJobLevelRequired,ContentType@as(raw)',
+            'fields': 'Name,ClassJobLevelRequired,ContentType@as(raw),TerritoryType@as(raw)',
             'language': 'ja',
             'limit': '500',
         }
@@ -61,10 +61,12 @@ def main():
             'name': name,
             'type': TYPES[type_id],
             'level': f.get('ClassJobLevelRequired'),
+            # 場所（TerritoryType）の行番号。FFLogs の fights.gameZone.id・cactbot の zoneId と同じ番号で、そこからコンテンツ名を引く
+            'territory': f.get('TerritoryType@as(raw)'),
         })
     contents.sort(key=lambda c: (-(c['level'] or 0), c['id']))
     OUT.write_text(json.dumps({
-        '_readme': 'コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号',
+        '_readme': 'コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）',
         'contents': contents,
     }, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'{len(contents)} 件を {OUT} に書きました')

@@ -41,7 +41,7 @@ section {
     margin-bottom: 16px;
 }
 
-button, select, textarea, input[type="file"] {
+button, select, textarea, input[type="file"], input[type="text"], input[type="password"], input[type="number"] {
     font: inherit;
     color: inherit;
 }
@@ -55,6 +55,13 @@ button {
 }
 button:hover:not(:disabled) { border-color: var(--accent); }
 button:disabled { opacity: .5; cursor: default; }
+
+input[type="text"], input[type="password"], input[type="number"], select {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 8px;
+}
 
 .row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 
