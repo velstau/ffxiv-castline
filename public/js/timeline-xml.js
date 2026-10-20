@@ -70,8 +70,9 @@ export function parseTimelineXml(text) {
                     return clean({
                         t: num(e, 't', at),
                         duration: num(e, 'duration', at),
-                        name: attr(e, 'name'),
-                        label: attr(e, 'label'),
+                        // XML の castname（詠唱バーの技名）と text（表示の文言）を、エンジンの name・label にする
+                        name: attr(e, 'castname'),
+                        label: attr(e, 'text'),
                         tts: attr(e, 'tts'),
                         sync: attr(e, 'sync') === 'false' ? false : undefined,
                         window: pair(e, 'window', at),
@@ -121,8 +122,8 @@ export function toTimelineXml(timeline) {
     for (const phase of timeline.phases) {
         lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
         for (const e of phase.entries) {
-            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('duration', e.duration || undefined)}${xmlAttr('name', e.name)}`
-                + `${xmlAttr('label', e.label)}${xmlAttr('tts', e.tts)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('window', e.window)}/>`);
+            lines.push(`    <entry${xmlAttr('t', e.t)}${xmlAttr('duration', e.duration || undefined)}${xmlAttr('castname', e.name)}`
+                + `${xmlAttr('text', e.label)}${xmlAttr('tts', e.tts)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('window', e.window)}/>`);
         }
         for (const rule of phase.next ?? []) {
             const w = rule.when;

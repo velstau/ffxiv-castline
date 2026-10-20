@@ -2,9 +2,9 @@
 <timeline format="castline/1" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）">
   <note>再生画面の動作確認用。2026-10-20 の連続読み取り 2 回の実測（詠唱バーで技名が決まった時刻）から作った。冒頭 4 技だけで、詠唱時間はおおよそ。攻略には使えない</note>
   <phase id="p1" name="前半">
-    <entry t="8.0" duration="5" name="創世の真炎"/>
-    <entry t="16.1" duration="3" name="オクタフレア・コンシーヴ"/>
-    <entry t="22.2" duration="3" name="熾炎創火"/>
-    <entry t="33.2" duration="7" name="創獣炎舞"/>
+    <entry t="8.0" duration="5" castname="創世の真炎"/>
+    <entry t="16.1" duration="3" castname="オクタフレア・コンシーヴ"/>
+    <entry t="22.2" duration="3" castname="熾炎創火"/>
+    <entry t="33.2" duration="7" castname="創獣炎舞"/>
   </phase>
 </timeline>

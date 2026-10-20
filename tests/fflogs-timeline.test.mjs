@@ -78,8 +78,8 @@ test('XML: 記号を escape し、詠唱時間 0 と既定値は書かない', (
     });
     assert.match(xml, /content="A&amp;B" title="&quot;題&quot;"/);
     assert.match(xml, /<note>&lt;注&gt;<\/note>/);
-    assert.match(xml, /<entry t="1" name="x" sync="false"\/>/);
-    assert.match(xml, /<entry t="2" duration="3" name="y" window="5 5"\/>/);
+    assert.match(xml, /<entry t="1" castname="x" sync="false"\/>/);
+    assert.match(xml, /<entry t="2" duration="3" castname="y" window="5 5"\/>/);
     assert.match(xml, /<next to="p1" hp-lost="3"\/>/);
 });
 

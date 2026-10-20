@@ -55,7 +55,7 @@ export function validateTimeline(data) {
         } else {
             phase.entries.forEach((e, j) => {
                 if (typeof e.t !== 'number' || typeof e.name !== 'string') {
-                    errors.push(`${where}.entries[${j}]: t（秒）と name（技名）が必要です`);
+                    errors.push(`${where}.entries[${j}]: t（秒）と castname（技名）が必要です`);
                 }
             });
         }

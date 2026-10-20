@@ -7,7 +7,7 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）な
 - 照合の相手は FFLogs の同じ戦闘の全部の技（補助の敵も含む。tools/fflogs-events.py で抜き出した *.events.json）。
   Hojoring 本体と同じく、技が合うたびにずれを合わせ直す（記録した戦闘ごとにフェーズの進み方が違うため）。
   窓は Hojoring の sync-s / sync-e（既定は <default>）。区間の最初のずれは、同じ技名の差が最も多くそろう値
-- 合った技が骨組みの予定（同名で、詠唱の終わりから AFTER_CAST_MAX 秒以内に当たったもの）なら、text を label（表示だけ）、notice を tts として付ける。
+- 合った技が骨組みの予定（同名で、詠唱の終わりから AFTER_CAST_MAX 秒以内に当たったもの）なら、text を text（表示だけ）、notice を tts として付ける。
   Hojoring と同じく読み上げるのは notice だけ。notice の無い予定は技名を読む（技名の無い行は読まない）
   Hojoring で「(A|B)」と書かれた技は、骨組みの技名を「A|B」に広げる（ログには片方しか残らないため）
 - 骨組みに無い技（補助の敵の技など）・台詞・ログ ID・バフで合わせているもの・同期なしの行は、
@@ -15,9 +15,9 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）な
 - 同期の目印だけの行（text が 同期 など）、<t> のトリガー、v-notice、icon は使わない（件数を報告する）
 
     python3 tools/hojoring-overlay.py tools/skeletons/heavy1.xml "sources/AAC_Heavyweight_M1_(Savage).xml" \\
-        public/timelines/heavy1.xml --events p1=tools/skeletons/heavy1.events.json --author Vel --title "…"
+        public/timelines/heavy1.xml --events p1=tools/skeletons/heavy1.events.json --title "…"
 
-元ファイル（sources/）は第三者の作を含むので公開しない（.gitignore）。出力の note に作者とライセンスを書く。
+元ファイル（sources/）は第三者の作を含むので公開しない（.gitignore）。
 """
 import argparse
 import json
@@ -121,6 +121,10 @@ def load_skeleton(path):
         entries = []
         for e in p.findall('entry'):
             d = dict(e.attrib)
+            # XML の castname・text を、この道具の中では name・label として扱う
+            d['name'] = d.pop('castname', '')
+            if 'text' in d:
+                d['label'] = d.pop('text')
             d['_t'] = float(d['t'])
             d['_hit'] = d['_t'] + num(d.get('duration'), 0.0)
             entries.append(d)
@@ -307,11 +311,13 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         report += [f'    見つからない: {x}' for x in missed]
         report += [f'    足した: {x}' for x in inserted]
     # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使い、notice が無ければ技名を読む（技名の無い行は読まない）。
-    # 再生画面は tts が無いと label を読むので、文言を付けた予定には tts を必ず書く（2026-10-20 のユーザーの決定）
+    # 再生画面は tts が無いと castname を読む（2026-10-20 のユーザーの決定）
     for phase in skeleton['phases']:
         for e in phase['entries']:
-            if '_notices' in e:
-                e['tts'] = '、'.join(e['_notices']) or ('' if e.get('_no_name') else '／'.join(e['name'].split('|')))
+            if e.get('_notices'):
+                e['tts'] = '、'.join(e['_notices'])
+            elif e.get('_no_name'):
+                e['tts'] = ''  # 台詞・同期なしの行は読まない（tts が無いと castname を読むため）
     return report
 
 
@@ -327,7 +333,8 @@ def write_castline(skeleton, path, title, note):
     for p in skeleton['phases']:
         lines.append(f'  <phase{attr(p["attrs"], ["id", "name"])}>')
         for e in p['entries']:
-            lines.append(f'    <entry{attr(e, ["t", "duration", "name", "label", "tts", "sync", "window"])}/>')
+            out = {**e, 'castname': e['name'], 'text': e.get('label')}
+            lines.append(f'    <entry{attr(out, ["t", "duration", "castname", "text", "tts", "sync", "window"])}/>')
         for n in p['next']:
             lines.append(f'    <next{attr(n, ["to", "at", "cast", "hp", "time", "hp-lost"])}/>')
         lines.append('  </phase>')
@@ -341,7 +348,6 @@ def main():
     ap.add_argument('skeleton')
     ap.add_argument('hojoring')
     ap.add_argument('out')
-    ap.add_argument('--author', help='note に書く作者（省略時は元ファイルの author）')
     ap.add_argument('--title')
     ap.add_argument('--events', action='append', default=[], metavar='フェーズID=PATH',
                     help='そのフェーズの FFLogs の技の一覧（tools/fflogs-events.py の出力）')
@@ -363,10 +369,9 @@ def main():
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
                      dict(r.split('=', 1) for r in args.role))
 
-    author = args.author or meta['author']
-    note = (f'{skeleton["note"]} 表示（label）と読み上げ（tts）の文言は、{author} さんの Hojoring 用タイムライン'
-            f'「{meta["name"]}」{meta["rev"]}（{meta["license"]}）から取った。'
-            f'表示だけの予定（sync="false"）には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む')
+    # 元ファイル（Hojoring）の名前や作者は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）
+    note = (f'{skeleton["note"]} text は表示、tts は読み上げの文言。'
+            f'sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む')
     write_castline(skeleton, args.out, args.title, note)
 
     for line in report:

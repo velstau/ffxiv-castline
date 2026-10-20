@@ -8,15 +8,15 @@ overlay() { python3 tools/hojoring-overlay.py "$@"; echo; }
 
 echo '== ヘビー級1'
 overlay tools/skeletons/heavy1.xml 'sources/AAC_Heavyweight_M1_(Savage).xml' public/timelines/heavy1.xml \
-    --events p1=tools/skeletons/heavy1.events.json --author Vel \
+    --events p1=tools/skeletons/heavy1.events.json \
     --title '至天の座アルカディア零式：ヘビー級1（FFLogs ＋ Hojoring 用タイムラインの文言）'
 echo '== ヘビー級2'
 overlay tools/skeletons/heavy2.xml 'sources/AAC_Heavyweight_M2_(Savage).xml' public/timelines/heavy2.xml \
-    --events p1=tools/skeletons/heavy2.events.json --author Vel --role RED=赤 --role BLUE=青 \
+    --events p1=tools/skeletons/heavy2.events.json --role RED=赤 --role BLUE=青 \
     --title '至天の座アルカディア零式：ヘビー級2（FFLogs ＋ Hojoring 用タイムラインの文言）'
 echo '== ヘビー級3'
 overlay tools/skeletons/heavy3.xml 'sources/AAC_Heavyweight_M3_(Savage).xml' public/timelines/heavy3.xml \
-    --events p1=tools/skeletons/heavy3.events.json --author Vel \
+    --events p1=tools/skeletons/heavy3.events.json \
     --title '至天の座アルカディア零式：ヘビー級3（FFLogs ＋ Hojoring 用タイムラインの文言）'
 echo '== ヘビー級4（前半 P1〜P5、後半 P11〜P12。P0 は分岐待ちだけ）'
 overlay tools/skeletons/heavy4.xml 'sources/AAC_Heavyweight_M4_(Savage).xml' public/timelines/heavy4.xml \

@@ -463,7 +463,7 @@ function speech(now) {
         }
         state.spoken.add(e);
         if (late <= SPEAK_LATE_MAX_S && e.tts !== '') {
-            pip.speak(e.tts ?? e.label ?? showName(e.name));
+            pip.speak(e.tts ?? showName(e.name)); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
         }
     }
 }

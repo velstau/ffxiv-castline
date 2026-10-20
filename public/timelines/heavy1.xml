@@ -1,73 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <timeline format="castline/1" content="至天の座アルカディア零式：ヘビー級1" title="至天の座アルカディア零式：ヘビー級1（FFLogs ＋ Hojoring 用タイムラインの文言）">
-  <note>FFLogs の討伐の記録（9:39）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） 表示（label）と読み上げ（tts）の文言は、Vel さんの Hojoring 用タイムライン「AAC Heavyweight M1 (Savage) draft timeline」Rev.1（CC BY-SA）から取った。表示だけの予定（sync="false"）には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <note>FFLogs の討伐の記録（9:39）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="6.1" duration="4.7" name="キラーボイス" label="全体攻撃" tts="キラーボイス"/>
-    <entry t="16.2" duration="2.7" name="ハードコア" label="タンク強" tts="ハードコア"/>
-    <entry t="26.4" duration="3.8" name="ヴァンプストンプ"/>
-    <entry t="36.8" name="共振波" label="コウモリ処理" tts="共振波" sync="false"/>
-    <entry t="42.6" duration="3.5" name="ブルータルレイン" label="頭割りx3" tts="ブルータルレイン"/>
-    <entry t="56" duration="4.7" name="サディスティック・スクリーチ" label="全体攻撃＋フィールド落下" tts="サディスティック・スクリーチ"/>
-    <entry t="71.4" duration="4" name="ハーフムーン"/>
-    <entry t="76.4" name="突き出る" label="突き出る＋半面" tts="突き出る" sync="false"/>
-    <entry t="88.9" duration="4" name="ハーフムーン"/>
-    <entry t="93.8" name="突き出る" label="突き出る＋半面" tts="突き出る" sync="false"/>
-    <entry t="106.2" duration="4" name="ハーフムーン"/>
-    <entry t="111.2" name="突き出る" label="突き出る＋半面" tts="突き出る" sync="false"/>
-    <entry t="116.4" duration="4" name="ハーフムーン"/>
-    <entry t="121.4" name="突き出る" label="突き出る＋半面" tts="突き出る" sync="false"/>
-    <entry t="133.6" duration="4.7" name="サディスティック・スクリーチ" label="全体攻撃＋フィールド復活" tts="サディスティック・スクリーチ" window="20 20"/>
-    <entry t="147.9" duration="0.2" name="クラウドキリング" label="全体攻撃(バフ+4)" tts="クラウドキリング"/>
-    <entry t="166.8" duration="4.7" name="フィナーレ・ファターレ" label="全体攻撃(バフ16ワイプ)" tts="フィナーレ・ファターレ"/>
-    <entry t="178.9" duration="12" name="エーテルレッティング" label="＋✕設置x4" tts="エーテルレッティング"/>
-    <entry t="191.2" name="エーテルレッティング" sync="false"/>
-    <entry t="193.3" name="エーテルレッティング" sync="false"/>
-    <entry t="195.3" name="エーテルレッティング" sync="false"/>
-    <entry t="197.3" name="エーテルレッティング" sync="false"/>
-    <entry t="210.5" name="エーテルレッティング" label="設置床爆破" tts="エーテルレッティング" sync="false"/>
-    <entry t="216.4" duration="2.7" name="ハードコア" label="タンク強" tts="ハードコア"/>
-    <entry t="226.5" duration="3.8" name="ヴァンプストンプ"/>
-    <entry t="236.9" name="共振波" label="コウモリ処理" tts="共振波" sync="false"/>
-    <entry t="242.7" duration="4" name="ハーフムーン" label="半面" tts="ハーフムーン"/>
-    <entry t="252.8" duration="3.5" name="ブルータルレイン" label="頭割りx3" tts="ブルータルレイン"/>
-    <entry t="266" duration="2.5" name="インセーシャブル・サースト" label="全体攻撃" tts="インセーシャブル・サースト"/>
-    <entry t="279.3" duration="4.7" name="サディスティック・スクリーチ" label="全体攻撃＋フィールド落下" tts="サディスティック・スクリーチ"/>
-    <entry t="301.5" duration="4.7" name="キラーボイス" label="全体攻撃" tts="キラーボイス"/>
-    <entry t="319.6" duration="4.7" name="キラーボイス" label="全体攻撃" tts="キラーボイス"/>
-    <entry t="351.8" duration="4.7" name="サディスティック・スクリーチ" label="全体攻撃＋フィールド復活" tts="サディスティック・スクリーチ" window="20 20"/>
-    <entry t="366.1" duration="0.2" name="クラウドキリング" label="全体攻撃(バフ+4)" tts="クラウドキリング"/>
-    <entry t="384.9" duration="4.7" name="フィナーレ・ファターレ" label="全体攻撃(バフ16ワイプ)" tts="フィナーレ・ファターレ"/>
-    <entry t="397.1" duration="3.5" name="ヘル・イン・ア・セル" label="MT組：塔踏み" tts="ヘル・イン・ア・セル" window="20 20"/>
-    <entry t="404.2" duration="4.7" name="アグリゲートソニック|スプレッドソニック" label="頭割りorロール" tts="アグリゲートソニック／スプレッドソニック"/>
-    <entry t="411.3" duration="4.7" name="アグリゲートソニック|スプレッドソニック" label="頭割りorロール" tts="アグリゲートソニック／スプレッドソニック"/>
-    <entry t="419.5" duration="3.5" name="ヘル・イン・ア・セル" label="ST組：塔踏み" tts="ヘル・イン・ア・セル" window="20 20"/>
-    <entry t="426.6" duration="4.7" name="アグリゲートソニック|スプレッドソニック" label="頭割りorロール" tts="アグリゲートソニック／スプレッドソニック"/>
-    <entry t="433.8" duration="4.7" name="アグリゲートソニック|スプレッドソニック" label="頭割りorロール" tts="アグリゲートソニック／スプレッドソニック"/>
-    <entry t="449.9" duration="3.5" name="バット・デスマッチ" label="4:4塔踏み" tts="バット・デスマッチ" window="20 20"/>
-    <entry t="459.1" duration="2" name="サングインスクラッチ" label="ピザ避けx5＆コウモリ追従" tts="サングインスクラッチ"/>
-    <entry t="463.8" name="サングインスクラッチ" sync="false"/>
-    <entry t="466.2" name="サングインスクラッチ" sync="false"/>
-    <entry t="468.6" name="サングインスクラッチ" sync="false"/>
-    <entry t="471" name="サングインスクラッチ" sync="false"/>
-    <entry t="474.6" name="ブレイクビーツ|ブレイクダウン" label="ダイチャリ" tts="ブレイクビーツ／ブレイクダウン" sync="false"/>
-    <entry t="477.4" duration="2" name="サングインスクラッチ" label="ピザ避けx5＆コウモリ追従" tts="サングインスクラッチ"/>
-    <entry t="482.2" name="サングインスクラッチ" sync="false"/>
-    <entry t="484.6" name="サングインスクラッチ" sync="false"/>
-    <entry t="487" name="サングインスクラッチ" sync="false"/>
-    <entry t="489.4" name="サングインスクラッチ" sync="false"/>
-    <entry t="493.0" name="ブレイクビーツ|ブレイクダウン" label="ダイチャリ" tts="ブレイクビーツ／ブレイクダウン" sync="false"/>
-    <entry t="494.8" duration="3.5" name="ブルータルレイン" label="頭割りx5" tts="ブルータルレイン" window="20 20"/>
-    <entry t="508" duration="3.8" name="ヴァンプストンプ"/>
-    <entry t="518.6" name="共振波" label="コウモリ処理" tts="共振波" sync="false"/>
-    <entry t="524.2" duration="4" name="ハーフムーン" label="半面" tts="ハーフムーン"/>
-    <entry t="534.3" duration="2.7" name="ハードコア" label="タンク強" tts="ハードコア"/>
-    <entry t="548.6" duration="2" name="サングインスクラッチ" label="ピザ避けx5" tts="サングインスクラッチ"/>
-    <entry t="553.4" name="サングインスクラッチ" sync="false"/>
-    <entry t="555.8" name="サングインスクラッチ" sync="false"/>
-    <entry t="558.2" name="サングインスクラッチ" sync="false"/>
-    <entry t="560.6" name="サングインスクラッチ" sync="false"/>
-    <entry t="566" duration="2.5" name="インセーシャブル・サースト" label="全体攻撃" tts="インセーシャブル・サースト"/>
-    <entry t="586.1" name="クラウドキリング" label="全体攻撃(バフ+4)" tts="クラウドキリング" sync="false"/>
-    <entry t="606.1" name="フィナーレ・ファターレ" label="時間切れ(ワイプ確定)" tts="フィナーレ・ファターレ" sync="false"/>
+    <entry t="6.1" duration="4.7" castname="キラーボイス" text="全体攻撃"/>
+    <entry t="16.2" duration="2.7" castname="ハードコア" text="タンク強"/>
+    <entry t="26.4" duration="3.8" castname="ヴァンプストンプ"/>
+    <entry t="36.8" castname="共振波" text="コウモリ処理" sync="false"/>
+    <entry t="42.6" duration="3.5" castname="ブルータルレイン" text="頭割りx3"/>
+    <entry t="56" duration="4.7" castname="サディスティック・スクリーチ" text="全体攻撃＋フィールド落下"/>
+    <entry t="71.4" duration="4" castname="ハーフムーン"/>
+    <entry t="76.4" castname="突き出る" text="突き出る＋半面" sync="false"/>
+    <entry t="88.9" duration="4" castname="ハーフムーン"/>
+    <entry t="93.8" castname="突き出る" text="突き出る＋半面" sync="false"/>
+    <entry t="106.2" duration="4" castname="ハーフムーン"/>
+    <entry t="111.2" castname="突き出る" text="突き出る＋半面" sync="false"/>
+    <entry t="116.4" duration="4" castname="ハーフムーン"/>
+    <entry t="121.4" castname="突き出る" text="突き出る＋半面" sync="false"/>
+    <entry t="133.6" duration="4.7" castname="サディスティック・スクリーチ" text="全体攻撃＋フィールド復活" window="20 20"/>
+    <entry t="147.9" duration="0.2" castname="クラウドキリング" text="全体攻撃(バフ+4)"/>
+    <entry t="166.8" duration="4.7" castname="フィナーレ・ファターレ" text="全体攻撃(バフ16ワイプ)"/>
+    <entry t="178.9" duration="12" castname="エーテルレッティング" text="＋✕設置x4"/>
+    <entry t="191.2" castname="エーテルレッティング" sync="false"/>
+    <entry t="193.3" castname="エーテルレッティング" sync="false"/>
+    <entry t="195.3" castname="エーテルレッティング" sync="false"/>
+    <entry t="197.3" castname="エーテルレッティング" sync="false"/>
+    <entry t="210.5" castname="エーテルレッティング" text="設置床爆破" sync="false"/>
+    <entry t="216.4" duration="2.7" castname="ハードコア" text="タンク強"/>
+    <entry t="226.5" duration="3.8" castname="ヴァンプストンプ"/>
+    <entry t="236.9" castname="共振波" text="コウモリ処理" sync="false"/>
+    <entry t="242.7" duration="4" castname="ハーフムーン" text="半面"/>
+    <entry t="252.8" duration="3.5" castname="ブルータルレイン" text="頭割りx3"/>
+    <entry t="266" duration="2.5" castname="インセーシャブル・サースト" text="全体攻撃"/>
+    <entry t="279.3" duration="4.7" castname="サディスティック・スクリーチ" text="全体攻撃＋フィールド落下"/>
+    <entry t="301.5" duration="4.7" castname="キラーボイス" text="全体攻撃"/>
+    <entry t="319.6" duration="4.7" castname="キラーボイス" text="全体攻撃"/>
+    <entry t="351.8" duration="4.7" castname="サディスティック・スクリーチ" text="全体攻撃＋フィールド復活" window="20 20"/>
+    <entry t="366.1" duration="0.2" castname="クラウドキリング" text="全体攻撃(バフ+4)"/>
+    <entry t="384.9" duration="4.7" castname="フィナーレ・ファターレ" text="全体攻撃(バフ16ワイプ)"/>
+    <entry t="397.1" duration="3.5" castname="ヘル・イン・ア・セル" text="MT組：塔踏み" window="20 20"/>
+    <entry t="404.2" duration="4.7" castname="アグリゲートソニック|スプレッドソニック" text="頭割りorロール"/>
+    <entry t="411.3" duration="4.7" castname="アグリゲートソニック|スプレッドソニック" text="頭割りorロール"/>
+    <entry t="419.5" duration="3.5" castname="ヘル・イン・ア・セル" text="ST組：塔踏み" window="20 20"/>
+    <entry t="426.6" duration="4.7" castname="アグリゲートソニック|スプレッドソニック" text="頭割りorロール"/>
+    <entry t="433.8" duration="4.7" castname="アグリゲートソニック|スプレッドソニック" text="頭割りorロール"/>
+    <entry t="449.9" duration="3.5" castname="バット・デスマッチ" text="4:4塔踏み" window="20 20"/>
+    <entry t="459.1" duration="2" castname="サングインスクラッチ" text="ピザ避けx5＆コウモリ追従"/>
+    <entry t="463.8" castname="サングインスクラッチ" sync="false"/>
+    <entry t="466.2" castname="サングインスクラッチ" sync="false"/>
+    <entry t="468.6" castname="サングインスクラッチ" sync="false"/>
+    <entry t="471" castname="サングインスクラッチ" sync="false"/>
+    <entry t="474.6" castname="ブレイクビーツ|ブレイクダウン" text="ダイチャリ" sync="false"/>
+    <entry t="477.4" duration="2" castname="サングインスクラッチ" text="ピザ避けx5＆コウモリ追従"/>
+    <entry t="482.2" castname="サングインスクラッチ" sync="false"/>
+    <entry t="484.6" castname="サングインスクラッチ" sync="false"/>
+    <entry t="487" castname="サングインスクラッチ" sync="false"/>
+    <entry t="489.4" castname="サングインスクラッチ" sync="false"/>
+    <entry t="493.0" castname="ブレイクビーツ|ブレイクダウン" text="ダイチャリ" sync="false"/>
+    <entry t="494.8" duration="3.5" castname="ブルータルレイン" text="頭割りx5" window="20 20"/>
+    <entry t="508" duration="3.8" castname="ヴァンプストンプ"/>
+    <entry t="518.6" castname="共振波" text="コウモリ処理" sync="false"/>
+    <entry t="524.2" duration="4" castname="ハーフムーン" text="半面"/>
+    <entry t="534.3" duration="2.7" castname="ハードコア" text="タンク強"/>
+    <entry t="548.6" duration="2" castname="サングインスクラッチ" text="ピザ避けx5"/>
+    <entry t="553.4" castname="サングインスクラッチ" sync="false"/>
+    <entry t="555.8" castname="サングインスクラッチ" sync="false"/>
+    <entry t="558.2" castname="サングインスクラッチ" sync="false"/>
+    <entry t="560.6" castname="サングインスクラッチ" sync="false"/>
+    <entry t="566" duration="2.5" castname="インセーシャブル・サースト" text="全体攻撃"/>
+    <entry t="586.1" castname="クラウドキリング" text="全体攻撃(バフ+4)" sync="false"/>
+    <entry t="606.1" castname="フィナーレ・ファターレ" text="時間切れ(ワイプ確定)" sync="false"/>
   </phase>
 </timeline>
