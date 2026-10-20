@@ -594,9 +594,12 @@ async function autoFindStep(frame, at, source) {
     const regions = regionsFor(width, height);
     const live = () => state.running && state.source === source && settings.autoRegions;
     const found = [];
-    const store = (id, rect, label) => {
+    const details = []; // ログ用: 範囲を決めた行の文字と位置
+    const store = (id, rect, label, line = null) => {
         setRegion(width, height, id, rect);
         found.push(label);
+        details.push(`${label}: ${line ? `「${line.text}」の行（x ${Math.round(line.x)}・y ${Math.round(line.y)}）から` : ''}`
+            + `範囲 x ${rect.x}・y ${rect.y}・幅 ${rect.w}・高さ ${rect.h}`);
     };
     const status = state.engine?.status(at).state;
 
@@ -611,7 +614,7 @@ async function autoFindStep(frame, at, source) {
         const lines = await withOcr(() => scanLines(state.ocr, frame, countdownSearchArea(width, height)));
         const line = findCountdownLine(lines);
         if (line && live()) {
-            store('countdown', countdownRegionFrom(line, width, height), 'カウントダウン');
+            store('countdown', countdownRegionFrom(line, width, height), 'カウントダウン', line);
         }
     }
 
@@ -641,19 +644,20 @@ async function autoFindStep(frame, at, source) {
             const r = classifyCombatLines(lines, { want, width, height, longestCast, hpRect: regions.hp ?? null, enemyName: auto.enemyName });
             auto.enemyName = r.enemyName ?? auto.enemyName;
             if (r.hp) {
-                store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`);
+                store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`, r.hp.line);
             }
             if (r.enmity) {
-                store('enmity', r.enmity.rect, '敵対リスト');
+                store('enmity', r.enmity.rect, '敵対リスト', r.enmity.line);
             }
             if (r.cast) {
-                store('cast', r.cast.rect, `詠唱バー（${r.cast.name}）`);
+                store('cast', r.cast.rect, `詠唱バー（${r.cast.name}）`, r.cast.line);
             }
         }
     }
 
     if (found.length > 0) {
         log(`範囲を自動で指定: ${found.join('・')}`, at);
+        details.forEach((d) => log(`　${d}`, at));
         setStatus('regions-status', `画面 ${screenKey(width, height)} の ${found.join('・')} を自動で指定しました。`
             + 'ずれていれば下で直してください（「この範囲を消す」で消すと、また自動で探します）。', 'ok');
         if (editor.frame?.width === width && editor.frame?.height === height) {

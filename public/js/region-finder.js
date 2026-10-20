@@ -155,7 +155,8 @@ export function castRegionFrom(line, longest, width, height) {
 /**
  * 画面全体で読んだ行から、まだ無い範囲（want: 'hp'|'cast'|'enmity' の集合）を決める。
  * @param {{x,y,w,h}} [hpRect] 保存済みの HP の範囲（あれば、詠唱バーはその近くを選ぶ）
- * @returns {{hp?:{rect, focus:boolean, others:number}, enmity?:{rect}, cast?:{rect, name:string}, enemyName:string|null}}
+ * @returns {{hp?:{rect, focus:boolean, others:number, line}, enmity?:{rect, line}, cast?:{rect, name:string, line}, enemyName:string|null}}
+ *          line は範囲を決めた行（確認用）
  */
 export function classifyCombatLines(lines, { want, width, height, longestCast = 12, hpRect = null, enemyName = null }) {
     const out = { enemyName };
@@ -163,7 +164,7 @@ export function classifyCombatLines(lines, { want, width, height, longestCast = 
     if (hp) {
         out.enemyName = hp.name || enemyName;
         if (want.has('hp')) {
-            out.hp = { rect: hpRegionFrom(hp.line, width, height), focus: hp.focus, others: hp.others };
+            out.hp = { rect: hpRegionFrom(hp.line, width, height), focus: hp.focus, others: hp.others, line: hp.line };
         }
     }
     const hpLines = lines.filter((l) => HP_HEAD.test(l.text));
@@ -173,12 +174,12 @@ export function classifyCombatLines(lines, { want, width, height, longestCast = 
         enmityLine = findEnmityLine(lines, out.enemyName, hpLines);
     }
     if (want.has('enmity') && enmityLine) {
-        out.enmity = { rect: enmityRegionFrom(enmityLine, width, height) };
+        out.enmity = { rect: enmityRegionFrom(enmityLine, width, height), line: enmityLine };
     }
     if (want.has('cast')) {
         const castLine = findCastLine(lines, { near, enemyName: out.enemyName, exclude: [...hpLines, enmityLine] });
         if (castLine) {
-            out.cast = { rect: castRegionFrom(castLine, longestCast, width, height), name: castLine.cast };
+            out.cast = { rect: castRegionFrom(castLine, longestCast, width, height), name: castLine.cast, line: castLine };
         }
     }
     return out;
