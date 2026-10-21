@@ -111,6 +111,7 @@ export class TimelineEngine {
         this.lastHpAt = null;
         this.hp = null;
         this.blackSince = null;
+        this.haltedStart = null;
     }
 
     // ── 観測 ──
@@ -125,6 +126,9 @@ export class TimelineEngine {
             this.log(at, '戦闘中に敵が見えないままカウントダウンが出たので、次の戦闘として数え直す');
             this.reset();
         }
+        if (this.holdUntilEnmityOff && this.haltedStart !== null && Math.abs(at + seconds * 1000 - this.haltedStart) <= 2 * COUNTDOWN_SUPPORT_MS) {
+            return; // 手で止めたカウントダウンの続き
+        }
         if (this.state !== 'countdown') {
             this.reset();
             this.state = 'countdown';
@@ -136,20 +140,23 @@ export class TimelineEngine {
         }
     }
 
-    /** 利用者が手で止めた。次のカウントダウン・「戦闘開始！」・敵対リストが一度消えてからまた出たとき、また始まる */
+    /** 利用者が手で止めた。次のカウントダウンか、敵対リストが一度消えてからまた出たとき、また始まる */
     halt(at) {
         if (this.state === 'idle') {
             return;
         }
+        const predicted = this.state === 'countdown' ? this.predictedStart() : null;
         this.reset();
         this.state = 'ended';
         this.holdUntilEnmityOff = true;
+        this.haltedStart = predicted; // カウントダウン中に止めたら、その続きの吹き出しでは数え直さない
         this.log(at, '手で止めた');
     }
 
     /** 吹き出し「戦闘開始！」を読んだ */
     started(at) {
-        if (this.state === 'combat') {
+        // 手で止めた後は、次のカウントダウン（reset で止めた状態が解ける）が出るまで「戦闘開始！」でも始めない
+        if (this.state === 'combat' || this.holdUntilEnmityOff) {
             return;
         }
         // 「戦闘開始！」はカウントダウンの終わりにしか出ないので、予想より大きく早いものは読み違い（行の一部だけを読んだなど）

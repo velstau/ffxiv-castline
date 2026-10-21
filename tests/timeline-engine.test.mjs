@@ -358,3 +358,25 @@ test('敵対リストの範囲に始めから文字があるうちは、敵対�
     assert.equal(e2.status(T(10)).state, 'combat');
     assert.equal(sec(e2.startAt), 9);
 });
+
+test('手で止めた後は、画面に残った「戦闘開始！」では始めない', () => {
+    const { e } = engine();
+    e.countdown(T(10), 5);
+    e.halt(T(12));
+    e.started(T(15.1));
+    assert.equal(e.status(T(16)).state, 'ended');
+    e.countdown(T(30), 5); // 次のカウントダウン
+    e.started(T(35.1));
+    assert.equal(e.status(T(35.2)).state, 'combat');
+});
+
+test('カウントダウン中に手で止めたら、そのカウントダウンの続きの吹き出しでは数え直さない', () => {
+    const { e } = engine();
+    e.countdown(T(10), 16);
+    e.halt(T(12));
+    e.countdown(T(16), 10);
+    e.countdown(T(21.1), 5);
+    assert.equal(e.status(T(27)).state, 'ended');
+    e.countdown(T(40), 10); // 別のカウントダウン
+    assert.equal(e.status(T(41)).state, 'countdown');
+});
