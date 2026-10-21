@@ -1328,3 +1328,62 @@ label.field,
 .fields > .row:not(:has(> :not([hidden]):not(:empty))) {
     margin-top: calc(-16 / 16 * 1rem);
 }
+
+/* =========================================================================
+ * 初期設定: 見つけた範囲の確認（setup.js の renderChecks）
+ * ========================================================================= */
+
+.rc-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(260 / 16 * 1rem), 1fr));
+    gap: calc(12 / 16 * 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rc-card {
+    display: grid;
+    align-content: start;
+    gap: calc(8 / 16 * 1rem);
+    padding: calc(12 / 16 * 1rem);
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-8);
+}
+
+.rc-card.rc-none {
+    color: var(--vw-mute);
+}
+
+.rc-head {
+    display: flex;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+    color: var(--vw-ink);
+}
+
+.rc-head .swatch {
+    flex: none;
+    width: calc(16 / 16 * 1rem);
+    height: calc(16 / 16 * 1rem);
+    border-radius: var(--radius-4);
+}
+
+.rc-crop {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-4);
+    background-color: var(--color-black);
+    image-rendering: pixelated;
+}
+
+.rc-note {
+    margin: 0;
+    color: var(--vw-sub);
+}
+
+.rc-card button {
+    justify-self: start;
+}

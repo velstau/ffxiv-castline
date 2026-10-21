@@ -3,7 +3,7 @@
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
-import { STORE_REGIONS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
+import { STORE_REGIONS, REGION_KINDS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
 import { RegionEditor } from './region-editor.js';
 import { icon } from './icons.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
@@ -27,7 +27,14 @@ const state = {
     finder: null,
     lastContentRead: -Infinity,
     found: {}, // 種類 → 自動で見つけたときの記録（表示用）
+    // 見つけた範囲の確認に使う画面: 種類 → { bitmap, at }（見つけた瞬間の画面。カウントダウン・詠唱バーはすぐ消えるため）
+    snapshots: {},
+    liveSnap: null, // 「いまのゲーム画面で見る」で撮った画面（見つけた瞬間の画面が無い種類に使う）
+    checksKey: '', // 確認の一覧を描き直すかどうかの目印
 };
+const CROP_MAX_W = 640; // 確認の一覧の切り抜きの最大の大きさ（画素。CSS で枠の幅に縮める）
+const CROP_MAX_H = 320;
+const CROP_ZOOM_MAX = 3;
 let editor = null;
 
 function setStatus(id, text, kind = '') {
@@ -36,9 +43,13 @@ function setStatus(id, text, kind = '') {
     el.className = `status ${kind}`.trim();
 }
 
+function clock(at = Date.now()) {
+    const d = new Date(at);
+    return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
+}
+
 function log(message) {
-    const d = new Date();
-    const time = `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`;
+    const time = clock();
     const el = $('log');
     el.value += `${time} ${message}\n`;
     el.scrollTop = el.scrollHeight;
@@ -180,7 +191,118 @@ function render() {
     $('start').disabled = state.running || !state.ocr;
     $('stop').disabled = !state.running;
     $('regions-grab').disabled = !state.running;
+    $('checks-grab').disabled = !state.running;
     $('regions-find').disabled = !state.ocr || !editor?.frame;
+    renderChecks();
+}
+
+// ── 見つけた範囲の確認（種類ごとに、範囲の周りの切り抜きと枠） ──
+function snapshotFor(id) {
+    const size = state.frameSize ?? editor?.frame;
+    const own = state.snapshots[id];
+    if (own && (!size || (own.bitmap.width === size.width && own.bitmap.height === size.height))) {
+        return { ...own, kind: 'found' };
+    }
+    return state.liveSnap ? { ...state.liveSnap, kind: 'live' } : null;
+}
+
+function drawCrop(canvas, bitmap, rect, color) {
+    const pad = Math.max(16, Math.round(Math.max(rect.w, rect.h) * 0.3));
+    const x = Math.max(0, rect.x - pad);
+    const y = Math.max(0, rect.y - pad);
+    const w = Math.min(bitmap.width, rect.x + rect.w + pad) - x;
+    const h = Math.min(bitmap.height, rect.y + rect.h + pad) - y;
+    const scale = Math.min(CROP_ZOOM_MAX, CROP_MAX_W / w, CROP_MAX_H / h);
+    canvas.width = Math.round(w * scale);
+    canvas.height = Math.round(h * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = scale < 1;
+    ctx.drawImage(bitmap, x, y, w, h, 0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = color;
+    ctx.strokeRect((rect.x - x) * scale, (rect.y - y) * scale, rect.w * scale, rect.h * scale);
+}
+
+function renderChecks() {
+    const size = state.frameSize ?? editor?.frame;
+    const regions = size ? regionsFor(size.width, size.height) : {};
+    const key = JSON.stringify([size && screenKey(size.width, size.height), regions,
+        Object.entries(state.snapshots).map(([id, s]) => [id, s.at]), state.liveSnap?.at ?? null]);
+    if (key === state.checksKey) {
+        return;
+    }
+    state.checksKey = key;
+    $('region-checks').replaceChildren(...REGION_KINDS.map((kind) => {
+        const rect = regions[kind.id];
+        const li = document.createElement('li');
+        li.className = `rc-card${rect ? '' : ' rc-none'}`;
+        const head = document.createElement('div');
+        head.className = 'rc-head';
+        const swatch = Object.assign(document.createElement('span'), { className: 'swatch' });
+        swatch.style.background = kind.color;
+        head.append(swatch, Object.assign(document.createElement('strong'), { textContent: kind.label }));
+        li.append(head);
+        if (!rect) {
+            li.append(Object.assign(document.createElement('p'), { className: 'status', textContent: 'まだありません' }));
+            return li;
+        }
+        const snap = snapshotFor(kind.id);
+        const found = state.found[kind.id];
+        let note;
+        if (snap) {
+            const canvas = Object.assign(document.createElement('canvas'), { className: 'rc-crop' });
+            canvas.setAttribute('role', 'img');
+            canvas.setAttribute('aria-label', `${kind.label}の範囲の周りの画面`);
+            drawCrop(canvas, snap.bitmap, rect, kind.color);
+            li.append(canvas);
+            note = snap.kind === 'found'
+                ? `見つけたときの画面（${clock(snap.at)}）${found?.line ? `。「${found.line.text}」の行から決めました` : ''}`
+                : `いまの画面（${clock(snap.at)}）。いま出ていないもの（カウントダウンなど）は写りません`;
+        } else {
+            note = state.running ? '前に決めた範囲です。「いまのゲーム画面で見る」で確かめられます' : '前に決めた範囲です。取り込みを始めると確かめられます';
+        }
+        li.append(Object.assign(document.createElement('p'), { className: 'rc-note', textContent: note }));
+        const button = Object.assign(document.createElement('button'), { type: 'button' });
+        button.append(icon('zoom_in'), '拡大図で確かめる・直す');
+        button.disabled = !snap && !state.running;
+        button.addEventListener('click', () => openInEditor(kind.id));
+        li.append(button);
+        return li;
+    }));
+}
+
+async function grabForChecks() {
+    const grabbed = await state.source?.grab(0);
+    if (!grabbed) {
+        return;
+    }
+    state.liveSnap?.bitmap.close();
+    state.liveSnap = { bitmap: grabbed.bitmap, at: Date.now() };
+    render();
+}
+
+// その種類の確認に使った画面（見つけた瞬間の画面か、いまの画面）を拡大図に出して、その種類を選ぶ
+async function openInEditor(id) {
+    const snap = snapshotFor(id);
+    if (snap) {
+        editor.setFrame(await createImageBitmap(snap.bitmap)); // 拡大図が持って閉じるので複製を渡す
+        setStatus('editor-status', snap.kind === 'found'
+            ? `見つけたときの画面（${clock(snap.at)}）を使っています。直すと、この画面の大きさの範囲として保存します。`
+            : `いまのゲーム画面（${clock(snap.at)}）を使っています。`, 'ok');
+    } else {
+        await grabForRegions();
+    }
+    $('editor-details').open = true;
+    editor.select(id);
+    render();
+    $('editor-details').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearSnapshots() {
+    Object.values(state.snapshots).forEach((s) => s.bitmap.close());
+    state.snapshots = {};
+    state.liveSnap?.bitmap.close();
+    state.liveSnap = null;
 }
 
 // ── 取り込みと自動の範囲指定 ──
@@ -240,8 +362,11 @@ async function step(frame, at, live) {
     if (found.length === 0) {
         return;
     }
-    for (const f of found) {
+    const bitmap = await createImageBitmap(frame); // 見つけた瞬間の画面（確認の一覧で使う。frame は呼ぶ側が閉じる）
+    for (const [i, f] of found.entries()) {
         state.found[f.id] = f;
+        state.snapshots[f.id]?.bitmap.close();
+        state.snapshots[f.id] = { bitmap: i === 0 ? bitmap : await createImageBitmap(bitmap), at: Date.now() };
         log(`見つけました: ${foundDetail(f)}`);
     }
     const content = found.find((f) => f.id === 'content');
@@ -324,6 +449,7 @@ function clearScreenRegions() {
     }
     clearRegions(size.width, size.height);
     state.found = {};
+    clearSnapshots();
     state.finder?.reset();
     editor.refresh();
     log(`画面 ${key} の範囲を全部消しました`);
@@ -370,6 +496,7 @@ async function init() {
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
     $('regions-grab').addEventListener('click', grabForRegions);
+    $('checks-grab').addEventListener('click', grabForChecks);
     $('regions-image').addEventListener('change', async (ev) => {
         if (ev.target.files[0]) {
             await imageForRegions(ev.target.files[0]);
