@@ -842,6 +842,17 @@ td.num {
 .tl-head {
     @apply text-std-24B-150;
     color: var(--vw-ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.tl-head .tl-halt {
+    flex: none;
+    min-height: calc(36 / 16 * 1rem);
+    padding: 0 calc(12 / 16 * 1rem);
+    @apply text-std-16B-170;
 }
 
 .tl-sub {

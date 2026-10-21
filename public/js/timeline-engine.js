@@ -97,6 +97,7 @@ export class TimelineEngine {
         this.enmityShown = false;
         this.enmityOnSince = null;
         this.enmityOffSince = null;
+        this.holdUntilEnmityOff = false; // 手動で止めた後、敵対リストが一度消えるまで敵対リストでは始めない
         this.lastHpAt = null;
         this.hp = null;
     }
@@ -119,6 +120,17 @@ export class TimelineEngine {
         }
     }
 
+    /** 利用者が手で止めた。次のカウントダウン・「戦闘開始！」・敵対リストが一度消えてからまた出たとき、また始まる */
+    halt(at) {
+        if (this.state === 'idle') {
+            return;
+        }
+        this.reset();
+        this.state = 'ended';
+        this.holdUntilEnmityOff = true;
+        this.log(at, '手で止めた');
+    }
+
     /** 吹き出し「戦闘開始！」を読んだ */
     started(at) {
         if (this.state === 'combat') {
@@ -136,6 +148,7 @@ export class TimelineEngine {
         } else {
             this.enmityOnSince = null;
             this.enmityOffSince ??= at;
+            this.holdUntilEnmityOff = false;
         }
         this.advance(at);
     }
@@ -245,14 +258,16 @@ export class TimelineEngine {
 
     // カウントダウンの各秒数から予想した開始時刻。吹き出しは出た瞬間ではなく後で読めるので、予想は実際より遅れることはあっても
     // 早まることはない。そこで、ほかの予想と合う（読み違いではない）予想のうち最も早いものを採る。
-    // どの予想も合わない（1 つしかない、またはばらばら）ときは中央値（2 つなら早いほう）
+    // どの予想も合わない（1 つしかない、またはばらばら）ときは、いちばん大きい秒数の予想。読み違いは「10」を「1」のように
+    // 桁を落とすことが多く、小さい秒数の予想は早すぎて、まだカウントダウン中に戦闘を始めてしまう（2026-10-21、動画で確認）
     predictedStart() {
-        const sorted = [...this.countdownSamples].map(([seconds, at]) => at + seconds * 1000).sort((a, b) => a - b);
-        if (sorted.length === 0) {
+        const samples = [...this.countdownSamples].map(([seconds, at]) => ({ seconds, p: at + seconds * 1000 }));
+        if (samples.length === 0) {
             return null;
         }
+        const sorted = samples.map((x) => x.p).sort((a, b) => a - b);
         const supported = sorted.filter((p, i) => sorted.some((q, j) => j !== i && Math.abs(p - q) <= COUNTDOWN_SUPPORT_MS));
-        return supported[0] ?? sorted[Math.floor((sorted.length - 1) / 2)];
+        return supported[0] ?? samples.reduce((a, b) => (b.seconds > a.seconds ? b : a)).p;
     }
 
     // 「戦闘開始！」を読んだ時刻と、カウントダウンからの予想のうち早いほう（どちらも実際より遅れて見えるため）
@@ -305,7 +320,7 @@ export class TimelineEngine {
     advance(at) {
         // 敵対リストは ENMITY_ON_MIN_MS 続いてから「出た」とみなし、開始は出始めた時刻にさかのぼる
         const steady = this.enmityShown && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
-        if (steady && (this.state === 'idle' || this.state === 'ended')) {
+        if (steady && (this.state === 'idle' || this.state === 'ended') && !this.holdUntilEnmityOff) {
             this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウンなし）');
         } else if (steady && this.state === 'countdown') {
             const predicted = this.predictedStart();

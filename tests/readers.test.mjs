@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spottingPenalty } from '../public/js/ctc.js';
-import { pickCast } from '../public/js/readers.js';
+import { pickCast, parseCountdown } from '../public/js/readers.js';
 
 const SKILLS = ['創世の真炎', 'オクタフレア・コンシーヴ', 'テトラフレア・コンシーヴ', '熾炎創火', '創獣炎舞'];
 
@@ -47,4 +47,14 @@ test('敵対リスト: 頭の部分が短すぎるとき・同じ頭の候補が
     assert.equal(pick('Bヘファイストテトラ', { truncated: true }), null);
     assert.equal(pick('Bヘファイストオクタフレア…', { truncated: true }, ['オクタフレア', 'オクタフレア・コンシーヴ']), null);
     assert.equal(pick('Bヘファイスト', { truncated: true }), null);
+});
+
+test('カウントダウン: 秒数の読めない「戦闘開始まで…」を戦闘開始にしない・全角数字と O の読み違い', () => {
+    assert.deepEqual(parseCountdown('戦闘開始まで16秒！'), { seconds: 16 });
+    assert.deepEqual(parseCountdown('戦闘開始！'), { started: true });
+    assert.equal(parseCountdown('戦闘開始まで秒！'), null);
+    assert.equal(parseCountdown('戦闘開始まで'), null);
+    assert.deepEqual(parseCountdown('戦闘開始まで１０秒！'), { seconds: 10 });
+    assert.deepEqual(parseCountdown('戦闘開始まで1O秒！'), { seconds: 10 });
+    assert.deepEqual(parseCountdown('則闘開始！'), { started: true });
 });

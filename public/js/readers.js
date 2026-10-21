@@ -137,14 +137,21 @@ export async function readCast(detector, recognizer, source, rect, candidates, {
 /**
  * カウントダウンの吹き出し（「戦闘開始まで16秒！」「戦闘開始！」）を解釈する。
  * 「戦」を「則」と読むような誤読があるので、「(数字)秒」と「開始」だけを見る。
+ * 「まで」か「秒」があれば残り秒数の吹き出しで、数字が読めなければ何も返さない（「開始」だけを見て戦闘開始にしない。2026-10-21）
  * @returns {{seconds:number}|{started:true}|null}
  */
 export function parseCountdown(text) {
-    const m = text.match(/(\d{1,2})\s*秒/);
+    const t = text
+        .replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+        .replace(/(?<=\d)[OoＯ〇]|[OoＯ〇](?=\d)/g, '0');
+    const m = t.match(/(\d{1,2})\s*秒/);
     if (m) {
         return { seconds: Number(m[1]) };
     }
-    if (/開始/.test(text)) {
+    if (/まで|秒/.test(t)) {
+        return null;
+    }
+    if (/開始/.test(t)) {
         return { started: true };
     }
     return null;

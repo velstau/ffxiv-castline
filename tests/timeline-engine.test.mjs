@@ -237,3 +237,31 @@ test('毎回どれかが出る技（A|B）: どちらが読めても同期し、
     e.cast(T(20), 'ブレイクダウン');
     assert.equal(e.status(T(20)).phase.id, 'p2');
 });
+
+test('カウントダウン: 2 つの予想が食い違うときは大きい秒数のほう（「10」を「1」と読んでも早まらない。2026-10-21 の動画）', () => {
+    const { e } = engine();
+    e.countdown(T(10.1), 16);
+    e.countdown(T(16.1), 1); // 「戦闘開始まで10秒！」を「1」と読んだ
+    assert.equal(sec(e.status(T(17.5)).predictedStart), 26.1);
+    assert.equal(e.status(T(17.5)).state, 'countdown');
+});
+
+test('手で止める: 敵対リストが出たままでは始まらず、一度消えてから出れば始まる', () => {
+    let { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 5, 30, true);
+    assert.equal(e.status(T(30)).state, 'combat');
+    e.halt(T(30.2));
+    enmityFrom(e, 30.5, 40, true);
+    assert.equal(e.status(T(40)).state, 'ended');
+    enmityFrom(e, 41, 45, false);
+    enmityFrom(e, 50, 51, true);
+    assert.equal(e.status(T(51)).state, 'combat');
+    assert.equal(sec(e.startAt), 50);
+
+    // 止めた後のカウントダウンは、ふつうに数える
+    ({ e } = engine({ hasEnmity: true }));
+    e.started(T(0));
+    e.halt(T(5));
+    realCountdown(e);
+    assert.equal(e.status(T(20)).state, 'countdown');
+});

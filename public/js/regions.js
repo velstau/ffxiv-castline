@@ -33,7 +33,7 @@ export const REGION_KINDS = [
     {
         id: 'enmity', label: '敵対リスト', color: '#6fdc8c',
         rule: '敵の名前の列を上から下まで（詠唱中の技名もここに出る）',
-        lost: '全滅・討伐で止まりません（リセットを押してください）',
+        lost: '全滅・討伐で止まりません（「タイムラインを止める」を押してください）',
     },
 ];
 const KIND_IDS = new Set(REGION_KINDS.map((k) => k.id));

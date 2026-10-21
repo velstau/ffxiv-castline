@@ -491,6 +491,8 @@ function buildView(now) {
     } else if (s.state === 'combat') {
         const phases = engine.timeline.phases.length > 1 ? `・${s.phase.name ?? s.phase.id}` : '';
         sub = `${combatClock(s.combatTime)}${phases}`;
+    } else if (engine.holdUntilEnmityOff) {
+        sub = '次のカウントダウンか、敵対リストが一度消えてからまた出たときに始まります';
     } else {
         sub = '次のカウントダウンか敵対リストで、また始まります';
     }
@@ -499,12 +501,12 @@ function buildView(now) {
         name: u.entry.label ? `${showName(u.entry.name)}（${u.entry.label}）` : showName(u.entry.name),
         kind: u.hitIn <= 0 ? 'done' : u.castIn <= 0 ? 'casting' : '',
     }));
-    return { head: STATE_TEXT[s.state], sub, items, status: s };
+    return { head: s.state === 'ended' && engine.holdUntilEnmityOff ? '止めました' : STATE_TEXT[s.state], sub, items, status: s };
 }
 
 const PANEL_HTML = `
     <div class="tl-panel">
-        <div class="tl-head"><span data-k="head"></span> <span class="tl-sub" data-k="sub"></span></div>
+        <div class="tl-head"><span><span data-k="head"></span> <span class="tl-sub" data-k="sub"></span></span><button type="button" class="tl-halt" data-k="halt" hidden>止める</button></div>
         <ol class="tl-list" data-k="list"></ol>
     </div>`;
 
@@ -515,6 +517,7 @@ function renderPanel(doc, view) {
     }
     panel.querySelector('[data-k="head"]').textContent = view.head;
     panel.querySelector('[data-k="sub"]').textContent = view.sub;
+    panel.querySelector('[data-k="halt"]').hidden = !['countdown', 'combat'].includes(view.status?.state);
     panel.querySelector('[data-k="list"]').replaceChildren(...view.items.map((item) => {
         const li = doc.createElement('li');
         li.className = item.kind;
@@ -583,15 +586,21 @@ async function openPip() {
         setStatus('run-status', 'このブラウザは小窓（Document Picture-in-Picture）に対応していません。Chrome か Edge の新しい版で開いてください。', 'ng');
         return;
     }
-    await pip.open({ width: 380, height: 300, html: PANEL_HTML, onFrame: () => update() });
+    const win = await pip.open({ width: 380, height: 300, html: PANEL_HTML, onFrame: () => update() });
+    bindPanel(win.document);
     update(true);
 }
 
-function reset() {
-    state.engine?.reset();
+function bindPanel(doc) {
+    doc.querySelector('[data-k="halt"]').addEventListener('click', halt);
+}
+
+// タイムラインを手で止める。敵対リストが出たままでもすぐには始め直さず、次のカウントダウンか、敵対リストが一度消えてから始まる
+function halt() {
+    state.engine?.halt(Date.now());
     state.spoken = new Set();
     state.spokenStartAt = null;
-    log('リセット');
+    log('タイムラインを手で止めました');
     update(true);
 }
 
@@ -681,6 +690,7 @@ function setupVoiceSettings() {
 // ── 初期化 ──
 async function init() {
     $('panel').innerHTML = PANEL_HTML;
+    bindPanel(document);
     $('tts').checked = settings.tts;
     $('lead').value = settings.lead;
     $('tts').addEventListener('change', () => {
@@ -697,7 +707,7 @@ async function init() {
     setupVoiceSettings();
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
-    $('reset').addEventListener('click', reset);
+    $('reset').addEventListener('click', halt);
     $('pip-open').addEventListener('click', openPip);
     $('timeline-select').addEventListener('change', async () => {
         state.choice = $('timeline-select').value;
