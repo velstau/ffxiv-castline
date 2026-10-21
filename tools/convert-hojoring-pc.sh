@@ -12,8 +12,15 @@ grep -v '^#' tools/hojoring-pc.tsv | while IFS=$'\t' read -r file enc diff src e
     [ "$want" != "  " ] && [[ "$want" != *" $file "* ]] && continue
     echo "== $file"
     if [ "$mode" = skeletons ]; then
+        # Hojoring の長さ（≒時間切れ）の 1.2 倍より長い討伐の記録は使わない。区間の時刻は区間ごとなので、各区間の最後の時刻を足す
+        max=$(python3 -c '
+import importlib.util, sys
+spec = importlib.util.spec_from_file_location("overlay", "tools/hojoring-overlay.py")
+m = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(m)
+print(round(m.hojoring_length(sys.argv[1]) * 1.2))' "sources/hojoring-pc/$src")
         docker run --rm -u "$(id -u):$(id -g)" -e FFLOGS_CLIENT_ID -e FFLOGS_CLIENT_SECRET -v "$PWD":/w -w /w node:24-alpine \
-            node tools/skeleton-from-fflogs.mjs "$file" "$enc" --difficulty "$diff" < /dev/null
+            node tools/skeleton-from-fflogs.mjs "$file" "$enc" --difficulty "$diff" --max-length "$max" < /dev/null
     else
         title=$(python3 -c 'import json,sys; print(next(c["name"] for c in json.load(open("public/data/contents.json"))["contents"] if c["file"] == sys.argv[1]))' "$file")
         # shellcheck disable=SC2086

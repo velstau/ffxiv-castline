@@ -8,16 +8,20 @@
     <entry t="11.4" castname="アクチュアライズ" duration="4.7"/>
     <entry t="22.0" castname="マルチウェイ" duration="4.7"/>
     <entry t="30.1" castname="フォワード・ルーズハーフ" duration="7.7"/>
+    <entry t="37.9" castname="マルチウェイ" sync="false"/>
     <entry t="43.5" castname="マルチウェイ" duration="4.7"/>
     <entry t="51.7" castname="レジサイド" duration="7.7"/>
+    <entry t="59.5" castname="マルチウェイ" sync="false"/>
     <entry t="68.1" castname="ドーン・エイジ" duration="6.7"/>
     <entry t="85.3" castname="エッジ・ザ・ヴォロク" duration="3.7"/>
     <entry t="94.7" castname="シンクロナス" duration="4.7"/>
     <entry t="102.8" castname="ルーズハーフ" duration="5.7"/>
+    <entry t="107.5" castname="ピット・オブ・ヴォロク" duration="0.7"/>
     <entry t="114.0" castname="エンチャント・ゲートウェイ" duration="3.7"/>
     <entry t="122.2" castname="サモンエッジ" duration="3.7"/>
     <entry t="130.3" castname="エッジトラック" duration="3.7"/>
     <entry t="147.5" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="147.5" castname="ピット・オブ・ヴォロク" sync="false"/>
     <entry t="159.7" castname="プロジェクション・エッジ" duration="4.7"/>
     <entry t="169.8" castname="プロジェクション・エッジ" duration="4.7"/>
     <entry t="184.4" castname="フォワード・ルーズハーフ" duration="7.7"/>
@@ -31,6 +35,7 @@
     <entry t="312.0" castname="エッジ・ザ・ヴォロク" duration="4.7"/>
     <entry t="321.1" castname="シンクロナス" duration="4.7"/>
     <entry t="330.3" castname="エアロガ" duration="4.7"/>
+    <entry t="335.2" castname="ピット・オブ・ヴォロク" sync="false"/>
     <entry t="341.6" castname="フォワード・ルーズハーフ" duration="8.7"/>
     <entry t="353.7" castname="デューティエッジ" duration="4.6"/>
     <entry t="358.9" castname="デューティエッジ" sync="false"/>
@@ -53,7 +58,9 @@
     <entry t="522.1" castname="ドーン・エイジ" duration="6.7"/>
     <entry t="539.2" castname="エッジ・ザ・ヴォロク" duration="3.7"/>
     <entry t="547.4" castname="シンクロナス" duration="4.7"/>
+    <entry t="560.3" castname="ピット・オブ・ヴォロク" duration="0.7"/>
     <entry t="564.6" castname="デューティエッジ" duration="4.6"/>
+    <entry t="564.6" castname="ピット・オブ・ヴォロク" sync="false"/>
     <entry t="569.8" castname="デューティエッジ" sync="false"/>
     <entry t="571.9" castname="デューティエッジ" sync="false"/>
     <entry t="574.0" castname="デューティエッジ" sync="false"/>
@@ -62,7 +69,9 @@
     <entry t="589.4" castname="サモンエッジ" duration="3.7"/>
     <entry t="597.6" castname="エッジトラック" duration="3.7"/>
     <entry t="614.8" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="614.8" castname="ピット・オブ・ヴォロク" sync="false"/>
     <entry t="628.2" castname="マルチウェイ" duration="4.7"/>
     <entry t="636.3" castname="バックワード・ルーズハーフ" duration="7.7"/>
+    <entry t="644.1" castname="マルチウェイ" sync="false"/>
   </phase>
 </timeline>

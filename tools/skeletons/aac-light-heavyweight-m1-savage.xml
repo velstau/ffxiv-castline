@@ -6,7 +6,9 @@
   <note>FFLogs の公開ランキングの討伐の記録（9:22）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="9.7" castname="クアドラプルネイル" duration="4.7"/>
+    <entry t="15.5" castname="クアドラプルネイル" sync="false"/>
     <entry t="16.7" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="18.4" castname="クアドラプルネイル" sync="false"/>
     <entry t="19.7" castname="クアドラプルネイル" duration="0.7"/>
     <entry t="22.7" castname="クアドラプルネイル" duration="0.7"/>
     <entry t="28.8" castname="ビスケットメーカー" duration="4.7"/>
@@ -20,10 +22,18 @@
     <entry t="96.6" castname="リーピング・クアドラプルネイル" duration="4.7"/>
     <entry t="102.6" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="104.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="106.3" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="107.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="110.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="118.6" castname="ブラッディースクラッチ" duration="4.7"/>
     <entry t="137.0" castname="マウサーラッシュ" duration="9.7"/>
+    <entry t="148.4" castname="マウサーラッシュ" sync="false"/>
+    <entry t="149.8" castname="マウサーラッシュ" sync="false"/>
+    <entry t="151.4" castname="マウサーラッシュ" sync="false"/>
+    <entry t="152.9" castname="マウサーラッシュ" sync="false"/>
+    <entry t="154.4" castname="マウサーラッシュ" sync="false"/>
+    <entry t="155.8" castname="マウサーラッシュ" sync="false"/>
+    <entry t="157.5" castname="マウサーラッシュ" sync="false"/>
     <entry t="165.0" castname="コピーキャット" duration="2.7"/>
     <entry t="172.2" castname="エレベート・エビセレート" duration="5.3"/>
     <entry t="180.2" castname="エレベート・エビセレート" sync="false"/>
@@ -37,6 +47,7 @@
     <entry t="227.1" castname="ビスケットメーカー" sync="false"/>
     <entry t="229.1" castname="キャッタクリスム・ゲイル" sync="false"/>
     <entry t="231.1" castname="衝撃波" duration="5.7"/>
+    <entry t="236.9" castname="キャッタクリスム・ゲイル" duration="4.7"/>
     <entry t="254.3" castname="ナインライヴス" duration="2.7"/>
     <entry t="259.4" castname="リーピング・デュアルネイル" duration="4.7"/>
     <entry t="265.4" castname="リーピング・デュアルネイル" sync="false"/>
@@ -45,13 +56,22 @@
     <entry t="280.7" castname="リーピング・クアドラプルネイル" duration="4.7"/>
     <entry t="286.7" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="288.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="290.4" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="291.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="294.6" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="297.7" castname="ソウルシェード" duration="2.7"/>
     <entry t="320.9" castname="テンペストテアー" duration="4.7"/>
+    <entry t="326.7" castname="テンペストテアー" sync="false"/>
     <entry t="344.0" castname="ネイルチッパー" duration="6.7"/>
     <entry t="367.0" castname="ブラッディースクラッチ" duration="4.7"/>
     <entry t="385.4" castname="マウサーラッシュ" duration="9.7"/>
+    <entry t="396.9" castname="マウサーラッシュ" sync="false"/>
+    <entry t="398.3" castname="マウサーラッシュ" sync="false"/>
+    <entry t="399.9" castname="マウサーラッシュ" sync="false"/>
+    <entry t="401.3" castname="マウサーラッシュ" sync="false"/>
+    <entry t="402.9" castname="マウサーラッシュ" sync="false"/>
+    <entry t="404.3" castname="マウサーラッシュ" sync="false"/>
+    <entry t="405.9" castname="マウサーラッシュ" sync="false"/>
     <entry t="413.5" castname="コピーキャット" duration="2.7"/>
     <entry t="420.7" castname="エレベート・エビセレート" duration="5.3"/>
     <entry t="424.8" castname="スプレッドネイル" duration="4.7"/>
@@ -71,10 +91,12 @@
     <entry t="479.4" castname="ビスケットメーカー" sync="false"/>
     <entry t="482.4" castname="キャッタクリスム・ゲイル" sync="false"/>
     <entry t="484.4" castname="衝撃波" duration="5.7"/>
+    <entry t="490.3" castname="キャッタクリスム・ゲイル" duration="4.7"/>
     <entry t="508.8" castname="レイニングキャッツ" duration="5.7"/>
-    <entry t="515.7" castname="レイニングキャッツ" duration="4.7"/>
-    <entry t="521.8" castname="レイニングキャッツ" duration="4.7"/>
-    <entry t="527.8" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="515.5" castname="レイニングキャッツ" sync="false"/>
+    <entry t="521.5" castname="レイニングキャッツ" sync="false"/>
+    <entry t="527.5" castname="レイニングキャッツ" sync="false"/>
+    <entry t="533.5" castname="レイニングキャッツ" sync="false"/>
     <entry t="541.9" castname="コピーキャット" duration="2.7"/>
     <entry t="549.6" castname="キャッツレイド" duration="12.7"/>
     <entry t="562.6" castname="キャッツレイド" sync="false"/>

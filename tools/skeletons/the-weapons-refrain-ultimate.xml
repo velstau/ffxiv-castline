@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶アルテマウェポン破壊作戦</content>
+  <title>絶アルテマウェポン破壊作戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（14:40）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="Garuda">
+    <entry t="6.1" castname="スリップストリーム" duration="2.2"/>
+    <entry t="11.2" castname="ミストラルソング" sync="false"/>
+    <entry t="14.4" castname="大旋風" duration="2.7"/>
+    <entry t="20.5" castname="大旋風" duration="2.7"/>
+    <entry t="21.5" castname="スリップストリーム" duration="2.2"/>
+    <entry t="26.7" castname="大旋風" duration="2.7"/>
+    <entry t="27.5" castname="ダウンバースト" sync="false"/>
+    <entry t="36.5" castname="フェザーレイン" duration="0.7"/>
+    <entry t="39.2" castname="ミストラルシュリーク" duration="2.7"/>
+    <entry t="47.2" castname="スーパーサイクロン" sync="false"/>
+    <entry t="49.6" castname="ウィンドブレード" duration="1.7"/>
+    <entry t="53.1" castname="スーパーサイクロン" sync="false"/>
+    <entry t="55.7" castname="ウィンドブレード" duration="1.7"/>
+    <entry t="61.8" castname="スーパーサイクロン" sync="false"/>
+    <entry t="64.6" castname="スーパーサイクロン" sync="false"/>
+    <entry t="71.4" castname="フェザーレイン" duration="0.7"/>
+    <entry t="74.1" castname="エリアルブラスト" duration="2.7"/>
+    <entry t="92.3" castname="フェザーレイン" duration="0.7"/>
+    <entry t="97.5" castname="アイ・オブ・ストーム" duration="2.7"/>
+    <entry t="97.7" castname="ウィケッドホイール" duration="2.7"/>
+    <entry t="119.8" castname="スリップストリーム" duration="2.2"/>
+    <entry t="120.6" castname="アイ・オブ・ストーム" duration="2.7"/>
+    <entry t="125.8" castname="ダウンバースト" sync="false"/>
+    <entry t="126.6" castname="スーパーサイクロン" sync="false"/>
+    <entry t="129.2" castname="フェザーレイン" duration="0.7"/>
+    <entry t="144.6" castname="クリムゾンサイクロン" duration="2.7"/>
+    <next to="p2" at="4.3" cast="地獄の火炎"/>
+  </phase>
+  <phase id="p2" name="Ifrit">
+    <entry t="4.3" castname="地獄の火炎" duration="2.7"/>
+    <entry t="15.5" castname="バルカンバースト" sync="false"/>
+    <entry t="18.3" castname="インシネレート" sync="false"/>
+    <entry t="21.4" castname="インシネレート" sync="false"/>
+    <entry t="25.5" castname="インシネレート" sync="false"/>
+    <entry t="28.6" castname="イフリート：炎獄の楔召喚" sync="false"/>
+    <entry t="37.9" castname="灼熱の咆吼" duration="1.7"/>
+    <entry t="43.1" castname="エラプション" duration="2.2"/>
+    <entry t="67.3" castname="地獄の火炎" duration="2.7"/>
+    <entry t="76.7" castname="灼熱の咆吼" duration="1.7"/>
+    <entry t="81.9" castname="エラプション" duration="2.2"/>
+    <entry t="94.8" castname="灼熱の咆吼" duration="1.7"/>
+    <entry t="107.0" castname="フレイムクラッシュ" sync="false"/>
+    <entry t="118.3" castname="クリムゾンサイクロン" duration="2.7"/>
+    <entry t="131.0" castname="インシネレート" sync="false"/>
+    <entry t="134.2" castname="インシネレート" sync="false"/>
+    <entry t="139.4" castname="ジオクラッシュ" duration="2.7"/>
+    <next to="p3" at="2.4" cast="大地の怒り"/>
+  </phase>
+  <phase id="p3" name="Titan">
+    <entry t="2.4" castname="大地の怒り" duration="2.7"/>
+    <entry t="13.6" castname="ロックバスター" sync="false"/>
+    <entry t="16.7" castname="マウンテンバスター" sync="false"/>
+    <entry t="18.8" castname="大地の重み" duration="2.7"/>
+    <entry t="27.1" castname="ジオクラッシュ" duration="2.7"/>
+    <entry t="34.6" castname="大激震" duration="3.7"/>
+    <entry t="40.7" castname="グラナイト・ジェイル" sync="false"/>
+    <entry t="42.9" castname="ランドスライド" duration="1.9"/>
+    <entry t="47.4" castname="ランドスライド" duration="1.9"/>
+    <entry t="51.7" castname="激震" sync="false"/>
+    <entry t="52.8" castname="激震" sync="false"/>
+    <entry t="53.9" castname="激震" sync="false"/>
+    <entry t="55.0" castname="激震" sync="false"/>
+    <entry t="56.2" castname="激震" sync="false"/>
+    <entry t="57.3" castname="激震" sync="false"/>
+    <entry t="58.4" castname="激震" sync="false"/>
+    <entry t="59.5" castname="激震" sync="false"/>
+    <entry t="64.6" castname="大地の重み" duration="2.2"/>
+    <entry t="67.7" castname="大地の重み" duration="2.7"/>
+    <entry t="70.4" castname="ランドスライド" duration="1.9"/>
+    <entry t="72.6" castname="ランドスライド" duration="1.7"/>
+    <entry t="81.0" castname="ジオクラッシュ" duration="2.7"/>
+    <entry t="86.4" castname="グラナイト・ジェイル" sync="false"/>
+    <entry t="98.7" castname="ランドスライド" duration="1.9"/>
+    <entry t="106.1" castname="激震" sync="false"/>
+    <entry t="107.2" castname="激震" sync="false"/>
+    <entry t="108.3" castname="激震" sync="false"/>
+    <entry t="109.4" castname="激震" sync="false"/>
+    <entry t="110.5" castname="激震" sync="false"/>
+    <entry t="111.6" castname="激震" sync="false"/>
+    <entry t="113.8" castname="ロックバスター" sync="false"/>
+    <entry t="117.9" castname="マウンテンバスター" sync="false"/>
+    <entry t="125.2" castname="大地の重み" duration="2.7"/>
+    <entry t="128.4" castname="ランドスライド" duration="1.9"/>
+    <entry t="130.7" castname="ランドスライド" duration="1.7"/>
+    <entry t="138.9" castname="ロックバスター" sync="false"/>
+    <entry t="143.0" castname="マウンテンバスター" sync="false"/>
+    <entry t="145.1" castname="大地の重み" duration="2.7"/>
+    <entry t="151.1" castname="大地の重み" duration="2.7"/>
+    <entry t="161.8" castname="誘爆" sync="false"/>
+    <next to="p4" at="40.4" cast="アルテマ"/>
+  </phase>
+  <phase id="p4" name="Magitek Bits">
+    <entry t="40.4" castname="アルテマ" duration="4.7"/>
+    <next to="p5" at="6.7" cast="魔導フレア"/>
+  </phase>
+  <phase id="p5" name="The Ultima Weapon">
+    <entry t="6.7" castname="魔導フレア" duration="3.7"/>
+    <entry t="12.8" castname="吸着式エーテル爆雷" sync="false"/>
+    <entry t="16.0" castname="誘導レーザー" duration="2.7"/>
+    <entry t="27.2" castname="追撃の究極幻想" duration="2.7"/>
+    <entry t="42.0" castname="クリムゾンサイクロン" duration="2.7"/>
+    <entry t="42.0" castname="ウィケッドホイール" duration="2.7"/>
+    <entry t="42.8" castname="ランドスライド" duration="1.9"/>
+    <entry t="45.0" castname="ランドスライド" sync="false"/>
+    <entry t="47.0" castname="セルレアムベント" sync="false"/>
+    <entry t="51.4" castname="フェザーレイン" duration="0.7"/>
+    <entry t="63.8" castname="エラプション" duration="2.2"/>
+    <entry t="73.8" castname="光輝の炎柱" duration="3.7"/>
+    <entry t="79.1" castname="ランドスライド" duration="1.9"/>
+    <entry t="86.5" castname="激震" sync="false"/>
+    <entry t="87.6" castname="激震" sync="false"/>
+    <entry t="88.7" castname="激震" sync="false"/>
+    <entry t="89.2" castname="吸着式エーテル爆雷" sync="false"/>
+    <entry t="89.8" castname="激震" sync="false"/>
+    <entry t="90.9" castname="激震" sync="false"/>
+    <entry t="92.0" castname="激震" sync="false"/>
+    <entry t="93.2" castname="激震" sync="false"/>
+    <entry t="93.4" castname="ミストラルシュリーク" duration="2.7"/>
+    <entry t="98.4" castname="誘導レーザー" duration="2.7"/>
+    <entry t="98.7" castname="フェザーレイン" duration="0.7"/>
+    <entry t="102.2" castname="フェザーレイン" duration="0.7"/>
+    <entry t="105.5" castname="爆撃の究極幻想" duration="2.7"/>
+    <entry t="117.4" castname="大地の重み" duration="2.7"/>
+    <entry t="122.4" castname="フレイムクラッシュ" sync="false"/>
+    <entry t="123.4" castname="大地の重み" duration="2.7"/>
+    <entry t="124.5" castname="灼熱の咆吼" duration="1.7"/>
+    <entry t="125.5" castname="メソハイ" sync="false"/>
+    <entry t="129.1" castname="フェザーレイン" duration="0.7"/>
+    <entry t="131.7" castname="クリムゾンサイクロン" duration="2.7"/>
+    <entry t="133.3" castname="ランドスライド" duration="1.9"/>
+    <entry t="135.5" castname="ランドスライド" sync="false"/>
+    <entry t="141.8" castname="魔導フレア" duration="3.7"/>
+    <entry t="143.0" castname="メソハイ" sync="false"/>
+    <entry t="146.6" castname="フェザーレイン" duration="0.7"/>
+    <entry t="157.5" castname="アイ・オブ・ストーム" sync="false"/>
+    <entry t="158.2" castname="誘導レーザー" duration="2.7"/>
+    <entry t="163.3" castname="乱撃の究極幻想" duration="2.7"/>
+    <entry t="175.2" castname="エラプション" duration="2.2"/>
+    <entry t="177.2" castname="グラナイト・ジェイル" sync="false"/>
+    <entry t="181.2" castname="リヒト・ゾイレ" duration="1.7"/>
+    <entry t="181.4" castname="ミストラルソング" duration="1.7"/>
+    <entry t="185.3" castname="魔科学レーザー" duration="2.7"/>
+    <entry t="188.3" castname="リヒト・ゾイレ" duration="0.7"/>
+    <entry t="189.4" castname="魔科学レーザー" duration="2.7"/>
+    <entry t="193.6" castname="魔科学レーザー" duration="2.7"/>
+    <entry t="193.6" castname="ランドスライド" duration="1.9"/>
+    <entry t="198.6" castname="メソハイ" sync="false"/>
+    <entry t="199.5" castname="フレイムクラッシュ" sync="false"/>
+    <entry t="199.6" castname="スーパーサイクロン" sync="false"/>
+    <entry t="200.7" castname="魔導フレア" duration="3.7"/>
+    <entry t="203.2" castname="フェザーレイン" duration="0.7"/>
+    <entry t="211.1" castname="アルテマ" duration="4.7"/>
+    <entry t="222.4" castname="エーテル波動" duration="3.7"/>
+    <entry t="247.5" castname="吸着爆雷" sync="false"/>
+    <entry t="255.9" castname="エラプション" duration="2.2"/>
+    <entry t="263.9" castname="地獄の火炎" duration="2.7"/>
+    <entry t="275.9" castname="ウィケッドホイール" duration="2.7"/>
+    <entry t="282.8" castname="エリアルブラスト" duration="2.7"/>
+    <entry t="292.4" castname="フェザーレイン" duration="0.7"/>
+    <entry t="297.0" castname="大地の重み" duration="2.7"/>
+    <entry t="303.2" castname="大地の怒り" duration="2.7"/>
+  </phase>
+</timeline>

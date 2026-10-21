@@ -1,7 +1,7 @@
 // FFLogs の詠唱からタイムラインを組み立てる処理のテスト。データはヘビー級1 の実ログ（2026-10-20）の形をまねた合成。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildTimeline, summarizeEnemies } from '../public/js/fflogs-timeline.js';
+import { buildTimeline, summarizeEnemies, phaseTransitions } from '../public/js/fflogs-timeline.js';
 import { toTimelineXml } from '../public/js/timeline-xml.js';
 import { validateTimeline } from '../public/js/timeline-engine.js';
 
@@ -114,4 +114,15 @@ test('前後半をまとめる: 最初の詠唱で判定し、エンジンはそ
     assert.equal(s.phaseTime, 11);
     // 最初の詠唱が同じパートどうしは判定できない
     assert.match(mergeParts([{ label: 'A', timeline: first }, { label: 'B', timeline: first }], { content: 'c' }).error, /判定できません/);
+});
+
+test('古いログ: 本体にも sourceInstance 1 が付いているときは、いちばん小さい番号を本体とする（アルファ編1）', () => {
+    const old = [begin(6.1, 0xB384, 4.7, 11, 1), begin(16.2, 0xB35A, 2.7, 11, 1), begin(16.2, 0xB37F, 4.7, 11, 2)];
+    assert.deepEqual(summarizeEnemies({ actors, abilities, events: old }), [{ id: 11, name: 'ヴァンプ・ファタール', casts: 2, instants: 0 }]);
+});
+
+test('フェーズの切り替わり: 同じ時刻のものは後ろだけ（絶竜詩の過去の記録）', () => {
+    const f = { startTime: S, endTime: S + 60000, phaseTransitions: [{ id: 1, startTime: S }, { id: 2, startTime: S }, { id: 3, startTime: S + 20000 }] };
+    assert.deepEqual(phaseTransitions(f), [{ id: 2, startTime: S }, { id: 3, startTime: S + 20000 }]);
+    assert.deepEqual(phaseTransitions({ startTime: S, phaseTransitions: [{ id: 1, startTime: S + 5 }, { id: 2, startTime: S + 5 }] }), [{ id: 2, startTime: S }]);
 });

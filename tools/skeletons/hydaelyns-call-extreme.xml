@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極ハイデリン討滅戦</content>
+  <title>極ハイデリン討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（11:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Hydaelyn's Arms">
+    <entry t="10.9" castname="ヘロイスラジエンス" duration="4.7"/>
+    <entry t="21.1" castname="シャイニングセイバー" duration="4.6"/>
+    <entry t="26.4" castname="シャイニングセイバー" sync="false"/>
+    <entry t="31.6" castname="クリスタライズ" duration="3.7"/>
+    <entry t="44.7" castname="アントゥヘリオン" sync="false"/>
+    <entry t="51.9" castname="ムーサスコーン" duration="4.7"/>
+    <entry t="62.2" castname="サイド・オーレオール" duration="4.7"/>
+    <entry t="72.3" castname="クリスタライズ" duration="3.7"/>
+    <entry t="85.5" castname="ハイエストホーリー" sync="false"/>
+    <entry t="92.2" castname="マゴスラジエンス" duration="4.7"/>
+    <entry t="102.4" castname="オーレオール" duration="4.7"/>
+    <entry t="112.5" castname="クリスタライズ" duration="3.7"/>
+    <entry t="125.7" castname="エクイノックス" sync="false"/>
+    <next to="p2" time="131.9"/>
+  </phase>
+  <phase id="p2" name="P2: Crystals of Light">
+    <entry t="105.0" castname="エクソダス" sync="false"/>
+    <next to="p3" at="10.2" cast="ヘイロー"/>
+  </phase>
+  <phase id="p3" name="P3: Lightwaves">
+    <entry t="10.2" castname="ヘイロー" duration="4.7"/>
+    <entry t="19.4" castname="ライトウェーブ" duration="3.7"/>
+    <entry t="38.9" castname="ラテラルアーク" duration="4.6"/>
+    <entry t="44.2" castname="ラテラルアーク" sync="false"/>
+    <entry t="45.9" castname="ラテラルアーク" sync="false"/>
+    <entry t="47.3" castname="ラテラルアーク" sync="false"/>
+    <entry t="49.4" castname="ライトウェーブ" duration="3.7"/>
+    <entry t="58.0" castname="ヘロイスグローリー" duration="4.7"/>
+    <entry t="77.0" castname="ヘロイスグローリー" duration="4.7"/>
+    <entry t="87.2" castname="ヘイロー" duration="4.7"/>
+    <entry t="98.3" castname="ヘロイスサンダリング" duration="4.7"/>
+    <entry t="108.6" castname="シャイニングセイバー" duration="4.6"/>
+    <entry t="113.9" castname="シャイニングセイバー" sync="false"/>
+    <entry t="123.1" castname="アントゥヘリオン" sync="false"/>
+    <entry t="128.2" castname="ムーサスコーン" duration="4.7"/>
+    <entry t="139.9" castname="パルヘリオン" duration="4.7"/>
+    <entry t="146.5" castname="パルヘリオン" sync="false"/>
+    <entry t="148.1" castname="パルヘリオン" sync="false"/>
+    <entry t="149.7" castname="クリスタライズ" duration="3.7"/>
+    <entry t="156.9" castname="サブパルヘリオン" duration="4.7"/>
+    <entry t="167.2" castname="オーレオール" duration="4.7"/>
+    <entry t="181.3" castname="ハイエストホーリー" sync="false"/>
+    <entry t="186.5" castname="マゴスラジエンス" duration="4.7"/>
+    <entry t="196.6" castname="クリスタライズ" duration="3.7"/>
+    <entry t="205.5" castname="パーヘリックサークル" duration="5.7"/>
+    <entry t="217.8" castname="サイド・オーレオール" duration="4.7"/>
+    <entry t="232.0" castname="エクイノックス" sync="false"/>
+    <entry t="240.7" castname="レディアントヘイロー" duration="4.7"/>
+    <entry t="250.9" castname="ライトウェーブ" duration="3.7"/>
+    <next to="p4" at="0" cast="エコーズ"/>
+  </phase>
+  <phase id="p4" name="P4: Echoes">
+    <entry t="0.0" castname="エコーズ" duration="4.7"/>
+    <entry t="22.2" castname="クリスタライズ" duration="3.7"/>
+    <entry t="29.3" castname="シャイニングセイバー" duration="4.6"/>
+    <entry t="34.5" castname="シャイニングセイバー" sync="false"/>
+    <entry t="43.6" castname="アントゥヘリオン" sync="false"/>
+    <entry t="50.9" castname="ライトウェーブ" duration="3.7"/>
+    <entry t="70.0" castname="エコーズ" duration="4.7"/>
+    <entry t="92.2" castname="クリスタライズ" duration="3.7"/>
+    <entry t="99.4" castname="サイド・オーレオール" duration="4.7"/>
+    <entry t="113.6" castname="ハイエストホーリー" sync="false"/>
+    <entry t="120.9" castname="クリスタライズ" duration="3.7"/>
+    <entry t="128.0" castname="サイド・オーレオール" duration="4.7"/>
+    <entry t="142.2" castname="エクイノックス" sync="false"/>
+    <entry t="152.5" castname="ヘロイスラジエンス" duration="9.7"/>
+  </phase>
+</timeline>

@@ -76,8 +76,99 @@ def num(value, default=None):
         return default
 
 
+RAZOR_IF = re.compile(r'^\s*@if\b.*\{\s*$')
+RAZOR_ELSE = re.compile(r'^\s*\}\s*else(\s+if\b.*)?\s*\{\s*$')
+RAZOR_CLOSE = re.compile(r'^\s*\}\s*$')
+RAZOR_ASSIGN = re.compile(r'^\s*(?:var\s+|int\s+|double\s+)?([A-Za-z_]\w*)\s*=\s*([^;]+);')
+SAFE_EXPR = re.compile(r'^[\w\s.+\-*/()]+$')
+
+
+def razor_eval(expr, variables):
+    """数と変数と四則演算だけの式を計算する（それ以外は None）"""
+    expr = expr.strip()
+    if not SAFE_EXPR.match(expr):
+        return None
+    names = set(re.findall(r'[A-Za-z_]\w*', expr))
+    if not names <= set(variables):
+        return None
+    try:
+        return float(eval(expr, {'__builtins__': {}}, dict(variables)))  # 文字の種類を絞った式だけ
+    except Exception:
+        return None
+
+
+def balanced(text, start, open_ch, close_ch):
+    """text[start] の open_ch に対応する close_ch の位置"""
+    depth = 0
+    for i in range(start, len(text)):
+        if text[i] == open_ch:
+            depth += 1
+        elif text[i] == close_ch:
+            depth -= 1
+            if depth == 0:
+                return i
+    return len(text) - 1
+
+
+def strip_razor(text):
+    """Hojoring の Razor（C#）の書き方を、XML として読める形にする。
+    @{ … } のコードは取り除き、その中の「変数 = 数式;」だけを覚える。@( … ) は覚えた変数で計算して数に置き換える（できなければ空）。
+    @if / else の行は取り除き、中身は両方残す（中は担当ごとのトリガー <t> がほとんどで、使わない）"""
+    text = re.sub(r'@\*.*?\*@', '', text, flags=re.S)
+    lines, depth = [], 0
+    for line in text.split('\n'):
+        if RAZOR_IF.match(line):
+            depth += 1
+            continue
+        if depth and RAZOR_ELSE.match(line):
+            continue
+        if depth and RAZOR_CLOSE.match(line):
+            depth -= 1
+            continue
+        lines.append(line)
+    text = '\n'.join(lines)
+    out, variables, i = [], {}, 0
+    while True:
+        j = text.find('@', i)
+        if j < 0 or j + 1 >= len(text):
+            out.append(text[i:])
+            break
+        out.append(text[i:j])
+        nxt = text[j + 1]
+        if nxt == '{':
+            end = balanced(text, j + 1, '{', '}')
+            for stmt in re.split(r'[;\n]', text[j + 2:end]):
+                m = RAZOR_ASSIGN.match(stmt + ';')
+                if m:
+                    value = razor_eval(m.group(2), variables)
+                    if value is not None:
+                        variables[m.group(1)] = value
+            i = end + 1
+        elif nxt == '(':
+            end = balanced(text, j + 1, '(', ')')
+            value = razor_eval(text[j + 2:end], variables)
+            out.append('' if value is None else f'{value:g}')
+            i = end + 1
+        else:
+            out.append('@')
+            i = j + 1
+    return ''.join(out)
+
+
+def parse_hojoring(path):
+    with open(path, encoding='utf-8-sig') as f:
+        return ET.fromstring(strip_razor(f.read()))
+
+
+def hojoring_length(path):
+    """Hojoring の長さのめやす（秒）。区間の時刻は区間ごとなので、各区間の最後の時刻を足す"""
+    root = parse_hojoring(path)
+    last = lambda el: max([num(a.get('time'), 0.0) for a in el.findall('a')] or [0.0])
+    return last(root) + sum(last(s) for s in root.findall('s'))
+
+
 def load_hojoring(path):
-    root = ET.parse(path).getroot()
+    root = parse_hojoring(path)
     meta = {k: (root.findtext(k) or '').strip() for k in ('name', 'author', 'license', 'rev')}
     defaults = {d.get('target-attr'): d.get('value') for d in root.findall('default')}
     dropped = {'trigger': [], 'v-notice': 0, 'icon': 0}

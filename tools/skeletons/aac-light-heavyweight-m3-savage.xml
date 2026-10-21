@@ -15,15 +15,20 @@
     <entry t="24.6" castname="ナックルパート" sync="false"/>
     <entry t="31.5" castname="4ウェイ・ダブルラリアット" duration="5.9"/>
     <entry t="41.4" castname="8ショック・パワーダイブ" duration="6.9"/>
+    <entry t="52.7" castname="パワーダイブ・ショック" sync="false"/>
     <entry t="55.8" castname="スマッシュインパクト" duration="4.7"/>
     <entry t="61.9" castname="スマッシュインパクト" sync="false"/>
     <entry t="63.0" castname="スマッシュインパクト" sync="false"/>
     <entry t="64.1" castname="スマッシュインパクト" sync="false"/>
     <entry t="73.3" castname="ボンバリアンボム" duration="3.7"/>
+    <entry t="88.4" castname="爆発" sync="false"/>
     <entry t="90.5" castname="グリーンミスト" duration="5.7"/>
+    <entry t="91.4" castname="爆発" sync="false"/>
+    <entry t="94.3" castname="爆発" sync="false"/>
     <entry t="106.4" castname="ドーピング" duration="3.7"/>
     <entry t="137.6" castname="8ウェイ・ダブルラリアット" duration="5.9"/>
     <entry t="147.4" castname="4ショック・パワーダイブ" duration="6.9"/>
+    <entry t="158.7" castname="パワーダイブ・ショック" sync="false"/>
     <entry t="161.9" castname="スマッシュインパクト" duration="4.7"/>
     <entry t="168.0" castname="スマッシュインパクト" sync="false"/>
     <entry t="169.1" castname="スマッシュインパクト" sync="false"/>
@@ -46,6 +51,7 @@
     <entry t="239.3" castname="スマッシュインパクト" sync="false"/>
     <entry t="240.4" castname="スマッシュインパクト" sync="false"/>
     <entry t="250.7" castname="零式フューズボム" duration="3.7"/>
+    <entry t="266.9" castname="爆発" sync="false"/>
     <entry t="271.9" castname="4ショック・パワーダイブ" duration="6.9"/>
     <entry t="294.9" castname="フューズフィールド" duration="3.7"/>
     <entry t="302.0" castname="ボンバリアンファイヤー" duration="2.7"/>
@@ -57,6 +63,8 @@
     <entry t="360.8" castname="ナックルパート" sync="false"/>
     <entry t="368.6" castname="ドーピング" duration="3.7"/>
     <entry t="385.9" castname="4ショック・ボンバリアンスペシャル" duration="5.7"/>
+    <entry t="385.9" castname="ボンバリアンスペシャル" duration="6.7"/>
+    <entry t="416.0" castname="ボンバリアン・ショック" sync="false"/>
     <entry t="423.8" castname="フューズボム" duration="3.7"/>
     <entry t="429.9" castname="タッグマッチ" duration="3.7"/>
     <entry t="437.1" castname="チェーンデスマッチ" duration="6.7"/>
@@ -81,9 +89,11 @@
     <entry t="514.1" castname="アタッチ・フューズボム" duration="3.7"/>
     <entry t="521.6" castname="極盛り式スピニングファイヤー" duration="5.2"/>
     <entry t="528.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="529.2" castname="ボムレイン" duration="5.7"/>
     <entry t="530.1" castname="極盛り式スピニングファイヤー" sync="false"/>
     <entry t="532.1" castname="極盛り式スピニングファイヤー" sync="false"/>
     <entry t="533.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="538.8" castname="爆発" sync="false"/>
     <entry t="542.3" castname="8ウェイ・ダブルラリアット" duration="5.9"/>
     <entry t="551.7" castname="スマッシュインパクト" duration="4.7"/>
     <entry t="557.7" castname="スマッシュインパクト" sync="false"/>
@@ -94,7 +104,11 @@
     <entry t="563.1" castname="スマッシュインパクト" sync="false"/>
     <entry t="564.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="572.4" castname="ボンバリアンボム" duration="3.7"/>
+    <entry t="587.5" castname="爆発" sync="false"/>
+    <entry t="590.5" castname="爆発" sync="false"/>
     <entry t="590.6" castname="ラリアットコンビネーション" duration="4.6"/>
+    <entry t="593.4" castname="爆発" sync="false"/>
+    <entry t="594.5" castname="大爆発" sync="false"/>
     <entry t="598.0" castname="ラリアットコンビネーション" duration="2.7"/>
     <entry t="611.3" castname="ナックルパート" duration="4.7"/>
     <entry t="617.4" castname="ナックルパート" sync="false"/>

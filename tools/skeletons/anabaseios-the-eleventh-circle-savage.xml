@@ -9,9 +9,12 @@
     <entry t="19.1" castname="ディケー" duration="6.7"/>
     <entry t="29.2" castname="ディケー" sync="false"/>
     <entry t="36.4" castname="ジューリー＆オーバールール" duration="5.7"/>
+    <entry t="45.3" castname="イルーサリーグレア" duration="2.8"/>
     <entry t="54.6" castname="アップヘルド＆オーバールール" duration="7.0"/>
     <entry t="62.2" castname="アップヘルド＆オーバールール" sync="false"/>
+    <entry t="66.4" castname="アディショナルセンテンス" sync="false"/>
     <entry t="73.8" castname="ディバイド＆オーバールール" duration="6.0"/>
+    <entry t="73.8" castname="光爆" duration="10.5"/>
     <entry t="88.9" castname="ステュクス" duration="4.7"/>
     <entry t="95.1" castname="ステュクス" sync="false"/>
     <entry t="96.2" castname="ステュクス" sync="false"/>
@@ -19,9 +22,12 @@
     <entry t="98.4" castname="ステュクス" sync="false"/>
     <entry t="108.8" castname="魔法陣展開" duration="4.7"/>
     <entry t="116.0" castname="ディスミサル＆オーバールール" duration="4.7"/>
+    <entry t="116.0" castname="インナーグレア" duration="10.2"/>
     <entry t="149.4" castname="戒律の幻奏" duration="3.7"/>
     <entry t="162.7" castname="ディバイド＆オーバールール" duration="7.5"/>
+    <entry t="181.1" castname="ダークサークル" duration="3.2"/>
     <entry t="184.2" castname="ジューリー＆オーバールール" duration="5.7"/>
+    <entry t="193.1" castname="イルーサリーダーク" duration="2.8"/>
     <entry t="199.4" castname="ステュクス" duration="4.7"/>
     <entry t="205.6" castname="ステュクス" sync="false"/>
     <entry t="206.7" castname="ステュクス" sync="false"/>
@@ -30,13 +36,17 @@
     <entry t="210.0" castname="ステュクス" sync="false"/>
     <entry t="218.2" castname="ライトストリーム" duration="3.7"/>
     <entry t="235.3" castname="ディバイド＆オーバールール" duration="6.0"/>
+    <entry t="235.3" castname="光爆" duration="10.5"/>
     <entry t="253.3" castname="エウノミアー" duration="4.7"/>
     <entry t="265.5" castname="アップヘルド＆オーバールール" duration="7.0"/>
     <entry t="273.2" castname="アップヘルド＆オーバールール" sync="false"/>
+    <entry t="277.4" castname="アディショナルロウ" sync="false"/>
     <entry t="291.7" castname="光と闇の調停" duration="3.7"/>
     <entry t="303.9" castname="魔法陣展開" duration="4.7"/>
     <entry t="319.0" castname="ジューリー＆オーバールール" duration="5.7"/>
+    <entry t="327.9" castname="イルーサリーグレア" duration="2.8"/>
     <entry t="337.2" castname="ディバイド＆オーバールール" duration="6.0"/>
+    <entry t="337.2" castname="闇の衝撃" duration="10.5"/>
     <entry t="351.3" castname="調停" duration="3.7"/>
     <entry t="358.6" castname="ステュクス" duration="4.7"/>
     <entry t="364.7" castname="ステュクス" sync="false"/>
@@ -48,16 +58,30 @@
     <entry t="375.4" castname="ディケー" duration="6.7"/>
     <entry t="385.5" castname="ディケー" sync="false"/>
     <entry t="400.9" castname="ダークストリーム" duration="3.7"/>
+    <entry t="406.0" castname="ダークストリーム" duration="6.7"/>
     <entry t="410.0" castname="光弾" duration="4.7"/>
+    <entry t="414.1" castname="ダークストリーム" sync="false"/>
+    <entry t="415.1" castname="ダークストリーム" sync="false"/>
+    <entry t="416.2" castname="ダークストリーム" sync="false"/>
+    <entry t="417.3" castname="ダークストリーム" sync="false"/>
+    <entry t="418.3" castname="ダークストリーム" sync="false"/>
+    <entry t="419.4" castname="ダークストリーム" sync="false"/>
+    <entry t="420.5" castname="ダークストリーム" sync="false"/>
     <entry t="423.1" castname="ジューリー＆オーバールール" duration="5.7"/>
+    <entry t="432.0" castname="イルーサリーダーク" duration="2.8"/>
     <entry t="441.4" castname="アップヘルド＆オーバールール" duration="7.0"/>
     <entry t="449.1" castname="アップヘルド＆オーバールール" sync="false"/>
+    <entry t="453.3" castname="アディショナルロウ" sync="false"/>
     <entry t="462.5" castname="ディバイド＆オーバールール" duration="6.0"/>
+    <entry t="462.5" castname="光爆" duration="10.5"/>
     <entry t="481.6" castname="エウノミアー" duration="4.7"/>
     <entry t="509.0" castname="理法の幻奏" duration="3.7"/>
     <entry t="515.1" castname="二種魔法陣展開" duration="4.7"/>
     <entry t="526.3" castname="刑律の波動" duration="2.7"/>
+    <entry t="532.8" castname="ダークサークル" duration="3.2"/>
+    <entry t="541.3" castname="爆発" sync="false"/>
     <entry t="545.4" castname="ディスミサル＆オーバールール" duration="4.7"/>
+    <entry t="545.4" castname="アウターダーク" duration="10.2"/>
     <entry t="559.5" castname="ステュクス" duration="4.7"/>
     <entry t="565.7" castname="ステュクス" sync="false"/>
     <entry t="566.8" castname="ステュクス" sync="false"/>
@@ -68,9 +92,11 @@
     <entry t="572.3" castname="ステュクス" sync="false"/>
     <entry t="579.5" castname="ライトストリーム" duration="3.7"/>
     <entry t="595.9" castname="ディバイド＆オーバールール" duration="6.0"/>
+    <entry t="595.9" castname="闇の衝撃" duration="10.5"/>
     <entry t="615.9" castname="ディケー" duration="6.7"/>
     <entry t="626.0" castname="ディケー" sync="false"/>
     <entry t="636.1" castname="ジューリー＆オーバールール" duration="5.7"/>
+    <entry t="645.0" castname="イルーサリーグレア" duration="2.8"/>
     <entry t="654.3" castname="エウノミアー" duration="4.7"/>
     <entry t="665.9" castname="究極調停" duration="9.7"/>
   </phase>

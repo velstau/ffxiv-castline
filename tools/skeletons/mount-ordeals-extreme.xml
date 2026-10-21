@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極ルビカンテ討滅戦</content>
+  <title>極ルビカンテ討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（11:04）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="6.8" castname="火燕流" duration="4.7"/>
+    <entry t="17.2" castname="煉獄招来" sync="false"/>
+    <entry t="26.7" castname="魔法陣展開" sync="false"/>
+    <entry t="34.8" castname="魔陣拡張" sync="false"/>
+    <entry t="37.3" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="61.5" castname="魔陣拡張" sync="false"/>
+    <entry t="63.7" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="92.9" castname="炎撃" duration="4.7"/>
+    <entry t="107.3" castname="烈風火燕流" duration="5.7"/>
+    <entry t="107.3" castname="火燕旋風" duration="5.7"/>
+    <entry t="116.3" castname="火燕旋風" duration="4.7"/>
+    <entry t="116.4" castname="火燕乱撃" sync="false"/>
+    <entry t="123.7" castname="劫火流" duration="2.7"/>
+    <entry t="124.3" castname="火燕旋風" duration="4.7"/>
+    <entry t="129.8" castname="火燕乱撃" sync="false"/>
+    <entry t="132.3" castname="火燕旋風" duration="4.7"/>
+    <entry t="135.9" castname="放散火流" duration="6.7"/>
+    <entry t="143.8" castname="放散火流" sync="false"/>
+    <entry t="148.1" castname="火燕流" duration="4.7"/>
+    <entry t="158.6" castname="煉獄招来" sync="false"/>
+    <entry t="168.0" castname="魔法陣展開" sync="false"/>
+    <entry t="176.1" castname="魔陣拡張" sync="false"/>
+    <entry t="178.3" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="202.5" castname="魔陣拡張" sync="false"/>
+    <entry t="204.7" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="240.5" castname="妖火炎" duration="3.7"/>
+    <entry t="246.6" castname="妖火炎" duration="3.7"/>
+    <entry t="252.7" castname="妖火炎" duration="3.7"/>
+    <entry t="258.9" castname="妖火炎" duration="3.7"/>
+    <entry t="290.5" castname="狂える炎" duration="3.7"/>
+    <entry t="331.2" castname="炎禍の呪い" duration="3.7"/>
+    <entry t="337.3" castname="烈火赤滅爪" duration="5.7"/>
+    <entry t="343.5" castname="烈火赤滅爪" duration="0.2"/>
+    <entry t="351.3" castname="爆呪" sync="false"/>
+    <entry t="354.2" castname="爆炎撃" sync="false"/>
+    <entry t="357.3" castname="火燕流" duration="3.7"/>
+    <entry t="367.5" castname="滅土焼尽：輪火" duration="4.7"/>
+    <entry t="373.6" castname="滅土焼尽：迅火" sync="false"/>
+    <entry t="376.1" castname="赤滅熱波" duration="6.7"/>
+    <entry t="376.1" castname="赤滅熱波：散炎" duration="7.2"/>
+    <entry t="376.7" castname="滅土焼尽：迅火" duration="6.2"/>
+    <entry t="389.2" castname="爆炎撃" sync="false"/>
+    <entry t="392.3" castname="双炎流" duration="4.7"/>
+    <entry t="398.2" castname="双炎流" sync="false"/>
+    <entry t="409.9" castname="煉獄招来" sync="false"/>
+    <entry t="419.3" castname="魔法陣展開" sync="false"/>
+    <entry t="427.4" castname="魔陣拡張" sync="false"/>
+    <entry t="429.7" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="453.9" castname="魔陣拡張" sync="false"/>
+    <entry t="456.2" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="480.4" castname="火燕流" duration="4.7"/>
+    <entry t="496.8" castname="炎禍の武爪" duration="5.7"/>
+    <entry t="503.2" castname="炎禍の武爪" sync="false"/>
+    <entry t="505.6" castname="炎禍の武爪" sync="false"/>
+    <entry t="508.2" castname="炎禍の武爪" sync="false"/>
+    <entry t="510.7" castname="炎禍の武爪" sync="false"/>
+    <entry t="513.1" castname="炎禍の武爪" sync="false"/>
+    <entry t="515.5" castname="炎禍の武爪" sync="false"/>
+    <entry t="518.0" castname="炎禍の武爪" sync="false"/>
+    <entry t="520.4" castname="炎禍の武爪" sync="false"/>
+    <entry t="526.5" castname="火燕流" duration="3.7"/>
+    <entry t="536.7" castname="滅土焼尽：烽火" duration="4.7"/>
+    <entry t="542.8" castname="滅土焼尽：迅火" sync="false"/>
+    <entry t="545.5" castname="赤滅熱波" duration="6.7"/>
+    <entry t="545.9" castname="滅土焼尽：迅火" duration="6.2"/>
+    <entry t="558.6" castname="爆炎撃" sync="false"/>
+    <entry t="561.7" castname="双炎流" duration="4.7"/>
+    <entry t="567.6" castname="双炎流" sync="false"/>
+    <entry t="579.2" castname="煉獄招来" sync="false"/>
+    <entry t="588.7" castname="魔法陣展開" sync="false"/>
+    <entry t="596.8" castname="魔陣拡張" sync="false"/>
+    <entry t="599.4" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="623.6" castname="魔陣拡張" sync="false"/>
+    <entry t="626.0" castname="煉獄の朱炎" duration="11.7"/>
+    <entry t="657.6" castname="火燕流" duration="9.7"/>
+  </phase>
+</timeline>

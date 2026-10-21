@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：煉獄編4</content>
+  <title>万魔殿パンデモニウム零式：煉獄編4（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（7:46・8:28）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="start" name="開始待ち">
+    <next to="a-p1" at="7.2" cast="創世の真炎"/>
+    <next to="a-p1" at="15.3" cast="テトラフレア・コンシーヴ"/>
+    <next to="b-p1" at="10.8" cast="アイオンピュール"/>
+    <next to="b-p1" at="21.9" cast="タイラント・ダークホーリー"/>
+  </phase>
+  <phase id="a-p1" name="前半">
+    <entry t="7.2" castname="創世の真炎" duration="4.7"/>
+    <entry t="15.3" castname="テトラフレア・コンシーヴ" duration="2.7"/>
+    <entry t="21.5" castname="熾炎創火" duration="2.7"/>
+    <entry t="33.1" castname="創獣炎舞" duration="6.7"/>
+    <entry t="43.2" castname="炎蛇砲" duration="4.7"/>
+    <entry t="51.5" castname="炎蛇砲" sync="false"/>
+    <entry t="60.9" castname="変異創身" duration="2.7"/>
+    <entry t="71.4" castname="リアリングランページ" duration="4.7"/>
+    <entry t="78.5" castname="リアリングランページ" sync="false"/>
+    <entry t="80.6" castname="リアリングランページ" sync="false"/>
+    <entry t="82.7" castname="リアリングランページ" sync="false"/>
+    <entry t="84.8" castname="フェイタルストンプ" duration="4.7"/>
+    <entry t="90.1" castname="フェイタルストンプ" sync="false"/>
+    <entry t="92.4" castname="フェイタルストンプ" sync="false"/>
+    <entry t="94.6" castname="フェイタルストンプ" sync="false"/>
+    <entry t="96.9" castname="フェイタルストンプ" sync="false"/>
+    <entry t="111.3" castname="幻影創造" duration="2.7"/>
+    <entry t="117.4" castname="創造命令" duration="2.7"/>
+    <entry t="123.6" castname="多重操炎" duration="4.7"/>
+    <entry t="132.7" castname="多重操炎" sync="false"/>
+    <entry t="135.9" castname="スプレッドヴァイパー" duration="4.7"/>
+    <entry t="153.1" castname="創世の真炎" duration="4.7"/>
+    <entry t="167.6" castname="変異創身" duration="2.7"/>
+    <entry t="177.9" castname="スネークキック" sync="false"/>
+    <entry t="181.1" castname="ゴルゴンの呪詛" duration="2.7"/>
+    <entry t="187.2" castname="イントゥシャドウ" duration="2.7"/>
+    <entry t="223.5" castname="爆炎波動" duration="4.7"/>
+    <entry t="243.9" castname="オクタフレア・コンシーヴ" duration="2.7"/>
+    <entry t="250.1" castname="四重炎嵐" duration="2.7"/>
+    <entry t="259.3" castname="噴炎昇蛇" duration="2.7"/>
+    <entry t="272.4" castname="テトラフレア" duration="4.7"/>
+    <entry t="284.1" castname="創獣炎舞" duration="6.7"/>
+    <entry t="294.2" castname="炎蛇砲" duration="4.7"/>
+    <entry t="302.5" castname="炎蛇砲" sync="false"/>
+    <entry t="311.9" castname="変異創身" duration="2.7"/>
+    <entry t="322.6" castname="フィートインパクト" duration="4.7"/>
+    <entry t="331.1" castname="テトラフレア・コンシーヴ" duration="2.7"/>
+    <entry t="337.3" castname="ブレイジングフィート" duration="11.7"/>
+    <entry t="354.0" castname="フィートクラッシュ" sync="false"/>
+    <entry t="357.9" castname="トレイルブレイズ" sync="false"/>
+    <entry t="360.5" castname="フィートインパクト" sync="false"/>
+    <entry t="373.1" castname="炎蛇砲" duration="4.7"/>
+    <entry t="381.4" castname="炎蛇砲" sync="false"/>
+    <entry t="390.8" castname="変異創身" duration="2.7"/>
+    <entry t="401.1" castname="スネークキック" sync="false"/>
+    <entry t="404.3" castname="ゴルゴンの呪詛" duration="2.7"/>
+    <entry t="410.4" castname="イントゥシャドウ" duration="2.7"/>
+    <entry t="432.7" castname="幻影創造" duration="2.7"/>
+    <entry t="455.1" castname="創世の真炎" duration="4.7"/>
+  </phase>
+  <phase id="b-p1" name="後半">
+    <entry t="10.8" castname="アイオンピュール" duration="4.7"/>
+    <entry t="21.9" castname="タイラント・ダークホーリー" duration="4.7"/>
+    <entry t="35.2" castname="術式記述" duration="4.7"/>
+    <entry t="46.4" castname="強制詠唱" duration="2.7"/>
+    <entry t="52.5" castname="タイラント・フレア" duration="2.7"/>
+    <entry t="58.6" castname="アッシュブレイズ" duration="5.7"/>
+    <entry t="83.9" castname="アイオンピュール" duration="4.7"/>
+    <entry t="97.0" castname="タイラント・ダークホーリー" duration="4.7"/>
+    <entry t="109.2" castname="概念支配" duration="4.7"/>
+    <entry t="123.3" castname="魔法陣起動" duration="2.7"/>
+    <entry t="132.5" castname="アッシュブレイズ" duration="5.7"/>
+    <entry t="141.7" castname="魔法陣起動" duration="2.7"/>
+    <entry t="150.9" castname="アッシュブレイズ" duration="5.7"/>
+    <entry t="160.0" castname="概念消去" duration="2.7"/>
+    <entry t="166.2" castname="アイオンピュール" duration="4.7"/>
+    <entry t="180.6" castname="万象灰燼" duration="4.7"/>
+    <entry t="208.8" castname="アイオンピュール" duration="4.7"/>
+    <entry t="221.9" castname="タイラント・ダークホーリー" duration="4.7"/>
+    <entry t="237.1" castname="術式記述" duration="4.7"/>
+    <entry t="245.2" castname="マジックインヴァージョン" duration="2.7"/>
+    <entry t="251.4" castname="強制詠唱" duration="2.7"/>
+    <entry t="288.6" castname="アッシュブレイズ" duration="5.7"/>
+    <entry t="297.7" castname="アイオンピュール" duration="4.7"/>
+    <entry t="310.9" castname="タイラント・ダークホーリー" duration="4.7"/>
+    <entry t="323.1" castname="概念支配" duration="4.7"/>
+    <entry t="337.3" castname="魔法陣起動" duration="2.7"/>
+    <entry t="346.5" castname="アッシュブレイズ" duration="5.7"/>
+    <entry t="355.6" castname="魔法陣起動" duration="2.7"/>
+    <entry t="380.8" castname="自己概念崩壊" duration="9.7"/>
+    <entry t="391.1" castname="自己概念崩壊" sync="false"/>
+    <entry t="417.3" castname="アイオンアゴニア" duration="7.7"/>
+    <entry t="428.5" castname="支配者の一撃" duration="6.7"/>
+    <entry t="446.7" castname="アイオンアゴニア" duration="7.7"/>
+    <entry t="457.8" castname="支配者の一撃" duration="6.7"/>
+    <entry t="476.0" castname="アイオンアゴニア" duration="7.7"/>
+    <entry t="490.7" castname="自己概念崩壊" duration="15.7"/>
+    <entry t="506.7" castname="自己概念崩壊" sync="false"/>
+  </phase>
+</timeline>

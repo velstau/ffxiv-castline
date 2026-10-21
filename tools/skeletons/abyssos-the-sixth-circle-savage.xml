@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：煉獄編2</content>
+  <title>万魔殿パンデモニウム零式：煉獄編2（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:40）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="9.1" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="20.8" castname="キール・シュネルギア" duration="6.7"/>
+    <entry t="37.8" castname="エーテル・ポリオミノ" duration="3.7"/>
+    <entry t="44.4" castname="ダークホーリー" duration="3.7"/>
+    <entry t="50.5" castname="エクソークリーバー" duration="3.7"/>
+    <entry t="57.1" castname="エクソークリーバー" sync="false"/>
+    <entry t="63.2" castname="軟体細胞流" duration="7.7"/>
+    <entry t="71.7" castname="軟体細胞流" sync="false"/>
+    <entry t="73.6" castname="軟体細胞流" sync="false"/>
+    <entry t="75.5" castname="軟体細胞流" sync="false"/>
+    <entry t="77.5" castname="軟体細胞流" sync="false"/>
+    <entry t="79.4" castname="軟体細胞流" sync="false"/>
+    <entry t="81.3" castname="軟体細胞流" sync="false"/>
+    <entry t="83.3" castname="軟体細胞流" sync="false"/>
+    <entry t="85.2" castname="軟体細胞流" sync="false"/>
+    <entry t="93.5" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="99.2" castname="チェンジバースト" duration="3.7"/>
+    <entry t="104.0" castname="ダークホーリー" duration="6.7"/>
+    <entry t="105.9" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="113.5" castname="ホロス・イクソス" sync="false"/>
+    <entry t="121.2" castname="シュネルギア" duration="6.0"/>
+    <entry t="135.4" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="147.1" castname="寄生" duration="4.7"/>
+    <entry t="160.5" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="168.1" castname="ホロス・イクソス" sync="false"/>
+    <entry t="174.8" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="180.4" castname="エーテル・ポリオミノΣ" duration="3.7"/>
+    <entry t="190.1" castname="ダークドーム" duration="3.7"/>
+    <entry t="195.0" castname="ダークドーム" duration="3.7"/>
+    <entry t="205.5" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="211.1" castname="チェンジバースト" duration="3.7"/>
+    <entry t="216.0" castname="ダークホーリー" duration="6.7"/>
+    <entry t="219.0" castname="エクソークリーバー" duration="3.7"/>
+    <entry t="225.6" castname="エクソークリーバー" sync="false"/>
+    <entry t="231.6" castname="キール・シュネルギア" duration="6.7"/>
+    <entry t="245.8" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="257.4" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="263.1" castname="エーテル・ポリオミノΣ" duration="3.7"/>
+    <entry t="269.7" castname="ダークホーリー" duration="3.7"/>
+    <entry t="274.8" castname="ダークホーリー" duration="5.7"/>
+    <entry t="288.6" castname="ダークアッシュ" duration="3.7"/>
+    <entry t="293.5" castname="ダークアッシュ" duration="7.7"/>
+    <entry t="296.1" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="303.6" castname="ホロス・イクソス" sync="false"/>
+    <entry t="313.1" castname="カヘキシー" duration="2.7"/>
+    <entry t="325.0" castname="魔活細胞" sync="false"/>
+    <entry t="327.2" castname="甲軟双撃" duration="5.7"/>
+    <entry t="328.9" castname="魔活細胞" sync="false"/>
+    <entry t="333.0" castname="魔活細胞" sync="false"/>
+    <entry t="334.2" castname="甲殻爪撃" sync="false"/>
+    <entry t="337.0" castname="魔活細胞" sync="false"/>
+    <entry t="337.3" castname="甲軟双撃" sync="false"/>
+    <entry t="338.2" castname="甲殻爪撃" sync="false"/>
+    <entry t="341.3" castname="甲軟双撃" sync="false"/>
+    <entry t="342.2" castname="甲殻爪撃" sync="false"/>
+    <entry t="345.3" castname="甲軟双撃" sync="false"/>
+    <entry t="346.3" castname="甲殻爪撃" sync="false"/>
+    <entry t="349.3" castname="プテラ・イクソス" duration="5.7"/>
+    <entry t="356.3" castname="プテラ・イクソス" sync="false"/>
+    <entry t="363.5" castname="シュネルギア" duration="6.0"/>
+    <entry t="377.6" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="389.3" castname="エーテル・ポリオミノ" duration="3.7"/>
+    <entry t="395.9" castname="ダークスフィア" duration="3.7"/>
+    <entry t="400.8" castname="ダークスフィア" duration="5.7"/>
+    <entry t="402.0" castname="ダークドーム" duration="3.7"/>
+    <entry t="418.4" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="424.1" castname="チェンジバースト" duration="3.7"/>
+    <entry t="429.0" castname="ダークホーリー" duration="6.7"/>
+    <entry t="430.8" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="438.4" castname="ホロス・イクソス" sync="false"/>
+    <entry t="445.1" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="450.7" castname="エーテル・ポリオミノΣ" duration="3.7"/>
+    <entry t="462.1" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="469.7" castname="ホロス・イクソス" sync="false"/>
+    <entry t="476.3" castname="シュネルギア" duration="6.0"/>
+    <entry t="490.5" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="504.9" castname="カヘキシー" duration="2.7"/>
+    <entry t="510.5" castname="寄生" duration="4.7"/>
+    <entry t="520.2" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="525.8" castname="エーテル・ポリオミノΣ" duration="3.7"/>
+    <entry t="537.2" castname="プテラ・イクソス" duration="5.7"/>
+    <entry t="537.2" castname="ダークホーリー" duration="5.7"/>
+    <entry t="552.6" castname="エーテル・ポリオミノ" duration="3.7"/>
+    <entry t="561.2" castname="ダークドーム" duration="3.7"/>
+    <entry t="566.1" castname="ダークドーム" duration="3.7"/>
+    <entry t="577.6" castname="エーテル・ポリオミノ" duration="3.7"/>
+    <entry t="586.4" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="594.0" castname="ホロス・イクソス" sync="false"/>
+    <entry t="600.6" castname="キール・シュネルギア" duration="6.7"/>
+    <entry t="614.9" castname="ヘーミテオス・ダージャ" duration="4.7"/>
+    <entry t="630.1" castname="ヘーミテオス・ダージャ" duration="9.7"/>
+  </phase>
+</timeline>

@@ -6,26 +6,48 @@
   <note>FFLogs の公開ランキングの討伐の記録（8:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1" name="Phase One">
     <entry t="13.0" castname="エーテルレヴィー" duration="2.7"/>
-    <entry t="26.1" castname="エーテルレヴィー" sync="false"/>
+    <entry t="16.8" castname="エーテルレヴィー" sync="false"/>
+    <entry t="17.8" castname="エーテルレヴィー" sync="false"/>
+    <entry t="18.9" castname="エーテルレヴィー" sync="false"/>
+    <entry t="20.0" castname="エーテルレヴィー" sync="false"/>
+    <entry t="21.0" castname="エーテルレヴィー" sync="false"/>
+    <entry t="22.1" castname="エーテルレヴィー" sync="false"/>
+    <entry t="23.2" castname="エーテルレヴィー" sync="false"/>
+    <entry t="24.2" castname="エーテルレヴィー" sync="false"/>
+    <entry t="25.3" castname="エーテルレヴィー" sync="false"/>
     <entry t="28.2" castname="トリビュート" sync="false"/>
-    <entry t="35.3" castname="エーテルレヴィー" sync="false"/>
+    <entry t="30.2" castname="エーテルレヴィー" sync="false"/>
+    <entry t="31.3" castname="エーテルレヴィー" sync="false"/>
+    <entry t="32.4" castname="エーテルレヴィー" sync="false"/>
+    <entry t="33.4" castname="エーテルレヴィー" sync="false"/>
+    <entry t="34.5" castname="エーテルレヴィー" sync="false"/>
     <entry t="37.3" castname="トリビュート" sync="false"/>
-    <entry t="44.5" castname="エーテルレヴィー" sync="false"/>
+    <entry t="39.4" castname="エーテルレヴィー" sync="false"/>
+    <entry t="40.5" castname="エーテルレヴィー" sync="false"/>
+    <entry t="41.5" castname="エーテルレヴィー" sync="false"/>
+    <entry t="42.6" castname="エーテルレヴィー" sync="false"/>
+    <entry t="43.7" castname="エーテルレヴィー" sync="false"/>
     <entry t="46.5" castname="トリビュート" sync="false"/>
     <entry t="54.8" castname="ヴァーチャルシフト" duration="4.7"/>
     <entry t="65.0" castname="ロウ・オブ・ウィンド" duration="3.7"/>
+    <entry t="69.0" castname="エアロバースト" duration="4.7"/>
     <entry t="79.1" castname="レジティメート・フォース" duration="7.7"/>
     <entry t="90.2" castname="レジティメート・フォース" sync="false"/>
     <entry t="96.4" castname="ワールドシャッター" duration="4.7"/>
     <entry t="108.6" castname="プロセキューション・ウォー" duration="4.7"/>
     <entry t="116.7" castname="プロセキューション・ウォー" sync="false"/>
     <entry t="119.8" castname="ディバイド・アンド・コンカー" duration="7.2"/>
+    <entry t="127.3" castname="ディバイド・アンド・コンカー" sync="false"/>
+    <entry t="132.4" castname="ディバイド・アンド・コンカー" sync="false"/>
+    <entry t="135.5" castname="ディバイド・アンド・コンカー" duration="2.7"/>
     <entry t="141.5" castname="ロイヤルドメイン" duration="4.7"/>
     <entry t="154.7" castname="ヴァーチャルシフト" duration="4.7"/>
     <entry t="164.8" castname="ロウ・オブ・アース" duration="3.7"/>
     <entry t="172.0" castname="レジティメート・フォース" duration="7.7"/>
     <entry t="183.1" castname="レジティメート・フォース" sync="false"/>
+    <entry t="188.0" castname="爆発" sync="false"/>
     <entry t="193.2" castname="グラビティ・エンパイア" duration="6.7"/>
+    <entry t="193.2" castname="グラビティピラー" duration="7.7"/>
     <entry t="206.4" castname="メテオインパクト" sync="false"/>
     <entry t="213.6" castname="メテオインパクト" sync="false"/>
     <entry t="222.7" castname="グラビティブロウ" duration="4.7"/>
@@ -34,8 +56,11 @@
     <entry t="258.2" castname="プロセキューション・ウォー" sync="false"/>
     <entry t="261.3" castname="端末射出" duration="2.7"/>
     <entry t="267.5" castname="アトミックレイ" duration="2.7"/>
+    <entry t="271.6" castname="アトミックレイ" duration="5.7"/>
     <entry t="283.7" castname="アブソリュート・オーソリティ" duration="9.7"/>
     <entry t="299.8" castname="アブソリュート・オーソリティ" sync="false"/>
+    <entry t="303.8" castname="アブソリュート・オーソリティ" sync="false"/>
+    <entry t="307.9" castname="アブソリュート・オーソリティ" sync="false"/>
     <next to="p2" at="3.4" cast="エターナル・オーソリティ"/>
   </phase>
   <phase id="p2" name="Intermission">

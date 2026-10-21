@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極ウォーリア・オブ・ライト討滅戦</content>
+  <title>極ウォーリア・オブ・ライト討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（12:02）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="7.5" castname="アンリーシュ・テラー" duration="2.7"/>
+    <entry t="13.7" castname="リミットチャージ" duration="2.7"/>
+    <entry t="21.9" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="25.5" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="28.0" castname="アブソリュートストンガ" duration="4.7"/>
+    <entry t="33.1" castname="アブソリュートストンガ" sync="false"/>
+    <entry t="36.2" castname="リミットブレイク" duration="5.7"/>
+    <entry t="52.5" castname="魔法剣" duration="2.7"/>
+    <entry t="61.6" castname="魔法剣" duration="2.7"/>
+    <entry t="70.8" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
+    <entry t="77.8" castname="アブソリュートストンガ" sync="false"/>
+    <entry t="81.9" castname="リミットチャージ" duration="2.7"/>
+    <entry t="90.1" castname="ソード・オブ・ライト" duration="2.7"/>
+    <entry t="105.3" castname="アブソリュートホーリー" duration="4.7"/>
+    <entry t="113.5" castname="リミットブレイク" duration="5.7"/>
+    <entry t="119.8" castname="ブライトデスペラード" sync="false"/>
+    <entry t="124.1" castname="ブライトデスペラード" sync="false"/>
+    <entry t="130.4" castname="リミットチャージ" duration="2.7"/>
+    <entry t="138.5" castname="魔法剣" duration="2.7"/>
+    <entry t="147.7" castname="魔法剣" duration="2.7"/>
+    <entry t="156.8" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
+    <entry t="167.9" castname="リミットブレイク" duration="5.7"/>
+    <entry t="174.2" castname="ブライトブレイバー" sync="false"/>
+    <entry t="182.3" castname="エンドオール" duration="4.7"/>
+    <entry t="190.5" castname="サモン・ウィルム" duration="2.7"/>
+    <entry t="196.6" castname="アブソリュートフラッシュ" duration="4.7"/>
+    <entry t="196.6" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="204.8" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="220.5" castname="幻光召喚" duration="2.7"/>
+    <entry t="241.9" castname="フェイタルクリーヴ" duration="3.7"/>
+    <entry t="254.1" castname="バーサク" duration="4.7"/>
+    <entry t="269.2" castname="フェイタルクリーヴ" duration="3.7"/>
+    <entry t="285.4" castname="フェイタルクリーヴ" duration="3.7"/>
+    <entry t="302.9" castname="アルティメット・クロスオーバー" duration="4.7"/>
+    <entry t="327.5" castname="魔法剣" duration="2.7"/>
+    <entry t="336.6" castname="幻光召喚" duration="2.7"/>
+    <entry t="351.9" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="355.5" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="367.4" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
+    <entry t="378.6" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="391.8" castname="エンドオール" duration="4.7"/>
+    <entry t="406.3" castname="五連魔" duration="11.7"/>
+    <entry t="445.1" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="462.8" castname="リミットチャージ" duration="2.7"/>
+    <entry t="470.9" castname="幻光召喚" duration="2.7"/>
+    <entry t="477.1" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="480.7" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="494.7" castname="アブソリュートホーリー" duration="4.7"/>
+    <entry t="499.7" castname="アブソリュートホーリー" sync="false"/>
+    <entry t="509.0" castname="リミットブレイク" duration="5.7"/>
+    <entry t="527.2" castname="エンドオール" duration="4.7"/>
+    <entry t="537.7" castname="幻光召喚" duration="2.7"/>
+    <entry t="543.8" castname="リミットチャージ" duration="2.7"/>
+    <entry t="573.1" castname="サモン・ウィルム" duration="2.7"/>
+    <entry t="579.2" castname="ブライトセイバー" duration="6.7"/>
+    <entry t="592.5" castname="リミットブレイク" duration="5.7"/>
+    <entry t="598.7" castname="ブライトブレイバー" sync="false"/>
+    <entry t="610.9" castname="エンドオール" duration="4.7"/>
+    <entry t="621.3" castname="魔法剣" duration="2.7"/>
+    <entry t="630.4" castname="幻光召喚" duration="2.7"/>
+    <entry t="649.4" castname="パーフェクトデシメート" duration="4.7"/>
+    <entry t="649.8" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="653.4" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="661.1" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="661.6" castname="パーフェクトデシメート" duration="4.7"/>
+    <entry t="664.7" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="671.3" castname="サモン・ウィルム" duration="2.7"/>
+    <entry t="679.8" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
+    <entry t="691.0" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="703.0" castname="トゥルー・インビンシブル" sync="false"/>
+    <entry t="706.6" castname="幻光召喚" duration="4.7"/>
+    <entry t="717.9" castname="アルティメット・クロスオーバー" duration="7.7"/>
+  </phase>
+</timeline>

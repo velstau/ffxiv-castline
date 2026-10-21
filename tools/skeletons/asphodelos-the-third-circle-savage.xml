@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：辺獄編3</content>
+  <title>万魔殿パンデモニウム零式：辺獄編3（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:33）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Phoinix">
+    <entry t="8.9" castname="灰燼の炎" duration="4.7"/>
+    <entry t="17.1" castname="獄炎の炎撃" duration="5.7"/>
+    <entry t="24.2" castname="獄炎の炎撃" sync="false"/>
+    <entry t="29.2" castname="魔力錬成：劫火天焦" duration="4.7"/>
+    <entry t="39.9" castname="右翼焼却" duration="4.7"/>
+    <entry t="53.1" castname="闇の炎" duration="5.7"/>
+    <entry t="64.2" castname="光の炎" duration="4.7"/>
+    <entry t="69.4" castname="光の炎" sync="false"/>
+    <entry t="70.6" castname="光の炎" sync="false"/>
+    <entry t="71.7" castname="光の炎" sync="false"/>
+    <entry t="72.9" castname="光の炎" sync="false"/>
+    <entry t="74.1" castname="光の炎" sync="false"/>
+    <entry t="75.2" castname="光の炎" sync="false"/>
+    <entry t="76.4" castname="光の炎" sync="false"/>
+    <entry t="77.5" castname="光の炎" sync="false"/>
+    <entry t="90.7" castname="獄炎の炎撃" duration="5.7"/>
+    <entry t="97.8" castname="獄炎の炎撃" sync="false"/>
+    <entry t="99.8" castname="灰燼の炎" duration="4.7"/>
+    <entry t="112.0" castname="十字走火" duration="2.7"/>
+    <entry t="117.1" castname="魔力錬成：劫火天焦" duration="4.7"/>
+    <entry t="122.1" castname="十字走火" sync="false"/>
+    <entry t="123.2" castname="十字走火" sync="false"/>
+    <entry t="124.3" castname="十字走火" sync="false"/>
+    <entry t="125.3" castname="十字走火" sync="false"/>
+    <entry t="126.4" castname="十字走火" sync="false"/>
+    <entry t="127.5" castname="十字走火" sync="false"/>
+    <entry t="128.5" castname="十字走火" sync="false"/>
+    <entry t="129.3" castname="熱噴射" duration="2.7"/>
+    <entry t="129.6" castname="十字走火" sync="false"/>
+    <entry t="130.7" castname="十字走火" sync="false"/>
+    <entry t="131.8" castname="十字走火" sync="false"/>
+    <entry t="135.5" castname="右翼焼却" duration="4.7"/>
+    <entry t="143.6" castname="獄炎の炎撃" duration="5.7"/>
+    <entry t="150.7" castname="獄炎の炎撃" sync="false"/>
+    <entry t="152.7" castname="魔力錬成：劫火天焦" duration="4.7"/>
+    <next to="p2" at="3.8" cast="獄炎の焔"/>
+  </phase>
+  <phase id="p2" name="P2: Sunbirds">
+    <entry t="3.8" castname="獄炎の焔" duration="5.7"/>
+    <entry t="46.8" castname="反魂の炎" sync="false"/>
+    <entry t="98.2" castname="反魂の炎" sync="false"/>
+    <next to="p3" at="9.2" cast="黒き不死鳥"/>
+  </phase>
+  <phase id="p3" name="P3: Phoenix Returns">
+    <entry t="9.2" castname="黒き不死鳥" duration="9.7"/>
+    <entry t="28.4" castname="獄炎の炎撃" duration="5.7"/>
+    <entry t="35.5" castname="獄炎の炎撃" sync="false"/>
+    <entry t="42.6" castname="群鳥飛翔" duration="2.7"/>
+    <entry t="67.9" castname="魔力錬成：炎闇劫火" duration="4.7"/>
+    <entry t="75.5" castname="魔力錬成：炎闇劫火" sync="false"/>
+    <entry t="98.2" castname="霊泉の炎" duration="5.7"/>
+    <entry t="106.3" castname="陽炎の翼" duration="5.7"/>
+    <entry t="112.3" castname="陽炎の翼" sync="false"/>
+    <entry t="117.3" castname="陽炎の翼" sync="false"/>
+    <entry t="122.3" castname="陽炎の翼" sync="false"/>
+    <entry t="130.4" castname="灰燼の炎" duration="4.7"/>
+    <entry t="137.6" castname="灰燼の炎" duration="4.7"/>
+    <entry t="147.7" castname="獄炎の炎撃" duration="5.7"/>
+    <entry t="154.8" castname="獄炎の炎撃" sync="false"/>
+    <entry t="163.3" castname="辺獄の炎嵐" duration="4.7"/>
+    <entry t="171.4" castname="辺獄の炎" duration="2.7"/>
+    <entry t="175.4" castname="辺獄の炎" duration="8.7"/>
+    <entry t="176.6" castname="魔力錬成：暗闇の劫火天焦" duration="4.7"/>
+    <entry t="189.7" castname="辺獄の炎" duration="2.7"/>
+    <entry t="193.7" castname="辺獄の炎" duration="7.7"/>
+    <entry t="202.9" castname="辺獄の嵐" duration="7.7"/>
+    <entry t="210.9" castname="辺獄の風" sync="false"/>
+    <entry t="213.0" castname="辺獄の闇炎旋風" duration="3.7"/>
+    <entry t="221.1" castname="熱噴射" duration="2.7"/>
+    <entry t="224.2" castname="熱噴射" duration="2.7"/>
+    <entry t="228.2" castname="魔力錬成：暗闇の劫火天焦" duration="4.7"/>
+    <entry t="228.3" castname="熱噴射" duration="2.7"/>
+    <entry t="242.4" castname="灰燼の炎" duration="4.7"/>
+    <entry t="254.6" castname="死の運命" duration="5.7"/>
+    <entry t="263.8" castname="群鳥飛翔" duration="2.7"/>
+    <entry t="268.9" castname="生苦の炎" duration="23.7"/>
+    <entry t="292.9" castname="生苦の炎" sync="false"/>
+    <entry t="300.2" castname="魔力錬成：炎闇劫火" duration="4.7"/>
+    <entry t="307.8" castname="魔力錬成：炎闇劫火" sync="false"/>
+    <entry t="319.1" castname="獄炎の焔" duration="5.7"/>
+    <entry t="334.9" castname="十字走火" duration="2.7"/>
+    <entry t="340.1" castname="魔力錬成：劫火天焦" duration="4.7"/>
+    <entry t="345.0" castname="十字走火" sync="false"/>
+    <entry t="346.1" castname="十字走火" sync="false"/>
+    <entry t="347.2" castname="十字走火" sync="false"/>
+    <entry t="348.2" castname="十字走火" sync="false"/>
+    <entry t="349.3" castname="十字走火" sync="false"/>
+    <entry t="350.4" castname="十字走火" sync="false"/>
+    <entry t="351.4" castname="十字走火" sync="false"/>
+    <entry t="352.3" castname="熱噴射" duration="2.7"/>
+    <entry t="352.5" castname="十字走火" sync="false"/>
+    <entry t="353.6" castname="十字走火" sync="false"/>
+    <entry t="354.7" castname="十字走火" sync="false"/>
+    <entry t="358.4" castname="右翼焼却" duration="4.7"/>
+    <entry t="369.6" castname="灰燼の炎" duration="4.7"/>
+  </phase>
+</timeline>

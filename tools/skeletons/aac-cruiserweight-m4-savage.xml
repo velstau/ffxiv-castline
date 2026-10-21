@@ -7,6 +7,7 @@
   <phase id="p1" name="Phase One">
     <entry t="10.9" castname="空間斬り" duration="1.3"/>
     <entry t="23.8" castname="風の魔技" duration="5.7"/>
+    <entry t="35.0" castname="群狼剣" duration="6.3"/>
     <entry t="35.0" castname="薙の群狼剣" duration="4.8"/>
     <entry t="40.3" castname="薙の群狼剣" sync="false"/>
     <entry t="43.0" castname="群狼剣" duration="0.7"/>
@@ -14,13 +15,24 @@
     <entry t="49.7" castname="空間斬り" duration="1.3"/>
     <entry t="62.1" castname="千年の風化" duration="4.7"/>
     <entry t="72.8" castname="エアロガ" duration="4.7"/>
+    <entry t="79.8" castname="旋風" sync="false"/>
+    <entry t="84.8" castname="旋風" sync="false"/>
     <entry t="88.5" castname="エアロガ" duration="4.7"/>
     <entry t="96.7" castname="連震撃" duration="4.7"/>
+    <entry t="102.6" castname="連震撃" sync="false"/>
+    <entry t="103.6" castname="連震撃" sync="false"/>
+    <entry t="104.7" castname="連震撃" sync="false"/>
+    <entry t="105.8" castname="連震撃" sync="false"/>
+    <entry t="106.8" castname="連震撃" sync="false"/>
+    <entry t="107.9" castname="連震撃" sync="false"/>
+    <entry t="109.0" castname="連震撃" sync="false"/>
+    <entry t="110.0" castname="連震撃" sync="false"/>
     <entry t="111.9" castname="空間斬り" duration="1.3"/>
     <entry t="119.6" castname="一刀両断" duration="4.7"/>
     <entry t="135.5" castname="大地の呼び声" duration="3.7"/>
     <entry t="142.7" castname="斬空剣" duration="1.3"/>
     <entry t="147.4" castname="光牙招来" sync="false"/>
+    <entry t="155.0" castname="群狼剣" duration="6.3"/>
     <entry t="155.0" castname="廻の群狼剣" duration="4.8"/>
     <entry t="160.3" castname="廻の群狼剣" sync="false"/>
     <entry t="163.0" castname="群狼剣" duration="0.7"/>
@@ -30,9 +42,14 @@
     <entry t="194.2" castname="光狼陣" duration="4.7"/>
     <entry t="208.3" castname="光狼陣" duration="4.7"/>
     <entry t="222.5" castname="光狼陣" duration="4.7"/>
+    <entry t="251.1" castname="風塵光狼斬" duration="3.1"/>
     <entry t="270.8" castname="光牙招来" sync="false"/>
     <entry t="272.9" castname="大地の怒り" duration="2.7"/>
     <entry t="282.0" castname="残影剣" duration="2.7"/>
+    <entry t="284.2" castname="大岩石" sync="false"/>
+    <entry t="289.3" castname="残影剣" duration="1.7"/>
+    <entry t="290.9" castname="大岩石" sync="false"/>
+    <entry t="295.3" castname="群狼剣" duration="6.3"/>
     <entry t="295.3" castname="薙の群狼剣" duration="4.8"/>
     <entry t="300.6" castname="薙の群狼剣" sync="false"/>
     <entry t="303.3" castname="群狼剣" duration="0.7"/>
@@ -40,42 +57,88 @@
     <entry t="316.2" castname="一刀両断" duration="4.7"/>
     <entry t="332.6" castname="幻狼招来" duration="2.7"/>
     <entry t="339.8" castname="大地の怒り" duration="2.7"/>
+    <entry t="348.3" castname="大岩石" sync="false"/>
+    <entry t="356.8" castname="大岩石" sync="false"/>
     <entry t="360.0" castname="土の魔技" duration="5.7"/>
     <entry t="370.2" castname="連震撃" duration="4.7"/>
+    <entry t="376.1" castname="連震撃" sync="false"/>
+    <entry t="377.1" castname="連震撃" sync="false"/>
+    <entry t="378.2" castname="連震撃" sync="false"/>
+    <entry t="379.3" castname="連震撃" sync="false"/>
+    <entry t="380.3" castname="連震撃" sync="false"/>
+    <entry t="381.4" castname="連震撃" sync="false"/>
+    <entry t="382.5" castname="連震撃" sync="false"/>
+    <entry t="383.5" castname="連震撃" sync="false"/>
     <entry t="385.4" castname="空間斬り" duration="1.3"/>
     <entry t="400.2" castname="空間斬り" duration="1.3"/>
     <next to="p2" at="7.2" cast="クエイガ"/>
   </phase>
   <phase id="p2" name="Phase Two">
     <entry t="7.2" castname="クエイガ" duration="4.7"/>
+    <entry t="12.3" castname="クエイガ" sync="false"/>
     <entry t="18.4" castname="魔光" duration="5.7"/>
+    <entry t="24.5" castname="魔光" sync="false"/>
     <entry t="28.6" castname="双牙撃" duration="6.7"/>
+    <entry t="35.6" castname="双牙撃" sync="false"/>
     <entry t="40.8" castname="鎧袖一触" duration="5.7"/>
     <entry t="52.0" castname="魔光" duration="5.7"/>
+    <entry t="58.0" castname="魔光" sync="false"/>
     <entry t="64.1" castname="クエイガ" duration="4.7"/>
+    <entry t="69.2" castname="クエイガ" sync="false"/>
     <entry t="77.4" castname="剛刃一閃" duration="3.7"/>
     <entry t="84.5" castname="風震の魔印" duration="4.7"/>
     <entry t="93.7" castname="貪狼の剣" sync="false"/>
     <entry t="96.8" castname="風狼陣" duration="2.7"/>
+    <entry t="100.6" castname="風狼陣" duration="7.7"/>
     <entry t="104.0" castname="魔狼戦型・天嵐の相" duration="6.7"/>
     <entry t="113.1" castname="双牙暴風撃" duration="6.7"/>
+    <entry t="120.2" castname="双牙暴風撃" sync="false"/>
+    <entry t="123.8" castname="風爆" sync="false"/>
+    <entry t="124.9" castname="風爆" sync="false"/>
+    <entry t="126.1" castname="風爆" sync="false"/>
     <entry t="127.3" castname="双牙暴風撃" sync="false"/>
+    <entry t="127.3" castname="風爆" sync="false"/>
+    <entry t="128.4" castname="風爆" sync="false"/>
+    <entry t="129.6" castname="風爆" sync="false"/>
+    <entry t="130.7" castname="風爆" sync="false"/>
+    <entry t="131.9" castname="風爆" sync="false"/>
+    <entry t="133.0" castname="風爆" sync="false"/>
+    <entry t="134.2" castname="風爆" sync="false"/>
     <entry t="134.3" castname="双牙暴風撃" sync="false"/>
+    <entry t="135.4" castname="風爆" sync="false"/>
+    <entry t="136.5" castname="風爆" sync="false"/>
+    <entry t="138.0" castname="風爆" sync="false"/>
+    <entry t="139.1" castname="風爆" sync="false"/>
+    <entry t="140.3" castname="風爆" sync="false"/>
     <entry t="141.4" castname="双牙暴風撃" sync="false"/>
+    <entry t="141.5" castname="風爆" sync="false"/>
+    <entry t="142.6" castname="風爆" sync="false"/>
+    <entry t="143.8" castname="風爆" sync="false"/>
+    <entry t="144.9" castname="風爆" sync="false"/>
+    <entry t="146.1" castname="風爆" sync="false"/>
+    <entry t="147.2" castname="風爆" sync="false"/>
+    <entry t="148.4" castname="風爆" sync="false"/>
     <entry t="149.6" castname="光牙招来" duration="3.7"/>
+    <entry t="149.6" castname="風爆" sync="false"/>
+    <entry t="150.7" castname="風爆" sync="false"/>
     <entry t="157.8" castname="廻天動地" duration="7.0"/>
     <entry t="169.4" castname="廻天動地" sync="false"/>
     <entry t="173.7" castname="廻天動地" sync="false"/>
     <entry t="178.1" castname="廻天動地" sync="false"/>
     <entry t="182.4" castname="廻天動地" sync="false"/>
     <entry t="187.9" castname="クエイガ" duration="4.7"/>
+    <entry t="193.0" castname="クエイガ" sync="false"/>
     <entry t="201.1" castname="魔光" duration="5.7"/>
+    <entry t="207.2" castname="魔光" sync="false"/>
     <entry t="211.3" castname="双牙撃" duration="6.7"/>
+    <entry t="218.4" castname="双牙撃" sync="false"/>
     <entry t="226.5" castname="魔狼戦型・呪刃の相" duration="6.7"/>
     <entry t="235.7" castname="孤狼の呪い" duration="2.7"/>
     <entry t="245.8" castname="風狼陣" duration="2.7"/>
+    <entry t="249.6" castname="風狼陣" duration="7.7"/>
     <entry t="260.1" castname="鎧袖一触" duration="5.7"/>
     <entry t="273.3" castname="魔光" duration="5.7"/>
+    <entry t="279.3" castname="魔光" sync="false"/>
     <entry t="286.1" castname="八連光弾" duration="7.7"/>
     <entry t="301.5" castname="剛刃一閃" duration="2.7"/>
     <entry t="308.7" castname="八連光弾" duration="4.7"/>

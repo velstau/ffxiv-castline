@@ -3,13 +3,13 @@
   <format>castline/1</format>
   <content>滅暗闇の雲激闘戦</content>
   <title>滅暗闇の雲激闘戦（FFLogs から生成）</title>
-  <note>FFLogs の公開ランキングの討伐の記録（9:49）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <note>FFLogs の公開ランキングの討伐の記録（8:34）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1" name="Intermission One">
-    <entry t="4.9" castname="攻撃" sync="false"/>
-    <entry t="6.9" castname="闇の刃" duration="6.7"/>
-    <entry t="17.0" castname="攻撃" sync="false"/>
-    <entry t="19.0" castname="闇の刃" duration="6.7"/>
-    <entry t="28.1" castname="闇の大氾濫" duration="7.7"/>
+    <entry t="5.1" castname="攻撃" sync="false"/>
+    <entry t="7.1" castname="闇の刃" duration="6.7"/>
+    <entry t="17.2" castname="攻撃" sync="false"/>
+    <entry t="19.3" castname="闇の刃" duration="6.7"/>
+    <entry t="28.3" castname="闇の大氾濫" duration="7.7"/>
     <next to="p2" at="9.2" cast="グリムエンブレイス"/>
   </phase>
   <phase id="p2" name="Phase One">
@@ -19,131 +19,173 @@
     <entry t="17.3" castname="グリムエンブレイス" duration="4.7"/>
     <entry t="26.4" castname="攻撃" sync="false"/>
     <entry t="29.4" castname="攻撃" sync="false"/>
-    <entry t="32.4" castname="フレア" duration="3.7"/>
-    <entry t="39.5" castname="ダークホーリー" duration="4.7"/>
-    <entry t="47.5" castname="攻撃" sync="false"/>
-    <entry t="50.5" castname="攻撃" sync="false"/>
-    <entry t="52.6" castname="闇の刃" duration="6.7"/>
-    <entry t="61.6" castname="エンエアロジャ" duration="4.7"/>
-    <entry t="69.7" castname="攻撃" sync="false"/>
-    <entry t="72.7" castname="攻撃" sync="false"/>
-    <entry t="75.8" castname="攻撃" sync="false"/>
-    <entry t="78.8" castname="攻撃" sync="false"/>
-    <entry t="79.8" castname="ブレクジャ" duration="4.7"/>
-    <entry t="87.9" castname="攻撃" sync="false"/>
-    <entry t="89.9" castname="闇の刃" duration="6.7"/>
-    <entry t="100.0" castname="攻撃" sync="false"/>
-    <entry t="103.0" castname="攻撃" sync="false"/>
-    <entry t="106.0" castname="攻撃" sync="false"/>
-    <entry t="109.1" castname="攻撃" sync="false"/>
-    <entry t="112.1" castname="攻撃" sync="false"/>
-    <entry t="115.1" castname="攻撃" sync="false"/>
-    <entry t="118.2" castname="攻撃" sync="false"/>
-    <entry t="121.2" castname="攻撃" sync="false"/>
-    <entry t="124.2" castname="エアロジャ" duration="5.3"/>
-    <entry t="133.3" castname="攻撃" sync="false"/>
-    <entry t="136.3" castname="攻撃" sync="false"/>
-    <entry t="138.4" castname="闇の氾濫" duration="6.7"/>
+    <entry t="32.4" castname="攻撃" sync="false"/>
+    <entry t="35.5" castname="攻撃" sync="false"/>
+    <entry t="37.5" castname="デスジャ" duration="5.3"/>
+    <entry t="41.7" castname="デスジャ" duration="3.7"/>
+    <entry t="47.6" castname="攻撃" sync="false"/>
+    <entry t="49.6" castname="エンエアロジャ" duration="4.7"/>
+    <entry t="54.8" castname="グリムエンブレイス" duration="0.7"/>
+    <entry t="57.7" castname="攻撃" sync="false"/>
+    <entry t="58.7" castname="連射式波動砲" duration="6.7"/>
+    <entry t="66.5" castname="連射式波動砲" sync="false"/>
+    <entry t="67.7" castname="連射式波動砲" sync="false"/>
+    <entry t="69.7" castname="連射式波動砲" sync="false"/>
+    <entry t="71.6" castname="連射式波動砲" sync="false"/>
+    <entry t="74.7" castname="攻撃" sync="false"/>
+    <entry t="77.7" castname="攻撃" sync="false"/>
+    <entry t="80.7" castname="攻撃" sync="false"/>
+    <entry t="83.7" castname="攻撃" sync="false"/>
+    <entry t="86.8" castname="攻撃" sync="false"/>
+    <entry t="89.8" castname="攻撃" sync="false"/>
+    <entry t="92.8" castname="攻撃" sync="false"/>
+    <entry t="94.9" castname="闇の刃" duration="6.7"/>
+    <entry t="105.0" castname="攻撃" sync="false"/>
+    <entry t="108.0" castname="攻撃" sync="false"/>
+    <entry t="111.0" castname="攻撃" sync="false"/>
+    <entry t="114.1" castname="フレア" duration="3.7"/>
+    <entry t="121.1" castname="攻撃" sync="false"/>
+    <entry t="124.1" castname="攻撃" sync="false"/>
+    <entry t="127.1" castname="フレア" sync="false"/>
+    <entry t="127.1" castname="攻撃" sync="false"/>
+    <entry t="130.2" castname="攻撃" sync="false"/>
+    <entry t="133.2" castname="攻撃" sync="false"/>
+    <entry t="136.2" castname="攻撃" sync="false"/>
+    <entry t="138.3" castname="闇の氾濫" duration="6.7"/>
     <next to="p3" at="6.1" cast="闇の大氾濫"/>
   </phase>
   <phase id="p3" name="Intermission Two">
     <entry t="6.1" castname="闇の大氾濫" duration="7.7"/>
-    <next to="p4" at="13.6" cast="深闇領域"/>
+    <next to="p4" at="13.5" cast="深闇領域"/>
   </phase>
   <phase id="p4" name="Phase Two">
-    <entry t="8.1" castname="攻撃" sync="false"/>
-    <entry t="11.1" castname="攻撃" sync="false"/>
-    <entry t="13.6" castname="深闇領域" duration="4.7"/>
-    <entry t="22.7" castname="攻撃" sync="false"/>
+    <entry t="7.3" castname="攻撃" sync="false"/>
+    <entry t="10.4" castname="攻撃" sync="false"/>
+    <entry t="13.5" castname="攻撃" sync="false"/>
+    <entry t="13.5" castname="深闇領域" duration="4.7"/>
+    <entry t="16.5" castname="攻撃" sync="false"/>
+    <entry t="19.6" castname="攻撃" sync="false"/>
+    <entry t="21.6" castname="闇の戦技：三重" duration="9.7"/>
+    <entry t="22.6" castname="攻撃" sync="false"/>
     <entry t="24.7" castname="波動球" duration="5.7"/>
+    <entry t="32.1" castname="闇の戦技" sync="false"/>
+    <entry t="34.6" castname="狙撃式 波動砲" sync="false"/>
     <entry t="34.8" castname="攻撃" sync="false"/>
+    <entry t="37.6" castname="闇の戦技" sync="false"/>
     <entry t="37.8" castname="攻撃" sync="false"/>
     <entry t="40.8" castname="攻撃" sync="false"/>
     <entry t="43.8" castname="攻撃" sync="false"/>
-    <entry t="46.9" castname="攻撃" sync="false"/>
+    <entry t="46.8" castname="攻撃" sync="false"/>
     <entry t="49.9" castname="攻撃" sync="false"/>
     <entry t="52.9" castname="攻撃" sync="false"/>
     <entry t="54.1" castname="怖れの雲" duration="7.5"/>
+    <entry t="56.9" castname="攻撃" sync="false"/>
+    <entry t="59.9" castname="攻撃" sync="false"/>
+    <entry t="63.0" castname="攻撃" sync="false"/>
     <entry t="65.3" castname="攻撃" sync="false"/>
+    <entry t="68.0" castname="波動の呪詛" duration="1.7"/>
     <entry t="68.3" castname="攻撃" sync="false"/>
-    <entry t="71.3" castname="攻撃" sync="false"/>
-    <entry t="74.3" castname="攻撃" sync="false"/>
-    <entry t="77.3" castname="攻撃" sync="false"/>
+    <entry t="71.4" castname="攻撃" sync="false"/>
+    <entry t="73.0" castname="種子弾" duration="6.7"/>
+    <entry t="74.4" castname="攻撃" sync="false"/>
+    <entry t="77.4" castname="攻撃" sync="false"/>
     <entry t="80.4" castname="攻撃" sync="false"/>
     <entry t="83.4" castname="攻撃" sync="false"/>
-    <entry t="86.4" castname="攻撃" sync="false"/>
+    <entry t="86.5" castname="攻撃" sync="false"/>
+    <entry t="89.0" castname="種子弾" duration="4.7"/>
     <entry t="89.5" castname="攻撃" sync="false"/>
-    <entry t="91.6" castname="怖れの雲" duration="7.5"/>
-    <entry t="105.3" castname="攻撃" sync="false"/>
+    <entry t="91.8" castname="怖れの雲" duration="7.5"/>
+    <entry t="93.1" castname="攻撃" sync="false"/>
+    <entry t="96.2" castname="攻撃" sync="false"/>
+    <entry t="99.2" castname="攻撃" sync="false"/>
+    <entry t="105.4" castname="茨の蔓" duration="7.7"/>
+    <entry t="105.4" castname="攻撃" sync="false"/>
     <entry t="108.4" castname="攻撃" sync="false"/>
     <entry t="111.4" castname="攻撃" sync="false"/>
     <entry t="114.4" castname="攻撃" sync="false"/>
     <entry t="117.5" castname="攻撃" sync="false"/>
+    <entry t="119.5" castname="闇の氾濫" duration="5.7"/>
     <entry t="120.5" castname="攻撃" sync="false"/>
     <entry t="123.5" castname="攻撃" sync="false"/>
     <entry t="126.5" castname="攻撃" sync="false"/>
     <entry t="129.6" castname="攻撃" sync="false"/>
-    <entry t="132.6" castname="攻撃" sync="false"/>
+    <entry t="132.5" castname="攻撃" sync="false"/>
     <entry t="133.6" castname="分散式波動砲" duration="7.7"/>
+    <entry t="135.5" castname="攻撃" sync="false"/>
+    <entry t="138.5" castname="攻撃" sync="false"/>
+    <entry t="141.6" castname="攻撃" sync="false"/>
+    <entry t="142.4" castname="分散式波動砲" sync="false"/>
+    <entry t="144.0" castname="分散式波動砲" sync="false"/>
     <entry t="145.7" castname="攻撃" sync="false"/>
-    <entry t="146.9" castname="旋回式波動砲" duration="13.7"/>
-    <entry t="160.9" castname="旋回式波動砲" sync="false"/>
-    <entry t="162.6" castname="旋回式波動砲" sync="false"/>
-    <entry t="164.2" castname="旋回式波動砲" sync="false"/>
-    <entry t="165.9" castname="旋回式波動砲" sync="false"/>
-    <entry t="167.5" castname="旋回式波動砲" sync="false"/>
-    <entry t="169.8" castname="攻撃" sync="false"/>
-    <entry t="172.8" castname="攻撃" sync="false"/>
-    <entry t="175.8" castname="攻撃" sync="false"/>
-    <entry t="178.4" castname="攻撃" sync="false"/>
-    <entry t="180.0" castname="ルーミングカオス" duration="6.7"/>
-    <entry t="195.6" castname="攻撃" sync="false"/>
-    <entry t="198.6" castname="攻撃" sync="false"/>
+    <entry t="146.8" castname="旋回式波動砲" duration="13.7"/>
+    <entry t="147.6" castname="跳躍波動砲【正撃・側撃】" duration="5.7"/>
+    <entry t="160.8" castname="旋回式波動砲" sync="false"/>
+    <entry t="162.5" castname="旋回式波動砲" sync="false"/>
+    <entry t="163.7" castname="攻撃" sync="false"/>
+    <entry t="164.1" castname="旋回式波動砲" sync="false"/>
+    <entry t="165.8" castname="旋回式波動砲" sync="false"/>
+    <entry t="166.7" castname="攻撃" sync="false"/>
+    <entry t="167.4" castname="旋回式波動砲" sync="false"/>
+    <entry t="168.8" castname="磔殺" duration="4.7"/>
+    <entry t="169.7" castname="攻撃" sync="false"/>
+    <entry t="172.7" castname="攻撃" sync="false"/>
+    <entry t="175.7" castname="攻撃" sync="false"/>
+    <entry t="177.4" castname="攻撃" sync="false"/>
+    <entry t="179.9" castname="ルーミングカオス" duration="6.7"/>
+    <entry t="195.5" castname="攻撃" sync="false"/>
+    <entry t="196.4" castname="波動の呪詛" duration="1.7"/>
+    <entry t="198.5" castname="攻撃" sync="false"/>
     <entry t="201.7" castname="攻撃" sync="false"/>
-    <entry t="203.8" castname="波動球" duration="5.7"/>
-    <entry t="213.9" castname="攻撃" sync="false"/>
-    <entry t="216.9" castname="攻撃" sync="false"/>
-    <entry t="219.9" castname="攻撃" sync="false"/>
-    <entry t="222.0" castname="深闇領域" duration="4.7"/>
-    <entry t="230.0" castname="潜地式波動砲" duration="5.7"/>
-    <entry t="240.1" castname="攻撃" sync="false"/>
-    <entry t="243.1" castname="攻撃" sync="false"/>
-    <entry t="246.1" castname="攻撃" sync="false"/>
+    <entry t="203.7" castname="波動球" duration="5.7"/>
+    <entry t="204.7" castname="跳躍波動砲【正撃・側撃】" duration="5.7"/>
+    <entry t="213.8" castname="攻撃" sync="false"/>
+    <entry t="216.8" castname="攻撃" sync="false"/>
+    <entry t="219.8" castname="攻撃" sync="false"/>
+    <entry t="221.9" castname="深闇領域" duration="4.7"/>
+    <entry t="223.8" castname="攻撃" sync="false"/>
+    <entry t="224.6" castname="呪詛式 波動砲" sync="false"/>
+    <entry t="226.8" castname="攻撃" sync="false"/>
+    <entry t="229.8" castname="攻撃" sync="false"/>
+    <entry t="229.9" castname="潜地式波動砲" duration="5.7"/>
+    <entry t="232.8" castname="攻撃" sync="false"/>
+    <entry t="233.9" castname="闇の戦技：三重" duration="9.7"/>
+    <entry t="240.0" castname="攻撃" sync="false"/>
+    <entry t="241.0" castname="潜地式波動砲" sync="false"/>
+    <entry t="242.1" castname="潜地式波動砲" sync="false"/>
+    <entry t="243.0" castname="攻撃" sync="false"/>
+    <entry t="243.2" castname="潜地式波動砲" sync="false"/>
+    <entry t="244.3" castname="潜地式波動砲" sync="false"/>
+    <entry t="245.3" castname="潜地式波動砲" sync="false"/>
+    <entry t="246.0" castname="攻撃" sync="false"/>
+    <entry t="246.4" castname="潜地式波動砲" sync="false"/>
+    <entry t="246.9" castname="乱激式 波動砲" sync="false"/>
     <entry t="249.1" castname="攻撃" sync="false"/>
-    <entry t="252.2" castname="攻撃" sync="false"/>
-    <entry t="254.7" castname="攻撃" sync="false"/>
-    <entry t="257.8" castname="攻撃" sync="false"/>
-    <entry t="260.8" castname="攻撃" sync="false"/>
-    <entry t="262.1" castname="怖れの雲" duration="7.5"/>
-    <entry t="273.3" castname="攻撃" sync="false"/>
-    <entry t="276.3" castname="攻撃" sync="false"/>
-    <entry t="279.3" castname="攻撃" sync="false"/>
-    <entry t="281.3" castname="凝縮式波動砲" duration="7.7"/>
-    <entry t="293.4" castname="攻撃" sync="false"/>
-    <entry t="296.4" castname="攻撃" sync="false"/>
-    <entry t="299.5" castname="攻撃" sync="false"/>
-    <entry t="302.5" castname="攻撃" sync="false"/>
-    <entry t="305.5" castname="攻撃" sync="false"/>
-    <entry t="307.6" castname="闇の氾濫" duration="6.7"/>
-    <next to="p5" at="8.2" cast="闇の大氾濫"/>
+    <entry t="249.9" castname="闇の戦技" sync="false"/>
+    <entry t="252.1" castname="攻撃" sync="false"/>
+    <entry t="254.4" castname="攻撃" sync="false"/>
+    <entry t="257.4" castname="攻撃" sync="false"/>
+    <entry t="260.5" castname="攻撃" sync="false"/>
+    <entry t="261.9" castname="怖れの雲" duration="7.5"/>
+    <entry t="263.5" castname="攻撃" sync="false"/>
+    <entry t="266.5" castname="攻撃" sync="false"/>
+    <entry t="269.6" castname="攻撃" sync="false"/>
+    <entry t="273.1" castname="攻撃" sync="false"/>
+    <entry t="273.7" castname="跳躍波動砲【正撃・側撃】" duration="5.7"/>
+    <entry t="276.1" castname="攻撃" sync="false"/>
+    <entry t="279.1" castname="攻撃" sync="false"/>
+    <entry t="281.2" castname="凝縮式波動砲" duration="7.7"/>
+    <entry t="288.7" castname="攻撃" sync="false"/>
+    <entry t="291.7" castname="攻撃" sync="false"/>
+    <entry t="292.8" castname="闇の氾濫" duration="5.7"/>
+    <entry t="293.3" castname="攻撃" sync="false"/>
+    <entry t="296.3" castname="攻撃" sync="false"/>
+    <entry t="299.3" castname="攻撃" sync="false"/>
+    <entry t="302.4" castname="攻撃" sync="false"/>
+    <entry t="305.4" castname="攻撃" sync="false"/>
+    <entry t="307.5" castname="闇の氾濫" duration="6.7"/>
+    <entry t="307.7" castname="雲散" duration="1.7"/>
+    <next to="p5" time="314.5"/>
   </phase>
   <phase id="p5" name="Intermission Three">
-    <entry t="8.2" castname="闇の大氾濫" duration="7.7"/>
-    <next to="p6" at="9.2" cast="グリムエンブレイス"/>
-  </phase>
-  <phase id="p6" name="Phase Three">
-    <entry t="5.2" castname="攻撃" sync="false"/>
-    <entry t="8.2" castname="攻撃" sync="false"/>
-    <entry t="9.2" castname="グリムエンブレイス" duration="4.7"/>
-    <entry t="17.3" castname="グリムエンブレイス" duration="4.7"/>
-    <entry t="26.4" castname="攻撃" sync="false"/>
-    <entry t="29.4" castname="攻撃" sync="false"/>
-    <entry t="32.4" castname="攻撃" sync="false"/>
-    <entry t="35.5" castname="攻撃" sync="false"/>
-    <entry t="37.5" castname="エアロジャ" duration="5.3"/>
-    <entry t="47.6" castname="攻撃" sync="false"/>
-    <entry t="49.6" castname="エンデスジャ" duration="4.7"/>
-    <entry t="57.7" castname="攻撃" sync="false"/>
-    <entry t="58.7" castname="連射式波動砲" duration="6.7"/>
   </phase>
 </timeline>

@@ -8,22 +8,45 @@
     <entry t="5.6" castname="ラブリーコール" duration="4.7"/>
     <entry t="12.7" castname="ベノムレイン" duration="4.7"/>
     <entry t="23.1" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="33.7" castname="ベノムレイン" sync="false"/>
     <entry t="34.7" castname="ベノムドロップ" duration="4.7"/>
     <entry t="41.9" castname="ハニーツイスター" duration="5.2"/>
+    <entry t="52.5" castname="ベノムドロップ" sync="false"/>
     <entry t="55.5" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="60.5" castname="キラースラッシュ" sync="false"/>
     <entry t="70.9" castname="ハニー・B・ライヴ【1st】" duration="1.7"/>
+    <entry t="79.2" castname="ハニー・B・ライヴ【1st】" sync="false"/>
     <entry t="82.1" castname="ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="88.2" castname="斬撃" sync="false"/>
+    <entry t="91.2" castname="斬撃" sync="false"/>
+    <entry t="94.5" castname="斬撃" sync="false"/>
     <entry t="98.7" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="104.9" castname="炸裂" duration="7.7"/>
+    <entry t="116.9" castname="炸裂" duration="7.7"/>
     <entry t="133.0" castname="ラブシーカー" duration="2.7"/>
     <entry t="146.1" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="158.3" castname="ハートシック" sync="false"/>
     <entry t="163.4" castname="リング・ラブコンビネーション" duration="4.7"/>
+    <entry t="169.6" castname="斬撃" sync="false"/>
+    <entry t="172.6" castname="斬撃" sync="false"/>
+    <entry t="175.8" castname="斬撃" sync="false"/>
     <entry t="182.1" castname="ハニー・B・フィナーレ" duration="4.7"/>
     <entry t="197.3" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="202.2" castname="キラースラッシュ" sync="false"/>
     <entry t="206.4" castname="アラームフェロモン" duration="2.7"/>
+    <entry t="212.9" castname="ラブ・イズ・ブラインド" duration="6.7"/>
+    <entry t="221.3" castname="ラブ・イズ・ブラインド" duration="6.7"/>
+    <entry t="229.8" castname="ラブ・イズ・ブラインド" duration="6.7"/>
     <entry t="245.9" castname="ハニー・B・ライヴ【2nd】" duration="1.7"/>
+    <entry t="254.1" castname="ハニー・B・ライヴ【2nd】" sync="false"/>
     <entry t="257.0" castname="ラブレイン" duration="4.7"/>
     <entry t="268.1" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="273.3" castname="ハートショック" duration="2.7"/>
+    <entry t="277.3" castname="ハートショック" duration="2.7"/>
+    <entry t="281.3" castname="ハートショック" duration="2.7"/>
+    <entry t="286.3" castname="ハートソゥ" sync="false"/>
     <entry t="291.0" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="301.7" castname="ラブレイン" sync="false"/>
     <entry t="305.6" castname="ハニー・B・フィナーレ" duration="4.7"/>
     <entry t="324.0" castname="ベノムレイン" duration="4.7"/>
     <entry t="331.1" castname="アラームフェロモン" duration="2.7"/>
@@ -32,20 +55,37 @@
     <entry t="347.3" castname="ポイズンスティング" sync="false"/>
     <entry t="352.3" castname="ポイズンスティング" sync="false"/>
     <entry t="357.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="357.3" castname="ラブ・イズ・ブラインド" duration="5.7"/>
     <entry t="363.3" castname="ビースティング" duration="3.7"/>
     <entry t="371.5" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="376.4" castname="キラースラッシュ" sync="false"/>
     <entry t="383.2" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="393.9" castname="ベノムレイン" sync="false"/>
     <entry t="405.1" castname="ハニー・B・ライヴ【3rd】" duration="1.7"/>
+    <entry t="413.3" castname="ハニー・B・ライヴ【3rd】" sync="false"/>
     <entry t="415.2" castname="ラブドロップ" duration="4.7"/>
     <entry t="422.3" castname="ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="428.5" castname="斬撃" sync="false"/>
+    <entry t="431.5" castname="斬撃" sync="false"/>
+    <entry t="434.8" castname="炸裂" duration="7.7"/>
     <entry t="442.0" castname="リング・ラブコンビネーション" duration="4.7"/>
+    <entry t="448.1" castname="斬撃" sync="false"/>
+    <entry t="451.1" castname="斬撃" sync="false"/>
+    <entry t="454.4" castname="炸裂" duration="7.7"/>
     <entry t="466.6" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="477.2" castname="ラブドロップ" sync="false"/>
     <entry t="480.2" castname="ハニー・B・フィナーレ" duration="4.7"/>
     <entry t="494.4" castname="キラースティング" duration="3.7"/>
+    <entry t="499.7" castname="キラースティング" sync="false"/>
     <entry t="510.8" castname="ブラックハート" duration="0.7"/>
+    <entry t="515.5" castname="ブラックハート" sync="false"/>
+    <entry t="522.2" castname="大爆発" sync="false"/>
     <entry t="527.0" castname="ラブリーコール" duration="4.7"/>
+    <entry t="538.5" castname="大爆発" sync="false"/>
     <entry t="544.1" castname="ラブリーコール" duration="4.7"/>
+    <entry t="556.1" castname="大爆発" sync="false"/>
     <entry t="561.2" castname="ラブリーコール" duration="4.7"/>
+    <entry t="572.6" castname="大爆発" sync="false"/>
     <entry t="578.3" castname="ラブリーコール" duration="4.7"/>
   </phase>
 </timeline>

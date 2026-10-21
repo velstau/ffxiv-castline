@@ -6,9 +6,13 @@
   <note>FFLogs の公開ランキングの討伐の記録（10:00）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="7.9" castname="青の衝撃" duration="5.7"/>
+    <entry t="15.0" castname="青の衝撃" sync="false"/>
     <entry t="18.0" castname="青の衝撃" sync="false"/>
+    <entry t="19.1" castname="青の衝撃" sync="false"/>
     <entry t="24.1" castname="死の恐怖" duration="4.7"/>
+    <entry t="29.1" castname="死の恐怖" duration="2.7"/>
     <entry t="34.2" castname="暗き死の腕" duration="4.7"/>
+    <entry t="40.8" castname="暗気流" duration="0.7"/>
     <entry t="47.4" castname="メメント・モリ" duration="4.7"/>
     <entry t="55.6" castname="闇の一撃" duration="3.7"/>
     <entry t="65.7" castname="青き魂" duration="3.7"/>
@@ -16,14 +20,31 @@
     <entry t="78.1" castname="青の波動" sync="false"/>
     <entry t="80.9" castname="青き魂" duration="3.7"/>
     <entry t="88.1" castname="死の恐怖" duration="4.7"/>
+    <entry t="93.1" castname="死の恐怖" duration="2.7"/>
     <entry t="99.2" castname="導きの翼" duration="3.7"/>
+    <entry t="103.2" castname="導きの翼" sync="false"/>
     <entry t="107.3" castname="青の衝撃" duration="5.7"/>
+    <entry t="114.4" castname="青の衝撃" sync="false"/>
     <entry t="117.4" castname="青の衝撃" sync="false"/>
+    <entry t="118.5" castname="青の衝撃" sync="false"/>
     <entry t="119.5" castname="青の四重波" duration="4.7"/>
     <entry t="124.7" castname="青の波動" sync="false"/>
     <entry t="133.6" castname="グランドクロス" duration="6.7"/>
+    <entry t="145.8" castname="グランドクロス" duration="2.7"/>
+    <entry t="160.8" castname="グランドクロス" duration="4.7"/>
+    <entry t="169.9" castname="グランドクロス" duration="2.7"/>
     <entry t="177.7" castname="ニュートンリング" duration="6.7"/>
+    <entry t="187.3" castname="ニュートンリング" sync="false"/>
+    <entry t="196.9" castname="死の恐怖" duration="2.7"/>
+    <entry t="204.2" castname="圧し潰す" duration="2.7"/>
+    <entry t="205.0" castname="死の恐怖" duration="2.7"/>
+    <entry t="213.0" castname="死の恐怖" duration="2.7"/>
+    <entry t="214.4" castname="圧し潰す" duration="2.7"/>
+    <entry t="224.5" castname="圧し潰す" duration="2.7"/>
+    <entry t="234.7" castname="圧し潰す" duration="2.7"/>
     <entry t="239.8" castname="エターナルダークネス" duration="9.7"/>
+    <entry t="256.2" castname="エターナルダークネス" sync="false"/>
+    <entry t="259.9" castname="死の氾濫" sync="false"/>
     <entry t="318.0" castname="闇の巨腕" duration="4.7"/>
     <entry t="327.1" castname="導きの翼" duration="3.7"/>
     <entry t="333.2" castname="暗き死の腕" duration="4.7"/>
@@ -37,14 +58,22 @@
     <entry t="388.3" castname="青の波動" sync="false"/>
     <entry t="396.2" castname="青の輪波" duration="3.7"/>
     <entry t="405.9" castname="闇の巨腕" duration="4.7"/>
+    <entry t="413.0" castname="引きずり込む" duration="4.7"/>
     <entry t="417.5" castname="青き魂" duration="3.7"/>
     <entry t="430.7" castname="青の四重波" duration="4.7"/>
     <entry t="435.9" castname="青の波動" sync="false"/>
     <entry t="444.8" castname="集団恐慌" duration="3.7"/>
     <entry t="450.9" castname="メメント・モリ" duration="4.7"/>
+    <entry t="451.2" castname="恐慌の痕" sync="false"/>
+    <entry t="457.2" castname="恐慌の痕" sync="false"/>
     <entry t="460.6" castname="青の衝撃" duration="5.7"/>
+    <entry t="461.5" castname="恐慌の痕" sync="false"/>
+    <entry t="465.3" castname="恐慌の痕" sync="false"/>
+    <entry t="467.7" castname="青の衝撃" sync="false"/>
     <entry t="470.7" castname="青の衝撃" sync="false"/>
+    <entry t="471.8" castname="青の衝撃" sync="false"/>
     <entry t="472.7" castname="暗き死の腕" duration="4.7"/>
+    <entry t="479.3" castname="暗気流" duration="0.7"/>
     <entry t="485.9" castname="連なる青き魂" duration="14.7"/>
     <entry t="500.9" castname="連なる青き魂" sync="false"/>
     <entry t="504.1" castname="魂の輪転" duration="2.7"/>
@@ -54,8 +83,10 @@
     <entry t="524.0" castname="青の波動" sync="false"/>
     <entry t="526.8" castname="青の波動" sync="false"/>
     <entry t="529.7" castname="死の恐怖" duration="4.7"/>
+    <entry t="534.8" castname="死の恐怖" duration="2.7"/>
     <entry t="541.8" castname="青の輪波" duration="3.7"/>
     <entry t="549.0" castname="闇の巨腕" duration="4.7"/>
+    <entry t="556.1" castname="引きずり込む" duration="4.7"/>
     <entry t="558.6" castname="闇の巨腕" duration="4.7"/>
     <entry t="573.3" castname="メメント・モリ" duration="4.7"/>
     <entry t="581.4" castname="闇の一撃" duration="3.7"/>

@@ -9,18 +9,25 @@
     <entry t="22.3" castname="無の肥大" duration="6.7"/>
     <entry t="36.4" castname="無の活性" duration="1.7"/>
     <entry t="40.5" castname="メルトダウン" duration="3.7"/>
+    <entry t="45.5" castname="メルトダウン" duration="4.2"/>
     <entry t="52.9" castname="集束波動" duration="3.7"/>
     <entry t="60.3" castname="無の肥大" duration="6.7"/>
     <entry t="77.7" castname="混沌の激流" duration="5.7"/>
+    <entry t="80.1" castname="混沌の激流" duration="6.7"/>
     <entry t="107.8" castname="無の渦" duration="1.7"/>
+    <entry t="111.9" castname="奔流" duration="3.7"/>
     <entry t="118.2" castname="拡散波動" duration="3.7"/>
     <entry t="128.4" castname="ディープフリーズ" duration="4.7"/>
     <entry t="136.5" castname="メテオレイン" duration="4.7"/>
     <entry t="150.1" castname="無の領域" duration="4.7"/>
+    <entry t="184.9" castname="無の渦流" sync="false"/>
     <entry t="264.7" castname="ライトレス・ワールド" duration="9.7"/>
     <entry t="284.9" castname="アルマゲスト" duration="4.7"/>
     <entry t="295.6" castname="無の肥大" duration="6.7"/>
     <entry t="309.8" castname="無の活性" duration="1.7"/>
+    <entry t="313.9" castname="集積波動" duration="5.7"/>
+    <entry t="324.2" castname="集積波動" duration="6.7"/>
+    <entry t="325.2" castname="集積波動" duration="5.7"/>
     <entry t="331.1" castname="シャドウホーリー" duration="4.7"/>
     <entry t="344.6" castname="無の肥大" duration="6.7"/>
     <entry t="358.8" castname="ディメンションゼロ" duration="4.7"/>
@@ -29,12 +36,18 @@
     <entry t="366.8" castname="ディメンションゼロ" sync="false"/>
     <entry t="374.5" castname="無の渦" duration="1.7"/>
     <entry t="378.6" castname="メルトダウン" duration="3.7"/>
+    <entry t="378.6" castname="奔流" duration="3.7"/>
     <entry t="395.8" castname="混沌の激流" duration="5.7"/>
+    <entry t="398.2" castname="混沌の激流" duration="6.7"/>
     <entry t="430.0" castname="アルマゲスト" duration="4.7"/>
     <entry t="443.5" castname="無の活性" duration="1.7"/>
     <entry t="447.6" castname="無の追跡" duration="5.7"/>
+    <entry t="448.7" castname="集積波動" duration="5.7"/>
+    <entry t="468.9" castname="集積波動" duration="6.7"/>
     <entry t="476.9" castname="集束波動" duration="3.7"/>
     <entry t="487.2" castname="無の追跡" duration="5.7"/>
+    <entry t="488.2" castname="集積波動" duration="5.7"/>
+    <entry t="508.5" castname="集積波動" duration="6.7"/>
     <entry t="516.5" castname="拡散波動" duration="3.7"/>
     <entry t="525.6" castname="ディメンションゼロ" duration="4.7"/>
     <entry t="531.1" castname="ディメンションゼロ" sync="false"/>
@@ -44,6 +57,9 @@
     <entry t="540.7" castname="アルマゲスト" duration="4.7"/>
     <entry t="551.5" castname="無の肥大" duration="6.7"/>
     <entry t="565.7" castname="無の活性" duration="1.7"/>
+    <entry t="568.7" castname="集積波動" duration="6.7"/>
+    <entry t="569.8" castname="集積波動" duration="5.7"/>
+    <entry t="581.1" castname="集積波動" duration="5.7"/>
     <entry t="587.1" castname="ディープフリーズ" duration="4.7"/>
     <entry t="599.7" castname="無の肥大" duration="6.7"/>
     <entry t="613.9" castname="ディメンションゼロ" duration="4.7"/>

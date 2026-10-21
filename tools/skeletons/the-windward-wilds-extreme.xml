@@ -7,24 +7,42 @@
   <phase id="p1">
     <entry t="0.8" castname="咆哮" duration="4.7"/>
     <entry t="9.6" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="9.6" castname="龍閃" duration="6.9"/>
     <entry t="18.7" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="18.7" castname="龍閃" duration="1.9"/>
     <entry t="25.8" castname="鎖刃飛翔突進【護竜共振】" duration="4.7"/>
     <entry t="36.8" castname="鎖哭龍閃" sync="false"/>
+    <entry t="36.8" castname="龍閃" duration="4.7"/>
     <entry t="43.6" castname="鎖刃飛翔突進【龍閃】" duration="4.7"/>
     <entry t="55.4" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="55.4" castname="龍閃" duration="6.9"/>
     <entry t="64.4" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="64.4" castname="龍閃" duration="1.9"/>
     <entry t="68.2" castname="咆哮" duration="4.7"/>
     <entry t="85.3" castname="突進" duration="5.7"/>
+    <entry t="85.3" castname="龍閃" duration="7.2"/>
     <entry t="93.4" castname="突進" sync="false"/>
     <entry t="95.5" castname="突進" sync="false"/>
+    <entry t="102.4" castname="龍光放散" duration="7.7"/>
     <entry t="103.2" castname="回転鎖刃【龍閃】" duration="5.7"/>
     <entry t="113.4" castname="尻尾突き上げ" duration="3.7"/>
     <entry t="120.1" castname="鎖刃振り下ろし" duration="5.7"/>
     <entry t="126.3" castname="鎖刃振り下ろし" sync="false"/>
     <entry t="131.1" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="131.1" castname="龍閃" duration="6.9"/>
     <entry t="140.2" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="140.2" castname="龍閃" duration="1.9"/>
     <entry t="144.0" castname="咆哮" duration="4.7"/>
     <entry t="163.8" castname="地脈共振" duration="9.4"/>
+    <entry t="163.8" castname="護竜共振" duration="10.7"/>
+    <entry t="175.8" castname="護竜共振：大" sync="false"/>
+    <entry t="180.0" castname="波状龍閃" duration="4.7"/>
+    <entry t="186.2" castname="波状龍閃" sync="false"/>
+    <entry t="187.2" castname="波状龍閃" sync="false"/>
+    <entry t="192.1" castname="龍光放散" duration="7.7"/>
+    <entry t="203.2" castname="波状龍閃" duration="4.7"/>
+    <entry t="209.3" castname="波状龍閃" sync="false"/>
+    <entry t="210.3" castname="波状龍閃" sync="false"/>
     <entry t="211.2" castname="護竜乱撃" duration="4.7"/>
     <entry t="232.5" castname="咆哮" duration="4.7"/>
     <entry t="241.3" castname="鎖刃躍動" duration="7.7"/>
@@ -38,33 +56,61 @@
     <entry t="271.0" castname="鎖刃躍動" sync="false"/>
     <entry t="274.1" castname="咆哮" duration="4.7"/>
     <entry t="292.7" castname="地脈共振" duration="9.4"/>
+    <entry t="292.7" castname="護竜共振" duration="10.7"/>
     <entry t="308.2" castname="龍閃砲" duration="7.7"/>
     <entry t="316.9" castname="龍閃砲" sync="false"/>
+    <entry t="325.2" castname="白光" duration="7.7"/>
     <entry t="326.4" castname="龍閃砲" sync="false"/>
     <entry t="335.9" castname="龍閃砲" sync="false"/>
+    <entry t="339.7" castname="龍光放散" duration="7.7"/>
     <entry t="355.1" castname="咆哮" duration="4.7"/>
     <entry t="366.2" castname="鎖哭龍閃・改" duration="0.7"/>
+    <entry t="371.4" castname="龍閃" duration="0.7"/>
+    <entry t="374.0" castname="龍閃" duration="0.7"/>
     <entry t="374.1" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="376.6" castname="龍閃" duration="0.7"/>
+    <entry t="379.2" castname="龍閃" duration="0.7"/>
     <entry t="382.2" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="382.2" castname="龍閃" duration="1.9"/>
     <entry t="386.0" castname="咆哮" duration="4.7"/>
+    <entry t="386.5" castname="龍閃" duration="0.7"/>
+    <entry t="389.2" castname="龍閃" duration="0.7"/>
+    <entry t="391.8" castname="龍閃" duration="0.7"/>
+    <entry t="394.4" castname="龍閃" duration="0.7"/>
+    <entry t="397.0" castname="龍閃" duration="0.7"/>
+    <entry t="399.6" castname="龍閃" duration="0.7"/>
+    <entry t="402.3" castname="龍閃" duration="0.7"/>
     <entry t="403.1" castname="突進" duration="5.7"/>
+    <entry t="404.8" castname="龍閃" duration="0.7"/>
     <entry t="411.1" castname="突進" sync="false"/>
     <entry t="413.2" castname="突進" sync="false"/>
+    <entry t="419.5" castname="龍光放散" duration="7.7"/>
     <entry t="421.3" castname="回転鎖刃【龍閃】" duration="4.7"/>
     <entry t="430.5" castname="尻尾突き上げ" duration="2.7"/>
     <entry t="436.2" castname="鎖刃振り下ろし" duration="5.7"/>
     <entry t="442.4" castname="鎖刃振り下ろし" sync="false"/>
     <entry t="448.5" castname="鎖刃叩きつけ" duration="3.7"/>
     <entry t="456.6" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="456.6" castname="龍閃" duration="1.9"/>
     <entry t="460.4" castname="咆哮" duration="4.7"/>
     <entry t="480.3" castname="地脈共振" duration="9.4"/>
+    <entry t="480.3" castname="護竜共振" duration="10.7"/>
+    <entry t="492.4" castname="護竜共振：大" sync="false"/>
     <entry t="493.4" castname="咆哮" duration="4.7"/>
+    <entry t="498.5" castname="波状龍閃" duration="7.7"/>
+    <entry t="507.6" castname="波状龍閃" sync="false"/>
+    <entry t="508.6" castname="波状龍閃" sync="false"/>
+    <entry t="509.7" castname="波状龍閃" sync="false"/>
+    <entry t="510.8" castname="波状龍閃" sync="false"/>
+    <entry t="511.8" castname="波状龍閃" sync="false"/>
     <entry t="513.2" castname="鎖刃振り下ろし" duration="5.7"/>
     <entry t="519.4" castname="鎖刃振り下ろし" sync="false"/>
     <entry t="525.5" castname="鎖刃叩きつけ" duration="3.7"/>
     <entry t="533.5" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="533.5" castname="龍閃" duration="1.9"/>
     <entry t="547.0" castname="鎖刃飛翔突進【護竜共振】" duration="3.7"/>
     <entry t="557.0" castname="鎖哭龍閃" sync="false"/>
+    <entry t="557.0" castname="龍閃" duration="4.7"/>
     <entry t="563.8" castname="鎖刃飛翔突進【龍閃】" duration="3.7"/>
   </phase>
 </timeline>

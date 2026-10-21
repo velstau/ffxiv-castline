@@ -6,9 +6,10 @@
   <note>FFLogs の公開ランキングの討伐の記録（12:09）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="11.2" castname="ラス・オブ・ゼウス" duration="4.7"/>
-    <entry t="32.9" castname="フライングウィッチ" duration="5.7"/>
+    <entry t="32.9" castname="フライングウィッチ" duration="6.7"/>
     <entry t="45.4" castname="ライトニング・ウィッチハント" duration="4.7"/>
     <entry t="53.6" castname="ウィッチハント" duration="4.7"/>
+    <entry t="59.1" castname="フォークライトニング" sync="false"/>
     <entry t="61.7" castname="円輪式ウィッチハント" duration="13.7"/>
     <entry t="75.7" castname="円輪式ウィッチハント" sync="false"/>
     <entry t="79.3" castname="リングサンダー" sync="false"/>
@@ -21,6 +22,7 @@
     <entry t="121.9" castname="シャインスパーク" sync="false"/>
     <entry t="123.5" castname="ファンタスティックシンフォニー" duration="2.7"/>
     <entry t="129.7" castname="サイドスパーク" duration="6.7"/>
+    <entry t="136.7" castname="エイトスターズ" sync="false"/>
     <entry t="139.8" castname="ウィケッドジョルト" duration="4.7"/>
     <entry t="148.1" castname="ウィケッドジョルト" sync="false"/>
     <entry t="156.5" castname="エレクトロープ展開" duration="2.7"/>
@@ -29,31 +31,57 @@
     <entry t="168.8" castname="シャインスパーク" sync="false"/>
     <entry t="170.4" castname="シャインスパーク" sync="false"/>
     <entry t="172.0" castname="ライトニングケージ" duration="2.7"/>
+    <entry t="176.0" castname="ライトニングケージ" duration="6.7"/>
     <entry t="185.2" castname="サイドスパーク" duration="6.7"/>
+    <entry t="192.2" castname="エイトスターズ" sync="false"/>
+    <entry t="196.4" castname="ライトニングケージ" duration="6.7"/>
     <entry t="205.4" castname="ウィケッドボルト" duration="3.7"/>
     <entry t="218.6" castname="イオンクラスター" duration="2.7"/>
     <entry t="233.3" castname="レフトロール" sync="false"/>
     <entry t="235.3" castname="カノンスタンピード" sync="false"/>
     <entry t="246.8" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="257.9" castname="導雷流" sync="false"/>
     <entry t="260.0" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="271.1" castname="輪雷流" sync="false"/>
     <entry t="273.1" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="284.2" castname="輪雷流" sync="false"/>
     <entry t="287.4" castname="ウィケッドジョルト" duration="4.7"/>
     <entry t="295.6" castname="ウィケッドジョルト" sync="false"/>
     <entry t="313.4" castname="エレクトロープ移植" duration="3.7"/>
+    <entry t="321.6" castname="ライトニングフィールド" duration="2.7"/>
+    <entry t="327.7" castname="ライトニングフィールド" sync="false"/>
+    <entry t="330.7" castname="ライトニングフィールド" sync="false"/>
+    <entry t="333.7" castname="ライトニングフィールド" sync="false"/>
+    <entry t="336.8" castname="ライトニングフィールド" sync="false"/>
+    <entry t="339.8" castname="ライトニングフィールド" sync="false"/>
+    <entry t="342.8" castname="ライトニングフィールド" sync="false"/>
+    <entry t="347.9" castname="ライトニングフィールド" duration="2.7"/>
+    <entry t="353.9" castname="ライトニングフィールド" sync="false"/>
+    <entry t="357.0" castname="ライトニングフィールド" sync="false"/>
+    <entry t="360.0" castname="ライトニングフィールド" sync="false"/>
+    <entry t="363.0" castname="ライトニングフィールド" sync="false"/>
+    <entry t="366.0" castname="ライトニングフィールド" sync="false"/>
+    <entry t="369.1" castname="ライトニングフィールド" sync="false"/>
     <entry t="407.3" castname="クロステイル・スペシャル" duration="4.7"/>
+    <entry t="422.7" castname="セイバーテイル" duration="7.7"/>
     <entry t="425.5" castname="ウィケッドブレイズ" duration="4.7"/>
+    <entry t="432.0" castname="ウィケッドブレイズ" sync="false"/>
     <entry t="435.6" castname="ウィケッドスペシャル" duration="4.7"/>
     <entry t="448.8" castname="マスタードボム" duration="7.7"/>
+    <entry t="457.6" castname="キンドルファイア" sync="false"/>
     <entry t="467.9" castname="属性変換" duration="6.7"/>
     <entry t="478.1" castname="テイルスラスト" duration="4.7"/>
     <entry t="487.2" castname="テイルスラスト" sync="false"/>
     <entry t="500.4" castname="アズールサンダー" duration="4.7"/>
     <entry t="508.6" castname="ブラックサバト【日没】" duration="2.7"/>
     <entry t="515.7" castname="ウィケッドファイア" duration="3.7"/>
+    <entry t="519.8" castname="ウィケッドファイア" duration="3.7"/>
     <entry t="524.9" castname="ウィケッドスペシャル" duration="4.7"/>
     <entry t="538.1" castname="ブラックサバト【夜半】" duration="2.7"/>
     <entry t="545.2" castname="散集式ブラスター" duration="6.7"/>
+    <entry t="552.3" castname="ウィケッドスパーク" sync="false"/>
     <entry t="555.4" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="556.3" castname="ウィケッドフレア" sync="false"/>
     <entry t="563.5" castname="ウィケッドサンダー" duration="4.7"/>
     <entry t="572.8" castname="属性変換" duration="6.7"/>
     <entry t="582.9" castname="火炎斬り" duration="5.7"/>
@@ -63,6 +91,7 @@
     <entry t="636.4" castname="テイルスラスト" duration="4.7"/>
     <entry t="645.4" castname="テイルスラスト" sync="false"/>
     <entry t="649.5" castname="マスタードボム" duration="7.7"/>
+    <entry t="658.4" castname="キンドルファイア" sync="false"/>
     <entry t="668.7" castname="属性変換" duration="6.7"/>
     <entry t="678.9" castname="アズールサンダー" duration="4.7"/>
     <entry t="687.0" castname="イオンクラスター" duration="2.7"/>

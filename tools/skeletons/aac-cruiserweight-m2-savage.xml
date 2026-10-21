@@ -7,19 +7,32 @@
   <phase id="p1" name="Phase One">
     <entry t="6.9" castname="ムースシャワー" duration="4.7"/>
     <entry t="18.0" castname="カラーライオット" duration="4.7"/>
+    <entry t="25.1" castname="ウォームペイントボム" sync="false"/>
     <entry t="31.6" castname="ウイングマーク" duration="3.7"/>
     <entry t="38.7" castname="カラークラッシュ" duration="2.7"/>
     <entry t="46.0" castname="ダブル・グラフィティ" duration="11.7"/>
+    <entry t="62.8" castname="カラークラッシュ" sync="false"/>
     <entry t="65.1" castname="ねばねばムース" duration="4.7"/>
+    <entry t="70.9" castname="ねばねばムース" sync="false"/>
+    <entry t="76.9" castname="爆発" sync="false"/>
     <entry t="77.3" castname="カラーライオット" duration="4.7"/>
+    <entry t="84.4" castname="ウォームペイントボム" sync="false"/>
     <entry t="90.8" castname="ランドスケープ" duration="0.7"/>
     <entry t="107.0" castname="アレンジ" duration="0.7"/>
+    <entry t="115.2" castname="針飛ばし" duration="6.7"/>
+    <entry t="124.3" castname="針飛ばし" duration="6.7"/>
+    <entry t="141.9" castname="重熱放散" sync="false"/>
     <entry t="144.6" castname="ねばねばムース" duration="4.7"/>
+    <entry t="150.4" castname="ねばねばムース" sync="false"/>
+    <entry t="156.3" castname="爆発" sync="false"/>
     <entry t="156.9" castname="アレンジ" duration="0.7"/>
+    <entry t="165.1" castname="針飛ばし" duration="8.2"/>
     <entry t="174.1" castname="ぼっかんプリン" duration="2.7"/>
     <entry t="181.4" castname="ダブル・グラフィティ" duration="7.7"/>
+    <entry t="185.5" castname="ぼっかんプリン" duration="4.7"/>
     <entry t="194.5" castname="ムースシャワー" duration="4.7"/>
     <entry t="202.7" castname="カラーライオット" duration="4.7"/>
+    <entry t="209.8" castname="ウォームペイントボム" sync="false"/>
     <next to="p2" at="0" cast="シュガーソウル"/>
   </phase>
   <phase id="p2" name="Phase Two">
@@ -32,24 +45,47 @@
     <entry t="168.0" castname="原石あげる" duration="6.7"/>
     <entry t="178.2" castname="シングル・グラフィティ" duration="5.7"/>
     <entry t="192.3" castname="カラーライオット" duration="4.7"/>
+    <entry t="199.4" castname="ウォームペイントボム" sync="false"/>
     <entry t="200.5" castname="ムースシャワー" duration="4.7"/>
     <next to="p3" at="8.5" cast="ランドスケープ"/>
   </phase>
   <phase id="p3" name="Phase Three">
     <entry t="8.5" castname="ランドスケープ" duration="0.7"/>
     <entry t="23.7" castname="ダブル・グラフィティ" duration="5.7"/>
+    <entry t="33.9" castname="シュガーファイア" sync="false"/>
     <entry t="35.0" castname="アレンジ" duration="0.7"/>
+    <entry t="45.3" castname="シュガーサンダー" duration="2.7"/>
+    <entry t="60.7" castname="百雷" sync="false"/>
+    <entry t="61.3" castname="雷流" sync="false"/>
+    <entry t="71.2" castname="百雷" sync="false"/>
+    <entry t="71.8" castname="雷流" sync="false"/>
+    <entry t="81.7" castname="百雷" sync="false"/>
+    <entry t="82.3" castname="雷流" sync="false"/>
+    <entry t="92.2" castname="百雷" sync="false"/>
+    <entry t="92.8" castname="雷流" sync="false"/>
     <entry t="93.3" castname="プリンパーティー" duration="3.7"/>
     <entry t="110.7" castname="アレンジ" duration="0.7"/>
     <entry t="122.9" castname="びちゃっとムース" duration="4.7"/>
+    <entry t="133.0" castname="びちゃっとムース" sync="false"/>
     <entry t="134.0" castname="ムース大行進" duration="3.7"/>
+    <entry t="135.0" castname="びちゃっとムース" sync="false"/>
+    <entry t="137.1" castname="びちゃっとムース" sync="false"/>
+    <entry t="139.1" castname="びちゃっとムース" sync="false"/>
+    <entry t="142.1" castname="シュガーサンダー" duration="2.7"/>
+    <entry t="146.9" castname="爆発" sync="false"/>
     <entry t="147.2" castname="ウイングマーク" duration="3.7"/>
+    <entry t="168.5" castname="シュガーサンダー" duration="2.7"/>
+    <entry t="173.3" castname="爆発" sync="false"/>
     <entry t="173.4" castname="ムースシャワー" duration="4.7"/>
     <entry t="183.5" castname="ねばねばムース" duration="4.7"/>
+    <entry t="189.3" castname="ねばねばムース" sync="false"/>
+    <entry t="195.3" castname="爆発" sync="false"/>
     <entry t="195.7" castname="カラーライオット" duration="4.7"/>
+    <entry t="202.7" castname="コールドペイントボム" sync="false"/>
     <entry t="209.4" castname="ウイングマーク" duration="3.7"/>
     <entry t="216.5" castname="カラークラッシュ" duration="2.7"/>
     <entry t="224.0" castname="ダブル・グラフィティ" duration="11.7"/>
+    <entry t="240.6" castname="カラークラッシュ" sync="false"/>
     <entry t="249.7" castname="アーティスティック・アナーキー" duration="7.7"/>
   </phase>
 </timeline>

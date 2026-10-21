@@ -8,6 +8,10 @@
     <entry t="7.1" castname="ローズ・カタルシス" duration="4.7"/>
     <entry t="19.8" castname="ショック" duration="2.7"/>
     <entry t="25.9" castname="キングダム・ホーリー" duration="2.7"/>
+    <entry t="25.9" castname="爆発" duration="6.7"/>
+    <entry t="34.2" castname="ショック" sync="false"/>
+    <entry t="36.1" castname="ショック" sync="false"/>
+    <entry t="37.2" castname="ショック" sync="false"/>
     <entry t="38.1" castname="スペクトルブレイク" duration="6.7"/>
     <entry t="52.5" castname="クライムクロス" duration="12.7"/>
     <entry t="65.5" castname="クライムクロス" sync="false"/>
@@ -16,20 +20,39 @@
     <entry t="74.7" castname="クライムクロス" sync="false"/>
     <entry t="77.8" castname="ストックブレイク" duration="6.7"/>
     <entry t="92.2" castname="聖護壁" duration="2.7"/>
+    <entry t="105.6" castname="突撃" duration="1.2"/>
+    <entry t="129.8" castname="突撃" duration="1.2"/>
     <entry t="148.5" castname="クワイタスローズ" duration="2.7"/>
     <entry t="169.9" castname="魔法陣展開" duration="2.3"/>
     <entry t="176.1" castname="キングダム・サンダラ" duration="4.7"/>
+    <entry t="183.9" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="185.9" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="187.9" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="190.0" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="191.9" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="193.9" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="195.9" castname="キングダム・サンダラ" sync="false"/>
     <entry t="196.6" castname="キングダム・サンダガ" duration="4.0"/>
     <entry t="204.0" castname="ローズ・カタルシス" duration="4.7"/>
     <entry t="216.4" castname="魔法陣展開・二式" duration="2.3"/>
     <entry t="222.6" castname="雷鳴剣" duration="5.7"/>
+    <entry t="224.6" castname="雷鳴剣" duration="6.4"/>
     <entry t="236.7" castname="スペクトルブレイク" duration="6.7"/>
     <entry t="251.1" castname="魔法陣展開・三式" duration="2.3"/>
     <entry t="257.3" castname="幻影生成" duration="2.7"/>
+    <entry t="263.4" castname="キングダム・ホーリー" duration="2.7"/>
     <entry t="265.4" castname="活性紋" duration="2.7"/>
+    <entry t="267.4" castname="爆発" duration="12.7"/>
+    <entry t="280.4" castname="爆発" sync="false"/>
     <entry t="283.6" castname="ローズ・カタルシス" duration="4.7"/>
     <entry t="297.2" castname="幻影生成" duration="2.7"/>
+    <entry t="304.3" castname="ショック" duration="2.7"/>
     <entry t="309.4" castname="クライムクロス" duration="12.7"/>
+    <entry t="311.4" castname="キングダム・バニシュラ" duration="4.7"/>
+    <entry t="316.1" castname="ショック" sync="false"/>
+    <entry t="317.1" castname="ショック" sync="false"/>
+    <entry t="319.1" castname="ショック" sync="false"/>
+    <entry t="321.1" castname="ショック" sync="false"/>
     <entry t="322.4" castname="クライムクロス" sync="false"/>
     <entry t="325.5" castname="クライムクロス" sync="false"/>
     <entry t="328.6" castname="クライムクロス" sync="false"/>
@@ -37,11 +60,13 @@
     <entry t="334.8" castname="ストックブレイク" duration="6.7"/>
     <entry t="351.2" castname="魔法陣展開・四式" duration="2.3"/>
     <entry t="357.3" castname="活性紋" duration="2.7"/>
+    <entry t="363.5" castname="キングダム・サンダガ" duration="4.7"/>
     <entry t="368.5" castname="ローズソーン" duration="3.7"/>
     <entry t="376.7" castname="キングダム・バニシュガ" duration="3.7"/>
     <entry t="387.8" castname="ローズ・カタルシス" duration="4.7"/>
     <entry t="401.3" castname="幻影生成" duration="2.7"/>
     <entry t="407.4" castname="クライムクロス" duration="12.7"/>
+    <entry t="411.4" castname="パワーブレイク" duration="5.7"/>
     <entry t="420.4" castname="クライムクロス" sync="false"/>
     <entry t="423.5" castname="クライムクロス" sync="false"/>
     <entry t="426.6" castname="クライムクロス" sync="false"/>
@@ -50,5 +75,6 @@
     <entry t="451.2" castname="魔法陣展開・五式" duration="2.3"/>
     <entry t="457.3" castname="クライムハザード" duration="2.7"/>
     <entry t="465.5" castname="雷鳴剣" duration="5.7"/>
+    <entry t="467.5" castname="雷鳴剣" duration="6.4"/>
   </phase>
 </timeline>

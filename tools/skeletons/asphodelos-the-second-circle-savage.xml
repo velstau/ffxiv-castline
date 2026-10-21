@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：辺獄編2</content>
+  <title>万魔殿パンデモニウム零式：辺獄編2（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:03）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Hippokampos">
+    <entry t="10.9" castname="マーキーディープ" duration="4.7"/>
+    <entry t="21.1" castname="ダブルインパクト" duration="4.7"/>
+    <entry t="33.9" castname="スウェッジデリージュ" duration="4.7"/>
+    <next to="p2" at="15" cast="ブレス＆カタラクティス"/>
+  </phase>
+  <phase id="p2" name="P2: Flooding">
+    <entry t="15.0" castname="ブレス＆カタラクティス" duration="7.7"/>
+    <entry t="31.1" castname="コヒーレンス" duration="11.7"/>
+    <entry t="43.8" castname="コヒーレンス" sync="false"/>
+    <entry t="46.2" castname="コヒーレンス" sync="false"/>
+    <entry t="54.4" castname="マーキーディープ" duration="4.7"/>
+    <entry t="63.1" castname="霊水弾" duration="2.7"/>
+    <entry t="68.7" castname="ショックウェーブ" duration="7.7"/>
+    <entry t="72.7" castname="霊水弾" duration="7.7"/>
+    <next to="p3" at="14.7" cast="多重刻印"/>
+  </phase>
+  <phase id="p3" name="P1: Hippokampos">
+    <entry t="14.7" castname="多重刻印" duration="3.7"/>
+    <entry t="28.1" castname="ウィング＆カタラクティス" duration="7.7"/>
+    <entry t="42.8" castname="激流衝" sync="false"/>
+    <entry t="50.8" castname="チャネリングフロウ" duration="4.7"/>
+    <entry t="71.0" castname="荒波" sync="false"/>
+    <entry t="80.9" castname="ダブルインパクト" duration="4.7"/>
+    <entry t="91.2" castname="マーキーディープ" duration="4.7"/>
+    <entry t="107.9" castname="スウェッジデリージュ" duration="4.7"/>
+    <next to="p4" at="9.6" cast="ショックウェーブ"/>
+  </phase>
+  <phase id="p4" name="P2: Flooding">
+    <entry t="9.6" castname="ショックウェーブ" duration="7.7"/>
+    <next to="p5" at="4.5" cast="カンペオスハルマ"/>
+  </phase>
+  <phase id="p5" name="P1: Hippokampos">
+    <entry t="4.5" castname="カンペオスハルマ" duration="8.2"/>
+    <entry t="13.4" castname="カンペオスハルマ" sync="false"/>
+    <entry t="15.1" castname="カンペオスハルマ" sync="false"/>
+    <entry t="16.8" castname="カンペオスハルマ" sync="false"/>
+    <entry t="18.4" castname="カンペオスハルマ" sync="false"/>
+    <entry t="30.4" castname="ダブルインパクト" duration="4.7"/>
+    <entry t="39.6" castname="マーキーディープ" duration="4.7"/>
+    <entry t="53.2" castname="チャネリングオーバーフロウ" duration="4.7"/>
+    <entry t="62.4" castname="テインテッドフラッド" duration="2.7"/>
+    <entry t="67.4" castname="テインテッドフラッド" duration="4.7"/>
+    <entry t="77.7" castname="テインテッドフラッド" duration="2.7"/>
+    <entry t="82.8" castname="テインテッドフラッド" duration="4.7"/>
+    <entry t="91.0" castname="ブレス＆カタラクティス" duration="7.7"/>
+    <entry t="114.2" castname="多重刻印" duration="3.7"/>
+    <entry t="120.6" castname="ディソシエーション" duration="3.7"/>
+    <entry t="134.7" castname="ウィング＆カタラクティス" duration="7.7"/>
+    <entry t="142.2" castname="激流衝" sync="false"/>
+    <entry t="152.4" castname="ディソシエーション" duration="3.7"/>
+    <entry t="164.6" castname="スウェッジエラプション" duration="4.7"/>
+    <entry t="170.6" castname="スウェッジエラプション" duration="2.7"/>
+    <entry t="171.9" castname="テインテッドフラッド" duration="2.7"/>
+    <entry t="177.0" castname="テインテッドフラッド" duration="4.7"/>
+    <entry t="179.6" castname="コヒーレンス" duration="11.7"/>
+    <entry t="192.2" castname="コヒーレンス" sync="false"/>
+    <entry t="194.8" castname="コヒーレンス" sync="false"/>
+    <entry t="201.9" castname="ダブルインパクト" duration="4.7"/>
+    <entry t="210.2" castname="マーキーディープ" duration="4.7"/>
+    <entry t="228.0" castname="スウェッジデリージュ" duration="4.7"/>
+    <next to="p6" time="233"/>
+  </phase>
+  <phase id="p6" name="P2: Flooding">
+    <entry t="11.7" castname="チャネリングオーバーフロウ" duration="4.7"/>
+    <entry t="22.1" castname="コヒーレンス" duration="11.7"/>
+    <entry t="31.9" castname="荒波" sync="false"/>
+    <entry t="34.8" castname="コヒーレンス" sync="false"/>
+    <entry t="37.3" castname="コヒーレンス" sync="false"/>
+    <entry t="46.9" castname="荒波" sync="false"/>
+    <entry t="55.6" castname="ディソシエーション" duration="3.7"/>
+    <entry t="67.9" castname="スウェッジエラプション" duration="4.7"/>
+    <entry t="73.9" castname="スウェッジエラプション" duration="2.7"/>
+    <entry t="81.3" castname="霊水弾" duration="2.7"/>
+    <entry t="86.8" castname="ショックウェーブ" duration="7.7"/>
+    <entry t="90.9" castname="霊水弾" duration="7.7"/>
+    <next to="p7" at="9.2" cast="ダブルインパクト"/>
+  </phase>
+  <phase id="p7" name="P1: Hippokampos">
+    <entry t="9.2" castname="ダブルインパクト" duration="4.7"/>
+    <entry t="21.4" castname="マーキーディープ" duration="4.7"/>
+  </phase>
+</timeline>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>次元の狭間オメガ零式：アルファ編1</content>
+  <title>次元の狭間オメガ零式：アルファ編1（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:46）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="11.3" castname="ダミングイーディクト" duration="5.7"/>
+    <entry t="25.4" castname="ほのお" duration="4.7"/>
+    <entry t="43.1" castname="ホリゾンタルインプロージョン" duration="4.7"/>
+    <entry t="43.1" castname="衝撃波" duration="5.4"/>
+    <entry t="62.2" castname="カオティックディスパーション" duration="4.7"/>
+    <entry t="74.4" castname="ほのお" duration="4.7"/>
+    <entry t="79.4" castname="ほのお" sync="false"/>
+    <entry t="91.1" castname="カオススフィア" sync="false"/>
+    <entry t="93.2" castname="着弾せよ" duration="4.7"/>
+    <entry t="99.1" castname="着弾" sync="false"/>
+    <entry t="106.3" castname="突出せよ" duration="2.7"/>
+    <entry t="106.3" castname="突出" duration="3.4"/>
+    <entry t="116.4" castname="追尾せよ" duration="2.0"/>
+    <entry t="135.9" castname="たつまき" duration="4.7"/>
+    <entry t="148.1" castname="アンブラスマッシュ" duration="4.7"/>
+    <entry t="157.3" castname="ダミングイーディクト" duration="5.7"/>
+    <entry t="176.4" castname="カオティックディスパーション" duration="4.7"/>
+    <entry t="188.6" castname="たつまき" duration="4.7"/>
+    <entry t="193.7" castname="たつまき" sync="false"/>
+    <entry t="198.8" castname="カオススフィア" sync="false"/>
+    <entry t="200.8" castname="着弾せよ" duration="4.7"/>
+    <entry t="206.8" castname="着弾" sync="false"/>
+    <entry t="208.0" castname="突出せよ" duration="4.7"/>
+    <entry t="208.1" castname="突出" duration="5.4"/>
+    <entry t="220.2" castname="追尾せよ" duration="4.7"/>
+    <entry t="245.6" castname="バウル・オブ・アゴニー" duration="4.7"/>
+    <entry t="267.7" castname="混沌の水" sync="false"/>
+    <entry t="270.7" castname="混沌の土" sync="false"/>
+    <entry t="292.8" castname="ソウル・オブ・カオス" sync="false"/>
+    <entry t="314.6" castname="ホリゾンタルインプロージョン" duration="4.7"/>
+    <entry t="314.6" castname="衝撃波" duration="5.4"/>
+    <entry t="328.8" castname="つなみ" duration="4.7"/>
+    <entry t="338.0" castname="アンブラスマッシュ" duration="4.7"/>
+    <entry t="344.5" castname="混沌の水" sync="false"/>
+    <entry t="347.2" castname="ダミングイーディクト" duration="5.7"/>
+    <entry t="351.5" castname="混沌の水" sync="false"/>
+    <entry t="366.4" castname="カオティックディスパーション" duration="4.7"/>
+    <entry t="378.5" castname="つなみ" duration="4.7"/>
+    <entry t="383.6" castname="つなみ" sync="false"/>
+    <entry t="386.7" castname="カオススフィア" sync="false"/>
+    <entry t="388.8" castname="着弾せよ" duration="4.7"/>
+    <entry t="394.3" castname="混沌の水" sync="false"/>
+    <entry t="395.9" castname="突出せよ" duration="4.7"/>
+    <entry t="396.0" castname="突出" duration="5.4"/>
+    <entry t="408.1" castname="追尾せよ" duration="4.7"/>
+    <entry t="430.3" castname="じしん" duration="4.7"/>
+    <entry t="440.5" castname="じしん" duration="4.7"/>
+    <entry t="444.0" castname="ホリゾンタルインプロージョン" duration="4.7"/>
+    <entry t="457.7" castname="混沌の土" sync="false"/>
+    <entry t="463.2" castname="カオティックディスパーション" duration="4.7"/>
+    <entry t="475.3" castname="じしん" duration="4.7"/>
+    <entry t="480.4" castname="じしん" sync="false"/>
+    <entry t="485.5" castname="カオススフィア" sync="false"/>
+    <entry t="485.5" castname="じしん" duration="4.7"/>
+    <entry t="487.6" castname="着弾せよ" duration="4.7"/>
+    <entry t="493.5" castname="着弾" sync="false"/>
+    <entry t="494.7" castname="突出せよ" duration="2.7"/>
+    <entry t="494.7" castname="突出" duration="3.4"/>
+    <entry t="502.8" castname="混沌の土" sync="false"/>
+    <entry t="504.9" castname="追尾せよ" duration="2.0"/>
+    <entry t="527.5" castname="ほのお" duration="9.7"/>
+    <entry t="537.6" castname="ほのお" sync="false"/>
+    <entry t="540.7" castname="つなみ" duration="9.7"/>
+    <entry t="550.8" castname="つなみ" sync="false"/>
+    <entry t="553.8" castname="たつまき" duration="9.7"/>
+    <entry t="557.4" castname="混沌の水" sync="false"/>
+    <entry t="563.9" castname="たつまき" sync="false"/>
+    <entry t="567.0" castname="じしん" duration="9.7"/>
+    <entry t="570.6" castname="混沌の風" sync="false"/>
+    <entry t="577.1" castname="じしん" sync="false"/>
+    <entry t="580.1" castname="バウル・オブ・アゴニー" duration="17.7"/>
+  </phase>
+</timeline>

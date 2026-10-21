@@ -6,54 +6,90 @@
   <note>FFLogs の公開ランキングの討伐の記録（10:07）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="9.9" castname="ディープカット" duration="4.7"/>
+    <entry t="15.5" castname="ディープカット" sync="false"/>
     <entry t="23.3" castname="ジングル予約A" duration="3.7"/>
     <entry t="29.4" castname="3ポイント、ポーズ＆ジングル" duration="4.7"/>
+    <entry t="34.5" castname="3ポイント、ポーズ＆ジングル" duration="1.6"/>
     <entry t="38.5" castname="ラウドジングルA" sync="false"/>
+    <entry t="39.7" castname="ラウドジングルA" sync="false"/>
     <entry t="42.7" castname="ジングル予約B" duration="3.7"/>
     <entry t="48.8" castname="2ポイント、ポーズ＆ジングル" duration="4.7"/>
+    <entry t="53.8" castname="2ポイント、ポーズ＆ジングル" duration="3.2"/>
     <entry t="57.9" castname="ラウドジングルB" sync="false"/>
+    <entry t="59.1" castname="ラウドジングルB" sync="false"/>
     <entry t="60.0" castname="セレブレート・グッドタイムズ" duration="4.7"/>
     <entry t="73.4" castname="ディスコインファーナル" duration="3.7"/>
     <entry t="79.5" castname="ダンシングフィールド" duration="2.2"/>
     <entry t="85.6" castname="アウトサイドイン" duration="4.7"/>
+    <entry t="90.7" castname="アウトサイドイン" sync="false"/>
     <entry t="93.1" castname="アウトサイドイン" sync="false"/>
     <entry t="95.6" castname="ジングル予約A" duration="3.7"/>
     <entry t="112.1" castname="4ポイント、ポーズ＆ジングル" duration="4.7"/>
+    <entry t="117.2" castname="4ポイント、ポーズ＆ジングル" duration="0.7"/>
     <entry t="121.2" castname="ラウドジングルA" sync="false"/>
+    <entry t="122.4" castname="ラウドジングルA" sync="false"/>
     <entry t="123.3" castname="セレブレート・グッドタイムズ" duration="4.7"/>
     <entry t="130.5" castname="ディープカット" duration="4.7"/>
+    <entry t="136.1" castname="ディープカット" sync="false"/>
     <entry t="144.1" castname="ダンサーズ・アッセンブル" duration="2.7"/>
     <entry t="150.2" castname="アルカディア・ナイトフィーバー" duration="4.5"/>
+    <entry t="158.2" castname="ゲットダウン！" sync="false"/>
+    <entry t="160.6" castname="ゲットダウン！" sync="false"/>
+    <entry t="163.1" castname="ゲットダウン！" sync="false"/>
+    <entry t="165.5" castname="ゲットダウン！" sync="false"/>
+    <entry t="168.0" castname="ゲットダウン！" sync="false"/>
+    <entry t="170.4" castname="ゲットダウン！" sync="false"/>
+    <entry t="172.9" castname="ゲットダウン！" sync="false"/>
     <entry t="174.9" castname="Fire" sync="false"/>
     <entry t="177.0" castname="レッツダンス！" duration="5.5"/>
     <entry t="183.0" castname="レッツダンス！" sync="false"/>
     <entry t="185.5" castname="レッツダンス！" sync="false"/>
+    <entry t="186.3" castname="静音爆発" sync="false"/>
     <entry t="187.9" castname="レッツダンス！" sync="false"/>
     <entry t="190.4" castname="レッツダンス！" sync="false"/>
+    <entry t="191.3" castname="静音爆発" sync="false"/>
     <entry t="192.8" castname="レッツダンス！" sync="false"/>
     <entry t="195.3" castname="レッツダンス！" sync="false"/>
+    <entry t="196.3" castname="静音爆発" sync="false"/>
     <entry t="197.8" castname="レッツダンス！" sync="false"/>
     <entry t="200.2" castname="レッツダンス！" sync="false"/>
+    <entry t="201.3" castname="静音爆発" sync="false"/>
     <entry t="204.2" castname="レッツポーズ！" duration="4.7"/>
     <entry t="223.5" castname="ジングル予約A" duration="3.7"/>
     <entry t="229.6" castname="ウェーブ・オン・ウェーブ" duration="3.2"/>
     <entry t="238.2" castname="8ビート" duration="4.7"/>
     <entry t="246.4" castname="4ビート" duration="4.7"/>
     <entry t="256.8" castname="アウトサイドイン" duration="4.7"/>
+    <entry t="261.9" castname="アウトサイドイン" sync="false"/>
     <entry t="264.3" castname="アウトサイドイン" sync="false"/>
     <entry t="266.8" castname="3ポイント、ポーズ＆ジングル" duration="4.7"/>
+    <entry t="271.9" castname="3ポイント、ポーズ＆ジングル" duration="1.6"/>
     <entry t="276.0" castname="ラウドジングルA" sync="false"/>
+    <entry t="277.1" castname="ラウドジングルA" sync="false"/>
     <entry t="279.1" castname="ディープカット" duration="4.7"/>
+    <entry t="284.7" castname="ディープカット" sync="false"/>
     <entry t="286.2" castname="セレブレート・グッドタイムズ" duration="4.7"/>
     <entry t="299.6" castname="カモン！ フロッグダンサー" duration="2.7"/>
+    <entry t="306.8" castname="ムーンバーン" duration="10.2"/>
     <entry t="311.7" castname="8ビート" duration="4.7"/>
     <entry t="320.9" castname="ディスコインファーナル" duration="3.7"/>
+    <entry t="336.6" castname="ダンシングウェーブ" sync="false"/>
     <entry t="342.1" castname="ジングル予約B" duration="3.7"/>
+    <entry t="346.8" castname="ダンシングウェーブ" sync="false"/>
     <entry t="348.2" castname="2ポイント、ポーズ＆ジングル" duration="4.7"/>
+    <entry t="353.3" castname="2ポイント、ポーズ＆ジングル" duration="3.2"/>
     <entry t="357.4" castname="ラウドジングルB" sync="false"/>
+    <entry t="358.5" castname="ラウドジングルB" sync="false"/>
     <entry t="359.5" castname="セレブレート・グッドタイムズ" duration="4.7"/>
     <entry t="373.0" castname="ダンサーズ・アッセンブル" duration="2.7"/>
     <entry t="379.2" castname="ナイトフィーバー・アンコール" duration="4.5"/>
+    <entry t="387.1" castname="ゲットダウン！" sync="false"/>
+    <entry t="389.6" castname="ゲットダウン！" sync="false"/>
+    <entry t="392.0" castname="ゲットダウン！" sync="false"/>
+    <entry t="394.5" castname="ゲットダウン！" sync="false"/>
+    <entry t="396.9" castname="ゲットダウン！" sync="false"/>
+    <entry t="399.4" castname="ゲットダウン！" sync="false"/>
+    <entry t="401.8" castname="ゲットダウン！" sync="false"/>
     <entry t="403.8" castname="Fire" sync="false"/>
     <entry t="406.0" castname="レッツダンス・ダンス・ダンス！" duration="5.5"/>
     <entry t="412.0" castname="レッツダンス・ダンス・ダンス！" sync="false"/>
@@ -67,11 +103,15 @@
     <entry t="425.3" castname="レッツポーズ！" duration="4.7"/>
     <entry t="446.7" castname="カモン！ フロッグダンサー" duration="2.7"/>
     <entry t="459.9" castname="ドゥ・ザ・ハッスル" duration="4.7"/>
+    <entry t="471.2" castname="ムーンバーン" duration="10.2"/>
+    <entry t="487.3" castname="ムーンバーン" duration="10.2"/>
     <entry t="502.3" castname="ドゥ・ザ・ハッスル" duration="4.7"/>
     <entry t="509.4" castname="ディープカット" duration="4.7"/>
+    <entry t="515.0" castname="ディープカット" sync="false"/>
     <entry t="523.0" castname="ダンシングフィールド" duration="2.2"/>
     <entry t="528.6" castname="4ビート" duration="4.7"/>
     <entry t="536.8" castname="インサイドアウト" duration="4.7"/>
+    <entry t="541.8" castname="インサイドアウト" sync="false"/>
     <entry t="544.2" castname="インサイドアウト" sync="false"/>
     <entry t="548.7" castname="8ビート" duration="4.7"/>
     <entry t="555.8" castname="セレブレート・グッドタイムズ" duration="4.7"/>

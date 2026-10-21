@@ -6,47 +6,81 @@
   <note>FFLogs の公開ランキングの討伐の記録（7:35）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
   <phase id="p1">
     <entry t="7.5" castname="グラトニーズアーガー" duration="4.7"/>
+    <entry t="13.0" castname="グラトニーズアーガー" sync="false"/>
     <entry t="21.3" castname="魂喰らい" duration="3.7"/>
+    <entry t="31.8" castname="ソウルサージ" sync="false"/>
     <entry t="41.9" castname="デストゥワイス" duration="4.7"/>
+    <entry t="47.7" castname="ファイジャ" sync="false"/>
+    <entry t="50.0" castname="ファイジャ" sync="false"/>
     <entry t="55.2" castname="ダブルスペル" duration="4.7"/>
+    <entry t="68.0" castname="パイリングフレイム" sync="false"/>
     <entry t="68.3" castname="ダブルスペル" duration="4.7"/>
+    <entry t="81.2" castname="サンダガ" sync="false"/>
     <entry t="81.5" castname="ダブルスペル" duration="4.7"/>
+    <entry t="94.3" castname="パイリングフレイム" sync="false"/>
     <entry t="101.9" castname="ソウルリバース" sync="false"/>
     <entry t="110.4" castname="魂喰らい" duration="3.7"/>
+    <entry t="110.5" castname="隆起" duration="10.7"/>
     <entry t="128.8" castname="穿昇拳" duration="4.7"/>
     <entry t="141.3" castname="古式地烈斬" duration="4.7"/>
+    <entry t="147.8" castname="衝撃波" sync="false"/>
+    <entry t="149.1" castname="古式地烈斬" sync="false"/>
     <entry t="149.4" castname="前方連転脚" duration="5.7"/>
     <entry t="155.7" castname="内転脚" sync="false"/>
     <entry t="158.8" castname="旋身撃" sync="false"/>
     <entry t="161.7" castname="外転脚" sync="false"/>
     <entry t="164.8" castname="古式破砕拳" duration="3.7"/>
+    <entry t="169.9" castname="古式破砕拳" sync="false"/>
     <entry t="170.9" castname="グラトニーズアーガー" duration="4.7"/>
+    <entry t="176.4" castname="グラトニーズアーガー" sync="false"/>
     <entry t="182.2" castname="穿昇拳" duration="4.7"/>
     <entry t="194.7" castname="ソウルリバース" sync="false"/>
     <entry t="204.8" castname="魂喰らい" duration="3.7"/>
+    <entry t="204.9" castname="隆起" duration="10.7"/>
     <entry t="217.9" castname="サモンライトニング" duration="3.7"/>
     <entry t="224.0" castname="ジャンブルコンボ" duration="9.7"/>
+    <entry t="237.9" castname="放電" duration="1.7"/>
     <entry t="238.9" castname="炎魔衝" sync="false"/>
+    <entry t="243.6" castname="放電" duration="1.7"/>
     <entry t="244.5" castname="炎魔衝" sync="false"/>
+    <entry t="249.2" castname="放電" duration="1.7"/>
     <entry t="250.1" castname="炎魔衝" sync="false"/>
+    <entry t="254.8" castname="放電" duration="1.7"/>
     <entry t="255.8" castname="炎魔衝" sync="false"/>
     <entry t="258.3" castname="憑魔双撃" duration="6.7"/>
+    <entry t="266.5" castname="パイリングフレイム" sync="false"/>
     <entry t="267.5" castname="グラトニーズアーガー" duration="4.7"/>
+    <entry t="273.0" castname="グラトニーズアーガー" sync="false"/>
     <entry t="276.6" castname="ソウルリバース" sync="false"/>
     <entry t="286.5" castname="魂喰らい" duration="2.7"/>
-    <entry t="299.9" castname="ミールストーム" duration="2.7"/>
+    <entry t="297.3" castname="ソウルサージ" sync="false"/>
+    <entry t="299.9" castname="ミールストーム" duration="3.7"/>
     <entry t="305.0" castname="コメット" duration="4.7"/>
     <entry t="314.1" castname="ビーストバイル" duration="4.7"/>
     <entry t="321.3" castname="サンダーボルト" duration="2.7"/>
+    <entry t="325.2" castname="サンダーボルト" sync="false"/>
+    <entry t="326.1" castname="ビーストバイル" sync="false"/>
     <entry t="327.4" castname="サンダーボルト" duration="2.7"/>
+    <entry t="331.4" castname="サンダーボルト" sync="false"/>
+    <entry t="332.1" castname="ビーストバイル" sync="false"/>
     <entry t="334.6" castname="エクリプスメテオ" duration="6.7"/>
+    <entry t="342.5" castname="エクリプスメテオ" sync="false"/>
     <entry t="350.3" castname="ビーストフューリー" duration="4.7"/>
+    <entry t="356.2" castname="ビーストフューリー" sync="false"/>
     <entry t="357.4" castname="ソウルリバース" sync="false"/>
     <entry t="370.5" castname="魂喰らい" duration="3.7"/>
+    <entry t="370.6" castname="隆起" duration="10.7"/>
     <entry t="389.0" castname="デストゥワイス" duration="4.7"/>
+    <entry t="394.8" castname="ファイジャ" sync="false"/>
+    <entry t="397.1" castname="ファイジャ" sync="false"/>
     <entry t="398.2" castname="古式地烈斬" duration="4.7"/>
+    <entry t="404.7" castname="衝撃波" sync="false"/>
+    <entry t="406.0" castname="古式地烈斬" sync="false"/>
     <entry t="408.3" castname="ダブルスペル" duration="4.7"/>
+    <entry t="410.7" castname="古式地烈斬" duration="7.7"/>
+    <entry t="421.1" castname="パイリングフレイム" sync="false"/>
     <entry t="421.5" castname="グラトニーズアーガー" duration="4.7"/>
+    <entry t="426.9" castname="グラトニーズアーガー" sync="false"/>
     <entry t="433.9" castname="キメリックコンボ" duration="4.7"/>
     <entry t="446.4" castname="前方炎連撃" duration="7.7"/>
     <entry t="454.8" castname="重炎撃" sync="false"/>

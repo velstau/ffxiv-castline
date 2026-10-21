@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：辺獄編4</content>
+  <title>万魔殿パンデモニウム零式：辺獄編4（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（7:10・8:20）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="start" name="開始待ち">
+    <next to="a-p1" at="10.1" cast="デコレーション"/>
+    <next to="a-p1" at="19.2" cast="ブラッドレイク"/>
+    <next to="b-p1" at="11" cast="シアリングストリーム"/>
+    <next to="b-p1" at="26.2" cast="茨の悲劇：序幕"/>
+  </phase>
+  <phase id="a-p1" name="前半">
+    <entry t="10.1" castname="デコレーション" duration="4.7"/>
+    <entry t="19.2" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="26.4" castname="エーテルクラミュス" duration="3.7"/>
+    <entry t="34.5" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="42.7" castname="エンチャンテッドペロネー：ペルソナ" duration="4.7"/>
+    <entry t="56.9" castname="インヴァースクラミュス" duration="6.7"/>
+    <entry t="68.0" castname="デコレーション" duration="4.7"/>
+    <entry t="77.2" castname="エレガントイヴィセレーション" duration="4.7"/>
+    <entry t="85.3" castname="エレガントイヴィセレーション" sync="false"/>
+    <entry t="96.6" castname="劇場創造" duration="3.7"/>
+    <entry t="108.8" castname="ピナクス" duration="4.7"/>
+    <entry t="130.4" castname="シフティングストライクS" duration="7.7"/>
+    <entry t="151.6" castname="エレガントイヴィセレーション" duration="4.7"/>
+    <entry t="159.7" castname="エレガントイヴィセレーション" sync="false"/>
+    <entry t="163.9" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="175.1" castname="劇場創造" duration="3.7"/>
+    <entry t="187.2" castname="エンチャンテッドペロネー：リベンジ" duration="3.7"/>
+    <entry t="195.3" castname="エンチャンテッドペロネー：エレメンタル" duration="3.7"/>
+    <entry t="203.5" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="211.7" castname="エンチャンテッドペロネー：エクスプロージョン" duration="4.7"/>
+    <entry t="225.8" castname="ペリアクトイ" duration="4.7"/>
+    <entry t="239.1" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="246.2" castname="エンチャンテッドペロネー：ラウンド" duration="3.7"/>
+    <entry t="253.4" castname="インヴァースクラミュス" duration="6.7"/>
+    <entry t="263.5" castname="エーテルクラミュス" duration="3.7"/>
+    <entry t="271.7" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="279.8" castname="エンチャンテッドペロネー：ラウンド" duration="3.7"/>
+    <entry t="293.0" castname="エンチャンテッドペロネー：ペルソナ" duration="4.7"/>
+    <entry t="307.1" castname="インヴァースクラミュス" duration="6.7"/>
+    <entry t="318.3" castname="デコレーション" duration="4.7"/>
+    <entry t="327.5" castname="エレガントイヴィセレーション" duration="4.7"/>
+    <entry t="335.7" castname="エレガントイヴィセレーション" sync="false"/>
+    <entry t="346.9" castname="劇場創造" duration="3.7"/>
+    <entry t="359.1" castname="ピナクス" duration="4.7"/>
+    <entry t="380.9" castname="シフティングストライクW" duration="7.7"/>
+    <entry t="398.1" castname="デコレーション" duration="4.7"/>
+    <entry t="407.3" castname="デコレーション" duration="4.7"/>
+    <entry t="416.5" castname="デコレーション" duration="4.7"/>
+  </phase>
+  <phase id="b-p1" name="後半">
+    <entry t="11.0" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="26.2" castname="茨の悲劇：序幕" duration="4.7"/>
+    <entry t="35.4" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="46.6" castname="ソーンヘッジ" duration="7.7"/>
+    <entry t="56.6" castname="ヘーミテオス・ファイジャ" duration="0.7"/>
+    <entry t="64.7" castname="遠見の魔撃" duration="4.7"/>
+    <entry t="78.0" castname="茨の悲劇：第二幕" duration="4.7"/>
+    <entry t="87.1" castname="半神の双撃" duration="4.7"/>
+    <entry t="96.3" castname="ソーンヘッジ" duration="5.7"/>
+    <entry t="105.5" castname="ダークデザイン" duration="4.7"/>
+    <entry t="121.4" castname="ヘーミテオス・ファイジャ" duration="0.7"/>
+    <entry t="122.6" castname="アルティメットインパルス" duration="6.7"/>
+    <entry t="137.9" castname="茨の悲劇：第三幕" duration="4.7"/>
+    <entry t="147.1" castname="ソーンヘッジ" duration="7.7"/>
+    <entry t="158.2" castname="コトルヌスキック" duration="4.6"/>
+    <entry t="163.3" castname="コトルヌスキック" sync="false"/>
+    <entry t="167.3" castname="コトルヌスクエイク" sync="false"/>
+    <entry t="173.1" castname="ヘーミテオス・サンダガ" duration="0.7"/>
+    <entry t="173.4" castname="コトルヌスキック" sync="false"/>
+    <entry t="177.5" castname="コトルヌスクエイク" sync="false"/>
+    <entry t="181.6" castname="近思の魔撃" duration="4.7"/>
+    <entry t="196.8" castname="ハートステイク" duration="4.7"/>
+    <entry t="205.0" castname="ハートステイク" sync="false"/>
+    <entry t="209.1" castname="茨の悲劇：第四幕" duration="4.7"/>
+    <entry t="218.3" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="227.5" castname="ソーンヘッジ" duration="4.7"/>
+    <entry t="235.6" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="265.3" castname="ヘーミテオス・ファイジャ" duration="0.7"/>
+    <entry t="268.8" castname="アルティメットインパルス" duration="6.7"/>
+    <entry t="285.1" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="294.3" castname="茨の悲劇：終幕" duration="4.7"/>
+    <entry t="303.5" castname="ソーンヘッジ" duration="4.7"/>
+    <entry t="311.6" castname="フリーティングインパルス" duration="4.6"/>
+    <entry t="316.8" castname="フリーティングインパルス" sync="false"/>
+    <entry t="318.2" castname="フリーティングインパルス" sync="false"/>
+    <entry t="319.6" castname="フリーティングインパルス" sync="false"/>
+    <entry t="321.1" castname="フリーティングインパルス" sync="false"/>
+    <entry t="322.6" castname="フリーティングインパルス" sync="false"/>
+    <entry t="324.0" castname="フリーティングインパルス" sync="false"/>
+    <entry t="325.3" castname="フリーティングインパルス" sync="false"/>
+    <entry t="326.7" castname="フリーティングインパルス" sync="false"/>
+    <entry t="330.4" castname="ソーンヘッジ" duration="5.7"/>
+    <entry t="338.4" castname="ヘーミテオス・サンダガ" duration="0.7"/>
+    <entry t="347.5" castname="近思の魔撃" duration="4.7"/>
+    <entry t="360.8" castname="シアリングストリーム" duration="4.7"/>
+    <entry t="370.0" castname="半神の双撃" duration="4.7"/>
+    <entry t="383.2" castname="茨の悲劇：カーテンコール" duration="4.7"/>
+    <entry t="398.4" castname="ヘルスティング" duration="2.1"/>
+    <entry t="403.9" castname="ヘルスティング" sync="false"/>
+    <entry t="418.6" castname="ヘルスティング" duration="2.1"/>
+    <entry t="424.1" castname="ヘルスティング" sync="false"/>
+    <entry t="433.9" castname="アルティメットインパルス" duration="6.7"/>
+    <entry t="448.0" castname="ヘルスティング" duration="2.1"/>
+    <entry t="453.5" castname="ヘルスティング" sync="false"/>
+    <entry t="468.3" castname="ヘルスティング" duration="2.1"/>
+    <entry t="473.7" castname="ヘルスティング" sync="false"/>
+    <entry t="483.5" castname="アルティメットインパルス" duration="6.7"/>
+    <entry t="495.0" castname="アルティメットインパルス" duration="9.7"/>
+  </phase>
+</timeline>

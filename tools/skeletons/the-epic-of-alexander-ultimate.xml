@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶アレキサンダー討滅戦</content>
+  <title>絶アレキサンダー討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（17:07）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Living Liquid">
+    <entry t="10.9" castname="フルイドスイング" sync="false"/>
+    <entry t="15.0" castname="カスケード" duration="3.7"/>
+    <entry t="33.1" castname="プロティアンウェイブ" duration="2.7"/>
+    <entry t="35.2" castname="ハンド・オブ・パーティング" sync="false"/>
+    <entry t="37.2" castname="フルイドスイング" sync="false"/>
+    <entry t="37.3" castname="フルイドストライク" sync="false"/>
+    <entry t="38.2" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="39.4" castname="ハンド・オブ・ペイン" duration="2.7"/>
+    <entry t="56.3" castname="フルイドスイング" sync="false"/>
+    <entry t="56.6" castname="フルイドストライク" sync="false"/>
+    <entry t="66.5" castname="プロティアンウェイブ" duration="2.7"/>
+    <entry t="66.7" castname="ハンド・オブ・ペイン" duration="2.7"/>
+    <entry t="69.5" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="71.5" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="71.5" castname="スルース" duration="2.7"/>
+    <entry t="74.6" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="80.8" castname="スプラッシュ" sync="false"/>
+    <entry t="81.9" castname="スプラッシュ" sync="false"/>
+    <entry t="83.0" castname="スプラッシュ" sync="false"/>
+    <entry t="84.1" castname="スプラッシュ" sync="false"/>
+    <entry t="85.2" castname="スプラッシュ" sync="false"/>
+    <entry t="85.9" castname="ハンド・オブ・ペイン" duration="2.7"/>
+    <entry t="86.3" castname="スプラッシュ" sync="false"/>
+    <entry t="87.5" castname="カスケード" duration="3.7"/>
+    <entry t="103.7" castname="プロティアンウェイブ" duration="2.7"/>
+    <entry t="105.6" castname="ハンド・オブ・ペイン" duration="2.7"/>
+    <entry t="108.8" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="108.8" castname="スルース" duration="2.7"/>
+    <entry t="111.8" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="114.8" castname="プロティアンウェイブ" sync="false"/>
+    <entry t="127.0" castname="スプラッシュ" sync="false"/>
+    <entry t="128.1" castname="スプラッシュ" sync="false"/>
+    <entry t="129.2" castname="スプラッシュ" sync="false"/>
+    <next to="p2" time="134.5"/>
+  </phase>
+  <phase id="p2" name="Intermission: Limit Cut">
+    <entry t="7.4" castname="アルファソード" sync="false"/>
+    <entry t="8.9" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="12.1" castname="アルファソード" sync="false"/>
+    <entry t="13.5" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="16.7" castname="アルファソード" sync="false"/>
+    <entry t="18.2" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="21.4" castname="アルファソード" sync="false"/>
+    <entry t="22.8" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="26.0" castname="ジャスティスキック" sync="false"/>
+    <next to="p3" at="5.2" cast="竜巻"/>
+  </phase>
+  <phase id="p3" name="P2: Brute Justice and Cruise Chaser">
+    <entry t="5.2" castname="竜巻" duration="3.7"/>
+    <entry t="8.1" castname="ジャッジメントナイサイ" duration="3.7"/>
+    <entry t="15.3" castname="システムリンク" duration="2.7"/>
+    <entry t="24.3" castname="照準" duration="1.7"/>
+    <entry t="26.5" castname="ホークブラスター" duration="4.7"/>
+    <entry t="30.4" castname="フォトン" duration="2.7"/>
+    <entry t="40.6" castname="スピンクラッシャー" duration="2.7"/>
+    <entry t="52.5" castname="ミサイル全弾発射" duration="2.7"/>
+    <entry t="75.7" castname="最後の審判：開廷" duration="3.7"/>
+    <entry t="82.7" castname="リミッターカット" duration="1.7"/>
+    <entry t="82.8" castname="大火炎放射" duration="3.6"/>
+    <entry t="86.9" castname="大火炎放射" sync="false"/>
+    <entry t="94.9" castname="竜巻" duration="3.7"/>
+    <entry t="120.0" castname="プロペラウィンド" duration="5.7"/>
+    <entry t="123.0" castname="最後の審判：結審" duration="4.7"/>
+    <entry t="135.2" castname="フォトン" duration="2.7"/>
+    <entry t="142.3" castname="ダブルロケットパンチ" duration="3.7"/>
+    <entry t="149.4" castname="スーパージャンプ" duration="3.6"/>
+    <entry t="153.7" castname="スーパージャンプ" sync="false"/>
+    <entry t="156.1" castname="アポカリプティクレイ" sync="false"/>
+    <next to="p4" at="7.5" cast="時間停止"/>
+  </phase>
+  <phase id="p4" name="Intermission: Temporal Stasis">
+    <entry t="7.5" castname="時間停止" duration="7.7"/>
+    <entry t="20.5" castname="アルファソード" sync="false"/>
+    <entry t="20.8" castname="大火炎放射" sync="false"/>
+    <entry t="21.6" castname="アルファソード" sync="false"/>
+    <entry t="22.6" castname="アルファソード" sync="false"/>
+    <entry t="23.0" castname="大火炎放射" sync="false"/>
+    <next to="p5" at="5.3" cast="神罰の熱線"/>
+  </phase>
+  <phase id="p5" name="P3: Alexander Prime">
+    <entry t="5.3" castname="神罰の熱線" duration="4.7"/>
+    <entry t="13.4" castname="聖なる炎" sync="false"/>
+    <entry t="15.5" castname="聖なる炎" sync="false"/>
+    <entry t="17.6" castname="聖なる炎" sync="false"/>
+    <entry t="22.8" castname="時空潜行のマーチ" duration="3.7"/>
+    <entry t="38.3" castname="審判の結晶" duration="2.7"/>
+    <entry t="58.4" castname="大火炎放射" sync="false"/>
+    <entry t="60.6" castname="大火炎放射" sync="false"/>
+    <entry t="62.8" castname="大火炎放射" sync="false"/>
+    <entry t="64.9" castname="時空潜行" duration="4.7"/>
+    <entry t="78.2" castname="十字の秘蹟" sync="false"/>
+    <entry t="83.4" castname="スーパージャンプ" duration="3.6"/>
+    <entry t="84.3" castname="アルファソード" sync="false"/>
+    <entry t="85.4" castname="アルファソード" sync="false"/>
+    <entry t="86.4" castname="アルファソード" sync="false"/>
+    <entry t="87.5" castname="スーパージャンプ" sync="false"/>
+    <entry t="94.7" castname="神罰の熱線" duration="4.7"/>
+    <entry t="104.8" castname="聖なる炎" sync="false"/>
+    <entry t="106.9" castname="聖なる炎" sync="false"/>
+    <entry t="109.1" castname="聖なる炎" sync="false"/>
+    <entry t="114.3" castname="次元断絶のマーチ" duration="3.7"/>
+    <entry t="124.7" castname="リミッターカット" duration="1.7"/>
+    <entry t="126.7" castname="システムリンク" duration="2.7"/>
+    <entry t="129.7" castname="懺悔の間" duration="2.7"/>
+    <entry t="135.8" castname="スーパージャンプ" duration="3.6"/>
+    <entry t="139.9" castname="スーパージャンプ" sync="false"/>
+    <entry t="139.9" castname="アルファソード" sync="false"/>
+    <entry t="140.9" castname="十字の秘蹟" duration="5.7"/>
+    <entry t="141.4" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="142.3" castname="アポカリプティクレイ" sync="false"/>
+    <entry t="144.2" castname="アルファソード" sync="false"/>
+    <entry t="145.7" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="148.5" castname="アルファソード" sync="false"/>
+    <entry t="149.9" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="152.5" castname="ミサイル全弾発射" duration="2.7"/>
+    <entry t="152.7" castname="アルファソード" sync="false"/>
+    <entry t="154.1" castname="浄化の熱線" duration="4.7"/>
+    <entry t="154.2" castname="スーパーブラスティ・チャージ" sync="false"/>
+    <entry t="166.1" castname="メガホーリー" duration="3.7"/>
+    <entry t="173.2" castname="メガホーリー" duration="3.7"/>
+    <entry t="185.6" castname="アレキサンダー召喚" duration="2.7"/>
+    <entry t="194.9" castname="ジャスティスストーム" sync="false"/>
+    <entry t="196.1" castname="暗黒の運命" duration="24.7"/>
+    <entry t="196.1" castname="聖なる審判" duration="74.7"/>
+    <entry t="264.7" castname="聖なる審判" sync="false"/>
+    <next to="p6" at="10.8" cast="確定判決"/>
+  </phase>
+  <phase id="p6" name="P4: Perfect Alexander">
+    <entry t="10.8" castname="確定判決" duration="3.7"/>
+    <entry t="17.9" castname="静止命令" duration="3.7"/>
+    <entry t="29.1" castname="行動命令" duration="3.7"/>
+    <entry t="33.1" castname="行動命令" sync="false"/>
+    <entry t="40.2" castname="照準" duration="2.7"/>
+    <entry t="46.3" castname="照準" duration="2.7"/>
+    <entry t="51.4" castname="個の断罪" sync="false"/>
+    <entry t="59.3" castname="未来観測α" duration="4.7"/>
+    <entry t="67.5" castname="未来確定α" duration="21.7"/>
+    <entry t="89.4" castname="未来確定α" sync="false"/>
+    <entry t="96.7" castname="行動命令" sync="false"/>
+    <entry t="100.8" castname="行動命令" sync="false"/>
+    <entry t="111.9" castname="加重誅罰" duration="2.7"/>
+    <entry t="119.1" castname="誅罰" duration="4.7"/>
+    <entry t="134.2" castname="未来観測β" duration="4.7"/>
+    <entry t="142.3" castname="未来確定β" duration="34.7"/>
+    <entry t="177.3" castname="未来確定β" sync="false"/>
+    <entry t="211.9" castname="加重誅罰" duration="2.7"/>
+    <entry t="219.0" castname="誅罰" duration="4.7"/>
+    <entry t="231.2" castname="聖なる大審判" duration="2.7"/>
+    <entry t="237.3" castname="聖なる大審判" duration="1.2"/>
+    <entry t="239.3" castname="聖なる大審判" duration="1.2"/>
+    <entry t="241.3" castname="聖なる大審判" duration="1.2"/>
+    <entry t="245.3" castname="聖なる大審判" sync="false"/>
+    <entry t="245.3" castname="連帯刑" duration="4.7"/>
+    <entry t="247.3" castname="聖なる大審判" sync="false"/>
+    <entry t="249.3" castname="聖なる大審判" sync="false"/>
+    <entry t="257.5" castname="加重誅罰" duration="2.7"/>
+    <entry t="264.6" castname="誅罰" duration="4.7"/>
+    <entry t="276.8" castname="聖なる大審判" duration="2.7"/>
+    <entry t="282.9" castname="聖なる大審判" duration="1.2"/>
+    <entry t="284.9" castname="聖なる大審判" duration="1.2"/>
+    <entry t="286.9" castname="聖なる大審判" duration="1.2"/>
+    <entry t="290.9" castname="聖なる大審判" sync="false"/>
+    <entry t="290.9" castname="連帯刑" duration="4.7"/>
+    <entry t="292.9" castname="聖なる大審判" sync="false"/>
+    <entry t="294.9" castname="聖なる大審判" sync="false"/>
+    <entry t="305.7" castname="時空干渉" duration="4.7"/>
+    <entry t="313.9" castname="時の牢獄" duration="41.7"/>
+  </phase>
+</timeline>

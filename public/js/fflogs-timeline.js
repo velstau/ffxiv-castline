@@ -3,8 +3,9 @@
 // 予定の t は詠唱開始（begincast）の時刻、duration は begincast に入っている詠唱時間。画面の詠唱バーに技名が出る瞬間が
 // 詠唱開始なので、これがそのまま同期の基準になる。
 // - 同じ名前の見えない補助の敵が、別の技 ID・別の詠唱時間で同時に詠唱する（2026-10-20、ヘビー級1 で確認。
-//   本体の「ハードコア」2.7 秒に対し補助 2 体が 4.7 秒）。画面の詠唱バーに出るのは本体なので、sourceInstance の無い
-//   （1 体目の）敵だけを使う
+//   本体の「ハードコア」2.7 秒に対し補助 2 体が 4.7 秒）。画面の詠唱バーに出るのは本体なので、敵ごとに sourceInstance の
+//   いちばん小さい（1 体目の）ものだけを使う。新しいログでは 1 体目に sourceInstance が無く、古いログでは 1 が付いている
+//   （2026-10-21、アルファ編1 のカオスは全部の技に 1 以上が付いていた）
 // - 詠唱の無い技（begincast の無い cast）は、表示だけの予定（sync: false、duration 0）にする
 // - 同じ技を 1 秒以内に重ねて使ったものは 1 つにまとめる
 
@@ -34,6 +35,12 @@ export function summarizeEnemies({ actors, abilities, events }) {
 // 本体（1 体目）の詠唱と、詠唱の無い技を時刻順に並べる
 function collectCasts(events, abilityNames) {
     const lastBegin = new Map(); // "敵:体:技" → begincast の時刻
+    const firstInstance = new Map(); // 敵 → いちばん小さい sourceInstance（無ければ 0）
+    for (const e of events) {
+        if (e.type === 'begincast' || e.type === 'cast') {
+            firstInstance.set(e.sourceID, Math.min(firstInstance.get(e.sourceID) ?? Infinity, e.sourceInstance ?? 0));
+        }
+    }
     const out = [];
     for (const e of [...events].sort((a, b) => a.timestamp - b.timestamp)) {
         if (e.type !== 'begincast' && e.type !== 'cast') {
@@ -44,7 +51,7 @@ function collectCasts(events, abilityNames) {
             lastBegin.set(key, e.timestamp);
         }
         const name = abilityNames.get(e.abilityGameID);
-        if (e.sourceInstance !== undefined || AUTO_ATTACK_IDS.has(e.abilityGameID) || !usableName(name)) {
+        if ((e.sourceInstance ?? 0) !== firstInstance.get(e.sourceID) || AUTO_ATTACK_IDS.has(e.abilityGameID) || !usableName(name)) {
             continue;
         }
         if (e.type === 'begincast') {
@@ -84,11 +91,7 @@ export function buildTimeline({ fight, actors, abilities, events, sourceIDs, con
         }
     }
 
-    // フェーズ: FFLogs の phaseTransitions が 2 つ以上あるときだけ分ける
-    const transitions = (fight.phaseTransitions ?? []).length >= 2
-        ? [...fight.phaseTransitions].sort((a, b) => a.startTime - b.startTime)
-        : [{ id: 1, startTime: fight.startTime }];
-    transitions[0] = { ...transitions[0], startTime: fight.startTime };
+    const transitions = phaseTransitions(fight);
     const phases = transitions.map((tr, i) => {
         const end = transitions[i + 1]?.startTime ?? Infinity;
         const name = phaseNames.find((p) => p.id === tr.id)?.name;
@@ -126,6 +129,23 @@ export function buildTimeline({ fight, actors, abilities, events, sourceIDs, con
         note,
         phases: phases.map(({ start, ...p }) => p),
     };
+}
+
+/**
+ * フェーズの切り替わり。FFLogs の phaseTransitions が 2 つ以上あるときだけ分ける。同じ時刻の切り替わりは後ろのものだけ
+ * （2026-10-21、絶竜詩の過去の記録で 0 秒に 2 つあり、予定の無いフェーズができた）
+ * @returns {{id:number, startTime:number}[]} 1 つ目の startTime は戦闘の始まり
+ */
+export function phaseTransitions(fight) {
+    const list = (fight.phaseTransitions ?? []).length >= 2
+        ? [...fight.phaseTransitions].sort((a, b) => a.startTime - b.startTime)
+            .filter((tr, i, all) => all[i + 1]?.startTime !== tr.startTime)
+        : [];
+    if (list.length < 2) {
+        return [{ id: list[0]?.id ?? 1, startTime: fight.startTime }];
+    }
+    list[0] = { ...list[0], startTime: fight.startTime };
+    return list;
 }
 
 /**
