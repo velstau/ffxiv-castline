@@ -182,6 +182,36 @@ test('同じ詠唱を読み続けても、次の同じ名前の予定には合�
     assert.equal(e.status(T(116.9)).phaseTime.toFixed(1), '116.4');
 });
 
+test('同期の直後に大きくずらす同期は保留し、次の技で同じずれが確かめられたら合わせる（2026-10-21 の動画）', () => {
+    const tl = { format: 'castline/1', phases: [{ id: 'p1', entries: [
+        { t: 216.4, name: 'ハードコア', duration: 2.7 },
+        { t: 226.5, name: 'ヴァンプストンプ', duration: 3.8 },
+        { t: 242.7, name: 'ハーフムーン', duration: 4 },
+        { t: 252.8, name: 'ブルータルレイン', duration: 3.5 },
+    ] }] };
+    let log = [];
+    let e = new TimelineEngine(tl, { log: (at, m) => log.push(m) });
+    e.started(T(0));
+    e.cast(T(216.1), 'ハードコア'); // 戦闘で最初の同期は制限しない
+    assert.equal(e.status(T(216.1)).phaseTime.toFixed(1), '216.4');
+    e.cast(T(217.1), 'ヴァンプストンプ'); // 1 秒後に 9 秒ずらす読み違い → 保留
+    assert.equal(e.status(T(217.1)).phaseTime.toFixed(1), '217.4');
+    assert.match(log.at(-1), /同期を保留 ヴァンプストンプ/);
+    e.cast(T(242.4), 'ハーフムーン'); // 保留と食い違う、小さなずれの同期は合わせる
+    assert.equal(e.status(T(242.4)).phaseTime.toFixed(1), '242.7');
+
+    // 本当に大きくずれていたときは、次の技で同じずれが確かめられたら合わせる
+    log = [];
+    e = new TimelineEngine(tl, { log: (at, m) => log.push(m) });
+    e.started(T(0));
+    e.cast(T(216.4), 'ハードコア');
+    e.cast(T(231.5), 'ヴァンプストンプ'); // 5 秒遅れ（15 秒で許すのは 3.5 秒まで）→ 保留
+    assert.equal(e.status(T(231.5)).phaseTime.toFixed(1), '231.5');
+    e.cast(T(247.7), 'ハーフムーン'); // 同じ 5 秒遅れ → 合わせる
+    assert.equal(e.status(T(247.7)).phaseTime.toFixed(1), '242.7');
+    assert.deepEqual(log.map((m) => m.split(' ')[0]), ['戦闘開始（戦闘開始の表示）', '同期', '同期を保留', '同期']);
+});
+
 function enmityFrom(e, from, to, shown) {
     for (let s = from; s <= to + 1e-9; s += 0.5) {
         e.enmity(T(s), shown);

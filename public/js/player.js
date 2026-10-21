@@ -444,7 +444,8 @@ async function tick({ bitmap: frame, at }) {
         }
         for (const cast of obs.casts) {
             if (cast.decided && state.lastCast[cast.source] !== cast.decided) {
-                log(`詠唱（${cast.source === 'bar' ? '詠唱バー' : '敵対リスト'}） ${cast.decided}`, at);
+                // 読んだ文字もそのまま残す（読み違いで同期がずれたときに、何をどう読んだかを確かめるため）
+                log(`詠唱（${cast.source === 'bar' ? '詠唱バー' : '敵対リスト'}） ${cast.decided}（読んだ文字: ${cast.text}）`, at);
             }
             state.lastCast[cast.source] = cast.decided;
             if (cast.decided) {

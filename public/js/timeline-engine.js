@@ -25,6 +25,14 @@ const COUNTDOWN_SUPPORT_MS = 1500;
 const STARTED_EARLY_MAX_MS = 3000; // 「戦闘開始！」が開始の予想よりこれ以上早く読めたら、読み違いとみなす
 // 同じ技名がこれより短い間を空けて読めたら、同じ詠唱の続きとみなす（読み取りは 1 秒に数回。読み逃しで少し途切れても続きとする）
 const CAST_REPEAT_GAP_MS = 3000;
+// 直前の同期から t 秒たったとき、ずらしてよいのは SYNC_SHIFT_MIN_S + SYNC_SHIFT_PER_S × t 秒まで。実際の戦闘の時刻は、合わせた直後に
+// 何秒も跳ばない（討伐ごとの違いは少しずつ積もる）ので、それより大きいずれは読み違いを疑って保留する（2026-10-21 の動画:
+// ハードコアの 1 秒後に「ヴァンプストンプ」と読み違えて 9 秒先へ進んだ）。戦闘・フェーズの最初の同期は開始時刻があいまいなので制限しない
+const SYNC_SHIFT_MIN_S = 2;
+const SYNC_SHIFT_PER_S = 0.1;
+// 保留した同期は、これ以内に別の技で同じずれ（SYNC_AGREE_MS 以内）が確かめられたら合わせる
+const SYNC_CONFIRM_MS = 30000;
+const SYNC_AGREE_MS = 1500;
 const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、カウントダウン前に殴ったとみなす
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
@@ -106,6 +114,8 @@ export class TimelineEngine {
         this.phase = null;
         this.phaseStartAt = null;
         this.synced = new Set(); // 同期に使った予定（同じ予定で何度も合わせ直さない）
+        this.lastSyncAt = null; // このフェーズで最後に同期した時刻（null ならまだ。最初の同期はずらす量を制限しない）
+        this.pendingSync = null; // ずれが大きくて保留した同期 {start, at}
         this.castSeenAt = new Map(); // 技名 → 最後に読めた時刻（同じ詠唱の続きを見分ける）
         this.enmityShown = false;
         this.enmityOnSince = null;
@@ -243,12 +253,26 @@ export class TimelineEngine {
         }
         const now = this.phaseTime(at);
         const entry = this.syncTarget(name, now);
-        if (entry) {
-            this.synced.add(entry);
-            const before = this.phaseStartAt;
-            this.phaseStartAt = at - entry.t * 1000;
-            this.log(at, `同期 ${name}: ${this.phase.id} の ${now.toFixed(1)} 秒 → ${entry.t} 秒（${((before - this.phaseStartAt) / 1000).toFixed(1)} 秒ずらす）`);
+        if (!entry) {
+            return;
         }
+        const start = at - entry.t * 1000;
+        const shift = (this.phaseStartAt - start) / 1000;
+        if (this.lastSyncAt !== null) {
+            const allowed = SYNC_SHIFT_MIN_S + SYNC_SHIFT_PER_S * (at - this.lastSyncAt) / 1000;
+            const pending = this.pendingSync;
+            const confirmed = pending && at - pending.at <= SYNC_CONFIRM_MS && Math.abs(pending.start - start) <= SYNC_AGREE_MS;
+            if (Math.abs(shift) > allowed && !confirmed) {
+                this.pendingSync = { start, at };
+                this.log(at, `同期を保留 ${name}: ${this.phase.id} の ${now.toFixed(1)} 秒 → ${entry.t} 秒（${shift.toFixed(1)} 秒は前の同期から ${((at - this.lastSyncAt) / 1000).toFixed(1)} 秒でずらすには大きい。次の技で同じずれなら合わせる）`);
+                return;
+            }
+        }
+        this.pendingSync = null;
+        this.lastSyncAt = at;
+        this.synced.add(entry);
+        this.phaseStartAt = start;
+        this.log(at, `同期 ${name}: ${this.phase.id} の ${now.toFixed(1)} 秒 → ${entry.t} 秒（${shift.toFixed(1)} 秒ずらす）`);
     }
 
     // ── 状態 ──
@@ -345,6 +369,8 @@ export class TimelineEngine {
         this.phase = this.timeline.phases[0];
         this.phaseStartAt = startAt;
         this.synced = new Set();
+        this.lastSyncAt = null;
+        this.pendingSync = null;
         this.enmityOffSince = this.enmityShown ? null : this.enmityOffSince;
         this.log(startAt, `戦闘開始（${reason}）`);
     }
@@ -358,6 +384,8 @@ export class TimelineEngine {
         this.phase = this.phases.get(rule.to);
         this.phaseStartAt = at - (rule.at ?? 0) * 1000;
         this.synced = new Set();
+        this.lastSyncAt = null;
+        this.pendingSync = null;
         this.log(at, `フェーズ ${from} → ${rule.to}（${reason}）`);
     }
 
