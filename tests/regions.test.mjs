@@ -1,7 +1,7 @@
 // 範囲の保存・書き出し・読み込みのテスト。実行: node --test tests/
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { setRegion, regionsFor, exportRegions, parseRegions, importRegions, loadAll, missingRegions, clearRegions } from '../public/js/regions.js';
+import { setRegion, regionsFor, exportRegions, parseRegions, importRegions, loadAll, missingRegions, clearRegions, savedScreens } from '../public/js/regions.js';
 
 function memoryStorage() {
     const data = new Map();
@@ -58,4 +58,18 @@ test('画面の大きさの範囲を全部消す（ほかの大きさは残す�
     clearRegions(2560, 1032, s);
     assert.deepEqual(regionsFor(2560, 1032, s), {});
     assert.deepEqual(Object.keys(loadAll(s)), ['1920x1080']);
+});
+
+test('savedScreens: 再生できる（コンテンツ名＋開始）と、初期設定が済んだ（詠唱バーのほか全部）を分ける', () => {
+    const s = memoryStorage();
+    const r = { x: 0, y: 0, w: 10, h: 10 };
+    for (const id of ['content', 'countdown']) {
+        setRegion(1920, 1080, id, r, s);
+    }
+    for (const id of ['content', 'countdown', 'hp', 'enmity']) {
+        setRegion(2560, 1440, id, r, s);
+    }
+    setRegion(800, 600, 'hp', r, s);
+    const got = Object.fromEntries(savedScreens(s).map((x) => [x.key, [x.usable, x.complete]]));
+    assert.deepEqual(got, { '1920x1080': [true, false], '2560x1440': [true, true], '800x600': [false, false] });
 });

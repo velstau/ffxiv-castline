@@ -9,7 +9,7 @@ import { parseTimelineXml } from './timeline-xml.js';
 import { upcomingRows, iconProblems } from './timeline-view.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
-import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey, loadAll } from './regions.js';
+import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey, savedScreens as listSavedScreens } from './regions.js';
 import { GUIDE_STEPS, guideSteps } from './player-guide.js';
 import { icon } from './icons.js';
 import { Pip, pipSupported } from './pip.js';
@@ -302,12 +302,8 @@ function updateButtons() {
 
 // ── 読む範囲 ──
 
-// 初期設定が済んだ画面の大きさ（コンテンツ名と、戦闘の開始を知る範囲がある。トップの home.js と同じ判定）
-function savedScreens() {
-    return Object.entries(loadAll())
-        .filter(([, r]) => r?.content && !missingRegions(r).some((m) => m.id === 'start'))
-        .map(([key]) => key);
-}
+// 再生できる範囲を保存してある画面の大きさ（コンテンツ名と、戦闘の開始を知る範囲がある。トップの home.js と同じ判定）
+const savedScreens = () => listSavedScreens().filter((s) => s.usable).map((s) => s.key);
 
 // 指定していない範囲と、そのためにできないこと（取り込み中の画面の大きさで見る。範囲の指定は初期設定の画面 setup.html）
 function renderMissing() {

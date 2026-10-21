@@ -715,6 +715,11 @@ progress {
     gap: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
+/* 初期設定が済んでいるときの案内（setup.html。手順の代わりに出す） */
+.setup-done > * + * {
+    margin-top: calc(12 / 16 * 1rem);
+}
+
 /* 問題のある手順: 印を誤りの色に */
 .steps > li.ng .step-mark {
     border-color: transparent;

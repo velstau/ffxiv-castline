@@ -3,7 +3,7 @@
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
-import { STORE_REGIONS, REGION_KINDS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
+import { STORE_REGIONS, REGION_KINDS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey, savedScreens } from './regions.js';
 import { RegionEditor } from './region-editor.js';
 import { icon } from './icons.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
@@ -20,6 +20,8 @@ const state = {
     running: false,
     contents: [],
     frameSize: null,
+    // 再設定: false（設定済みなら手順を出さない）・'clear'（次に取り込んだ画面の大きさの範囲を消してから始める）・true（手順を出す）
+    redo: false,
     content: null, // 読み取ったコンテンツ名
     timeline: null, // そのコンテンツのタイムライン（詠唱バーの技名に使う）
     timelineChecked: false, // タイムラインがあるか確かめ終えたか
@@ -150,7 +152,37 @@ function itemState(id, done, text) {
 
 const foundText = (id) => (state.found[id]?.line ? `（「${state.found[id].line.text}」の行）` : '');
 
+// 初期設定が済んでいれば、手順の代わりに「設定は不要」と出す（2026-10-21 のユーザーの指定。手順 1〜4 が出ると紛らわしい）。
+// 取り込みを始めたとき・再設定のときは手順を出す
+function renderSetupDone() {
+    const complete = savedScreens().filter((s) => s.complete).map((s) => s.key);
+    const showDone = complete.length > 0 && !state.redo && !state.running && !state.frameSize;
+    $('setup-done').hidden = !showDone;
+    $('setup-steps').hidden = showDone;
+    if (showDone) {
+        $('setup-done-text').textContent = `初期設定は済んでいます（画面 ${complete.join('・')}）。`;
+    }
+}
+
+function redo() {
+    if (state.frameSize) {
+        // 取り込んだ画面があれば、その大きさの範囲をいま消す（確認は clearScreenRegions が出す）
+        state.redo = true;
+        clearScreenRegions();
+    } else {
+        if (savedScreens().some((s) => s.complete)
+            && !confirm('保存してある範囲を消して、はじめから設定し直します（消すのは、このあと取り込んだ画面の大きさの範囲だけです）。よろしいですか？\n残したい場合は、先に「範囲をファイルに書き出す」を押してください。')) {
+            return;
+        }
+        state.redo = 'clear';
+    }
+    render();
+    $('steps').scrollIntoView({ block: 'start' });
+    $('start').focus();
+}
+
 function render() {
+    renderSetupDone();
     const size = state.frameSize;
     const regions = size ? regionsFor(size.width, size.height) : {};
     const key = size ? screenKey(size.width, size.height) : '';
@@ -227,12 +259,13 @@ function drawCrop(canvas, bitmap, rect, color) {
 function renderChecks() {
     const size = state.frameSize ?? editor?.frame;
     const regions = size ? regionsFor(size.width, size.height) : {};
-    const key = JSON.stringify([size && screenKey(size.width, size.height), regions,
+    const key = JSON.stringify([size && screenKey(size.width, size.height), size ? regions : loadAll(), // 取り込む前は保存してある範囲を出すので、それも見る
         Object.entries(state.snapshots).map(([id, s]) => [id, s.at]), state.liveSnap?.at ?? null]);
     if (key === state.checksKey) {
         return;
     }
     state.checksKey = key;
+    const saved = size ? {} : loadAll();
     $('region-checks').replaceChildren(...REGION_KINDS.map((kind) => {
         const rect = regions[kind.id];
         const li = document.createElement('li');
@@ -244,7 +277,12 @@ function renderChecks() {
         head.append(swatch, Object.assign(document.createElement('strong'), { textContent: kind.label }));
         li.append(head);
         if (!rect) {
-            li.append(Object.assign(document.createElement('p'), { className: 'status', textContent: 'まだありません' }));
+            // 取り込む前は、保存してある範囲があればそう出す（「まだありません」だと設定が消えたように見える）
+            const savedIn = size ? [] : Object.entries(saved).filter(([, r]) => r?.[kind.id]).map(([k]) => k);
+            li.append(Object.assign(document.createElement('p'), {
+                className: `status${savedIn.length > 0 ? ' ok' : ''}`,
+                textContent: savedIn.length > 0 ? `指定済み（画面 ${savedIn.join('・')}）。取り込むと、いまのゲーム画面で確かめられます。` : 'まだありません',
+            }));
             return li;
         }
         const snap = snapshotFor(kind.id);
@@ -349,6 +387,17 @@ async function step(frame, at, live) {
     const { width, height } = frame;
     if (state.frameSize?.width !== width || state.frameSize?.height !== height) {
         state.frameSize = { width, height };
+        if (state.redo === 'clear') {
+            state.redo = true;
+            if (Object.keys(regionsFor(width, height)).length > 0) {
+                clearRegions(width, height);
+                Object.assign(state, { found: {}, content: null, timeline: null, timelineChecked: false });
+                clearSnapshots();
+                state.finder?.reset();
+                editor.refresh();
+                log(`再設定: 画面 ${screenKey(width, height)} の範囲を消して、はじめから探します`);
+            }
+        }
         const names = Object.keys(regionsFor(width, height));
         log(`画面 ${screenKey(width, height)}: 指定済みの範囲 ${names.length > 0 ? names.join('・') : 'なし'}`);
     }
@@ -506,6 +555,7 @@ async function init() {
     });
     $('regions-find').addEventListener('click', findContentRegion);
     $('regions-clear').addEventListener('click', clearScreenRegions);
+    $('regions-redo').addEventListener('click', redo);
     $('regions-export').addEventListener('click', () => exportRegionsFile('file-status'));
     $('export-done').addEventListener('click', () => exportRegionsFile('file-status'));
     $('regions-import').addEventListener('change', async (ev) => {

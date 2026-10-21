@@ -176,6 +176,21 @@ export function importRegions(text, storage = defaultStorage()) {
     return { screens: Object.keys(screens), errors: [] };
 }
 
+/**
+ * 範囲を保存してある画面の大きさ。[{key, missing, usable, complete}]
+ * usable: 再生できる（コンテンツ名と、戦闘の開始を知る範囲がある）。complete: 初期設定が済んでいる（詠唱バーのほかは全部ある。
+ * 詠唱バーはタイムラインの無いコンテンツでは探さず、再生中にも自動で探すため）
+ */
+export function savedScreens(storage = defaultStorage()) {
+    return Object.entries(loadAll(storage))
+        .filter(([, r]) => r && typeof r === 'object' && Object.keys(r).length > 0)
+        .map(([key, r]) => {
+            const missing = missingRegions(r);
+            const usable = Boolean(r.content) && !missing.some((m) => m.id === 'start');
+            return { key, missing, usable, complete: usable && missing.every((m) => m.id === 'cast') };
+        });
+}
+
 /** 指定していない範囲と、そのためにできないこと（[{id, label, lost}]） */
 export function missingRegions(regions) {
     const missing = REGION_KINDS.filter((k) => !regions?.[k.id]);
