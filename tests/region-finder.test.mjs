@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
     findCountdownLine, countdownRegionFrom, countdownSearchArea, findHpLine, findEnmityLine, findCastLine,
-    classifyCombatLines, castRegionFrom, fuzzyContains,
+    classifyCombatLines, castRegionFrom, fuzzyContains, damagedHp,
 } from '../public/js/region-finder.js';
 
 const fixture = (name) => JSON.parse(readFileSync(new URL(`./fixtures/${name}.json`, import.meta.url), 'utf8'));
@@ -72,4 +72,25 @@ test('詠唱バー: 技名だけの行を、HP に近い順に採る（チャッ
     // 範囲は長い技名も入るよう左右に広げる
     const rect = castRegionFrom(lines[0], 12, W, H);
     assert.ok(rect.w >= 120 * 13 / 6 - 1 && inside(lines[0], rect), JSON.stringify(rect));
+});
+
+test('敵対リスト: チャットの文と、戦闘前にも文字があった場所の行は採らない', () => {
+    const combat = fixture('scan-combat-start');
+    const chat = { x: 30, y: 900, w: 400, h: 20, text: 'レッドホットは「キラーボイス」の構え。' };
+    const onChatArea = { x: 30, y: 930, w: 100, h: 20, text: 'レッドホット' }; // 戦闘前から文字のある場所（チャット欄）に出た名前
+    const baseline = [{ x: 20, y: 925, w: 500, h: 22 }];
+    const lines = [chat, onChatArea, ...combat];
+    const line = findEnmityLine(lines, 'レッドホット', [], baseline);
+    assert.deepEqual([line.x, line.y], [779, 450]);
+    // 本物の敵対リストが無ければ、どれも採らない
+    assert.equal(findEnmityLine([chat, onChatArea], 'レッドホット', [], baseline), null);
+    // 戦闘前の画面（カウントダウン中）には敵対リストの場所に文字が無い
+    const before = fixture('scan-countdown-16s');
+    assert.ok(!before.some((b) => b.x < 779 + 80 && 779 < b.x + b.w && b.y < 450 + 18 && 450 < b.y + b.h));
+});
+
+test('戦闘中かどうか: HP の % が 100 未満の行があるか', () => {
+    assert.equal(damagedHp(fixture('scan-combat-start')), 99);
+    assert.equal(damagedHp(fixture('scan-countdown-16s')), null);
+    assert.equal(damagedHp([{ x: 0, y: 0, w: 80, h: 20, text: '100%Gレッドホット' }]), 100);
 });

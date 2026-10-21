@@ -94,18 +94,24 @@ export function fuzzyContains(text, name) {
     return false;
 }
 
+// 戦闘前の画面にも文字があった場所（チャット欄・パーティリストなど）。敵対リストと詠唱バーは戦闘中にしか出ないので、
+// ここに重なる行は候補から外す（2026-10-21: 戦闘前から出ているものを敵対リストとして見つけ、取り込みの直後に戦闘開始になった）
+const onBaseline = (line, baseline) => baseline.some((b) => overlaps(line, b));
+
 /**
  * 敵対リストの行を探す: 敵の名前（HP の行から取ったもの）を含み、数字も「Lv」も無い短い行。
  * 頭上やターゲットの名前は「Lv100 名前」で、「L100」「レ100」「ル10ロ」とも読めるので、数字のある行は除く。
- * HP の行・詠唱バーと重なる行も除く。
+ * チャットの文（「〜は「技」の構え。」）も名前を含むので、かぎ括弧・句読点のある行も除く。
+ * HP の行・詠唱バーと重なる行、戦闘前にも文字があった場所（baseline）に重なる行も除く。
  */
-export function findEnmityLine(lines, enemyName, exclude = []) {
+export function findEnmityLine(lines, enemyName, exclude = [], baseline = []) {
     if (!enemyName) {
         return null;
     }
-    const fits = lines.filter((l) => !/[\d%％]/.test(l.text) && !/L\s*[vV]/.test(l.text)
+    const fits = lines.filter((l) => !/[\d%％「」『』。、]/.test(l.text) && !/L\s*[vV]/.test(l.text)
         && chars(l.text) <= chars(enemyName) + 12
         && !exclude.some((r) => r && overlaps(l, r))
+        && !onBaseline(l, baseline)
         && fuzzyContains(l.text, enemyName));
     fits.sort((a, b) => chars(a.text) - chars(b.text));
     return fits[0] ?? null;
@@ -124,12 +130,13 @@ export function enmityRegionFrom(line, width, height) {
  * 詠唱バーの行を探す: 技名に決まり、技名のほかに余計な文字がほとんど無い行（チャットの「〜の構え」・敵対リストを除く）。
  * 複数あれば near（HP の行）にいちばん近い行（ターゲットとフォーカスの両方に詠唱バーが出るため）。
  */
-export function findCastLine(lines, { near = null, enemyName = '', exclude = [] } = {}) {
+export function findCastLine(lines, { near = null, enemyName = '', exclude = [], baseline = [] } = {}) {
     const fits = lines.filter((l) => l.cast
         && chars(l.text) <= chars(l.cast) + 3
         && !/[「」]/.test(l.text)
         && !(enemyName && fuzzyContains(l.text, enemyName))
-        && !exclude.some((r) => r && overlaps(l, r)));
+        && !exclude.some((r) => r && overlaps(l, r))
+        && !onBaseline(l, baseline));
     if (fits.length === 0) {
         return null;
     }
@@ -155,10 +162,11 @@ export function castRegionFrom(line, longest, width, height) {
 /**
  * 画面全体で読んだ行から、まだ無い範囲（want: 'hp'|'cast'|'enmity' の集合）を決める。
  * @param {{x,y,w,h}} [hpRect] 保存済みの HP の範囲（あれば、詠唱バーはその近くを選ぶ）
+ * @param {{x,y,w,h}[]} [baseline] 戦闘前の画面で文字があった行（敵対リスト・詠唱バーの候補から外す）
  * @returns {{hp?:{rect, focus:boolean, others:number, line}, enmity?:{rect, line}, cast?:{rect, name:string, line}, enemyName:string|null}}
  *          line は範囲を決めた行（確認用）
  */
-export function classifyCombatLines(lines, { want, width, height, longestCast = 12, hpRect = null, enemyName = null }) {
+export function classifyCombatLines(lines, { want, width, height, longestCast = 12, hpRect = null, enemyName = null, baseline = [] }) {
     const out = { enemyName };
     const hp = findHpLine(lines);
     if (hp) {
@@ -171,18 +179,24 @@ export function classifyCombatLines(lines, { want, width, height, longestCast = 
     const near = hp?.line ?? hpRect;
     let enmityLine = null;
     if (want.has('enmity') || want.has('cast')) {
-        enmityLine = findEnmityLine(lines, out.enemyName, hpLines);
+        enmityLine = findEnmityLine(lines, out.enemyName, hpLines, baseline);
     }
     if (want.has('enmity') && enmityLine) {
         out.enmity = { rect: enmityRegionFrom(enmityLine, width, height), line: enmityLine };
     }
     if (want.has('cast')) {
-        const castLine = findCastLine(lines, { near, enemyName: out.enemyName, exclude: [...hpLines, enmityLine] });
+        const castLine = findCastLine(lines, { near, enemyName: out.enemyName, exclude: [...hpLines, enmityLine], baseline });
         if (castLine) {
             out.cast = { rect: castRegionFrom(castLine, longestCast, width, height), name: castLine.cast, line: castLine };
         }
     }
     return out;
+}
+
+/** 行の中の HP の % の値（ターゲット・フォーカスのどれか。無ければ null）。100 未満なら戦闘中とみなせる */
+export function damagedHp(lines) {
+    const values = lines.filter((l) => HP_HEAD.test(l.text)).map((l) => parseHpPercent(l.text)).filter((v) => v !== null);
+    return values.length > 0 ? Math.min(...values) : null;
 }
 
 /** HP の範囲の周り（詠唱バーを先に探す場所）。詠唱バーはターゲットの HP の行の近くに出る */

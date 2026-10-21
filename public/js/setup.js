@@ -196,7 +196,10 @@ async function start() {
         return;
     }
     Object.assign(state, { source, running: true, frameSize: null, found: {}, lastContentRead: -Infinity });
-    state.finder = new RegionAutoFinder({ ocr: state.ocr, contents: () => state.contents, casts: () => castNamesOf(state.timeline) });
+    // 初期設定の画面は読み取りと競わないので、戦闘前の画面（敵対リストの候補から外す場所）も短い間隔で覚える
+    state.finder = new RegionAutoFinder({
+        ocr: state.ocr, contents: () => state.contents, casts: () => castNamesOf(state.timeline), idleFullEveryMs: 6000,
+    });
     log(`── 取り込み開始（${source.method}）`);
     render();
     const live = () => state.running && state.source === source;

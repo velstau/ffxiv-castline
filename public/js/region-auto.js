@@ -5,7 +5,7 @@ import { regionsFor, setRegion } from './regions.js';
 import { tilesOf } from './screen-reader.js';
 import { castNames } from './timeline-engine.js';
 import {
-    countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear,
+    countdownSearchArea, findCountdownLine, countdownRegionFrom, classifyCombatLines, castSearchAreaNear, damagedHp,
 } from './region-finder.js';
 
 const CONTENT_EVERY_MS = 5000;
@@ -18,6 +18,10 @@ const NEAR_EVERY_MS = 2000; // 詠唱バーだけ残ったら、HP の近くを�
 // 2026-10-21 実測: 古い敵対リストの範囲で戦闘開始になり、範囲を消したあとも戦闘中のままで、カウントダウンを探さなかった）
 const COUNTDOWN_EVERY_MS = 1000;
 const COUNTDOWN_COMBAT_EVERY_MS = 3000;
+// HP が 100% 未満の行が見えてからこの間は、戦闘中とみなす（戦闘の状態が分からない初期設定の画面や、
+// カウントダウンなしで殴ったときのため）
+const DAMAGE_COMBAT_MS = 30000;
+const sameRect = (a, b) => Math.abs(a.x - b.x) <= a.h && Math.abs(a.y - b.y) <= a.h / 2;
 
 /** タイムラインの技名のうち、詠唱バーに出るもの（詠唱のある技） */
 export function castNamesOf(timeline) {
@@ -45,16 +49,25 @@ export class RegionAutoFinder {
      *   contents: () => string[],
      *   casts: () => string[],
      *   status?: (at:number) => ('idle'|'countdown'|'combat'|'ended'|null),
+     *   idleFullEveryMs?: number,
      * }} options casts: 詠唱バーとして照合する技名（タイムラインが無ければ空で、詠唱バーは探さない）。
-     *   status: 戦闘の状態（null は分からない。初期設定の画面など）。カウントダウン中は読み取りを優先して、ほかを探さない
+     *   status: 戦闘の状態（null は分からない。初期設定の画面など）。カウントダウン中は読み取りを優先して、ほかを探さない。
+     *   idleFullEveryMs: 戦闘外に画面全体を読む間隔（戦闘前の画面を覚えるため。読み取りと競わない初期設定の画面では短くする）
+     *
+     * HP・敵対リスト・詠唱バーは戦闘中（status が combat か、HP が 100% 未満の行が見えた）だけ探す。
+     * 戦闘外に読んだ画面は「戦闘前から文字がある場所」として覚え、敵対リストと詠唱バーの候補から外す。
+     * HP は 2 回続けて同じ場所に見えたときだけ保存する（読み違いの 1 回で決めない）
      */
-    constructor({ ocr, contents, casts, status = () => null }) {
-        Object.assign(this, { ocr, contents, casts, status });
+    constructor({ ocr, contents, casts, status = () => null, idleFullEveryMs = FULL_IDLE_EVERY_MS }) {
+        Object.assign(this, { ocr, contents, casts, status, idleFullEveryMs });
         this.reset();
     }
 
     reset() {
-        Object.assign(this, { lastContent: -Infinity, lastFull: -Infinity, lastNear: -Infinity, lastCountdown: -Infinity, enemyName: null });
+        Object.assign(this, {
+            lastContent: -Infinity, lastFull: -Infinity, lastNear: -Infinity, lastCountdown: -Infinity, lastDamageAt: -Infinity,
+            enemyName: null, baseline: [], pendingHp: null,
+        });
     }
 
     /**
@@ -104,7 +117,7 @@ export class RegionAutoFinder {
         if (want.size === 1 && want.has('cast') && regions.hp && at - this.lastNear >= NEAR_EVERY_MS) {
             this.lastNear = at;
             lines = await this.ocr.scanLines(frame, castSearchAreaNear(regions.hp, width, height), casts);
-        } else if (at - this.lastFull >= (status === 'combat' || status === null ? FULL_EVERY_MS : FULL_IDLE_EVERY_MS)) {
+        } else if (at - this.lastFull >= (status === 'combat' || at - this.lastDamageAt < DAMAGE_COMBAT_MS ? FULL_EVERY_MS : this.idleFullEveryMs)) {
             this.lastFull = at;
             lines = [];
             for (const tile of tilesOf(frame)) {
@@ -118,11 +131,30 @@ export class RegionAutoFinder {
             }
         }
         if (lines && live()) {
+            const hp = damagedHp(lines);
+            if (hp !== null && hp < 100) {
+                this.lastDamageAt = at;
+            }
+            if (status !== 'combat' && at - this.lastDamageAt >= DAMAGE_COMBAT_MS) {
+                // 戦闘外: 文字がある場所を覚えるだけ（画面全体を読んだときだけ。HP の周りだけを読んだときは覚え直さない）
+                if (this.lastFull === at) {
+                    this.baseline = lines.map(({ x, y, w, h }) => ({ x, y, w, h }));
+                }
+                this.pendingHp = null;
+                return found;
+            }
             const longestCast = Math.max(1, ...casts.map((n) => [...n].length));
-            const r = classifyCombatLines(lines, { want, width, height, longestCast, hpRect: regions.hp ?? null, enemyName: this.enemyName });
+            const r = classifyCombatLines(lines, {
+                want, width, height, longestCast, hpRect: regions.hp ?? null, enemyName: this.enemyName, baseline: this.baseline,
+            });
             this.enemyName = r.enemyName ?? this.enemyName;
             if (r.hp) {
-                store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`, r.hp.line);
+                if (this.pendingHp && sameRect(this.pendingHp, r.hp.rect)) {
+                    store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`, r.hp.line);
+                    this.pendingHp = null;
+                } else {
+                    this.pendingHp = r.hp.rect;
+                }
             }
             if (r.enmity) {
                 store('enmity', r.enmity.rect, '敵対リスト', r.enmity.line);
