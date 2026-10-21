@@ -47,12 +47,4 @@ export class Pip {
         this.win?.close();
         this.win = null;
     }
-
-    // 読み上げは小窓の側から鳴らす（小窓は表示されているので止められにくい）
-    speak(text) {
-        const w = this.isOpen ? this.win : window;
-        const utterance = new w.SpeechSynthesisUtterance(text);
-        utterance.lang = 'ja-JP';
-        w.speechSynthesis.speak(utterance);
-    }
 }

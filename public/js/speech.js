@@ -1,0 +1,111 @@
+// 読み上げ。ブラウザの声（Web Speech API。Windows・ブラウザに入っている声）と、VOICEVOX（利用者の PC で動かす
+// 無料の読み上げソフト。http://127.0.0.1:50021 の API）を同じ形で使う。音量・速さはどちらにも効く。
+
+export const DEFAULT_SPEECH = {
+    engine: 'browser', // 'browser' | 'voicevox'
+    voice: '', // ブラウザの声の名前（空なら日本語の既定の声）
+    volume: 1, // 0〜1
+    rate: 1, // 速さ（ブラウザ 0.5〜2、VOICEVOX は speedScale に同じ値）
+    voicevoxUrl: 'http://127.0.0.1:50021',
+    voicevoxSpeaker: null, // スタイルの id
+    voicevoxName: '', // 表示・表記用（「VOICEVOX:ずんだもん」）
+};
+
+const CACHE_MAX = 64; // VOICEVOX で作った音声を覚えておく数（同じ技名を何度も読むため）
+
+/** 日本語を読める声（ブラウザ）。読み込みが遅れる環境があるので、無ければ voiceschanged を待って呼び直す */
+export function japaneseVoices(win = window) {
+    return win.speechSynthesis.getVoices()
+        .filter((v) => /^ja\b|^ja-/i.test(v.lang))
+        .map((v) => ({ name: v.name, local: v.localService, isDefault: v.default }));
+}
+
+/** VOICEVOX の話者とスタイルの一覧（[{ id, label }]。label は「ずんだもん（ノーマル）」） */
+export async function voicevoxStyles(url) {
+    const res = await fetch(new URL('speakers', withSlash(url)));
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+    }
+    const speakers = await res.json();
+    // 歌う用のスタイル（type が talk 以外）は読み上げに使えない
+    return speakers.flatMap((s) => s.styles.filter((st) => (st.type ?? 'talk') === 'talk')
+        .map((st) => ({ id: st.id, name: s.name, label: `${s.name}（${st.name}）` })));
+}
+
+const withSlash = (url) => (url.endsWith('/') ? url : `${url}/`);
+
+export class Speech {
+    /** @param {() => typeof DEFAULT_SPEECH} getSettings いまの設定（変えたらすぐ効くよう、毎回読む） */
+    constructor(getSettings) {
+        this.getSettings = getSettings;
+        this.cache = new Map(); // `${url}|${speaker}|${rate}|${text}` → Promise<Blob>
+        this.audio = null;
+    }
+
+    /**
+     * 読み上げる。win は鳴らす窓（小窓が開いていれば小窓。止められにくいため）。
+     * @returns {Promise<void>} VOICEVOX で失敗したときは例外（呼ぶ側でログに出す）
+     */
+    async speak(text, win = window) {
+        const s = { ...DEFAULT_SPEECH, ...this.getSettings() };
+        if (s.engine === 'voicevox' && s.voicevoxSpeaker !== null) {
+            const blob = await this.synthesize(text, s);
+            this.audio?.pause();
+            const audio = new win.Audio(URL.createObjectURL(blob));
+            audio.volume = s.volume;
+            audio.addEventListener('ended', () => URL.revokeObjectURL(audio.src), { once: true });
+            this.audio = audio;
+            await audio.play();
+            return;
+        }
+        const utterance = new win.SpeechSynthesisUtterance(text);
+        utterance.lang = 'ja-JP';
+        utterance.volume = s.volume;
+        utterance.rate = s.rate;
+        const voice = s.voice && win.speechSynthesis.getVoices().find((v) => v.name === s.voice);
+        if (voice) {
+            utterance.voice = voice;
+        }
+        win.speechSynthesis.speak(utterance);
+    }
+
+    /** これから読む文言を先に VOICEVOX で作っておく（発動の数秒前に読むので、作る時間で遅れないように） */
+    prepare(texts) {
+        const s = { ...DEFAULT_SPEECH, ...this.getSettings() };
+        if (s.engine !== 'voicevox' || s.voicevoxSpeaker === null) {
+            return;
+        }
+        for (const text of texts) {
+            this.synthesize(text, s).catch(() => {}); // 失敗は読み上げるときに出す
+        }
+    }
+
+    synthesize(text, s) {
+        const key = `${s.voicevoxUrl}|${s.voicevoxSpeaker}|${s.rate}|${text}`;
+        if (!this.cache.has(key)) {
+            const job = (async () => {
+                const base = withSlash(s.voicevoxUrl);
+                const query = await fetchOk(new URL(`audio_query?${new URLSearchParams({ text, speaker: s.voicevoxSpeaker })}`, base), { method: 'POST' });
+                const body = { ...(await query.json()), speedScale: s.rate };
+                const wav = await fetchOk(new URL(`synthesis?${new URLSearchParams({ speaker: s.voicevoxSpeaker })}`, base), {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+                });
+                return wav.blob();
+            })();
+            job.catch(() => this.cache.delete(key)); // 失敗したものは覚えない（次に作り直す）
+            this.cache.set(key, job);
+            while (this.cache.size > CACHE_MAX) {
+                this.cache.delete(this.cache.keys().next().value);
+            }
+        }
+        return this.cache.get(key);
+    }
+}
+
+async function fetchOk(url, init) {
+    const res = await fetch(url, init);
+    if (!res.ok) {
+        throw new Error(`VOICEVOX が HTTP ${res.status} を返しました`);
+    }
+    return res;
+}

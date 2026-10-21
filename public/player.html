@@ -53,6 +53,36 @@
             <label>発動の <input type="number" id="lead" min="0" max="30" step="1" style="width:4em"> 秒前</label>
             <button type="button" id="tts-test">読み上げの試験</button>
         </div>
+        <div class="row" style="margin-top:8px">
+            <label>声の種類
+                <select id="tts-engine">
+                    <option value="browser">ブラウザの声（追加の導入なし）</option>
+                    <option value="voicevox">VOICEVOX（PC に入れて起動しておく）</option>
+                </select>
+            </label>
+            <label id="voice-browser">声 <select id="tts-voice"></select></label>
+            <label>音量 <input type="range" id="tts-volume" min="0" max="1" step="0.05"> <span id="tts-volume-value"></span></label>
+            <label>速さ <input type="range" id="tts-rate" min="0.5" max="2" step="0.1"> <span id="tts-rate-value"></span></label>
+        </div>
+        <div id="voice-voicevox" hidden style="margin-top:8px">
+            <div class="row">
+                <label>VOICEVOX の場所 <input type="text" id="voicevox-url" size="28" spellcheck="false"></label>
+                <button type="button" id="voicevox-connect">接続を確かめる</button>
+                <label>声 <select id="voicevox-speaker" disabled></select></label>
+            </div>
+            <p id="voicevox-status" class="status" role="status"></p>
+            <p id="voicevox-credit" class="status"></p>
+            <details>
+                <summary>VOICEVOX を使う準備</summary>
+                <ol class="help">
+                    <li><a href="https://voicevox.hiroshiba.jp/" target="_blank" rel="noopener noreferrer">VOICEVOX<span class="sr-only">（新しいタブで開く）</span></a>（無料）を PC に入れて、起動しておきます。</li>
+                    <li>VOICEVOX は、ほかのサイトからの接続を初めは断ります。ブラウザで <code>http://127.0.0.1:50021/setting</code> を開き、
+                        許可するサイト（allow origin）にこのページのサイト <code id="voicevox-origin"></code> を入れて保存し、VOICEVOX を起動し直します。</li>
+                    <li>上の「接続を確かめる」を押します。ブラウザが「ローカル ネットワーク上のデバイスへのアクセス」を尋ねたら、許可します。</li>
+                </ol>
+                <p class="status">VOICEVOX の声は、キャラクターごとの利用規約に従ってください。配信などで使うときは「VOICEVOX:キャラクター名」の表記が必要です（上に出ている表記を使えます）。</p>
+            </details>
+        </div>
         <div id="panel" aria-live="off"></div>
     </section>
 

@@ -8,6 +8,7 @@ import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } fro
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
 import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey } from './regions.js';
 import { Pip, pipSupported } from './pip.js';
+import { Speech, DEFAULT_SPEECH, japaneseVoices, voicevoxStyles } from './speech.js';
 
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
@@ -43,9 +44,20 @@ const state = {
     spoken: new Set(),
     spokenStartAt: null,
     lastRender: 0,
+    lastPrepare: 0,
 };
 const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS, {}) };
+settings.speech = { ...DEFAULT_SPEECH, ...(settings.speech ?? {}) };
 const pip = new Pip();
+const voice = new Speech(() => settings.speech);
+const PREPARE_EVERY_MS = 1000;
+const PREPARE_AHEAD_S = 40; // VOICEVOX で先に作っておく範囲（発動までの秒。1 つ作るのに 1 秒前後かかる）
+
+// 読み上げる（小窓が開いていれば小窓の側から鳴らす。小窓は表示されているので止められにくい）
+function say(text) {
+    voice.speak(text, pip.isOpen ? pip.win : window).catch((e) => log(`読み上げられませんでした（${e.message}）`));
+}
+const ttsText = (e) => e.tts ?? showName(e.name); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
 
 // 文字認識は別スレッド（ocr-client.js）で、依頼の届いた順に 1 つずつ行う。画面全体を読む自動の範囲指定も区画ごとに
 // 依頼するので、その間に読み取りの依頼が入れる
@@ -524,7 +536,7 @@ function speech(now) {
         // 新しい戦闘
         state.spokenStartAt = engine.startAt;
         state.spoken = new Set();
-        pip.speak('戦闘開始');
+        say('戦闘開始');
     }
     for (const u of engine.upcoming(now, 20)) {
         const e = u.entry;
@@ -534,8 +546,14 @@ function speech(now) {
         }
         state.spoken.add(e);
         if (late <= SPEAK_LATE_MAX_S && e.tts !== '') {
-            pip.speak(e.tts ?? showName(e.name)); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
+            say(ttsText(e));
         }
+    }
+    if (now - state.lastPrepare >= PREPARE_EVERY_MS) {
+        state.lastPrepare = now;
+        voice.prepare(engine.upcoming(now, 20)
+            .filter((u) => u.hitIn <= PREPARE_AHEAD_S && !state.spoken.has(u.entry) && u.entry.tts !== '')
+            .map((u) => ttsText(u.entry)));
     }
 }
 
@@ -571,6 +589,89 @@ function reset() {
     update(true);
 }
 
+// ── 読み上げの声 ──
+function saveSpeech(patch) {
+    Object.assign(settings.speech, patch);
+    save(STORE_SETTINGS, settings);
+}
+
+function renderVoiceSettings() {
+    const s = settings.speech;
+    $('tts-engine').value = s.engine;
+    $('voice-browser').hidden = s.engine !== 'browser';
+    $('voice-voicevox').hidden = s.engine !== 'voicevox';
+    const select = $('tts-voice');
+    const voices = japaneseVoices();
+    select.replaceChildren(
+        Object.assign(document.createElement('option'), { value: '', textContent: '既定の日本語の声' }),
+        ...voices.map((v) => Object.assign(document.createElement('option'), {
+            value: v.name, textContent: `${v.name}${v.local ? '' : '（オンライン）'}`,
+        })),
+    );
+    select.value = voices.some((v) => v.name === s.voice) ? s.voice : '';
+    $('tts-volume').value = s.volume;
+    $('tts-rate').value = s.rate;
+    $('tts-volume-value').textContent = `${Math.round(s.volume * 100)}%`;
+    $('tts-rate-value').textContent = `${Number(s.rate).toFixed(1)} 倍`;
+    $('voicevox-url').value = s.voicevoxUrl;
+    $('voicevox-origin').textContent = location.origin;
+    $('voicevox-credit').textContent = s.engine === 'voicevox' && s.voicevoxName ? `VOICEVOX:${s.voicevoxName}` : '';
+}
+
+async function connectVoicevox() {
+    const url = $('voicevox-url').value.trim() || DEFAULT_SPEECH.voicevoxUrl;
+    saveSpeech({ voicevoxUrl: url });
+    setStatus('voicevox-status', '接続しています…');
+    try {
+        const styles = await voicevoxStyles(url);
+        const select = $('voicevox-speaker');
+        select.replaceChildren(...styles.map((st) => Object.assign(document.createElement('option'), { value: String(st.id), textContent: st.label })));
+        const current = styles.find((st) => st.id === settings.speech.voicevoxSpeaker) ?? styles[0];
+        if (current) {
+            select.value = String(current.id);
+            saveSpeech({ voicevoxSpeaker: current.id, voicevoxName: current.name });
+        }
+        select.disabled = styles.length === 0;
+        setStatus('voicevox-status', `つながりました（声 ${styles.length} 種類）。`, 'ok');
+        voice.prepare(['戦闘開始', '読み上げの試験です']);
+    } catch (e) {
+        setStatus('voicevox-status', `VOICEVOX につながりませんでした（${e.message}）。VOICEVOX を起動しているか、`
+            + 'このページからの接続を許可しているかを確かめてください（手順はすぐ下の「VOICEVOX を使う準備」）。', 'ng');
+    }
+    renderVoiceSettings();
+}
+
+function setupVoiceSettings() {
+    $('tts-engine').addEventListener('change', (ev) => {
+        saveSpeech({ engine: ev.target.value });
+        renderVoiceSettings();
+        if (ev.target.value === 'voicevox' && $('voicevox-speaker').options.length === 0) {
+            connectVoicevox();
+        }
+    });
+    $('tts-voice').addEventListener('change', (ev) => saveSpeech({ voice: ev.target.value }));
+    $('tts-volume').addEventListener('input', (ev) => {
+        saveSpeech({ volume: Number(ev.target.value) });
+        renderVoiceSettings();
+    });
+    $('tts-rate').addEventListener('input', (ev) => {
+        saveSpeech({ rate: Number(ev.target.value) });
+        renderVoiceSettings();
+    });
+    $('voicevox-connect').addEventListener('click', connectVoicevox);
+    $('voicevox-speaker').addEventListener('change', (ev) => {
+        const option = ev.target.selectedOptions[0];
+        saveSpeech({ voicevoxSpeaker: Number(ev.target.value), voicevoxName: option.textContent.replace(/（.*$/, '') });
+        renderVoiceSettings();
+    });
+    // 声の一覧は後から読み込まれることがある
+    speechSynthesis.addEventListener?.('voiceschanged', renderVoiceSettings);
+    renderVoiceSettings();
+    if (settings.speech.engine === 'voicevox') {
+        connectVoicevox();
+    }
+}
+
 // ── 初期化 ──
 async function init() {
     $('panel').innerHTML = PANEL_HTML;
@@ -586,7 +687,8 @@ async function init() {
         $('lead').value = settings.lead;
         save(STORE_SETTINGS, settings);
     });
-    $('tts-test').addEventListener('click', () => pip.speak('読み上げの試験です'));
+    $('tts-test').addEventListener('click', () => say('読み上げの試験です'));
+    setupVoiceSettings();
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
     $('reset').addEventListener('click', reset);

@@ -156,3 +156,4 @@ summary { cursor: pointer; }
 #h-more ~ details { margin-top: 8px; }
 .button-link { display: inline-block; padding: 8px 16px; border: 1px solid var(--accent); border-radius: 6px; color: var(--fg); background: var(--panel); text-decoration: none; }
 .button-link:hover { background: var(--line); }
+.help { margin: 8px 0; padding-left: 1.5em; }
