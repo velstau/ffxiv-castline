@@ -870,9 +870,29 @@ td.num {
 
 .tl-list li {
     display: flex;
+    align-items: center;
     gap: calc(12 / 16 * 1rem);
     padding: calc(2 / 16 * 1rem) 0;
     border-bottom: 1px solid var(--vw-line);
+}
+
+/* アイコン（ギミック 1 つ・スキル）は時刻の左。幅は見えている行のアイコンの最大数（--tl-icons）にそろえる */
+.tl-list .tl-icons {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(4 / 16 * 1rem);
+    width: calc(var(--tl-icons, 0) * 1.5rem + (var(--tl-icons, 1) - 1) * calc(4 / 16 * 1rem));
+}
+
+.tl-list .tl-icons[hidden] {
+    display: none;
+}
+
+.tl-list .tl-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
 }
 
 .tl-list .tl-in {

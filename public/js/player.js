@@ -6,6 +6,7 @@ import { combineCandidates } from './readers.js';
 import { isBlackFrame } from './blackout.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
+import { upcomingRows, iconProblems } from './timeline-view.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
 import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey } from './regions.js';
@@ -224,6 +225,7 @@ async function resolveTimeline() {
     state.spokenStartAt = null;
     if (state.timeline) {
         log(`タイムライン: ${state.timelineLabel}`);
+        iconProblems(state.timeline).forEach((problem) => log(`アイコン: ${problem}`));
     }
     renderTimelineStatus();
 }
@@ -545,10 +547,12 @@ function buildView(now) {
     } else {
         sub = '次のカウントダウンか敵対リストで、また始まります';
     }
-    const items = engine.upcoming(now, UPCOMING_COUNT).map((u) => ({
-        in: u.hitIn > 0 ? secondsText(u.hitIn) : '発動',
-        name: u.entry.label ? `${showName(u.entry.name)}（${u.entry.label}）` : showName(u.entry.name),
-        kind: u.hitIn <= 0 ? 'done' : u.castIn <= 0 ? 'casting' : '',
+    // 表示は text があれば text だけ、無ければ技名。同じ攻撃が続くときは 1 行にまとめて「x4」（2026-10-21 のユーザーの指定）
+    const items = upcomingRows(engine.upcoming(now, UPCOMING_COUNT * 3), engine.timeline).slice(0, UPCOMING_COUNT).map((row) => ({
+        in: row.hitIn > 0 ? secondsText(row.hitIn) : '発動',
+        name: row.count > 1 ? `${row.name} x${row.count}` : row.name,
+        icons: row.icons,
+        kind: row.hitIn <= 0 ? 'done' : row.castIn <= 0 ? 'casting' : '',
     }));
     return { head: s.state === 'ended' && engine.holdUntilEnmityOff ? '止めました' : STATE_TEXT[s.state], sub, items, status: s };
 }
@@ -567,15 +571,25 @@ function renderPanel(doc, view) {
     panel.querySelector('[data-k="head"]').textContent = view.head;
     panel.querySelector('[data-k="sub"]').textContent = view.sub;
     panel.querySelector('[data-k="halt"]').hidden = !['countdown', 'combat'].includes(view.status?.state);
-    panel.querySelector('[data-k="list"]').replaceChildren(...view.items.map((item) => {
+    // アイコンは時刻の左。行ごとに数が違っても時刻の列がそろうよう、アイコンの欄の幅を見えている行の最大に合わせる
+    const list = panel.querySelector('[data-k="list"]');
+    const iconCount = Math.max(0, ...view.items.map((item) => item.icons?.length ?? 0));
+    list.style.setProperty('--tl-icons', String(iconCount));
+    list.replaceChildren(...view.items.map((item) => {
         const li = doc.createElement('li');
         li.className = item.kind;
+        const icons = doc.createElement('span');
+        icons.className = 'tl-icons';
+        icons.hidden = iconCount === 0; // どの行にもアイコンが無ければ欄ごと出さない
+        icons.append(...(item.icons ?? []).map((icon) => Object.assign(doc.createElement('img'), {
+            src: icon.url, alt: icon.alt, title: icon.alt, className: 'tl-icon', decoding: 'async',
+        })));
         const time = doc.createElement('span');
         time.className = 'tl-in';
         time.textContent = item.in;
         const name = doc.createElement('span');
         name.textContent = item.name;
-        li.append(time, name);
+        li.append(icons, time, name);
         return li;
     }));
 }

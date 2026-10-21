@@ -35,7 +35,7 @@ SKELETON_TOLERANCE = 1.5  # FFLogs の技と骨組みの予定（詠唱開始＋
 AFTER_CAST_MAX = 6.0  # 詠唱の終わりからこれ以内に当たった同名の技は、その詠唱の予定に付ける（2 撃目・遅れて当たる技）
 JUMP_MIN_SUPPORT = 2  # 窓の外へ合わせ直すのは、続く 3 行のうちこれだけそろうとき
 SYNC_WINDOW_DEFAULT = 10  # Castline の既定の同期の窓（これより広い指定だけ window に移す）
-ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window"]  # timeline-xml.js の toTimelineXml と同じ順
+ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window", "gimmick", "skills"]  # timeline-xml.js の toTimelineXml と同じ順
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
 
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')

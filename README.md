@@ -94,13 +94,19 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
   <license>CC BY-SA</license>  <!-- タイムラインのライセンス。省略可。再生画面に出す -->
   <sync-window>10 10</sync-window>  <!-- 既定の同期の窓（予定の何秒前 何秒後）。省略可 -->
   <note>出典など</note>
+  <!-- アイコンの画像（スキルなど）。src はこの XML からの相対パスか URL。省略可 -->
+  <icons>
+    <icon id="rampart" src="icons/rampart.png" name="ランパート"/>
+  </icons>
   <phase id="p1" name="前半">
     <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
          発動（ダメージ）は t + duration。詠唱の無い技は duration 0（省略可） -->
-    <!-- entry の属性は t・text・castname・duration・sync・tts・window の順に書く。t と duration は必ず小数点以下 1 桁（6.0・5.0）（生成画面と道具はこの形で出す） -->
+    <!-- entry の属性は t・text・castname・duration・sync・tts・window・gimmick・skills の順に書く。t と duration は必ず小数点以下 1 桁（6.0・5.0）（生成画面と道具はこの形で出す） -->
     <entry t="6.0" text="全体攻撃" castname="創世の真炎" duration="5.0"/>
     <!-- sync="false" で同期に使わない。window で窓を個別に指定。text は表示だけの文言。tts で読み上げる文を指定（tts="" で読み上げない。既定は castname） -->
     <entry t="30.0" castname="詠唱の無い技" sync="false" tts="散開"/>
+    <!-- gimmick はギミックのアイコン 1 つ（下の一覧の id か名前。<icons> の id でもよい）、skills はスキルのアイコン（<icons> の id を空白区切り） -->
+    <entry t="36.0" text="タンク強" castname="ハードコア" duration="2.7" gimmick="tankbuster" skills="rampart"/>
     <!-- 毎回どれかが出る技は castname を「|」で区切る（どれが読めても同期する。表示は「／」区切り） -->
     <entry t="40.0" text="頭割りorロール" castname="アグリゲートソニック|スプレッドソニック" duration="4.0"/>
     <!-- 上から順に見て、最初に満たしたものに移る。at は移った瞬間の、移り先での秒（既定 0） -->
@@ -112,6 +118,48 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
   <phase id="p2" name="後半">…</phase>
 </timeline>
 ```
+
+### 表示とアイコン
+
+- 予定の表示は、text があれば text だけ、無ければ castname
+- 同じ表示・同じアイコンの予定が続き、発動の間が 10 秒以内なら 1 行にまとめて「x4」のように出す（public/js/timeline-view.js の GROUP_GAP_S）。読み上げは今までどおり 1 つずつ
+- アイコンは再生画面と小窓の時刻の左に出す。ギミック 1 つ（gimmick）→ スキル（skills）の順
+- ギミックのアイコンは Castline の独自の図案（public/icons/gimmick/。ゲームの画像は使っていない）。id でも名前でも書ける（「チャリオット」「ダイナモ」も可）
+- スキルのアイコンは同梱しない。各自が用意した画像を `<icons>` で指定する。
+  配信のタイムラインでは src は XML の場所からの相対パス、手元の XML では URL（http・https・data）だけ使える
+- 見つからないアイコンは表示を飛ばし、タイムラインを読み込んだときに記録に出す
+- 配信の XML は変換の道具（build-timelines.sh・convert-hojoring-pc.sh）で作り直すので、gimmick・skills を手で書き足しても作り直すと消える
+
+| アイコン | id | 名前 |
+|---|---|---|
+| <img src="public/icons/gimmick/raidwide.svg" width="24" alt=""> | `raidwide` | 全体攻撃 |
+| <img src="public/icons/gimmick/tankbuster.svg" width="24" alt=""> | `tankbuster` | タンク強攻撃 |
+| <img src="public/icons/gimmick/tank-share.svg" width="24" alt=""> | `tank-share` | タンク頭割り |
+| <img src="public/icons/gimmick/stack.svg" width="24" alt=""> | `stack` | 頭割り |
+| <img src="public/icons/gimmick/spread.svg" width="24" alt=""> | `spread` | 散開 |
+| <img src="public/icons/gimmick/tower.svg" width="24" alt=""> | `tower` | 塔踏み |
+| <img src="public/icons/gimmick/dice.svg" width="24" alt=""> | `dice` | サイコロ |
+| <img src="public/icons/gimmick/half-room.svg" width="24" alt=""> | `half-room` | 半面攻撃 |
+| <img src="public/icons/gimmick/target-marker.svg" width="24" alt=""> | `target-marker` | 単体マーカー |
+| <img src="public/icons/gimmick/aoe-marker.svg" width="24" alt=""> | `aoe-marker` | AoEマーカー |
+| <img src="public/icons/gimmick/gaze-look.svg" width="24" alt=""> | `gaze-look` | 視線見る |
+| <img src="public/icons/gimmick/gaze-away.svg" width="24" alt=""> | `gaze-away` | 視線見ない |
+| <img src="public/icons/gimmick/proximity.svg" width="24" alt=""> | `proximity` | 距離減衰 |
+| <img src="public/icons/gimmick/knockback.svg" width="24" alt=""> | `knockback` | ノックバック |
+| <img src="public/icons/gimmick/tether-stretch.svg" width="24" alt=""> | `tether-stretch` | 線伸ばす |
+| <img src="public/icons/gimmick/tether-take.svg" width="24" alt=""> | `tether-take` | 線取る |
+| <img src="public/icons/gimmick/chain.svg" width="24" alt=""> | `chain` | 鎖 |
+| <img src="public/icons/gimmick/divebomb.svg" width="24" alt=""> | `divebomb` | ダイブボム |
+| <img src="public/icons/gimmick/range-near.svg" width="24" alt=""> | `range-near` | 距離調整ニア |
+| <img src="public/icons/gimmick/range-middle.svg" width="24" alt=""> | `range-middle` | 距離調整ミドル |
+| <img src="public/icons/gimmick/range-far.svg" width="24" alt=""> | `range-far` | 距離調整ファー |
+| <img src="public/icons/gimmick/bind.svg" width="24" alt=""> | `bind` | 足止め |
+| <img src="public/icons/gimmick/chariot.svg" width="24" alt=""> | `chariot` | ボス中心円形範囲（チャリオット） |
+| <img src="public/icons/gimmick/dynamo.svg" width="24" alt=""> | `dynamo` | ボス中心ドーナツ型範囲（ダイナモ） |
+| <img src="public/icons/gimmick/line.svg" width="24" alt=""> | `line` | 直線範囲 |
+| <img src="public/icons/gimmick/cone.svg" width="24" alt=""> | `cone` | 扇範囲 |
+| <img src="public/icons/gimmick/aoe.svg" width="24" alt=""> | `aoe` | AoE範囲 |
+
 
 - 詠唱バーで照合する候補は、全技ではなく「同期の窓に入っている予定」と「移り方の技名」だけに絞る（`castCandidates`）
 - 同じ予定では 1 度しか同期しない（詠唱バーが出ている間、何度読めても合わせ直さない）
