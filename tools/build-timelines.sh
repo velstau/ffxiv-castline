@@ -25,12 +25,5 @@ overlay tools/skeletons/aac-heavyweight-m4-savage.xml 'sources/AAC_Heavyweight_M
     --phase P11=b-p1 --phase P12=b-p1 \
     --title '至天の座アルカディア零式：ヘビー級4'
 
-# Hojoring の手元のファイル（sources/hojoring-pc）から。骨組みは tools/skeleton-from-fflogs.mjs（FFLogs の公開ランキングの討伐の記録）、
-# 区間とフェーズの対応は自動（--events-all）
-pc() { overlay "tools/skeletons/$1.xml" "sources/hojoring-pc/$2" "public/timelines/$1.xml" --events-all "tools/skeletons/$1.events.json" "${@:3}"; }
-echo '== クルーザー級1'
-pc aac-cruiserweight-m1-savage 'AAC_Cruiserweight_M1_(Savage).xml' --title '至天の座アルカディア零式：クルーザー級1'
-echo '== 極ゼレニア'
-pc recollection-extreme 'Recollection(Extreme).xml' --title '極ゼレニア討滅戦'
-echo '== 絶もうひとつの未来'
-pc futures-rewritten-ultimate 'Futures_Rewritten_(Ultimate).xml' --title '絶もうひとつの未来'
+
+# Hojoring の手元のファイル（sources/hojoring-pc）からの分は tools/convert-hojoring-pc.sh（一覧は tools/hojoring-pc.tsv）

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極護竜アルシュベルド狩猟戦</content>
+  <title>極護竜アルシュベルド狩猟戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="0.8" castname="咆哮" duration="4.7"/>
+    <entry t="9.6" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="18.7" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="25.8" castname="鎖刃飛翔突進【護竜共振】" duration="4.7"/>
+    <entry t="36.8" castname="鎖哭龍閃" sync="false"/>
+    <entry t="43.6" castname="鎖刃飛翔突進【龍閃】" duration="4.7"/>
+    <entry t="55.4" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="64.4" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="68.2" castname="咆哮" duration="4.7"/>
+    <entry t="85.3" castname="突進" duration="5.7"/>
+    <entry t="93.4" castname="突進" sync="false"/>
+    <entry t="95.5" castname="突進" sync="false"/>
+    <entry t="103.2" castname="回転鎖刃【龍閃】" duration="5.7"/>
+    <entry t="113.4" castname="尻尾突き上げ" duration="3.7"/>
+    <entry t="120.1" castname="鎖刃振り下ろし" duration="5.7"/>
+    <entry t="126.3" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="131.1" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="140.2" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="144.0" castname="咆哮" duration="4.7"/>
+    <entry t="163.8" castname="地脈共振" duration="9.4"/>
+    <entry t="211.2" castname="護竜乱撃" duration="4.7"/>
+    <entry t="232.5" castname="咆哮" duration="4.7"/>
+    <entry t="241.3" castname="鎖刃躍動" duration="7.7"/>
+    <entry t="249.5" castname="鎖刃躍動" sync="false"/>
+    <entry t="252.5" castname="鎖刃躍動" sync="false"/>
+    <entry t="255.6" castname="鎖刃躍動" sync="false"/>
+    <entry t="258.7" castname="鎖刃躍動" sync="false"/>
+    <entry t="261.8" castname="鎖刃躍動" sync="false"/>
+    <entry t="264.8" castname="鎖刃躍動" sync="false"/>
+    <entry t="267.9" castname="鎖刃躍動" sync="false"/>
+    <entry t="271.0" castname="鎖刃躍動" sync="false"/>
+    <entry t="274.1" castname="咆哮" duration="4.7"/>
+    <entry t="292.7" castname="地脈共振" duration="9.4"/>
+    <entry t="308.2" castname="龍閃砲" duration="7.7"/>
+    <entry t="316.9" castname="龍閃砲" sync="false"/>
+    <entry t="326.4" castname="龍閃砲" sync="false"/>
+    <entry t="335.9" castname="龍閃砲" sync="false"/>
+    <entry t="355.1" castname="咆哮" duration="4.7"/>
+    <entry t="366.2" castname="鎖哭龍閃・改" duration="0.7"/>
+    <entry t="374.1" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="382.2" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="386.0" castname="咆哮" duration="4.7"/>
+    <entry t="403.1" castname="突進" duration="5.7"/>
+    <entry t="411.1" castname="突進" sync="false"/>
+    <entry t="413.2" castname="突進" sync="false"/>
+    <entry t="421.3" castname="回転鎖刃【龍閃】" duration="4.7"/>
+    <entry t="430.5" castname="尻尾突き上げ" duration="2.7"/>
+    <entry t="436.2" castname="鎖刃振り下ろし" duration="5.7"/>
+    <entry t="442.4" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="448.5" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="456.6" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="460.4" castname="咆哮" duration="4.7"/>
+    <entry t="480.3" castname="地脈共振" duration="9.4"/>
+    <entry t="493.4" castname="咆哮" duration="4.7"/>
+    <entry t="513.2" castname="鎖刃振り下ろし" duration="5.7"/>
+    <entry t="519.4" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="525.5" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="533.5" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="547.0" castname="鎖刃飛翔突進【護竜共振】" duration="3.7"/>
+    <entry t="557.0" castname="鎖哭龍閃" sync="false"/>
+    <entry t="563.8" castname="鎖刃飛翔突進【龍閃】" duration="3.7"/>
+  </phase>
+</timeline>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級3</content>
+  <title>至天の座アルカディア零式：ライトヘビー級3</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:42）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="5.3" castname="同期待ち2" sync="false" tts=""/>
+    <entry t="7.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="13.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="14.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="15.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="16.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃"/>
+    <entry t="22.5" castname="ナックルパート" sync="false"/>
+    <entry t="23.6" castname="ナックルパート" sync="false"/>
+    <entry t="24.6" castname="ナックルパート" sync="false"/>
+    <entry t="31.5" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="5.9"/>
+    <entry t="41.4" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="6.9"/>
+    <entry t="55.8" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="61.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="63.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="64.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="73.3" text="ボンバリアンボム" castname="ボンバリアンボム" duration="3.7" tts="連続ノックバック"/>
+    <entry t="90.5" text="中央へ / ボス側へ" castname="グリーンミスト" duration="5.7" tts="中央へノックバック、ボス側へ"/>
+    <entry t="106.4" text="ドーピング" castname="ドーピング" duration="3.7"/>
+    <entry t="106.5" castname="セリフ1" sync="false" tts=""/>
+    <entry t="118.5" castname="セリフ2" sync="false" tts=""/>
+    <entry t="123.5" castname="セリフ3" sync="false" tts=""/>
+    <entry t="129.5" castname="セリフ4" sync="false" tts=""/>
+    <entry t="134.5" castname="セリフ5" sync="false" tts=""/>
+    <entry t="137.6" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="5.9"/>
+    <entry t="147.4" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="6.9"/>
+    <entry t="161.9" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="168.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="169.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="170.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="171.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="172.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="173.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃"/>
+    <entry t="179.5" castname="ナックルパート" sync="false"/>
+    <entry t="180.6" castname="ナックルパート" sync="false"/>
+    <entry t="181.7" castname="ナックルパート" sync="false"/>
+    <entry t="182.8" castname="ナックルパート" sync="false"/>
+    <entry t="183.8" castname="ナックルパート" sync="false"/>
+    <entry t="192.7" text="タッグマッチ" castname="タッグマッチ" duration="3.7"/>
+    <entry t="198.9" text="チェーンデスマッチ" castname="チェーンデスマッチ" duration="6.7" tts="鎖を確認"/>
+    <entry t="209.0" text="鎖側に当たる" castname="ラリアットコンビネーション" sync="false" tts="鎖側に当たる"/>
+    <entry t="215.1" text="ラリアット" castname="ラリアットコンビネーション" sync="false"/>
+    <entry t="216.3" text="安置へ" castname="ラリアットコンビネーション" sync="false" tts="安置へ"/>
+    <entry t="219.4" text="ラリアット" castname="ラリアットコンビネーション" sync="false"/>
+    <entry t="220.6" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="5.9"/>
+    <entry t="230.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃"/>
+    <entry t="236.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="237.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="238.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="239.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="240.4" castname="スマッシュインパクト" sync="false"/>
+    <entry t="250.7" text="零式フューズボム" castname="零式フューズボム" duration="3.7"/>
+    <entry t="266.9" castname="自爆" sync="false"/>
+    <entry t="271.9" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="6.9"/>
+    <entry t="271.9" castname="自爆" sync="false"/>
+    <entry t="294.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="294.9" text="フューズフィールド" castname="フューズフィールド" duration="3.7"/>
+    <entry t="299.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="302.0" castname="ボンバリアンファイヤー" duration="2.7"/>
+    <entry t="310.8" castname="1回目爆破開始" sync="false" tts=""/>
+    <entry t="350.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃"/>
+    <entry t="356.5" castname="ナックルパート" sync="false"/>
+    <entry t="357.6" castname="ナックルパート" sync="false"/>
+    <entry t="358.6" castname="ナックルパート" sync="false"/>
+    <entry t="359.7" castname="ナックルパート" sync="false"/>
+    <entry t="360.8" castname="ナックルパート" sync="false"/>
+    <entry t="368.5" castname="セリフ" sync="false" tts=""/>
+    <entry t="368.6" text="ドーピング2回目" castname="ドーピング" duration="3.7"/>
+    <entry t="381.5" castname="セリフ2" sync="false" tts=""/>
+    <entry t="385.5" castname="セリフ3" sync="false" tts=""/>
+    <entry t="385.9" text="ボンバリアンスペシャル" castname="8ショック・ボンバリアンスペシャル|4ショック・ボンバリアンスペシャル" duration="5.7"/>
+    <entry t="423.8" text="フューズボム" castname="フューズボム" duration="3.7"/>
+    <entry t="429.9" text="タッグマッチ" castname="タッグマッチ" duration="3.7"/>
+    <entry t="437.1" text="鎖を確認" castname="チェーンデスマッチ" duration="6.7" tts="鎖を確認"/>
+    <entry t="446.9" castname="自爆" sync="false"/>
+    <entry t="450.9" castname="グリーンミスト" duration="7.7"/>
+    <entry t="451.9" castname="自爆" sync="false"/>
+    <entry t="458.9" text="ラリアット" castname="ラリアットコンビネーション" sync="false" tts="ラリアット"/>
+    <entry t="463.3" text="安置へ" castname="ラリアットコンビネーション" sync="false"/>
+    <entry t="464.6" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="6.9"/>
+    <entry t="480.1" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="486.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="487.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="488.4" castname="スマッシュインパクト" sync="false"/>
+    <entry t="489.4" castname="スマッシュインパクト" sync="false"/>
+    <entry t="490.5" castname="スマッシュインパクト" sync="false"/>
+    <entry t="491.6" castname="スマッシュインパクト" sync="false"/>
+    <entry t="492.6" castname="スマッシュインパクト" sync="false"/>
+    <entry t="493.8" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃"/>
+    <entry t="499.8" castname="ナックルパート" sync="false"/>
+    <entry t="500.9" castname="ナックルパート" sync="false"/>
+    <entry t="502.0" castname="ナックルパート" sync="false"/>
+    <entry t="503.0" castname="ナックルパート" sync="false"/>
+    <entry t="504.1" castname="ナックルパート" sync="false"/>
+    <entry t="505.2" castname="ナックルパート" sync="false"/>
+    <entry t="506.2" castname="ナックルパート" sync="false"/>
+    <entry t="514.1" text="アタッチ・フューズボム" castname="アタッチ・フューズボム" duration="3.7"/>
+    <entry t="521.6" text="極盛り式スピニングファイヤー" castname="極盛り式スピニングファイヤー" duration="5.2"/>
+    <entry t="528.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="530.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="532.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="533.1" castname="極盛り式スピニングファイヤー" sync="false"/>
+    <entry t="542.3" text="Xラリアット" castname="8ウェイ・ダブルラリアット" duration="5.9"/>
+    <entry t="551.7" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃"/>
+    <entry t="557.7" castname="スマッシュインパクト" sync="false"/>
+    <entry t="558.8" castname="スマッシュインパクト" sync="false"/>
+    <entry t="559.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="561.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="562.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="563.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="564.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="572.4" text="ボンバリアンボム" castname="ボンバリアンボム" duration="3.7" tts="連続ノックバック"/>
+    <entry t="590.6" text="安置側へ" castname="ラリアットコンビネーション" duration="4.6" tts="安置側へ"/>
+    <entry t="596.5" castname="2回目注意！" sync="false" tts="2回目注意！"/>
+    <entry t="598.0" text="逆側へ" castname="ラリアットコンビネーション" duration="2.7" tts="逆側へ"/>
+    <entry t="611.3" text="ナックルパート" castname="ナックルパート" duration="4.7" tts="強攻撃"/>
+    <entry t="617.4" castname="ナックルパート" sync="false"/>
+    <entry t="618.4" castname="ナックルパート" sync="false"/>
+    <entry t="619.5" castname="ナックルパート" sync="false"/>
+    <entry t="620.6" castname="ナックルパート" sync="false"/>
+    <entry t="621.7" castname="ナックルパート" sync="false"/>
+    <entry t="622.7" castname="ナックルパート" sync="false"/>
+    <entry t="623.8" castname="ナックルパート" sync="false"/>
+    <entry t="634.8" castname="ドーピング" duration="3.7"/>
+    <entry t="650.2" castname="調査中" sync="false" tts=""/>
+  </phase>
+</timeline>

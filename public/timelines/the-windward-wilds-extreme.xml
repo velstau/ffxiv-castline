@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極護竜アルシュベルド狩猟戦</content>
+  <title>極護竜アルシュベルド狩猟戦</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="0.8" text="咆哮(全体攻撃)" castname="咆哮" duration="4.7"/>
+    <entry t="9.6" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="18.7" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="25.8" text="突進＋中or外" castname="鎖刃飛翔突進【護竜共振】" duration="4.7"/>
+    <entry t="36.8" text="AOE避ける" castname="鎖哭龍閃" sync="false"/>
+    <entry t="43.6" text="突進＋中or外" castname="鎖刃飛翔突進【龍閃】" duration="4.7"/>
+    <entry t="55.4" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="64.4" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="68.2" text="咆哮" castname="咆哮" duration="4.7"/>
+    <entry t="85.3" text="突進＋輪3回" castname="突進" duration="5.7"/>
+    <entry t="93.4" text="突進" castname="突進" sync="false"/>
+    <entry t="95.5" castname="突進" sync="false"/>
+    <entry t="98.4" castname="半面＋散開" sync="false" tts=""/>
+    <entry t="103.2" castname="回転鎖刃【龍閃】" duration="5.7"/>
+    <entry t="112.8" castname="尻尾" sync="false" tts=""/>
+    <entry t="113.4" castname="尻尾突き上げ" duration="3.7"/>
+    <entry t="119.4" castname="頭割り" sync="false" tts=""/>
+    <entry t="120.1" castname="鎖刃振り下ろし" duration="5.7"/>
+    <entry t="126.3" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="131.1" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" duration="4.7"/>
+    <entry t="140.2" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="144.0" text="咆哮(全体攻撃)" castname="咆哮" duration="4.7"/>
+    <entry t="163.8" text="塔踏み準備(地脈共振)" castname="地脈共振" duration="9.4"/>
+    <entry t="186.6" castname="中央からエクサ" sync="false" tts=""/>
+    <entry t="211.2" text="履行技(護竜乱撃)" castname="護竜乱撃" duration="4.7"/>
+    <entry t="232.5" text="咆哮(全体攻撃)" castname="咆哮" duration="4.7"/>
+    <entry t="241.3" text="サイコロくるよ" castname="鎖刃躍動" duration="7.7"/>
+    <entry t="249.5" text="サイコロスタート" castname="鎖刃躍動" sync="false"/>
+    <entry t="252.5" castname="鎖刃躍動" sync="false"/>
+    <entry t="255.6" castname="鎖刃躍動" sync="false"/>
+    <entry t="258.7" castname="鎖刃躍動" sync="false"/>
+    <entry t="261.8" castname="鎖刃躍動" sync="false"/>
+    <entry t="264.8" castname="鎖刃躍動" sync="false"/>
+    <entry t="267.9" castname="鎖刃躍動" sync="false"/>
+    <entry t="271.0" castname="鎖刃躍動" sync="false"/>
+    <entry t="274.1" castname="咆哮" duration="4.7"/>
+    <entry t="278.8" castname="咆哮(全体攻撃)" sync="false" tts=""/>
+    <entry t="292.7" text="塔踏み準備(地脈共振)" castname="地脈共振" duration="9.4"/>
+    <entry t="308.2" text="ビーム1回目" castname="龍閃砲" duration="7.7" tts="ビーム1回目"/>
+    <entry t="316.9" castname="龍閃砲" sync="false"/>
+    <entry t="326.4" castname="龍閃砲" sync="false"/>
+    <entry t="331.5" text="ビーム2回目＋4:4頭割り" castname="龍閃砲" sync="false" tts="よんよん頭割りあるよ"/>
+    <entry t="335.9" castname="龍閃砲" sync="false"/>
+    <entry t="343.2" text="ビーム3回目＋散開" castname="龍閃砲" sync="false" tts="さんかいあせらず"/>
+    <entry t="353.5" castname="咆哮(全体攻撃)" sync="false" tts=""/>
+    <entry t="355.1" castname="咆哮" duration="4.7"/>
+    <entry t="366.2" text="反復コスモアロー(鎖哭龍閃・改)" castname="鎖哭龍閃・改" duration="0.7" tts="反復注意"/>
+    <entry t="374.1" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="382.2" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="386.0" text="咆哮(全体攻撃)" castname="咆哮" duration="4.7"/>
+    <entry t="403.1" text="突進＋輪3回" castname="突進" duration="5.7"/>
+    <entry t="411.1" castname="突進" sync="false"/>
+    <entry t="413.2" castname="突進" sync="false"/>
+    <entry t="419.2" castname="半面＋散開" sync="false" tts=""/>
+    <entry t="421.3" castname="回転鎖刃【龍閃】" duration="4.7"/>
+    <entry t="430.4" castname="尻尾" sync="false" tts=""/>
+    <entry t="430.5" castname="尻尾突き上げ" duration="2.7"/>
+    <entry t="436.0" castname="頭割り＋離れる" sync="false" tts="頭割りのあと離れる"/>
+    <entry t="436.2" castname="鎖刃振り下ろし" duration="5.7"/>
+    <entry t="442.4" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="448.5" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="448.7" castname="ラリアット(鎖刃叩きつけ)" sync="false" tts=""/>
+    <entry t="456.6" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="456.7" castname="ラリアット(鎖刃叩きつけ)" sync="false" tts=""/>
+    <entry t="460.4" castname="咆哮" duration="4.7"/>
+    <entry t="460.6" castname="咆哮(全体攻撃)" sync="false" tts=""/>
+    <entry t="480.3" text="塔踏み準備(地脈共振)" castname="地脈共振" duration="9.4"/>
+    <entry t="493.4" text="咆哮(全体攻撃)" castname="咆哮" duration="4.7"/>
+    <entry t="494.0" castname="エクサ忘れない" sync="false" tts="エクサ忘れないで"/>
+    <entry t="513.2" text="頭割り＋離れる" castname="鎖刃振り下ろし" duration="5.7" tts="頭割りのあと離れる"/>
+    <entry t="519.4" castname="鎖刃振り下ろし" sync="false"/>
+    <entry t="525.5" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" duration="3.7"/>
+    <entry t="533.5" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="547.0" castname="鎖刃飛翔突進【護竜共振】" duration="3.7"/>
+    <entry t="551.7" text="突進＋中or外" castname="鎖刃飛翔突進【龍閃】" sync="false"/>
+    <entry t="557.0" text="AOE避ける" castname="鎖哭龍閃" sync="false"/>
+    <entry t="563.8" castname="鎖刃飛翔突進【龍閃】" duration="3.7"/>
+    <entry t="566.0" text="突進＋中or外" castname="鎖刃飛翔突進【護竜共振】" sync="false"/>
+    <entry t="577.0" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="581.0" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="589.0" text="咆哮(全体攻撃)" castname="咆哮" sync="false"/>
+    <entry t="608.2" text="突進＋輪3回" castname="突進" sync="false"/>
+    <entry t="625.2" castname="半面＋散開？" sync="false" tts=""/>
+    <entry t="629.0" castname="尻尾" sync="false" tts=""/>
+    <entry t="642.0" text="頭割り＋離れる" castname="鎖刃振り下ろし" sync="false" tts="頭割りのあと離れる"/>
+    <entry t="651.0" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="655.0" text="ラリアット(鎖刃叩きつけ)" castname="鎖刃叩きつけ" sync="false"/>
+    <entry t="680.0" text="咆哮(全体攻撃)" castname="咆哮" sync="false"/>
+    <entry t="695.0" text="時間切れ" castname="護竜乱撃" sync="false"/>
+  </phase>
+</timeline>

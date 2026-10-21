@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶オメガ検証戦</content>
+  <title>絶オメガ検証戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（19:02）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Omega">
+    <entry t="11.3" castname="サークルプログラム" duration="3.7"/>
+    <entry t="21.4" castname="ブラスター" duration="7.6"/>
+    <entry t="29.5" castname="ブラスター" sync="false"/>
+    <entry t="38.5" castname="ブラスター" sync="false"/>
+    <entry t="47.4" castname="ブラスター" sync="false"/>
+    <entry t="56.4" castname="ブラスター" sync="false"/>
+    <entry t="64.6" castname="パントクラトル" duration="4.7"/>
+    <entry t="123.3" castname="アトミックレイ" duration="4.7"/>
+    <next to="p2" at="1.2" cast="ガードプログラム"/>
+  </phase>
+  <phase id="p2" name="P2: Omega-M/F">
+    <entry t="1.2" castname="ガードプログラム" duration="2.7"/>
+    <entry t="7.3" castname="ソーラレイ" duration="4.7"/>
+    <entry t="25.7" castname="連携プログラムPT" duration="2.7"/>
+    <entry t="38.3" castname="トランスフォームM" sync="false"/>
+    <entry t="38.3" castname="トランスフォームF" sync="false"/>
+    <entry t="44.6" castname="オプチカルレーザーF" duration="1.0"/>
+    <entry t="52.7" castname="ディスチャージャー" sync="false"/>
+    <entry t="55.6" castname="ソードアクション" duration="1.2"/>
+    <entry t="69.5" castname="シールドオプション" duration="0.7"/>
+    <entry t="75.8" castname="連携プログラムLB" duration="4.7"/>
+    <entry t="85.8" castname="パッセージ・オブ・オメガ" sync="false"/>
+    <entry t="85.8" castname="レーザーシャワー" duration="59.7"/>
+    <entry t="117.3" castname="コスモメモリー" duration="1.2"/>
+    <next to="p3" at="36.6" cast="ハロー・ワールド"/>
+  </phase>
+  <phase id="p3" name="P3: Omega Reconfigured">
+    <entry t="36.6" castname="ハロー・ワールド" duration="4.7"/>
+    <entry t="55.8" castname="レイテントバグ" duration="8.7"/>
+    <entry t="76.8" castname="レイテントバグ" duration="8.7"/>
+    <entry t="97.8" castname="レイテントバグ" duration="8.7"/>
+    <entry t="118.9" castname="レイテントバグ" duration="8.7"/>
+    <entry t="142.1" castname="クリティカルエラー" duration="7.7"/>
+    <entry t="161.4" castname="検知式波動砲" duration="9.7"/>
+    <entry t="177.6" castname="イオンエフラクス" duration="9.7"/>
+    <next to="p4" at="9.3" cast="波動砲"/>
+  </phase>
+  <phase id="p4" name="P4: Blue Screen">
+    <entry t="9.3" castname="波動砲" duration="4.7"/>
+    <entry t="19.4" castname="波動砲" sync="false"/>
+    <entry t="24.5" castname="波動砲" sync="false"/>
+    <entry t="29.7" castname="波動砲" sync="false"/>
+    <entry t="34.8" castname="波動砲" sync="false"/>
+    <entry t="39.9" castname="波動砲" sync="false"/>
+    <entry t="47.0" castname="ブルースクリーン" duration="7.7"/>
+    <next to="p5" at="3.1" cast="ソーラレイ"/>
+  </phase>
+  <phase id="p5" name="P5: Run: Dynamis">
+    <entry t="3.1" castname="ソーラレイ" duration="4.7"/>
+    <entry t="11.3" castname="ソーラレイ" sync="false"/>
+    <entry t="19.7" castname="コード：＊＊＊ミ＊【デルタ】" duration="4.7"/>
+    <entry t="46.5" castname="オプチカルレーザーF" duration="1.0"/>
+    <entry t="48.2" castname="シールドコンボS" duration="4.6"/>
+    <entry t="53.5" castname="シールドコンボS" sync="false"/>
+    <entry t="58.9" castname="パイルピッチ" sync="false"/>
+    <entry t="85.6" castname="ソーラレイ" duration="4.7"/>
+    <entry t="93.7" castname="ソーラレイ" sync="false"/>
+    <entry t="102.4" castname="コード：＊＊＊ミ＊【シグマ】" duration="4.7"/>
+    <entry t="124.7" castname="トランスフォームF" sync="false"/>
+    <entry t="138.3" castname="ディスチャージャー" sync="false"/>
+    <entry t="158.2" castname="ブリザガ・オメガ" duration="1.2"/>
+    <entry t="175.2" castname="ソーラレイ" duration="4.7"/>
+    <entry t="183.3" castname="ソーラレイ" sync="false"/>
+    <entry t="191.8" castname="コード：＊＊＊ミ＊【オメガ】" duration="4.7"/>
+    <entry t="258.4" castname="ソーラレイ" duration="4.7"/>
+    <entry t="266.6" castname="ソーラレイ" sync="false"/>
+    <entry t="274.9" castname="ブラインド・フェイス" duration="9.7"/>
+    <next to="p6" at="61.9" cast="コスモメモリー"/>
+  </phase>
+  <phase id="p6" name="P6: Alpha Omega">
+    <entry t="61.9" castname="コスモメモリー" duration="5.7"/>
+    <entry t="76.2" castname="コスモアロー" duration="5.7"/>
+    <entry t="91.4" castname="コスモダイブ" duration="5.3"/>
+    <entry t="110.3" castname="波動砲：リミッターカット" duration="4.7"/>
+    <entry t="133.5" castname="波動砲" duration="10.6"/>
+    <entry t="144.7" castname="波動砲" sync="false"/>
+    <entry t="153.0" castname="コスモアロー" duration="5.7"/>
+    <entry t="167.2" castname="波動砲" duration="10.6"/>
+    <entry t="178.4" castname="波動砲" sync="false"/>
+    <entry t="186.7" castname="波動砲：リミッターカット" duration="4.7"/>
+    <entry t="204.9" castname="コスモダイブ" duration="5.3"/>
+    <entry t="227.2" castname="コスモメテオ" duration="4.7"/>
+    <entry t="256.4" castname="コスモメテオ" sync="false"/>
+    <entry t="262.6" castname="マジックナンバー" duration="4.7"/>
+    <entry t="278.8" castname="マジックナンバー" duration="4.7"/>
+    <entry t="292.9" castname="コード：＊＊＊ミ＊" duration="15.7"/>
+    <entry t="308.9" castname="コード：＊＊＊ミ＊" sync="false"/>
+  </phase>
+</timeline>

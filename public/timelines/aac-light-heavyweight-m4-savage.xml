@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級4</content>
+  <title>至天の座アルカディア零式：ライトヘビー級4</title>
+  <note>FFLogs の公開ランキングの討伐の記録（12:09）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="5.5" castname="戦闘開始実況" sync="false" tts=""/>
+    <entry t="11.2" text="全体攻撃" castname="ラス・オブ・ゼウス" duration="4.7" tts="全体攻撃"/>
+    <entry t="32.9" text="安置を確認" castname="フライングウィッチ" duration="5.7" tts="安置を確認"/>
+    <entry t="45.4" text="誘導対象者を確認" castname="ライトニング・ウィッチハント" duration="4.7" tts="誘導ロール確認"/>
+    <entry t="53.6" text="誘導遠近を確認 / ウィッチハント" castname="ウィッチハント" duration="4.7"/>
+    <entry t="61.7" castname="円輪式ウィッチハント" duration="13.7"/>
+    <entry t="75.7" castname="円輪式ウィッチハント" sync="false"/>
+    <entry t="75.7" text="円輪/輪円" castname="輪円式ウィッチハント" sync="false"/>
+    <entry t="76.9" text="1回目" castname="ウィッチハント" sync="false"/>
+    <entry t="79.3" castname="リングサンダー" sync="false"/>
+    <entry t="80.7" text="2回目" castname="ウィッチハント" sync="false"/>
+    <entry t="82.9" castname="サークルサンダー" sync="false"/>
+    <entry t="84.1" text="3回目" castname="ウィッチハント" sync="false"/>
+    <entry t="86.5" castname="リングサンダー" sync="false"/>
+    <entry t="87.6" text="4回目" castname="ウィッチハント" sync="false"/>
+    <entry t="95.2" text="全体攻撃" castname="ラス・オブ・ゼウス" duration="4.7" tts="全体攻撃"/>
+    <entry t="108.6" text="エレクトロープ展開" castname="エレクトロープ展開" duration="2.7" tts="展開1回目、安置注意"/>
+    <entry t="115.8" text="シャインスパーク開始" castname="シャインスパーク" duration="2.7"/>
+    <entry t="120.4" castname="シャインスパーク" sync="false"/>
+    <entry t="121.9" castname="シャインスパーク" sync="false"/>
+    <entry t="123.5" text="ファンタスティックシンフォニー" castname="ファンタスティックシンフォニー" duration="2.7"/>
+    <entry t="129.7" text="スパーク" castname="サイドスパーク" duration="6.7"/>
+    <entry t="139.8" text="強攻撃" castname="ウィケッドジョルト" duration="4.7" tts="強攻撃"/>
+    <entry t="147.9" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="148.1" castname="ウィケッドジョルト" sync="false"/>
+    <entry t="156.5" text="エレクトロープ展開" castname="エレクトロープ展開" duration="2.7" tts="8方向散開、8方向散開"/>
+    <entry t="161.5" castname="被弾を数える" sync="false" tts="被弾を数える"/>
+    <entry t="162.7" castname="シャインスパーク" duration="2.7"/>
+    <entry t="165.5" castname="4" sync="false" tts=""/>
+    <entry t="166.5" castname="3" sync="false" tts=""/>
+    <entry t="167.3" castname="シャインスパーク" sync="false"/>
+    <entry t="168.5" castname="2" sync="false" tts=""/>
+    <entry t="168.8" castname="シャインスパーク" sync="false"/>
+    <entry t="169.5" castname="1" sync="false" tts=""/>
+    <entry t="170.4" castname="シャインスパーク" sync="false"/>
+    <entry t="172.0" castname="ライトニングケージ" duration="2.7"/>
+    <entry t="182.7" text="1回目発動" castname="スパークII" sync="false" tts="さきの散開"/>
+    <entry t="185.2" text="サイドスパーク" castname="サイドスパーク" duration="6.7"/>
+    <entry t="202.7" text="2回目発動" castname="スパークII" sync="false" tts="あとの散開"/>
+    <entry t="205.4" text="連続頭割り" castname="ウィケッドボルト" duration="3.7" tts="連続頭割り"/>
+    <entry t="212.4" castname="タンク誘導" sync="false" tts="タンク誘導"/>
+    <entry t="218.6" text="イオンクラスター" castname="イオンクラスター" duration="2.7"/>
+    <entry t="225.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="232.6" castname="セリフ2" sync="false" tts=""/>
+    <entry t="233.3" castname="レフトロール" sync="false"/>
+    <entry t="235.3" text="移動" castname="カノンスタンピード" sync="false" tts="移動"/>
+    <entry t="246.8" text="エレクトロンストリーム1" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="260.0" text="エレクトロンストリーム2" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="273.1" text="エレクトロンストリーム3" castname="エレクトロンストリーム" duration="5.7"/>
+    <entry t="287.4" text="強攻撃" castname="ウィケッドジョルト" duration="4.7" tts="強攻撃"/>
+    <entry t="295.6" text="ウィケッドジョルト" castname="ウィケッドジョルト" sync="false"/>
+    <entry t="313.4" text="エレクトロープ移植" castname="エレクトロープ移植" duration="3.7"/>
+    <entry t="336.8" text="円着弾" castname="ライトニングポイント" sync="false" tts="円着弾"/>
+    <entry t="339.8" text="ビーム注意" castname="ライトニングカレント" sync="false" tts="ビーム注意"/>
+    <entry t="341.8" castname="最後に移動" sync="false" tts="最後に移動"/>
+    <entry t="355.8" castname="2回目開始" sync="false" tts=""/>
+    <entry t="363.0" text="円着弾" castname="ライトニングポイント" sync="false" tts="円着弾"/>
+    <entry t="366.0" text="ビーム注意" castname="ライトニングカレント" sync="false" tts="ビーム注意"/>
+    <entry t="366.0" text="最後に移動" castname="ライトニングカレント" sync="false" tts="最後に移動"/>
+    <entry t="379.5" text="全体3" castname="ソウルショック" sync="false"/>
+    <entry t="382.8" text="全体2" castname="衝撃" sync="false"/>
+    <entry t="385.8" castname="全体1" sync="false" tts=""/>
+    <entry t="388.1" text="吹飛ばし" castname="キャノンボルト" sync="false" tts="吹飛ばし"/>
+    <entry t="396.1" castname="インプロ踏む" sync="false" tts="インプロ踏む"/>
+    <entry t="406.5" castname="ｵﾘｬｱｱｱ!" sync="false" tts="おりゃアアア！"/>
+    <entry t="407.3" text="クロステイル・スペシャル" castname="クロステイル・スペシャル" duration="4.7" tts="強全体攻撃"/>
+    <entry t="421.1" castname="移行待ち" sync="false" tts=""/>
+    <entry t="424.3" castname="安置を確認" sync="false" tts="安置を確認"/>
+    <entry t="425.5" text="頭割り4連" castname="ウィケッドブレイズ" duration="4.7" tts="頭割り、4連"/>
+    <entry t="435.6" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="447.6" castname="タンク線取り" sync="false" tts="タンク線取り"/>
+    <entry t="448.8" text="着弾" castname="マスタードボム" duration="7.7"/>
+    <entry t="459.8" castname="デバフ処理" sync="false" tts="デバフを処理"/>
+    <entry t="466.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="467.9" text="属性変換" castname="属性変換" duration="6.7"/>
+    <entry t="478.1" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="487.2" text="テイル2" castname="テイルスラスト" sync="false"/>
+    <entry t="500.4" text="全体攻撃" castname="アズールサンダー" duration="4.7" tts="全体攻撃"/>
+    <entry t="508.6" text="ブラックサバト【日没】" castname="ブラックサバト【日没】" duration="2.7" tts="日没"/>
+    <entry t="514.6" castname="中央集合" sync="false" tts="中央集合"/>
+    <entry t="515.7" text="AoE捨て" castname="ウィケッドファイア" duration="3.7" tts="えーおーいー見て移動"/>
+    <entry t="522.8" text="処理1" castname="サイドスパーク" sync="false" tts="1回目"/>
+    <entry t="524.9" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="530.8" text="処理2" castname="サイドスパーク" sync="false" tts="2回目"/>
+    <entry t="538.1" text="ブラックサバト【夜半】" castname="ブラックサバト【夜半】" duration="2.7" tts="夜半"/>
+    <entry t="544.0" castname="集散/集散を確認" sync="false" tts=""/>
+    <entry t="545.2" castname="散集式ブラスター" duration="6.7"/>
+    <entry t="551.0" text="処理1" castname="リングサンダー" sync="false" tts="1回目"/>
+    <entry t="555.0" text="処理2" castname="リングサンダー" sync="false" tts="2回目"/>
+    <entry t="555.4" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="563.5" text="全体攻撃" castname="ウィケッドサンダー" duration="4.7" tts="全体攻撃"/>
+    <entry t="572.8" text="属性変換" castname="属性変換" duration="6.7"/>
+    <entry t="582.9" text="火炎斬り" castname="火炎斬り" duration="5.7" tts="左右の位置へ"/>
+    <entry t="592.0" text="塔踏がPOP / 剣の雨" castname="剣の雨" duration="1.7" tts="塔踏み"/>
+    <entry t="599.2" text="予兆を確認 / チェイン開始" castname="チェインライトニング" duration="15.7" tts="予兆を確認、チェインライトニング。"/>
+    <entry t="615.2" castname="チェインライトニング" sync="false"/>
+    <entry t="636.4" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="645.4" text="テイル2" castname="テイルスラスト" sync="false"/>
+    <entry t="648.4" castname="タンク線取り" sync="false" tts="タンク線取り"/>
+    <entry t="649.5" text="着弾" castname="マスタードボム" duration="7.7"/>
+    <entry t="660.5" castname="デバフを処理" sync="false" tts="デバフを処理"/>
+    <entry t="668.7" text="属性変換" castname="属性変換" duration="6.7"/>
+    <entry t="678.9" text="全体攻撃" castname="アズールサンダー" duration="4.7" tts="全体攻撃"/>
+    <entry t="687.0" text="デバフ付与" castname="イオンクラスター" duration="2.7"/>
+    <entry t="693.2" text="ブラックサバト【日出】" castname="ブラックサバト【日出】" duration="2.7" tts="日出"/>
+    <entry t="709.4" text="処理1" castname="フライング・ソウルプレス" sync="false" tts="1回目"/>
+    <entry t="711.3" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="726.1" text="処理2" castname="フライング・ソウルプレス" sync="false" tts="2回目"/>
+    <entry t="727.5" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="736.1" text="テイル2" castname="テイルスラスト" sync="false"/>
+    <entry t="749.1" castname="剣の舞" sync="false"/>
+    <entry t="766.1" castname="剣の舞" sync="false"/>
+    <entry t="777.1" text="時間切れ開始" castname="剣の舞" sync="false"/>
+    <entry t="784.1" castname="時間切れ？" sync="false" tts="時間切れ"/>
+  </phase>
+</timeline>

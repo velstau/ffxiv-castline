@@ -33,6 +33,7 @@ LOOSE_WINDOW = 10.0  # FFLogs でも見つからない技を、同名の予定�
 OFFSET_TOLERANCE = 1.5  # 区間の最初のずれの推定で「そろっている」とみなす差
 SKELETON_TOLERANCE = 1.5  # FFLogs の技と骨組みの予定（詠唱開始＋詠唱時間）を同じものとみなす差
 AFTER_CAST_MAX = 6.0  # 詠唱の終わりからこれ以内に当たった同名の技は、その詠唱の予定に付ける（2 撃目・遅れて当たる技）
+JUMP_MIN_SUPPORT = 2  # 窓の外へ合わせ直すのは、続く 3 行のうちこれだけそろうとき
 SYNC_WINDOW_DEFAULT = 10  # Castline の既定の同期の窓（これより広い指定だけ window に移す）
 ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window"]  # timeline-xml.js の toTimelineXml と同じ順
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
@@ -202,6 +203,55 @@ def lookahead(items, events, defaults, offset, after_time, count=3):
     return score
 
 
+def join_phases(skeleton, fid, starts):
+    """戦闘のフェーズを通しの 1 つ（id は戦闘 ID）にまとめる。予定の時刻は戦闘の始まりからの秒にする（split_phases で戻す）"""
+    members = []
+    entries = []
+    for p in skeleton['phases']:
+        start = starts.get(p['attrs']['id'])
+        if start is None:
+            continue
+        for e in p['entries']:
+            e['_t'] += start
+            e['_hit'] += start
+        members.append((start, p))
+        entries += p['entries']
+    whole = {'attrs': {'id': fid}, 'entries': sorted(entries, key=lambda e: e['_t']), 'next': [], '_members': sorted(members, key=lambda m: m[0])}
+    skeleton['phases'].append(whole)
+    return whole
+
+
+def split_phases(skeleton, fid):
+    """join_phases でまとめたものを、元のフェーズに戻す。足した予定は、その時刻のフェーズへ"""
+    whole = next(p for p in skeleton['phases'] if p['attrs']['id'] == fid)
+    skeleton['phases'].remove(whole)
+    members = whole['_members']
+    for start, p in members:
+        p['entries'] = []
+    for e in whole['entries']:
+        start, p = members[0]
+        for m in members:
+            if e['_t'] >= m[0]:
+                start, p = m
+        e['_t'] -= start
+        e['_hit'] -= start
+        p['entries'].append(e)
+
+
+TEXT_SPLIT = re.compile(r'[+＋/／()（）【】「」\s]')
+
+
+def infer_names(sections, names):
+    """同期の指定（sync）が無い行で、表示の文言に技名があれば、その技の発動で合わせる"""
+    for sec in sections:
+        for it in sec['items']:
+            if it['kind'] != 'none' or not it['text']:
+                continue
+            found = [w for w in TEXT_SPLIT.split(it['text']) if w in names]
+            if found:
+                it['kind'], it['names'] = 'hit', found[:1]
+
+
 AUTO_MIN_SUPPORT = 2  # 自動の対応づけで、そろう行がこれ未満の区間は使わない
 
 
@@ -235,7 +285,7 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
             continue
         first_offset = min_offsets[phase_id] = offset
         used, last = set(), -1e9
-        labeled, resyncs, wide, loose, inserted, missed = 0, [], [], [], [], []
+        labeled, resyncs, wide, loose, inserted, missed, jumped = 0, [], [], [], [], [], []
         role, dropped_tts = roles.get(sec['name']), 0
         for idx, it in enumerate(sec['items']):
             label = '' if it['text'] in MARKER_TEXTS else it['text']
@@ -274,8 +324,20 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                         if resync:
                             offset = new_offset
                         last = ev[0]
-                    elif label or notice:
-                        missed.append(f'{it["time"]:g} {"|".join(it["names"])}')
+                    else:
+                        # 記録した戦闘が技のまとまりを飛ばした・順番が違うとき: 窓の外の同名の技で、続く行がそろうなら、そこへ合わせ直す
+                        rest = sec['items'][idx + 1:]
+                        here = lookahead(rest, events, defaults, offset, last)
+                        jumps = [(lookahead(rest, events, defaults, e[0] - it['time'], e[0]), e) for e in events
+                                 if e[1] in types and e[2] in it['names'] and e[0] >= last - 0.5]
+                        score, ev = max(jumps, key=lambda j: (j[0], -abs(j[1][0] - target)), default=(0, None))
+                        if ev is not None and score >= JUMP_MIN_SUPPORT and score > here:
+                            jumped.append(f'{it["time"]:g} {ev[2]} {ev[0] - target:+.1f}')
+                            offset, last = ev[0] - it['time'], ev[0]
+                        else:
+                            ev = None
+                            if label or notice:
+                                missed.append(f'{it["time"]:g} {"|".join(it["names"])}')
                 kind = 'cast' if ev is not None and ev[1] == 'b' else 'hit'
             else:
                 kind = it['kind']
@@ -325,6 +387,7 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                       + (f'、担当「{role}」として読み上げを外した {dropped_tts} 行' if role else ''))
         report += [f'    合わせ直し（2 秒超）: {x}' for x in resyncs]
         report += [f'    広い窓で見つけた: {x}' for x in wide]
+        report += [f'    離れた所で合わせ直した: {x}' for x in jumped]
         report += [f'    FFLogs に無いが同名の予定に付けた: {x}' for x in loose]
         report += [f'    見つからない: {x}' for x in missed]
         report += [f'    足した: {x}' for x in inserted]
@@ -388,13 +451,24 @@ def main():
         pid, path = spec.split('=', 1)
         with open(path, encoding='utf-8') as f:
             events[pid] = [tuple(e) for e in json.load(f)['events']]
+    fights = {}
     if args.events_all:
         with open(args.events_all, encoding='utf-8') as f:
-            for pid, p in json.load(f)['phases'].items():
+            data = json.load(f)
+        if 'fights' in data:
+            # 戦闘ごとに通しで照合する（Hojoring の区間は FFLogs のフェーズとずれていることが多いため）。フェーズの指定はフェーズ ID か戦闘 ID（all・a・b）
+            for fid, fight in data['fights'].items():
+                fights[fid] = join_phases(skeleton, fid, fight['starts'])
+                events[fid] = [tuple(e) for e in fight['events']]
+        else:
+            for pid, p in data['phases'].items():
                 events[pid] = [tuple(e) for e in p['events']]
-        mapping = {**auto_phases(sections, events), **mapping}
+        infer_names(sections, {e[2] for evs in events.values() for e in evs})
+        mapping = {**auto_phases(sections, {k: v for k, v in events.items() if not fights or k in fights}), **mapping}
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
                      dict(r.split('=', 1) for r in args.role))
+    for fid in fights:
+        split_phases(skeleton, fid)
 
     # 元ファイル（Hojoring）の名前や作者は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）
     note = (f'{skeleton["note"]} text は表示、tts は読み上げの文言。'

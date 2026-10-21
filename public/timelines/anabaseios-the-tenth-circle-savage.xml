@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：天獄編2</content>
+  <title>万魔殿パンデモニウム零式：天獄編2</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:33）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="2.9" castname="攻撃" sync="false"/>
+    <entry t="6.0" castname="攻撃" sync="false"/>
+    <entry t="9.1" text="アルテマ1" castname="アルテマ" duration="4.7" tts="全体"/>
+    <entry t="18.3" text="タンク連続攻撃" castname="ソウルグラスプ" duration="4.7" tts="タンク連続"/>
+    <entry t="31.5" text="ディバイドウィング" castname="ディバイドウィング" duration="2.7" tts="剣がポップ"/>
+    <entry t="37.6" text="頭割り" castname="ヘビーウェブ" duration="2.7" tts="頭割り"/>
+    <entry t="45.8" castname="攻撃" sync="false"/>
+    <entry t="47.6" castname="線を切る" sync="false" tts="線を切る"/>
+    <entry t="48.9" castname="攻撃" sync="false"/>
+    <entry t="52.0" castname="攻撃" sync="false"/>
+    <entry t="54.6" text="リング/ホーリー" castname="パンデモニックリング|パンデモニックホーリー" duration="3.7"/>
+    <entry t="61.3" text="タンク塔" castname="尖脚" duration="5.7" tts="タンク塔処理"/>
+    <entry t="75.4" text="橋を作る" castname="グランドウェブ" duration="2.7" tts="橋を作る"/>
+    <entry t="84.5" castname="攻撃" sync="false"/>
+    <entry t="87.7" castname="攻撃" sync="false"/>
+    <entry t="90.8" text="塔処理" castname="パンデモニックピラー" duration="4.7" tts="塔処理"/>
+    <entry t="98.5" text="リング/ホーリー" castname="パンデモニックリング|パンデモニックホーリー" duration="3.7"/>
+    <entry t="105.1" text="8人AoE" castname="スピットウェブ" duration="2.7" tts="散開"/>
+    <entry t="113.3" castname="攻撃" sync="false"/>
+    <entry t="116.4" castname="攻撃" sync="false"/>
+    <entry t="117.1" castname="【予告】小島でデバフ処理" sync="false" tts=""/>
+    <entry t="119.6" text="パンデモニックボンド" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="126.8" text="6割り+2単体" castname="パンデモニックメルトン" duration="4.7" tts="頭割りと単体"/>
+    <entry t="134.7" castname="【予兆】タッチダウン" sync="false" tts=""/>
+    <entry t="135.9" text="デバフ①" castname="タッチダウン" duration="7.7" tts="1回目"/>
+    <entry t="146.9" castname="デバフ②" sync="false" tts="2回目"/>
+    <entry t="149.0" castname="攻撃" sync="false"/>
+    <entry t="152.2" castname="攻撃" sync="false"/>
+    <entry t="154.3" text="アルテマ2" castname="アルテマ" duration="4.7" tts="全体"/>
+    <entry t="163.5" text="タンク連続攻撃" castname="ソウルグラスプ" duration="4.7" tts="タンク連続"/>
+    <entry t="176.6" castname="攻撃" sync="false"/>
+    <entry t="179.7" castname="攻撃" sync="false"/>
+    <entry t="179.9" castname="移行待ち" sync="false" tts=""/>
+    <entry t="181.4" text="パンデモニックボンド" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="181.5" castname="【予告】ビーム後デバフ処理" sync="false" tts="ビーム後デバフ処理"/>
+    <entry t="188.6" text="塔処理" castname="パンデモニックタレット" duration="4.7" tts="塔処理"/>
+    <entry t="204.6" castname="1" sync="false" tts=""/>
+    <entry t="209.6" castname="2" sync="false" tts=""/>
+    <entry t="213.6" castname="3" sync="false" tts=""/>
+    <entry t="218.6" castname="4" sync="false" tts=""/>
+    <entry t="221.8" castname="攻撃" sync="false"/>
+    <entry t="222.6" castname="デバフ①" sync="false" tts="1回目"/>
+    <entry t="224.9" castname="攻撃" sync="false"/>
+    <entry t="225.6" castname="デバフ②" sync="false" tts="2回目"/>
+    <entry t="228.0" text="半面" castname="パンデモニックレイ" duration="4.7"/>
+    <entry t="236.0" text="横からビーム" castname="ロード・オブ・ジェイド" sync="false" tts="横からビーム"/>
+    <entry t="237.2" castname="攻撃" sync="false"/>
+    <entry t="240.3" castname="攻撃" sync="false"/>
+    <entry t="243.0" castname="移行待ち" sync="false" tts=""/>
+    <entry t="243.4" text="アルテマ3" castname="アルテマ" duration="4.7" tts="全体"/>
+    <entry t="252.6" text="タンク連続攻撃" castname="ソウルグラスプ" duration="4.7" tts="タンク連続"/>
+    <entry t="265.8" castname="攻撃" sync="false"/>
+    <entry t="268.9" castname="攻撃" sync="false"/>
+    <entry t="270.6" text="タンク塔" castname="尖脚" duration="5.7" tts="タンク塔処理"/>
+    <entry t="284.7" text="橋を作る" castname="グランドウェブ" duration="2.7" tts="橋を作る"/>
+    <entry t="292.9" castname="攻撃" sync="false"/>
+    <entry t="295.0" text="8人AoE" castname="スピットウェブ" duration="2.7" tts="散開"/>
+    <entry t="302.0" castname="【予告】半面デバフ処理" sync="false" tts="半面でデバフ処理"/>
+    <entry t="304.1" text="パンデモニックボンド" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="310.3" text="塔処理" castname="パンデモニックピラー" duration="4.7" tts="塔処理"/>
+    <entry t="317.9" text="リング/ホーリー" castname="パンデモニックリング|パンデモニックホーリー" duration="3.7"/>
+    <entry t="324.5" text="半面処理 / デバフ①" castname="パンデモニックレイ" duration="4.7" tts="1回目"/>
+    <entry t="331.5" castname="!!横ビーム注意!!" sync="false" tts="ビーム注意"/>
+    <entry t="333.5" text="デバフ②" castname="ロード・オブ・ジェイド" sync="false" tts="2回目"/>
+    <entry t="334.5" castname="【予告】小島で処理" sync="false" tts="小島で処理"/>
+    <entry t="334.7" castname="ディバイドウィング" duration="2.7"/>
+    <entry t="340.8" castname="ヘビーウェブ" duration="2.7"/>
+    <entry t="347.9" text="頭割+線" castname="タッチダウン" duration="7.7" tts="頭割り"/>
+    <entry t="361.0" castname="攻撃" sync="false"/>
+    <entry t="364.2" castname="攻撃" sync="false"/>
+    <entry t="367.3" castname="攻撃" sync="false"/>
+    <entry t="369.4" text="6割り+2単体" castname="パンデモニックメルトン" duration="4.7" tts="頭割りと単体"/>
+    <entry t="378.6" text="タンク連続攻撃" castname="ソウルグラスプ" duration="4.7" tts="タンク連続"/>
+    <entry t="392.8" castname="攻撃" sync="false"/>
+    <entry t="395.9" castname="攻撃" sync="false"/>
+    <entry t="399.0" castname="攻撃" sync="false"/>
+    <entry t="400.7" text="ディバイドウィング" castname="ディバイドウィング" duration="2.7"/>
+    <entry t="405.7" castname="壁を作る" sync="false" tts=""/>
+    <entry t="405.7" castname="移行待ち" sync="false" tts=""/>
+    <entry t="406.8" text="パンデモニックウェブ" castname="パンデモニックウェブ" duration="2.7"/>
+    <entry t="414.0" text="ホーリー注意" castname="パンデモニックホーリー" duration="3.7"/>
+    <entry t="421.9" castname="【予告】ノックバック後処理" sync="false" tts="ノックバック後処理"/>
+    <entry t="422.1" text="パンデモニックボンド" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="429.3" castname="攻撃" sync="false"/>
+    <entry t="431.4" text="魔殿の震撃" castname="魔殿の震撃" duration="4.7" tts="連続全体攻撃"/>
+    <entry t="458.6" castname="攻撃" sync="false"/>
+    <entry t="461.7" castname="攻撃" sync="false"/>
+    <entry t="464.8" castname="攻撃" sync="false"/>
+    <entry t="468.0" castname="攻撃" sync="false"/>
+    <entry t="471.1" castname="攻撃" sync="false"/>
+    <entry t="474.2" text="アルテマ4" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="484.4" text="タンク連続攻撃" castname="ソウルグラスプ" duration="4.7" tts="タンク連続"/>
+    <entry t="497.6" castname="攻撃" sync="false"/>
+    <entry t="500.7" castname="攻撃" sync="false"/>
+    <entry t="503.8" castname="攻撃" sync="false"/>
+    <entry t="505.5" text="タンク塔" castname="尖脚" duration="5.7" tts="タンク塔処理"/>
+    <entry t="518.6" text="橋を作る" castname="グランドウェブ" duration="2.7" tts="橋を作る"/>
+    <entry t="526.8" castname="攻撃" sync="false"/>
+    <entry t="529.9" castname="攻撃" sync="false"/>
+    <entry t="533.1" castname="攻撃" sync="false"/>
+    <entry t="536.2" castname="攻撃" sync="false"/>
+    <entry t="539.4" text="回転AoE" castname="ディバイドプルーム" duration="2.7" tts="回転えーおーいー"/>
+    <entry t="547.5" castname="攻撃" sync="false"/>
+    <entry t="549.6" text="パンデモニックレイ" castname="パンデモニックレイ" duration="4.7"/>
+    <entry t="557.8" text="リング/ホーリー" castname="パンデモニックリング|パンデモニックホーリー" duration="3.7"/>
+    <entry t="558.6" text="横ビーム" castname="ロード・オブ・ジェイド" sync="false" tts="横からビーム"/>
+    <entry t="564.9" text="8人散開" castname="スピットウェブ" duration="2.7" tts="散会"/>
+    <entry t="574.1" castname="攻撃" sync="false"/>
+    <entry t="577.3" castname="攻撃" sync="false"/>
+    <entry t="580.4" text="塔処理" castname="パンデモニックピラー" duration="4.7" tts="塔処理"/>
+    <entry t="588.1" text="リング/ホーリー" castname="パンデモニックリング|パンデモニックホーリー" duration="3.7"/>
+    <entry t="594.7" text="6割り+2単体" castname="パンデモニックメルトン" duration="4.7" tts="頭割りと単体"/>
+    <entry t="603.9" castname="攻撃" sync="false"/>
+    <entry t="607.0" castname="攻撃" sync="false"/>
+    <entry t="610.1" castname="攻撃" sync="false"/>
+    <entry t="613.2" castname="攻撃" sync="false"/>
+    <entry t="616.3" castname="攻撃" sync="false"/>
+    <entry t="617.4" text="時間切れ開始 / 魔殿の震撃" castname="魔殿の震撃" duration="4.7" tts="時間切れ開始"/>
+    <entry t="636.3" castname="時間切れ調査中" sync="false" tts=""/>
+  </phase>
+</timeline>

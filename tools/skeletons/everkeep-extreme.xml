@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極ゾラージャ討滅戦</content>
+  <title>極ゾラージャ討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:50）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="11.4" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="22.0" castname="マルチウェイ" duration="4.7"/>
+    <entry t="30.1" castname="フォワード・ルーズハーフ" duration="7.7"/>
+    <entry t="43.5" castname="マルチウェイ" duration="4.7"/>
+    <entry t="51.7" castname="レジサイド" duration="7.7"/>
+    <entry t="68.1" castname="ドーン・エイジ" duration="6.7"/>
+    <entry t="85.3" castname="エッジ・ザ・ヴォロク" duration="3.7"/>
+    <entry t="94.7" castname="シンクロナス" duration="4.7"/>
+    <entry t="102.8" castname="ルーズハーフ" duration="5.7"/>
+    <entry t="114.0" castname="エンチャント・ゲートウェイ" duration="3.7"/>
+    <entry t="122.2" castname="サモンエッジ" duration="3.7"/>
+    <entry t="130.3" castname="エッジトラック" duration="3.7"/>
+    <entry t="147.5" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="159.7" castname="プロジェクション・エッジ" duration="4.7"/>
+    <entry t="169.8" castname="プロジェクション・エッジ" duration="4.7"/>
+    <entry t="184.4" castname="フォワード・ルーズハーフ" duration="7.7"/>
+    <entry t="198.6" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="210.8" castname="プロジェクション・バースト" duration="4.7"/>
+    <entry t="261.0" castname="ビターウィンド" duration="4.7"/>
+    <entry t="269.1" castname="ビターウィンド" sync="false"/>
+    <entry t="272.3" castname="ビターウィンド" sync="false"/>
+    <entry t="280.7" castname="ドーン・エイジ" duration="6.7"/>
+    <entry t="297.9" castname="ノック・オブ・ヴォロク" duration="7.1"/>
+    <entry t="312.0" castname="エッジ・ザ・ヴォロク" duration="4.7"/>
+    <entry t="321.1" castname="シンクロナス" duration="4.7"/>
+    <entry t="330.3" castname="エアロガ" duration="4.7"/>
+    <entry t="341.6" castname="フォワード・ルーズハーフ" duration="8.7"/>
+    <entry t="353.7" castname="デューティエッジ" duration="4.6"/>
+    <entry t="358.9" castname="デューティエッジ" sync="false"/>
+    <entry t="361.0" castname="デューティエッジ" sync="false"/>
+    <entry t="363.1" castname="デューティエッジ" sync="false"/>
+    <entry t="365.2" castname="デューティエッジ" sync="false"/>
+    <entry t="367.3" castname="炎の鎖" duration="4.7"/>
+    <entry t="387.4" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="400.7" castname="プロジェクション・エッジ" duration="4.7"/>
+    <entry t="410.9" castname="プロジェクション・エッジ" duration="4.7"/>
+    <entry t="420.7" castname="ルーズハーフ・サーキット" duration="6.7"/>
+    <entry t="435.9" castname="レジサイド" duration="7.7"/>
+    <entry t="451.1" castname="プロジェクション・バースト" duration="4.7"/>
+    <entry t="472.7" castname="ルーズハーフ" duration="5.7"/>
+    <entry t="481.8" castname="ルーズハーフ" duration="5.7"/>
+    <entry t="492.2" castname="ルーズハーフ" duration="5.7"/>
+    <entry t="502.4" castname="ビターウィンド" duration="4.7"/>
+    <entry t="510.5" castname="ビターウィンド" sync="false"/>
+    <entry t="513.7" castname="ビターウィンド" sync="false"/>
+    <entry t="522.1" castname="ドーン・エイジ" duration="6.7"/>
+    <entry t="539.2" castname="エッジ・ザ・ヴォロク" duration="3.7"/>
+    <entry t="547.4" castname="シンクロナス" duration="4.7"/>
+    <entry t="564.6" castname="デューティエッジ" duration="4.6"/>
+    <entry t="569.8" castname="デューティエッジ" sync="false"/>
+    <entry t="571.9" castname="デューティエッジ" sync="false"/>
+    <entry t="574.0" castname="デューティエッジ" sync="false"/>
+    <entry t="576.1" castname="デューティエッジ" sync="false"/>
+    <entry t="581.2" castname="エンチャント・ゲートウェイ" duration="3.7"/>
+    <entry t="589.4" castname="サモンエッジ" duration="3.7"/>
+    <entry t="597.6" castname="エッジトラック" duration="3.7"/>
+    <entry t="614.8" castname="アクチュアライズ" duration="4.7"/>
+    <entry t="628.2" castname="マルチウェイ" duration="4.7"/>
+    <entry t="636.3" castname="バックワード・ルーズハーフ" duration="7.7"/>
+  </phase>
+</timeline>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級1</content>
+  <title>至天の座アルカディア零式：ライトヘビー級1</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:22）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="5.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="9.7" text="散開 / ネイル4" castname="クアドラプルネイル" duration="4.7" tts="誘導注意"/>
+    <entry t="11.7" castname="セリフ" sync="false" tts=""/>
+    <entry t="16.7" text="ネイル3" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="19.7" text="ネイル2" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="22.7" text="ネイル1" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="28.8" text="強攻撃1" castname="ビスケットメーカー" duration="4.7" tts="強攻撃"/>
+    <entry t="35.8" castname="ビスケットメーカー" sync="false"/>
+    <entry t="35.8" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="47.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="47.9" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
+    <entry t="53.0" text="左右注意" castname="デュアルネイル" duration="4.7"/>
+    <entry t="63.0" text="分身作成" castname="ソウルシェード" duration="2.7" tts="分身がポップ"/>
+    <entry t="77.4" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
+    <entry t="84.4" text="W/Qクロウ" castname="ダブルクロウ|クァッドクロウ" duration="3.7"/>
+    <entry t="91.5" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="分身がポップ"/>
+    <entry t="96.6" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="102.6" castname="リーピング・クアドラプルネイル" sync="false"/>
+    <entry t="104.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="107.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="110.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="113.6" castname="W/Qクロウ" sync="false" tts=""/>
+    <entry t="118.6" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃"/>
+    <entry t="136.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="137.0" text="予兆確認 / 床破壊" castname="マウサーラッシュ" duration="9.7" tts="予兆を確認"/>
+    <entry t="156.9" castname="セリフ1" sync="false" tts=""/>
+    <entry t="162.9" castname="床が追加" sync="false" tts=""/>
+    <entry t="165.0" text="コピーキャット" castname="コピーキャット" duration="2.7"/>
+    <entry t="172.2" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="180.2" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="183.3" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="191.3" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="194.5" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="202.4" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="205.6" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="213.6" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="219.8" text="強攻撃1" castname="ビスケットメーカー" duration="4.7" tts="強攻撃"/>
+    <entry t="226.8" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="227.1" castname="ビスケットメーカー" sync="false"/>
+    <entry t="229.1" castname="キャッタクリスム・ゲイル" sync="false"/>
+    <entry t="231.1" text="衝撃波" castname="衝撃波" duration="5.7" tts="ノックバック"/>
+    <entry t="254.3" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
+    <entry t="259.4" text="リーピング・デュアルネイル" castname="リーピング・デュアルネイル" duration="4.7"/>
+    <entry t="265.4" castname="リーピング・デュアルネイル" sync="false"/>
+    <entry t="270.4" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="場所を確認"/>
+    <entry t="275.4" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
+    <entry t="280.7" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="286.7" castname="リーピング・クアドラプルネイル" sync="false"/>
+    <entry t="288.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="291.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="294.6" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="297.7" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="場所を確認"/>
+    <entry t="318.6" castname="予約発動1" sync="false" tts=""/>
+    <entry t="320.9" castname="テンペストテアー" duration="4.7"/>
+    <entry t="344.0" castname="ネイルチッパー" duration="6.7"/>
+    <entry t="351.6" castname="予約発動2" sync="false" tts=""/>
+    <entry t="367.0" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃"/>
+    <entry t="385.4" text="予兆確認 / 床破壊" castname="マウサーラッシュ" duration="9.7" tts="次は、マウサーラッシュ。"/>
+    <entry t="413.5" text="コピーキャット" castname="コピーキャット" duration="2.7"/>
+    <entry t="420.7" text="パンチ1" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="424.8" castname="スプレッドネイル" duration="4.7"/>
+    <entry t="428.7" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="433.0" text="パンチ2" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="437.0" castname="スプレッドネイル" duration="4.7"/>
+    <entry t="440.9" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="445.2" text="パンチ3" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="449.4" castname="オーバーシャドウ" duration="4.7"/>
+    <entry t="453.2" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="454.6" castname="オーバーシャドウ" sync="false"/>
+    <entry t="457.8" text="パンチ4" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="461.9" castname="オーバーシャドウ" duration="4.7"/>
+    <entry t="465.8" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="467.1" castname="オーバーシャドウ" sync="false"/>
+    <entry t="472.2" text="強攻撃1" castname="ビスケットメーカー" duration="4.7" tts="強攻撃"/>
+    <entry t="479.2" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="479.4" castname="ビスケットメーカー" sync="false"/>
+    <entry t="482.4" castname="キャッタクリスム・ゲイル" sync="false"/>
+    <entry t="484.4" text="衝撃波" castname="衝撃波" duration="5.7" tts="ノックバック"/>
+    <entry t="508.8" text="線取り / 4" castname="レイニングキャッツ" duration="5.7" tts="線取り開始"/>
+    <entry t="515.7" text="3" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="521.8" text="2" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="527.8" text="1" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="541.9" text="コピーキャット" castname="コピーキャット" duration="2.7"/>
+    <entry t="549.6" text="キャッツレイド開始" castname="キャッツレイド" duration="12.7" tts="突進開始"/>
+    <entry t="562.6" castname="キャッツレイド" sync="false"/>
+    <entry t="567.6" text="左右注意" castname="デュアルネイル" sync="false"/>
+    <entry t="584.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="584.6" text="破壊予兆" castname="マウサーラッシュ" sync="false"/>
+    <entry t="592.6" text="時間切れ開始" castname="マウサーラッシュ" sync="false"/>
+    <entry t="598.6" castname="時間切れ" sync="false" tts=""/>
+  </phase>
+</timeline>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：天獄編2</content>
+  <title>万魔殿パンデモニウム零式：天獄編2（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:33）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="2.9" castname="攻撃" sync="false"/>
+    <entry t="6.0" castname="攻撃" sync="false"/>
+    <entry t="9.1" castname="アルテマ" duration="4.7"/>
+    <entry t="18.3" castname="ソウルグラスプ" duration="4.7"/>
+    <entry t="31.5" castname="ディバイドウィング" duration="2.7"/>
+    <entry t="37.6" castname="ヘビーウェブ" duration="2.7"/>
+    <entry t="45.8" castname="攻撃" sync="false"/>
+    <entry t="48.9" castname="攻撃" sync="false"/>
+    <entry t="52.0" castname="攻撃" sync="false"/>
+    <entry t="54.6" castname="パンデモニックリング" duration="3.7"/>
+    <entry t="61.3" castname="尖脚" duration="5.7"/>
+    <entry t="75.4" castname="グランドウェブ" duration="2.7"/>
+    <entry t="84.5" castname="攻撃" sync="false"/>
+    <entry t="87.7" castname="攻撃" sync="false"/>
+    <entry t="90.8" castname="パンデモニックピラー" duration="4.7"/>
+    <entry t="98.5" castname="パンデモニックホーリー" duration="3.7"/>
+    <entry t="105.1" castname="スピットウェブ" duration="2.7"/>
+    <entry t="113.3" castname="攻撃" sync="false"/>
+    <entry t="116.4" castname="攻撃" sync="false"/>
+    <entry t="119.6" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="126.8" castname="パンデモニックメルトン" duration="4.7"/>
+    <entry t="135.9" castname="タッチダウン" duration="7.7"/>
+    <entry t="149.0" castname="攻撃" sync="false"/>
+    <entry t="152.2" castname="攻撃" sync="false"/>
+    <entry t="154.3" castname="アルテマ" duration="4.7"/>
+    <entry t="163.5" castname="ソウルグラスプ" duration="4.7"/>
+    <entry t="176.6" castname="攻撃" sync="false"/>
+    <entry t="179.7" castname="攻撃" sync="false"/>
+    <entry t="181.4" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="188.6" castname="パンデモニックタレット" duration="4.7"/>
+    <entry t="221.8" castname="攻撃" sync="false"/>
+    <entry t="224.9" castname="攻撃" sync="false"/>
+    <entry t="228.0" castname="パンデモニックレイ" duration="4.7"/>
+    <entry t="237.2" castname="攻撃" sync="false"/>
+    <entry t="240.3" castname="攻撃" sync="false"/>
+    <entry t="243.4" castname="アルテマ" duration="4.7"/>
+    <entry t="252.6" castname="ソウルグラスプ" duration="4.7"/>
+    <entry t="265.8" castname="攻撃" sync="false"/>
+    <entry t="268.9" castname="攻撃" sync="false"/>
+    <entry t="270.6" castname="尖脚" duration="5.7"/>
+    <entry t="284.7" castname="グランドウェブ" duration="2.7"/>
+    <entry t="292.9" castname="攻撃" sync="false"/>
+    <entry t="295.0" castname="スピットウェブ" duration="2.7"/>
+    <entry t="304.1" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="310.3" castname="パンデモニックピラー" duration="4.7"/>
+    <entry t="317.9" castname="パンデモニックリング" duration="3.7"/>
+    <entry t="324.5" castname="パンデモニックレイ" duration="4.7"/>
+    <entry t="334.7" castname="ディバイドウィング" duration="2.7"/>
+    <entry t="340.8" castname="ヘビーウェブ" duration="2.7"/>
+    <entry t="347.9" castname="タッチダウン" duration="7.7"/>
+    <entry t="361.0" castname="攻撃" sync="false"/>
+    <entry t="364.2" castname="攻撃" sync="false"/>
+    <entry t="367.3" castname="攻撃" sync="false"/>
+    <entry t="369.4" castname="パンデモニックメルトン" duration="4.7"/>
+    <entry t="378.6" castname="ソウルグラスプ" duration="4.7"/>
+    <entry t="392.8" castname="攻撃" sync="false"/>
+    <entry t="395.9" castname="攻撃" sync="false"/>
+    <entry t="399.0" castname="攻撃" sync="false"/>
+    <entry t="400.7" castname="ディバイドウィング" duration="2.7"/>
+    <entry t="406.8" castname="パンデモニックウェブ" duration="2.7"/>
+    <entry t="414.0" castname="パンデモニックホーリー" duration="3.7"/>
+    <entry t="422.1" castname="パンデモニックボンド" duration="2.7"/>
+    <entry t="429.3" castname="攻撃" sync="false"/>
+    <entry t="431.4" castname="魔殿の震撃" duration="4.7"/>
+    <entry t="458.6" castname="攻撃" sync="false"/>
+    <entry t="461.7" castname="攻撃" sync="false"/>
+    <entry t="464.8" castname="攻撃" sync="false"/>
+    <entry t="468.0" castname="攻撃" sync="false"/>
+    <entry t="471.1" castname="攻撃" sync="false"/>
+    <entry t="474.2" castname="アルテマ" duration="4.7"/>
+    <entry t="484.4" castname="ソウルグラスプ" duration="4.7"/>
+    <entry t="497.6" castname="攻撃" sync="false"/>
+    <entry t="500.7" castname="攻撃" sync="false"/>
+    <entry t="503.8" castname="攻撃" sync="false"/>
+    <entry t="505.5" castname="尖脚" duration="5.7"/>
+    <entry t="518.6" castname="グランドウェブ" duration="2.7"/>
+    <entry t="526.8" castname="攻撃" sync="false"/>
+    <entry t="529.9" castname="攻撃" sync="false"/>
+    <entry t="533.1" castname="攻撃" sync="false"/>
+    <entry t="536.2" castname="攻撃" sync="false"/>
+    <entry t="539.4" castname="ディバイドプルーム" duration="2.7"/>
+    <entry t="547.5" castname="攻撃" sync="false"/>
+    <entry t="549.6" castname="パンデモニックレイ" duration="4.7"/>
+    <entry t="557.8" castname="パンデモニックホーリー" duration="3.7"/>
+    <entry t="564.9" castname="スピットウェブ" duration="2.7"/>
+    <entry t="574.1" castname="攻撃" sync="false"/>
+    <entry t="577.3" castname="攻撃" sync="false"/>
+    <entry t="580.4" castname="パンデモニックピラー" duration="4.7"/>
+    <entry t="588.1" castname="パンデモニックホーリー" duration="3.7"/>
+    <entry t="594.7" castname="パンデモニックメルトン" duration="4.7"/>
+    <entry t="603.9" castname="攻撃" sync="false"/>
+    <entry t="607.0" castname="攻撃" sync="false"/>
+    <entry t="610.1" castname="攻撃" sync="false"/>
+    <entry t="613.2" castname="攻撃" sync="false"/>
+    <entry t="616.3" castname="攻撃" sync="false"/>
+    <entry t="617.4" castname="魔殿の震撃" duration="4.7"/>
+  </phase>
+</timeline>

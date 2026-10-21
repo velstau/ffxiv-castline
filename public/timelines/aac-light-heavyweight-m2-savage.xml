@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級2</content>
+  <title>至天の座アルカディア零式：ライトヘビー級2</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:47）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="4.6" castname="同期待ち2" sync="false" tts=""/>
+    <entry t="5.6" text="全体攻撃" castname="ラブリーコール" duration="4.7" tts="全体攻撃"/>
+    <entry t="12.7" text="ベノムX" castname="ベノムドロップ|ベノムレイン" duration="4.7"/>
+    <entry t="23.1" text="内or外" castname="ハニーブラスト|ハニーツイスター" duration="5.2"/>
+    <entry t="33.7" text="ベノムX" castname="ベノムレイン" sync="false"/>
+    <entry t="34.7" castname="ベノムドロップ" duration="4.7"/>
+    <entry t="41.9" text="内or外" castname="ハニーブラスト|ハニーツイスター" duration="5.2"/>
+    <entry t="55.5" text="強攻撃" castname="キラースティング|キラースラッシュ" duration="3.7"/>
+    <entry t="70.9" text="移行待ち" castname="ハニー・B・ライヴ【1st】" duration="1.7" window="20 10"/>
+    <entry t="79.2" text="【1st】" castname="ハニー・B・ライヴ【1st】" sync="false"/>
+    <entry t="82.1" text="コンビネーション" castname="リング・ラブコンビネーション|ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="98.7" text="RT塔処理" castname="ラブ・ミー・テンダー" duration="3.7" tts="塔処理"/>
+    <entry t="99.0" castname="セリフ" sync="false" tts=""/>
+    <entry t="133.0" castname="ラブシーカー" duration="2.7"/>
+    <entry t="146.1" text="RT頭割り" castname="ラブ・ミー・テンダー" duration="3.7" tts="頭割り" window="20 20"/>
+    <entry t="163.4" text="コンビネーション" castname="リング・ラブコンビネーション|ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="182.1" text="1stフィナーレ" castname="ハニー・B・フィナーレ" duration="4.7" tts="全体攻撃"/>
+    <entry t="197.3" text="強攻撃" castname="キラースティング|キラースラッシュ" duration="3.7"/>
+    <entry t="205.2" castname="線誘導開始" sync="false" tts=""/>
+    <entry t="206.4" text="アラームフェロモン" castname="アラームフェロモン" duration="2.7"/>
+    <entry t="245.9" text="移行待ち" castname="ハニー・B・ライヴ【2nd】" duration="1.7" window="30 10"/>
+    <entry t="254.1" text="【2nd】" castname="ハニー・B・ライヴ【2nd】" sync="false"/>
+    <entry t="257.0" text="ラブX" castname="ラブドロップ|ラブレイン" duration="4.7"/>
+    <entry t="268.1" text="0:頭割り 1:塔踏み" castname="ラブ・ミー・テンダー" duration="3.7" tts="頭割りと塔踏み"/>
+    <entry t="291.0" text="内or外" castname="ハニーブラスト|ハニーツイスター" duration="5.2"/>
+    <entry t="305.6" text="ハニー・B・フィナーレ" castname="ハニー・B・フィナーレ" duration="4.7"/>
+    <entry t="324.0" text="ベノムX" castname="ベノムドロップ|ベノムレイン" duration="4.7"/>
+    <entry t="331.1" text="外周AoE捨て" castname="アラームフェロモン" duration="2.7" tts="外周AoE捨て"/>
+    <entry t="337.3" text="付与開始" castname="ポイズンスティング" duration="4.4"/>
+    <entry t="342.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="347.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="352.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="357.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="363.3" text="頭割り" castname="ビースティング" duration="3.7" tts="頭割り"/>
+    <entry t="371.5" text="強攻撃" castname="キラースティング|キラースラッシュ" duration="3.7"/>
+    <entry t="383.2" text="内or外" castname="ハニーブラスト|ハニーツイスター" duration="5.2"/>
+    <entry t="405.1" text="ハニー・B・ライヴ【3rd】" castname="ハニー・B・ライヴ【3rd】" duration="1.7" window="30 10"/>
+    <entry t="413.3" text="【3rd】" castname="ハニー・B・ライヴ【3rd】" sync="false"/>
+    <entry t="415.2" text="ラブX" castname="ラブドロップ|ラブレイン" duration="4.7"/>
+    <entry t="422.3" text="コンビネーション" castname="リング・ラブコンビネーション|ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="442.0" text="コンビネーション" castname="リング・ラブコンビネーション|ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="466.6" text="内or外" castname="ハニーブラスト|ハニーツイスター" duration="5.2"/>
+    <entry t="480.2" text="全体攻撃" castname="ハニー・B・フィナーレ" duration="4.7" tts="全体攻撃"/>
+    <entry t="493.2" castname="ぶっころす" sync="false" tts=""/>
+    <entry t="494.4" text="強攻撃" castname="キラースティング|キラースラッシュ" duration="3.7"/>
+    <entry t="510.8" text="ブラックハート / 全体攻撃" castname="ブラックハート" duration="0.7" window="30 10"/>
+    <entry t="527.0" text="全体" castname="ラブリーコール" duration="4.7" tts="全体"/>
+    <entry t="544.1" text="全体" castname="ラブリーコール" duration="4.7" tts="全体"/>
+    <entry t="561.2" text="全体" castname="ラブリーコール" duration="4.7" tts="全体"/>
+    <entry t="578.3" text="全体" castname="ラブリーコール" duration="4.7" tts="全体"/>
+    <entry t="595.3" castname="シアー・ハート・アタック" sync="false"/>
+    <entry t="605.3" castname="時間切れ" sync="false" tts=""/>
+  </phase>
+</timeline>

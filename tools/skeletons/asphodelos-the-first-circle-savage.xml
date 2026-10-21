@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：辺獄編1</content>
+  <title>万魔殿パンデモニウム零式：辺獄編1（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:44）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="1.7" castname="痛撃" duration="4.7"/>
+    <entry t="12.7" castname="結呪の魔鎖" duration="2.7"/>
+    <entry t="19.9" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="39.2" castname="懲罰撃" duration="11.2"/>
+    <entry t="53.8" castname="懲罰撃" sync="false"/>
+    <entry t="60.0" castname="懲罰連撃・聖" duration="4.7"/>
+    <entry t="68.5" castname="トゥルー・ホーリー" sync="false"/>
+    <entry t="72.6" castname="懲罰撃" duration="11.2"/>
+    <entry t="87.2" castname="懲罰撃" sync="false"/>
+    <entry t="93.4" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="109.6" castname="氷火の侵食" duration="1.7"/>
+    <entry t="117.3" castname="侵食執行" duration="9.7"/>
+    <entry t="129.5" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="139.7" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="155.9" castname="懲罰連撃・炎" duration="4.7"/>
+    <entry t="164.3" castname="トゥルー・フレア" sync="false"/>
+    <entry t="174.4" castname="光炎監獄" duration="6.7"/>
+    <entry t="189.5" castname="懲罰爆鎖" duration="11.2"/>
+    <entry t="204.1" castname="懲罰爆鎖" sync="false"/>
+    <entry t="212.3" castname="懲罰連撃・聖" duration="4.7"/>
+    <entry t="220.9" castname="トゥルー・ホーリー" sync="false"/>
+    <entry t="224.8" castname="懲罰爆鎖" duration="11.2"/>
+    <entry t="239.4" castname="懲罰爆鎖" sync="false"/>
+    <entry t="244.6" castname="時限の魔鎖" duration="3.7"/>
+    <entry t="253.7" castname="痛撃" duration="4.7"/>
+    <entry t="264.9" castname="監獄閉塞" duration="6.7"/>
+    <entry t="284.7" castname="結呪の四連魔鎖" duration="2.7"/>
+    <entry t="316.9" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="333.1" castname="氷火の侵食" duration="1.7"/>
+    <entry t="340.9" castname="侵食執行" duration="9.7"/>
+    <entry t="355.1" castname="懲罰撃" duration="11.2"/>
+    <entry t="369.7" castname="懲罰撃" sync="false"/>
+    <entry t="377.8" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="394.1" castname="光炎監獄" duration="6.7"/>
+    <entry t="408.9" castname="結呪の魔鎖" duration="2.7"/>
+    <entry t="418.0" castname="爆鎖" duration="4.7"/>
+    <entry t="426.2" castname="爆鎖" duration="4.7"/>
+    <entry t="436.4" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="448.6" castname="時限の魔鎖" duration="3.7"/>
+    <entry t="454.7" castname="懲罰連撃・炎" duration="4.7"/>
+    <entry t="463.2" castname="トゥルー・フレア" sync="false"/>
+    <entry t="473.4" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="487.3" castname="懲罰爆鎖" duration="11.2"/>
+    <entry t="501.9" castname="懲罰爆鎖" sync="false"/>
+    <entry t="505.0" castname="懲罰爆鎖" duration="11.2"/>
+    <entry t="519.7" castname="懲罰爆鎖" sync="false"/>
+    <entry t="522.8" castname="懲罰爆鎖" duration="11.2"/>
+    <entry t="537.4" castname="懲罰爆鎖" sync="false"/>
+    <entry t="548.6" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="557.8" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="567.0" castname="魔鎖乱流" duration="4.7"/>
+    <entry t="579.4" castname="辺獄送り" duration="11.7"/>
+  </phase>
+</timeline>

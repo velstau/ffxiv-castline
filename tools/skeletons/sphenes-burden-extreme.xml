@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極エターナルクイーン討滅戦</content>
+  <title>極エターナルクイーン討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（8:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="Phase One">
+    <entry t="13.0" castname="エーテルレヴィー" duration="2.7"/>
+    <entry t="26.1" castname="エーテルレヴィー" sync="false"/>
+    <entry t="28.2" castname="トリビュート" sync="false"/>
+    <entry t="35.3" castname="エーテルレヴィー" sync="false"/>
+    <entry t="37.3" castname="トリビュート" sync="false"/>
+    <entry t="44.5" castname="エーテルレヴィー" sync="false"/>
+    <entry t="46.5" castname="トリビュート" sync="false"/>
+    <entry t="54.8" castname="ヴァーチャルシフト" duration="4.7"/>
+    <entry t="65.0" castname="ロウ・オブ・ウィンド" duration="3.7"/>
+    <entry t="79.1" castname="レジティメート・フォース" duration="7.7"/>
+    <entry t="90.2" castname="レジティメート・フォース" sync="false"/>
+    <entry t="96.4" castname="ワールドシャッター" duration="4.7"/>
+    <entry t="108.6" castname="プロセキューション・ウォー" duration="4.7"/>
+    <entry t="116.7" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="119.8" castname="ディバイド・アンド・コンカー" duration="7.2"/>
+    <entry t="141.5" castname="ロイヤルドメイン" duration="4.7"/>
+    <entry t="154.7" castname="ヴァーチャルシフト" duration="4.7"/>
+    <entry t="164.8" castname="ロウ・オブ・アース" duration="3.7"/>
+    <entry t="172.0" castname="レジティメート・フォース" duration="7.7"/>
+    <entry t="183.1" castname="レジティメート・フォース" sync="false"/>
+    <entry t="193.2" castname="グラビティ・エンパイア" duration="6.7"/>
+    <entry t="206.4" castname="メテオインパクト" sync="false"/>
+    <entry t="213.6" castname="メテオインパクト" sync="false"/>
+    <entry t="222.7" castname="グラビティブロウ" duration="4.7"/>
+    <entry t="237.8" castname="ワールドシャッター" duration="4.7"/>
+    <entry t="250.1" castname="プロセキューション・ウォー" duration="4.7"/>
+    <entry t="258.2" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="261.3" castname="端末射出" duration="2.7"/>
+    <entry t="267.5" castname="アトミックレイ" duration="2.7"/>
+    <entry t="283.7" castname="アブソリュート・オーソリティ" duration="9.7"/>
+    <entry t="299.8" castname="アブソリュート・オーソリティ" sync="false"/>
+    <next to="p2" at="3.4" cast="エターナル・オーソリティ"/>
+  </phase>
+  <phase id="p2" name="Intermission">
+    <entry t="3.4" castname="エターナル・オーソリティ" duration="9.7"/>
+    <entry t="13.7" castname="エターナル・オーソリティ" sync="false"/>
+    <next to="p3" at="4.1" cast="ラディカルシフト"/>
+  </phase>
+  <phase id="p3" name="Phase Two">
+    <entry t="4.1" castname="ラディカルシフト" duration="10.7"/>
+    <entry t="23.3" castname="ラディカルシフト" duration="10.7"/>
+    <entry t="42.4" castname="ワールドシャッター" duration="4.7"/>
+    <entry t="54.6" castname="ディメンショナル・ディストーション" duration="3.7"/>
+    <entry t="64.8" castname="クイーンズハンド" duration="4.7"/>
+    <entry t="74.9" castname="ダイイングメモリー" sync="false"/>
+    <entry t="76.1" castname="ダイイングメモリー" sync="false"/>
+    <entry t="77.2" castname="ダイイングメモリー" sync="false"/>
+    <entry t="78.3" castname="ダイイングメモリー" sync="false"/>
+    <entry t="79.4" castname="ダイイングメモリー" sync="false"/>
+    <entry t="80.5" castname="ダイイングメモリー" sync="false"/>
+    <entry t="81.6" castname="ダイイングメモリー" sync="false"/>
+    <entry t="82.7" castname="ダイイングメモリー" sync="false"/>
+    <entry t="85.8" castname="バニッシュレイ" duration="4.7"/>
+    <entry t="112.1" castname="ラディカルシフト" duration="10.7"/>
+    <entry t="131.3" castname="ラディカルシフト" duration="10.7"/>
+    <entry t="150.5" castname="ワールドシャッター" duration="4.7"/>
+  </phase>
+</timeline>

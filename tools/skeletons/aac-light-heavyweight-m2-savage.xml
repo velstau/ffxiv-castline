@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級2</content>
+  <title>至天の座アルカディア零式：ライトヘビー級2（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:47）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="5.6" castname="ラブリーコール" duration="4.7"/>
+    <entry t="12.7" castname="ベノムレイン" duration="4.7"/>
+    <entry t="23.1" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="34.7" castname="ベノムドロップ" duration="4.7"/>
+    <entry t="41.9" castname="ハニーツイスター" duration="5.2"/>
+    <entry t="55.5" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="70.9" castname="ハニー・B・ライヴ【1st】" duration="1.7"/>
+    <entry t="82.1" castname="ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="98.7" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="133.0" castname="ラブシーカー" duration="2.7"/>
+    <entry t="146.1" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="163.4" castname="リング・ラブコンビネーション" duration="4.7"/>
+    <entry t="182.1" castname="ハニー・B・フィナーレ" duration="4.7"/>
+    <entry t="197.3" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="206.4" castname="アラームフェロモン" duration="2.7"/>
+    <entry t="245.9" castname="ハニー・B・ライヴ【2nd】" duration="1.7"/>
+    <entry t="257.0" castname="ラブレイン" duration="4.7"/>
+    <entry t="268.1" castname="ラブ・ミー・テンダー" duration="3.7"/>
+    <entry t="291.0" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="305.6" castname="ハニー・B・フィナーレ" duration="4.7"/>
+    <entry t="324.0" castname="ベノムレイン" duration="4.7"/>
+    <entry t="331.1" castname="アラームフェロモン" duration="2.7"/>
+    <entry t="337.3" castname="ポイズンスティング" duration="4.4"/>
+    <entry t="342.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="347.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="352.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="357.3" castname="ポイズンスティング" sync="false"/>
+    <entry t="363.3" castname="ビースティング" duration="3.7"/>
+    <entry t="371.5" castname="キラースラッシュ" duration="3.7"/>
+    <entry t="383.2" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="405.1" castname="ハニー・B・ライヴ【3rd】" duration="1.7"/>
+    <entry t="415.2" castname="ラブドロップ" duration="4.7"/>
+    <entry t="422.3" castname="ラウンド・ラブコンビネーション" duration="4.7"/>
+    <entry t="442.0" castname="リング・ラブコンビネーション" duration="4.7"/>
+    <entry t="466.6" castname="ハニーブラスト" duration="5.2"/>
+    <entry t="480.2" castname="ハニー・B・フィナーレ" duration="4.7"/>
+    <entry t="494.4" castname="キラースティング" duration="3.7"/>
+    <entry t="510.8" castname="ブラックハート" duration="0.7"/>
+    <entry t="527.0" castname="ラブリーコール" duration="4.7"/>
+    <entry t="544.1" castname="ラブリーコール" duration="4.7"/>
+    <entry t="561.2" castname="ラブリーコール" duration="4.7"/>
+    <entry t="578.3" castname="ラブリーコール" duration="4.7"/>
+  </phase>
+</timeline>

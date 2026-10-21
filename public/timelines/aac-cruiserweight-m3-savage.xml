@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：クルーザー級3</content>
+  <title>至天の座アルカディア零式：クルーザー級3</title>
+  <note>FFLogs の公開ランキングの討伐の記録（11:08）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1" name="Phase One">
+    <entry t="5.8" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="11.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="12.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="13.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="14.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="15.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="16.4" castname="スマッシュインパクト" sync="false"/>
+    <entry t="21.6" text="ウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="29.4" text="スマッシュ" castname="ニア・スマッシュ|ファー・スマッシュ" duration="2.7"/>
+    <entry t="32.6" castname="ブルートスイング" sync="false"/>
+    <entry t="34.5" castname="ブルートスマッシュ" sync="false"/>
+    <entry t="40.7" text="スポアサック" castname="スポアサック" duration="2.7" tts="遠隔離れる"/>
+    <entry t="49.3" text="スキャッターシード" castname="スキャッターシード" duration="3.7"/>
+    <entry t="65.0" text="衝撃" castname="衝撃" sync="false"/>
+    <entry t="72.1" text="沈黙" castname="リングゲイル" sync="false" tts="サイレンス！"/>
+    <entry t="90.1" text="石化の波動" castname="石化の波動" duration="3.7" tts="雑魚にかくれる"/>
+    <entry t="106.1" castname="爆発AOE" sync="false" tts="時計か反時計で移動"/>
+    <entry t="107.2" text="ストーンウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="108.6" castname="爆発AOE" sync="false" tts=""/>
+    <entry t="111.2" castname="爆発AOE" sync="false" tts=""/>
+    <entry t="115.1" text="スマッシュ" castname="ニア・スマッシュ|ファー・スマッシュ" duration="2.7"/>
+    <entry t="118.3" castname="ブルートスイング" sync="false"/>
+    <entry t="120.2" castname="ブルートスマッシュ" sync="false"/>
+    <entry t="122.9" text="頭割+基本散開" castname="ソーンスマッシュ" duration="2.7" tts="頭割りして基本散開"/>
+    <entry t="126.1" castname="ソーンスマッシュ" sync="false"/>
+    <entry t="140.6" text="北集合 / ボンバリアンスペシャル" castname="ネオ・ボンバリアンスペシャル" duration="7.7" tts="北集合、軽減"/>
+    <next to="p2" time="153"/>
+  </phase>
+  <phase id="p2" name="Phase Two">
+    <entry t="6.1" castname="アイビーグラップル" sync="false"/>
+    <entry t="15.9" text="ウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="23.7" text="スイング" castname="ブルートスイング" duration="3.7" tts="軽減忘れない"/>
+    <entry t="30.6" castname="ブルートスイング" sync="false"/>
+    <entry t="32.7" text="グラワー" castname="ブルートグラワー" duration="2.4" tts="散開"/>
+    <entry t="37.5" text="全体攻撃" castname="ソーンワールド" duration="4.7" tts="全体攻撃"/>
+    <entry t="50.7" text="デスマッチI" castname="ソーンデスマッチ" duration="2.7"/>
+    <entry t="55.8" text="ウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="63.7" text="タンク注意 / スパーク" castname="ブルートスパーク" duration="5.0" tts="距離減注意"/>
+    <entry t="75.1" text="スポアクラウド" castname="スポアクラウド" duration="3.7" tts="えーおーいーよける"/>
+    <entry t="86.2" text="スイング" castname="ブルートスイング" duration="3.7"/>
+    <entry t="93.1" castname="ブルートスイング" sync="false"/>
+    <entry t="95.3" text="グラワー" castname="ブルートグラワー" duration="2.4" tts="散開"/>
+    <entry t="100.1" text="全体攻撃" castname="ソーンワールド" duration="4.7" tts="全体攻撃"/>
+    <entry t="110.0" castname="線取り準備" sync="false" tts="線取り準備"/>
+    <entry t="111.3" text="デスマッチII" castname="ソーンデスマッチ・ビルディング" duration="2.7" tts="線がつく"/>
+    <entry t="122.4" text="タンク注意 / スパーク" castname="ブルートスパーク" duration="5.0" tts="距離減注意、全体攻撃"/>
+    <entry t="131.9" text="ブロウシード開始" castname="ブロウシード" duration="3.7"/>
+    <entry t="135.8" text="ブロウシード開始" castname="ブロウシード" sync="false"/>
+    <entry t="136.8" castname="シード1" sync="false" tts="1回目"/>
+    <entry t="141.1" text="ストーンウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="141.8" castname="シード2" sync="false" tts="2回目"/>
+    <entry t="147.0" castname="シード3" sync="false" tts="3回目"/>
+    <entry t="152.0" castname="シード4" sync="false" tts="4回目"/>
+    <entry t="166.9" castname="ヘビーシード" sync="false" tts="ペア割り"/>
+    <entry t="169.0" text="スイング" castname="ブルートスイング" duration="3.7" tts="軽減忘れない"/>
+    <entry t="175.8" castname="ブルートスイング" sync="false"/>
+    <entry t="177.9" text="グラワー" castname="ブルートグラワー" duration="2.4" tts="散開"/>
+    <entry t="182.7" text="全体攻撃" castname="ソーンワールド" duration="4.7"/>
+    <entry t="193.9" text="パワーダイブ" castname="パワーダイブ" duration="5.7" tts="軽減忘れない"/>
+    <next to="p3" at="15.7" cast="スマッシュインパクト"/>
+  </phase>
+  <phase id="p3" name="Phase Three">
+    <entry t="15.7" text="全体攻撃x7" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="20.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="22.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="23.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="24.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="25.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="26.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="27.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="32.6" text="ウェポン" castname="ストーンウェポン：ツイン" duration="1.7"/>
+    <entry t="41.2" text="ブルートスイング" castname="ブルートスイング" duration="2.7"/>
+    <entry t="46.9" castname="ブルートスイング" sync="false"/>
+    <entry t="49.0" text="全体攻撃" castname="ソーンワールド" sync="false" tts="全体攻撃"/>
+    <entry t="51.1" text="アイビーラリアット" castname="アイビーラリアット" duration="3.2"/>
+    <entry t="56.7" text="ブルートスイング" castname="ブルートスイング" duration="2.7" tts="軽減忘れない"/>
+    <entry t="62.4" castname="ブルートスイング" sync="false"/>
+    <entry t="64.5" text="グラワー" castname="ブルートグラワー" duration="0.4" tts="散開"/>
+    <entry t="67.3" text="タンク無敵" castname="ブルートダイブ" duration="3.7" tts="タンク無敵"/>
+    <entry t="76.5" text="全体攻撃x8" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="81.7" castname="スマッシュインパクト" sync="false"/>
+    <entry t="82.7" castname="スマッシュインパクト" sync="false"/>
+    <entry t="83.8" castname="スマッシュインパクト" sync="false"/>
+    <entry t="84.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="85.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="87.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="88.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="89.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="92.3" text="ストーンウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="100.1" text="スマッシュ" castname="ニア・スマッシュ|ファー・スマッシュ" duration="2.7"/>
+    <entry t="103.3" castname="ブルートスイング" sync="false"/>
+    <entry t="105.2" castname="ブルートスマッシュ" sync="false"/>
+    <entry t="113.1" castname="ウォール誘導" sync="false" tts="誘導注意"/>
+    <entry t="113.4" text="デスマッチIII" castname="ソーンデスマッチ・ウォール" duration="2.7"/>
+    <entry t="118.6" text="スポアサック" castname="スポアサック" duration="2.7" tts="遠近誘導注意"/>
+    <entry t="148.8" text="石化の波動" castname="石化の波動" duration="3.7"/>
+    <entry t="160.0" text="AoE+エラプ / スキャッターシード" castname="スキャッターシード" duration="3.7" tts="近接集合"/>
+    <entry t="177.2" text="頭割り+散開" castname="ソーンスマッシュ" duration="2.7" tts="頭割りから散開"/>
+    <entry t="180.4" castname="ソーンスマッシュ" sync="false"/>
+    <entry t="185.6" text="全体攻撃x8" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="190.8" castname="スマッシュインパクト" sync="false"/>
+    <entry t="191.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="193.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="194.0" castname="スマッシュインパクト" sync="false"/>
+    <entry t="195.1" castname="スマッシュインパクト" sync="false"/>
+    <entry t="196.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="197.2" castname="スマッシュインパクト" sync="false"/>
+    <entry t="198.3" castname="スマッシュインパクト" sync="false"/>
+    <entry t="206.5" text="ウェポン" castname="ストーンウェポン：ツイン" duration="1.7"/>
+    <entry t="216.5" text="AoE設置 / シード設置" castname="ブロウシード" duration="3.7" tts="えーおーいー設置"/>
+    <entry t="225.1" text="スイング" castname="ブルートスイング" duration="2.7"/>
+    <entry t="230.8" castname="ブルートスイング" sync="false"/>
+    <entry t="232.9" text="AoE設置 / ラリアット" castname="アイビーラリアット" duration="3.2" tts="えーおーいー設置"/>
+    <entry t="239.6" text="スイング" castname="ブルートスイング" duration="2.7"/>
+    <entry t="245.3" castname="ブルートスイング" sync="false"/>
+    <entry t="247.9" text="タンク無敵" castname="ブルートダイブ" duration="3.7" tts="タンク無敵"/>
+    <entry t="257.1" text="ウェポン" castname="ストーンウェポン" duration="1.7"/>
+    <entry t="264.9" text="スマッシュ" castname="ニア・スマッシュ|ファー・スマッシュ" duration="2.7"/>
+    <entry t="268.2" castname="ブルートスイング" sync="false"/>
+    <entry t="270.1" castname="ブルートスマッシュ" sync="false"/>
+    <entry t="274.2" text="全体攻撃x8" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃"/>
+    <entry t="279.4" castname="スマッシュインパクト" sync="false"/>
+    <entry t="280.5" castname="スマッシュインパクト" sync="false"/>
+    <entry t="281.6" castname="スマッシュインパクト" sync="false"/>
+    <entry t="282.6" castname="スマッシュインパクト" sync="false"/>
+    <entry t="283.7" castname="スマッシュインパクト" sync="false"/>
+    <entry t="284.8" castname="スマッシュインパクト" sync="false"/>
+    <entry t="285.8" castname="スマッシュインパクト" sync="false"/>
+    <entry t="286.9" castname="スマッシュインパクト" sync="false"/>
+    <entry t="296.3" text="最終詠唱 / 時間切れ" castname="アルティメット・ボンバリアンスペシャル" duration="9.7"/>
+  </phase>
+</timeline>

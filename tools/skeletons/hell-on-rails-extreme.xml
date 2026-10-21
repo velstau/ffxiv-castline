@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極グラシャラボラス討滅戦</content>
+  <title>極グラシャラボラス討滅戦（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:39）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="9.0" castname="オーバーブースト" duration="3.7"/>
+    <entry t="15.0" castname="ブーステッド・エクスプレス" duration="5.7"/>
+    <entry t="28.1" castname="オーバーブースト" duration="3.7"/>
+    <entry t="34.1" castname="ブーステッド・バキューム" duration="5.7"/>
+    <entry t="42.1" castname="ブーステッド・エミッション" sync="false"/>
+    <entry t="47.1" castname="アンリミテッドエクスプレス" duration="4.7"/>
+    <entry t="61.2" castname="オーバーブースト" duration="3.7"/>
+    <entry t="67.2" castname="随伴機出撃" duration="2.7"/>
+    <entry t="74.2" castname="ブーステッド・バキューム" duration="5.7"/>
+    <entry t="82.2" castname="ブーステッド・エミッション" sync="false"/>
+    <entry t="87.3" castname="オーバーブースト" duration="3.7"/>
+    <entry t="93.3" castname="サンダーバースト" duration="4.7"/>
+    <entry t="102.4" castname="ブーステッド・エクスプレス" duration="5.7"/>
+    <entry t="115.5" castname="アンリミテッドエクスプレス" duration="4.7"/>
+    <entry t="131.5" castname="サンダーバースト" duration="4.7"/>
+    <entry t="144.7" castname="果てしなき暴走" duration="4.7"/>
+    <entry t="259.1" castname="衝撃波" sync="false"/>
+    <entry t="269.2" castname="サンダーバースト" duration="4.7"/>
+    <entry t="276.3" castname="ディレールパウンド" duration="5.7"/>
+    <entry t="286.4" castname="ディレール" duration="4.8"/>
+    <entry t="302.7" castname="フラッシュサンダー" sync="false"/>
+    <entry t="309.7" castname="サンダーブレス" duration="5.7"/>
+    <entry t="318.2" castname="ヘッドライト" sync="false"/>
+    <entry t="322.8" castname="魔法陣展開" duration="1.7"/>
+    <entry t="328.8" castname="サンダーレイン" sync="false"/>
+    <entry t="339.9" castname="サンダーレイン" sync="false"/>
+    <entry t="351.0" castname="サンダーレイン" sync="false"/>
+    <entry t="370.1" castname="ヘッドライト" duration="5.7"/>
+    <entry t="378.6" castname="サンダーブレス" sync="false"/>
+    <entry t="382.1" castname="フラッシュサンダー" sync="false"/>
+    <entry t="389.2" castname="サンダーバースト" duration="4.7"/>
+    <entry t="398.3" castname="ディレールパウンド" duration="5.7"/>
+    <entry t="410.6" castname="ディレール" duration="4.8"/>
+    <entry t="425.9" castname="サイコキネシス" duration="6.7"/>
+    <entry t="434.9" castname="フラッシュサンダー" sync="false"/>
+    <entry t="441.0" castname="サイコキネシス" duration="6.7"/>
+    <entry t="450.0" castname="サンダーバースト" duration="4.7"/>
+    <entry t="457.2" castname="サイコキネシス" duration="6.7"/>
+    <entry t="466.2" castname="フラッシュサンダー" sync="false"/>
+    <entry t="475.3" castname="ディレールパウンド" duration="5.7"/>
+    <entry t="487.9" castname="ディレール" duration="4.8"/>
+    <entry t="503.1" castname="オーバーブースト" duration="3.7"/>
+    <entry t="509.2" castname="随伴機出撃" duration="2.7"/>
+    <entry t="518.2" castname="サンダーブレス" duration="5.7"/>
+    <entry t="526.7" castname="ヘッドライト" sync="false"/>
+    <entry t="533.2" castname="サイコキネシス" duration="6.7"/>
+    <entry t="542.3" castname="フラッシュサンダー" sync="false"/>
+    <entry t="550.3" castname="ブーステッド・バキューム" duration="5.7"/>
+    <entry t="558.3" castname="ブーステッド・エミッション" sync="false"/>
+    <entry t="563.3" castname="サンダーバースト" duration="4.7"/>
+    <entry t="572.4" castname="オーバーブースト" duration="3.7"/>
+    <entry t="578.4" castname="魔法陣展開" duration="1.7"/>
+    <entry t="584.5" castname="サンダーレイン" sync="false"/>
+    <entry t="595.6" castname="サンダーレイン" sync="false"/>
+    <entry t="608.7" castname="フラッシュサンダー" sync="false"/>
+    <entry t="616.5" castname="ブーステッド・エクスプレス" duration="5.7"/>
+    <entry t="629.5" castname="ヘッドライト" duration="5.7"/>
+    <entry t="638.0" castname="サンダーブレス" sync="false"/>
+  </phase>
+</timeline>

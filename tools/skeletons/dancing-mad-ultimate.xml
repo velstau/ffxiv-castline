@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶妖星乱舞</content>
+  <title>絶妖星乱舞（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（18:48）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Kefka">
+    <next to="p2" at="7.3" cast="終末の双腕"/>
+  </phase>
+  <phase id="p2" name="P2: Forsaken Kefka">
+    <entry t="7.3" castname="終末の双腕" duration="4.7"/>
+    <entry t="20.5" castname="ミッシング" duration="6.7"/>
+    <entry t="43.6" castname="過去の終焉" duration="6.1"/>
+    <entry t="50.4" castname="過去の終焉" sync="false"/>
+    <entry t="56.7" castname="消滅の脚" duration="4.7"/>
+    <entry t="64.7" castname="過去の終焉" duration="6.1"/>
+    <entry t="71.4" castname="過去の終焉" sync="false"/>
+    <entry t="77.6" castname="消滅の脚" duration="4.7"/>
+    <entry t="85.6" castname="未来の終焉" duration="6.1"/>
+    <entry t="92.4" castname="未来の終焉" sync="false"/>
+    <entry t="98.7" castname="消滅の脚" duration="4.7"/>
+    <entry t="106.7" castname="過去の終焉" duration="6.1"/>
+    <entry t="113.6" castname="過去の終焉" sync="false"/>
+    <entry t="119.8" castname="消滅の脚" duration="4.7"/>
+    <entry t="128.8" castname="裁きの光" duration="4.7"/>
+    <entry t="142.0" castname="トライン" duration="2.7"/>
+    <entry t="148.1" castname="破壊の翼" duration="3.7"/>
+    <entry t="158.3" castname="破壊の翼" duration="3.7"/>
+    <entry t="164.6" castname="終末の双腕" duration="4.7"/>
+    <next to="p3" at="0.1" cast="決戦"/>
+  </phase>
+  <phase id="p3" name="P3: Exdeath and Chaos">
+    <entry t="0.1" castname="決戦" duration="2.7"/>
+    <entry t="17.7" castname="バウル・オブ・アゴニー" duration="4.7"/>
+    <entry t="34.9" castname="サンダガ" duration="6.7"/>
+    <entry t="46.0" castname="サンダガ" duration="4.7"/>
+    <entry t="58.9" castname="ホリゾンタルインプロージョン" duration="4.7"/>
+    <entry t="79.2" castname="真空波" duration="7.7"/>
+    <entry t="79.3" castname="アンブラスマッシュ" duration="4.7"/>
+    <entry t="92.4" castname="エーテルリンク" sync="false"/>
+    <entry t="104.6" castname="サンダガ" duration="4.7"/>
+    <entry t="114.6" castname="決戦" duration="2.7"/>
+    <entry t="121.9" castname="サンダガ" duration="4.7"/>
+    <entry t="126.9" castname="じしん" duration="4.7"/>
+    <entry t="148.0" castname="ブラックホール" duration="2.7"/>
+    <entry t="158.2" castname="エーテルリンク" sync="false"/>
+    <entry t="163.4" castname="サンダガ" duration="4.7"/>
+    <entry t="171.6" castname="ダミングイーディクト" duration="4.7"/>
+    <entry t="199.0" castname="ダミングイーディクト" duration="4.7"/>
+    <entry t="204.7" castname="サンダガ" duration="4.7"/>
+    <entry t="225.2" castname="エーテルリンク" sync="false"/>
+    <entry t="239.5" castname="ホワイトホール" duration="4.7"/>
+    <entry t="239.5" castname="ホリゾンタルインプロージョン" duration="4.7"/>
+    <entry t="269.7" castname="ブリザガ" duration="2.7"/>
+    <entry t="273.2" castname="着弾せよ" duration="4.7"/>
+    <entry t="283.0" castname="ブリザガ" duration="3.7"/>
+    <entry t="283.3" castname="突出せよ" duration="4.7"/>
+    <entry t="300.1" castname="メテオ" duration="9.7"/>
+    <next to="p4" at="5.2" cast="おちょくりソウル"/>
+  </phase>
+  <phase id="p4" name="P4: Kefka Says">
+    <entry t="5.2" castname="おちょくりソウル" duration="4.7"/>
+    <entry t="14.8" castname="なぞなぞマジック" duration="4.7"/>
+    <entry t="15.2" castname="グランドクロス" duration="8.7"/>
+    <entry t="29.7" castname="なぞなぞマジック" duration="4.7"/>
+    <entry t="30.1" castname="グランドクロス" duration="8.7"/>
+    <entry t="44.9" castname="なぞなぞマジック" duration="4.7"/>
+    <entry t="45.0" castname="グランドクロス" duration="8.7"/>
+    <entry t="61.2" castname="無の氾濫" duration="4.7"/>
+    <entry t="71.9" castname="マジックチャージ" duration="2.7"/>
+    <entry t="78.2" castname="もりもりサンダガ" duration="4.7"/>
+    <entry t="88.3" castname="どきどきアルテマ" duration="4.7"/>
+    <entry t="96.2" castname="ひろげるブリザガ" duration="4.7"/>
+    <entry t="107.4" castname="マジックアウト" duration="6.7"/>
+    <entry t="127.2" castname="どきどきアルテマ" duration="4.7"/>
+    <next to="p5" at="3.1" cast="連続アルテマ"/>
+  </phase>
+  <phase id="p5" name="P5: Ultima Kefka">
+    <entry t="3.1" castname="連続アルテマ" duration="3.7"/>
+    <entry t="19.7" castname="フラッド" duration="4.7"/>
+    <entry t="32.8" castname="狂気のオーケストラ" duration="4.7"/>
+    <entry t="41.0" castname="狂気のオーケストラ" sync="false"/>
+    <entry t="54.6" castname="スリースターズ" duration="4.7"/>
+    <entry t="63.7" castname="二択のカタストロフ" duration="4.0"/>
+    <entry t="75.9" castname="二択のカタストロフ" duration="4.0"/>
+    <entry t="85.0" castname="連続アルテマ" duration="3.7"/>
+    <entry t="99.6" castname="混沌の終末" duration="3.7"/>
+    <entry t="115.8" castname="混沌の渦" duration="4.7"/>
+    <entry t="125.0" castname="狂気のオーケストラ" duration="4.7"/>
+    <entry t="133.1" castname="狂気のオーケストラ" sync="false"/>
+    <entry t="149.7" castname="ミッシング" duration="9.7"/>
+    <entry t="167.9" castname="ミッシング" sync="false"/>
+    <entry t="176.0" castname="ミッシング" sync="false"/>
+    <entry t="184.1" castname="ミッシング" sync="false"/>
+    <entry t="194.3" castname="ミッシング・ゼロ" duration="25.7"/>
+    <entry t="220.2" castname="ミッシング・ゼロ" sync="false"/>
+  </phase>
+</timeline>

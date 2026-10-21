@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>至天の座アルカディア零式：ライトヘビー級1</content>
+  <title>至天の座アルカディア零式：ライトヘビー級1（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:22）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="9.7" castname="クアドラプルネイル" duration="4.7"/>
+    <entry t="16.7" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="19.7" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="22.7" castname="クアドラプルネイル" duration="0.7"/>
+    <entry t="28.8" castname="ビスケットメーカー" duration="4.7"/>
+    <entry t="35.8" castname="ビスケットメーカー" sync="false"/>
+    <entry t="47.9" castname="ナインライヴス" duration="2.7"/>
+    <entry t="53.0" castname="デュアルネイル" duration="4.7"/>
+    <entry t="63.0" castname="ソウルシェード" duration="2.7"/>
+    <entry t="77.4" castname="ナインライヴス" duration="2.7"/>
+    <entry t="84.4" castname="ダブルクロウ" duration="3.7"/>
+    <entry t="91.5" castname="ソウルシェード" duration="2.7"/>
+    <entry t="96.6" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="102.6" castname="リーピング・クアドラプルネイル" sync="false"/>
+    <entry t="104.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="107.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="110.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="118.6" castname="ブラッディースクラッチ" duration="4.7"/>
+    <entry t="137.0" castname="マウサーラッシュ" duration="9.7"/>
+    <entry t="165.0" castname="コピーキャット" duration="2.7"/>
+    <entry t="172.2" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="180.2" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="183.3" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="191.3" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="194.5" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="202.4" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="205.6" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="213.6" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="219.8" castname="ビスケットメーカー" duration="4.7"/>
+    <entry t="227.1" castname="ビスケットメーカー" sync="false"/>
+    <entry t="229.1" castname="キャッタクリスム・ゲイル" sync="false"/>
+    <entry t="231.1" castname="衝撃波" duration="5.7"/>
+    <entry t="254.3" castname="ナインライヴス" duration="2.7"/>
+    <entry t="259.4" castname="リーピング・デュアルネイル" duration="4.7"/>
+    <entry t="265.4" castname="リーピング・デュアルネイル" sync="false"/>
+    <entry t="270.4" castname="ソウルシェード" duration="2.7"/>
+    <entry t="275.4" castname="ナインライヴス" duration="2.7"/>
+    <entry t="280.7" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="286.7" castname="リーピング・クアドラプルネイル" sync="false"/>
+    <entry t="288.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="291.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="294.6" castname="リーピング・クアドラプルネイル" duration="0.7"/>
+    <entry t="297.7" castname="ソウルシェード" duration="2.7"/>
+    <entry t="320.9" castname="テンペストテアー" duration="4.7"/>
+    <entry t="344.0" castname="ネイルチッパー" duration="6.7"/>
+    <entry t="367.0" castname="ブラッディースクラッチ" duration="4.7"/>
+    <entry t="385.4" castname="マウサーラッシュ" duration="9.7"/>
+    <entry t="413.5" castname="コピーキャット" duration="2.7"/>
+    <entry t="420.7" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="424.8" castname="スプレッドネイル" duration="4.7"/>
+    <entry t="428.7" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="433.0" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="437.0" castname="スプレッドネイル" duration="4.7"/>
+    <entry t="440.9" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="445.2" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="449.4" castname="オーバーシャドウ" duration="4.7"/>
+    <entry t="453.2" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="454.6" castname="オーバーシャドウ" sync="false"/>
+    <entry t="457.8" castname="エレベート・エビセレート" duration="5.3"/>
+    <entry t="461.9" castname="オーバーシャドウ" duration="4.7"/>
+    <entry t="465.8" castname="エレベート・エビセレート" sync="false"/>
+    <entry t="467.1" castname="オーバーシャドウ" sync="false"/>
+    <entry t="472.2" castname="ビスケットメーカー" duration="4.7"/>
+    <entry t="479.4" castname="ビスケットメーカー" sync="false"/>
+    <entry t="482.4" castname="キャッタクリスム・ゲイル" sync="false"/>
+    <entry t="484.4" castname="衝撃波" duration="5.7"/>
+    <entry t="508.8" castname="レイニングキャッツ" duration="5.7"/>
+    <entry t="515.7" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="521.8" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="527.8" castname="レイニングキャッツ" duration="4.7"/>
+    <entry t="541.9" castname="コピーキャット" duration="2.7"/>
+    <entry t="549.6" castname="キャッツレイド" duration="12.7"/>
+    <entry t="562.6" castname="キャッツレイド" sync="false"/>
+  </phase>
+</timeline>
