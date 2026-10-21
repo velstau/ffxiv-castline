@@ -2,6 +2,7 @@
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
+import { isBlackFrame } from './blackout.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
@@ -41,6 +42,7 @@ const state = {
     contentMissWarned: false,
     regionsLogged: '',
     lastCast: {}, // 読み取り元ごとに、最後に記録した技名（ログは変わったときだけ）
+    lastBlack: false, // 前のフレームが暗転だったか（ログは変わったときだけ）
     spoken: new Set(),
     spokenStartAt: null,
     lastRender: 0,
@@ -368,13 +370,15 @@ async function tick({ bitmap: frame, at }) {
     }
     const engine = state.engine;
     const inCombat = engine?.status(at).state === 'combat';
+    const black = isBlackFrame(frame); // 全滅の暗転（読み取りの前に見る）
     const wantContent = !inCombat && at - state.lastContentAt >= CONTENT_EVERY_MS;
     if (wantContent) {
         state.lastContentAt = at;
     }
     const obs = await state.ocr.readFrame(frame, state.regions, {
         content: wantContent ? state.contents : null,
-        countdown: !inCombat,
+        // 戦闘中でも、敵が見えないときはカウントダウンを読む（全滅の暗転を読み逃したときの次の戦闘）
+        countdown: !inCombat || (engine.hasEnmity && !engine.enmityShown),
         // 技名は戦闘中だけ、いまの時刻の前後にある技に絞って照合する
         castCandidates: inCombat ? engine.castCandidates(at) : [],
     });
@@ -404,6 +408,11 @@ async function tick({ bitmap: frame, at }) {
         renderTimelineStatus();
     }
     if (engine && engine === state.engine) {
+        if (black !== state.lastBlack && engine.status(at).state === 'combat') {
+            log(black ? '画面が暗転しました' : '画面の暗転が終わりました', at);
+        }
+        state.lastBlack = black;
+        engine.blackout(at, black);
         if (obs.countdown?.started) {
             engine.started(at);
         } else if (obs.countdown) {

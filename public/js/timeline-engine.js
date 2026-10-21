@@ -26,7 +26,12 @@ const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、�
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
 export const ENMITY_ON_MIN_MS = 1000;
-export const ENMITY_OFF_END_MS = 3000; // 戦闘中に敵対リストがこれ以上消えていたら、戦闘終了（全滅・討伐）とみなす
+// 戦闘の終わり（2026-10-21 のユーザーの確認）: 全滅すると画面が暗転し、HUD も消える（「全滅」の表示は出ない）。
+// 一方、フェーズの移り変わりでも敵対リスト・HP・詠唱バーが消えるコンテンツがある（絶もうひとつの未来）ので、敵が消えただけでは終わらせない
+export const BLACKOUT_END_MS = 2000; // 戦闘中に画面全体の暗転がこれ以上続いたら、全滅とみなす
+export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_HP 以下になった後、敵対リストがこれ以上消えたら討伐とみなす
+export const ENEMY_GONE_END_MS = 90000; // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く）
+const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなくても討伐とみなす HP
 
 /** タイムラインファイルの中身を確かめる。問題があれば日本語の説明の配列を返す（空なら問題なし） */
 export function validateTimeline(data) {
@@ -100,6 +105,7 @@ export class TimelineEngine {
         this.holdUntilEnmityOff = false; // 手動で止めた後、敵対リストが一度消えるまで敵対リストでは始めない
         this.lastHpAt = null;
         this.hp = null;
+        this.blackSince = null;
     }
 
     // ── 観測 ──
@@ -107,7 +113,12 @@ export class TimelineEngine {
     /** カウントダウンの吹き出し「戦闘開始まで N 秒！」を読んだ */
     countdown(at, seconds) {
         if (this.state === 'combat') {
-            return;
+            // 敵が見えないときのカウントダウンは、全滅の後の次の戦闘（暗転を読み逃しても数え直す）
+            if (this.enmityShown) {
+                return;
+            }
+            this.log(at, '戦闘中に敵が見えないままカウントダウンが出たので、次の戦闘として数え直す');
+            this.reset();
         }
         if (this.state !== 'countdown') {
             this.reset();
@@ -151,6 +162,21 @@ export class TimelineEngine {
             this.holdUntilEnmityOff = false;
         }
         this.advance(at);
+    }
+
+    /** 画面全体が暗転している（black = true）か。全滅の判定は advance */
+    blackout(at, black) {
+        if (black) {
+            this.blackSince ??= at;
+        } else {
+            this.blackSince = null;
+        }
+        this.advance(at);
+    }
+
+    end(at, reason) {
+        this.state = 'ended';
+        this.log(at, `戦闘終了（${reason}）`);
     }
 
     /** ボスの HP（%）。読めなければ null */
@@ -344,10 +370,21 @@ export class TimelineEngine {
         if (this.state !== 'combat') {
             return;
         }
-        if (this.hasEnmity && this.enmityOffSince !== null && at - this.enmityOffSince >= ENMITY_OFF_END_MS) {
-            this.state = 'ended';
-            this.log(at, `戦闘終了（敵対リストが ${ENMITY_OFF_END_MS / 1000} 秒以上消えた）`);
+        if (this.blackSince !== null && at - this.blackSince >= BLACKOUT_END_MS) {
+            this.end(at, `画面が ${BLACKOUT_END_MS / 1000} 秒以上暗転した。全滅`);
             return;
+        }
+        if (this.hasEnmity && this.enmityOffSince !== null) {
+            const off = at - this.enmityOffSince;
+            const lastPhase = (this.phase?.next ?? []).length === 0;
+            if (lastPhase && this.hp !== null && this.hp <= KILL_HP && off >= ENMITY_OFF_END_MS) {
+                this.end(at, `最後のフェーズで HP ${this.hp}% の後に敵対リストが消えた。討伐`);
+                return;
+            }
+            if (off >= ENEMY_GONE_END_MS) {
+                this.end(at, `敵対リストが ${ENEMY_GONE_END_MS / 1000} 秒以上消えたまま`);
+                return;
+            }
         }
         // 時間で移るフェーズは、何度でも続けて移れる（長く止まっていた場合）
         for (let guard = 0; guard < 20; guard++) {

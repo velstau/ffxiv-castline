@@ -2,7 +2,7 @@
 // 時刻は 2026-10-20 の連続読み取りの実測ログ（煉獄編4 零式、カウントダウン 16 秒）をもとにしている。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS } from '../public/js/timeline-engine.js';
+import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS, ENEMY_GONE_END_MS, BLACKOUT_END_MS } from '../public/js/timeline-engine.js';
 
 // 19:08:00.0 を 0 とした ms
 const T = (s) => Date.UTC(2026, 9, 20, 10, 8, 0) + Math.round(s * 1000);
@@ -190,15 +190,77 @@ test('敵対リスト: カウントダウンなしの開始、早すぎる開始
     enmityFrom(e, 26.5, 27.5, true);
     assert.equal(e.status(T(27.5)).state, 'combat');
     assert.equal(sec(e.startAt), 26.1);
+    // 敵対リストが消えただけでは終わらない（フェーズの移り変わり）。長く消えたままなら終わる
     e.enmity(T(100), false);
-    assert.equal(e.status(T(100 + ENMITY_OFF_END_MS / 1000 - 0.1)).state, 'combat');
-    assert.equal(e.status(T(100 + ENMITY_OFF_END_MS / 1000)).state, 'ended');
+    assert.equal(e.status(T(100 + ENMITY_OFF_END_MS / 1000 + 10)).state, 'combat');
+    assert.equal(e.status(T(100 + ENEMY_GONE_END_MS / 1000)).state, 'ended');
+});
+
+// 画面の暗転を 0.5 秒ごとに読んだ結果を渡す
+function blackFrom(e, from, to, black) {
+    for (let s = from; s <= to + 1e-9; s += 0.5) {
+        e.blackout(T(s), black);
+    }
+}
+
+test('全滅: 画面全体の暗転が続いたら終わる。一瞬の暗転では終わらない', () => {
+    const { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 30, true);
+    blackFrom(e, 30.5, 31.5, true);
+    blackFrom(e, 32, 33, false);
+    assert.equal(e.status(T(33)).state, 'combat');
+    blackFrom(e, 40, 40 + BLACKOUT_END_MS / 1000, true);
+    assert.equal(e.status(T(40 + BLACKOUT_END_MS / 1000)).state, 'ended');
+});
+
+test('討伐: 最後のフェーズで HP が少ないときだけ、敵対リストが消えたら終わる', () => {
+    // 最後ではないフェーズ（p2）で HP 1% → 敵対リストが消えても終わらない（フェーズの移り変わり）
+    let { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 5, true);
+    e.hpPercent(T(5.2), 1);
+    assert.equal(e.status(T(5.2)).phase.id, 'p2');
+    for (let s = 5.5; s <= 15; s += 0.5) {
+        e.enmity(T(s), false);
+        e.hpPercent(T(s), 1); // p2 のまま（HP を読めている間は p3 へ移らない）
+    }
+    assert.equal(e.status(T(15)).phase.id, 'p2');
+    assert.equal(e.status(T(15)).state, 'combat');
+
+    // 最後のフェーズ（p3）で HP 2% → 敵対リストが 3 秒消えたら討伐
+    ({ e } = engine({ hasEnmity: true }));
+    enmityFrom(e, 0, 4.5, true);
+    e.hpPercent(T(5), 40); // → p2
+    e.hpPercent(T(6), null); // HP が 3 秒読めない → p3
+    enmityFrom(e, 6.5, 19.5, true);
+    e.hpPercent(T(20), 2);
+    enmityFrom(e, 20.5, 30, true);
+    assert.equal(e.status(T(20)).phase.id, 'p3');
+    enmityFrom(e, 30.5, 33, false);
+    assert.equal(e.status(T(33)).state, 'combat');
+    e.enmity(T(33.5), false);
+    assert.equal(e.status(T(33.5)).state, 'ended');
+});
+
+test('全滅の暗転を読み逃しても、敵が見えないときのカウントダウンで数え直す', () => {
+    const { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 30, true);
+    enmityFrom(e, 30.5, 50, false);
+    assert.equal(e.status(T(50)).state, 'combat');
+    e.countdown(T(60), 16);
+    assert.equal(e.status(T(61)).state, 'countdown');
+    assert.equal(sec(e.status(T(61)).predictedStart), 76);
+    // 敵対リストが出ている（戦闘中）ときのカウントダウンは無視する
+    const { e: e2 } = engine({ hasEnmity: true });
+    enmityFrom(e2, 0, 30, true);
+    e2.countdown(T(30.2), 10);
+    assert.equal(e2.status(T(31)).state, 'combat');
 });
 
 test('敵対リスト: 戦闘の後に一瞬だけ出ても、次の戦闘とはみなさない（2026-10-20 の実測）', () => {
     const { e } = engine({ hasEnmity: true });
     enmityFrom(e, 12.5, 27, true); // 実測 12.3〜27.4 に表示
     enmityFrom(e, 27.5, 32, false);
+    blackFrom(e, 28, 31, true); // 全滅の暗転
     assert.equal(e.status(T(32)).state, 'ended');
     e.enmity(T(32.5), true); // 実測 32.5〜33.0 と 37.6〜38.1 に一瞬だけ表示
     enmityFrom(e, 33, 37.5, false);
