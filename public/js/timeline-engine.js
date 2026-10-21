@@ -114,6 +114,7 @@ export class TimelineEngine {
     reset() {
         this.state = 'idle'; // idle → countdown → combat → ended
         this.countdownSamples = new Map(); // 残り秒数 → 最初に見えた時刻
+        this.countdownSince = null; // カウントダウンが最初に見えた時刻
         this.startAt = null;
         this.phase = null;
         this.phaseStartAt = null;
@@ -147,8 +148,13 @@ export class TimelineEngine {
             return; // 手で止めたカウントダウンの続き
         }
         if (this.state !== 'countdown') {
+            // 敵対リストの見え方は画面の観察なので、数え直しても残す（消すと、前から出ていた文字が「カウントダウン中に出た」に見える。
+            // 2026-10-21 クルーザー級2: 文字の残った敵対リストの範囲で、カウントダウンが出るたびに「カウントダウン前に開始」になった）
+            const { enmityShown, enmityOnSince } = this;
             this.reset();
+            Object.assign(this, { enmityShown, enmityOnSince });
             this.state = 'countdown';
+            this.countdownSince = at;
         }
         // 吹き出しは 2 秒ほど出たままなので、各秒数は最初に見えた時刻だけを使う（後の時刻ほど予想が遅れる）
         if (!this.countdownSamples.has(seconds)) {
@@ -431,7 +437,9 @@ export class TimelineEngine {
             this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウンなし）');
         } else if (steady && this.state === 'countdown') {
             const predicted = this.predictedStart();
-            if (predicted === null || this.enmityOnSince < predicted - EARLY_PULL_MS) {
+            // カウントダウン前に殴ったとみなすのは、カウントダウンが出た後に敵対リストが出たときだけ（前から出ていたものは使わない）
+            const appeared = this.enmityOnSince >= this.countdownSince;
+            if (appeared && (predicted === null || this.enmityOnSince < predicted - EARLY_PULL_MS)) {
                 this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウン前に開始）');
             }
         }

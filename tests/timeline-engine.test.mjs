@@ -416,6 +416,21 @@ test('敵対リストの範囲に始めから文字があるうちは、敵対�
     assert.equal(sec(e3.startAt), 21.5); // カウントダウンの予想時刻で始まる
 });
 
+test('カウントダウンの前から出ていた敵対リストの文字では「カウントダウン前に開始」にしない（2026-10-21 クルーザー級2）', () => {
+    // 手で止めた後も範囲に文字が出たまま（ほかの表示にかかっている）。動画を巻き戻してカウントダウンからやり直した
+    const { e, log } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 10, true);
+    e.halt(T(10.5));
+    enmityFrom(e, 11, 12, true);
+    e.countdown(T(12), 16); // 予想 28
+    enmityFrom(e, 12.5, 27, true);
+    assert.equal(e.status(T(27)).state, 'countdown');
+    assert.ok(!log.some((l) => l.includes('カウントダウン前に開始')));
+    enmityFrom(e, 27.5, 29, true);
+    assert.equal(e.status(T(29)).state, 'combat');
+    assert.equal(sec(e.startAt), 28); // 予想時刻で始まる
+});
+
 test('手で止めた後は、画面に残った「戦闘開始！」では始めない', () => {
     const { e } = engine();
     e.countdown(T(10), 5);
