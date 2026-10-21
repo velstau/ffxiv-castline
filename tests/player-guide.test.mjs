@@ -10,11 +10,11 @@ const base = {
 const kinds = (r) => Object.fromEntries(r.steps.map((s) => [s.id, s.kind]));
 const step = (r, id) => r.steps.find((s) => s.id === id);
 
-test('はじめて: 範囲を決める手順が「いま」。タイムラインは自動で済み、読み上げ・小窓は飛ばせる', () => {
+test('はじめて: 範囲を決める手順が「いま」。タイムラインは自動で済み、読み上げは飛ばせる', () => {
     const r = guideSteps(base);
     assert.equal(r.current, 'setup');
     assert.deepEqual(kinds(r), { setup: 'todo', timeline: 'done', tts: 'todo', capture: 'todo', pip: 'todo', play: 'todo' });
-    assert.ok(step(r, 'tts').optional && step(r, 'pip').optional);
+    assert.ok(step(r, 'tts').optional && !step(r, 'pip').optional);
     assert.match(step(r, 'capture').text, /25%/);
 });
 
@@ -32,7 +32,12 @@ test('取り込み中: 画面の大きさで範囲を見る。戦闘の開始の
     assert.equal(guideSteps({ ...running, frame: missingStart }).current, 'setup');
     assert.equal(step(guideSteps({ ...running, frame: missingStart, autoRegions: false }), 'setup').kind, 'ng');
     const ok = guideSteps({ ...running, frame: { key: '2560×1440', missing: [{ id: 'hp', label: 'HP' }] } });
-    assert.equal(ok.current, 'play');
+    assert.equal(ok.current, 'pip');
+    assert.equal(guideSteps({ ...running, frame: { key: 'x', missing: [] }, pipOpen: true }).current, 'play');
+    // 小窓が使えないブラウザでは飛ばす
+    const noPip = guideSteps({ ...running, frame: { key: 'x', missing: [] }, pipSupported: false });
+    assert.equal(noPip.current, 'play');
+    assert.equal(step(noPip, 'pip').kind, 'ng');
     assert.equal(step(ok, 'setup').kind, 'done');
 });
 

@@ -7,7 +7,7 @@ export const GUIDE_STEPS = [
     { id: 'timeline', title: '使うタイムラインを選ぶ' },
     { id: 'tts', title: '読み上げを試す', optional: true },
     { id: 'capture', title: 'ゲーム画面の取り込みを始める' },
-    { id: 'pip', title: '小窓で開く', optional: true },
+    { id: 'pip', title: '小窓で開く' }, // 小窓で使うのが前提（2026-10-21 のユーザーの指摘）。使えないブラウザでは飛ばす
     { id: 'play', title: 'ゲームに戻って戦闘を始める' },
 ];
 
@@ -76,7 +76,7 @@ export function guideSteps(c) {
                 : { done: false, text: '準備ができました。' };
 
     s.pip = !c.pipSupported
-        ? { done: false, text: 'このブラウザでは使えません（Chrome か Edge の新しい版で使えます）。' }
+        ? { done: true, ng: true, text: 'このブラウザでは使えません（Chrome か Edge の新しい版で使えます）。この画面の「タイムライン」で見てください。' }
         : c.pipOpen ? { done: true, text: '小窓を開いています。' } : { done: false, text: '開いていません。' };
 
     const PLAY_TEXT = {
