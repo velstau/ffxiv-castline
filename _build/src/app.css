@@ -1254,3 +1254,77 @@ label.field,
     font-variant-numeric: tabular-nums;
     text-align: right;
 }
+
+/* =========================================================================
+ * タイムラインを作る（generator.html）
+ * ========================================================================= */
+
+@media (min-width: 64rem) {
+    .dash-grid.gen-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    }
+}
+
+.panel-no {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: calc(28 / 16 * 1rem);
+    height: calc(28 / 16 * 1rem);
+    border-radius: var(--radius-full);
+    background-color: var(--color-lime-300);
+    color: var(--color-black);
+    @apply text-std-16B-170;
+}
+
+/* 中身が出るまでの案内。中身（次の要素）が出たら消す */
+.empty-note {
+    margin: 0;
+    color: var(--vw-mute);
+}
+
+.empty-note:has(+ :not([hidden])) {
+    display: none;
+}
+
+.check-list {
+    display: grid;
+    gap: calc(4 / 16 * 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.check-list label,
+.field-check {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(8 / 16 * 1rem);
+    min-height: calc(44 / 16 * 1rem);
+    padding-top: calc(8 / 16 * 1rem);
+}
+
+.check-list input,
+.field-check input {
+    margin-top: 0.15em;
+}
+
+.table-scroll {
+    max-height: calc(560 / 16 * 1rem);
+    overflow: auto;
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-8);
+}
+
+.table-scroll thead th {
+    position: sticky;
+    top: 0;
+    background-color: var(--vw-bg);
+}
+
+/* 空の状態の文（role=status。読み上げソフトに変化を伝えるため隠さない）と、中身がすべて隠れている行は、欄の間隔だけ詰める */
+.fields > .status:empty,
+.fields > .row:not(:has(> :not([hidden]):not(:empty))) {
+    margin-top: calc(-16 / 16 * 1rem);
+}
