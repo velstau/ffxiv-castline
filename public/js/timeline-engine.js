@@ -90,6 +90,10 @@ export class TimelineEngine {
         this.syncWindow = timeline.syncWindow ?? DEFAULT_SYNC_WINDOW;
         this.hasEnmity = options.hasEnmity ?? false;
         this.log = options.log ?? (() => {});
+        // 敵対リストの範囲が一度でも空だったか。始めから文字がある（範囲が別の表示にかかっている、止めた動画の画面など）うちは、
+        // 敵対リストでは始めない。敵対リストは「出てきた」ときが開始（2026-10-21、止めた動画の画面で勝手に始まった）
+        this.enmitySeenOff = false;
+        this.enmityStaleLogged = false;
         this.reset();
     }
 
@@ -160,6 +164,12 @@ export class TimelineEngine {
     /** 敵対リストが出ている（shown = true）か消えている。開始の判定は advance（続けて出ていた時間を見る） */
     enmity(at, shown) {
         this.enmityShown = shown;
+        if (!shown) {
+            this.enmitySeenOff = true;
+        } else if (!this.enmitySeenOff && !this.enmityStaleLogged) {
+            this.enmityStaleLogged = true;
+            this.log(at, '敵対リストの範囲に始めから文字があるので、一度消えるまで敵対リストでは始めない（戦闘前に文字が出ている場合は、範囲がずれています）');
+        }
         if (shown) {
             this.enmityOffSince = null;
             this.enmityOnSince ??= at;
@@ -352,7 +362,8 @@ export class TimelineEngine {
     // 時間で決まる変化を反映する
     advance(at) {
         // 敵対リストは ENMITY_ON_MIN_MS 続いてから「出た」とみなし、開始は出始めた時刻にさかのぼる
-        const steady = this.enmityShown && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
+        const usable = this.hasEnmity && this.enmitySeenOff;
+        const steady = usable && this.enmityShown && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
         if (steady && (this.state === 'idle' || this.state === 'ended') && !this.holdUntilEnmityOff) {
             this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウンなし）');
         } else if (steady && this.state === 'countdown') {
@@ -364,7 +375,7 @@ export class TimelineEngine {
         if (this.state === 'countdown') {
             const predicted = this.predictedStart();
             if (predicted !== null && at >= predicted) {
-                if (!this.hasEnmity) {
+                if (!usable) {
                     this.beginCombat(predicted, 'カウントダウンの予想時刻');
                 } else if (steady) {
                     this.beginCombat(predicted, 'カウントダウンの予想時刻と敵対リスト');

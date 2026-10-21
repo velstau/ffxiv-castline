@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spottingPenalty } from '../public/js/ctc.js';
-import { pickCast, parseCountdown, readCountdown } from '../public/js/readers.js';
+import { pickCast, parseCountdown, readCountdown, combineCandidates } from '../public/js/readers.js';
 
 const SKILLS = ['創世の真炎', 'オクタフレア・コンシーヴ', 'テトラフレア・コンシーヴ', '熾炎創火', '創獣炎舞'];
 
@@ -67,4 +67,17 @@ test('カウントダウン: 吹き出しが「戦闘開始」と「まで16秒�
     const started = { read: async () => ({ ms: 1, text: '戦闘開始！' }) };
     const one = { detect: async () => ({ ms: 1, boxes: [{ x: 0, y: 0, w: 100, h: 18 }] }) };
     assert.deepEqual((await readCountdown(one, started, null, {})).countdown, { started: true });
+});
+
+test('コンテンツ名: 1 回では差がつかない読み取りを足し合わせて決める', () => {
+    const a = '至天の座アルカディア零式：クルーザー級1';
+    const b = '至天の座アルカディア零式：クルーザー級2';
+    const n = '至天の座アルカディア：クルーザー級1';
+    const read = (pa, pb, pn) => ({ text: '至天の座アルカディア零式：クルーザー級l', ranked: [{ text: a, logP: pa }, { text: b, logP: pb }, { text: n, logP: pn }].sort((x, y) => y.logP - x.logP) });
+    assert.equal(combineCandidates([read(-3, -5, -9)]), null); // 1 回だけでは決めない
+    assert.equal(combineCandidates([read(-3, -5, -9), read(-4, -6, -10)]), null); // 差 4
+    assert.equal(combineCandidates([read(-3, -5, -9), read(-4, -6, -10), read(-2, -4.5, -8)]), a); // 差 6.5
+    // 1 位が読み取った文字と大きく違う（一覧に無いものを読んだ）なら決めない
+    const far = (p) => ({ text: '全然違う文字列', ranked: [{ text: a, logP: p }, { text: b, logP: p - 3 }] });
+    assert.equal(combineCandidates([far(-30), far(-30), far(-30)]), null);
 });

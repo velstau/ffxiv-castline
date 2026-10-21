@@ -41,6 +41,29 @@ export function pickCandidate(recognizer, read, candidates) {
     };
 }
 
+/**
+ * 1 回では決まらなかったコンテンツ名の読み取りを何回か足し合わせて決める（2026-10-21「コンテンツ名が読み取れない事が多い」）。
+ * 「クルーザー級1」と「クルーザー級2」、零式とノーマルのように 1〜2 文字しか違わない名前は、1 回の読み取りでは差がつかないことがある。
+ * 各回の上位の候補の対数尤度を足し、1 位と 2 位の差が CANDIDATE_MARGIN_MIN 以上で、1 位がどれかの回の読み取った文字と大きくは違わないときに決める。
+ * その回の上位に入らなかった候補は、その回のいちばん低い値とみなす（実際はそれ以下なので、決める側には甘くならない）
+ * @param {{text:string, ranked:{text:string, logP:number}[]}[]} reads
+ * @returns {string|null}
+ */
+export function combineCandidates(reads) {
+    const usable = reads.filter((r) => r.ranked?.length > 0);
+    if (usable.length < 2) {
+        return null;
+    }
+    const names = new Set(usable.flatMap((r) => r.ranked.map((c) => c.text)));
+    const totals = [...names].map((text) => ({
+        text,
+        logP: usable.reduce((sum, r) => sum + (r.ranked.find((c) => c.text === text)?.logP ?? r.ranked.at(-1).logP), 0),
+    })).sort((a, b) => b.logP - a.logP);
+    const [best, second] = totals;
+    const close = usable.some((r) => levenshtein(r.text, best.text) <= Math.max(2, Math.floor([...best.text].length * 0.3)));
+    return close && (!second || best.logP - second.logP >= CANDIDATE_MARGIN_MIN) ? best.text : null;
+}
+
 // 詠唱の技名: 減点（ocr.js の spot）がこの値以内の候補だけを当てはまるとみなす（e^6 ≒ 400 倍まで）
 export const CAST_PENALTY_MAX = 6;
 // 同じ長さの候補どうしで、減点の差がこれ未満なら決めない

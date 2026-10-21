@@ -2,6 +2,7 @@
 import './storage-migrate.js';
 import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
+import { combineCandidates } from './readers.js';
 import { isBlackFrame } from './blackout.js';
 import { TimelineEngine, castNames } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
@@ -14,6 +15,8 @@ import { Speech, DEFAULT_SPEECH, japaneseVoices, voicevoxStyles } from './speech
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
 const CONTENT_EVERY_MS = 5000; // コンテンツ名は戦闘外だけ、間引いて読む
+const CONTENT_RETRY_MS = 1000; // まだ決まっていない間は、これごとに読む
+const CONTENT_COMBINE = 5; // 1 回で決まらない読み取りを、直近これだけ足し合わせて決める
 // コンテンツ名の範囲があるのにこれだけ読めなければ、範囲がずれているかもしれないとログに出す（範囲があると自動では探さないため）
 const CONTENT_MISS_WARN_MS = 60000;
 const RENDER_EVERY_MS = 100;
@@ -37,6 +40,7 @@ const state = {
     regions: null,
     regionsKey: '',
     detectedContent: null,
+    contentReads: [], // 1 回では決まらなかったコンテンツ名の読み取り（combineCandidates で足し合わせる）
     lastContentAt: 0,
     contentMissSince: null,
     contentMissWarned: false,
@@ -301,7 +305,7 @@ async function start() {
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
-    Object.assign(state, { contentMissSince: null, contentMissWarned: false, regionsLogged: '' });
+    Object.assign(state, { contentMissSince: null, contentMissWarned: false, regionsLogged: '', contentReads: [] });
     updateButtons();
     setStatus('run-status', '読み取り中です。', 'ok');
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
@@ -371,7 +375,7 @@ async function tick({ bitmap: frame, at }) {
     const engine = state.engine;
     const inCombat = engine?.status(at).state === 'combat';
     const black = isBlackFrame(frame); // 全滅の暗転（読み取りの前に見る）
-    const wantContent = !inCombat && at - state.lastContentAt >= CONTENT_EVERY_MS;
+    const wantContent = !inCombat && at - state.lastContentAt >= (state.detectedContent ? CONTENT_EVERY_MS : CONTENT_RETRY_MS);
     if (wantContent) {
         state.lastContentAt = at;
     }
@@ -398,6 +402,17 @@ async function tick({ bitmap: frame, at }) {
             log(`コンテンツ名の範囲を ${CONTENT_MISS_WARN_MS / 1000} 秒読めていません（読めた文字: ${obs.content?.text || 'なし'}）。`
                 + 'コンテンツの中なら範囲がずれています。「読む範囲」でコンテンツ名を選んで「この範囲を消す」を押すと、自動で探し直します', at);
         }
+    }
+    if (obs.content && !obs.content.decided && obs.content.ranked) {
+        state.contentReads = [...state.contentReads, obs.content].slice(-CONTENT_COMBINE);
+        const combined = combineCandidates(state.contentReads);
+        if (combined) {
+            obs.content.decided = combined;
+            log(`コンテンツ名を ${state.contentReads.length} 回の読み取りを合わせて決めました`, at);
+        }
+    }
+    if (obs.content?.decided) {
+        state.contentReads = [];
     }
     if (obs.content?.decided && obs.content.decided !== state.detectedContent) {
         state.detectedContent = obs.content.decided;

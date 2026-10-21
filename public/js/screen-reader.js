@@ -48,28 +48,72 @@ export async function readFrame(ocr, frame, regions, want) {
 // ── コンテンツ名 ──
 
 const LINE_MIN_ASPECT = 3; // 1 行の文字らしい横長（幅が高さの 3 倍以上）だけを読む
+const JOIN_GAP = 1.2; // 同じ行の隣り合う部分は、すき間が文字の高さのこれ倍までならつなぐ
+
+/**
+ * 文字検出が 1 行を途中で分けて見つけた部分（「至天の座アルカデイ」と「ア零式：ヘビー級1」など）を、1 つの行の枠にまとめる。
+ * 縦の中心が近く（低いほうの高さの半分以内）、高さが同じくらいで、横のすき間が狭いものをつなぐ（2026-10-21、
+ * 動画でコンテンツ名の前半だけを読んで決まらなかった）
+ * @param {{x,y,w,h}[]} boxes
+ * @returns {{x,y,w,h, parts:number}[]} 上から、左から
+ */
+export function joinLineBoxes(boxes) {
+    const sorted = [...boxes].sort((a, b) => a.x - b.x);
+    const lines = [];
+    for (const b of sorted) {
+        const line = lines.find((l) => {
+            const h = Math.min(l.h, b.h);
+            return Math.abs((l.y + l.h / 2) - (b.y + b.h / 2)) <= h / 2
+                && Math.max(l.h, b.h) <= h * 1.5
+                && b.x - (l.x + l.w) <= h * JOIN_GAP;
+        });
+        if (line) {
+            const right = Math.max(line.x + line.w, b.x + b.w);
+            const bottom = Math.max(line.y + line.h, b.y + b.h);
+            line.y = Math.min(line.y, b.y);
+            line.w = right - line.x;
+            line.h = bottom - line.y;
+            line.parts++;
+        } else {
+            lines.push({ x: b.x, y: b.y, w: b.w, h: b.h, parts: 1 });
+        }
+    }
+    return lines.sort((a, b) => a.y - b.y || a.x - b.x);
+}
+
+/** 文字検出の枠を読む順に並べる: 行にまとめたもの、続いてまとめる前の部分（まとめたほうで決まらなかったとき用） */
+function contentBoxes(boxes) {
+    const joined = joinLineBoxes(boxes);
+    const parts = joined.some((l) => l.parts > 1) ? boxes : [];
+    return [...joined, ...parts].filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
+}
 
 /**
  * 範囲の中の文字の行を探して読み、候補のどれかに決まった行を返す。範囲は長い名前も入るよう広めに取るので、
  * 範囲全体を 1 行として読むと背景の模様まで読んでしまう。行が見つからなければ範囲全体を 1 行として読む。
- * @returns {Promise<{text:string, decided:string|null}>}
+ * 決まらなければ、1 位と 2 位の差がいちばん大きかった行の上位の候補（ranked）を返す（何回かの読み取りを足し合わせて決めるため）
+ * @returns {Promise<{text:string, decided:string|null, ranked?:{text:string, logP:number}[]}>}
  */
 export async function readContent(ocr, frame, rect, names) {
-    const boxes = (await ocr.detector.detect(frame, rect)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
-    let text = '';
+    const boxes = contentBoxes((await ocr.detector.detect(frame, rect)).boxes);
+    let best = null;
     for (const box of boxes.length > 0 ? boxes : [rect]) {
         const read = await ocr.recognizer.read(frame, box);
         if (read.text === '') {
             continue;
         }
-        const decided = pickCandidate(ocr.recognizer, read, names).decided;
-        if (decided) {
-            return { text: read.text, decided };
+        const pick = pickCandidate(ocr.recognizer, read, names);
+        if (pick.decided) {
+            return { text: read.text, decided: pick.decided };
         }
-        text ||= read.text;
+        if (!best || pick.margin > best.margin) {
+            best = { text: read.text, margin: pick.margin, ranked: pick.ranked.slice(0, CONTENT_KEEP) };
+        }
     }
-    return { text, decided: null };
+    return best ? { text: best.text, decided: null, ranked: best.ranked } : { text: '', decided: null };
 }
+
+const CONTENT_KEEP = 8; // 足し合わせるために返す上位の候補の数
 
 const FIND_TILE = 960; // 検出のモデルは 1 辺 960px まで縮めずに読める
 const FIND_OVERLAP = 64;
@@ -113,7 +157,7 @@ export async function findContent(ocr, frame, names, onProgress = () => {}, { lo
 
 /** 区画の中の行を順に読み、コンテンツ名に決まった最初の行を返す（findContent の 1 区画分） */
 export async function readContentLines(ocr, frame, area, names) {
-    const boxes = (await ocr.detector.detect(frame, area)).boxes.filter((b) => b.w >= b.h * LINE_MIN_ASPECT);
+    const boxes = contentBoxes((await ocr.detector.detect(frame, area)).boxes);
     for (const box of boxes) {
         const read = await ocr.recognizer.read(frame, box);
         const name = read.text === '' ? null : pickCandidate(ocr.recognizer, read, names).decided;

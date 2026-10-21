@@ -38,6 +38,9 @@ const timeline = {
 function engine(options = {}) {
     const log = [];
     const e = new TimelineEngine(timeline, { ...options, log: (at, m) => log.push(`${sec(at).toFixed(1)} ${m}`) });
+    if (options.hasEnmity && !options.staleEnmity) {
+        e.enmity(T(-60), false); // 戦闘前は敵対リストの範囲が空だった
+    }
     return { e, log };
 }
 
@@ -335,4 +338,23 @@ test('カウントダウン中、開始の予想より大きく早い「戦闘�
     assert.equal(e.status(T(11)).state, 'countdown');
     e.started(T(26.2));
     assert.equal(e.status(T(26.3)).state, 'combat');
+});
+
+test('敵対リストの範囲に始めから文字があるうちは、敵対リストでは始めない（止めた動画の画面）', () => {
+    const { e, log } = engine({ hasEnmity: true, staleEnmity: true });
+    enmityFrom(e, 0, 10, true);
+    assert.equal(e.status(T(10)).state, 'idle');
+    assert.ok(log.some((l) => l.includes('始めから文字がある')));
+    // カウントダウンは敵対リストを見ずに予想時刻で始める
+    e.countdown(T(11), 5);
+    enmityFrom(e, 11.5, 16.5, true);
+    assert.equal(e.status(T(16.5)).state, 'combat');
+    assert.equal(sec(e.startAt), 16);
+    // 一度消えてから出れば、敵対リストで始まる
+    const { e: e2 } = engine({ hasEnmity: true, staleEnmity: true });
+    enmityFrom(e2, 0, 5, true);
+    enmityFrom(e2, 5.5, 8, false);
+    enmityFrom(e2, 9, 10, true);
+    assert.equal(e2.status(T(10)).state, 'combat');
+    assert.equal(sec(e2.startAt), 9);
 });
