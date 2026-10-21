@@ -9,7 +9,9 @@ import { parseTimelineXml } from './timeline-xml.js';
 import { upcomingRows, iconProblems } from './timeline-view.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
-import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey } from './regions.js';
+import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey, loadAll } from './regions.js';
+import { GUIDE_STEPS, guideSteps } from './player-guide.js';
+import { icon } from './icons.js';
 import { Pip, pipSupported } from './pip.js';
 import { Speech, DEFAULT_SPEECH, japaneseVoices, voicevoxStyles } from './speech.js';
 
@@ -52,6 +54,10 @@ const state = {
     spokenStartAt: null,
     lastRender: 0,
     lastPrepare: 0,
+    ocrError: false,
+    timelineError: '',
+    ttsTested: null, // 読み上げの試験の結果（'ok' | 'ng'）
+    guideKey: '',
 };
 const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS, {}) };
 settings.speech = { ...DEFAULT_SPEECH, ...(settings.speech ?? {}) };
@@ -74,10 +80,14 @@ function say(text, report = false) {
         .then((name) => {
             lastSpeechError = '';
             if (report) {
+                state.ttsTested = 'ok';
                 log(`読み上げ「${text}」を${name ? ` ${name} で` : ''}読み始めました`);
             }
         })
         .catch((e) => {
+            if (report) {
+                state.ttsTested = 'ng';
+            }
             const message = notAllowed(e) && !activated(window) ? `${e.message}。再生画面を一度クリックしてください` : e.message;
             if (message !== lastSpeechError) {
                 lastSpeechError = message;
@@ -146,6 +156,7 @@ async function loadModel() {
         progress.hidden = true;
         setStatus('model-status', '文字認識の準備ができました。', 'ok');
     } catch (e) {
+        state.ocrError = true;
         setStatus('model-status', `文字認識のモデルを読み込めませんでした: ${e.message}`, 'ng');
     }
     updateButtons();
@@ -208,9 +219,11 @@ async function resolveTimeline() {
             found = cloud && { timeline: await cloudTimeline(cloud), label: `${cloud.title}（配信）` };
         }
     } catch (e) {
+        state.timelineError = e.message;
         setStatus('timeline-status', e.message, 'ng');
         return;
     }
+    state.timelineError = '';
     if (found?.timeline === state.timeline) {
         return;
     }
@@ -289,13 +302,23 @@ function updateButtons() {
 
 // ── 読む範囲 ──
 
+// 初期設定が済んだ画面の大きさ（コンテンツ名と、戦闘の開始を知る範囲がある。トップの home.js と同じ判定）
+function savedScreens() {
+    return Object.entries(loadAll())
+        .filter(([, r]) => r?.content && !missingRegions(r).some((m) => m.id === 'start'))
+        .map(([key]) => key);
+}
+
 // 指定していない範囲と、そのためにできないこと（取り込み中の画面の大きさで見る。範囲の指定は初期設定の画面 setup.html）
 function renderMissing() {
     const size = state.frameSize;
     const el = $('regions-missing');
     if (!size) {
-        el.textContent = '取り込みを始めると、その画面の大きさで指定した範囲を確かめます。';
-        el.className = 'status';
+        const saved = savedScreens();
+        el.textContent = saved.length > 0
+            ? `済み（画面 ${saved.join('・')}）。取り込みを始めると、その画面の大きさで確かめます。`
+            : 'まだ決めていません。';
+        el.className = `status ${saved.length > 0 ? 'ok' : ''}`.trim();
         return;
     }
     const key = screenKey(size.width, size.height);
@@ -364,6 +387,7 @@ function stop() {
     state.source = null;
     state.frameSize = null; // 範囲の設定は、止めたあとは指定に使っている画面の大きさで見る
     updateButtons();
+    renderMissing();
     setStatus('run-status', '止めました。');
     log('── 読み取り停止');
 }
@@ -634,12 +658,52 @@ function update(force = false) {
         return;
     }
     state.lastRender = now;
+    renderGuide(now);
     const view = buildView(now);
     renderPanel(document, view);
     if (pip.isOpen) {
         renderPanel(pip.win.document, view);
     }
     speech(now);
+}
+
+// 「次にすること」。変わったときだけ書き換える（毎回作り直すとボタンのフォーカスや読み上げソフトの読みが乱れる）
+function renderGuide(now) {
+    const size = state.running ? state.frameSize : null;
+    const { steps } = guideSteps({
+        savedScreens: state.running ? [] : savedScreens(),
+        frame: size ? { key: screenKey(size.width, size.height), missing: missingRegions(regionsFor(size.width, size.height)) } : null,
+        autoRegions: settings.autoRegions,
+        choice: state.choice,
+        timelineLabel: state.timeline ? state.timelineLabel : '',
+        detectedContent: state.detectedContent,
+        timelineError: state.timelineError || (!state.timeline && state.cloudError) || '',
+        tts: settings.tts,
+        ttsTested: state.ttsTested,
+        ocr: state.ocr ? 'ready' : state.ocrError ? 'error' : 'loading',
+        ocrProgress: Number($('model-progress').value) || null,
+        running: state.running,
+        pipSupported: pipSupported(),
+        pipOpen: pip.isOpen,
+        engineState: state.engine?.status(now).state ?? null,
+    });
+    const key = JSON.stringify(steps);
+    if (key === state.guideKey) {
+        return;
+    }
+    state.guideKey = key;
+    for (const step of steps) {
+        const li = $(`guide-${step.id}`);
+        li.className = [step.current ? 'current' : step.kind === 'done' ? 'done' : 'todo', step.kind === 'ng' ? 'ng' : '', step.optional ? 'optional' : '',
+            'keepActions' in li.dataset ? 'keep-actions' : '']
+            .filter(Boolean).join(' ');
+        li.querySelector('.step-mark').replaceChildren(step.kind === 'done' ? icon('check_circle') : step.kind === 'ng' ? icon('error') : li.dataset.step);
+        const own = li.querySelector('[data-guide-state]'); // 取り込み・範囲は元からある状態の欄を使う
+        if (own) {
+            own.textContent = step.text;
+            own.className = `status step-state ${step.kind === 'done' ? 'ok' : step.kind === 'ng' ? 'ng' : ''}`.trim();
+        }
+    }
 }
 
 async function openPip() {
@@ -765,6 +829,14 @@ async function init() {
         save(STORE_SETTINGS, settings);
     });
     $('tts-test').addEventListener('click', () => say('読み上げの試験です', true));
+    for (const g of GUIDE_STEPS) {
+        $(`guide-${g.id}`).querySelector('.step-title').textContent = g.optional ? `${g.title}（しなくてもよい）` : g.title;
+    }
+    $('guide-tts-test').addEventListener('click', () => say('読み上げの試験です', true));
+    $('guide-timeline-go').addEventListener('click', () => {
+        $('timeline-select').scrollIntoView({ block: 'center' });
+        $('timeline-select').focus();
+    });
     setupVoiceSettings();
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
@@ -802,6 +874,7 @@ async function init() {
     } catch {
         state.contents = [];
     }
+    renderMissing();
     loadLocal();
     await loadCloudIndex();
     renderSelect();

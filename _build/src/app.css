@@ -715,6 +715,61 @@ progress {
     gap: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
+/* 問題のある手順: 印を誤りの色に */
+.steps > li.ng .step-mark {
+    border-color: transparent;
+    color: var(--vw-ng);
+}
+
+/* 再生画面の「次にすること」（player.html）。初期設定の手順と同じ形で、詰めて並べる。説明はいまの手順だけ。
+ * ボタンは、いまの手順・しなくてもよい手順（.optional）・済んだ後も使う手順（.keep-actions: 取り込みを止める・タイムラインを止める）に出す */
+.steps.guide {
+    margin-top: 0;
+}
+
+.steps.guide > li {
+    gap: calc(12 / 16 * 1rem);
+    margin-bottom: calc(8 / 16 * 1rem);
+    padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+}
+
+.steps.guide .step-mark,
+.steps.guide .step-mark .icon {
+    width: calc(32 / 16 * 1rem);
+    height: calc(32 / 16 * 1rem);
+}
+
+.steps.guide .step-title {
+    @apply text-std-17B-170;
+    margin-top: 0;
+}
+
+.steps.guide > li.optional .step-actions,
+.steps.guide > li.keep-actions .step-actions {
+    display: flex;
+}
+
+.steps.guide > li.done:not(.optional, .keep-actions) .step-actions {
+    display: none;
+}
+
+.steps.guide .step-actions {
+    margin-top: calc(8 / 16 * 1rem);
+}
+
+.steps.guide .step-help {
+    margin-bottom: 0;
+}
+
+.steps.guide .model-load {
+    margin-top: calc(8 / 16 * 1rem);
+}
+
+.steps.guide > li.done .model-load,
+.steps.guide > li.done .step-help {
+    display: none;
+}
+
 /* =========================================================================
  * 範囲の設定（region-editor.js）・試験ページ
  * ========================================================================= */
