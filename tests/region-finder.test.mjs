@@ -94,3 +94,16 @@ test('戦闘中かどうか: HP の % が 100 未満の行があるか', () => {
     assert.equal(damagedHp(fixture('scan-countdown-16s')), null);
     assert.equal(damagedHp([{ x: 0, y: 0, w: 80, h: 20, text: '100%Gレッドホット' }]), 100);
 });
+
+test('詠唱バー: 戦闘前に文字があった場所（ボスの名前の行など）と重なっても採り、保存済みの敵対リストの範囲の中は採らない', () => {
+    const cast = { x: 1670, y: 140, w: 120, h: 22, text: 'キラーボイス', cast: 'キラーボイス' };
+    const inEnmity = { x: 790, y: 470, w: 120, h: 18, text: 'キラーボイス', cast: 'キラーボイス' };
+    const baseline = [{ x: 1600, y: 130, w: 400, h: 30 }]; // 戦闘前に出ていたボスの名前の行
+    const enmityRect = { x: 752, y: 443, w: 270, h: 144 };
+    const r = classifyCombatLines([inEnmity, cast], {
+        want: new Set(['cast']), width: W, height: H, hpRect: { x: 1658, y: 108, w: 170, h: 36 }, enmityRect, baseline,
+    });
+    assert.equal(r.cast?.line.x, 1670);
+    const onlyEnmity = classifyCombatLines([inEnmity], { want: new Set(['cast']), width: W, height: H, enmityRect, baseline });
+    assert.equal(onlyEnmity.cast, undefined);
+});

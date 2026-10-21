@@ -183,7 +183,8 @@ function render() {
     itemState('item-cast', Boolean(regions.cast) || !castNeeded, regions.cast
         ? `詠唱バー: 見つけました${state.found.cast?.name ? `（${state.found.cast.name}）` : ''}`
         : !castNeeded ? '詠唱バー: このコンテンツはタイムラインが無いので探しません（無くても使えます）'
-            : 'ボスの詠唱バー: ボスが技を詠唱したときに見つけます');
+            : !state.timelineChecked ? 'ボスの詠唱バー: コンテンツ名を読んでから探します（技名で見つけるため）'
+                : `ボスの詠唱バー: ボスが技を詠唱したときに見つけます（タイムラインの技 ${castNamesOf(state.timeline).length} 個で照合）`);
     stepState('step-done', allDone, false, allDone
         ? `画面 ${key} の範囲をすべて指定しました。再生画面へ進めます。`
         : '');
