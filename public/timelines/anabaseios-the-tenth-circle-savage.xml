@@ -3,6 +3,8 @@
   <format>castline/1</format>
   <content>万魔殿パンデモニウム零式：天獄編2</content>
   <title>万魔殿パンデモニウム零式：天獄編2</title>
+  <author>Vel</author>
+  <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:33）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="2.9" castname="攻撃" sync="false"/>

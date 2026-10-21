@@ -55,12 +55,15 @@ export function parseTimelineXml(text) {
     const attr = (el, name) => (el.hasAttribute(name) ? el.getAttribute(name) : undefined);
     const clean = (obj) => Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
 
-    // 先頭の情報は 1 行ずつの子要素（<format> <content> <title> <sync-window> <note>）
+    // 先頭の情報は 1 行ずつの子要素（<format> <content> <title> <author> <license> <sync-window> <note>）。
+    // author・license は文言の元のタイムラインの作者とライセンス（CC BY-SA の出典の表示に使う）
     const field = (name) => children(root, name)[0]?.textContent.trim();
     const timeline = clean({
         format: field('format'),
         content: field('content'),
         title: field('title'),
+        author: field('author'),
+        license: field('license'),
         note: field('note'),
         syncWindow: pairOf(field('sync-window'), 'sync-window', '<timeline>'),
         phases: children(root, 'phase').map((p, i) => {
@@ -125,7 +128,7 @@ export function toTimelineXml(timeline) {
     const lines = ['<?xml version="1.0" encoding="utf-8"?>'];
     lines.push('<timeline>');
     for (const [name, value] of [['format', timeline.format], ['content', timeline.content], ['title', timeline.title],
-        ['sync-window', timeline.syncWindow?.join(' ')], ['note', timeline.note]]) {
+        ['author', timeline.author], ['license', timeline.license], ['sync-window', timeline.syncWindow?.join(' ')], ['note', timeline.note]]) {
         if (value !== undefined && value !== null && value !== '') {
             lines.push(`  <${name}>${escapeXml(value)}</${name}>`);
         }

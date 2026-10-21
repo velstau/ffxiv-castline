@@ -3,6 +3,8 @@
   <format>castline/1</format>
   <content>極ハイデリン討滅戦</content>
   <title>極ハイデリン討滅戦</title>
+  <author>Vel</author>
+  <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（11:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Hydaelyn's Arms">
     <entry t="10.9" text="全体攻撃" castname="ヘロイスラジエンス" duration="4.7" tts="全体攻撃"/>

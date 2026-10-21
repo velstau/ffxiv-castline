@@ -3,6 +3,8 @@
   <format>castline/1</format>
   <content>至天の座アルカディア零式：ヘビー級2</content>
   <title>至天の座アルカディア零式：ヘビー級2</title>
+  <author>Vel</author>
+  <license>CC BY-SA</license>
   <note>FFLogs の討伐の記録（9:51）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="10.1" text="タンク強" castname="ホットインパクト" duration="4.7"/>

@@ -496,15 +496,15 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     return report
 
 
-def write_castline(skeleton, path, title, note):
-    head = dict(skeleton['head'])
+def write_castline(skeleton, path, title, note, author='', license=''):
+    head = {**skeleton['head'], 'author': author, 'license': license}
     if title:
         head['title'] = title
     # tts="" は「読み上げない」なので残す
     attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) is not None and (d[k] != '' or k == 'tts'))
     lines = ['<?xml version="1.0" encoding="utf-8"?>',
              '<timeline>']
-    lines += [f'  <{k}>{escape(head[k])}</{k}>' for k in ('format', 'content', 'title', 'sync-window') if head.get(k)]
+    lines += [f'  <{k}>{escape(head[k])}</{k}>' for k in ('format', 'content', 'title', 'author', 'license', 'sync-window') if head.get(k)]
     lines += [f'  <note>{escape(note)}</note>']
     for p in skeleton['phases']:
         lines.append(f'  <phase{attr(p["attrs"], ["id", "name"])}>')
@@ -526,6 +526,7 @@ def main():
     ap.add_argument('hojoring')
     ap.add_argument('out')
     ap.add_argument('--title')
+    ap.add_argument('--author', help='元のタイムラインの作者（元ファイルの表記を使わないとき）')
     ap.add_argument('--events', action='append', default=[], metavar='フェーズID=PATH',
                     help='そのフェーズの FFLogs の技の一覧（tools/fflogs-events.py の出力）')
     ap.add_argument('--role', action='append', default=[], metavar='区間=担当名',
@@ -564,10 +565,12 @@ def main():
     for fid in fights:
         split_phases(skeleton, fid)
 
-    # 元ファイル（Hojoring）の名前や作者は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）
+    # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
+    # 元のタイムラインの作者とライセンスは <author> <license> に書く（CC BY-SA の出典。2026-10-21 のユーザーの決定）
     note = (f'{skeleton["note"]} text は表示、tts は読み上げの文言。'
             f'sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む')
-    write_castline(skeleton, args.out, args.title, note)
+    author = args.author or ', '.join(a.strip() for a in re.split(r'[\n\t,]+|\s{2,}', meta['author']) if a.strip())
+    write_castline(skeleton, args.out, args.title, note, author, ' '.join(meta['license'].split()))
 
     for line in report:
         print(line)

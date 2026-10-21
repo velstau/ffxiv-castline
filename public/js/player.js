@@ -212,7 +212,10 @@ function renderTimelineStatus() {
     if (state.cloudError && !state.timeline) {
         setStatus('timeline-status', `${content}。${state.cloudError}`, 'ng');
     } else if (state.timeline) {
-        setStatus('timeline-status', `${content}。使うタイムライン: ${state.timelineLabel}`, 'ok');
+        // 元のタイムラインの作者とライセンス（CC BY-SA の出典の表示）
+        const { author, license } = state.timeline;
+        const credit = author ? `。作者: ${author}${license ? `（${license}）` : ''}` : '';
+        setStatus('timeline-status', `${content}。使うタイムライン: ${state.timelineLabel}${credit}`, 'ok');
     } else if (state.choice === 'auto' && state.detectedContent) {
         setStatus('timeline-status', `${content}。このコンテンツのタイムラインはありません（手元の XML を読み込むか、一覧から選んでください）。`);
     } else {

@@ -3,6 +3,8 @@
   <format>castline/1</format>
   <content>次元の狭間オメガ零式：アルファ編4</content>
   <title>次元の狭間オメガ零式：アルファ編4</title>
+  <author>Vel</author>
+  <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（15:57・15:09）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="start" name="開始待ち">
     <next to="a-p1" at="9.8" cast="シールドオプション"/>

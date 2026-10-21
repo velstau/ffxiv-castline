@@ -79,6 +79,9 @@ test('XML: 記号を escape し、詠唱時間 0 と既定値は書かない', (
     assert.match(xml, /<timeline>\n  <format>castline\/1<\/format>\n  <content>A&amp;B<\/content>\n  <title>&quot;題&quot;<\/title>/);
     assert.match(xml, /<note>&lt;注&gt;<\/note>/);
     assert.match(xml, /<entry t="1.0" castname="x" sync="false"\/>/);
+    assert.doesNotMatch(xml, /<author>|<license>/); // 無ければ書かない
+    const credited = toTimelineXml({ format: 'castline/1', content: 'c', title: 't', author: 'A, B', license: 'CC BY-SA', note: 'n', phases: [] });
+    assert.match(credited, /<title>t<\/title>\n  <author>A, B<\/author>\n  <license>CC BY-SA<\/license>\n  <note>n<\/note>/);
     assert.match(xml, /<entry t="2.0" castname="y" duration="3.0" window="5 5"\/>/);
     assert.match(xml, /<next to="p1" hp-lost="3"\/>/);
 });

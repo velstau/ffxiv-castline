@@ -3,6 +3,8 @@
   <format>castline/1</format>
   <content>至天の座アルカディア零式：ライトヘビー級3</content>
   <title>至天の座アルカディア零式：ライトヘビー級3</title>
+  <author>Vel</author>
+  <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:42）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="5.3" castname="同期待ち2" sync="false" tts=""/>
