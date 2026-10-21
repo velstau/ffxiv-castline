@@ -102,13 +102,18 @@ export function parseTimelineXml(text) {
 }
 
 /**
- * 配信する一覧（index.xml）を読む。
+ * 配信する一覧（index.xml）を読む。各タイムラインの file・content・title は 1 行ずつの子要素（タイムラインの先頭の情報と同じ形）。
+ * 以前の属性の形（<timeline file="…" content="…" title="…"/>）も読む（GitHub の raw は最大 5 分キャッシュされ、
+ * push の直後は古い一覧と新しい読み方が混ざるため）。
  * @returns {{file:string, content:string, title:string}[]}
  */
 export function parseTimelineIndex(text) {
     const root = parseXml(text).documentElement;
     return children(root, 'timeline')
-        .map((t) => ({ file: t.getAttribute('file'), content: t.getAttribute('content'), title: t.getAttribute('title') ?? t.getAttribute('file') }))
+        .map((t) => {
+            const field = (name) => children(t, name)[0]?.textContent.trim() || t.getAttribute(name) || undefined;
+            return { file: field('file'), content: field('content'), title: field('title') ?? field('file') };
+        })
         .filter((t) => t.file && t.content);
 }
 

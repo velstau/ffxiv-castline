@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 配信するタイムラインの一覧。file はこのファイルからの相対パス -->
-<timelines format="castline-index/1">
-  <timeline file="aac-heavyweight-m1-savage.xml" content="至天の座アルカディア零式：ヘビー級1" title="ヘビー級1 零式（文言つき・下書き）"/>
-  <timeline file="aac-heavyweight-m2-savage.xml" content="至天の座アルカディア零式：ヘビー級2" title="ヘビー級2 零式（文言つき・下書き）"/>
-  <timeline file="aac-heavyweight-m3-savage.xml" content="至天の座アルカディア零式：ヘビー級3" title="ヘビー級3 零式（文言つき・下書き）"/>
-  <timeline file="aac-heavyweight-m4-savage.xml" content="至天の座アルカディア零式：ヘビー級4" title="ヘビー級4 零式（文言つき・下書き、前半・後半）"/>
-  <timeline file="abyssos-the-eighth-circle-savage.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
+<timelines>
+  <format>castline-index/1</format>
+  <timeline>
+    <file>aac-heavyweight-m1-savage.xml</file>
+    <content>至天の座アルカディア零式：ヘビー級1</content>
+    <title>ヘビー級1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-heavyweight-m2-savage.xml</file>
+    <content>至天の座アルカディア零式：ヘビー級2</content>
+    <title>ヘビー級2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-heavyweight-m3-savage.xml</file>
+    <content>至天の座アルカディア零式：ヘビー級3</content>
+    <title>ヘビー級3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-heavyweight-m4-savage.xml</file>
+    <content>至天の座アルカディア零式：ヘビー級4</content>
+    <title>ヘビー級4 零式（文言つき・下書き、前半・後半）</title>
+  </timeline>
+  <timeline>
+    <file>abyssos-the-eighth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：煉獄編4</content>
+    <title>煉獄編4 零式（テスト用・冒頭のみ）</title>
+  </timeline>
 </timelines>

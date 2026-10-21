@@ -135,9 +135,16 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
   同じコンテンツなら手元のファイルを配信より優先する
 - タイムラインの作り方（cactbot・Hojoring の変換）は運営者が手元で使う道具とし、サイトの機能にはしない（2026-10-20 の方針）
 
+一覧の各タイムラインも、タイムラインの先頭の情報と同じく 1 行ずつの子要素で書く（2026-10-21 のユーザーの指定。以前の属性の形も読める）:
+
 ```xml
-<timelines format="castline-index/1">
-  <timeline file="abyssos-the-eighth-circle-savage.xml" content="万魔殿パンデモニウム零式：煉獄編4" title="煉獄編4 零式（テスト用・冒頭のみ）"/>
+<timelines>
+  <format>castline-index/1</format>
+  <timeline>
+    <file>abyssos-the-eighth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：煉獄編4</content>
+    <title>煉獄編4 零式（テスト用・冒頭のみ）</title>
+  </timeline>
 </timelines>
 ```
 
