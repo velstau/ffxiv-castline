@@ -1,4 +1,4 @@
-// ギミックのアイコン（Castline 独自の図案。public/icons/gimmick/<id>.svg）。タイムラインの entry の gimmick に id か名前を書く。
+// ギミックのアイコン（Castline 独自の図案。public/icons/gimmick/<id>.svg）。タイムラインの entry の gimmick_icon・skills_icon に id か名前（「tower.png」のように拡張子を付けてもよい）を書く。
 // 色は役割ごとにそろえる: 全体・範囲は赤橙、タンクは赤、頭割りは黄、散開・視線は紫、位置は青緑、線・鎖は青、番号は白地
 
 export const GIMMICK_ICONS = [
@@ -29,6 +29,13 @@ export const GIMMICK_ICONS = [
     { id: 'line', name: '直線範囲' },
     { id: 'cone', name: '扇範囲' },
     { id: 'aoe', name: 'AoE範囲' },
+    { id: 'meteor', name: 'メテオ' },
+    { id: 'flare', name: 'フレア' },
+    { id: 'exaflare', name: 'エクサフレア' },
+    { id: 'magnet', name: '磁石' },
+    { id: 'acceleration-bomb', name: '加速度爆弾' },
+    { id: 'rotation', name: '回転' },
+    { id: 'forced-march', name: '移動命令' },
 ];
 
 const byKey = new Map(GIMMICK_ICONS.flatMap((g) => [[g.id, g], [g.name, g]]));

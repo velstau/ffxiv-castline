@@ -11,39 +11,34 @@ export function displayName(entry) {
 }
 
 /**
- * 予定のアイコン（ギミック 1 つ → スキルの順）。[{key, url, alt}]
- * ギミックは <icons> の id を先に見て、無ければ用意したアイコン（id か名前）。スキルは <icons> の id だけ。
- * <icons> の src は、配信のタイムラインなら XML の場所（baseUrl）からの相対パス。手元の XML は URL（http・https・data）だけ使える
+ * アイコンの指定 1 つを画像にする。{key, url, alt} か null（使えない）。
+ * フォルダの無い名前が用意したギミックのアイコン（id か名前。拡張子は見ない）なら、それを使う（「tower.png」「tower」「塔踏み」「チャリオット」）。
+ * それ以外は画像のファイル: 配信のタイムラインなら XML の場所（baseUrl）からの相対パス、手元の XML は URL（http・https・data）だけ使える。
+ * 用意したアイコンと同じ名前の自分の画像を使うときは「./tower.png」と書く
  */
+export function resolveIcon(spec, timeline) {
+    const builtin = !/[/:]/.test(spec) && gimmickIcon(spec.replace(/\.[a-z0-9]+$/i, ''));
+    if (builtin) {
+        return { key: builtin.url, url: builtin.url, alt: builtin.name };
+    }
+    if (!/\.[a-z0-9]+$/i.test(spec) && !/^[a-z]+:/i.test(spec)) {
+        return null; // 拡張子の無い、用意したアイコンに無い名前
+    }
+    try {
+        const url = timeline.baseUrl ? new URL(spec, timeline.baseUrl).href : new URL(spec).href;
+        const alt = decodeURIComponent(spec.split(/[/?#]/).filter(Boolean).at(-1) ?? spec).replace(/\.[a-z0-9]+$/i, '');
+        return { key: url, url, alt };
+    } catch {
+        return null; // 手元の XML の相対パスなど
+    }
+}
+
+/** 予定のアイコン（gimmick_icon 1 つ → skills_icon の順）。[{key, url, alt}] */
 export function entryIcons(entry, timeline) {
-    const defined = new Map((timeline.icons ?? []).map((icon) => [icon.id, icon]));
-    const url = (src) => {
-        try {
-            return timeline.baseUrl ? new URL(src, timeline.baseUrl).href : new URL(src).href;
-        } catch {
-            return null; // 手元の XML の相対パスなど
-        }
-    };
-    const own = (id) => {
-        const icon = defined.get(id);
-        const href = icon?.src && url(icon.src);
-        return href ? { key: id, url: href, alt: icon.name ?? id } : null;
-    };
-    const out = [];
-    if (entry.gimmick) {
-        const builtin = gimmickIcon(entry.gimmick);
-        const icon = own(entry.gimmick) ?? (builtin && { key: builtin.id, url: builtin.url, alt: builtin.name });
-        if (icon) {
-            out.push(icon);
-        }
-    }
-    for (const id of entry.skills ?? []) {
-        const icon = own(id);
-        if (icon) {
-            out.push(icon);
-        }
-    }
-    return out;
+    return [entry.gimmickIcon, ...(entry.skillIcons ?? [])]
+        .filter(Boolean)
+        .map((spec) => resolveIcon(spec, timeline))
+        .filter(Boolean);
 }
 
 /** 使えないアイコンの指定（読み込んだときに記録に出す。表示は飛ばすだけで、タイムラインは使える） */
@@ -51,13 +46,11 @@ export function iconProblems(timeline) {
     const problems = new Set();
     for (const phase of timeline.phases) {
         for (const e of phase.entries) {
-            const icons = entryIcons(e, timeline).map((i) => i.key);
-            if (e.gimmick && entryIcons({ ...e, skills: [] }, timeline).length === 0) {
-                problems.add(`ギミックのアイコン「${e.gimmick}」がありません`);
-            }
-            for (const id of e.skills ?? []) {
-                if (!icons.includes(id)) {
-                    problems.add(`スキルのアイコン「${id}」が <icons> に無いか、src を読めません（手元の XML は URL だけ使えます）`);
+            for (const spec of [e.gimmickIcon, ...(e.skillIcons ?? [])].filter(Boolean)) {
+                if (!resolveIcon(spec, timeline)) {
+                    problems.add(/\.[a-z0-9]+$/i.test(spec)
+                        ? `アイコン「${spec}」を読めません（手元の XML は URL だけ使えます）`
+                        : `アイコン「${spec}」は用意したギミックのアイコンにありません（画像なら拡張子まで書く）`);
                 }
             }
         }

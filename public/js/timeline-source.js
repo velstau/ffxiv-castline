@@ -44,7 +44,7 @@ export async function fetchTimeline(item, base) {
         if (!timeline) {
             throw new Error(`${item.file} の形式に誤りがあります: ${errors.join(' / ')}`);
         }
-        timeline.baseUrl = new URL(item.file, base).href; // <icons> の相対パスの基準
+        timeline.baseUrl = new URL(item.file, base).href; // アイコンの画像（gimmick_icon・skills_icon）の相対パスの基準
         item.timeline = timeline;
     }
     return item.timeline;

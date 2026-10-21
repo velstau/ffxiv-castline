@@ -66,12 +66,6 @@ export function parseTimelineXml(text) {
         license: field('license'),
         note: field('note'),
         syncWindow: pairOf(field('sync-window'), 'sync-window', '<timeline>'),
-        // <icons><icon id="…" src="…" name="…"/></icons>: スキルなどのアイコンの画像。src はこの XML からの相対パスか URL
-        icons: children(root, 'icons').flatMap((list) => children(list, 'icon')).map((icon) => clean({
-            id: attr(icon, 'id'),
-            src: attr(icon, 'src'),
-            name: attr(icon, 'name'),
-        })),
         phases: children(root, 'phase').map((p, i) => {
             const where = `<phase> ${i + 1} 番目（${attr(p, 'id') ?? 'id なし'}）`;
             return clean({
@@ -88,9 +82,10 @@ export function parseTimelineXml(text) {
                         tts: attr(e, 'tts'),
                         sync: attr(e, 'sync') === 'false' ? false : undefined,
                         window: pair(e, 'window', at),
-                        // アイコン: ギミック 1 つ（用意したアイコンの id か名前、または <icons> の id）とスキル（<icons> の id を空白区切り）
-                        gimmick: attr(e, 'gimmick'),
-                        skills: attr(e, 'skills')?.trim().split(/\s+/).filter(Boolean),
+                        // アイコン: gimmick_icon はギミック 1 つ、skills_icon はスキル（カンマ区切り）。画像のファイル（この XML からの相対パスか URL）、
+                        // または拡張子なしで用意したギミックのアイコン（id か名前）。2026-10-21 のユーザーの指定
+                        gimmickIcon: attr(e, 'gimmick_icon')?.trim() || undefined,
+                        skillIcons: attr(e, 'skills_icon')?.split(',').map((s) => s.trim()).filter(Boolean),
                     });
                 }),
                 next: children(p, 'next').map((n, j) => {
@@ -142,21 +137,14 @@ export function toTimelineXml(timeline) {
             lines.push(`  <${name}>${escapeXml(value)}</${name}>`);
         }
     }
-    if (timeline.icons?.length) {
-        lines.push('  <icons>');
-        for (const icon of timeline.icons) {
-            lines.push(`    <icon${xmlAttr('id', icon.id)}${xmlAttr('src', icon.src)}${xmlAttr('name', icon.name)}/>`);
-        }
-        lines.push('  </icons>');
-    }
     for (const phase of timeline.phases) {
         lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
         for (const e of phase.entries) {
-            // 属性の順は t・text・castname・duration・sync・tts・window・gimmick・skills で統一する（見やすさのため。2026-10-20 のユーザーの指定）
+            // 属性の順は t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon で統一する（見やすさのため。2026-10-20 のユーザーの指定）
             // t と duration は必ず小数点以下 1 桁（56 → 56.0。2026-10-20 のユーザーの指定）
             lines.push(`    <entry${xmlAttr('t', Number(e.t).toFixed(1))}${xmlAttr('text', e.label)}${xmlAttr('castname', e.name)}`
                 + `${xmlAttr('duration', e.duration ? Number(e.duration).toFixed(1) : undefined)}${xmlAttr('sync', e.sync === false ? 'false' : undefined)}${xmlAttr('tts', e.tts)}${xmlAttr('window', e.window)}`
-                + `${xmlAttr('gimmick', e.gimmick)}${xmlAttr('skills', e.skills?.length ? e.skills : undefined)}/>`);
+                + `${xmlAttr('gimmick_icon', e.gimmickIcon)}${xmlAttr('skills_icon', e.skillIcons?.length ? e.skillIcons.join(',') : undefined)}/>`);
         }
         for (const rule of phase.next ?? []) {
             const w = rule.when;

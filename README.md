@@ -94,19 +94,15 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
   <license>CC BY-SA</license>  <!-- タイムラインのライセンス。省略可。再生画面に出す -->
   <sync-window>10 10</sync-window>  <!-- 既定の同期の窓（予定の何秒前 何秒後）。省略可 -->
   <note>出典など</note>
-  <!-- アイコンの画像（スキルなど）。src はこの XML からの相対パスか URL。省略可 -->
-  <icons>
-    <icon id="rampart" src="icons/rampart.png" name="ランパート"/>
-  </icons>
   <phase id="p1" name="前半">
     <!-- t は「詠唱が始まる」秒（フェーズ開始から）。画面の詠唱バーに技名が出る瞬間＝同期の基準。
          発動（ダメージ）は t + duration。詠唱の無い技は duration 0（省略可） -->
-    <!-- entry の属性は t・text・castname・duration・sync・tts・window・gimmick・skills の順に書く。t と duration は必ず小数点以下 1 桁（6.0・5.0）（生成画面と道具はこの形で出す） -->
+    <!-- entry の属性は t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon の順に書く。t と duration は必ず小数点以下 1 桁（6.0・5.0）（生成画面と道具はこの形で出す） -->
     <entry t="6.0" text="全体攻撃" castname="創世の真炎" duration="5.0"/>
     <!-- sync="false" で同期に使わない。window で窓を個別に指定。text は表示だけの文言。tts で読み上げる文を指定（tts="" で読み上げない。既定は castname） -->
     <entry t="30.0" castname="詠唱の無い技" sync="false" tts="散開"/>
-    <!-- gimmick はギミックのアイコン 1 つ（下の一覧の id か名前。<icons> の id でもよい）、skills はスキルのアイコン（<icons> の id を空白区切り） -->
-    <entry t="36.0" text="タンク強" castname="ハードコア" duration="2.7" gimmick="tankbuster" skills="rampart"/>
+    <!-- gimmick_icon はギミックのアイコン 1 つ、skills_icon はスキルのアイコン（カンマ区切り）。書き方は下の「表示とアイコン」 -->
+    <entry t="36.0" text="タンク強" castname="ハードコア" duration="2.7" gimmick_icon="tankbuster.png" skills_icon="rampart.png,rampart2.png"/>
     <!-- 毎回どれかが出る技は castname を「|」で区切る（どれが読めても同期する。表示は「／」区切り） -->
     <entry t="40.0" text="頭割りorロール" castname="アグリゲートソニック|スプレッドソニック" duration="4.0"/>
     <!-- 上から順に見て、最初に満たしたものに移る。at は移った瞬間の、移り先での秒（既定 0） -->
@@ -123,12 +119,14 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 
 - 予定の表示は、text があれば text だけ、無ければ castname
 - 同じ表示・同じアイコンの予定が続き、発動の間が 10 秒以内なら 1 行にまとめて「x4」のように出す（public/js/timeline-view.js の GROUP_GAP_S）。読み上げは今までどおり 1 つずつ
-- アイコンは再生画面と小窓の時刻の左に出す。ギミック 1 つ（gimmick）→ スキル（skills）の順
-- ギミックのアイコンは Castline の独自の図案（public/icons/gimmick/。ゲームの画像は使っていない）。id でも名前でも書ける（「チャリオット」「ダイナモ」も可）
-- スキルのアイコンは同梱しない。各自が用意した画像を `<icons>` で指定する。
-  配信のタイムラインでは src は XML の場所からの相対パス、手元の XML では URL（http・https・data）だけ使える
+- アイコンは再生画面と小窓の時刻の左に出す。ギミック 1 つ（gimmick_icon）→ スキル（skills_icon。カンマ区切り）の順
+- 書いた名前（フォルダなし）が下の一覧の id か名前なら、用意したアイコンを使う。拡張子は見ない（「tower.png」「tower」「塔踏み」「チャリオット」は同じ）。
+  それ以外は画像のファイル。用意したアイコンと同じ名前の自分の画像を使うときは「./tower.png」と書く
+- ギミックのアイコンは Castline の独自の図案（public/icons/gimmick/。ゲームの画像は使っていない）。
+- スキルのアイコンは同梱しない。各自が用意した画像のファイルを書く。
+  配信のタイムラインではファイルは XML の場所からの相対パス、手元の XML では URL（http・https・data）だけ使える
 - 見つからないアイコンは表示を飛ばし、タイムラインを読み込んだときに記録に出す
-- 配信の XML は変換の道具（build-timelines.sh・convert-hojoring-pc.sh）で作り直すので、gimmick・skills を手で書き足しても作り直すと消える
+- 配信の XML は変換の道具（build-timelines.sh・convert-hojoring-pc.sh）で作り直すので、gimmick_icon・skills_icon を手で書き足しても作り直すと消える
 
 | アイコン | id | 名前 |
 |---|---|---|
@@ -159,6 +157,13 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 | <img src="public/icons/gimmick/line.svg" width="24" alt=""> | `line` | 直線範囲 |
 | <img src="public/icons/gimmick/cone.svg" width="24" alt=""> | `cone` | 扇範囲 |
 | <img src="public/icons/gimmick/aoe.svg" width="24" alt=""> | `aoe` | AoE範囲 |
+| <img src="public/icons/gimmick/meteor.svg" width="24" alt=""> | `meteor` | メテオ |
+| <img src="public/icons/gimmick/flare.svg" width="24" alt=""> | `flare` | フレア |
+| <img src="public/icons/gimmick/exaflare.svg" width="24" alt=""> | `exaflare` | エクサフレア |
+| <img src="public/icons/gimmick/magnet.svg" width="24" alt=""> | `magnet` | 磁石 |
+| <img src="public/icons/gimmick/acceleration-bomb.svg" width="24" alt=""> | `acceleration-bomb` | 加速度爆弾 |
+| <img src="public/icons/gimmick/rotation.svg" width="24" alt=""> | `rotation` | 回転 |
+| <img src="public/icons/gimmick/forced-march.svg" width="24" alt=""> | `forced-march` | 移動命令 |
 
 
 - 詠唱バーで照合する候補は、全技ではなく「同期の窓に入っている予定」と「移り方の技名」だけに絞る（`castCandidates`）
