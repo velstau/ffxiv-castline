@@ -23,7 +23,7 @@ overlay tools/skeletons/aac-heavyweight-m4-savage.xml 'sources/AAC_Heavyweight_M
     --events a-p1=tools/skeletons/aac-heavyweight-m4-savage.part-a.events.json --events b-p1=tools/skeletons/aac-heavyweight-m4-savage.part-b.events.json \
     --phase P0=none --phase P1=a-p1 --phase P2=a-p1 --phase P3=a-p1 --phase P4=a-p1 --phase P5=a-p1 \
     --phase P11=b-p1 --phase P12=b-p1 \
-    --title '至天の座アルカディア零式：ヘビー級4'
+    --title '至天の座アルカディア零式：ヘビー級4' --author Vel
 
 
 # Hojoring の手元のファイル（sources/hojoring-pc）からの分は tools/convert-hojoring-pc.sh（一覧は tools/hojoring-pc.tsv）
