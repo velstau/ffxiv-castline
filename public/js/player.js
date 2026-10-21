@@ -529,7 +529,18 @@ function renderPanel(doc, view) {
 
 function speech(now) {
     const engine = state.engine;
-    if (!settings.tts || !engine || engine.status(now).state !== 'combat') {
+    if (!settings.tts || !engine) {
+        return;
+    }
+    const s = engine.status(now).state;
+    // VOICEVOX は 1 つ作るのに 1 秒前後かかるので、カウントダウン中から先に作っておく
+    if ((s === 'combat' || s === 'countdown') && now - state.lastPrepare >= PREPARE_EVERY_MS) {
+        state.lastPrepare = now;
+        voice.prepare(engine.upcoming(now, 20)
+            .filter((u) => u.hitIn <= PREPARE_AHEAD_S && !state.spoken.has(u.entry) && u.entry.tts !== '')
+            .map((u) => ttsText(u.entry)));
+    }
+    if (s !== 'combat') {
         return;
     }
     if (engine.startAt !== state.spokenStartAt) {
@@ -548,12 +559,6 @@ function speech(now) {
         if (late <= SPEAK_LATE_MAX_S && e.tts !== '') {
             say(ttsText(e));
         }
-    }
-    if (now - state.lastPrepare >= PREPARE_EVERY_MS) {
-        state.lastPrepare = now;
-        voice.prepare(engine.upcoming(now, 20)
-            .filter((u) => u.hitIn <= PREPARE_AHEAD_S && !state.spoken.has(u.entry) && u.entry.tts !== '')
-            .map((u) => ttsText(u.entry)));
     }
 }
 
