@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：天獄編4</content>
+  <title>万魔殿パンデモニウム零式：天獄編4</title>
+  <note>FFLogs の公開ランキングの討伐の記録（7:38・8:37）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="start" name="開始待ち">
+    <next to="a-p1" at="6.9" cast="オン・ザ・ソウル"/>
+    <next to="a-p1" at="19" cast="パラデイグマ"/>
+    <next to="b-p1" at="6.9" cast="アルテマ"/>
+    <next to="b-p1" at="19" cast="パラスの手"/>
+  </phase>
+  <phase id="a-p1" name="前半">
+    <entry t="6.9" text="オン・ザ・ソウル1" castname="オン・ザ・ソウル" duration="4.7" tts="全体"/>
+    <entry t="19.0" text="パラデイグマ" castname="パラデイグマ" duration="2.7"/>
+    <entry t="27.6" text="トリニティ・ソウル1" castname="トリニティ・ソウル" duration="9.7"/>
+    <entry t="37.5" castname="白火" sync="false"/>
+    <entry t="40.2" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="40.5" castname="トリニティ・ソウル2" sync="false" tts=""/>
+    <entry t="42.5" castname="トリニティ・ソウル3" sync="false" tts=""/>
+    <entry t="42.8" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="55.1" text="パラデイグマ" castname="パラデイグマ" duration="2.7"/>
+    <entry t="61.8" text="移行待ち / 魂の刻印" castname="魂の刻印" duration="3.7"/>
+    <entry t="75.4" castname="ポラリティグロウ" sync="false"/>
+    <entry t="77.6" castname="アストラルアドバンス" duration="1.7"/>
+    <entry t="84.5" text="オン・ザ・ソウル2" castname="オン・ザ・ソウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="92.7" text="タンクスイッチ" castname="グラウコピス" duration="4.7" tts="タンク攻撃"/>
+    <entry t="100.9" text="グラウコピス" castname="グラウコピス" sync="false"/>
+    <entry t="112.1" text="セオリーI" castname="スーパーチェイン・セオリーI" duration="4.7"/>
+    <entry t="120.3" text="魂の刻印" castname="魂の刻印" duration="3.7"/>
+    <entry t="135.5" castname="ポラリティレイ" sync="false"/>
+    <entry t="143.6" castname="ポラリティグロウ" sync="false"/>
+    <entry t="145.8" castname="アンブラルアドバンス" duration="1.7"/>
+    <entry t="148.7" text="トリニティ・ソウル1" castname="トリニティ・ソウル" duration="9.7"/>
+    <entry t="161.3" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="161.7" castname="トリニティ・ソウル2" sync="false" tts=""/>
+    <entry t="163.7" castname="トリニティ・ソウル3" sync="false" tts=""/>
+    <entry t="163.9" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="167.2" text="ペリorアポ" castname="ペリ・ディアロゴス|アポ・ディアロゴス" duration="4.7"/>
+    <entry t="172.4" castname="アポ・ディアロゴス" sync="false"/>
+    <entry t="175.0" text="オン・ザ・ソウル3" castname="オン・ザ・ソウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="193.6" text="パラデイグマ" castname="パラデイグマ" duration="2.7"/>
+    <entry t="199.8" text="移行待ち / 魂の刻印" castname="魂の刻印" duration="3.7"/>
+    <entry t="205.7" castname="安置確認" sync="false" tts="安置確認"/>
+    <entry t="206.9" text="魂の鎖" castname="魂の鎖" duration="6.7"/>
+    <entry t="221.0" castname="ポラリティグロウ" sync="false"/>
+    <entry t="223.2" castname="アンブラルアドバンス" duration="1.7"/>
+    <entry t="226.2" text="オン・ザ・ソウル4" castname="オン・ザ・ソウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="238.3" text="タンクスイッチ" castname="グラウコピス" duration="4.7" tts="タンク攻撃"/>
+    <entry t="246.6" text="グラウコピス" castname="グラウコピス" sync="false"/>
+    <entry t="256.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="260.6" castname="履行技6秒前" sync="false" tts=""/>
+    <entry t="261.2" castname="アルテマブレイド" sync="false"/>
+    <entry t="283.8" text="パラディオン1" castname="パラディオン" duration="7.7"/>
+    <entry t="292.0" castname="パラディオン" sync="false"/>
+    <entry t="295.1" castname="パラディオン" sync="false"/>
+    <entry t="295.8" castname="パラディオン2" sync="false" tts=""/>
+    <entry t="298.2" castname="パラディオン" sync="false"/>
+    <entry t="298.8" castname="パラディオン3" sync="false" tts=""/>
+    <entry t="300.0" castname="白火" sync="false"/>
+    <entry t="301.3" castname="パラディオン" sync="false"/>
+    <entry t="301.8" castname="パラディオン4" sync="false" tts=""/>
+    <entry t="304.3" castname="パラディオン" sync="false"/>
+    <entry t="304.8" castname="パラディオン5" sync="false" tts=""/>
+    <entry t="307.4" castname="パラディオン" sync="false"/>
+    <entry t="307.8" castname="パラディオン6" sync="false" tts=""/>
+    <entry t="310.5" castname="パラディオン" sync="false"/>
+    <entry t="310.8" castname="パラディオン7" sync="false" tts=""/>
+    <entry t="313.5" castname="パラディオン" sync="false"/>
+    <entry t="313.8" castname="パラディオン8" sync="false" tts=""/>
+    <entry t="318.7" castname="パラディオン" sync="false"/>
+    <entry t="326.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="327.5" text="テオス・アルテマ" castname="テオス・アルテマ" duration="6.7"/>
+    <entry t="349.0" text="セオリーIIA" castname="スーパーチェイン・セオリーIIA" duration="4.7"/>
+    <entry t="357.1" text="トリニティ・ソウル1" castname="トリニティ・ソウル" duration="9.7"/>
+    <entry t="369.1" castname="トリニティ・ソウル2" sync="false" tts=""/>
+    <entry t="369.7" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="372.1" castname="トリニティ・ソウル3" sync="false" tts=""/>
+    <entry t="372.3" castname="トリニティ・ソウル" sync="false"/>
+    <entry t="376.7" text="ペリorアポ" castname="ペリ・ディアロゴス|アポ・ディアロゴス" duration="4.7"/>
+    <entry t="381.9" castname="アポ・ディアロゴス" sync="false"/>
+    <entry t="384.5" text="オン・ザ・ソウル5" castname="オン・ザ・ソウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="399.1" text="セオリーIIB" castname="スーパーチェイン・セオリーIIB" duration="4.7"/>
+    <entry t="407.3" text="パラデイグマ" castname="パラデイグマ" duration="2.7"/>
+    <entry t="415.4" text="パルテノン" castname="パルテノン" duration="4.7" tts="直線"/>
+    <entry t="422.4" castname="外周確認" sync="false" tts="外周ビームを確認"/>
+    <entry t="429.1" text="魂の鎖" castname="魂の鎖" duration="6.7"/>
+    <entry t="439.2" text="オン・ザ・ソウル6" castname="オン・ザ・ソウル" duration="4.7"/>
+    <entry t="447.4" castname="オン・ザ・ソウル" duration="4.7"/>
+    <entry t="452.2" castname="オン・ザ・ソウル7" sync="false" tts=""/>
+    <entry t="458.2" castname="時間切れ" sync="false" tts=""/>
+    <entry t="469.2" castname="テオス・アルテマ" sync="false"/>
+  </phase>
+  <phase id="b-p1" name="後半">
+    <entry t="6.9" text="アルテマ1" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="19.0" text="パラスの手" castname="パラスの手" duration="4.7"/>
+    <entry t="24.2" castname="パラスの手" sync="false"/>
+    <entry t="26.3" text="パラスの手" castname="パラスの手" duration="0.7"/>
+    <entry t="27.5" castname="パラスの手" sync="false"/>
+    <entry t="33.6" text="ガイアオコス" castname="ガイアオコス" duration="6.7"/>
+    <entry t="48.8" text="サモンダークネス" castname="サモンダークネス" duration="2.7" tts="安置確認"/>
+    <entry t="64.9" castname="苦痛の鎖" sync="false"/>
+    <entry t="70.9" text="デミパルヘリオン" castname="デミパルヘリオン" duration="2.7"/>
+    <entry t="74.7" castname="デミパルヘリオン" duration="9.2"/>
+    <entry t="77.0" text="ジオセントリズム" castname="ジオセントリズム" duration="6.7"/>
+    <entry t="85.1" castname="神罰" sync="false"/>
+    <entry t="89.2" text="アルテマ2" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="94.3" castname="アルテマ" sync="false"/>
+    <entry t="101.4" text="イデア・エレメンタル" castname="イデア・エレメンタル" duration="6.7" tts="全体"/>
+    <entry t="128.6" castname="パラスレイ" duration="1.7"/>
+    <entry t="133.3" castname="パラスレイ" sync="false"/>
+    <entry t="134.8" castname="パラスレイ" sync="false"/>
+    <entry t="136.0" castname="パラスレイ" sync="false"/>
+    <entry t="137.1" castname="パラスレイ" sync="false"/>
+    <entry t="138.7" text="アルテマ3" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="146.7" text="星天爆撃打" castname="星天爆撃打 " sync="false" tts="タンクにエスナ"/>
+    <entry t="147.9" castname="星天爆撃打" duration="4.7"/>
+    <entry t="153.7" castname="星天爆撃打" sync="false"/>
+    <entry t="153.7" castname="4連デバフ" sync="false" tts=""/>
+    <entry t="154.7" castname="星天爆撃打" sync="false"/>
+    <entry t="155.8" castname="星天爆撃打" sync="false"/>
+    <entry t="156.9" castname="星天爆撃打" sync="false"/>
+    <entry t="158.7" castname="強攻撃" sync="false" tts=""/>
+    <entry t="159.0" castname="星天爆撃打" sync="false"/>
+    <entry t="165.1" text="カロリックセオリー" castname="カロリックセオリー" duration="7.7" tts="全体"/>
+    <entry t="185.0" text="1回目" castname="重熱波" sync="false"/>
+    <entry t="196.0" castname="2回目" sync="false" tts=""/>
+    <entry t="196.3" castname="重熱波" sync="false"/>
+    <entry t="196.9" castname="衝風" sync="false"/>
+    <entry t="203.5" text="エクピロシス1" castname="エクピロシス" duration="3.7"/>
+    <entry t="208.2" castname="エクピロシス" duration="5.7"/>
+    <entry t="216.3" castname="エクピロシス" sync="false"/>
+    <entry t="218.3" castname="エクピロシス" sync="false"/>
+    <entry t="220.4" castname="エクピロシス" sync="false"/>
+    <entry t="221.6" text="アルテマ4" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="222.5" castname="エクピロシス" sync="false"/>
+    <entry t="233.8" text="パンゲネシス" castname="パンゲネシス" duration="6.7" tts="全体攻撃"/>
+    <entry t="245.0" text="パンテオス" castname="パンテオス" duration="3.7"/>
+    <entry t="254.9" castname="因子配分" sync="false"/>
+    <entry t="259.4" castname="因子配分" sync="false"/>
+    <entry t="264.7" castname="因子配分" sync="false"/>
+    <entry t="275.2" text="線取り確認 / パラスの手" castname="パラスの手" duration="4.7" tts="無職が線取り"/>
+    <entry t="280.4" castname="パラスの手" sync="false"/>
+    <entry t="282.5" text="パラスの手" castname="パラスの手" duration="0.7"/>
+    <entry t="283.7" castname="パラスの手" sync="false"/>
+    <entry t="289.8" text="イデア・エレメンタル" castname="イデア・エレメンタル" duration="6.7"/>
+    <entry t="304.0" text="パンタレイ" castname="パンタレイ" duration="9.7"/>
+    <entry t="318.1" text="パラスレイ" castname="パラスレイ" duration="1.7"/>
+    <entry t="322.8" castname="パラスレイ" sync="false"/>
+    <entry t="324.3" castname="パラスレイ" sync="false"/>
+    <entry t="325.5" castname="パラスレイ" sync="false"/>
+    <entry t="326.7" castname="パラスレイ" sync="false"/>
+    <entry t="328.2" text="アルテマ5" castname="アルテマ" duration="4.7"/>
+    <entry t="336.2" text="星天爆撃打" castname="星天爆撃打 " sync="false" tts="次は、星天爆撃打 。"/>
+    <entry t="337.4" castname="星天爆撃打" duration="4.7"/>
+    <entry t="343.2" castname="星天爆撃打" sync="false"/>
+    <entry t="343.2" castname="4連デバフ" sync="false" tts=""/>
+    <entry t="344.2" castname="星天爆撃打" sync="false"/>
+    <entry t="345.3" castname="星天爆撃打" sync="false"/>
+    <entry t="346.4" castname="星天爆撃打" sync="false"/>
+    <entry t="348.5" castname="星天爆撃打" sync="false"/>
+    <entry t="354.6" text="カロリックセオリー" castname="カロリックセオリー" duration="7.7"/>
+    <entry t="366.4" castname="焦熱波" duration="2.7"/>
+    <entry t="372.4" castname="焦熱波" duration="2.7"/>
+    <entry t="378.4" castname="焦熱波" duration="2.7"/>
+    <entry t="384.4" castname="焦熱波" duration="2.7"/>
+    <entry t="388.8" text="エクピロシス2" castname="エクピロシス" duration="3.7"/>
+    <entry t="390.4" castname="衝風" sync="false"/>
+    <entry t="393.6" castname="エクピロシス" duration="5.7"/>
+    <entry t="401.6" castname="エクピロシス" sync="false"/>
+    <entry t="403.7" castname="エクピロシス" sync="false"/>
+    <entry t="405.7" castname="エクピロシス" sync="false"/>
+    <entry t="406.9" text="アルテマ6" castname="アルテマ" duration="4.7"/>
+    <entry t="407.8" castname="エクピロシス" sync="false"/>
+    <entry t="419.2" text="ガイアオコス" castname="ガイアオコス" duration="6.7"/>
+    <entry t="434.3" text="サモンダークネス" castname="サモンダークネス" duration="2.7"/>
+    <entry t="440.5" text="デミパルヘリオン" castname="デミパルヘリオン" duration="2.7"/>
+    <entry t="444.2" castname="デミパルヘリオン" duration="9.2"/>
+    <entry t="446.6" text="ジオセントリズム" castname="ジオセントリズム" duration="6.7"/>
+    <entry t="454.5" castname="苦痛の鎖" sync="false"/>
+    <entry t="457.6" castname="神罰" sync="false"/>
+    <entry t="462.7" castname="サモンダークネス" duration="2.7"/>
+    <entry t="475.9" text="アルテマ7" castname="アルテマ" duration="4.7"/>
+    <entry t="481.0" castname="アルテマ" sync="false"/>
+    <entry t="490.1" text="アルテマ8" castname="アルテマ" duration="4.7"/>
+    <entry t="495.2" castname="アルテマ" sync="false"/>
+    <entry t="508.9" text="時間切れ開始" castname="イグノラビムス" duration="14.7"/>
+    <entry t="512.9" castname="セリフ" sync="false" tts=""/>
+    <entry t="523.9" castname="時間切れ" sync="false" tts=""/>
+  </phase>
+</timeline>

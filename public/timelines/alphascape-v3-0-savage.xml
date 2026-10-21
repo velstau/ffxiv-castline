@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>次元の狭間オメガ零式：アルファ編3</content>
+  <title>次元の狭間オメガ零式：アルファ編3</title>
+  <note>FFLogs の公開ランキングの討伐の記録（14:21）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="7.8" text="アトミックレイ" castname="アトミックレイ" duration="3.7" tts="次は、全体攻撃。"/>
+    <entry t="19.0" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
+    <entry t="26.2" text="火炎放射" castname="火炎放射" duration="3.7"/>
+    <entry t="30.2" text="アフターバーナー" castname="アフターバーナー" duration="1.7"/>
+    <entry t="34.8" castname="右舷斉射・波動砲" duration="4.7"/>
+    <entry t="36.2" castname="波動砲（左右）" sync="false" tts="次は、波動砲2回。"/>
+    <entry t="42.4" castname="左舷斉射・波動砲" duration="2.7"/>
+    <entry t="43.2" castname="波動砲（左右）" sync="false" tts=""/>
+    <entry t="54.1" text="プリントアウト" castname="プリントアウト" duration="2.7"/>
+    <entry t="63.1" text="ロケットパンチ着弾" castname="着弾" sync="false"/>
+    <entry t="68.2" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
+    <entry t="88.5" text="サークルプログラム" castname="サークルプログラム" duration="3.7"/>
+    <entry t="101.5" castname="フェーズ移行待機" sync="false" tts=""/>
+    <entry t="102.7" text="プログラム実行" castname="プログラム実行" duration="4.7"/>
+    <entry t="109.7" castname="マグネット" duration="6.7"/>
+    <entry t="110.7" castname="マグネット" sync="false" tts=""/>
+    <entry t="111.7" castname="Marker:00A2" sync="false" tts=""/>
+    <entry t="111.7" castname="Marker:00A3" sync="false" tts=""/>
+    <entry t="119.8" castname="記憶汚染除去P" sync="false"/>
+    <entry t="124.9" text="プログラム実行" castname="プログラム実行" duration="4.7"/>
+    <entry t="156.9" castname="初期化（周辺円範囲）" sync="false" tts="次は、外周あんち。"/>
+    <entry t="157.0" castname="初期化" duration="2.7"/>
+    <entry t="163.1" castname="最適化" duration="2.7"/>
+    <entry t="163.9" castname="最適化（ドーナツ範囲）" sync="false" tts="次は、ドーナツ範囲。"/>
+    <entry t="198.1" castname="アトミックレイ" duration="3.7"/>
+    <entry t="209.2" castname="マスタードボム" duration="4.7"/>
+    <entry t="211.9" castname="強制終了" sync="false" tts=""/>
+    <entry t="216.4" castname="火炎放射" duration="3.7"/>
+    <entry t="220.5" castname="アフターバーナー" duration="1.7"/>
+    <entry t="225.1" castname="右舷斉射・波動砲" duration="4.7"/>
+    <entry t="232.7" castname="左舷斉射・波動砲" duration="2.7"/>
+    <entry t="238.9" text="フェーズ移行" castname="デルタアタック" sync="false"/>
+    <entry t="244.4" castname="プリントアウト" duration="2.7"/>
+    <entry t="258.6" castname="マスタードボム" duration="4.7"/>
+    <entry t="278.7" castname="サークルプログラム" duration="3.7"/>
+    <entry t="292.9" castname="プログラム実行" duration="4.7"/>
+    <entry t="300.0" castname="マグネット" duration="6.7"/>
+    <entry t="310.0" castname="記憶汚染除去P" sync="false"/>
+    <entry t="315.1" castname="プログラム実行" duration="4.7"/>
+    <entry t="347.2" castname="初期化" duration="2.7"/>
+    <entry t="353.3" castname="最適化" duration="2.7"/>
+    <entry t="371.9" castname="デルタアタック" duration="9.7"/>
+    <entry t="402.4" castname="ミサイル発射" sync="false"/>
+    <entry t="405.5" text="火炎放射＋ミサイル" castname="火炎放射" duration="3.7"/>
+    <entry t="409.5" text="アフターバーナー" castname="アフターバーナー" duration="1.7"/>
+    <entry t="414.1" castname="左舷斉射・波動砲" duration="4.7"/>
+    <entry t="414.5" castname="波動砲（左右）" sync="false" tts="次は、波動砲2回。"/>
+    <entry t="421.7" castname="左舷斉射・波動砲" duration="2.7"/>
+    <entry t="422.5" castname="波動砲（左右）" sync="false" tts=""/>
+    <entry t="434.4" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
+    <entry t="441.6" text="ブラスター（線取り）" castname="ブラスター" sync="false"/>
+    <entry t="445.7" text="アトミックレイ" castname="アトミックレイ" duration="3.7" tts="次は、全体攻撃。"/>
+    <entry t="459.9" text="プリントアウト" castname="プリントアウト" duration="2.7"/>
+    <entry t="476.9" castname="ロケットパンチ突進" sync="false" tts=""/>
+    <entry t="478.1" text="オメガスライド（中央で頭割り）" castname="オメガスライド" duration="4.7"/>
+    <entry t="489.2" text="プリントアウト" castname="プリントアウト" duration="2.7"/>
+    <entry t="503.2" castname="ロケットパンチ突進" sync="false" tts="スプリント。"/>
+    <entry t="506.2" castname="波動砲（左右）" sync="false" tts="次は、波動砲2回。"/>
+    <entry t="506.4" castname="右舷斉射・波動砲" duration="4.7"/>
+    <entry t="514.0" castname="左舷斉射・波動砲" duration="2.7"/>
+    <entry t="514.2" castname="波動砲（左右）" sync="false" tts=""/>
+    <entry t="525.7" text="サークルプログラム更新" castname="サークルプログラム更新" duration="4.7" window="20 10"/>
+    <entry t="538.8" text="火炎放射（DoT有）" castname="火炎放射" duration="3.7"/>
+    <entry t="542.9" text="アフターバーナー" castname="アフターバーナー" duration="1.7"/>
+    <entry t="546.9" castname="零式波動砲" sync="false" tts="次は、零式波動砲"/>
+    <entry t="547.4" castname="左舷斉射・零式波動砲" duration="3.7"/>
+    <entry t="551.9" castname="零式波動砲（逆側に移動）" sync="false" tts=""/>
+    <entry t="554.0" castname="左舷斉射・零式波動砲" sync="false"/>
+    <entry t="565.0" text="パントクラトル（ボス背面集合）" castname="パントクラトル" duration="4.7"/>
+    <entry t="578.0" text="高出力波動砲P（頭割り）" castname="高出力波動砲P" sync="false"/>
+    <entry t="579.2" castname="射撃統制システム起動" duration="4.7"/>
+    <entry t="590.0" castname="波動砲誘導1" sync="false" tts="次は、波動砲誘導"/>
+    <entry t="593.3" text="波動砲P（1回目）" castname="波動砲P" sync="false"/>
+    <entry t="596.3" castname="波動砲誘導2" sync="false" tts=""/>
+    <entry t="600.4" text="波動砲P（2回目）" castname="波動砲P" sync="false"/>
+    <entry t="601.4" text="大型ミサイルP：マップ端に移動" castname="大型ミサイルp" sync="false"/>
+    <entry t="609.4" castname="大型ミサイルP着弾" sync="false" tts=""/>
+    <entry t="618.9" text="ブラスター（線取り）" castname="ブラスター" sync="false"/>
+    <entry t="621.0" text="アトミックレイ→中央移動" castname="アトミックレイ" duration="3.7" tts="次は、全体攻撃。"/>
+    <entry t="633.2" text="プリントアウト（タンクLB）" castname="プリントアウト" duration="2.7"/>
+    <entry t="642.2" text="中央→散開" castname="着弾" sync="false"/>
+    <entry t="656.4" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
+    <entry t="669.5" text="アトミックレイ" castname="アトミックレイ" duration="3.7" tts="次は、全体攻撃。"/>
+    <entry t="675.6" castname="ミサイル発射" sync="false"/>
+    <entry t="678.7" text="火炎放射＋ミサイル" castname="火炎放射" duration="3.7"/>
+    <entry t="682.7" text="アフターバーナー" castname="アフターバーナー" duration="1.7"/>
+    <entry t="687.3" castname="左舷斉射・零式波動砲" duration="3.7"/>
+    <entry t="688.7" castname="零式波動砲" sync="false" tts="次は、零式波動砲"/>
+    <entry t="693.7" castname="零式波動砲（逆側に移動）" sync="false" tts=""/>
+    <entry t="693.9" castname="左舷斉射・零式波動砲" sync="false"/>
+    <entry t="705.4" text="パントクラトル（ボス背面集合）" castname="パントクラトル" duration="4.7"/>
+    <entry t="720.0" text="火炎放射開始" castname="火炎放射" sync="false"/>
+    <entry t="720.7" castname="ミサイル着弾P" duration="2.7"/>
+    <entry t="726.7" castname="誘導ミサイルP" duration="0.7"/>
+    <entry t="731.8" castname="射撃統制システム起動" duration="4.7"/>
+    <entry t="732.0" castname="射撃統制システム" sync="false" tts=""/>
+    <entry t="736.9" text="高出力波動砲P（頭割り）" castname="高出力波動砲P" sync="false" tts="頭割り"/>
+    <entry t="739.9" castname="拡散波動砲Px9" sync="false" tts=""/>
+    <entry t="743.9" castname="波動砲P誘導1回目（近接＋H1）" sync="false" tts="次は、波動砲誘導"/>
+    <entry t="750.9" castname="波動砲P誘導2回目（遠隔＋H2）" sync="false" tts=""/>
+    <entry t="755.9" text="大型ミサイルP：マップ端に移動" castname="大型ミサイルp" sync="false"/>
+    <entry t="764.9" castname="大型ミサイルP着弾" sync="false" tts=""/>
+    <entry t="773.4" castname="左舷斉射・零式波動砲" duration="3.7"/>
+    <entry t="773.9" castname="零式波動砲" sync="false" tts="次は、零式波動砲2回"/>
+    <entry t="779.9" castname="零式波動砲（逆側に移動）" sync="false" tts=""/>
+    <entry t="780.0" castname="左舷斉射・零式波動砲" sync="false"/>
+    <entry t="782.6" castname="右舷斉射・零式波動砲" duration="3.7"/>
+    <entry t="782.9" castname="零式波動砲" sync="false" tts=""/>
+    <entry t="786.9" castname="零式波動砲（逆側に移動）" sync="false" tts=""/>
+    <entry t="789.2" castname="右舷斉射・零式波動砲" sync="false"/>
+    <entry t="796.9" castname="ミールストーム" sync="false" tts=""/>
+    <entry t="797.8" castname="ミールストーム" duration="3.7"/>
+    <entry t="811.0" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
+    <entry t="818.2" text="ブラスター（線取り）" castname="ブラスター" sync="false"/>
+    <entry t="822.3" text="アトミックレイ" castname="アトミックレイ" duration="3.7"/>
+    <entry t="828.4" text="アトミックレイ" castname="アトミックレイ" duration="3.7"/>
+    <entry t="834.5" text="アトミックレイ" castname="アトミックレイ" duration="3.7"/>
+    <entry t="840.7" text="サークル" castname="サークル" duration="17.7"/>
+    <entry t="858.7" castname="サークル" sync="false"/>
+    <entry t="876.7" castname="時間切れ" sync="false" tts=""/>
+  </phase>
+</timeline>

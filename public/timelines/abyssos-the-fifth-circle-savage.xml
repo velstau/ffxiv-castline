@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>万魔殿パンデモニウム零式：煉獄編1</content>
+  <title>万魔殿パンデモニウム零式：煉獄編1</title>
+  <note>FFLogs の公開ランキングの討伐の記録（9:52）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="10.1" text="全体攻撃" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="17.2" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="25.4" text="安置を確認" castname="トパーズストーン" duration="3.7" tts="安置を確認"/>
+    <entry t="43.5" castname="ルビーリフレクション" sync="false"/>
+    <entry t="51.6" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="57.4" castname="ベノムマス" sync="false"/>
+    <entry t="58.7" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="64.1" castname="ベノムクランチ" sync="false"/>
+    <entry t="83.7" castname="沼を踏む" sync="false" tts="沼を踏む"/>
+    <entry t="89.3" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="95.1" castname="ベノムマス" sync="false"/>
+    <entry t="96.4" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="101.6" castname="ベノムクランチ" sync="false"/>
+    <entry t="110.8" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="118.9" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="安置を確認"/>
+    <entry t="120.8" castname="【予告】突進" sync="false" tts=""/>
+    <entry t="127.3" text="突進確認 / ノックバック" castname="ダブルラッシュ" duration="5.7" tts="突進を確認、ノックバック"/>
+    <entry t="135.4" castname="ダブルラッシュ" sync="false"/>
+    <entry t="137.0" castname="ルビーリフレクション" sync="false"/>
+    <entry t="141.6" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="154.9" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="162.0" text="トパーズクラスター" castname="トパーズクラスター" duration="3.7" tts="安置を確認"/>
+    <entry t="162.8" castname="【予告】3連クラスター" sync="false" tts=""/>
+    <entry t="170.0" castname="トパーズレイ" duration="8.7"/>
+    <entry t="182.0" castname="ルビーリフレクション" sync="false"/>
+    <entry t="184.5" castname="ルビーリフレクション" sync="false"/>
+    <entry t="188.1" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="193.9" castname="ベノムマス" sync="false"/>
+    <entry t="195.3" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="200.4" castname="ベノムクランチ" sync="false"/>
+    <entry t="206.6" text="スコールorサージ" castname="ベノムスコール|ベノムサージ" duration="4.7"/>
+    <entry t="215.4" castname="ベノムレイン" sync="false"/>
+    <entry t="218.4" castname="ベノムドロップ" duration="2.7"/>
+    <entry t="224.3" castname="ベノムスプラッシュ" sync="false"/>
+    <entry t="226.7" text="テイルorクロウ" castname="テイル・アンド・クロウ|クロウ・アンド・テイル" duration="5.7"/>
+    <entry t="226.7" castname="レイジングクロウ" duration="5.7"/>
+    <entry t="233.3" castname="レイジングクロウ" sync="false"/>
+    <entry t="234.3" castname="レイジングクロウ" sync="false"/>
+    <entry t="236.8" castname="レイジングテイル" sync="false"/>
+    <entry t="244.7" castname="捕食ギミック開始" sync="false" tts=""/>
+    <entry t="255.4" castname="スターヴィング・スタンピード" duration="1.5"/>
+    <entry t="256.5" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="257.8" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="259.1" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="260.3" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="261.6" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="262.9" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="264.2" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="265.5" castname="スターヴィング・スタンピード" sync="false"/>
+    <entry t="270.4" castname="毒液" sync="false"/>
+    <entry t="272.6" castname="捕食" sync="false"/>
+    <entry t="280.9" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃" window="30 10"/>
+    <entry t="288.0" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="295.2" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="範囲を当てる"/>
+    <entry t="296.0" castname="【予告】石に範囲当て" sync="false" tts=""/>
+    <entry t="301.3" text="ベノムスプラッシュ" castname="ベノムスプラッシュ" duration="4.7"/>
+    <entry t="310.1" castname="ベノムスプラッシュ" sync="false"/>
+    <entry t="313.2" castname="ルビーリフレクション" sync="false"/>
+    <entry t="313.3" text="レイorクロウ" castname="レイジングクロウ|シアリングレイ" duration="4.7"/>
+    <entry t="319.0" castname="ルビーリフレクション" sync="false"/>
+    <entry t="327.5" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="333.3" castname="ベノムマス" sync="false"/>
+    <entry t="334.6" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="340.0" castname="ベノムクランチ" sync="false"/>
+    <entry t="348.2" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="356.4" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="2箇所に分かれる"/>
+    <entry t="357.2" castname="【予告】2箇所安置に分かれる" sync="false" tts=""/>
+    <entry t="369.6" text="スコールorサージ" castname="ベノムスコール|ベノムサージ" duration="4.7"/>
+    <entry t="374.5" castname="ルビーリフレクション" sync="false"/>
+    <entry t="378.4" castname="ベノムレイン" sync="false"/>
+    <entry t="381.4" castname="ベノムドロップ" duration="2.7"/>
+    <entry t="387.4" castname="ベノムスプラッシュ" sync="false"/>
+    <entry t="396.6" castname="沼を踏む" sync="false" tts="沼を踏む"/>
+    <entry t="399.9" text="テイルorクロウ" castname="テイル・アンド・クロウ|クロウ・アンド・テイル" duration="5.7"/>
+    <entry t="399.9" castname="レイジングクロウ" duration="5.7"/>
+    <entry t="406.5" castname="レイジングクロウ" sync="false"/>
+    <entry t="407.5" castname="レイジングクロウ" sync="false"/>
+    <entry t="410.0" castname="レイジングテイル" sync="false"/>
+    <entry t="413.4" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="419.1" castname="ベノムマス" sync="false"/>
+    <entry t="420.5" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="425.7" castname="ベノムクランチ" sync="false"/>
+    <entry t="431.8" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="439.0" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
+    <entry t="446.1" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="範囲を当てる"/>
+    <entry t="446.9" castname="【予告】範囲を当てる" sync="false" tts=""/>
+    <entry t="452.2" text="ベノムスプラッシュ" castname="ベノムスプラッシュ" duration="4.7"/>
+    <entry t="461.0" castname="ベノムスプラッシュ" sync="false"/>
+    <entry t="464.1" castname="ルビーリフレクション" sync="false"/>
+    <entry t="468.1" text="突進注意 / ノックバック" castname="ダブルラッシュ" duration="5.7" tts="ノックバック"/>
+    <entry t="476.2" castname="ダブルラッシュ" sync="false"/>
+    <entry t="479.4" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンクスイッチ"/>
+    <entry t="485.2" castname="ベノムマス" sync="false"/>
+    <entry t="486.5" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="491.7" castname="ベノムクランチ" sync="false"/>
+    <entry t="499.9" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
+    <entry t="508.1" text="スコールorサージ" castname="ベノムスコール|ベノムサージ" duration="4.7"/>
+    <entry t="516.9" castname="ベノムレイン" sync="false"/>
+    <entry t="519.8" castname="ベノムドロップ" duration="2.7"/>
+    <entry t="525.8" castname="ベノムスプラッシュ" sync="false"/>
+    <entry t="526.3" text="クロウorテイル" castname="テイル・アンド・クロウ|クロウ・アンド・テイル" duration="5.7"/>
+    <entry t="536.4" castname="レイジングテイル" sync="false"/>
+    <entry t="540.7" text="ベノムマス" castname="ベノムマス" duration="4.7" tts="タンク強攻撃"/>
+    <entry t="546.5" castname="ベノムマス" sync="false"/>
+    <entry t="547.8" text="ベノムクランチ" castname="ベノムクランチ" duration="4.7"/>
+    <entry t="553.0" castname="ベノムクランチ" sync="false"/>
+    <entry t="562.1" castname="ソニックシャッター" duration="4.7"/>
+    <entry t="570.3" castname="ソニックシャッター" sync="false"/>
+    <entry t="573.4" castname="ソニックシャッター" sync="false"/>
+    <entry t="576.5" castname="ソニックシャッター" sync="false"/>
+    <entry t="579.7" castname="ソニックシャッター" sync="false"/>
+    <entry t="592.8" castname="時間切れ調査中" sync="false" tts=""/>
+  </phase>
+</timeline>

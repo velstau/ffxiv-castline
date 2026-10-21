@@ -7,10 +7,14 @@
   <phase id="p1">
     <entry t="7.9" text="青の衝撃(タンク強x2)" castname="青の衝撃" duration="5.7" tts="タンク強"/>
     <entry t="8.7" castname="戦闘開始！" sync="false" tts=""/>
+    <entry t="15.0" castname="青の衝撃" sync="false"/>
     <entry t="18.0" castname="青の衝撃" sync="false"/>
-    <entry t="24.1" text="死の恐怖" castname="死の恐怖" duration="4.7" tts="腕生えるよ"/>
+    <entry t="19.1" castname="青の衝撃" sync="false"/>
+    <entry t="24.1" castname="死の恐怖" duration="4.7"/>
+    <entry t="29.1" text="死の恐怖" castname="死の恐怖" duration="2.7" tts="腕生えるよ"/>
     <entry t="34.2" text="暗き死の腕(半面焼き)" castname="暗き死の腕" duration="4.7" tts="半面注意"/>
     <entry t="34.9" castname="圧し潰す" sync="false"/>
+    <entry t="40.8" castname="暗気流" duration="0.7"/>
     <entry t="47.4" text="メメント・モリ" castname="メメント・モリ" duration="4.7" tts="中央あぶないよ"/>
     <entry t="55.6" castname="闇の一撃" duration="3.7"/>
     <entry t="58.6" text="圧し潰す+闇の一撃" castname="圧し潰す" sync="false" tts="えーおーいー注意"/>
@@ -19,21 +23,38 @@
     <entry t="78.1" castname="青の波動" sync="false"/>
     <entry t="80.9" text="青き魂" castname="青き魂" duration="3.7"/>
     <entry t="88.1" text="死の恐怖" castname="死の恐怖" duration="4.7" tts="腕生えるよ"/>
+    <entry t="93.1" castname="死の恐怖" duration="2.7"/>
     <entry t="98.9" castname="圧し潰す" sync="false"/>
     <entry t="99.2" text="導きの翼" castname="導きの翼" duration="3.7"/>
+    <entry t="103.2" castname="導きの翼" sync="false"/>
     <entry t="107.3" text="青の衝撃(タンク強x2)" castname="青の衝撃" duration="5.7" tts="タンク強"/>
     <entry t="109.3" castname="圧し潰す" sync="false"/>
+    <entry t="114.4" castname="青の衝撃" sync="false"/>
     <entry t="117.4" castname="青の衝撃" sync="false"/>
+    <entry t="118.5" castname="青の衝撃" sync="false"/>
     <entry t="119.5" text="ペアor4：4" castname="青の二重波|青の四重波" duration="4.7" tts="ペアかよんよん"/>
     <entry t="124.7" castname="青の波動" sync="false"/>
     <entry t="133.6" text="グランドクロス" castname="グランドクロス" duration="6.7" tts="真ん中集合"/>
+    <entry t="145.8" castname="グランドクロス" duration="2.7"/>
     <entry t="154.6" castname="塔踏み1回目" sync="false" tts=""/>
+    <entry t="160.8" castname="グランドクロス" duration="4.7"/>
     <entry t="165.6" castname="塔踏み2回目" sync="false" tts=""/>
+    <entry t="169.9" castname="グランドクロス" duration="2.7"/>
     <entry t="172.6" castname="真ん中集合" sync="false" tts="真ん中集合"/>
     <entry t="177.7" text="ニュートンリング" castname="ニュートンリング" duration="6.7" tts="全体攻撃" window="10 25"/>
+    <entry t="187.3" castname="ニュートンリング" sync="false"/>
     <entry t="195.7" castname="雑魚Phase" sync="false" tts="雑魚フェーズ開始"/>
+    <entry t="196.9" castname="死の恐怖" duration="2.7"/>
+    <entry t="204.2" castname="圧し潰す" duration="2.7"/>
+    <entry t="205.0" castname="死の恐怖" duration="2.7"/>
+    <entry t="213.0" castname="死の恐怖" duration="2.7"/>
+    <entry t="214.4" castname="圧し潰す" duration="2.7"/>
+    <entry t="224.5" castname="圧し潰す" duration="2.7"/>
+    <entry t="234.7" castname="圧し潰す" duration="2.7"/>
     <entry t="239.8" text="エターナルダークネス" castname="エターナルダークネス" duration="9.7" window="10 25"/>
+    <entry t="256.2" castname="エターナルダークネス" sync="false"/>
     <entry t="259.8" castname="個人DPSチェック" sync="false" tts=""/>
+    <entry t="259.9" castname="死の氾濫" sync="false"/>
     <entry t="318.0" text="闇の巨腕" castname="闇の巨腕" duration="4.7" window="10 25"/>
     <entry t="327.1" text="導きの翼" castname="導きの翼" duration="3.7" tts="えーおーいー注意"/>
     <entry t="333.2" text="暗き死の腕(半面焼き)" castname="暗き死の腕" duration="4.7" tts="半面注意"/>
@@ -53,6 +74,7 @@
     <entry t="400.2" castname="青の輪波" sync="false"/>
     <entry t="405.9" castname="闇の巨腕" duration="4.7"/>
     <entry t="409.2" castname="青の輪波" sync="false"/>
+    <entry t="413.0" castname="引きずり込む" duration="4.7"/>
     <entry t="413.2" castname="中外確認" sync="false" tts="なかそと確認"/>
     <entry t="414.2" castname="青の輪波" sync="false"/>
     <entry t="417.5" castname="青き魂" duration="3.7"/>
@@ -61,10 +83,16 @@
     <entry t="435.9" castname="青の波動" sync="false"/>
     <entry t="444.8" text="集団恐慌(塔踏みPhase)" castname="集団恐慌" duration="3.7" tts="塔踏み開始"/>
     <entry t="450.9" text="メメント・モリ" castname="メメント・モリ" duration="4.7" tts="中央あぶないよ"/>
+    <entry t="451.2" castname="恐慌の痕" sync="false"/>
+    <entry t="457.2" castname="恐慌の痕" sync="false"/>
     <entry t="460.6" text="青の衝撃(タンク強x2)" castname="青の衝撃" duration="5.7" tts="タンク強"/>
+    <entry t="461.5" castname="恐慌の痕" sync="false"/>
+    <entry t="465.3" castname="恐慌の痕" sync="false"/>
+    <entry t="467.7" castname="青の衝撃" sync="false"/>
     <entry t="470.7" text="青の衝撃(タンク強x2)" castname="青の衝撃" sync="false" tts="タンク強"/>
+    <entry t="471.8" castname="青の衝撃" sync="false"/>
     <entry t="472.7" text="暗き死の腕(半面焼き)" castname="暗き死の腕" duration="4.7" tts="半面注意"/>
-    <entry t="480.3" castname="暗気流" sync="false"/>
+    <entry t="479.3" text="暗気流" castname="暗気流" duration="0.7"/>
     <entry t="485.9" text="連なる青き魂" castname="連なる青き魂" duration="14.7" tts="なかそと覚える"/>
     <entry t="500.9" castname="連なる青き魂" sync="false"/>
     <entry t="504.1" text="魂の輪転" castname="魂の輪転" duration="2.7"/>
@@ -78,10 +106,12 @@
     <entry t="527.8" castname="青の波動" sync="false"/>
     <entry t="528.0" castname="衝撃波" sync="false"/>
     <entry t="529.7" text="死の恐怖" castname="死の恐怖" duration="4.7" tts="腕生えるよ"/>
+    <entry t="534.8" castname="死の恐怖" duration="2.7"/>
     <entry t="540.5" castname="圧し潰す" sync="false"/>
     <entry t="541.8" text="青の輪波" castname="青の輪波" duration="3.7"/>
     <entry t="549.0" castname="闇の巨腕" duration="4.7"/>
     <entry t="555.8" castname="青の輪波" sync="false"/>
+    <entry t="556.1" castname="引きずり込む" duration="4.7"/>
     <entry t="558.6" castname="闇の巨腕" duration="4.7"/>
     <entry t="560.8" castname="青の輪波" sync="false"/>
     <entry t="565.8" castname="青の輪波" sync="false"/>

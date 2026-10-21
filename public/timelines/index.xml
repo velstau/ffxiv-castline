@@ -40,6 +40,216 @@
   <timeline>
     <file>abyssos-the-eighth-circle-savage.xml</file>
     <content>万魔殿パンデモニウム零式：煉獄編4</content>
-    <title>煉獄編4 零式（テスト用・冒頭のみ）</title>
+    <title>煉獄編4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-cruiserweight-m2-savage.xml</file>
+    <content>至天の座アルカディア零式：クルーザー級2</content>
+    <title>クルーザー級2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-cruiserweight-m3-savage.xml</file>
+    <content>至天の座アルカディア零式：クルーザー級3</content>
+    <title>クルーザー級3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-cruiserweight-m4-savage.xml</file>
+    <content>至天の座アルカディア零式：クルーザー級4</content>
+    <title>クルーザー級4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-light-heavyweight-m1-savage.xml</file>
+    <content>至天の座アルカディア零式：ライトヘビー級1</content>
+    <title>ライトヘビー級1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-light-heavyweight-m2-savage.xml</file>
+    <content>至天の座アルカディア零式：ライトヘビー級2</content>
+    <title>ライトヘビー級2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-light-heavyweight-m3-savage.xml</file>
+    <content>至天の座アルカディア零式：ライトヘビー級3</content>
+    <title>ライトヘビー級3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>aac-light-heavyweight-m4-savage.xml</file>
+    <content>至天の座アルカディア零式：ライトヘビー級4</content>
+    <title>ライトヘビー級4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>anabaseios-the-ninth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：天獄編1</content>
+    <title>天獄編1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>anabaseios-the-tenth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：天獄編2</content>
+    <title>天獄編2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>anabaseios-the-eleventh-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：天獄編3</content>
+    <title>天獄編3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>anabaseios-the-twelfth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：天獄編4</content>
+    <title>天獄編4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>abyssos-the-fifth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：煉獄編1</content>
+    <title>煉獄編1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>abyssos-the-sixth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：煉獄編2</content>
+    <title>煉獄編2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>abyssos-the-seventh-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：煉獄編3</content>
+    <title>煉獄編3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>asphodelos-the-first-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：辺獄編1</content>
+    <title>辺獄編1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>asphodelos-the-second-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：辺獄編2</content>
+    <title>辺獄編2 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>asphodelos-the-third-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：辺獄編3</content>
+    <title>辺獄編3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>asphodelos-the-fourth-circle-savage.xml</file>
+    <content>万魔殿パンデモニウム零式：辺獄編4</content>
+    <title>辺獄編4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>alphascape-v1-0-savage.xml</file>
+    <content>次元の狭間オメガ零式：アルファ編1</content>
+    <title>アルファ編1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>alphascape-v3-0-savage.xml</file>
+    <content>次元の狭間オメガ零式：アルファ編3</content>
+    <title>アルファ編3 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>alphascape-v4-0-savage.xml</file>
+    <content>次元の狭間オメガ零式：アルファ編4</content>
+    <title>アルファ編4 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>dancing-mad-ultimate.xml</file>
+    <content>絶妖星乱舞</content>
+    <title>絶妖星乱舞（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-omega-protocol-ultimate.xml</file>
+    <content>絶オメガ検証戦</content>
+    <title>絶オメガ検証戦（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>dragonsongs-reprise-ultimate.xml</file>
+    <content>絶竜詩戦争</content>
+    <title>絶竜詩戦争（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-epic-of-alexander-ultimate.xml</file>
+    <content>絶アレキサンダー討滅戦</content>
+    <title>絶アレキサンダー（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-weapons-refrain-ultimate.xml</file>
+    <content>絶アルテマウェポン破壊作戦</content>
+    <title>絶アルテマウェポン破壊作戦（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-unending-coil-of-bahamut-ultimate.xml</file>
+    <content>絶バハムート討滅戦</content>
+    <title>絶バハムート（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>worqor-lar-dor-extreme.xml</file>
+    <content>極ヴァリガルマンダ討滅戦</content>
+    <title>極ヴァリガルマンダ（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>everkeep-extreme.xml</file>
+    <content>極ゾラージャ討滅戦</content>
+    <title>極ゾラージャ（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>sphenes-burden-extreme.xml</file>
+    <content>極エターナルクイーン討滅戦</content>
+    <title>極エターナルクイーン（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>necrons-embrace-extreme.xml</file>
+    <content>極永遠の闇討滅戦</content>
+    <title>極永遠の闇（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-windward-wilds-extreme.xml</file>
+    <content>極護竜アルシュベルド狩猟戦</content>
+    <title>極護竜アルシュベルド狩猟戦（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>hell-on-rails-extreme.xml</file>
+    <content>極グラシャラボラス討滅戦</content>
+    <title>極グラシャラボラス（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-unmaking-extreme.xml</file>
+    <content>極エヌオー討滅戦</content>
+    <title>極エヌオー（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-cloud-of-darkness-chaotic.xml</file>
+    <content>滅暗闇の雲激闘戦</content>
+    <title>滅暗闇の雲激闘戦（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>hydaelyns-call-extreme.xml</file>
+    <content>極ハイデリン討滅戦</content>
+    <title>極ハイデリン（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>endsingers-aria-extreme.xml</file>
+    <content>終極の戦い</content>
+    <title>終極の戦い（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>storms-crown-extreme.xml</file>
+    <content>極バルバリシア討滅戦</content>
+    <title>極バルバリシア（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>mount-ordeals-extreme.xml</file>
+    <content>極ルビカンテ討滅戦</content>
+    <title>極ルビカンテ（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-voidcast-dais-extreme.xml</file>
+    <content>極ゴルベーザ討滅戦</content>
+    <title>極ゴルベーザ（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-abyssal-fracture-extreme.xml</file>
+    <content>極ゼロムス討滅戦</content>
+    <title>極ゼロムス（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>the-seat-of-sacrifice-extreme.xml</file>
+    <content>極ウォーリア・オブ・ライト討滅戦</content>
+    <title>極ウォーリア・オブ・ライト（文言つき・下書き）</title>
   </timeline>
 </timelines>

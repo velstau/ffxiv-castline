@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶竜詩戦争</content>
+  <title>絶竜詩戦争</title>
+  <note>FFLogs の公開ランキングの討伐の記録（18:54）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1" name="P2: King Thordan">
+    <entry t="4.1" castname="攻撃" sync="false"/>
+    <entry t="7.3" castname="攻撃" sync="false"/>
+    <entry t="9.3" text="I,Aメルシー" castname="インビジブル・アスカロンメルシー" duration="2.7" tts="アスカロンメルシー"/>
+    <entry t="15.4" castname="アスカロンマイト" sync="false"/>
+    <entry t="17.1" text="Aマイト3" castname="アスカロンマイト" sync="false" tts="マイト3連"/>
+    <entry t="18.1" castname="Aマイト2" sync="false" tts=""/>
+    <entry t="18.8" castname="アスカロンマイト" sync="false"/>
+    <entry t="20.1" castname="Aマイト1" sync="false" tts=""/>
+    <entry t="22.7" castname="ナイツ・オブ・ラウンド" sync="false"/>
+    <entry t="25.8" text="蒼天の陣：雷槍" castname="蒼天の陣：雷槍" duration="3.7"/>
+    <entry t="36.5" text="百雷" castname="百雷" duration="5.4" tts="百雷"/>
+    <entry t="36.5" text="◇外周POP◇" castname="スパイラルスラスト" sync="false" tts="外周確認"/>
+    <entry t="42.5" castname="スパイラルスラスト" sync="false"/>
+    <entry t="44.5" text="◇範囲誘導◇ / I,Aメルシー" castname="インビジブル・アスカロンメルシー" duration="2.7" tts="アスカロンメルシー"/>
+    <entry t="49.6" text="マーカー注意" castname="ディメンションクラッシュ" sync="false" tts="マーカーつくよ"/>
+    <entry t="52.3" castname="線取り注意" sync="false" tts="線取り注意"/>
+    <entry t="52.9" text="邪竜の魔炎" castname="邪竜の魔炎" duration="4.4" tts="頭割りとバッシュ"/>
+    <entry t="58.5" text="ディメンション" castname="ディメンションクラッシュ" sync="false"/>
+    <entry t="58.9" text="バッシュ" castname="ホーリーシールドバッシュ" sync="false"/>
+    <entry t="61.0" text="ブレードダンス" castname="ホーリーブレードダンス" sync="false"/>
+    <entry t="62.3" castname="コンヴィクション" sync="false" tts="塔を踏む"/>
+    <entry t="64.1" text="全体攻撃" castname="エンシェントクエイガ" duration="5.7" tts="全体攻撃"/>
+    <entry t="74.2" castname="攻撃" sync="false"/>
+    <entry t="76.2" text="タンク交代 / ヘヴンリーヒール" castname="ヘヴンリーヒール" duration="3.7" tts="タンクスイッチ、強攻撃"/>
+    <entry t="83.4" text="Aマイト3" castname="アスカロンマイト" sync="false" tts="マイト3連"/>
+    <entry t="85.0" castname="アスカロンマイト" sync="false"/>
+    <entry t="85.4" castname="Aマイト2" sync="false" tts=""/>
+    <entry t="86.7" castname="アスカロンマイト" sync="false"/>
+    <entry t="87.4" castname="Aマイト1" sync="false" tts=""/>
+    <entry t="90.6" text="ナイツ・オブ・ラウンド" castname="ナイツ・オブ・ラウンド" sync="false" tts="ナイツ・オブ・ラウンド。"/>
+    <entry t="93.7" text="移行：ナイツP2 / 蒼天の陣：聖杖" castname="蒼天の陣：聖杖" duration="3.7" window="30 10"/>
+    <entry t="106.3" text="竜の邪眼" castname="竜の邪眼" duration="3.7"/>
+    <entry t="111.3" text="セイクリッドカット4" castname="セイクリッドカット" sync="false"/>
+    <entry t="111.4" castname="シャイニングブレード" sync="false"/>
+    <entry t="113.3" castname="セイクリッドカット3" sync="false" tts=""/>
+    <entry t="115.3" castname="セイクリッドカット2" sync="false" tts=""/>
+    <entry t="117.3" castname="セイクリッドカット1" sync="false" tts=""/>
+    <entry t="121.3" castname="Marking" sync="false" tts=""/>
+    <entry t="129.2" text="炎設置" castname="ヘヴンステイク" sync="false"/>
+    <entry t="129.8" castname="氷設置" sync="false" tts="氷設置"/>
+    <entry t="131.2" castname="塔発動" sync="false" tts="塔発動"/>
+    <entry t="133.6" castname="コンヴィクション" sync="false" tts="塔を踏む"/>
+    <entry t="135.1" castname="ホーリーコメット" sync="false" tts="コメット開始"/>
+    <entry t="136.5" castname="コメット7" sync="false" tts=""/>
+    <entry t="137.9" castname="コメット6" sync="false" tts=""/>
+    <entry t="139.3" castname="コメット5" sync="false" tts=""/>
+    <entry t="140.7" castname="コメット4" sync="false" tts=""/>
+    <entry t="142.1" castname="コメット3" sync="false" tts=""/>
+    <entry t="142.1" castname="ノックバック注意" sync="false" tts="ノックバック注意！"/>
+    <entry t="143.5" castname="コメット2" sync="false" tts=""/>
+    <entry t="144.0" text="ノックバック" castname="フェイスアンムーブ" sync="false" tts="ノックバック"/>
+    <entry t="145.9" castname="コメット1" sync="false" tts=""/>
+    <entry t="147.0" text="塔発動" castname="コンヴィクション" sync="false" tts="塔を踏む"/>
+    <entry t="156.5" castname="アルティメットエンド" sync="false"/>
+    <entry t="165.0" castname="アルティメットエンド" sync="false"/>
+    <entry t="173.9" text="大振り2" castname="大振り" duration="2.7"/>
+    <entry t="182.4" castname="大振り" duration="2.7"/>
+    <entry t="186.7" castname="大振り1" sync="false" tts=""/>
+    <entry t="190.5" text="時間切れ開始" castname="エーテルバースト" duration="5.7"/>
+    <next to="p2" at="15.5" cast="堕天のドラゴンダイブ"/>
+  </phase>
+  <phase id="p2" name="P3: Nidhogg">
+    <entry t="0.0" castname="終焉の竜詩" sync="false"/>
+    <entry t="2.3" castname="終焉の竜詩" sync="false" tts="終焉の竜詩。"/>
+    <entry t="7.1" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="10.2" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="13.4" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="14.3" castname="移行待ち(軽減準備)" sync="false" tts=""/>
+    <entry t="15.5" text="マーカー / 堕天のドラゴンダイブ" castname="堕天のドラゴンダイブ" duration="4.7" tts="マーカーつくよ"/>
+    <entry t="22.6" text="連旋確認" castname="尾牙の連旋|牙尾の連旋" duration="7.3" tts="レンジ軽減準備、レンジ軽減準備"/>
+    <entry t="30.3" castname="ダークスパインダイブ" sync="false"/>
+    <entry t="30.4" text="塔1回目" castname="ダークハイジャンプ" sync="false" tts="塔1回目"/>
+    <entry t="30.5" text="頭割り" castname="アイ・オブ・タイラント" sync="false" tts="頭割り"/>
+    <entry t="33.9" text="大車輪1" castname="大車輪・邪尾|大車輪・咬牙" sync="false" tts="大車輪"/>
+    <entry t="34.4" text="塔踏み" castname="ダークドラゴンダイブ" duration="2.2" tts="塔踏み1回目"/>
+    <entry t="37.0" castname="大車輪・咬牙" sync="false"/>
+    <entry t="38.0" castname="大車輪2" sync="false" tts="大車輪"/>
+    <entry t="39.6" text="直線誘導" castname="ゲイルスコグル" duration="4.2" tts="直線誘導"/>
+    <entry t="40.6" text="塔2回目" castname="ダークハイジャンプ" sync="false" tts="塔2回目"/>
+    <entry t="44.2" text="連旋確認" castname="尾牙の連旋|牙尾の連旋" duration="7.3"/>
+    <entry t="46.9" text="塔踏み" castname="ダークドラゴンダイブ" sync="false" tts="塔踏み2回目"/>
+    <entry t="49.6" text="直線誘導" castname="ゲイルスコグル" sync="false" tts="直線誘導"/>
+    <entry t="51.3" text="塔3回目" castname="ダークハイジャンプ" sync="false" tts="塔3回目"/>
+    <entry t="52.0" text="頭割り" castname="アイ・オブ・タイラント" sync="false" tts="頭割り"/>
+    <entry t="55.4" text="大車輪1" castname="大車輪・邪尾|大車輪・咬牙" sync="false" tts="大車輪"/>
+    <entry t="55.4" text="塔踏み" castname="ダークドラゴンダイブ" duration="2.2" tts="塔踏み3回目"/>
+    <entry t="58.6" castname="大車輪・咬牙" sync="false"/>
+    <entry t="59.0" castname="大車輪2" sync="false" tts="大車輪"/>
+    <entry t="60.6" text="直線誘導" castname="ゲイルスコグル" duration="4.2" tts="直線誘導"/>
+    <entry t="62.7" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="65.8" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="67.1" text="ドラッケンランス" castname="ドラッケンランス" duration="2.6" tts="ドラッケンランス"/>
+    <entry t="72.1" text="塔を確認 / 塔踏み" castname="ダークドラゴンダイブ" duration="4.7" tts="塔を確認、塔が発動"/>
+    <entry t="79.7" text="直線誘導" castname="ゲイルスコグル" duration="4.2" tts="直線誘導"/>
+    <entry t="84.2" text="ソウルテザー" castname="ソウルテザー" sync="false" tts="ソウルテザー。"/>
+    <entry t="89.3" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="92.4" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="95.5" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="98.6" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="101.8" text="攻撃" castname="攻撃" sync="false"/>
+    <entry t="105.2" text="ドラッケンランス" castname="ドラッケンランス" duration="2.6"/>
+    <entry t="110.3" text="時間切れ開始" castname="最期の咆哮" duration="10.7"/>
+    <next to="p3" at="15.6" cast="邪竜爪牙"/>
+  </phase>
+  <phase id="p3" name="P4: The Eyes">
+    <entry t="7.2" castname="攻撃" sync="false"/>
+    <entry t="10.3" castname="攻撃" sync="false"/>
+    <entry t="12.5" castname="攻撃" sync="false"/>
+    <entry t="15.6" castname="邪竜爪牙" duration="2.7"/>
+    <entry t="22.8" castname="攻撃" sync="false"/>
+    <entry t="26.0" castname="攻撃" sync="false"/>
+    <entry t="29.1" castname="攻撃" sync="false"/>
+    <entry t="32.2" castname="攻撃" sync="false"/>
+    <entry t="35.4" castname="攻撃" sync="false"/>
+    <entry t="38.5" castname="攻撃" sync="false"/>
+    <entry t="41.7" castname="ミラージュダイブ" duration="2.7"/>
+    <entry t="49.0" castname="攻撃" sync="false"/>
+    <entry t="52.1" castname="攻撃" sync="false"/>
+    <entry t="55.3" castname="攻撃" sync="false"/>
+    <entry t="58.4" castname="攻撃" sync="false"/>
+    <entry t="61.5" castname="攻撃" sync="false"/>
+    <entry t="64.7" castname="憤怒の波動" duration="5.7"/>
+    <next to="p4" at="80" cast="聖徒化"/>
+  </phase>
+  <phase id="p4" name="Intermission: Rewind!">
+    <next to="p5" at="7.1" cast="竜の眼"/>
+  </phase>
+  <phase id="p5" name="P5: King Thordan II">
+    <entry t="0.0" castname="聖徒化" duration="3.7"/>
+    <entry t="7.1" castname="竜の眼" duration="2.7"/>
+    <entry t="14.3" castname="攻撃" sync="false"/>
+    <entry t="17.4" castname="攻撃" sync="false"/>
+    <entry t="21.7" castname="ナイツ・オブ・ラウンド" sync="false"/>
+    <entry t="24.8" castname="至天の陣：風槍" duration="3.7"/>
+    <entry t="42.7" text="全体攻撃" castname="ホリエストホーリー" sync="false" tts="全体攻撃"/>
+    <entry t="43.0" castname="レベレーション・アスカロンメルシー" duration="3.0"/>
+    <entry t="49.1" text="線" castname="エンプティディメンション" sync="false" tts="線が付くよ"/>
+    <entry t="54.1" text="エンプティD" castname="エンプティディメンション" sync="false"/>
+    <entry t="55.2" castname="エンシェントクエイガ" duration="5.7"/>
+    <entry t="56.1" text="ブレードダンス" castname="ホーリーブレードダンス" sync="false" tts="ブレードダンス。"/>
+    <entry t="59.1" text="頭割り" castname="ヘヴンブレイズ" sync="false" tts="頭割り"/>
+    <entry t="65.6" castname="攻撃" sync="false"/>
+    <entry t="67.6" castname="ヘヴンリーヒール" duration="3.7"/>
+    <entry t="69.1" text="散開待機" castname="ハイパーディメンション" sync="false" tts="散開待機"/>
+    <entry t="74.7" castname="アスカロンマイト" sync="false"/>
+    <entry t="75.1" text="ハイパーディメンション2" castname="ハイパーディメンション" sync="false" tts="ハイパーディメンション。"/>
+    <entry t="76.4" castname="アスカロンマイト" sync="false"/>
+    <entry t="78.0" castname="アスカロンマイト" sync="false"/>
+    <entry t="79.9" castname="セリフ" sync="false" tts=""/>
+    <entry t="82.0" castname="ナイツ・オブ・ラウンド" sync="false"/>
+    <entry t="82.1" castname="ハイパーディメンション1" sync="false" tts="ハイパーディメンション。"/>
+    <entry t="85.1" castname="至天の陣：死刻" duration="3.7"/>
+    <entry t="91.1" text="ノックバック" castname="フェイスアンムーブ" sync="false" tts="ノックバック"/>
+    <entry t="92.1" text="全体攻撃" castname="ホリエストホーリー" sync="false" tts="全体攻撃"/>
+    <entry t="94.1" text="シャイニングブレード4" castname="シャイニングブレード" sync="false"/>
+    <entry t="95.1" castname="シャイニングブレード3" sync="false" tts=""/>
+    <entry t="96.1" castname="シャイニングブレード2" sync="false" tts=""/>
+    <entry t="97.1" castname="シャイニングブレード1" sync="false" tts=""/>
+    <entry t="100.1" text="(MT)エクスキューション" castname="エクスキューション" sync="false" tts="エクスキューション。"/>
+    <entry t="100.2" castname="百雷" duration="5.4"/>
+    <entry t="102.1" castname="！沈黙！" sync="false" tts="タンクが沈黙！"/>
+    <entry t="105.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="111.1" castname="鎖の予兆" sync="false" tts="鎖がつくよ"/>
+    <entry t="114.3" castname="竜の邪眼" duration="3.7"/>
+    <entry t="119.3" castname="フェイスアンムーブ" sync="false" tts="ノックバック"/>
+    <entry t="121.2" castname="ヘヴンフレイム" sync="false"/>
+    <entry t="122.2" castname="！沈黙！" sync="false" tts="レンジが沈黙！"/>
+    <entry t="131.2" text="内外確認" castname="フルディメンション" sync="false"/>
+    <entry t="135.2" text="全体攻撃" castname="ホリエストホーリー" sync="false" tts="全体攻撃"/>
+    <entry t="137.2" text="E/Fディメンション" castname="フルディメンション" sync="false"/>
+    <entry t="138.8" castname="エンシェントクエイガ" duration="5.7"/>
+    <entry t="148.9" castname="攻撃" sync="false"/>
+    <entry t="150.9" castname="ヘヴンリーヒール" duration="3.7"/>
+    <entry t="154.2" text="時間切れ開始" castname="美剣の覚悟" sync="false"/>
+    <entry t="158.1" castname="アスカロンマイト" sync="false"/>
+    <entry t="158.2" castname="時間切れ" sync="false" tts=""/>
+    <entry t="159.2" castname="強制移行" sync="false" tts=""/>
+    <entry t="159.7" castname="アスカロンマイト" sync="false"/>
+    <entry t="161.4" castname="アスカロンマイト" sync="false"/>
+    <entry t="164.2" castname="攻撃" sync="false"/>
+    <entry t="166.2" castname="エーテルバースト" duration="5.7"/>
+    <next to="p6" at="11.3" cast="聖竜の息吹"/>
+  </phase>
+  <phase id="p6" name="P6: Nidhogg and Hraesvelgr">
+    <entry t="5.0" castname="ウィルムクロウ" sync="false"/>
+    <entry t="8.2" castname="ウィルムクロウ" sync="false"/>
+    <entry t="11.3" castname="聖竜の息吹" duration="6.0"/>
+    <entry t="11.3" castname="邪竜の息吹" duration="6.0"/>
+    <entry t="21.4" castname="ウィルムクロウ" sync="false"/>
+    <entry t="24.5" castname="ウィルムクロウ" sync="false"/>
+    <entry t="25.5" castname="滅殺の誓い" sync="false"/>
+    <entry t="28.7" castname="アク・アファー" duration="7.7"/>
+    <entry t="36.9" castname="アク・アファー" sync="false"/>
+    <entry t="42.5" castname="ホーリーウィング" duration="7.2"/>
+    <entry t="46.1" castname="カータライズ" duration="4.7"/>
+    <entry t="56.3" castname="ウィルムクロウ" sync="false"/>
+    <entry t="59.4" castname="ウィルムクロウ" sync="false"/>
+    <entry t="59.6" castname="滅殺の誓い" sync="false"/>
+    <entry t="62.5" castname="ウィルムクロウ" sync="false"/>
+    <entry t="62.6" castname="邪念の炎" duration="2.2"/>
+    <entry t="67.9" castname="アク・モーン" duration="7.7"/>
+    <entry t="71.0" castname="カータライズ" duration="4.7"/>
+    <entry t="77.5" castname="アク・モーン" sync="false"/>
+    <entry t="79.1" castname="アク・モーン" sync="false"/>
+    <entry t="80.7" castname="アク・モーン" sync="false"/>
+    <entry t="82.3" castname="ヒートテイル" duration="6.2"/>
+    <entry t="82.4" castname="ウィルムクロウ" sync="false"/>
+    <entry t="85.5" castname="ウィルムクロウ" sync="false"/>
+    <entry t="88.5" castname="ウィルムクロウ" sync="false"/>
+    <entry t="91.6" castname="ウィルムクロウ" sync="false"/>
+    <entry t="93.7" castname="滅殺の誓い" sync="false"/>
+    <entry t="94.7" castname="ウィルムクロウ" sync="false"/>
+    <entry t="97.9" castname="アク・アファー" duration="7.7"/>
+    <entry t="106.1" castname="アク・アファー" sync="false"/>
+    <entry t="110.6" castname="ホーリーウィング" duration="7.2"/>
+    <entry t="112.6" castname="ヒートテイル" duration="5.2"/>
+    <entry t="123.2" castname="ウィルムクロウ" sync="false"/>
+    <entry t="126.3" castname="ウィルムクロウ" sync="false"/>
+    <entry t="127.7" castname="滅殺の誓い" sync="false"/>
+    <entry t="129.4" castname="ウィルムクロウ" sync="false"/>
+    <entry t="131.6" castname="聖竜の息吹" duration="6.0"/>
+    <entry t="131.6" castname="邪竜の息吹" duration="6.0"/>
+    <entry t="138.7" castname="スタッガーブレス" sync="false"/>
+    <entry t="141.6" castname="ウィルムクロウ" sync="false"/>
+    <entry t="146.2" castname="カータライズ" duration="4.7"/>
+    <entry t="157.3" castname="タッチダウン" sync="false"/>
+    <entry t="159.4" castname="最期の咆哮" duration="24.7"/>
+    <entry t="161.8" castname="滅殺の誓い" sync="false"/>
+    <entry t="178.3" castname="セリフ4" sync="false" tts=""/>
+    <entry t="182.3" castname="セリフ3" sync="false" tts=""/>
+    <entry t="185.3" castname="盟友の想い" sync="false" tts="盟友の想い。"/>
+    <entry t="186.3" castname="セリフ2" sync="false" tts=""/>
+    <entry t="192.3" castname="セリフ1" sync="false" tts=""/>
+    <entry t="193.3" text="全体攻撃" castname="苦悶の咆哮" sync="false" tts="全体攻撃"/>
+    <entry t="197.3" text="線が付与" castname="邪竜爪牙" sync="false" tts="線が付くよ"/>
+    <entry t="201.3" castname="邪竜爪牙" sync="false"/>
+    <entry t="208.3" castname="黄色玉" sync="false" tts="きいろ"/>
+    <entry t="210.3" castname="衝撃波" sync="false"/>
+    <entry t="213.3" castname="青色玉" sync="false" tts="あお"/>
+    <entry t="223.3" text="ダイブ準備" castname="ミラージュダイブ" sync="false" tts="ダイブの準備"/>
+    <entry t="226.1" text="アルティメットエンド・オルタナ" castname="アルティメットエンド・オルタナ" sync="false"/>
+    <entry t="228.3" text="ダイブ4" castname="ミラージュダイブ" sync="false" tts="ダイブ1回目"/>
+    <entry t="233.3" castname="ダイブ3" sync="false" tts="ダイブ2回目"/>
+    <next to="p7" at="4.1" cast="騎竜剣エクサフレア"/>
+  </phase>
+  <phase id="p7" name="P7: The Dragon King">
+    <entry t="3.0" castname="ダイブ2" sync="false" tts="ダイブ3回目"/>
+    <entry t="4.1" text="【予兆】エクサフレア / 騎竜剣エクサフレア" castname="騎竜剣エクサフレア" duration="6.6" tts="エクサフレア。"/>
+    <entry t="8.0" castname="ダイブ1" sync="false" tts="ダイブ4回目"/>
+    <entry t="11.3" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="12.9" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="14.8" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="16.7" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="18.0" text="全体攻撃" castname="憤怒の波動" sync="false" tts="全体攻撃"/>
+    <entry t="18.3" castname="トリニティ" sync="false"/>
+    <entry t="19.3" text="【H1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="22.3" castname="トリニティ" sync="false"/>
+    <entry t="23.4" text="【H2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="25.0" text="時間切れ" castname="影の侵食" sync="false" tts="影の侵食。"/>
+    <entry t="25.4" text="【予兆】アク・モーン / アク・モーン5" castname="騎竜剣アク・モーン" duration="6.4" tts="アク・モーン。"/>
+    <entry t="28.0" castname="移行待ち" sync="false" tts=""/>
+    <entry t="32.2" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="33.4" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="34.2" castname="アク・モーン4" sync="false" tts=""/>
+    <entry t="34.5" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="35.2" castname="アク・モーン3" sync="false" tts=""/>
+    <entry t="35.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="36.2" castname="アク・モーン2" sync="false" tts=""/>
+    <entry t="36.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="37.2" castname="アク・モーン1" sync="false" tts=""/>
+    <entry t="42.8" text="【D1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="43.8" castname="トリニティ" sync="false"/>
+    <entry t="46.8" text="【D2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="47.9" castname="トリニティ" sync="false"/>
+    <entry t="49.8" castname="騎竜剣ギガフレア" duration="16.7"/>
+    <entry t="58.8" text="ギガフレア" castname="騎竜剣ギガフレア" sync="false" tts="ギガフレア。"/>
+    <entry t="59.0" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="66.8" castname="騎竜剣ギガフレア" sync="false"/>
+    <entry t="76.0" castname="トリニティ" sync="false"/>
+    <entry t="77.1" text="【D3】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="80.0" castname="トリニティ" sync="false"/>
+    <entry t="81.1" text="【D4】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="83.1" text="【予兆】エクサフレア / エクサフレア" castname="騎竜剣エクサフレア" duration="6.6" tts="エクサフレア"/>
+    <entry t="90.2" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="91.9" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="93.7" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="95.6" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="97.2" castname="トリニティ" sync="false"/>
+    <entry t="98.3" text="【H1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="101.2" castname="トリニティ" sync="false"/>
+    <entry t="102.3" text="【H2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="104.3" text="【予兆】アク・モーン / アク・モーン6" castname="騎竜剣アク・モーン" duration="6.4" tts="アク・モーン"/>
+    <entry t="111.1" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="112.4" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="113.1" castname="アク・モーン5" sync="false" tts=""/>
+    <entry t="113.4" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="114.1" castname="アク・モーン4" sync="false" tts=""/>
+    <entry t="114.5" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="115.1" castname="アク・モーン3" sync="false" tts=""/>
+    <entry t="115.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="116.1" castname="アク・モーン2" sync="false" tts=""/>
+    <entry t="116.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="117.1" castname="アク・モーン1" sync="false" tts=""/>
+    <entry t="122.8" text="【D1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="123.8" castname="トリニティ" sync="false"/>
+    <entry t="126.8" text="【D2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="127.9" castname="トリニティ" sync="false"/>
+    <entry t="129.8" text="ギガフレア" castname="騎竜剣ギガフレア" duration="16.7" tts="騎竜剣ギガフレア。"/>
+    <entry t="138.8" castname="騎竜剣ギガフレア" sync="false"/>
+    <entry t="139.0" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="146.8" castname="騎竜剣ギガフレア" sync="false"/>
+    <entry t="156.0" castname="トリニティ" sync="false"/>
+    <entry t="157.1" text="【D3】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="160.0" castname="トリニティ" sync="false"/>
+    <entry t="161.1" text="【D4】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="163.1" text="【予兆】エクサフレア / エクサフレア" castname="騎竜剣エクサフレア" duration="6.6" tts="騎竜剣エクサフレア。"/>
+    <entry t="170.2" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="171.9" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="173.8" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="175.6" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="177.2" text="【H1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="177.5" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="179.4" castname="騎竜剣エクサフレア" sync="false"/>
+    <entry t="181.3" castname="トリニティ" sync="false"/>
+    <entry t="182.4" text="【H2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="184.3" text="【予兆】アク・モーン / アク・モーン7" castname="騎竜剣アク・モーン" duration="6.4" tts="アク・モーン。"/>
+    <entry t="191.1" text="(フレイム|アイス)・オブ・アスカロン" castname="フレイム・オブ・アスカロン|アイス・オブ・アスカロン" sync="false"/>
+    <entry t="192.4" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="193.1" castname="アク・モーン6" sync="false" tts=""/>
+    <entry t="193.5" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="194.1" castname="アク・モーン5" sync="false" tts=""/>
+    <entry t="194.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="195.1" castname="アク・モーン4" sync="false" tts=""/>
+    <entry t="195.6" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="196.1" castname="アク・モーン3" sync="false" tts=""/>
+    <entry t="196.7" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="197.1" castname="アク・モーン2" sync="false" tts=""/>
+    <entry t="197.8" castname="騎竜剣アク・モーン" sync="false"/>
+    <entry t="198.1" castname="アク・モーン1" sync="false" tts=""/>
+    <entry t="203.9" text="【D1】トリニティ" castname="トリニティ" sync="false" tts="トリニティ"/>
+    <entry t="205.0" castname="トリニティ" sync="false"/>
+    <entry t="207.9" text="【D2】トリニティ" castname="トリニティ" sync="false"/>
+    <entry t="209.0" castname="トリニティ" sync="false"/>
+    <entry t="211.0" text="最終詠唱 / 騎竜剣モーン・アファー" castname="騎竜剣モーン・アファー" duration="10.4"/>
+    <entry t="221.0" castname="騎竜剣モーン・アファー" sync="false"/>
+    <entry t="221.0" castname="騎竜剣モーン・アファー" sync="false"/>
+  </phase>
+</timeline>

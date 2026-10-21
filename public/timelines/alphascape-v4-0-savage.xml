@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>次元の狭間オメガ零式：アルファ編4</content>
+  <title>次元の狭間オメガ零式：アルファ編4</title>
+  <note>FFLogs の公開ランキングの討伐の記録（15:57・15:09）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="start" name="開始待ち">
+    <next to="a-p1" at="9.8" cast="シールドオプション"/>
+    <next to="a-p1" at="16.9" cast="援護プログラムF"/>
+    <next to="b-p1" at="10.9" cast="標的識別"/>
+    <next to="b-p1" at="23.2" cast="エンバグ"/>
+  </phase>
+  <phase id="a-p1" name="前半">
+    <entry t="0.7" castname="オメガのセリフ" sync="false" tts=""/>
+    <entry t="9.8" text="シールドオプション" castname="シールドオプション" duration="1.7" tts="次は、シールドオプション。" window="20 10"/>
+    <entry t="16.9" text="援護プログラムF" castname="援護プログラムF" duration="2.7" window="30 10"/>
+    <entry t="20.9" castname="オプチカルレーザーf" sync="false"/>
+    <entry t="22.0" text="シールドコンボS" castname="シールドコンボS" duration="4.6" tts="シールドコンボS。"/>
+    <entry t="27.3" castname="シールドコンボS" sync="false"/>
+    <entry t="30.6" text="パイルピッチ" castname="パイルピッチ" sync="false" tts="頭割り"/>
+    <entry t="48.0" text="トランスフォームF" castname="トランスフォームF" duration="1.7" tts="トランスフォームF。"/>
+    <entry t="62.3" text="ディスチャージャー" castname="ディスチャージャー" sync="false" tts="ノックバック"/>
+    <entry t="72.5" text="ブレードオプション" castname="ブレードオプション" duration="1.7"/>
+    <entry t="79.6" castname="援護プログラムS" duration="2.7"/>
+    <entry t="83.5" castname="オプチカルレーザーs" sync="false" tts="半円レーザー"/>
+    <entry t="85.8" text="ブレードコンボF" castname="ブレードコンボF" duration="2.7" tts="後方安置"/>
+    <entry t="91.9" text="ファイラ・オメガ" castname="ファイラ・オメガ" sync="false" tts="散開"/>
+    <entry t="102.2" text="フェーズ移行" castname="トランスフォームM" duration="1.7" window="40 10"/>
+    <entry t="115.5" text="オメガスライド" castname="オメガスライド" sync="false" tts="頭割り"/>
+    <entry t="124.0" text="ディスチャージャー" castname="ディスチャージャー" sync="false" tts="ノックバック"/>
+    <entry t="124.0" castname="ソードアクション" sync="false"/>
+    <entry t="130.3" text="ガードプログラム" castname="ガードプログラム" duration="2.7" tts="ガードプログラム。"/>
+    <entry t="139.5" text="レゾナンス" castname="レゾナンス" duration="2.7" tts="レゾナンス。"/>
+    <entry t="151.8" text="連携プログラムC" castname="連携プログラムC" duration="4.7" tts="連携プログラムC。"/>
+    <entry t="158.9" castname="援護プログラムS" duration="2.7"/>
+    <entry t="162.8" castname="オプチカルレーザーs" sync="false" tts="半円レーザー"/>
+    <entry t="165.4" castname="オメガスライド" sync="false"/>
+    <entry t="167.3" castname="オメガスライド" sync="false"/>
+    <entry t="169.2" castname="オメガスライド" sync="false"/>
+    <entry t="171.1" castname="オメガスライド" sync="false"/>
+    <entry t="177.9" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
+    <entry t="186.0" text="ソーラレイ" castname="ソーラレイ" duration="4.7" tts="次は、ソーラレイ。"/>
+    <entry t="200.2" castname="シールドオプション" duration="1.7"/>
+    <entry t="204.0" castname="分岐待ち" sync="false" tts=""/>
+    <entry t="208.5" text="ブレード開始" castname="連携プログラムW" duration="4.7" window="20 10"/>
+    <entry t="215.5" castname="ブレードコンボB" sync="false" tts="頭割り"/>
+    <entry t="215.7" castname="シールドコンボS" duration="4.6"/>
+    <entry t="218.1" text="ブリザガ・オメガ" castname="ブリザガ・オメガ" duration="2.7" tts="十字レーザー"/>
+    <entry t="220.9" castname="シールドコンボS" sync="false"/>
+    <entry t="223.1" castname="ブレードコンボF" sync="false" tts="後方安置"/>
+    <entry t="224.2" text="ファイラ・オメガ" castname="ファイラ・オメガ" duration="4.7" tts="散開"/>
+    <entry t="224.2" text="パイルピッチ" castname="パイルピッチ" sync="false" tts="頭割り"/>
+    <entry t="229.5" castname="シールドコンボG" duration="2.7"/>
+    <entry t="232.4" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
+    <entry t="235.6" text="ソードアクション" castname="ソードアクション" sync="false"/>
+    <entry t="239.5" castname="レーザーシャワー" duration="3.7"/>
+    <entry t="274.1" castname="シールドオプション" duration="1.7"/>
+    <entry t="281.2" castname="援護プログラムF" duration="2.7"/>
+    <entry t="286.3" castname="シールドコンボS" duration="4.6"/>
+    <entry t="291.4" castname="シールドコンボS" sync="false"/>
+    <entry t="294.7" castname="パイルピッチ" sync="false"/>
+    <entry t="312.0" castname="トランスフォームF" duration="1.7"/>
+    <entry t="326.4" castname="ディスチャージャー" sync="false"/>
+    <entry t="336.5" castname="ブレードオプション" duration="1.7"/>
+    <entry t="343.6" castname="援護プログラムS" duration="2.7"/>
+    <entry t="349.8" castname="ブレードコンボF" duration="2.7"/>
+    <entry t="355.9" castname="ファイラ・オメガ" sync="false"/>
+    <entry t="366.2" castname="トランスフォームM" duration="1.7"/>
+    <entry t="379.6" castname="オメガスライド" sync="false"/>
+    <entry t="388.0" castname="ディスチャージャー" sync="false"/>
+    <entry t="388.0" castname="ソードアクション" sync="false"/>
+    <entry t="394.3" castname="ガードプログラム" duration="2.7"/>
+    <entry t="403.5" castname="レゾナンス" duration="2.7"/>
+    <entry t="415.8" castname="連携プログラムC" duration="4.7"/>
+    <entry t="422.9" castname="援護プログラムS" duration="2.7"/>
+    <entry t="429.4" castname="オメガスライド" sync="false"/>
+    <entry t="431.3" castname="オメガスライド" sync="false"/>
+    <entry t="433.1" castname="オメガスライド" sync="false"/>
+    <entry t="435.0" castname="オメガスライド" sync="false"/>
+    <entry t="441.8" castname="レーザーシャワー" duration="3.7"/>
+    <entry t="499.4" castname="シールドオプション" duration="1.7"/>
+    <entry t="506.6" castname="援護プログラムF" duration="2.7"/>
+    <entry t="511.7" castname="シールドコンボS" duration="4.6"/>
+    <entry t="516.9" castname="シールドコンボS" sync="false"/>
+    <entry t="520.2" castname="パイルピッチ" sync="false"/>
+    <entry t="537.6" castname="トランスフォームF" duration="1.7"/>
+    <entry t="552.0" castname="ディスチャージャー" sync="false"/>
+    <entry t="562.1" castname="ブレードオプション" duration="1.7"/>
+    <entry t="569.3" castname="援護プログラムS" duration="2.7"/>
+    <entry t="575.4" castname="ブレードコンボF" duration="2.7"/>
+    <entry t="581.6" castname="ファイラ・オメガ" sync="false"/>
+    <entry t="591.8" castname="トランスフォームM" duration="1.7"/>
+    <entry t="605.2" castname="オメガスライド" sync="false"/>
+    <entry t="613.6" castname="ソードアクション" sync="false"/>
+    <entry t="613.6" castname="ディスチャージャー" sync="false"/>
+    <entry t="620.0" castname="ガードプログラム" duration="2.7"/>
+    <entry t="629.1" castname="レゾナンス" duration="2.7"/>
+    <entry t="664.7" castname="シールドオプション" duration="1.7"/>
+    <entry t="671.9" castname="援護プログラムF" duration="2.7"/>
+    <entry t="677.0" castname="シールドコンボS" duration="4.6"/>
+    <entry t="682.3" castname="シールドコンボS" sync="false"/>
+    <entry t="685.6" castname="パイルピッチ" sync="false"/>
+    <entry t="702.8" castname="トランスフォームF" duration="1.7"/>
+    <entry t="717.2" castname="ディスチャージャー" sync="false"/>
+    <entry t="727.4" castname="ブレードオプション" duration="1.7"/>
+    <entry t="734.5" castname="援護プログラムS" duration="2.7"/>
+    <entry t="740.7" castname="ブレードコンボF" duration="2.7"/>
+    <entry t="746.9" castname="ファイラ・オメガ" sync="false"/>
+    <entry t="757.2" castname="トランスフォームM" duration="1.7"/>
+    <entry t="770.5" castname="オメガスライド" sync="false"/>
+    <entry t="778.9" castname="ディスチャージャー" sync="false"/>
+    <entry t="778.9" castname="ソードアクション" sync="false"/>
+    <entry t="785.2" castname="ガードプログラム" duration="2.7"/>
+    <entry t="794.4" castname="レゾナンス" duration="2.7"/>
+    <entry t="806.7" castname="連携プログラムC" duration="4.7"/>
+    <entry t="813.8" castname="援護プログラムS" duration="2.7"/>
+    <entry t="820.4" castname="オメガスライド" sync="false"/>
+    <entry t="822.2" castname="オメガスライド" sync="false"/>
+    <entry t="824.1" castname="オメガスライド" sync="false"/>
+    <entry t="826.0" castname="オメガスライド" sync="false"/>
+    <entry t="832.8" castname="レーザーシャワー" duration="3.7"/>
+    <entry t="840.9" castname="ソーラレイ" duration="4.7"/>
+    <entry t="855.2" castname="シールドオプション" duration="1.7"/>
+    <entry t="863.4" text="シールド開始" castname="連携プログラムW" duration="4.7" tts="連携攻撃シールド" window="30 10"/>
+    <entry t="870.6" text="シールドコンボS" castname="シールドコンボS" duration="4.6" tts="シールドコンボ"/>
+    <entry t="872.9" text="ブリザガ・オメガ" castname="ブリザガ・オメガ" duration="2.7" tts="十字ブリザガ"/>
+    <entry t="875.8" castname="シールドコンボS" sync="false"/>
+    <entry t="879.0" text="ファイラ・オメガ" castname="ファイラ・オメガ" duration="4.7" tts="散開"/>
+    <entry t="879.1" text="パイルピッチ" castname="パイルピッチ" sync="false" tts="頭割り"/>
+    <entry t="884.4" text="シールドコンボG" castname="シールドコンボG" duration="2.7" tts="チャリオット"/>
+    <entry t="887.2" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
+    <entry t="890.5" text="ソードアクション" castname="ソードアクション" sync="false" tts="ソードアクション。"/>
+    <entry t="894.3" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
+    <entry t="905.0" text="ガードプログラム" castname="ガードプログラム" duration="2.7" tts="ガードプログラム。" window="20 10"/>
+    <entry t="914.2" text="レゾナンス" castname="レゾナンス" duration="2.7" tts="レゾナンス。"/>
+    <entry t="926.4" text="連携プログラムC" castname="連携プログラムC" duration="4.7" tts="連携プログラムC。"/>
+    <entry t="927.5" castname="援護プログラムF" sync="false" tts="援護プログラムF。"/>
+    <entry t="931.5" castname="オプチカルレーザーf" sync="false" tts="直線レーザー"/>
+    <entry t="932.5" text="オメガLB" castname="メテオ・オメガ" sync="false" tts="メテオとアロー"/>
+    <entry t="933.5" castname="援護プログラムS" duration="2.7"/>
+    <entry t="937.4" castname="オプチカルレーザーs" sync="false" tts="半円レーザー"/>
+    <entry t="940.1" castname="オメガスライド" sync="false"/>
+    <entry t="942.0" castname="オメガスライド" sync="false"/>
+    <entry t="943.5" castname="コスモメモリー" sync="false" tts="コスモメモリー。"/>
+    <entry t="943.8" castname="オメガスライド" sync="false"/>
+    <entry t="945.7" castname="オメガスライド" sync="false"/>
+    <entry t="952.5" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
+    <entry t="960.5" castname="ブレードダンス・オメガ" sync="false" tts="ブレードダンス・オメガ。"/>
+    <entry t="961.5" castname="ソーラレイ" sync="false" tts="ソーラレイ。"/>
+    <entry t="972.5" castname="目玉の位置に注意" sync="false" tts="目玉の位置に注意"/>
+    <entry t="980.5" castname="援護プログラムS" sync="false" tts="半円レーザー"/>
+    <entry t="984.5" castname="オプチカルレーザーs" sync="false"/>
+    <entry t="985.5" text="オメガLB" castname="メテオ・オメガ" sync="false" tts="メテオとアロー"/>
+    <entry t="996.5" castname="コスモメモリー" sync="false" tts="コスモメモリー。"/>
+    <entry t="1005.5" castname="レーザーシャワー" sync="false" tts="レーザーシャワー。"/>
+    <entry t="1013.5" castname="ブレードダンス・オメガ" sync="false" tts="ブレードダンス"/>
+    <entry t="1035.5" castname="時間切れ" sync="false" tts="時間切れ"/>
+  </phase>
+  <phase id="b-p1" name="後半">
+    <entry t="-14.7" castname="標的識別" sync="false" tts="標的識別。零式波動砲"/>
+    <entry t="10.9" castname="標的識別" duration="4.7"/>
+    <entry t="19.1" text="零式波動砲" castname="零式波動砲" sync="false"/>
+    <entry t="23.2" text="エンバグ" castname="エンバグ" duration="3.7" tts="エンバグ"/>
+    <entry t="29.3" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲"/>
+    <entry t="37.3" castname="エンバグ" sync="false"/>
+    <entry t="37.5" text="検知式波動砲" castname="検知式波動砲" duration="4.7" tts="検知式波動砲"/>
+    <entry t="42.5" castname="検知式波動砲" sync="false"/>
+    <entry t="45.8" castname="エンバグ" sync="false"/>
+    <entry t="48.6" text="イオンエフラクス" castname="イオンエフラクス" duration="5.7" tts="イオンエフラクス"/>
+    <entry t="64.3" text="ハロー・ワールド / デバフ付与" castname="ハロー・ワールド" duration="5.7" tts="ハローワールド。"/>
+    <entry t="78.3" castname="サークル1回目爆発" sync="false" tts=""/>
+    <entry t="78.4" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="86.3" castname="サークル2回目爆発" sync="false" tts=""/>
+    <entry t="86.4" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="92.5" text="クリティカルエラー" castname="クリティカルエラー" duration="4.7" tts="爆発に注意して、残りのサークル処理"/>
+    <entry t="94.5" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="94.5" castname="サークル3回目爆発" sync="false" tts=""/>
+    <entry t="105.6" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="107.6" text="イオンエフラクス" castname="イオンエフラクス" duration="5.7" tts="イオンエフラクス"/>
+    <entry t="108.5" castname="サークル4回目爆発" sync="false" tts=""/>
+    <entry t="111.0" castname="アーム処理開始" sync="false" tts=""/>
+    <entry t="117.6" castname="アーカイブフェーズ" sync="false" tts="次は、アーカイブアーム。"/>
+    <entry t="120.9" text="アーカイブアーム" castname="アーカイブアーム" duration="3.7"/>
+    <entry t="131.1" text="ビーム開始" castname="ハイパーパルス" sync="false" tts="ビーム開始"/>
+    <entry t="141.1" text="標的識別" castname="標的識別" duration="4.7" tts="標的識別。"/>
+    <entry t="149.3" text="零式波動砲" castname="零式波動砲" sync="false" tts="零式波動砲"/>
+    <entry t="156.5" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲。"/>
+    <entry t="164.6" text="検知式波動砲" castname="検知式波動砲" duration="4.7" tts="検知式波動砲"/>
+    <entry t="169.7" castname="検知式波動砲" sync="false"/>
+    <entry t="179.9" text="アーカイブアームX" castname="アーカイブアームX" duration="3.7" tts="アーカイブアームX。" window="20 10"/>
+    <entry t="190.1" text="対象確定 / 波動砲" castname="波動砲" duration="7.7" tts="線を確認、波動砲"/>
+    <entry t="198.2" castname="波動砲" sync="false"/>
+    <entry t="201.4" text="標的識別" castname="標的識別" duration="4.7" tts="標的識別。ボスの向きに注意"/>
+    <entry t="209.5" text="零式波動砲" castname="零式波動砲" sync="false" tts="零式波動砲"/>
+    <entry t="230.9" text="エンバグ" castname="エンバグ" duration="3.7" tts="エンバグ"/>
+    <entry t="237.0" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲。"/>
+    <entry t="244.7" castname="エンバグ" sync="false"/>
+    <entry t="245.1" text="検知式波動砲" castname="検知式波動砲" duration="4.7" tts="検知式波動砲"/>
+    <entry t="250.2" castname="検知式波動砲" sync="false"/>
+    <entry t="256.2" castname="エンバグ" sync="false"/>
+    <entry t="256.3" text="イオンエフラクス" castname="イオンエフラクス" duration="5.7" tts="イオンエフラクス"/>
+    <entry t="266.5" text="アーカイブオール" castname="アーカイブオール" duration="3.7" tts="アーカイブオール"/>
+    <entry t="277.8" castname="オメガスライド" duration="5.7"/>
+    <entry t="287.0" castname="デルタアタック" duration="2.7"/>
+    <entry t="290.0" castname="フラッドライト" duration="2.7"/>
+    <entry t="332.5" castname="標的識別" duration="4.7"/>
+    <entry t="340.7" castname="零式波動砲" sync="false"/>
+    <entry t="344.9" castname="エンバグ" duration="3.7"/>
+    <entry t="351.0" castname="拡散波動砲" duration="4.7"/>
+    <entry t="358.1" castname="エンバグ" sync="false"/>
+    <entry t="359.1" castname="検知式波動砲" duration="4.7"/>
+    <entry t="364.2" castname="検知式波動砲" sync="false"/>
+    <entry t="367.2" castname="エンバグ" sync="false"/>
+    <entry t="370.3" castname="イオンエフラクス" duration="5.7"/>
+    <entry t="385.8" castname="ハロー・ワールド" duration="5.7"/>
+    <entry t="399.9" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="408.0" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="414.0" castname="クリティカルエラー" duration="4.7"/>
+    <entry t="416.0" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="427.1" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="429.1" castname="イオンエフラクス" duration="5.7"/>
+    <entry t="442.4" castname="アーカイブアーム" duration="3.7"/>
+    <entry t="462.6" castname="標的識別" duration="4.7"/>
+    <entry t="470.8" castname="零式波動砲" sync="false"/>
+    <entry t="478.0" castname="拡散波動砲" duration="4.7"/>
+    <entry t="486.1" castname="検知式波動砲" duration="4.7"/>
+    <entry t="491.2" castname="検知式波動砲" sync="false"/>
+    <entry t="501.4" castname="アーカイブアームX" duration="3.7"/>
+    <entry t="511.6" castname="波動砲" duration="7.7"/>
+    <entry t="519.7" castname="波動砲" sync="false"/>
+    <entry t="522.8" castname="標的識別" duration="4.7"/>
+    <entry t="530.9" castname="零式波動砲" sync="false"/>
+    <entry t="552.2" castname="エンバグ" duration="3.7"/>
+    <entry t="558.3" castname="拡散波動砲" duration="4.7"/>
+    <entry t="565.7" castname="エンバグ" sync="false"/>
+    <entry t="566.5" castname="検知式波動砲" duration="4.7"/>
+    <entry t="571.5" castname="検知式波動砲" sync="false"/>
+    <entry t="574.4" castname="エンバグ" sync="false"/>
+    <entry t="577.6" castname="イオンエフラクス" duration="5.7"/>
+    <entry t="587.8" text="アーカイブオール" castname="アーカイブオール" duration="3.7" tts="ボスの向きを確認"/>
+    <entry t="598.8" text="レーザー＋距離減衰" castname="リアレーザー" sync="false"/>
+    <entry t="599.2" text="オメガスライド" castname="オメガスライド" duration="5.7" tts="外周に集まる"/>
+    <entry t="608.3" castname="デルタアタック" duration="2.7"/>
+    <entry t="611.2" castname="デルタアタック" sync="false" tts="範囲が出たら散開"/>
+    <entry t="611.4" castname="フラッドライト" duration="2.7"/>
+    <entry t="612.2" castname="ファイラ＋頭割り" sync="false" tts=""/>
+    <entry t="619.2" castname="ユニット自爆" sync="false" tts="爆発に注意"/>
+    <entry t="624.6" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲。"/>
+    <entry t="644.1" castname="ハロー・ワールド" duration="5.7"/>
+    <entry t="648.6" castname="ローディング" sync="false" tts=""/>
+    <entry t="658.2" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="666.2" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="672.2" castname="クリティカルエラー" duration="4.7"/>
+    <entry t="673.3" castname="レイテントバグ：デグレード" duration="6.7"/>
+    <entry t="685.3" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="686.8" castname="レイテントバグ：デグレード" sync="false"/>
+    <entry t="687.4" castname="イオンエフラクス" duration="5.7"/>
+    <entry t="700.7" castname="アーカイブアーム" duration="3.7"/>
+    <entry t="720.8" castname="標的識別" duration="4.7"/>
+    <entry t="729.0" castname="零式波動砲" sync="false"/>
+    <entry t="736.3" castname="拡散波動砲" duration="4.7"/>
+    <entry t="744.4" castname="検知式波動砲" duration="4.7"/>
+    <entry t="749.5" castname="検知式波動砲" sync="false"/>
+    <entry t="759.6" castname="アーカイブアームX" duration="3.7"/>
+    <entry t="769.9" castname="波動砲" duration="7.7"/>
+    <entry t="778.0" castname="波動砲" sync="false"/>
+    <entry t="781.0" castname="標的識別" duration="4.7"/>
+    <entry t="789.2" castname="零式波動砲" sync="false"/>
+    <entry t="810.5" castname="エンバグ" duration="3.7"/>
+    <entry t="816.6" castname="拡散波動砲" duration="4.7"/>
+    <entry t="824.6" castname="エンバグ" sync="false"/>
+    <entry t="824.7" castname="検知式波動砲" duration="4.7"/>
+    <entry t="829.8" castname="検知式波動砲" sync="false"/>
+    <entry t="832.3" castname="エンバグ" sync="false"/>
+    <entry t="835.9" castname="イオンエフラクス" duration="5.7"/>
+    <entry t="846.1" castname="アーカイブオール" duration="3.7"/>
+    <entry t="857.2" castname="オメガスライド" duration="5.7"/>
+    <entry t="866.3" castname="デルタアタック" duration="2.7"/>
+    <entry t="869.4" castname="フラッドライト" duration="2.7"/>
+    <entry t="882.6" castname="拡散波動砲" duration="4.7"/>
+    <entry t="902.3" castname="プログラム・オメガ" duration="3.7"/>
+  </phase>
+</timeline>

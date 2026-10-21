@@ -41,6 +41,9 @@ MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')
 CAST = re.compile(r'^(?P<who>[^:「」^]+?)は「(?P<what>.+)」の構え。?$')
 SAY = re.compile(r'^(?P<who>[^:「」^]+?):(?P<what>.+)$')
+# 古い書き方（ACT のログの行そのもの）: 「ボス名:[0-9A-F]{4}:技名」は技の発動、「ボス名 starts using 技名 on 対象.」は詠唱開始
+HIT_ID = re.compile(r'^(?P<who>[^:「」^]+?):\[0-9A-F\]\{4\}:(?P<what>[^:]+)$')
+CAST_EN = re.compile(r'^(?P<who>[^:「」^]+?) starts using (?P<what>.+?)(?: on .*)?\.?$')
 
 
 def expand(pattern):
@@ -60,7 +63,7 @@ def classify(sync):
         return 'none', []
     if sync.startswith('^'):
         return 'log', []
-    for kind, rx in (('cast', CAST), ('hit', HIT)):
+    for kind, rx in (('cast', CAST), ('hit', HIT), ('hit', HIT_ID), ('cast', CAST_EN)):
         m = rx.match(sync)
         if m:
             return kind, expand(m.group('what'))
