@@ -164,13 +164,14 @@ function renderSetupDone() {
     }
 }
 
+// 再設定（「この画面の範囲を全部消して、やり直す」と 1 つにした。2026-10-21 のユーザーの指摘）
 function redo() {
     if (state.frameSize) {
         // 取り込んだ画面があれば、その大きさの範囲をいま消す（確認は clearScreenRegions が出す）
         state.redo = true;
         clearScreenRegions();
     } else {
-        if (savedScreens().some((s) => s.complete)
+        if (savedScreens().length > 0
             && !confirm('保存してある範囲を消して、はじめから設定し直します（消すのは、このあと取り込んだ画面の大きさの範囲だけです）。よろしいですか？\n残したい場合は、先に「範囲をファイルに書き出す」を押してください。')) {
             return;
         }
@@ -554,7 +555,6 @@ async function init() {
         ev.target.value = '';
     });
     $('regions-find').addEventListener('click', findContentRegion);
-    $('regions-clear').addEventListener('click', clearScreenRegions);
     $('regions-redo').addEventListener('click', redo);
     $('regions-export').addEventListener('click', () => exportRegionsFile('file-status'));
     $('export-done').addEventListener('click', () => exportRegionsFile('file-status'));
