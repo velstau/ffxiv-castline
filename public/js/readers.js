@@ -160,7 +160,7 @@ export function parseCountdown(text) {
 /**
  * カウントダウンの範囲を読む。吹き出しは「戦闘開始まで16秒！」の下に「（名前）」の行が付くことがあり、
  * 行数で縦の位置も、文言で幅も変わるので、範囲は広めに取ってもらい、文字検出で行を探して 1 行ずつ読む。
- * 範囲にはキャラクター名なども入るので、カウントダウンとして解釈できた行を採る。
+ * 範囲にはキャラクター名なども入るが、解釈は数字と「秒」「まで」「開始」だけを見るので、全部の行をつないで解釈する。
  * @param {import('./ocr.js').TextDetector} detector
  * @param {import('./ocr.js').TextRecognizer} recognizer
  * @returns {Promise<{text:string, countdown:{seconds:number}|{started:true}|null, ms:number}>}
@@ -174,12 +174,10 @@ export async function readCountdown(detector, recognizer, source, rect) {
         const read = await recognizer.read(source, line);
         texts.push(read.text);
         ms += read.ms;
-        const countdown = parseCountdown(read.text);
-        if (countdown) {
-            return { text: texts.join(' / '), countdown, ms };
-        }
     }
-    return { text: texts.join(' / '), countdown: null, ms };
+    // 行を全部読んでからまとめて解釈する。「戦闘開始まで16秒！」が「戦闘開始」と「まで16秒！」に分かれて見つかることがあり、
+    // 1 行目だけで判断すると戦闘開始と読んでしまう（2026-10-21、動画で 16 秒の吹き出しでいきなり開始した）
+    return { text: texts.join(' / '), countdown: parseCountdown(texts.join(' ')), ms };
 }
 
 // HP の「99.0%」を数値にする。隣のアイコンが写り込んで末尾に文字が付くことがあるので、数字と % だけを拾う。

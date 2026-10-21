@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spottingPenalty } from '../public/js/ctc.js';
-import { pickCast, parseCountdown } from '../public/js/readers.js';
+import { pickCast, parseCountdown, readCountdown } from '../public/js/readers.js';
 
 const SKILLS = ['創世の真炎', 'オクタフレア・コンシーヴ', 'テトラフレア・コンシーヴ', '熾炎創火', '創獣炎舞'];
 
@@ -57,4 +57,14 @@ test('カウントダウン: 秒数の読めない「戦闘開始まで…」を
     assert.deepEqual(parseCountdown('戦闘開始まで１０秒！'), { seconds: 10 });
     assert.deepEqual(parseCountdown('戦闘開始まで1O秒！'), { seconds: 10 });
     assert.deepEqual(parseCountdown('則闘開始！'), { started: true });
+});
+
+test('カウントダウン: 吹き出しが「戦闘開始」と「まで16秒！」の 2 行に分かれて見つかっても、残り 16 秒と読む', async () => {
+    const lines = ['戦闘開始', 'まで16秒！', '（Vel Stau）'];
+    const detector = { detect: async () => ({ ms: 1, boxes: lines.map((_, i) => ({ x: 0, y: i * 20, w: 100, h: 18, i })) }) };
+    const recognizer = { read: async (_, box) => ({ ms: 1, text: lines[box.i] }) };
+    assert.deepEqual((await readCountdown(detector, recognizer, null, {})).countdown, { seconds: 16 });
+    const started = { read: async () => ({ ms: 1, text: '戦闘開始！' }) };
+    const one = { detect: async () => ({ ms: 1, boxes: [{ x: 0, y: 0, w: 100, h: 18 }] }) };
+    assert.deepEqual((await readCountdown(one, started, null, {})).countdown, { started: true });
 });

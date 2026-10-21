@@ -22,6 +22,7 @@ const COUNTDOWN_CONSISTENT_MS = 1000; // 「戦闘開始！」の時刻と予想
 // カウントダウンの予想は、ほかの予想とこれ以内で合うものだけを信じる（秒数の読み違いを除く）。
 // 吹き出しは重なりなどで 1〜3 秒遅れて読めることがある（2026-10-20 実測）ので、遅れた予想どうしも合うよう広めに取る
 const COUNTDOWN_SUPPORT_MS = 1500;
+const STARTED_EARLY_MAX_MS = 3000; // 「戦闘開始！」が開始の予想よりこれ以上早く読めたら、読み違いとみなす
 const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、カウントダウン前に殴ったとみなす
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
@@ -145,6 +146,12 @@ export class TimelineEngine {
     /** 吹き出し「戦闘開始！」を読んだ */
     started(at) {
         if (this.state === 'combat') {
+            return;
+        }
+        // 「戦闘開始！」はカウントダウンの終わりにしか出ないので、予想より大きく早いものは読み違い（行の一部だけを読んだなど）
+        const predicted = this.state === 'countdown' ? this.predictedStart() : null;
+        if (predicted !== null && predicted - at > STARTED_EARLY_MAX_MS) {
+            this.log(at, `「戦闘開始」と読めたが、開始の予想まで ${((predicted - at) / 1000).toFixed(1)} 秒あるので読み違いとみなす`);
             return;
         }
         this.beginCombat(this.bestStart(at), '戦闘開始の表示');

@@ -327,3 +327,12 @@ test('手で止める: 敵対リストが出たままでは始まらず、一度
     realCountdown(e);
     assert.equal(e.status(T(20)).state, 'countdown');
 });
+
+test('カウントダウン中、開始の予想より大きく早い「戦闘開始」は読み違いとして無視する', () => {
+    const { e } = engine();
+    e.countdown(T(10.1), 16);
+    e.started(T(10.6));
+    assert.equal(e.status(T(11)).state, 'countdown');
+    e.started(T(26.2));
+    assert.equal(e.status(T(26.3)).state, 'combat');
+});
