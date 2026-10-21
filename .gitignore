@@ -4,3 +4,6 @@
 # Hojoring などの元ファイル（第三者の作を含む。公開しない）
 /sources/
 __pycache__/
+
+# ビルドの道具（_build で npm install）
+/_build/node_modules/

@@ -1,0 +1,881 @@
+@import 'tailwindcss';
+
+/*
+ * Castline の画面（public/*.html と、小窓）の共通スタイル
+ *
+ * デジタル庁デザインシステム（DADS v2）公式テーマ https://design.digital.go.jp/dads/
+ * 色・文字サイズ・角丸・フォントは公式パッケージのトークンだけを使い、独自の値は定義しない。文字は 16px 以上のトークンだけ。
+ * vel.works の TOP（vel.works/_build/src/site.css）と同じ決まり: 役割の色（vw-*）・FF14 関連の差し色は lime・
+ * ライト（既定）／ダーク（<html data-theme="dark">、js/theme.js が切り替え、localStorage 'vw-theme' を TOP と共用）。
+ *
+ * 画面の多くは JS が組み立て、状態をクラス名（.status.ok、.steps > li.done など）で切り替える。
+ * そうした要素は意味のクラスのまま、ここで見た目を決める（JS の className の上書きでユーティリティが消えないように）。
+ * ユーティリティ（Tailwind）は、HTML に固定で書く外枠にだけ使う。
+ *
+ * 小窓（ゲームに重ねる表示）はテーマに関係なくダーク（pip.js が小窓の html に data-theme="dark" を付ける）。
+ *
+ * ビルド: _build で `npm run build` → public/css/app.css（README の「画面のビルド」）
+ */
+@import '@digital-go-jp/tailwind-theme-plugin/v4';
+
+@import '@fontsource/noto-sans-jp/400.css';
+@import '@fontsource/noto-sans-jp/700.css';
+@import '@fontsource/noto-sans-mono/400.css';
+@import '@fontsource/noto-sans-mono/700.css';
+
+@source '../../public/*.html';
+@source '../../public/js/**/*.js';
+
+@theme inline {
+    --color-vw-bg: var(--vw-bg);
+    --color-vw-raised: var(--vw-raised);
+    --color-vw-ink: var(--vw-ink);
+    --color-vw-text: var(--vw-text);
+    --color-vw-sub: var(--vw-sub);
+    --color-vw-mute: var(--vw-mute);
+    --color-vw-line: var(--vw-line);
+    --color-vw-lime: var(--vw-lime);
+}
+
+/* ライト（既定）。コントラスト（白地）: lime-1000 7.9 / solid-gray-700 8.5 / success-2 5.4 / error-2 5.9 / orange-1000 9.0 */
+:root {
+    color-scheme: light;
+    --vw-bg: var(--color-white);
+    --vw-raised: var(--color-solid-gray-50);
+    --vw-ink: var(--color-solid-gray-900);
+    --vw-text: var(--color-solid-gray-800);
+    --vw-sub: var(--color-solid-gray-800);
+    --vw-mute: var(--color-solid-gray-700);
+    --vw-line: var(--color-solid-gray-200);
+    --vw-field: var(--color-solid-gray-600); /* 入力欄の枠（背景との差 3:1 以上） */
+    --vw-lime: var(--color-lime-1000);
+    --vw-ok: var(--color-success-2);
+    --vw-ng: var(--color-error-2);
+    --vw-warn: var(--color-orange-1000);
+    --vw-focus-outer: var(--color-black);
+    --vw-focus-inner: var(--color-yellow-300);
+}
+
+/* ダーク（solid-gray-900 地）: white 17.4 / lime-300 11.9 / green-300 8.6 / red-300 8.1 / orange-300 9.3 */
+:root[data-theme='dark'] {
+    color-scheme: dark;
+    --vw-bg: var(--color-solid-gray-900);
+    --vw-raised: var(--color-solid-gray-800);
+    --vw-ink: var(--color-white);
+    --vw-text: var(--color-solid-gray-100);
+    --vw-sub: var(--color-solid-gray-200);
+    --vw-mute: var(--color-solid-gray-300);
+    --vw-line: color-mix(in srgb, var(--color-white) 15%, transparent);
+    --vw-field: var(--color-solid-gray-420);
+    --vw-lime: var(--color-lime-300);
+    --vw-ok: var(--color-green-300);
+    --vw-ng: var(--color-red-300);
+    --vw-warn: var(--color-orange-300);
+    --vw-focus-outer: var(--color-yellow-300);
+    --vw-focus-inner: var(--color-black);
+}
+
+@layer base {
+    html {
+        background-color: var(--vw-bg);
+    }
+
+    body {
+        margin: 0;
+        font-family: var(--font-sans);
+        color: var(--vw-text);
+        background-color: var(--vw-bg);
+        font-size: 1rem;
+        line-height: 1.7;
+        letter-spacing: 0.02em;
+    }
+
+    /* フォーカス: DADS 公式（外側 4px 黒・内側 2px yellow-300）。ダークでは内外を入れ替える */
+    :focus-visible {
+        outline: calc(4 / 16 * 1rem) solid var(--vw-focus-outer);
+        outline-offset: calc(2 / 16 * 1rem);
+        border-radius: var(--radius-4);
+        box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--vw-focus-inner);
+    }
+
+    h1 {
+        @apply text-std-28B-150;
+        color: var(--vw-ink);
+        margin: 0;
+    }
+
+    h2 {
+        @apply text-std-24B-150;
+        color: var(--vw-ink);
+        margin: 0 0 calc(16 / 16 * 1rem);
+    }
+
+    h3 {
+        @apply text-std-20B-150;
+        color: var(--vw-ink);
+        margin: calc(24 / 16 * 1rem) 0 calc(8 / 16 * 1rem);
+    }
+
+    p {
+        margin: 0 0 calc(8 / 16 * 1rem);
+    }
+
+    /* リンク: DADS の状態変化（下線 1px → hover 3px、focus で黄色の下地） */
+    a {
+        color: var(--vw-ink);
+        text-decoration: underline;
+        text-decoration-thickness: calc(1 / 16 * 1rem);
+        text-underline-offset: calc(3 / 16 * 1rem);
+    }
+
+    @media (hover: hover) {
+        a:hover {
+            color: var(--vw-lime);
+            text-decoration-thickness: calc(3 / 16 * 1rem);
+        }
+    }
+
+    a:focus-visible {
+        background-color: var(--color-yellow-300);
+        color: var(--color-black);
+    }
+
+    code {
+        font-family: var(--font-mono);
+        background-color: var(--vw-raised);
+        border-radius: var(--radius-4);
+        padding: 0 calc(4 / 16 * 1rem);
+    }
+
+    /* ボタン: DADS の md（min 96x48・角丸 8・padding 8-16）。既定は線のボタン、.primary は塗り（lime-300 に黒文字） */
+    button,
+    .button-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: calc(8 / 16 * 1rem);
+        box-sizing: border-box;
+        min-width: calc(96 / 16 * 1rem);
+        min-height: calc(48 / 16 * 1rem);
+        padding: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
+        border: 1px solid var(--vw-ink);
+        border-radius: var(--radius-8);
+        background-color: transparent;
+        color: var(--vw-ink);
+        font: inherit;
+        font-weight: 700;
+        line-height: 1.3;
+        text-decoration: none;
+        text-underline-offset: calc(3 / 16 * 1rem);
+        cursor: pointer;
+    }
+
+    @media (hover: hover) {
+        button:hover:not(:disabled),
+        .button-link:hover {
+            background-color: color-mix(in srgb, var(--vw-ink) 10%, transparent);
+            color: var(--vw-ink);
+            text-decoration: underline;
+            text-decoration-thickness: calc(1 / 16 * 1rem);
+        }
+    }
+
+    button.primary,
+    .button-link.primary {
+        border: calc(4 / 16 * 1rem) double transparent;
+        background-color: var(--color-lime-300);
+        color: var(--color-black);
+    }
+
+    @media (hover: hover) {
+        button.primary:hover:not(:disabled),
+        .button-link.primary:hover {
+            background-color: var(--color-lime-200);
+            color: var(--color-black);
+        }
+    }
+
+    button.primary:active:not(:disabled),
+    .button-link.primary:active {
+        background-color: var(--color-lime-400);
+    }
+
+    /* 押せないボタン（DADS: 文字 solid-gray-420、枠・塗り solid-gray-300 系） */
+    button:disabled {
+        border-color: var(--color-solid-gray-300);
+        background-color: transparent;
+        color: var(--color-solid-gray-420);
+        cursor: not-allowed;
+    }
+
+    button.primary:disabled {
+        border-color: transparent;
+        background-color: var(--color-solid-gray-300);
+        color: var(--color-solid-gray-600);
+    }
+
+    /* 入力欄: 枠 1px・角丸 8・高さ 48 */
+    input[type='text'],
+    input[type='password'],
+    input[type='number'],
+    input[type='url'],
+    select,
+    textarea {
+        box-sizing: border-box;
+        min-height: calc(48 / 16 * 1rem);
+        padding: calc(8 / 16 * 1rem) calc(12 / 16 * 1rem);
+        border: 1px solid var(--vw-field);
+        border-radius: var(--radius-8);
+        background-color: var(--vw-bg);
+        color: var(--vw-ink);
+        font: inherit;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 15em;
+    }
+
+    .row + textarea {
+        margin-top: calc(12 / 16 * 1rem);
+    }
+
+    kbd {
+        font-family: var(--font-mono);
+        padding: 0 calc(4 / 16 * 1rem);
+        border: 1px solid var(--vw-field);
+        border-radius: var(--radius-4);
+    }
+
+    input[type='file'] {
+        font: inherit;
+        color: var(--vw-text);
+    }
+
+    input[type='file']::file-selector-button {
+        min-height: calc(48 / 16 * 1rem);
+        margin-right: calc(12 / 16 * 1rem);
+        padding: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
+        border: 1px solid var(--vw-ink);
+        border-radius: var(--radius-8);
+        background-color: transparent;
+        color: var(--vw-ink);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    input[type='checkbox'] {
+        width: calc(24 / 16 * 1rem);
+        height: calc(24 / 16 * 1rem);
+        margin: 0;
+        accent-color: var(--vw-lime);
+        flex: none;
+    }
+
+    input[type='range'],
+    progress {
+        accent-color: var(--vw-lime);
+    }
+
+    label {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: calc(8 / 16 * 1rem);
+    }
+
+    details {
+        border-top: 1px solid var(--vw-line);
+    }
+
+    details:last-of-type {
+        border-bottom: 1px solid var(--vw-line);
+    }
+
+    summary {
+        display: flex;
+        align-items: center;
+        gap: calc(8 / 16 * 1rem);
+        min-height: calc(48 / 16 * 1rem);
+        padding: calc(8 / 16 * 1rem) 0;
+        color: var(--vw-ink);
+        font-weight: 700;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* 開閉の印（▶ → ▼）。文字で書くとフォントで形が変わるので CSS の三角にする */
+    summary::before {
+        content: '';
+        flex: none;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: calc(6 / 16 * 1rem) 0 calc(6 / 16 * 1rem) calc(9 / 16 * 1rem);
+        border-color: transparent transparent transparent currentColor;
+        transition: transform 150ms ease;
+    }
+
+    details[open] > summary::before {
+        transform: rotate(90deg);
+    }
+
+    details > :not(summary) {
+        margin-left: calc(17 / 16 * 1rem);
+    }
+
+    details[open] {
+        padding-bottom: calc(16 / 16 * 1rem);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        text-align: left;
+        padding: calc(8 / 16 * 1rem);
+        border-bottom: 1px solid var(--vw-line);
+        vertical-align: top;
+    }
+
+    th {
+        color: var(--vw-mute);
+        font-weight: 400;
+    }
+
+    [hidden] {
+        display: none !important;
+    }
+}
+
+/* =========================================================================
+ * ページの枠
+ * ========================================================================= */
+
+.skip-link {
+    position: absolute;
+    top: calc(8 / 16 * 1rem);
+    left: calc(8 / 16 * 1rem);
+    z-index: 100;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.site-header {
+    border-bottom: 1px solid var(--vw-line);
+    background-color: var(--vw-bg);
+}
+
+.site-header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem) calc(24 / 16 * 1rem);
+    max-width: calc(1280 / 16 * 1rem);
+    margin: 0 auto;
+    padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+    @apply text-std-20B-150;
+    color: var(--vw-ink);
+    text-decoration: none;
+}
+
+.brand .icon {
+    width: calc(32 / 16 * 1rem);
+    height: calc(32 / 16 * 1rem);
+    padding: calc(4 / 16 * 1rem);
+    border-radius: var(--radius-8);
+    background-color: var(--color-lime-300);
+    color: var(--color-black);
+}
+
+.site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(4 / 16 * 1rem) calc(8 / 16 * 1rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(4 / 16 * 1rem);
+    min-height: calc(44 / 16 * 1rem);
+    padding: 0 calc(8 / 16 * 1rem);
+    border-radius: var(--radius-8);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+/* いまのページ: 下線の代わりに lime の下罫 */
+.site-nav a[aria-current='page'] {
+    box-shadow: inset 0 calc(-3 / 16 * 1rem) 0 var(--vw-lime);
+    border-radius: 0;
+}
+
+.theme-toggle {
+    margin-left: auto;
+}
+
+/* .icon の display より強くする */
+:root:not([data-theme='dark']) .vw-when-dark {
+    display: none;
+}
+
+:root[data-theme='dark'] .vw-when-dark {
+    display: inline-block;
+}
+
+:root[data-theme='dark'] .vw-when-light {
+    display: none;
+}
+
+main {
+    max-width: calc(1280 / 16 * 1rem);
+    margin: 0 auto;
+    padding: calc(24 / 16 * 1rem) calc(16 / 16 * 1rem) calc(48 / 16 * 1rem);
+}
+
+main.narrow {
+    max-width: calc(880 / 16 * 1rem);
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 calc(4 / 16 * 1rem);
+    margin-bottom: calc(16 / 16 * 1rem);
+    color: var(--vw-sub);
+}
+
+.breadcrumb > span::after {
+    content: '：';
+}
+
+.breadcrumb ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: contents;
+}
+
+.breadcrumb li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumb li .icon {
+    color: var(--vw-mute);
+    width: calc(20 / 16 * 1rem);
+    height: calc(20 / 16 * 1rem);
+}
+
+.page-head {
+    margin-bottom: calc(24 / 16 * 1rem);
+}
+
+.page-head h1 {
+    display: flex;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0 calc(8 / 16 * 1rem);
+    border: 1px solid var(--vw-mute);
+    border-radius: var(--radius-4);
+    color: var(--vw-mute);
+    @apply text-std-16N-170;
+    font-weight: 400;
+}
+
+.lead {
+    margin: calc(8 / 16 * 1rem) 0 0;
+    color: var(--vw-sub);
+    @apply text-std-17N-170;
+}
+
+section {
+    margin-bottom: calc(24 / 16 * 1rem);
+    padding: calc(24 / 16 * 1rem);
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-12);
+    background-color: var(--vw-bg);
+}
+
+.icon {
+    display: inline-block;
+    flex: none;
+    width: calc(24 / 16 * 1rem);
+    height: calc(24 / 16 * 1rem);
+    vertical-align: -0.3em;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
+}
+
+.row + .row,
+.row + .status,
+.status + .row {
+    margin-top: calc(12 / 16 * 1rem);
+}
+
+/* 状態の文。結果の色は文字にも出す（色だけで伝えない） */
+.status {
+    color: var(--vw-mute);
+    margin: 0;
+}
+
+.status.ok {
+    color: var(--vw-ok);
+}
+
+.status.ng {
+    color: var(--vw-ng);
+    font-weight: 700;
+}
+
+.help {
+    margin: calc(8 / 16 * 1rem) 0;
+    padding-left: calc(24 / 16 * 1rem);
+}
+
+.help li + li {
+    margin-top: calc(4 / 16 * 1rem);
+}
+
+/* 注意（FF14 関連の画面に必ず置く） */
+.notice {
+    max-width: calc(1280 / 16 * 1rem);
+    margin: 0 auto;
+    padding: calc(24 / 16 * 1rem) calc(16 / 16 * 1rem) calc(48 / 16 * 1rem);
+    border-top: 1px solid var(--vw-line);
+    color: var(--vw-mute);
+}
+
+.notice p {
+    margin: 0 0 calc(8 / 16 * 1rem);
+}
+
+progress {
+    width: calc(240 / 16 * 1rem);
+}
+
+/* =========================================================================
+ * 初期設定の手順（setup.html。setup.js が li に todo / current / done を付ける）
+ * ========================================================================= */
+
+.steps {
+    list-style: none;
+    margin: calc(16 / 16 * 1rem) 0 0;
+    padding: 0;
+    counter-reset: step;
+}
+
+.steps > li {
+    display: flex;
+    gap: calc(16 / 16 * 1rem);
+    margin-bottom: calc(12 / 16 * 1rem);
+    padding: calc(16 / 16 * 1rem) calc(20 / 16 * 1rem);
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-8);
+}
+
+.steps > li > div {
+    flex: 1;
+    min-width: 0;
+}
+
+/* いまの手順: lime の太い左罫と一段上の面 */
+.steps > li.current {
+    border-color: var(--vw-lime);
+    box-shadow: inset calc(6 / 16 * 1rem) 0 0 var(--vw-lime);
+    background-color: var(--vw-raised);
+}
+
+.step-mark {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: calc(40 / 16 * 1rem);
+    height: calc(40 / 16 * 1rem);
+    border: 2px solid var(--vw-mute);
+    border-radius: var(--radius-full);
+    color: var(--vw-mute);
+    @apply text-std-18B-160;
+}
+
+.steps > li.current .step-mark {
+    border-color: transparent;
+    background-color: var(--color-lime-300);
+    color: var(--color-black);
+}
+
+.steps > li.done .step-mark {
+    border-color: transparent;
+    color: var(--vw-ok);
+}
+
+.step-mark .icon {
+    width: calc(40 / 16 * 1rem);
+    height: calc(40 / 16 * 1rem);
+}
+
+.step-title {
+    @apply text-std-20B-150;
+    color: var(--vw-ink);
+    margin: calc(4 / 16 * 1rem) 0 0;
+}
+
+.steps > li.todo .step-title {
+    color: var(--vw-mute);
+}
+
+.step-help {
+    margin: calc(4 / 16 * 1rem) 0 calc(12 / 16 * 1rem);
+    color: var(--vw-sub);
+}
+
+/* 済んだ手順・まだの手順は説明を畳む（いまの手順だけを読めばよいように） */
+.steps > li:not(.current) .step-help,
+.steps > li.todo .step-actions {
+    display: none;
+}
+
+.step-state {
+    margin: calc(8 / 16 * 1rem) 0 0;
+}
+
+.step-items {
+    list-style: none;
+    margin: calc(8 / 16 * 1rem) 0 0;
+    padding: 0;
+}
+
+.step-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(8 / 16 * 1rem);
+    color: var(--vw-sub);
+}
+
+.step-items li + li {
+    margin-top: calc(4 / 16 * 1rem);
+}
+
+.step-items li .icon {
+    margin-top: 0.1em;
+    color: var(--vw-mute);
+}
+
+.step-items li.done {
+    color: var(--vw-ok);
+}
+
+.step-items li.done .icon {
+    color: var(--vw-ok);
+}
+
+.model-load {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
+}
+
+/* =========================================================================
+ * 範囲の設定（region-editor.js）・試験ページ
+ * ========================================================================= */
+
+.thumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(8 / 16 * 1rem);
+    margin-top: calc(12 / 16 * 1rem);
+}
+
+.thumbs button[aria-pressed='true'],
+.regions label:has(input:checked) {
+    border-color: var(--vw-lime);
+    box-shadow: inset 0 0 0 2px var(--vw-lime);
+}
+
+.regions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(8 / 16 * 1rem);
+    margin-bottom: calc(12 / 16 * 1rem);
+}
+
+.regions label {
+    min-height: calc(44 / 16 * 1rem);
+    padding: calc(4 / 16 * 1rem) calc(12 / 16 * 1rem);
+    border: 1px solid var(--vw-field);
+    border-radius: var(--radius-8);
+    cursor: pointer;
+}
+
+.regions .swatch {
+    display: inline-block;
+    width: calc(16 / 16 * 1rem);
+    height: calc(16 / 16 * 1rem);
+    border-radius: var(--radius-4);
+}
+
+.stage {
+    position: relative;
+}
+
+.stage canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--vw-line);
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.stage .empty {
+    padding: calc(32 / 16 * 1rem) 0;
+    color: var(--vw-mute);
+    text-align: center;
+}
+
+td.num {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.decided {
+    color: var(--vw-ok);
+}
+
+.undecided {
+    color: var(--vw-warn);
+}
+
+.ranked {
+    margin: calc(4 / 16 * 1rem) 0 0;
+    padding-left: calc(20 / 16 * 1rem);
+    color: var(--vw-mute);
+}
+
+.re-h {
+    @apply text-std-17B-170;
+    margin: calc(16 / 16 * 1rem) 0 calc(4 / 16 * 1rem);
+}
+
+.re-rule {
+    margin: calc(8 / 16 * 1rem) 0;
+}
+
+.re-numbers input {
+    width: 6em;
+}
+
+.re-zoom {
+    display: block;
+    max-width: 100%;
+    border: 1px solid var(--vw-line);
+    image-rendering: pixelated;
+    cursor: crosshair;
+}
+
+.re-overview {
+    cursor: crosshair;
+}
+
+/* =========================================================================
+ * タイムラインの表示（再生画面と小窓で共用）
+ * ========================================================================= */
+
+.pip {
+    padding: calc(12 / 16 * 1rem);
+}
+
+.pip-clock {
+    @apply text-std-36N-140;
+    font-variant-numeric: tabular-nums;
+}
+
+.pip-lines {
+    margin: calc(8 / 16 * 1rem) 0;
+    padding-left: calc(20 / 16 * 1rem);
+}
+
+.tl-panel {
+    padding: calc(8 / 16 * 1rem) 0;
+}
+
+.tl-head {
+    @apply text-std-24B-150;
+    color: var(--vw-ink);
+}
+
+.tl-sub {
+    @apply text-std-18N-160;
+    color: var(--vw-mute);
+    font-variant-numeric: tabular-nums;
+}
+
+.tl-list {
+    list-style: none;
+    margin: calc(8 / 16 * 1rem) 0 0;
+    padding: 0;
+    @apply text-std-20N-150;
+}
+
+.tl-list li {
+    display: flex;
+    gap: calc(12 / 16 * 1rem);
+    padding: calc(2 / 16 * 1rem) 0;
+    border-bottom: 1px solid var(--vw-line);
+}
+
+.tl-list .tl-in {
+    min-width: 3.5em;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.tl-list li.casting {
+    color: var(--vw-warn);
+    font-weight: 700;
+}
+
+.tl-list li.done {
+    color: var(--vw-mute);
+}
+
+.pip .tl-panel,
+body > .tl-panel {
+    padding: calc(8 / 16 * 1rem) calc(12 / 16 * 1rem);
+}

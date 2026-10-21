@@ -264,6 +264,30 @@ tools/build-timelines.sh   # ヘビー級1〜4 零式を作り直す（sources/ 
 技ごとに読み上げを変える（アグリゲートソニックなら「頭割り」、スプレッドソニックなら「ロール」。Hojoring の `<t>` に当たる）、
 チャット欄からのカウントダウン、複数の敵の HP、読み取りの遅れを引く処理、試験ページを screen-reader.js に寄せる
 
+## 画面のデザインとビルド
+
+デジタル庁デザインシステム（DADS）準拠で、vel.works の TOP（`vel.works/_build/README.md`）と同じ決まりに従う:
+DADS 公式 Tailwind テーマのトークンだけを使う・文字は 16px 以上・役割の色（`vw-*`）・FF14 関連の差し色は lime・
+アイコンは Material Symbols（Rounded 400）のインライン SVG・ライト（既定）／ダーク。
+
+- **CSS は `_build/src/app.css` を直し、ビルドして `public/css/app.css` を作る**（`public/css/app.css` を手で直さない）。
+  JS が状態をクラス名で切り替える要素（`.status.ok`、`.steps > li.done` など）は意味のクラスのまま app.css で見た目を決め、
+  Tailwind のユーティリティは HTML に固定で書く外枠にだけ使う（JS の `className =` でユーティリティが消えないように）
+- **アイコン**: HTML には `<svg data-ms="名前" class="icon"></svg>` とだけ書き、ビルドで中身を埋め込む。JS で組み立てる画面のアイコンは
+  `_build/scripts/icons.mjs` の `JS_ICONS` に名前を足すと `public/js/icons.js`（生成ファイル）に入り、`icon(名前)` で使える
+- **テーマ**: 選んだテーマは localStorage `vw-theme`（vel.works の TOP と同じ鍵。同じサイトなので TOP で選んだものが引き継がれる）。
+  `<head>` の 1 行スクリプトで描画前に反映し、`public/js/theme.js`（vel.works/top/assets/theme.js の写し）がボタンで切り替える。
+  **小窓はテーマに関係なくダーク**（ゲームに重ねるため。`pip.js` が小窓の html に `data-theme="dark"` を付ける）
+- **フォント**: Noto Sans JP / Mono は、このリポジトリに入れず vel.works が配信している `/assets/fonts/` を使う（日本語の分割ファイルで 6MB あるため）。
+  `@fontsource` の版を vel.works/_build と同じに固定してファイル名を揃えており、ビルドの最後（`scripts/fonts.mjs`）で有無を確かめる。
+  vel.works 以外で配信したときはシステムのフォントで表示される
+
+```bash
+cd /var/docker/docker-shared/dev-server-php8/vel.works/ff14tools/castline
+# 初回だけ npm install（同じ形で）。vel.works/top を読み取り専用で渡すのは、フォントの有無を確かめるため
+docker run --rm -u 1000:1000 -e HOME=/tmp -v $PWD:/w -v $PWD/../../top:/top:ro -w /w/_build node:24-alpine npm run build
+```
+
 ## 決まり（vel.works の FF14 関連）
 
 - 画面には、非公式であること・外部ツールの利用を勧めないこと（公式記事「FFXIV外部ツールの是非について」へのリンク）・© SQUARE ENIX を入れる

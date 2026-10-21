@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "description": "Castline の画面（public/*.html）の CSS とアイコンのビルド。デジタル庁デザインシステム（DADS）公式テーマと Material Symbols（インライン SVG）を使う（vel.works/_build と同じ構成）",
+    "scripts": {
+        "build": "node scripts/icons.mjs && tailwindcss -i src/app.css -o ../public/css/app.css --minify && node scripts/fonts.mjs"
+    },
+    "devDependencies": {
+        "@digital-go-jp/tailwind-theme-plugin": "1.0.1",
+        "@fontsource/noto-sans-jp": "5.3.0",
+        "@fontsource/noto-sans-mono": "5.3.0",
+        "@material-symbols/svg-400": "0.47.6",
+        "@tailwindcss/cli": "4.3.3",
+        "tailwindcss": "4.3.3"
+    }
+}

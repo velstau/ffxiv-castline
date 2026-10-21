@@ -25,6 +25,7 @@ export class Pip {
         link.rel = 'stylesheet';
         link.href = new URL('css/app.css', location.href).href;
         win.document.head.append(link);
+        win.document.documentElement.dataset.theme = 'dark'; // ゲームに重ねるので、ページのテーマに関係なく暗い表示にする
         win.document.body.innerHTML = html;
         const tick = () => {
             if (win.closed) {

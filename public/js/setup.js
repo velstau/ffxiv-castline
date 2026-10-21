@@ -5,6 +5,7 @@ import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { STORE_REGIONS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey } from './regions.js';
 import { RegionEditor } from './region-editor.js';
+import { icon } from './icons.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
 import { loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
 
@@ -122,7 +123,7 @@ async function setContent(name) {
 function stepState(id, done, current, text) {
     const li = $(id);
     li.className = done ? 'done' : current ? 'current' : 'todo';
-    li.querySelector('.step-mark').textContent = done ? '✔' : current ? '▶' : '・';
+    li.querySelector('.step-mark').replaceChildren(done ? icon('check_circle') : li.dataset.step);
     const el = li.querySelector('.step-state');
     if (el) {
         el.textContent = text;
@@ -133,7 +134,7 @@ function stepState(id, done, current, text) {
 function itemState(id, done, text) {
     const li = $(id);
     li.className = done ? 'done' : '';
-    li.textContent = `${done ? '✔' : '・'} ${text}`;
+    li.replaceChildren(icon(done ? 'check_circle' : 'radio_button_unchecked'), Object.assign(document.createElement('span'), { textContent: text }));
 }
 
 const foundText = (id) => (state.found[id]?.line ? `（「${state.found[id].line.text}」の行）` : '');
