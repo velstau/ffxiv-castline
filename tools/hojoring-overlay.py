@@ -526,7 +526,7 @@ def main():
     ap.add_argument('hojoring')
     ap.add_argument('out')
     ap.add_argument('--title')
-    ap.add_argument('--author', help='元のタイムラインの作者（元ファイルの表記を使わないとき）')
+    ap.add_argument('--author', help='タイムラインの作者（省略時は元ファイルの author）')
     ap.add_argument('--events', action='append', default=[], metavar='フェーズID=PATH',
                     help='そのフェーズの FFLogs の技の一覧（tools/fflogs-events.py の出力）')
     ap.add_argument('--role', action='append', default=[], metavar='区間=担当名',
@@ -566,7 +566,7 @@ def main():
         split_phases(skeleton, fid)
 
     # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
-    # 元のタイムラインの作者とライセンスは <author> <license> に書く（CC BY-SA の出典。2026-10-21 のユーザーの決定）
+    # タイムラインの作者とライセンスは <author> <license> に書く（2026-10-21 のユーザーの決定）
     note = (f'{skeleton["note"]} text は表示、tts は読み上げの文言。'
             f'sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む')
     author = args.author or ', '.join(a.strip() for a in re.split(r'[\n\t,]+|\s{2,}', meta['author']) if a.strip())

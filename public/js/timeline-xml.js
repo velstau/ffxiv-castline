@@ -56,7 +56,7 @@ export function parseTimelineXml(text) {
     const clean = (obj) => Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined));
 
     // 先頭の情報は 1 行ずつの子要素（<format> <content> <title> <author> <license> <sync-window> <note>）。
-    // author・license は文言の元のタイムラインの作者とライセンス（CC BY-SA の出典の表示に使う）
+    // author・license はタイムラインの作者とライセンス（再生画面に出す）
     const field = (name) => children(root, name)[0]?.textContent.trim();
     const timeline = clean({
         format: field('format'),

@@ -215,7 +215,7 @@ function renderTimelineStatus() {
     if (state.cloudError && !state.timeline) {
         setStatus('timeline-status', `${content}。${state.cloudError}`, 'ng');
     } else if (state.timeline) {
-        // 元のタイムラインの作者とライセンス（CC BY-SA の出典の表示）
+        // タイムラインの作者とライセンス
         const { author, license } = state.timeline;
         const credit = author ? `。作者: ${author}${license ? `（${license}）` : ''}` : '';
         setStatus('timeline-status', `${content}。使うタイムライン: ${state.timelineLabel}${credit}`, 'ok');
