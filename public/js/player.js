@@ -59,12 +59,30 @@ const voice = new Speech(() => settings.speech);
 const PREPARE_EVERY_MS = 1000;
 const PREPARE_AHEAD_S = 40; // VOICEVOX で先に作っておく範囲（発動までの秒。1 つ作るのに 1 秒前後かかる）
 
-// 読み上げる（小窓が開いていれば小窓の側から鳴らす。小窓は表示されているので止められにくい）
-// 失敗（読み始めない・エラー）は記録に出す。report なら、読み始めたことも使った声とともに出す（試験のボタン）
+// 読み上げる。読み上げ・音の再生は、利用者が一度でも操作した窓からしか鳴らせない（Chrome。操作していない窓では not-allowed）。
+// 小窓は表示されているので止められにくいが、小窓の中を操作していなければ元の窓から鳴らす。小窓で拒まれたら元の窓で鳴らし直す
+// （2026-10-21 の動画: 小窓から鳴らそうとして not-allowed が続いた）。
+// 失敗（読み始めない・エラー）は記録に出す（同じものは続けて出さない）。report なら、読み始めたことも使った声とともに出す（試験のボタン）
+const activated = (w) => w.navigator.userActivation?.hasBeenActive ?? true;
+const notAllowed = (e) => /not-allowed|NotAllowedError/i.test(`${e.name} ${e.message}`);
+let lastSpeechError = '';
 function say(text, report = false) {
-    voice.speak(text, pip.isOpen ? pip.win : window)
-        .then((name) => report && log(`読み上げ「${text}」を${name ? ` ${name} で` : ''}読み始めました`))
-        .catch((e) => log(`読み上げられませんでした（${e.message}）`));
+    const target = pip.isOpen && activated(pip.win) ? pip.win : window;
+    voice.speak(text, target)
+        .catch((e) => (notAllowed(e) && target !== window ? voice.speak(text, window) : Promise.reject(e)))
+        .then((name) => {
+            lastSpeechError = '';
+            if (report) {
+                log(`読み上げ「${text}」を${name ? ` ${name} で` : ''}読み始めました`);
+            }
+        })
+        .catch((e) => {
+            const message = notAllowed(e) && !activated(window) ? `${e.message}。再生画面を一度クリックしてください` : e.message;
+            if (message !== lastSpeechError) {
+                lastSpeechError = message;
+                log(`読み上げられませんでした（${message}）`);
+            }
+        });
 }
 const ttsText = (e) => e.tts ?? showName(e.name); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
 
