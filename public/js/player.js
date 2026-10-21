@@ -553,7 +553,7 @@ function combatClock(s) {
 function buildView(now) {
     const engine = state.engine;
     if (!engine) {
-        return { head: 'タイムラインがありません', sub: '一覧で選ぶか、コンテンツ名を読むと始まります', items: [] };
+        return { head: 'タイムラインがありません', sub: '一覧で選ぶか、コンテンツ名を認識すると動作待機します', items: [] };
     }
     const s = engine.status(now);
     let sub = '';

@@ -910,7 +910,7 @@ td.num {
     @apply text-std-16B-170;
 }
 
-/* 見出しと補足は別の行。補足は小窓（幅 380px）でも 1 行に収まるよう 16px（UI の最小）にし、文は 22 字以内にする */
+/* 見出しと補足は別の行。補足は 16px（UI の最小）。小窓（幅 380px）で 1 行に収まるのは 22 字まで（超えると折り返す） */
 .tl-head > span {
     display: flex;
     flex-direction: column;
