@@ -17,7 +17,7 @@ overlay tools/skeletons/aac-heavyweight-m2-savage.xml 'sources/AAC_Heavyweight_M
 echo '== ヘビー級3'
 overlay tools/skeletons/aac-heavyweight-m3-savage.xml 'sources/AAC_Heavyweight_M3_(Savage).xml' public/timelines/aac-heavyweight-m3-savage.xml \
     --events p1=tools/skeletons/aac-heavyweight-m3-savage.events.json \
-    --title '至天の座アルカディア零式：ヘビー級3'
+    --title '至天の座アルカディア零式：ヘビー級3' --author Vel
 echo '== ヘビー級4（前半 P1〜P5、後半 P11〜P12。P0 は分岐待ちだけ）'
 overlay tools/skeletons/aac-heavyweight-m4-savage.xml 'sources/AAC_Heavyweight_M4_(Savage).xml' public/timelines/aac-heavyweight-m4-savage.xml \
     --events a-p1=tools/skeletons/aac-heavyweight-m4-savage.part-a.events.json --events b-p1=tools/skeletons/aac-heavyweight-m4-savage.part-b.events.json \
