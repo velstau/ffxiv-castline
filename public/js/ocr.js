@@ -1,7 +1,7 @@
 // 文字認識（PaddleOCR PP-OCRv5 mobile の認識モデル）。
 // 切り出した 1 行の画像を読む。文字の位置を探す検出モデルは使わない（読む範囲は利用者が指定する）。
 import * as ort from 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.30.0/dist/ort.wasm.min.mjs';
-import { logLikelihood, spottingPenalty } from './ctc.js';
+import { LINE_END_CHARS, logLikelihood, spottingPenalty } from './ctc.js';
 
 ort.env.wasm.wasmPaths = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.30.0/dist/';
 // マルチスレッドには COOP/COEP ヘッダが要る。1 行の認識は単一スレッドで数十 ms なので使わない
@@ -281,11 +281,13 @@ export class TextRecognizer {
     /**
      * 候補の文字列それぞれについて、読んだ文字のどこか一部分がその文字列であるとしたときの減点（0 以下）を出し、
      * 減点の小さい順に返す。範囲に候補以外の文字が入る詠唱バーに使う。
+     * atEnd: 候補が行の終わりにある場合だけを数える（途中で切れた技名の頭の部分。spottingPenalty の tail）
      * @returns {{text:string, penalty:number}[]}
      */
-    spot(output, candidates) {
+    spot(output, candidates, { atEnd = false } = {}) {
         const [, steps, classes] = output.dims;
-        return this.mapCandidates(candidates, (indices) => spottingPenalty(output.data, steps, classes, indices))
+        const tail = atEnd ? [0, ...LINE_END_CHARS.map((c) => this.charIndex.get(c)).filter((i) => i !== undefined)] : null;
+        return this.mapCandidates(candidates, (indices) => spottingPenalty(output.data, steps, classes, indices, tail))
             .map(({ text, value }) => ({ text, penalty: value }))
             .sort((a, b) => b.penalty - a.penalty);
     }

@@ -78,6 +78,7 @@ export const CAST_PREFIX_PENALTY_MAX = 3;
  * 候補が含まれているかで見る（spot）。当てはまる候補が複数あれば長いほうを採る（「コンシーヴ」より
  * 「オクタフレア・コンシーヴ」）。同じ長さで僅差の候補があれば決めない。
  * truncated: 敵対リストは長い技名を「テトラフレア・コ…」と途中で切って出すので、頭の部分（CAST_PREFIX_MIN 文字以上）でも照合する。
+ * 頭の部分は行の終わりにあるものだけを見る（同じ行の敵の名前の頭に当たらないように）。
  * 頭の部分が同じ候補が複数あってどれか決まらないときは決めない。
  * @returns {{decided:string|null, ranked:{text:string,penalty:number,matched:string}[]}}
  *          ranked は候補ごとに最も当てはまった部分（matched）の減点
@@ -95,7 +96,12 @@ export function pickCast(recognizer, read, candidates, { truncated = false } = {
         }
     }
     const length = (c) => [...c.matched].length;
-    const spotted = recognizer.spot(read.output, [...owners.keys()]);
+    // 技名の全体は行のどこにあってもよい。頭の部分は行の終わりにあるものだけ（「ヴァンプ」を敵の名前「ヴァンプ・ファタール」に当てない。2026-10-21）
+    const parts = [...owners.keys()].filter((part) => !whole.has(part));
+    const spotted = [
+        ...recognizer.spot(read.output, [...whole]),
+        ...(parts.length > 0 ? recognizer.spot(read.output, parts, { atEnd: true }) : []),
+    ];
     const ranked = rankByCandidate(spotted, owners);
     const fits = spotted
         .map(({ text, penalty }) => ({ matched: text, owners: owners.get(text), penalty }))

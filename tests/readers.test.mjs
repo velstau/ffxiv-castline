@@ -1,14 +1,14 @@
 // 技名の照合（pickCast）のテスト。認識モデルの代わりに、読んだ文字列から作った合成の出力を使う。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { spottingPenalty } from '../public/js/ctc.js';
+import { LINE_END_CHARS, spottingPenalty } from '../public/js/ctc.js';
 import { pickCast, parseCountdown, readCountdown, combineCandidates } from '../public/js/readers.js';
 
 const SKILLS = ['創世の真炎', 'オクタフレア・コンシーヴ', 'テトラフレア・コンシーヴ', '熾炎創火', '創獣炎舞'];
 
 // ocr.js の TextRecognizer.spot と同じ形の照合をする代わりの認識器
 function fakeRecognizer() {
-    const chars = [...new Set([...SKILLS.join(''), ...'Bヘファイストー…オクタフレアABC'])];
+    const chars = [...new Set([...SKILLS.join(''), ...'Bヘファイストー…オクタフレアABCヴァンプ・ファタールストンハードコア'])];
     const charIndex = new Map(chars.map((c, i) => [c, i + 1])); // 0 番は空白記号
     const classes = chars.length + 1;
     return {
@@ -19,10 +19,11 @@ function fakeRecognizer() {
             frames.forEach((k, t) => { data[t * classes + k] = 0.9; });
             return { text, output: { data, dims: [1, frames.length, classes] } };
         },
-        spot(output, candidates) {
+        spot(output, candidates, { atEnd = false } = {}) {
             const [, steps] = output.dims;
+            const tail = atEnd ? [0, ...LINE_END_CHARS.map((c) => charIndex.get(c)).filter((i) => i !== undefined)] : null;
             return candidates
-                .map((text) => ({ text, penalty: spottingPenalty(output.data, steps, classes, [...text].map((c) => charIndex.get(c))) }))
+                .map((text) => ({ text, penalty: spottingPenalty(output.data, steps, classes, [...text].map((c) => charIndex.get(c)), tail) }))
                 .sort((a, b) => b.penalty - a.penalty);
         },
     };
@@ -47,6 +48,15 @@ test('敵対リスト: 頭の部分が短すぎるとき・同じ頭の候補が
     assert.equal(pick('Bヘファイストテトラ', { truncated: true }), null);
     assert.equal(pick('Bヘファイストオクタフレア…', { truncated: true }, ['オクタフレア', 'オクタフレア・コンシーヴ']), null);
     assert.equal(pick('Bヘファイスト', { truncated: true }), null);
+});
+
+test('敵対リスト: 技名の頭の部分を、同じ行の敵の名前の頭に当てない（ヴァンプ・ファタールとヴァンプストンプ。2026-10-21 の動画）', () => {
+    const skills = ['ハードコア', 'ヴァンプストンプ'];
+    assert.equal(pick('ヴァンプ・ファタール', { truncated: true }, skills), null);
+    assert.equal(pick('ヴァンプ・ファタールハードコア', { truncated: true }, skills), 'ハードコア');
+    assert.equal(pick('ヴァンプ・ファタールヴァンプスト…', { truncated: true }, skills), 'ヴァンプストンプ');
+    assert.equal(pick('ヴァンプ・ファタールヴァンプスト', { truncated: true }, skills), 'ヴァンプストンプ');
+    assert.equal(pick('ヴァンプ・ファタールヴァンプストンプ', { truncated: true }, skills), 'ヴァンプストンプ');
 });
 
 test('カウントダウン: 秒数の読めない「戦闘開始まで…」を戦闘開始にしない・全角数字と O の読み違い', () => {

@@ -164,6 +164,24 @@ test('フェーズの移り方: 詠唱・HP・時間・HP が読めない時間'
 });
 
 // 敵対リストを 0.5 秒ごとに読んだ結果を渡す
+test('同じ詠唱を読み続けても、次の同じ名前の予定には合わせない（10 秒おきのハーフムーン。2026-10-21 の動画）', () => {
+    const tl = { format: 'castline/1', phases: [{ id: 'p1', entries: [
+        { t: 106.2, name: 'ハーフムーン', duration: 4 },
+        { t: 116.4, name: 'ハーフムーン', duration: 4 },
+    ] }] };
+    const log = [];
+    const e = new TimelineEngine(tl, { log: (at, m) => log.push(m) });
+    e.started(T(0));
+    for (let s = 106.1; s <= 109.6; s += 0.5) {
+        e.cast(T(s), 'ハーフムーン'); // 詠唱バーと敵対リストで、詠唱の間ずっと読める
+    }
+    assert.equal(e.status(T(110)).phaseTime.toFixed(1), '110.1');
+    assert.equal(log.filter((m) => m.startsWith('同期')).length, 1);
+    // 間を空けて次の詠唱が読めたら、次の予定に合わせる
+    e.cast(T(116.9), 'ハーフムーン');
+    assert.equal(e.status(T(116.9)).phaseTime.toFixed(1), '116.4');
+});
+
 function enmityFrom(e, from, to, shown) {
     for (let s = from; s <= to + 1e-9; s += 0.5) {
         e.enmity(T(s), shown);

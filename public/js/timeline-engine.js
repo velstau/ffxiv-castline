@@ -23,6 +23,8 @@ const COUNTDOWN_CONSISTENT_MS = 1000; // 「戦闘開始！」の時刻と予想
 // 吹き出しは重なりなどで 1〜3 秒遅れて読めることがある（2026-10-20 実測）ので、遅れた予想どうしも合うよう広めに取る
 const COUNTDOWN_SUPPORT_MS = 1500;
 const STARTED_EARLY_MAX_MS = 3000; // 「戦闘開始！」が開始の予想よりこれ以上早く読めたら、読み違いとみなす
+// 同じ技名がこれより短い間を空けて読めたら、同じ詠唱の続きとみなす（読み取りは 1 秒に数回。読み逃しで少し途切れても続きとする）
+const CAST_REPEAT_GAP_MS = 3000;
 const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、カウントダウン前に殴ったとみなす
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
@@ -104,6 +106,7 @@ export class TimelineEngine {
         this.phase = null;
         this.phaseStartAt = null;
         this.synced = new Set(); // 同期に使った予定（同じ予定で何度も合わせ直さない）
+        this.castSeenAt = new Map(); // 技名 → 最後に読めた時刻（同じ詠唱の続きを見分ける）
         this.enmityShown = false;
         this.enmityOnSince = null;
         this.enmityOffSince = null;
@@ -220,10 +223,17 @@ export class TimelineEngine {
         this.advance(at);
     }
 
-    /** 詠唱バーで技名が決まった（同じ詠唱が続く間は 1 回だけ渡すこと） */
+    /** 詠唱バー・敵対リストで技名が決まった（同じ詠唱が見えている間、読むたびに何度渡してもよい） */
     cast(at, name) {
         this.advance(at);
         if (this.state !== 'combat') {
+            return;
+        }
+        // 同じ技名が間を空けずに続いて読めたら、同じ詠唱の続き。次の同じ名前の予定に合わせ直さない
+        // （2026-10-21 の動画: 10 秒おきのハーフムーンで、1 回の詠唱を 2 回目の予定にも合わせて 10 秒先へ進んだ）
+        const last = this.castSeenAt.get(name);
+        this.castSeenAt.set(name, at);
+        if (last !== undefined && at - last < CAST_REPEAT_GAP_MS) {
             return;
         }
         const rule = this.findRule((w) => w.cast !== undefined && castNames(w.cast).includes(name));

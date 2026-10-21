@@ -3,6 +3,9 @@
 
 const EPS = 1e-12;
 
+// 行の終わりに来てよい文字（途中で切れた技名の後ろの「…」の読み方いろいろと空白）。spottingPenalty の tail に使う
+export const LINE_END_CHARS = ['…', '‥', '.', '．', '・', '･', ' ', '　'];
+
 function withBlanks(indices) {
     const labels = [0];
     for (const i of indices) {
@@ -56,17 +59,31 @@ export function logLikelihood(probs, steps, classes, indices) {
  * 候補に当てた時刻だけを、その時刻に最も確からしい文字と比べて減点し、前後の時刻は数えない。
  * 0 なら、モデルが自由に読んだ結果の中に候補がそのまま含まれている。
  * 範囲に技名以外の文字（ボス名・バーの模様）が入る詠唱バーに使う。
+ * tail（文字の番号の配列）を渡すと、候補が行の終わりにある場合だけを数える。候補より後ろの時刻で最も確からしい文字が
+ * すべて tail に含まれる位置だけを見る（途中で切れた技名「ヴァンプスト…」を、ボス名「ヴァンプ・ファタール」の頭に当てない）。
  */
-export function spottingPenalty(probs, steps, classes, indices) {
+export function spottingPenalty(probs, steps, classes, indices, tail = null) {
     const labels = withBlanks(indices);
     const size = labels.length;
     const best = new Float64Array(steps);
+    const top = new Int32Array(steps);
     for (let t = 0; t < steps; t++) {
         let max = 0;
         for (let c = 0; c < classes; c++) {
-            max = Math.max(max, probs[t * classes + c]);
+            if (probs[t * classes + c] > max) {
+                max = probs[t * classes + c];
+                top[t] = c;
+            }
         }
         best[t] = Math.log(max + EPS);
+    }
+    // endsAfter[t]: 時刻 t より後ろが行の終わり（tail の文字だけ）か
+    const endsAfter = new Uint8Array(steps).fill(1);
+    if (tail) {
+        const allowed = new Set(tail);
+        for (let t = steps - 2; t >= 0; t--) {
+            endsAfter[t] = endsAfter[t + 1] && allowed.has(top[t + 1]) ? 1 : 0;
+        }
     }
     let prev = new Array(size).fill(-Infinity);
     let result = -Infinity;
@@ -85,7 +102,9 @@ export function spottingPenalty(probs, steps, classes, indices) {
             }
             cur[s] = v + Math.log(probs[t * classes + labels[s]] + EPS) - best[t];
         }
-        result = Math.max(result, cur[size - 1], cur[size - 2]); // ここから後の時刻も候補の外
+        if (endsAfter[t]) {
+            result = Math.max(result, cur[size - 1], cur[size - 2]); // ここから後の時刻も候補の外
+        }
         prev = cur;
     }
     return result;
