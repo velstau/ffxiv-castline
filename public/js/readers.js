@@ -1,4 +1,5 @@
 // 読み取った文字列の解釈（コンテンツ名・技名の決定、カウントダウン、HP）。再生画面と試験ページで共用する。
+import { LINE_END_CHARS } from './ctc.js';
 
 // 1 位と 2 位の対数尤度の差がこれ未満なら自動で決めない（e^5 ≒ 150 倍の差）
 export const CANDIDATE_MARGIN_MIN = 5;
@@ -72,6 +73,10 @@ export const CAST_MARGIN_MIN = 3;
 // 減点も CAST_PREFIX_PENALTY_MAX までしか許さない
 export const CAST_PREFIX_MIN = 4;
 export const CAST_PREFIX_PENALTY_MAX = 3;
+// 頭の部分で照合するのは、読んだ行がこれだけの文字数（行の終わりの「…」などを除く）あるときだけ。技名が切れるのは敵対リストの幅を
+// 埋めたときなので、短い行は切れた技名ではない（2026-10-21 クルーザー級2: ボス名「シュガーライオット」が「シガ」「シュガ」で切れて読め、
+// 技名「シュガーソウル」の頭に当たってフェーズが移った）
+export const CAST_TRUNC_LINE_MIN = 6;
 
 /**
  * 詠唱バーで読んだ文字から技名を決める。範囲にはボス名やバーの模様も入るので、読んだ文字のどこか一部分に
@@ -97,7 +102,8 @@ export function pickCast(recognizer, read, candidates, { truncated = false } = {
     }
     const length = (c) => [...c.matched].length;
     // 技名の全体は行のどこにあってもよい。頭の部分は行の終わりにあるものだけ（「ヴァンプ」を敵の名前「ヴァンプ・ファタール」に当てない。2026-10-21）
-    const parts = [...owners.keys()].filter((part) => !whole.has(part));
+    const lineChars = [...read.text.trim().replace(new RegExp(`[${LINE_END_CHARS.join('')}]+$`), '')].length;
+    const parts = lineChars >= CAST_TRUNC_LINE_MIN ? [...owners.keys()].filter((part) => !whole.has(part)) : [];
     const spotted = [
         ...recognizer.spot(read.output, [...whole]),
         ...(parts.length > 0 ? recognizer.spot(read.output, parts, { atEnd: true }) : []),

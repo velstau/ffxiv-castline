@@ -405,6 +405,15 @@ test('敵対リストの範囲に始めから文字があるうちは、敵対�
     enmityFrom(e2, 9, 10, true);
     assert.equal(e2.status(T(10)).state, 'combat');
     assert.equal(sec(e2.startAt), 9);
+    // 一瞬（2 秒未満）読めなかっただけでは「消えた」としない（2026-10-21 クルーザー級2: カウントダウン中に敵対リストで早すぎる開始）
+    const { e: e3 } = engine({ hasEnmity: true, staleEnmity: true });
+    enmityFrom(e3, 0, 5, true);
+    e3.countdown(T(5.5), 16);
+    enmityFrom(e3, 6, 6.5, false);
+    enmityFrom(e3, 7, 15, true);
+    assert.equal(e3.status(T(15)).state, 'countdown');
+    enmityFrom(e3, 15.5, 22, true);
+    assert.equal(sec(e3.startAt), 21.5); // カウントダウンの予想時刻で始まる
 });
 
 test('手で止めた後は、画面に残った「戦闘開始！」では始めない', () => {

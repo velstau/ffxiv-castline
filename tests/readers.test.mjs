@@ -8,7 +8,7 @@ const SKILLS = ['創世の真炎', 'オクタフレア・コンシーヴ', 'テ�
 
 // ocr.js の TextRecognizer.spot と同じ形の照合をする代わりの認識器
 function fakeRecognizer() {
-    const chars = [...new Set([...SKILLS.join(''), ...'Bヘファイストー…オクタフレアABCヴァンプ・ファタールストンハードコア'])];
+    const chars = [...new Set([...SKILLS.join(''), ...'Bヘファイストー…オクタフレアABCヴァンプ・ファタールストンハードコアシュガライオソウルムスシャワ'])];
     const charIndex = new Map(chars.map((c, i) => [c, i + 1])); // 0 番は空白記号
     const classes = chars.length + 1;
     return {
@@ -57,6 +57,18 @@ test('敵対リスト: 技名の頭の部分を、同じ行の敵の名前の頭
     assert.equal(pick('ヴァンプ・ファタールヴァンプスト…', { truncated: true }, skills), 'ヴァンプストンプ');
     assert.equal(pick('ヴァンプ・ファタールヴァンプスト', { truncated: true }, skills), 'ヴァンプストンプ');
     assert.equal(pick('ヴァンプ・ファタールヴァンプストンプ', { truncated: true }, skills), 'ヴァンプストンプ');
+});
+
+test('敵対リスト: 短い行は途中で切れた技名とみなさない（ボス名「シュガーライオット」が「シガ」「シュガ」と切れて読め、シュガーソウルに当たった。2026-10-21 の動画）', () => {
+    const skills = ['シュガーソウル', 'ムースシャワー'];
+    assert.equal(pick('シガ', { truncated: true }, skills), null);
+    assert.equal(pick('シュガ', { truncated: true }, skills), null);
+    assert.equal(pick('シュガー', { truncated: true }, skills), null);
+    assert.equal(pick('ライオット', { truncated: true }, skills), null);
+    // 敵の名前の後ろで切れた技名は、行が長いので照合する
+    assert.equal(pick('シュガーライオットシュガーソ…', { truncated: true }, skills), 'シュガーソウル');
+    // 技名の全体なら短い行でもよい
+    assert.equal(pick('シュガーソウル', { truncated: true }, skills), 'シュガーソウル');
 });
 
 test('カウントダウン: 秒数の読めない「戦闘開始まで…」を戦闘開始にしない・全角数字と O の読み違い', () => {

@@ -37,6 +37,9 @@ const EARLY_PULL_MS = 1000; // 予想より早く敵対リストが出たら、�
 const COUNTDOWN_GIVE_UP_MS = 5000; // 予想時刻を過ぎても敵対リストが出なければ、カウントダウンは取り消されたとみなす
 // 敵対リストがこれ以上続けて出ていたら「出た」とみなす（戦闘の後に 0.5 秒ほど出たり消えたりすることがある。2026-10-20 実測）
 export const ENMITY_ON_MIN_MS = 1000;
+// 始めから文字がある敵対リストの範囲は、これだけ続けて空になってから開始に使う（一瞬読めなかっただけで「消えた」としない。
+// 2026-10-21 クルーザー級2 の動画: カウントダウン中に一瞬消えて、敵対リストで早すぎる開始になった）
+export const ENMITY_SEEN_OFF_MS = 2000;
 // 戦闘の終わり（2026-10-21 のユーザーの確認）: 全滅すると画面が暗転し、HUD も消える（「全滅」の表示は出ない）。
 // 一方、フェーズの移り変わりでも敵対リスト・HP・詠唱バーが消えるコンテンツがある（絶もうひとつの未来）ので、敵が消えただけでは終わらせない
 export const BLACKOUT_END_MS = 2000; // 戦闘中に画面全体の暗転がこれ以上続いたら、全滅とみなす
@@ -103,6 +106,7 @@ export class TimelineEngine {
         // 敵対リストの範囲が一度でも空だったか。始めから文字がある（範囲が別の表示にかかっている、止めた動画の画面など）うちは、
         // 敵対リストでは始めない。敵対リストは「出てきた」ときが開始（2026-10-21、止めた動画の画面で勝手に始まった）
         this.enmitySeenOff = false;
+        this.enmityEmptySince = null; // 敵対リストの範囲が空になった時刻（enmitySeenOff を決めるため。reset では消さない）
         this.enmityStaleLogged = false;
         this.reset();
     }
@@ -184,9 +188,14 @@ export class TimelineEngine {
     /** 敵対リストが出ている（shown = true）か消えている。開始の判定は advance（続けて出ていた時間を見る） */
     enmity(at, shown) {
         this.enmityShown = shown;
+        // 空だった長さ（また出た時刻で測る。空のままの間は advance で測る）
         if (!shown) {
-            this.enmitySeenOff = true;
-        } else if (!this.enmitySeenOff && !this.enmityStaleLogged) {
+            this.enmityEmptySince ??= at;
+        } else {
+            this.noteEnmityEmpty(at);
+            this.enmityEmptySince = null;
+        }
+        if (shown && !this.enmitySeenOff && !this.enmityStaleLogged) {
             this.enmityStaleLogged = true;
             this.log(at, '敵対リストの範囲に始めから文字があるので、一度消えるまで敵対リストでは始めない（戦闘前に文字が出ている場合は、範囲がずれています）');
         }
@@ -404,8 +413,17 @@ export class TimelineEngine {
         return best;
     }
 
+    noteEnmityEmpty(at) {
+        if (this.enmityEmptySince !== null && at - this.enmityEmptySince >= ENMITY_SEEN_OFF_MS) {
+            this.enmitySeenOff = true;
+        }
+    }
+
     // 時間で決まる変化を反映する
     advance(at) {
+        if (!this.enmityShown) {
+            this.noteEnmityEmpty(at);
+        }
         // 敵対リストは ENMITY_ON_MIN_MS 続いてから「出た」とみなし、開始は出始めた時刻にさかのぼる
         const usable = this.hasEnmity && this.enmitySeenOff;
         const steady = usable && this.enmityShown && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
