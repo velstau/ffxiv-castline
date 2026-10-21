@@ -60,8 +60,11 @@ const PREPARE_EVERY_MS = 1000;
 const PREPARE_AHEAD_S = 40; // VOICEVOX で先に作っておく範囲（発動までの秒。1 つ作るのに 1 秒前後かかる）
 
 // 読み上げる（小窓が開いていれば小窓の側から鳴らす。小窓は表示されているので止められにくい）
-function say(text) {
-    voice.speak(text, pip.isOpen ? pip.win : window).catch((e) => log(`読み上げられませんでした（${e.message}）`));
+// 失敗（読み始めない・エラー）は記録に出す。report なら、読み始めたことも使った声とともに出す（試験のボタン）
+function say(text, report = false) {
+    voice.speak(text, pip.isOpen ? pip.win : window)
+        .then((name) => report && log(`読み上げ「${text}」を${name ? ` ${name} で` : ''}読み始めました`))
+        .catch((e) => log(`読み上げられませんでした（${e.message}）`));
 }
 const ttsText = (e) => e.tts ?? showName(e.name); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
 
@@ -731,7 +734,7 @@ async function init() {
         $('lead').value = settings.lead;
         save(STORE_SETTINGS, settings);
     });
-    $('tts-test').addEventListener('click', () => say('読み上げの試験です'));
+    $('tts-test').addEventListener('click', () => say('読み上げの試験です', true));
     setupVoiceSettings();
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
