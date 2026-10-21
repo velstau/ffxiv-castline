@@ -24,6 +24,10 @@ const outDir = join(root, 'tools/skeletons');
 const MAX_EVENT_PAGES = 300; // 絶の長い戦闘でも取り切る（生成画面の上限 30 では足りないことがある）
 const ENEMY_MIN_CASTS = 3; // 予定に入れる敵: 詠唱が 3 回以上で、いちばん多い敵の 1 割以上
 const ENEMY_MIN_SHARE = 0.1;
+const MAX_RANK_PAGES = 20; // ランキングを最後のページまでたどる上限
+const PHASE_MARGIN_MS = 20000; // フェーズごとの技の一覧に、前後のフェーズの技もこれだけ含める（区間の境目の技を照合できるように）
+
+const clock = (ms) => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
 
 function args() {
     const [file, encounters, ...rest] = process.argv.slice(2);
