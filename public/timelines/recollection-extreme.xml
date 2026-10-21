@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>極ゼレニア討滅戦</content>
+  <title>極ゼレニア討滅戦</title>
+  <note>FFLogs の公開ランキングの討伐の記録（7:56）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="7.1" text="全体攻撃" castname="ローズ・カタルシス" duration="4.7" tts="全体攻撃"/>
+    <entry t="19.8" text="ショック" castname="ショック" duration="2.7" tts="AoE注意"/>
+    <entry t="25.9" text="キングダム・ホーリー" castname="キングダム・ホーリー" duration="2.7" tts="塔踏み注意"/>
+    <entry t="38.1" text="T線取り / 発動" castname="スペクトルブレイク" duration="6.7" tts="タンク線取り"/>
+    <entry t="52.5" text="クライムクロス / 開始" castname="クライムクロス" duration="12.7"/>
+    <entry t="65.5" castname="クライムクロス" sync="false"/>
+    <entry t="68.6" castname="クライムクロス" sync="false"/>
+    <entry t="71.6" castname="クライムクロス" sync="false"/>
+    <entry t="74.7" castname="クライムクロス" sync="false"/>
+    <entry t="77.8" text="連続頭割り" castname="ストックブレイク" duration="6.7" tts="頭割り"/>
+    <entry t="92.2" text="Dot更新注意 / 聖護壁" castname="聖護壁" duration="2.7"/>
+    <entry t="107.1" text="4突撃" castname="突撃" sync="false"/>
+    <entry t="119.2" text="3突撃" castname="突撃" sync="false"/>
+    <entry t="131.3" text="2突撃" castname="突撃" sync="false"/>
+    <entry t="143.3" text="1突撃" castname="突撃" sync="false"/>
+    <entry t="148.5" castname="クワイタスローズ" duration="2.7"/>
+    <entry t="157.7" castname="クワイタスローズ" sync="false"/>
+    <entry t="169.9" text="一式(回転AoE)" castname="魔法陣展開" duration="2.3" tts="回転えーおーいー"/>
+    <entry t="171.7" castname="南北確認" sync="false" tts=""/>
+    <entry t="176.1" text="開始" castname="キングダム・サンダラ" duration="4.7"/>
+    <entry t="196.6" text="着弾" castname="キングダム・サンダガ" duration="4.0"/>
+    <entry t="196.8" castname="散開" sync="false" tts="散開"/>
+    <entry t="204.0" text="全体攻撃" castname="ローズ・カタルシス" duration="4.7" tts="全体攻撃"/>
+    <entry t="216.4" text="二式(AoE避け)" castname="魔法陣展開・二式" duration="2.3" tts="AoE避け"/>
+    <entry t="222.6" text="雷鳴剣" castname="雷鳴剣" duration="5.7"/>
+    <entry t="236.7" text="T線取り / 発動" castname="スペクトルブレイク" duration="6.7" tts="タンク線取り"/>
+    <entry t="251.1" text="三式(薔薇と塔)" castname="魔法陣展開・三式" duration="2.3" tts="薔薇捨てと塔踏み"/>
+    <entry t="257.3" text="幻影生成" castname="幻影生成" duration="2.7"/>
+    <entry t="265.4" text="活性紋" castname="活性紋" duration="2.7"/>
+    <entry t="283.6" text="全体攻撃" castname="ローズ・カタルシス" duration="4.7"/>
+    <entry t="297.2" text="幻影生成" castname="幻影生成" duration="2.7" tts="二組集合"/>
+    <entry t="307.2" text="AoE重ねる" castname="ショック" sync="false"/>
+    <entry t="309.4" text="クライムクロス / 開始" castname="クライムクロス" duration="12.7"/>
+    <entry t="322.4" castname="クライムクロス" sync="false"/>
+    <entry t="325.5" castname="クライムクロス" sync="false"/>
+    <entry t="328.6" castname="クライムクロス" sync="false"/>
+    <entry t="331.7" castname="クライムクロス" sync="false"/>
+    <entry t="334.8" text="連続頭割り" castname="ストックブレイク" duration="6.7" tts="頭割り"/>
+    <entry t="351.2" text="四式(薔薇捨てと線切)" castname="魔法陣展開・四式" duration="2.3" tts="薔薇捨てと線切り"/>
+    <entry t="357.3" text="活性紋" castname="活性紋" duration="2.7"/>
+    <entry t="368.5" text="ローズソーン" castname="ローズソーン" duration="3.7" tts="南集合"/>
+    <entry t="376.7" text="頭割り" castname="キングダム・バニシュガ" duration="3.7" tts="床に乗る"/>
+    <entry t="387.8" text="全体攻撃" castname="ローズ・カタルシス" duration="4.7" tts="全体攻撃"/>
+    <entry t="401.3" text="幻影生成" castname="幻影生成" duration="2.7"/>
+    <entry t="407.4" text="クライムクロス / 開始" castname="クライムクロス" duration="12.7" tts="次は、クライムクロス。"/>
+    <entry t="411.4" text="安置確認" castname="パワーブレイク" sync="false" tts="安置を確認"/>
+    <entry t="417.4" text="ハーフカット" castname="パワーブレイク" sync="false" tts="ハーフカット注意"/>
+    <entry t="420.4" castname="クライムクロス" sync="false"/>
+    <entry t="423.5" castname="クライムクロス" sync="false"/>
+    <entry t="426.6" castname="クライムクロス" sync="false"/>
+    <entry t="429.6" castname="クライムクロス" sync="false"/>
+    <entry t="432.4" text="ハーフカット" castname="パワーブレイク" sync="false" tts="ハーフカット注意"/>
+    <entry t="432.8" text="連続頭割り" castname="ストックブレイク" duration="6.7" tts="頭割り"/>
+    <entry t="451.2" text="五式(AoE避け)" castname="魔法陣展開・五式" duration="2.3" tts="えーおーいー避け"/>
+    <entry t="457.3" text="クライムハザード" castname="クライムハザード" duration="2.7"/>
+    <entry t="465.5" text="雷鳴剣" castname="雷鳴剣" duration="5.7"/>
+    <entry t="472.0" castname="クライムハザード" sync="false"/>
+    <entry t="480.0" text="T線取り" castname="スペクトルブレイク" sync="false" tts="タンク線取り"/>
+    <entry t="487.0" text="発動" castname="スペクトルブレイク" sync="false"/>
+    <entry t="499.0" text="六式(顔面受け)" castname="魔法陣展開・六式" sync="false" tts="薔薇捨てと塔踏み"/>
+    <entry t="512.0" castname="活性紋" sync="false"/>
+    <entry t="522.0" text="開始" castname="ホーリーハザード" sync="false"/>
+    <entry t="537.0" text="魔法陣(回転AoE)" castname="魔法陣展開" sync="false" tts="回転えーおーいー"/>
+    <entry t="546.0" castname="キングダム・サンダラ" sync="false"/>
+    <entry t="561.0" castname="散開" sync="false" tts="次は、キングダム・サンダガ。"/>
+    <entry t="566.0" text="着弾" castname="キングダム・サンダガ" sync="false"/>
+    <entry t="574.0" castname="全体攻撃" sync="false" tts=""/>
+    <entry t="601.0" castname="以後調査中" sync="false" tts=""/>
+  </phase>
+</timeline>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>絶もうひとつの未来</content>
+  <title>絶もうひとつの未来（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（18:44）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1" name="P1: Fatebreaker">
+    <entry t="8.1" castname="サイクロニックブレイク" duration="6.2"/>
+    <entry t="20.1" castname="連鎖爆印刻" duration="4.7"/>
+    <entry t="31.8" castname="楽園絶技" duration="3.7"/>
+    <entry t="82.2" castname="光焔光背" duration="4.7"/>
+    <entry t="93.7" castname="シンソイルセヴァー" duration="8.7"/>
+    <entry t="103.4" castname="浮遊拘束" sync="false"/>
+    <entry t="105.5" castname="チャージスラスト" sync="false"/>
+    <entry t="117.7" castname="光焔光背" duration="4.7"/>
+    <entry t="126.2" castname="連鎖爆印刻" duration="4.7"/>
+    <entry t="136.2" castname="バーンストライク" duration="6.2"/>
+    <entry t="151.9" castname="光焔光背" duration="9.7"/>
+    <next to="p2" at="6.3" cast="クアドラスラップ"/>
+  </phase>
+  <phase id="p2" name="P2: Usurper of Frost">
+    <entry t="6.3" castname="クアドラスラップ" duration="4.7"/>
+    <entry t="12.9" castname="クアドラスラップ" duration="2.2"/>
+    <entry t="21.9" castname="鏡写し" duration="2.7"/>
+    <entry t="27.0" castname="ダイアモンドダスト" duration="4.7"/>
+    <entry t="34.9" castname="アクスキック" duration="5.7"/>
+    <entry t="45.6" castname="シンホーリー" duration="4.7"/>
+    <entry t="47.5" castname="ヘヴンリーストライク" sync="false"/>
+    <entry t="63.0" castname="静寂の双剣技" duration="3.2"/>
+    <entry t="68.5" castname="静寂の双剣技" sync="false"/>
+    <entry t="74.3" castname="ホーリーレイ" duration="4.7"/>
+    <entry t="79.9" castname="ホーリーレイ" sync="false"/>
+    <entry t="86.1" castname="鏡の国" duration="2.7"/>
+    <entry t="97.2" castname="サイスキック" duration="5.7"/>
+    <entry t="114.4" castname="バニシュガ" duration="4.7"/>
+    <entry t="123.8" castname="光の暴走" duration="4.7"/>
+    <entry t="152.9" castname="バニシュガ" duration="4.7"/>
+    <entry t="161.0" castname="光の津波" duration="4.7"/>
+    <entry t="175.3" castname="絶対零度" duration="9.7"/>
+    <next to="p3" at="0.1" cast="ヘル・ジャッジメント"/>
+  </phase>
+  <phase id="p3" name="P3: Oracle of Darkness">
+    <entry t="0.1" castname="ヘル・ジャッジメント" duration="3.7"/>
+    <entry t="8.4" castname="時間圧縮・絶" duration="9.7"/>
+    <entry t="22.5" castname="スピード" duration="5.2"/>
+    <entry t="63.2" castname="シェルクラッシャー" duration="2.7"/>
+    <entry t="66.6" castname="シェルクラッシャー" sync="false"/>
+    <entry t="69.7" castname="ショックウェーブ・パルサー" duration="4.7"/>
+    <entry t="77.9" castname="ブラックヘイロー" duration="4.7"/>
+    <entry t="90.3" castname="ディレイスペル・リフレイン" duration="1.7"/>
+    <entry t="95.5" castname="ダークウォタガ" duration="4.7"/>
+    <entry t="103.6" castname="アポカリプス" duration="3.7"/>
+    <entry t="109.7" castname="スピリットテイカー" duration="2.7"/>
+    <entry t="113.1" castname="スピリットテイカー" sync="false"/>
+    <entry t="119.3" castname="ダークエラプション" duration="3.7"/>
+    <entry t="126.9" castname="暗夜の舞踏技" duration="4.7"/>
+    <entry t="132.4" castname="暗夜の舞踏技" sync="false"/>
+    <entry t="135.2" castname="暗夜の舞踏技" sync="false"/>
+    <entry t="139.5" castname="ショックウェーブ・パルサー" duration="4.7"/>
+    <entry t="148.2" castname="エンド・オブ・メモリーズ" duration="9.7"/>
+    <next to="p4" at="5.2" cast="具象化"/>
+  </phase>
+  <phase id="p4" name="P4: Enter the Dragon">
+    <entry t="5.2" castname="具象化" duration="2.7"/>
+    <entry t="19.4" castname="忘却の此方" duration="4.7"/>
+    <entry t="29.0" castname="光と闇の竜詩" duration="4.7"/>
+    <entry t="37.2" castname="光の波動" duration="7.7"/>
+    <entry t="45.2" castname="スピリットテイカー" duration="2.7"/>
+    <entry t="48.3" castname="ホーリーウィング" duration="4.7"/>
+    <entry t="48.5" castname="スピリットテイカー" sync="false"/>
+    <entry t="51.3" castname="宵闇の舞踏技" duration="4.7"/>
+    <entry t="56.7" castname="宵闇の舞踏技" sync="false"/>
+    <entry t="58.3" castname="忘却の此方" duration="4.7"/>
+    <entry t="60.0" castname="宵闇の舞踏技" sync="false"/>
+    <entry t="65.8" castname="アク・モーン" duration="3.7"/>
+    <entry t="73.9" castname="モーン・アファー" duration="5.7"/>
+    <entry t="85.5" castname="時間結晶" duration="9.7"/>
+    <entry t="96.5" castname="忘却の此方" duration="4.7"/>
+    <entry t="99.7" castname="スピード" duration="5.2"/>
+    <entry t="113.8" castname="光の大波" duration="2.7"/>
+    <entry t="120.2" castname="光の大波" duration="2.7"/>
+    <entry t="129.7" castname="スピリットテイカー" duration="2.7"/>
+    <entry t="131.9" castname="ホーリーウィング" duration="4.4"/>
+    <entry t="133.0" castname="スピリットテイカー" sync="false"/>
+    <entry t="138.0" castname="ホーリーウィング" duration="0.2"/>
+    <entry t="140.6" castname="ホーリーウィング" duration="0.2"/>
+    <entry t="142.6" castname="ホーリーウィング" duration="0.2"/>
+    <entry t="148.3" castname="アク・モーン" duration="3.7"/>
+    <entry t="155.3" castname="忘却の此方" duration="4.7"/>
+    <entry t="156.4" castname="モーン・アファー" duration="5.7"/>
+    <entry t="165.6" castname="エンド・オブ・メモリーズ" duration="9.7"/>
+    <entry t="165.6" castname="絶対零度" duration="9.7"/>
+    <next to="p5" at="5.3" cast="光塵の剣"/>
+  </phase>
+  <phase id="p5" name="P5: Pandora">
+    <entry t="3.1" castname="攻撃" sync="false"/>
+    <entry t="5.3" castname="光塵の剣" duration="5.7"/>
+    <entry t="14.4" castname="攻撃" sync="false"/>
+    <entry t="17.6" castname="攻撃" sync="false"/>
+    <entry t="20.7" castname="攻撃" sync="false"/>
+    <entry t="23.8" castname="攻撃" sync="false"/>
+    <entry t="27.0" castname="攻撃" sync="false"/>
+    <entry t="30.1" castname="アク・モーン" duration="7.7"/>
+    <entry t="41.3" castname="攻撃" sync="false"/>
+    <entry t="42.4" castname="パラダイスリゲインド" duration="3.7"/>
+    <entry t="49.6" castname="光と闇の片翼" duration="6.6"/>
+    <entry t="56.9" castname="光と闇の片翼" sync="false"/>
+    <entry t="60.6" castname="光と闇の片翼" sync="false"/>
+    <entry t="66.2" castname="攻撃" sync="false"/>
+    <entry t="69.3" castname="攻撃" sync="false"/>
+    <entry t="71.5" castname="星霊の剣" duration="6.2"/>
+    <entry t="80.1" castname="星霊の剣" duration="2.2"/>
+    <entry t="84.7" castname="星霊の剣" duration="2.2"/>
+    <entry t="89.3" castname="星霊の剣" duration="2.2"/>
+    <entry t="93.9" castname="攻撃" sync="false"/>
+    <entry t="97.1" castname="攻撃" sync="false"/>
+    <entry t="100.2" castname="パンドラの櫃" duration="11.7"/>
+    <entry t="118.4" castname="光塵の剣" duration="5.7"/>
+    <entry t="127.6" castname="攻撃" sync="false"/>
+    <entry t="130.7" castname="攻撃" sync="false"/>
+    <entry t="133.8" castname="攻撃" sync="false"/>
+    <entry t="137.0" castname="攻撃" sync="false"/>
+    <entry t="140.1" castname="攻撃" sync="false"/>
+    <entry t="143.3" castname="アク・モーン" duration="7.7"/>
+    <entry t="154.4" castname="攻撃" sync="false"/>
+    <entry t="157.6" castname="攻撃" sync="false"/>
+    <entry t="159.7" castname="パラダイスリゲインド" duration="3.7"/>
+    <entry t="166.8" castname="光と闇の片翼" duration="6.6"/>
+    <entry t="174.2" castname="光と闇の片翼" sync="false"/>
+    <entry t="177.9" castname="光と闇の片翼" sync="false"/>
+    <entry t="183.5" castname="星霊の剣" duration="6.2"/>
+    <entry t="192.2" castname="星霊の剣" duration="2.2"/>
+    <entry t="196.8" castname="星霊の剣" duration="2.2"/>
+    <entry t="201.4" castname="星霊の剣" duration="2.2"/>
+    <entry t="206.0" castname="攻撃" sync="false"/>
+    <entry t="209.2" castname="光塵の剣" duration="5.7"/>
+    <entry t="218.3" castname="攻撃" sync="false"/>
+    <entry t="221.5" castname="攻撃" sync="false"/>
+    <entry t="224.6" castname="攻撃" sync="false"/>
+    <entry t="227.7" castname="攻撃" sync="false"/>
+    <entry t="230.9" castname="攻撃" sync="false"/>
+    <entry t="234.0" castname="アク・モーン" duration="7.7"/>
+    <entry t="245.2" castname="攻撃" sync="false"/>
+    <entry t="248.4" castname="攻撃" sync="false"/>
+    <entry t="250.5" castname="パラダイスロスト" duration="11.7"/>
+  </phase>
+</timeline>

@@ -202,6 +202,22 @@ def lookahead(items, events, defaults, offset, after_time, count=3):
     return score
 
 
+AUTO_MIN_SUPPORT = 2  # 自動の対応づけで、そろう行がこれ未満の区間は使わない
+
+
+def auto_phases(sections, events):
+    """区間ごとに、ずれの推定で最も多くの行がそろうフェーズ（同点なら前のフェーズ）"""
+    out = {}
+    for sec in sections:
+        best = (0, 'none')
+        for pid, evs in events.items():
+            _, support = estimate_offset(sec['items'], evs, -1e9)
+            if support > best[0]:
+                best = (support, pid)
+        out[sec['name']] = best[1] if best[0] >= AUTO_MIN_SUPPORT else 'none'
+    return out
+
+
 def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     report = []
     min_offsets = {}  # フェーズごとの、前の区間のずれ（区間は文書の順に進むとみなす）
@@ -357,8 +373,10 @@ def main():
                     help='そのフェーズの FFLogs の技の一覧（tools/fflogs-events.py の出力）')
     ap.add_argument('--role', action='append', default=[], metavar='区間=担当名',
                     help='担当ごとの区間（例: RED=赤）。表示に担当名を付け、読み上げはしない')
+    ap.add_argument('--events-all', metavar='PATH',
+                    help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
-                    help='Hojoring の区間を骨組みのフェーズに対応させる（省略時は最初のフェーズ）')
+                    help='Hojoring の区間を骨組みのフェーズに対応させる（省略時は最初のフェーズ。--events-all があれば自動）')
     args = ap.parse_args()
 
     meta, defaults, sections, dropped = load_hojoring(args.hojoring)
@@ -370,6 +388,11 @@ def main():
         pid, path = spec.split('=', 1)
         with open(path, encoding='utf-8') as f:
             events[pid] = [tuple(e) for e in json.load(f)['events']]
+    if args.events_all:
+        with open(args.events_all, encoding='utf-8') as f:
+            for pid, p in json.load(f)['phases'].items():
+                events[pid] = [tuple(e) for e in p['events']]
+        mapping = {**auto_phases(sections, events), **mapping}
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
                      dict(r.split('=', 1) for r in args.role))
 

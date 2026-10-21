@@ -23,6 +23,21 @@
     <title>ヘビー級4 零式（文言つき・下書き、前半・後半）</title>
   </timeline>
   <timeline>
+    <file>aac-cruiserweight-m1-savage.xml</file>
+    <content>至天の座アルカディア零式：クルーザー級1</content>
+    <title>クルーザー級1 零式（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>recollection-extreme.xml</file>
+    <content>極ゼレニア討滅戦</content>
+    <title>極ゼレニア（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
+    <file>futures-rewritten-ultimate.xml</file>
+    <content>絶もうひとつの未来</content>
+    <title>絶もうひとつの未来（文言つき・下書き）</title>
+  </timeline>
+  <timeline>
     <file>abyssos-the-eighth-circle-savage.xml</file>
     <content>万魔殿パンデモニウム零式：煉獄編4</content>
     <title>煉獄編4 零式（テスト用・冒頭のみ）</title>

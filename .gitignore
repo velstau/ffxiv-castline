@@ -7,3 +7,6 @@ __pycache__/
 
 # ビルドの道具（_build で npm install）
 /_build/node_modules/
+
+# FFLogs の問い合わせの結果（tools/skeleton-from-fflogs.mjs。レポートの番号を含むので公開しない）
+/tools/cache/
