@@ -23,9 +23,10 @@ print(round(m.hojoring_length(sys.argv[1]) * 1.2))' "sources/hojoring-pc/$src")
             node tools/skeleton-from-fflogs.mjs "$file" "$enc" --difficulty "$diff" --max-length "$max" < /dev/null
     else
         title=$(python3 -c 'import json,sys; print(next(c["name"] for c in json.load(open("public/data/contents.json"))["contents"] if c["file"] == sys.argv[1]))' "$file")
+        # 文言はどれも Vel が書いたもの
         # shellcheck disable=SC2086
         python3 tools/hojoring-overlay.py "tools/skeletons/$file.xml" "sources/hojoring-pc/$src" "public/timelines/$file.xml" \
-            --events-all "tools/skeletons/$file.events.json" --title "$title" $extra
+            --events-all "tools/skeletons/$file.events.json" --title "$title" --author Vel $extra
     fi
     echo
 done
