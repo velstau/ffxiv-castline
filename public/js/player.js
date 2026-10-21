@@ -273,8 +273,9 @@ function renderMissing() {
     el.textContent = missing.length === 0
         ? `画面 ${key} の範囲はすべて指定してあります。`
         : `画面 ${key} で未指定: ${missing.map((m) => `${m.label}（${m.lost}）`).join('、')}。`
-            + '初期設定の画面で指定してください（取り込み中に画面に出れば、ここでも自動で探します）。';
-    el.className = `status ${missing.length === 0 ? 'ok' : 'ng'}`;
+            + (settings.autoRegions ? '取り込み中に画面に出れば、自動で探します。' : '初期設定の画面で指定してください。');
+    // 開始を検知できないときだけ誤り。ほかは使えるが一部の働きが欠ける（注意）
+    el.className = `status ${missing.length === 0 ? 'ok' : missing.some((m) => m.id === 'start') ? 'ng' : 'warn'}`;
 }
 
 function regionsChanged() {

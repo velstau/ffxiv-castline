@@ -562,6 +562,10 @@ section {
     font-weight: 700;
 }
 
+.status.warn {
+    color: var(--vw-warn);
+}
+
 .help {
     margin: calc(8 / 16 * 1rem) 0;
     padding-left: calc(24 / 16 * 1rem);
@@ -1167,4 +1171,86 @@ main.dash {
 .facts .icon {
     margin-top: 0.1em;
     color: var(--vw-ok);
+}
+
+/* =========================================================================
+ * 再生画面（player.html）
+ * ========================================================================= */
+
+.toolbar {
+    margin-top: calc(12 / 16 * 1rem);
+}
+
+#run-status {
+    margin-top: calc(12 / 16 * 1rem);
+}
+
+.regions-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(4 / 16 * 1rem) calc(16 / 16 * 1rem);
+    margin-top: calc(12 / 16 * 1rem);
+    padding-top: calc(12 / 16 * 1rem);
+    border-top: 1px solid var(--vw-line);
+}
+
+.regions-line .status {
+    flex: 1 1 20rem;
+}
+
+/* タイムラインの表示（ページ側）。小窓と同じ表示を、ページでは枠の中に出す */
+.monitor #panel {
+    min-height: calc(240 / 16 * 1rem);
+}
+
+.monitor > .status {
+    margin-top: calc(8 / 16 * 1rem);
+}
+
+/* 設定の欄（ラベルの下に入力を置く） */
+.fields {
+    display: grid;
+    gap: calc(16 / 16 * 1rem);
+}
+
+.fields > details {
+    margin: 0;
+}
+
+.fields > details > .fields {
+    padding-top: calc(8 / 16 * 1rem);
+}
+
+label.field,
+.field {
+    display: grid;
+    gap: calc(4 / 16 * 1rem);
+}
+
+.field-label {
+    color: var(--vw-ink);
+    font-weight: 700;
+}
+
+.field select,
+.field input[type='text'] {
+    width: 100%;
+}
+
+.field-inline input[type='number'] {
+    width: 5em;
+}
+
+.field-range {
+    display: grid;
+    grid-template-columns: 3em minmax(0, 1fr) 5em;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+    min-height: calc(44 / 16 * 1rem);
+}
+
+.field-value {
+    font-variant-numeric: tabular-nums;
+    text-align: right;
 }
