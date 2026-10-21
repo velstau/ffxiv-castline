@@ -14,7 +14,7 @@ const iconDir = join(root, 'node_modules/@material-symbols/svg-400/rounded');
 const publicDir = join(root, '../public');
 
 // JS で使うアイコン（setup.js の手順の印など）
-const JS_ICONS = ['check_circle', 'radio_button_unchecked'];
+const JS_ICONS = ['check_circle', 'radio_button_unchecked', 'error'];
 
 const cache = new Map();
 function iconBody(name) {

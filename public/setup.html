@@ -9,7 +9,7 @@
 <title>初期設定 | Castline</title>
 <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body class="app">
 <a href="#main" class="skip-link button-link primary">本文へスキップ</a>
 <header class="site-header">
     <div class="site-header-inner">
@@ -25,25 +25,16 @@
     </div>
 </header>
 
-<main id="main" class="narrow">
-    <nav class="breadcrumb" aria-label="パンくずリスト">
-        <span>現在地</span>
-        <ol>
-            <li><a href="/">TOP</a><svg data-ms="chevron_right" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M530-481 353-658q-9-9-8.5-21t9.5-21q9-9 21.5-9t21.5 9l198 198q5 5 7 10t2 11q0 6-2 11t-7 10L396-261q-9 9-21 8.5t-21-9.5q-9-9-9-21.5t9-21.5l176-176Z"/></svg></li>
-            <li><a href="/ff14tools/">FF14 関連</a><svg data-ms="chevron_right" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M530-481 353-658q-9-9-8.5-21t9.5-21q9-9 21.5-9t21.5 9l198 198q5 5 7 10t2 11q0 6-2 11t-7 10L396-261q-9 9-21 8.5t-21-9.5q-9-9-9-21.5t9-21.5l176-176Z"/></svg></li>
-            <li><a href="./">Castline</a><svg data-ms="chevron_right" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M530-481 353-658q-9-9-8.5-21t9.5-21q9-9 21.5-9t21.5 9l198 198q5 5 7 10t2 11q0 6-2 11t-7 10L396-261q-9 9-21 8.5t-21-9.5q-9-9-9-21.5t9-21.5l176-176Z"/></svg></li>
-            <li><span aria-current="page">初期設定</span></li>
-        </ol>
-    </nav>
-
+<main id="main" class="narrow dash">
     <div class="page-head">
         <h1>初期設定 <span class="badge">開発中</span></h1>
         <p class="lead">ゲーム画面のどこを読むか（読む範囲）を決めます。<strong>色の付いた枠の手順だけ</strong>を、上から順に行ってください。見つけたものは自動で保存され、次の手順に進みます。</p>
         <p class="lead">最初に 1 回だけ行います（ゲームの画面の大きさを変えたときは、もう一度）。画面の画像はブラウザの中だけで使い、どこにも送りません。</p>
     </div>
 
-    <section aria-labelledby="h-steps">
-        <h2 id="h-steps">手順</h2>
+    <section class="panel" aria-labelledby="h-steps">
+        <h2 id="h-steps" class="panel-head"><svg data-ms="checklist" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="m222-299 158-158q9-9 21-8.5t21.39 9.5q8.61 9 8.61 21t-9 21L243-235q-9 9-21 9t-21-9L101-335q-9-9-9-21t9-21q9-9 21-8.5t21 8.5l79 78Zm0-320 158-158q9-9 21-8.5t21.39 9.5q8.61 9 8.61 21t-9 21L243-555q-9 9-21 9t-21-9L101-655q-9-9-9-21t9-21q9-9 21-8.5t21 8.5l79 78Zm328 329q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h300q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H550Zm0-320q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h300q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H550Z"/></svg>手順</h2>
+        <div class="panel-body">
         <div class="model-load">
             <span id="model-status" class="status" role="status">文字認識の準備をしています…</span>
             <progress id="model-progress" max="1" value="0" aria-label="文字認識の準備"></progress>
@@ -101,10 +92,12 @@
                 </div>
             </li>
         </ol>
+        </div>
     </section>
 
-    <section aria-labelledby="h-more">
-        <h2 id="h-more">うまくいかないとき</h2>
+    <section class="panel" aria-labelledby="h-more">
+        <h2 id="h-more" class="panel-head"><svg data-ms="build" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M354-370q-97.08 0-165.04-67.67Q121-505.33 121-602q0-20 3-37.5t11-36.5q3-8 9-12t12.81-6q6.81-2 14 0t13.19 8l113 113 92-86-118-118q-6.15-5.93-8.08-12.96Q261-797 263-804q2-7 6-12.25t12-8.75q19-8 36-11.5t36.85-3.5q99.23 0 168.69 69.42Q592-701.17 592-602q0 24-5 47t-13 46l221 221q27 26 26.5 63.5T793-161q-26 24-61.5 23.5T670-164L447-388q-23 8-46 13t-47 5Zm0-60q25 0 53-8t49-24l257 257q8 8 20 8t20-8q8-8 8-20t-8-20L500-498q16-21 24-49.5t8-54.5q0-75-55.5-127T350-782l102 104q9 9 8.5 21.5T451-635L318-510q-9.27 8-21.64 8-12.36 0-20.36-8l-98-97q3 77 54.67 127T354-430Zm117-58Z"/></svg>うまくいかないとき</h2>
+        <div class="panel-body">
         <details>
             <summary>範囲を手で直す（拡大図）</summary>
             <p>見つけた範囲がずれているときや、自動で見つからないときに使います。</p>
@@ -137,10 +130,12 @@
             </div>
             <textarea id="log" readonly aria-label="記録" spellcheck="false"></textarea>
         </details>
+        </div>
     </section>
 </main>
 
 <footer class="notice">
+    <p><a href="/">vel.works</a> ／ <a href="/ff14tools/">FF14 関連</a></p>
     <p>本ツールは、株式会社スクウェア・エニックスとは関係のない非公式のツールです。</p>
     <p>ゲームのプログラム・メモリ・通信には触れず、ブラウザの画面共有で取り込んだ画面の文字を読むだけですが、スクウェア・エニックスが認めたものではありません。FINAL FANTASY XIV の利用規約では外部ツールの使用が禁止されており、本ツールは外部ツールの利用を勧めるものではありません（<a href="https://jp.finalfantasyxiv.com/lodestone/topics/detail/33dc2350ac49e2155dbc0c76ed2cdd78262e2f39" target="_blank" rel="noopener noreferrer">公式の案内「FFXIV外部ツールの是非について」<span class="sr-only">（新しいタブで開く）</span></a>）。</p>
     <p>文字認識には PaddleOCR（Apache License 2.0）、アイコンには Material Symbols（<a href="licenses/material-symbols-Apache-2.0.txt">Apache License 2.0</a>）を使っています。ゲーム内の名称などの権利は株式会社スクウェア・エニックスに帰属します。<span style="white-space:nowrap">© SQUARE ENIX</span></p>

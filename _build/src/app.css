@@ -879,3 +879,292 @@ td.num {
 body > .tl-panel {
     padding: calc(8 / 16 * 1rem) calc(12 / 16 * 1rem);
 }
+
+/* =========================================================================
+ * 道具の画面の枠（パネル）。body.app は一段沈んだ地に、白い（ダークでは暗い）パネルを並べる
+ * ========================================================================= */
+
+body.app {
+    background-color: var(--vw-raised);
+}
+
+body.app .notice {
+    border-top-color: var(--vw-line);
+}
+
+section.panel {
+    margin: 0 0 calc(16 / 16 * 1rem);
+    padding: 0;
+    border-radius: var(--radius-8);
+    overflow: hidden;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+    margin: 0;
+    padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+    border-bottom: 1px solid var(--vw-line);
+    @apply text-std-17B-170;
+}
+
+.panel-head .icon {
+    color: var(--vw-lime);
+}
+
+.panel-body {
+    margin: 0;
+    padding: calc(16 / 16 * 1rem);
+}
+
+/* トップ（index.html） */
+main.dash {
+    padding-top: calc(16 / 16 * 1rem);
+}
+
+.dash-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: calc(4 / 16 * 1rem) calc(16 / 16 * 1rem);
+    margin-bottom: calc(16 / 16 * 1rem);
+}
+
+.dash-title h1 {
+    @apply text-std-24B-150;
+}
+
+.dash-title p {
+    margin: 0;
+    color: var(--vw-sub);
+}
+
+.dash-grid {
+    display: grid;
+    gap: calc(16 / 16 * 1rem);
+    grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 64rem) {
+    .dash-grid {
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        align-items: start;
+    }
+}
+
+.dash-col {
+    display: grid;
+    gap: calc(16 / 16 * 1rem);
+}
+
+.dash-col > section.panel {
+    margin: 0;
+}
+
+.page-head .lead {
+    flex-basis: 100%;
+    margin: 0;
+    @apply text-std-16N-175;
+}
+
+.launch {
+    display: grid;
+    gap: calc(16 / 16 * 1rem);
+    grid-template-columns: repeat(auto-fit, minmax(calc(260 / 16 * 1rem), 1fr));
+}
+
+.launch-item {
+    display: flex;
+    flex-direction: column;
+    gap: calc(8 / 16 * 1rem);
+    padding: calc(16 / 16 * 1rem);
+    border: 1px solid var(--vw-line);
+    border-radius: var(--radius-8);
+}
+
+.launch-item.next {
+    border-color: var(--vw-lime);
+    box-shadow: inset 0 calc(6 / 16 * 1rem) 0 var(--vw-lime);
+}
+
+.launch-item h3 {
+    margin: 0;
+}
+
+.launch-item p {
+    flex: 1;
+    margin: 0;
+    color: var(--vw-sub);
+}
+
+.launch-item .button-link {
+    align-self: flex-start;
+}
+
+.launch-top {
+    display: flex;
+    align-items: center;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.launch-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(32 / 16 * 1rem);
+    height: calc(32 / 16 * 1rem);
+    border: 2px solid var(--vw-mute);
+    border-radius: var(--radius-full);
+    color: var(--vw-mute);
+    @apply text-std-16B-170;
+}
+
+.launch-item.next .launch-no {
+    border-color: transparent;
+    background-color: var(--color-lime-300);
+    color: var(--color-black);
+}
+
+.launch-icon {
+    width: calc(32 / 16 * 1rem);
+    height: calc(32 / 16 * 1rem);
+    color: var(--vw-ink);
+}
+
+/* 状態の札（文字で状態を書き、色は補助） */
+.chip {
+    margin-left: auto;
+    padding: 0 calc(8 / 16 * 1rem);
+    border: 1px solid var(--vw-mute);
+    border-radius: var(--radius-4);
+    color: var(--vw-mute);
+    @apply text-std-16B-170;
+}
+
+.chip.ok {
+    border-color: var(--vw-ok);
+    color: var(--vw-ok);
+}
+
+.chip.next {
+    border-color: transparent;
+    background-color: var(--color-lime-300);
+    color: var(--color-black);
+}
+
+.chip.ng {
+    border-color: var(--vw-ng);
+    color: var(--vw-ng);
+}
+
+/* 項目と値の一覧 */
+.kv {
+    display: grid;
+    gap: calc(12 / 16 * 1rem);
+}
+
+.kv > div {
+    display: grid;
+    gap: calc(2 / 16 * 1rem);
+}
+
+.kv dt {
+    color: var(--vw-mute);
+    font-weight: 700;
+}
+
+.kv dd {
+    display: grid;
+    gap: calc(2 / 16 * 1rem);
+    margin: 0;
+}
+
+.kv-line {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.kv-line .icon {
+    margin-top: 0.1em;
+    color: var(--vw-mute);
+}
+
+.kv-line.ok .icon {
+    color: var(--vw-ok);
+}
+
+.kv-line.ng {
+    color: var(--vw-ng);
+}
+
+.kv-line.ng .icon {
+    color: var(--vw-ng);
+}
+
+/* 道具の行（行全体がリンク） */
+.tool-rows {
+    list-style: none;
+    padding: 0;
+}
+
+.tool-rows li + li {
+    border-top: 1px solid var(--vw-line);
+}
+
+.tool-rows a {
+    display: flex;
+    align-items: center;
+    gap: calc(12 / 16 * 1rem);
+    padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+    text-decoration: none;
+}
+
+.tool-rows a > .icon:first-child {
+    width: calc(32 / 16 * 1rem);
+    height: calc(32 / 16 * 1rem);
+}
+
+.tool-rows a > span {
+    flex: 1;
+    min-width: 0;
+}
+
+.tool-desc {
+    display: block;
+    color: var(--vw-sub);
+}
+
+@media (hover: hover) {
+    .tool-rows a:hover {
+        background-color: var(--vw-raised);
+        color: var(--vw-ink);
+    }
+
+    .tool-rows a:hover strong {
+        text-decoration: underline;
+        text-decoration-thickness: calc(3 / 16 * 1rem);
+    }
+}
+
+.tool-go {
+    color: var(--vw-mute);
+}
+
+.facts {
+    list-style: none;
+    display: grid;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.facts li {
+    display: flex;
+    align-items: flex-start;
+    gap: calc(8 / 16 * 1rem);
+}
+
+.facts .icon {
+    margin-top: 0.1em;
+    color: var(--vw-ok);
+}
