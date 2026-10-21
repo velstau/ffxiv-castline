@@ -177,7 +177,7 @@ function render() {
         : state.running ? 'カウントダウンを待っています…' : '');
     stepState('step-combat', done.combat, current === 'combat', '');
     itemState('item-hp', Boolean(regions.hp), regions.hp
-        ? `HP: 見つけました${state.found.hp ? `（${state.found.hp.label.replace(/^HP/, '').replace(/[（）]/g, '') || 'ターゲット'}）` : ''}`
+        ? `HP: 見つけました${state.found.hp ? state.found.hp.label.replace(/^HP/, '') : ''}`
         : 'HP: 殴って HP が減ると見つけます');
     itemState('item-enmity', Boolean(regions.enmity), regions.enmity ? `敵対リスト: 見つけました${foundText('enmity')}` : '敵対リスト: 戦闘中に見つけます');
     itemState('item-cast', Boolean(regions.cast) || !castNeeded, regions.cast

@@ -30,9 +30,10 @@ test('カウントダウンは「開始」「まで」の無い数字だけの�
     assert.equal(findCountdownLine([{ x: 0, y: 0, w: 50, h: 20, text: '戦闘開始！' }]).text, '戦闘開始！');
 });
 
-test('HP の行: ターゲットとフォーカスの両方があれば、FOCUS の下のほうを採る（全角の ％ も読む）', () => {
+test('HP の行: ターゲットとフォーカスの両方がボス（名前が敵対リストにある）なら、フォーカスを採る（全角の ％ も読む）', () => {
     const hp = findHpLine(fixture('scan-combat-start'));
     assert.equal(hp.focus, true);
+    assert.equal(hp.why, 'enmity');
     assert.equal(hp.others, 1);
     assert.equal(hp.line.text, '99.0％Gレッドホット');
     assert.equal(hp.name, 'レッドホット');
@@ -106,4 +107,29 @@ test('詠唱バー: 戦闘前に文字があった場所（ボスの名前の行
     assert.equal(r.cast?.line.x, 1670);
     const onlyEnmity = classifyCombatLines([inEnmity], { want: new Set(['cast']), width: W, height: H, enmityRect, baseline });
     assert.equal(onlyEnmity.cast, undefined);
+});
+
+test('HP の行: フォーカスが味方なら、ボスの欄（ターゲット）を採る', () => {
+    const combat = fixture('scan-combat-start');
+    // フォーカスの欄を味方に置き換える（味方の名前は敵対リストに無い）
+    const lines = combat.map((l) => (l.text === '99.0％Gレッドホット' ? { ...l, text: '85.0％ナカマ' } : l));
+    const hp = findHpLine(lines);
+    assert.equal(hp.focus, false);
+    assert.equal(hp.why, 'enmity');
+    assert.equal(hp.name, 'レッドオット');
+    // 敵対リストが読めなくても、ターゲットの欄の近くにボスの詠唱バーがあればそちらを採る
+    const noEnmity = lines.filter((l) => l.text !== 'レッドホット');
+    const cast = { x: 990, y: 150, w: 120, h: 22, text: 'キラーボイス', cast: 'キラーボイス' };
+    const byCast = findHpLine([...noEnmity, cast]);
+    assert.deepEqual([byCast.focus, byCast.why], [false, 'cast']);
+    // どちらの印も無ければ、殴っている相手のターゲットの欄
+    assert.deepEqual([findHpLine(noEnmity).focus, findHpLine(noEnmity).why], [false, 'target']);
+});
+
+test('詠唱バー: フォーカスが味方なら、ボスの欄（ターゲット）の近くの詠唱バーを採る', () => {
+    const lines = fixture('scan-combat-start').map((l) => (l.text === '99.0％Gレッドホット' ? { ...l, text: '85.0％ナカマ' } : l));
+    const targetCast = { x: 990, y: 150, w: 120, h: 22, text: 'キラーボイス', cast: 'キラーボイス' };
+    const r = classifyCombatLines([...lines, targetCast], { want: new Set(['hp', 'cast']), width: W, height: H });
+    assert.equal(r.hp.focus, false);
+    assert.equal(r.cast?.line.x, 990);
 });

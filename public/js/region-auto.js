@@ -151,7 +151,9 @@ export class RegionAutoFinder {
             this.enemyName = r.enemyName ?? this.enemyName;
             if (r.hp) {
                 if (this.pendingHp && sameRect(this.pendingHp, r.hp.rect)) {
-                    store('hp', r.hp.rect, r.hp.focus ? 'HP（フォーカスターゲット）' : `HP${r.hp.others > 0 ? '（ターゲット）' : ''}`, r.hp.line);
+                    const bar = r.hp.focus ? 'フォーカスターゲットの欄' : 'ターゲットの欄';
+                    store('hp', r.hp.rect, r.hp.why === 'target' ? `HP（${bar}。ボスの欄かは確かめられていません）`
+                        : `HP（ボス・${bar}。${r.hp.why === 'cast' ? '詠唱バー' : '敵対リストの名前'}で確かめました）`, r.hp.line);
                     this.pendingHp = null;
                 } else {
                     this.pendingHp = r.hp.rect;

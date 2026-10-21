@@ -46,11 +46,17 @@ const HP_HEAD = /^\D{0,2}?(\d{1,3}(?:\.\d)?)\s*[%％]\s*(.*)$/;
 const FOCUS_LABEL = /FOCUS|フォーカス|F?[O0o]CU?S?/i;
 
 /**
- * HP の行を探す。ターゲットとフォーカスターゲットの 2 つが見つかることがあり、すぐ上に「FOCUS」の行があるほうを
- * フォーカスとする。フォーカスはボスに付けたままにすることが多く、ターゲットは雑魚に移るので、フォーカスを優先する。
- * @returns {{line, name:string, focus:boolean, others:number}|null} name は % の後ろの敵の名前（先頭の記号 1 文字は除く）
+ * ボスの HP の行を探す。ターゲットとフォーカスターゲットの 2 つが見つかることがあり（すぐ上に「FOCUS」の行があるほうが
+ * フォーカス）、フォーカスは人によっては味方に付ける（2026-10-21 ユーザー指摘）ので、フォーカスかどうかでは決めない。
+ * ボスの欄の印:
+ *   cast   … その欄のすぐ近くに、タイムラインの技名の詠唱バーが出ている（技を詠唱しているのはボス）
+ *   enmity … 欄の名前が敵対リストにも出ている（敵対リストには敵しか出ない。味方の名前はパーティリストにあり、戦闘前からある）
+ * 印のある欄のうち cast を先に、両方ボスならフォーカス（ターゲットを移してもボスに残るため）を採る。
+ * どれにも印が無ければ、殴っている相手であるターゲットの欄を採る（印は why: 'cast' | 'enmity' | 'target'）。
+ * @param {{baseline?:{x,y,w,h}[], enmityRect?:{x,y,w,h}|null}} [options] 敵対リストの名前を探すときに使う
+ * @returns {{line, name:string, focus:boolean, others:number, why:string}|null} name は % の後ろの名前（先頭の記号 1 文字は除く）
  */
-export function findHpLine(lines) {
+export function findHpLine(lines, { baseline = [], enmityRect = null } = {}) {
     const found = [];
     for (const line of lines) {
         const m = HP_HEAD.exec(line.text);
@@ -66,9 +72,27 @@ export function findHpLine(lines) {
     if (found.length === 0) {
         return null;
     }
-    const pick = found.find((f) => f.focus) ?? found[0];
-    return { ...pick, others: found.length - 1 };
+    const hpLines = found.map((f) => f.line);
+    // 詠唱バーの候補（技名と決まった、余計な文字の少ない行）。敵対リストの中の技名は除く
+    const casts = lines.filter((l) => l.cast && chars(l.text) <= chars(l.cast) + 3 && !/[「」]/.test(l.text)
+        && !(enmityRect && overlaps(l, enmityRect)));
+    for (const f of found) {
+        const h = f.line.h;
+        const nearBar = (c) => Math.abs(center(c).y - center(f.line).y) <= h * 3
+            && c.x < f.line.x + h * 16 && f.line.x - h * 2 < c.x + c.w;
+        f.cast = casts.some((c) => nearBar(c)
+            && found.every((o) => o === f || dist(c, f.line) <= dist(c, o.line)));
+        f.enmity = chars(f.name) >= 2 && findEnmityLine(lines, f.name, hpLines, baseline) !== null;
+    }
+    const boss = found.filter((f) => f.cast || f.enmity);
+    const pick = boss.length > 0
+        ? (boss.find((f) => f.cast && f.focus) ?? boss.find((f) => f.cast) ?? boss.find((f) => f.focus) ?? boss[0])
+        : (found.find((f) => !f.focus) ?? found[0]);
+    const { line, name, focus } = pick;
+    return { line, name, focus, others: found.length - 1, why: pick.cast ? 'cast' : pick.enmity ? 'enmity' : 'target' };
 }
+
+const dist = (a, b) => Math.hypot(center(a).x - center(b).x, center(a).y - center(b).y);
 
 /** HP の行から範囲を作る。読むのは頭の % の数字だけなので、名前の後ろの長さに引きずられないよう幅は 9 文字分まで */
 export function hpRegionFrom(line, width, height) {
@@ -173,11 +197,11 @@ export function classifyCombatLines(lines, {
     want, width, height, longestCast = 12, hpRect = null, enmityRect = null, enemyName = null, baseline = [],
 }) {
     const out = { enemyName };
-    const hp = findHpLine(lines);
+    const hp = findHpLine(lines, { baseline, enmityRect });
     if (hp) {
         out.enemyName = hp.name || enemyName;
         if (want.has('hp')) {
-            out.hp = { rect: hpRegionFrom(hp.line, width, height), focus: hp.focus, others: hp.others, line: hp.line };
+            out.hp = { rect: hpRegionFrom(hp.line, width, height), focus: hp.focus, others: hp.others, why: hp.why, line: hp.line };
         }
     }
     const hpLines = lines.filter((l) => HP_HEAD.test(l.text));
