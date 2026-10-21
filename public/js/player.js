@@ -4,7 +4,7 @@ import { FrameSource } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { combineCandidates } from './readers.js';
 import { isBlackFrame } from './blackout.js';
-import { TimelineEngine, castNames } from './timeline-engine.js';
+import { TimelineEngine } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
 import { upcomingRows, iconProblems } from './timeline-view.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
@@ -85,7 +85,8 @@ function say(text, report = false) {
             }
         });
 }
-const ttsText = (e) => e.tts ?? showName(e.name); // text は表示だけ。tts が無ければ技名を読む（Hojoring の notice と text と同じ分け方）
+// 読み上げるのは tts に文があるものだけ（tts が無い・空の予定は読まない。2026-10-21 のユーザーの指定。以前は技名を読んでいた）
+const ttsText = (e) => e.tts?.trim() ?? '';
 
 // 文字認識は別スレッド（ocr-client.js）で、依頼の届いた順に 1 つずつ行う。画面全体を読む自動の範囲指定も区画ごとに
 // 依頼するので、その間に読み取りの依頼が入れる
@@ -106,9 +107,6 @@ function save(key, value) {
         // 保存できなくても、このページを開いている間は使える
     }
 }
-
-// 別名つきの技名（「A|B」）の表示
-const showName = (name) => castNames(name).join('／');
 
 function clockText(date = new Date()) {
     const pad = (n) => String(n).padStart(2, '0');
@@ -604,7 +602,7 @@ function speech(now) {
     if ((s === 'combat' || s === 'countdown') && now - state.lastPrepare >= PREPARE_EVERY_MS) {
         state.lastPrepare = now;
         voice.prepare(engine.upcoming(now, 20)
-            .filter((u) => u.hitIn <= PREPARE_AHEAD_S && !state.spoken.has(u.entry) && u.entry.tts !== '')
+            .filter((u) => u.hitIn <= PREPARE_AHEAD_S && !state.spoken.has(u.entry) && ttsText(u.entry))
             .map((u) => ttsText(u.entry)));
     }
     if (s !== 'combat') {
@@ -623,7 +621,7 @@ function speech(now) {
             continue;
         }
         state.spoken.add(e);
-        if (late <= SPEAK_LATE_MAX_S && e.tts !== '') {
+        if (late <= SPEAK_LATE_MAX_S && ttsText(e)) {
             say(ttsText(e));
         }
     }

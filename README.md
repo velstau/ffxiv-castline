@@ -99,7 +99,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
          発動（ダメージ）は t + duration。詠唱の無い技は duration 0（省略可） -->
     <!-- entry の属性は t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon の順に書く。t と duration は必ず小数点以下 1 桁（6.0・5.0）（生成画面と道具はこの形で出す） -->
     <entry t="6.0" text="全体攻撃" castname="創世の真炎" duration="5.0"/>
-    <!-- sync="false" で同期に使わない。window で窓を個別に指定。text は表示だけの文言。tts で読み上げる文を指定（tts="" で読み上げない。既定は castname） -->
+    <!-- sync="false" で同期に使わない。window で窓を個別に指定。text は表示だけの文言。tts で読み上げる文を指定（読み上げるのは tts に文がある予定だけ。tts が無い・tts="" は読まない） -->
     <entry t="30.0" castname="詠唱の無い技" sync="false" tts="散開"/>
     <!-- gimmick_icon はギミックのアイコン 1 つ、skills_icon はスキルのアイコン（カンマ区切り）。書き方は下の「表示とアイコン」 -->
     <entry t="36.0" text="タンク強" castname="ハードコア" duration="2.7" gimmick_icon="tankbuster.png" skills_icon="rampart.png,rampart2.png"/>
@@ -122,7 +122,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 - アイコンは再生画面と小窓の時刻の左に出す。ギミック 1 つ（gimmick_icon）→ スキル（skills_icon。カンマ区切り）の順
 - 書いた名前（フォルダなし）が下の一覧の id か名前なら、用意したアイコンを使う。拡張子は見ない（「tower.png」「tower」「塔踏み」「チャリオット」は同じ）。
   それ以外は画像のファイル。用意したアイコンと同じ名前の自分の画像を使うときは「./tower.png」と書く
-- ギミックのアイコンは Castline の独自の図案（public/icons/gimmick/。ゲームの画像は使っていない）。
+- ギミックのアイコンは Castline の独自の図案（public/icons/gimmick/。ゲームの画像は使っていない）。各アイコンの意味・図案・色の決まりは [public/icons/gimmick/README.md](public/icons/gimmick/README.md)
 - スキルのアイコンは同梱しない。各自が用意した画像のファイルを書く。
   配信のタイムラインではファイルは XML の場所からの相対パス、手元の XML では URL（http・https・data）だけ使える
 - 見つからないアイコンは表示を飛ばし、タイムラインを読み込んだときに記録に出す
@@ -314,7 +314,7 @@ tools/build-timelines.sh   # ヘビー級1〜4 零式を作り直す（sources/ 
 - Hojoring 本体と同じく、FFLogs の技が Hojoring の窓（sync-s・sync-e）に入るたびにずれを合わせ直す（記録した戦闘ごとに
   フェーズの進み方が違い、ヘビー級1 の後半では 9 秒ずれる）。窓の外でも ±6 秒なら文言は付け、続く 3 行がよく合うほうのずれを採る
 - 合った技が骨組みの予定（同名で、詠唱の終わりから 6 秒以内に当たったもの）なら text（Hojoring の text）と tts（notice）を付ける。
-  **読み上げは Hojoring と同じく notice だけ**で、text は表示だけ。notice の無い予定は技名を読み（tts を書かない）、技名の無い行（台詞・同期なし）は `tts=""` で読まない（2026-10-20 のユーザーの決定）。
+  **読み上げは Hojoring と同じく notice だけ**で、text は表示だけ。notice の無い予定は読まない（再生画面は tts に文がある予定だけ読む。2026-10-21 のユーザーの指定。以前は技名を読んでいた）。技名の無い行の `tts=""` はその名残
   骨組みに無い技（補助の敵の技）・台詞・同期なしの行は、その時刻に `sync="false"` の表示だけの予定として足す
 - Hojoring で「(A|B)」と書いた技は、骨組みの技名を「A|B」に広げる（ログには片方しか残らない）
 - 担当ごとの区間（ヘビー級2 の RED・BLUE）は `--role RED=赤` で表示に担当名を付け、担当の notice は読み上げない（両方の担当の文が同時に読まれるため）

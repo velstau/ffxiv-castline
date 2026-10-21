@@ -485,14 +485,14 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         report += [f'    FFLogs に無いが同名の予定に付けた: {x}' for x in loose]
         report += [f'    見つからない: {x}' for x in missed]
         report += [f'    足した: {x}' for x in inserted]
-    # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使い、notice が無ければ技名を読む（技名の無い行は読まない）。
-    # 再生画面は tts が無いと castname を読む（2026-10-20 のユーザーの決定）
+    # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使う。
+    # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）。技名の無い行の tts="" は以前の決まり（tts が無いと技名を読んだ）の名残で、害は無い
     for phase in skeleton['phases']:
         for e in phase['entries']:
             if e.get('_notices'):
                 e['tts'] = '、'.join(e['_notices'])
             elif e.get('_no_name'):
-                e['tts'] = ''  # 台詞・同期なしの行は読まない（tts が無いと castname を読むため）
+                e['tts'] = ''  # 台詞・同期なしの行は読まない
     return report
 
 
