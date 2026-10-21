@@ -553,7 +553,7 @@ function combatClock(s) {
 function buildView(now) {
     const engine = state.engine;
     if (!engine) {
-        return { head: 'タイムラインがありません', sub: '一覧から選ぶか、コンテンツ名を読み取ると始まります', items: [] };
+        return { head: 'タイムラインがありません', sub: '一覧で選ぶか、コンテンツ名を読むと始まります', items: [] };
     }
     const s = engine.status(now);
     let sub = '';
@@ -565,9 +565,9 @@ function buildView(now) {
         const phases = engine.timeline.phases.length > 1 ? `・${s.phase.name ?? s.phase.id}` : '';
         sub = `${combatClock(s.combatTime)}${phases}`;
     } else if (engine.holdUntilEnmityOff) {
-        sub = '次のカウントダウンか、敵対リストが一度消えてからまた出たときに始まります';
+        sub = 'カウントダウンか敵対リストの再表示で始まります'; // 敵対リストは一度消えてからまた出たとき
     } else {
-        sub = '次のカウントダウンか敵対リストで、また始まります';
+        sub = '次のカウントダウンか敵対リストで始まります';
     }
     // 表示は text があれば text だけ、無ければ技名。同じ攻撃が続くときは 1 行にまとめて「x4」（2026-10-21 のユーザーの指定）
     const items = upcomingRows(engine.upcoming(now, UPCOMING_COUNT * 3), engine.timeline).slice(0, UPCOMING_COUNT).map((row) => ({

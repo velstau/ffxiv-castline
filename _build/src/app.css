@@ -910,8 +910,15 @@ td.num {
     @apply text-std-16B-170;
 }
 
+/* 見出しと補足は別の行。補足は小窓（幅 380px）でも 1 行に収まるよう 16px（UI の最小）にし、文は 22 字以内にする */
+.tl-head > span {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
 .tl-sub {
-    @apply text-std-18N-160;
+    @apply text-std-16N-170;
     color: var(--vw-mute);
     font-variant-numeric: tabular-nums;
 }
