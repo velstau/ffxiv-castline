@@ -40,7 +40,7 @@ entry の `gimmick_icon` にギミックを 1 つ書きます。下の表の id 
 | <img src="tankbuster.svg" width="32" alt=""> | `tankbuster` | タンク強攻撃 | タンクへの強い単体攻撃。タンクは防御のアビリティを使う | 赤い盾と稲妻 |
 | <img src="tank-share.svg" width="32" alt=""> | `tank-share` | タンク頭割り | タンク 2 人で受ける頭割りの強攻撃 | 黄色い頭割りの輪の中に赤い盾 |
 | <img src="stack.svg" width="32" alt=""> | `stack` | 頭割り | 対象の周りに集まって、ダメージを分け合う | 中心の円に 4 方向から寄る黄色い矢印 |
-| <img src="spread.svg" width="32" alt=""> | `spread` | 散開 | 範囲が重ならないよう、ばらけて（1 人ずつ）受ける | 中心から 6 方向に広がる紫の光 |
+| <img src="spread.svg" width="32" alt=""> | `spread` | 散開 | 範囲が重ならないよう、ばらけて（1 人ずつ）受ける。基本散開の 8 方向 | 中心から 8 方向に広がる紫の光 |
 | <img src="pair-spread.svg" width="32" alt=""> | `pair-spread` | 2:2:2:2散開 | 2 人ずつの 4 組に分かれ、組どうしは離れて受ける | 離れて並ぶ 4 つの紫の円に 2 人ずつ |
 | <img src="tower.svg" width="32" alt=""> | `tower` | 塔踏み | 床の塔に決まった人数で入る。入らないと全体に被害 | 床の円と、そこから立つ光の柱。白い点は入る人数 |
 | <img src="dice.svg" width="32" alt=""> | `dice` | サイコロ | 頭上の番号（1・2・3…）の順に処理する | 目のあるサイコロ |
