@@ -225,7 +225,8 @@ function render() {
     $('start').disabled = state.running || !state.ocr;
     $('stop').disabled = !state.running;
     $('regions-grab').disabled = !state.running;
-    $('checks-grab').disabled = !state.running;
+    // 取り込む前でも押せる（押すと取り込みを始めてから撮る。指定済みの範囲を確かめたいだけの人が、上のボタンを探さずに済む）
+    $('checks-grab').disabled = !state.running && !state.ocr;
     $('regions-find').disabled = !state.ocr || !editor?.frame;
     renderChecks();
 }
@@ -312,6 +313,12 @@ function renderChecks() {
 }
 
 async function grabForChecks() {
+    if (!state.running) {
+        await start(); // 共有の確認はクリックの中でしか出せないので、ほかを待たずにすぐ始める（取り込みが始まったところで返る）
+        if (!state.running) {
+            return;
+        }
+    }
     const grabbed = await state.source?.grab(0);
     if (!grabbed) {
         return;
@@ -365,6 +372,10 @@ async function start() {
     });
     log(`── 取り込み開始（${source.method}）`);
     render();
+    run(source); // 読み取りは裏で続ける（start は取り込みが始まったところで返る。grabForChecks が待つ）
+}
+
+async function run(source) {
     const live = () => state.running && state.source === source;
     let nextAt = 0;
     while (live()) {
