@@ -1,8 +1,9 @@
-// 動画ファイルから詠唱を記録する画面。いまのタイムラインの詠唱時間を記録に合わせて直すか、記録から新しいタイムラインの下書きを作る。
-// 動画はこのブラウザの中だけで読む（どこへも送らない）。読む範囲は初期設定の画面で指定した「詠唱バー（技名）」（動画の大きさごと）。
+// 動画ファイルか画面共有から詠唱を記録する画面。いまのタイムラインの詠唱時間を記録に合わせて直すか、記録から新しいタイムラインの下書きを作る。
+// 映像はこのブラウザの中だけで読む（どこへも送らない）。読む範囲は初期設定の画面で指定した「詠唱バー（技名）」（画面の大きさごと）。
 import './storage-migrate.js';
 import { OcrClient } from './ocr-client.js';
 import { VideoFrameSource } from './video-source.js';
+import { ScreenFrameSource } from './screen-source.js';
 import { regionsFor } from './regions.js';
 import { castNamesOf } from './region-auto.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
@@ -17,7 +18,8 @@ const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出
 const $ = (id) => document.getElementById(id);
 const state = {
     ocr: null,
-    source: null,
+    source: null, // VideoFrameSource | ScreenFrameSource
+    clock: '動画', // 記録の時刻が何の秒か（動画ファイルは動画の秒、画面共有は記録を始めてからの秒）
     rect: null, // 詠唱バー（技名）の範囲
     index: { items: [], base: '' },
     local: [],
@@ -51,6 +53,8 @@ function setStatus(id, text, kind = '') {
     $(id).className = `status ${kind}`.trim();
 }
 const mode = () => document.querySelector('input[name="mode"]:checked').value;
+const inputKind = () => document.querySelector('input[name="input"]:checked').value;
+const sharing = () => state.source instanceof ScreenFrameSource;
 const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, '0')}`;
 const cell = (text, className = '') => Object.assign(document.createElement('td'), { textContent: text, className });
 
@@ -60,6 +64,11 @@ function updateButtons() {
     $('rec-start').disabled = !ready;
     $('rec-stop').disabled = !state.running;
     $('video-file').disabled = state.running;
+    $('screen-start').disabled = state.running || sharing();
+    $('screen-stop').disabled = !sharing();
+    document.querySelectorAll('input[name="input"]').forEach((r) => {
+        r.disabled = state.running;
+    });
 }
 
 // ── 文字認識のモデル ──
@@ -74,7 +83,61 @@ async function loadModels() {
     updateButtons();
 }
 
-// ── 動画と範囲 ──
+// ── 映像と範囲 ──
+function closeSource() {
+    state.source?.close();
+    state.source = null;
+    state.rect = null;
+    $('video-box').replaceChildren();
+    $('video-box').hidden = true;
+    $('region-help').hidden = true;
+    setStatus('video-status', '');
+}
+
+function switchInput() {
+    closeSource();
+    const screen = inputKind() === 'screen';
+    $('file-field').hidden = screen;
+    $('screen-field').hidden = !screen;
+    document.querySelectorAll('.file-only').forEach((el) => {
+        el.hidden = screen;
+    });
+    $('region-help-file').hidden = screen;
+    $('region-help-screen').hidden = !screen;
+    $('video-file').value = '';
+    updateButtons();
+}
+
+// 共有の確認はボタンのクリックの中でしか出せないので、ほかの読み込みを待たずにすぐ呼ぶ
+async function openScreen() {
+    closeSource();
+    setStatus('video-status', '共有する画面を選んでください…');
+    let source;
+    try {
+        source = await ScreenFrameSource.open(() => {
+            // ブラウザの「共有を停止」。記録中なら記録の終わりで片づける
+            if (!state.running && state.source === source) {
+                closeSource();
+                setStatus('video-status', '画面の共有が終わりました。');
+                updateButtons();
+            }
+        });
+    } catch (e) {
+        setStatus('video-status', e.name === 'NotAllowedError' ? '画面の共有を取りやめました。' : `画面を共有できませんでした: ${e.message}`, 'ng');
+        updateButtons();
+        return;
+    }
+    state.source = source;
+    loadRegion();
+}
+
+function closeScreen() {
+    const running = state.running;
+    closeSource();
+    setStatus('video-status', running ? '画面の共有をやめました（記録はここまでで終えます）。' : '画面の共有をやめました。');
+    updateButtons();
+}
+
 async function openVideo(file) {
     state.source?.close();
     state.source = null;
@@ -101,12 +164,13 @@ function loadRegion() {
         return;
     }
     state.rect = regionsFor(source.width, source.height).cast ?? null;
-    const size = `${source.width}x${source.height}`;
-    const length = fmt(source.duration);
+    const about = sharing()
+        ? `共有している画面 ${source.width}x${source.height}${source.method === 'MediaStreamTrackProcessor' ? '' : `（取り込み: ${source.method}）`}`
+        : `動画 ${source.width}x${source.height}・${fmt(source.duration)}`;
     if (state.rect) {
-        setStatus('video-status', `動画 ${size}・${length}。詠唱バー（技名）の範囲: x ${state.rect.x}・y ${state.rect.y}・幅 ${state.rect.w}・高さ ${state.rect.h}`, 'ok');
+        setStatus('video-status', `${about}。詠唱バー（技名）の範囲: x ${state.rect.x}・y ${state.rect.y}・幅 ${state.rect.w}・高さ ${state.rect.h}`, 'ok');
     } else {
-        setStatus('video-status', `動画 ${size}・${length}。この大きさの「詠唱バー（技名）」の範囲がまだありません。`, 'ng');
+        setStatus('video-status', `${about}。この大きさの「詠唱バー（技名）」の範囲がまだありません。`, 'ng');
     }
     $('region-help').hidden = Boolean(state.rect);
     updateButtons();
@@ -167,16 +231,22 @@ async function start() {
     }
     const candidates = fix ? castNamesOf(target.timeline) : state.allNames;
     const maxMiss = fix ? SNAP_MISS_OWN : SNAP_MISS_ANY;
-    const from = Math.max(0, Number($('range-from').value) || 0);
-    const to = $('range-to').value === '' ? state.source.duration : Math.min(state.source.duration, Number($('range-to').value));
+    const source = state.source;
+    const screen = sharing();
+    const from = screen ? 0 : Math.max(0, Number($('range-from').value) || 0);
+    const to = screen || $('range-to').value === '' ? source.duration : Math.min(source.duration, Number($('range-to').value));
+    state.clock = screen ? '記録' : '動画';
+    $('casts-time-head').textContent = `${state.clock}の秒`;
     state.running = true;
     state.casts = [];
     state.result = null;
     $('casts').replaceChildren();
     $('casts-box').hidden = false;
     $('result-section').hidden = true;
-    $('rec-progress').hidden = false;
-    state.source.video.controls = false;
+    $('rec-progress').hidden = screen;
+    if (source.video) {
+        source.video.controls = false;
+    }
     updateButtons();
     setStatus('rec-status', '記録しています…');
 
@@ -192,23 +262,31 @@ async function start() {
     };
     let last = from;
     try {
-        await state.source.run(async (bitmap, at) => {
+        await source.run(async (bitmap, at) => {
             const read = await state.ocr.readCastFree(bitmap, rect);
             add(tracker.push(at, { text: snapRead(normalizeRead(read.text), candidates, maxMiss), conf: read.conf }));
             last = at;
         }, {
             from, to, step: STEP_S,
-            onProgress: (at, rate) => {
-                $('rec-progress').value = (at - from) / Math.max(1e-3, to - from);
-                setStatus('rec-status', `記録しています… 動画 ${fmt(at)} / ${fmt(to)}（${rate.toFixed(1)} 倍速）・詠唱 ${state.casts.length} 回`);
-            },
+            onProgress: screen
+                ? (at, fps) => setStatus('rec-status', `記録しています… ${fmt(at)}・1 秒に ${fps.toFixed(1)} コマ読んでいます${fps < 5 ? '（読み取りが遅く、詠唱時間が粗くなります）' : ''}・詠唱 ${state.casts.length} 回`)
+                : (at, rate) => {
+                    $('rec-progress').value = (at - from) / Math.max(1e-3, to - from);
+                    setStatus('rec-status', `記録しています… 動画 ${fmt(at)} / ${fmt(to)}（${rate.toFixed(1)} 倍速）・詠唱 ${state.casts.length} 回`);
+                },
         });
         add(tracker.finish(last));
     } catch (e) {
         setStatus('rec-status', `記録を続けられませんでした: ${e.message}`, 'ng');
     }
     state.running = false;
-    state.source.video.controls = true;
+    if (source.video) {
+        source.video.controls = true;
+    }
+    if (screen && source.ended && state.source === source) {
+        closeSource();
+        setStatus('video-status', '画面の共有が終わりました。');
+    }
     $('rec-progress').hidden = true;
     updateButtons();
     // 読みが途中で割れた同じ技名の詠唱をつなぎ、一覧を出し直す
@@ -217,6 +295,7 @@ async function start() {
     state.casts.forEach(renderCast);
     if (state.casts.length === 0) {
         setStatus('rec-status', '詠唱を 1 回も読めませんでした。範囲が詠唱バーの技名に合っているか、初期設定の画面で確かめてください。', 'ng');
+        $('casts-box').hidden = true;
         return;
     }
     if (!$('rec-status').classList.contains('ng')) {
@@ -251,8 +330,8 @@ function showFix({ timeline, file }) {
     const summary = summarizeDurations(matched.rows);
     state.result = { kind: 'fix', timeline, summary, file };
     const found = matched.phases.filter((p) => p.offset !== null);
-    setStatus('result-summary', `フェーズ ${found.length}/${matched.phases.length} を動画の中で見つけました`
-        + `（${matched.phases.map((p) => `${p.id}: ${p.offset === null ? '見つからない' : `動画 ${fmt(p.offset)}`}`).join('・')}）。`
+    setStatus('result-summary', `フェーズ ${found.length}/${matched.phases.length} を${state.clock}の中で見つけました`
+        + `（${matched.phases.map((p) => `${p.id}: ${p.offset === null ? '見つからない' : `${state.clock} ${fmt(p.offset)}`}`).join('・')}）。`
         + `どの予定にも当たらない詠唱 ${matched.unused.length} 回。直す行にチェックを付けてください（2 回以上そろって長い行に最初から付けています）。`);
     $('result-head').replaceChildren(rowOf('th', ['直す', '技名', 'XML の詠唱時間', '記録', 'そろった回数', '判定']));
     const rows = summary.map((s, i) => {
@@ -286,7 +365,7 @@ function buildFixXml() {
 function showNew() {
     state.result = { kind: 'new', casts: state.casts.map((c) => ({ ...c })) };
     setStatus('result-summary', '技名は直せます。読んだ文字のまま（候補に寄せていない）の行は薄く出しています。要らない行はチェックを外してください。');
-    $('result-head').replaceChildren(rowOf('th', ['入れる', '動画の秒', '詠唱時間', '技名']));
+    $('result-head').replaceChildren(rowOf('th', ['入れる', `${state.clock}の秒`, '詠唱時間', '技名']));
     const rows = state.result.casts.map((c, i) => {
         const tr = document.createElement('tr');
         const check = Object.assign(document.createElement('input'), { type: 'checkbox', checked: true });
@@ -310,6 +389,7 @@ function showNew() {
         return tr;
     });
     $('result-rows').replaceChildren(...rows);
+    $('zero-label').textContent = `0 秒にする時刻（${state.clock}の秒。既定は最初の詠唱の開始）`;
     $('zero-input').value = (Math.floor(state.result.casts[0].start * 10) / 10).toFixed(1);
     $('zero-field').hidden = false;
     $('result-section').hidden = false;
@@ -359,6 +439,11 @@ async function init() {
         }
     });
     $('frame-save').addEventListener('click', saveFrame);
+    for (const radio of document.querySelectorAll('input[name="input"]')) {
+        radio.addEventListener('change', switchInput);
+    }
+    $('screen-start').addEventListener('click', openScreen);
+    $('screen-stop').addEventListener('click', closeScreen);
     $('region-reload').addEventListener('click', loadRegion);
     for (const radio of document.querySelectorAll('input[name="mode"]')) {
         radio.addEventListener('change', () => {

@@ -28,25 +28,38 @@
 <main id="main" class="dash">
     <div class="dash-title">
         <h1>タイムラインを記録する <span class="badge">開発中</span></h1>
-        <p>動画ファイルの詠唱バーの技名を読み、詠唱の時刻と詠唱時間を記録します。いまのタイムラインの詠唱時間を記録に合わせて直したり、記録から新しいタイムラインの下書きを作ったりできます。</p>
+        <p>動画ファイルか画面共有の詠唱バーの技名を読み、詠唱の時刻と詠唱時間を記録します。いまのタイムラインの詠唱時間を記録に合わせて直したり、記録から新しいタイムラインの下書きを作ったりできます。</p>
     </div>
 
     <div class="dash-grid gen-grid">
         <div class="dash-col">
             <section class="panel" aria-labelledby="h-video">
-                <h2 id="h-video" class="panel-head"><span class="panel-no" aria-hidden="true">1</span>動画</h2>
+                <h2 id="h-video" class="panel-head"><span class="panel-no" aria-hidden="true">1</span>読む映像</h2>
                 <div class="panel-body fields">
                     <p id="model-status" class="status" role="status">文字認識のモデルを読み込んでいます…</p>
-                    <label class="field">
-                        <span class="field-label">動画ファイル（このブラウザの中だけで読み、どこへも送りません）</span>
+                    <fieldset class="field">
+                        <legend class="field-label">何を読むか（このブラウザの中だけで読み、どこへも送りません）</legend>
+                        <label class="field-check"><input type="radio" name="input" value="file" checked> 動画ファイル</label>
+                        <label class="field-check"><input type="radio" name="input" value="screen"> 画面共有（ゲームの画面をそのまま読む）</label>
+                    </fieldset>
+                    <label class="field" id="file-field">
+                        <span class="field-label">動画ファイル</span>
                         <input type="file" id="video-file" accept="video/*">
                     </label>
+                    <div id="screen-field" class="fields" hidden>
+                        <p>ゲームの画面（ウィンドウ）を共有します。記録はボタンで止めるまで続き、止めても共有は続くので、そのまま次の挑戦を記録できます。1 回の記録には 1 回の挑戦だけを入れてください。</p>
+                        <div class="row">
+                            <button type="button" id="screen-start"><svg data-ms="screen_share" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M449-533h81v52q0 5.25 4.5 7.12 4.5 1.88 8.75-2.37l75.65-75.65q5.1-5.1 5.1-11.28T619-574l-75.74-75.74q-4.26-4.26-8.76-2.39-4.5 1.88-4.5 7.13v52h-81q-48.33 0-82.17 33.83Q333-525.33 333-477v60q0 12.75 8.68 21.37 8.67 8.63 21.5 8.63 12.82 0 21.32-8.63 8.5-8.62 8.5-21.37v-60q0-23.8 16.1-39.9Q425.2-533 449-533ZM70-120q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32Q57.25-180 70-180h820q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H70Zm70-120q-24 0-42-18t-18-42v-480q0-24 18-42t42-18h680q24 0 42 18t18 42v480q0 24-18 42t-42 18H140Zm0-60h680v-480H140v480Zm0 0v-480 480Z"/></svg>画面を共有する</button>
+                            <button type="button" id="screen-stop" disabled><svg data-ms="stop_circle" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M360-330h240q12.75 0 21.38-8.63Q630-347.25 630-360v-240q0-12.75-8.62-21.38Q612.75-630 600-630H360q-12.75 0-21.37 8.62Q330-612.75 330-600v240q0 12.75 8.63 21.37Q347.25-330 360-330ZM480.27-80q-82.74 0-155.5-31.5Q252-143 197.5-197.5t-86-127.34Q80-397.68 80-480.5t31.5-155.66Q143-709 197.5-763t127.34-85.5Q397.68-880 480.5-880t155.66 31.5Q709-817 763-763t85.5 127Q880-563 880-480.27q0 82.74-31.5 155.5Q817-252 763-197.68q-54 54.31-127 86Q563-80 480.27-80Zm.23-60Q622-140 721-239.5t99-241Q820-622 721.19-721T480-820q-141 0-240.5 98.81T140-480q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>共有をやめる</button>
+                        </div>
+                    </div>
                     <div id="video-box" class="rec-video" hidden></div>
                     <p id="video-status" class="status" role="status"></p>
                     <div id="region-help" class="fields" hidden>
-                        <p>読む範囲は、初期設定の画面で「スクリーンショットを使う」に動画の 1 コマを入れて指定します。詠唱バーに技名が出ているところまで動画を進めてから、このコマを画像で保存してください。</p>
+                        <p id="region-help-screen" hidden>読む範囲は、初期設定の画面で画面共有を始めて指定します（同じ画面の大きさで指定した範囲を使います）。</p>
+                        <p id="region-help-file">読む範囲は、初期設定の画面で「スクリーンショットを使う」に動画の 1 コマを入れて指定します。詠唱バーに技名が出ているところまで動画を進めてから、このコマを画像で保存してください。</p>
                         <div class="row">
-                            <button type="button" id="frame-save"><svg data-ms="photo_camera" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M479.5-267q72.5 0 121.5-49t49-121.5q0-72.5-49-121T479.5-607q-72.5 0-121 48.5t-48.5 121q0 72.5 48.5 121.5t121 49Zm0-60q-47.5 0-78.5-31.5t-31-79q0-47.5 31-78.5t78.5-31q47.5 0 79 31t31.5 78.5q0 47.5-31.5 79t-79 31.5ZM140-120q-24 0-42-18t-18-42v-513q0-23 18-41.5t42-18.5h147l55-66q8-11 20-16t26-5h184q14 0 26 5t20 16l55 66h147q23 0 41.5 18.5T880-693v513q0 24-18.5 42T820-120H140Zm0-60h680v-513H645l-73-87H388l-73 87H140v513Zm340-257Z"/></svg>このコマを画像で保存</button>
+                            <button type="button" id="frame-save" class="file-only"><svg data-ms="photo_camera" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M479.5-267q72.5 0 121.5-49t49-121.5q0-72.5-49-121T479.5-607q-72.5 0-121 48.5t-48.5 121q0 72.5 48.5 121.5t121 49Zm0-60q-47.5 0-78.5-31.5t-31-79q0-47.5 31-78.5t78.5-31q47.5 0 79 31t31.5 78.5q0 47.5-31.5 79t-79 31.5ZM140-120q-24 0-42-18t-18-42v-513q0-23 18-41.5t42-18.5h147l55-66q8-11 20-16t26-5h184q14 0 26 5t20 16l55 66h147q23 0 41.5 18.5T880-693v513q0 24-18.5 42T820-120H140Zm0-60h680v-513H645l-73-87H388l-73 87H140v513Zm340-257Z"/></svg>このコマを画像で保存</button>
                             <a href="setup.html" target="_blank" rel="noopener">初期設定の画面を開く<span class="sr-only">（新しいタブで開く）</span></a>
                             <button type="button" id="region-reload"><svg data-ms="refresh" class="icon" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false"><path d="M480-160q-133 0-226.5-93.5T160-480q0-133 93.5-226.5T480-800q85 0 149 34.5T740-671v-99q0-13 8.5-21.5T770-800q13 0 21.5 8.5T800-770v194q0 13-8.5 21.5T770-546H576q-13 0-21.5-8.5T546-576q0-13 8.5-21.5T576-606h138q-38-60-97-97t-137-37q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220q75 0 140-39.5T717-366q5-11 16.5-16.5t22.5-.5q12 5 16 16.5t-1 23.5q-39 84-117.5 133.5T480-160Z"/></svg>範囲を読み直す</button>
                         </div>
@@ -71,7 +84,7 @@
                         <input type="text" id="content-input" list="content-list" spellcheck="false">
                     </label>
                     <datalist id="content-list"></datalist>
-                    <div class="row">
+                    <div class="row file-only" id="range-row">
                         <label class="field">
                             <span class="field-label">読む区間の始め（動画の秒）</span>
                             <input type="number" id="range-from" min="0" step="1" value="0" inputmode="decimal">
@@ -96,7 +109,7 @@
                     <p class="empty-note" id="casts-empty">記録を始めると、読み取った詠唱がここに並びます。</p>
                     <div class="table-scroll" id="casts-box" hidden>
                         <table class="rec-table">
-                            <thead><tr><th>動画の秒</th><th>詠唱時間</th><th>技名</th><th>読んだ文字（コマ数）</th></tr></thead>
+                            <thead><tr><th id="casts-time-head">動画の秒</th><th>詠唱時間</th><th>技名</th><th>読んだ文字（コマ数）</th></tr></thead>
                             <tbody id="casts"></tbody>
                         </table>
                     </div>
@@ -118,7 +131,7 @@
                             </table>
                         </div>
                         <label class="field" id="zero-field" hidden>
-                            <span class="field-label">0 秒にする時刻（動画の秒。既定は最初の詠唱の開始）</span>
+                            <span class="field-label" id="zero-label">0 秒にする時刻（動画の秒。既定は最初の詠唱の開始）</span>
                             <input type="number" id="zero-input" step="0.1" inputmode="decimal">
                         </label>
                         <div class="row">
