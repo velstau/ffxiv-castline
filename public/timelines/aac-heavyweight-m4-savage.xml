@@ -13,7 +13,7 @@
     <next to="b-p1" at="25.4" cast="レプリケーション"/>
   </phase>
   <phase id="a-p1" name="前半">
-    <entry t="10.9" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="10.9" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="29.3" text="玉を確認 / リーサル1" castname="リーサルスカージ" duration="11.7" tts="玉を確認"/>
     <entry t="44.4" castname="リーサル2" sync="false" tts=""/>
     <entry t="47.4" castname="リーサル3" sync="false" tts=""/>
@@ -22,9 +22,9 @@
     <entry t="76.9" castname="ラヴェナスリーチ" duration="0.7"/>
     <entry t="88.9" castname="細胞爆発" sync="false"/>
     <entry t="98.2" text="頭割+T強" castname="細胞重爆" sync="false" tts="頭割りと強攻撃"/>
-    <entry t="103.2" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="103.2" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="117.4" text="細胞付着・中期" castname="細胞付着・中期" duration="2.7"/>
-    <entry t="132.6" text="回転開始" castname="クルエルコイル" duration="2.7" gimmick_icon="rotation"/>
+    <entry t="132.6" text="回転開始" castname="クルエルコイル" duration="2.7" gimmick_icon="rotation.png"/>
     <entry t="141.6" castname="スキンスプリッター" sync="false"/>
     <entry t="146.6" castname="スキンスプリッター" sync="false"/>
     <entry t="151.5" castname="スキンスプリッター" sync="false"/>
@@ -37,22 +37,22 @@
     <entry t="168.4" text="変異4" castname="細胞変異" sync="false"/>
     <entry t="171.4" castname="スキンスプリッター" sync="false"/>
     <entry t="176.3" text="コンストリクター" castname="コンストリクター" sync="false"/>
-    <entry t="183.5" text="全体" castname="スプラッターシェッド" duration="2.7" gimmick_icon="raidwide"/>
+    <entry t="183.5" text="全体" castname="スプラッターシェッド" duration="2.7" gimmick_icon="raidwide.png"/>
     <entry t="203.7" text="細胞付着・後期" castname="細胞付着・後期" duration="2.7"/>
     <entry t="209.9" text="フェラルフィッション" castname="フェラルフィッション" duration="1.7"/>
     <entry t="216.1" text="エリアチェンジ" castname="ブリングダウン・ハウス" sync="false"/>
-    <entry t="219.4" text="バインド" castname="細胞飛散" sync="false" gimmick_icon="bind"/>
-    <entry t="223.4" castname="散開注意" sync="false" tts="" gimmick_icon="spread"/>
+    <entry t="219.4" text="バインド" castname="細胞飛散" sync="false" gimmick_icon="bind.png"/>
+    <entry t="223.4" castname="散開注意" sync="false" tts="" gimmick_icon="spread.png"/>
     <entry t="229.6" text="ブレス誘導" castname="スプリットスカージ" sync="false" tts="ブレス"/>
     <entry t="232.1" text="AoE誘導" castname="ドロップスカージ" sync="false" tts="ドロップ"/>
-    <entry t="236.3" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="236.3" text="全体" castname="フィクサー・オブ・アルカディア" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="250.5" text="細胞付着・終期" castname="細胞付着・終期" duration="2.7"/>
     <entry t="256.7" text="AoE誘導" castname="ラヴェナスリーチ" duration="0.7"/>
     <entry t="268.3" text="リーチ" castname="ラヴェナスリーチ" sync="false"/>
     <entry t="270.3" castname="集合" sync="false" tts="中央集合"/>
     <entry t="276.3" text="集合" castname="細胞爆発" sync="false" tts="移動"/>
     <entry t="281.3" castname="大爆発" sync="false"/>
-    <entry t="285.0" text="全体" castname="スプラッターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="285.0" text="全体" castname="スプラッターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="304.3" text="リーサル1 / スカージ1" castname="リーサルスカージ" duration="11.7"/>
     <entry t="304.3" castname="玉を確認" sync="false" tts="玉を確認"/>
     <entry t="319.3" castname="リーサル2" sync="false" tts=""/>
@@ -61,19 +61,19 @@
     <entry t="322.4" castname="リーサル3" sync="false" tts=""/>
     <entry t="325.3" castname="リーサル4" sync="false" tts=""/>
     <entry t="325.4" castname="リーサル4" sync="false" tts=""/>
-    <entry t="337.6" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="337.6" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="352.2" castname="大爆発" sync="false"/>
     <entry t="357.4" castname="スカージブレス" sync="false"/>
     <entry t="358.2" castname="腕1" sync="false" tts=""/>
     <entry t="361.9" castname="スカージブレス" sync="false"/>
     <entry t="362.2" castname="腕2" sync="false" tts=""/>
-    <entry t="366.5" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="366.5" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="381.1" castname="大爆発" sync="false"/>
     <entry t="386.2" castname="スカージブレス" sync="false"/>
     <entry t="387.1" castname="腕1" sync="false" tts=""/>
     <entry t="390.8" castname="スカージブレス" sync="false"/>
     <entry t="391.1" castname="腕2" sync="false" tts=""/>
-    <entry t="395.4" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="395.4" text="全体" castname="スローターシェッド" duration="2.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="410.0" castname="大爆発" sync="false"/>
     <entry t="415.2" castname="ラプターナックル" sync="false"/>
     <entry t="416.0" castname="腕1" sync="false" tts=""/>
@@ -83,7 +83,7 @@
     <entry t="449.9" castname="待機へ" sync="false" tts=""/>
   </phase>
   <phase id="b-p1" name="後半">
-    <entry t="11.0" text="全体攻撃" castname="アルカディアン・フレイム" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="11.0" text="全体攻撃" castname="アルカディアン・フレイム" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="25.4" text="分身" castname="レプリケーション" duration="2.7"/>
     <entry t="35.3" castname="軽減準備" sync="false" tts=""/>
     <entry t="39.8" text="1回目" castname="トップティアスラム" sync="false" tts="バフを確認"/>
@@ -93,15 +93,15 @@
     <entry t="70.5" castname="ダブルソバット" sync="false"/>
     <entry t="88.7" text="模倣細胞" castname="模倣細胞" duration="2.7"/>
     <entry t="102.9" text="レプリケーション" castname="レプリケーション" duration="2.7"/>
-    <entry t="122.5" text="【4/扇】扇誘導" castname="ファイアフォール・スプラッシュ" duration="5.4" tts="誘導注意" gimmick_icon="cone"/>
+    <entry t="122.5" text="【4/扇】扇誘導" castname="ファイアフォール・スプラッシュ" duration="5.4" tts="誘導注意" gimmick_icon="cone.png"/>
     <entry t="128.3" castname="ファイアフォール・スプラッシュ" sync="false"/>
     <entry t="129.2" castname="マナバースト" sync="false"/>
     <entry t="136.5" text="頭割 / キック" castname="スネークキック" duration="4.7" tts="頭割り、扇注意"/>
     <entry t="148.7" text="リバース開始" castname="リエナクトメント" duration="2.7" tts="リバース開始"/>
     <entry t="154.9" text="ニア・ファー" castname="ネザーレイジ・ニア|ネザーレイジ・ファー" duration="4.7"/>
-    <entry t="163.8" text="【ボ単】頭割り1" castname="ヘビースラム" sync="false" tts="頭割り" gimmick_icon="stack"/>
-    <entry t="167.8" castname="【4/扇】扇誘導" sync="false" tts="扇誘導" gimmick_icon="cone"/>
-    <entry t="171.8" text="【ボ単】頭割り２" castname="ヘビースラム" sync="false" tts="頭割り" gimmick_icon="stack"/>
+    <entry t="163.8" text="【ボ単】頭割り1" castname="ヘビースラム" sync="false" tts="頭割り" gimmick_icon="stack.png"/>
+    <entry t="167.8" castname="【4/扇】扇誘導" sync="false" tts="扇誘導" gimmick_icon="cone.png"/>
+    <entry t="171.8" text="【ボ単】頭割り２" castname="ヘビースラム" sync="false" tts="頭割り" gimmick_icon="stack.png"/>
     <entry t="181.2" text="変異細胞" castname="変異細胞" duration="2.7"/>
     <entry t="187.4" text="スフィア" castname="マナスフィア" duration="2.7"/>
     <entry t="201.4" castname="魔力放散" sync="false"/>
@@ -109,7 +109,7 @@
     <entry t="218.4" castname="開放1" sync="false" tts=""/>
     <entry t="223.9" text="ニア・ファー" castname="ネザーワールド・ニア|ネザーワールド・ファー" duration="4.7"/>
     <entry t="224.4" castname="開放2" sync="false" tts=""/>
-    <entry t="232.0" text="全体" castname="アルカディアン・フレイム" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="232.0" text="全体" castname="アルカディアン・フレイム" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="241.3" text="T誘導" castname="ダブルソバット" duration="4.7" tts="タンク誘導、キック注意"/>
     <entry t="246.8" castname="ダブルソバット" sync="false"/>
     <entry t="265.1" text="ドリーム" castname="アルカディアン・ドリーム" duration="4.7" tts="全体攻撃"/>
@@ -118,35 +118,35 @@
     <entry t="287.4" castname="心象投影" duration="3.7"/>
     <entry t="294.5" text="【予告】安置確認" castname="レプリケーション" duration="2.7" tts="安置を確認"/>
     <entry t="306.0" castname="心象投影" duration="3.7"/>
-    <entry t="313.1" text="線取り開始" castname="レプリケーション" duration="2.7" gimmick_icon="tether-take"/>
-    <entry t="331.7" text="線取り終了" castname="心象投影" duration="3.7" gimmick_icon="tether-take"/>
-    <entry t="339.1" text="全体" castname="リンドブルム・メテオ" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="313.1" text="線取り開始" castname="レプリケーション" duration="2.7" gimmick_icon="tether-take.png"/>
+    <entry t="331.7" text="線取り終了" castname="心象投影" duration="3.7" gimmick_icon="tether-take.png"/>
+    <entry t="339.1" text="全体" castname="リンドブルム・メテオ" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="339.1" text="【発動】安置へ" castname="パワーガッシャー" sync="false" tts="安置へ移動"/>
     <entry t="345.1" castname="エリアチェンジ" sync="false" tts="担当の島へ移動"/>
-    <entry t="347.3" text="【予告】隕石" castname="ダウンフォール" duration="2.7" gimmick_icon="meteor"/>
+    <entry t="347.3" text="【予告】隕石" castname="ダウンフォール" duration="2.7" gimmick_icon="meteor.png"/>
     <entry t="353.4" text="デバフ付与" castname="アルカディアン・アルケイナム" duration="2.7"/>
-    <entry t="360.5" text="範囲捨てor頭割り開始" castname="心象投影" duration="3.7" tts="頭割りと範囲捨て" gimmick_icon="stack"/>
+    <entry t="360.5" text="範囲捨てor頭割り開始" castname="心象投影" duration="3.7" tts="頭割りと範囲捨て" gimmick_icon="stack.png"/>
     <entry t="370.5" castname="1回目" sync="false" tts=""/>
     <entry t="375.5" castname="2回目" sync="false" tts=""/>
     <entry t="380.5" castname="3回目" sync="false" tts=""/>
     <entry t="385.5" castname="4回目" sync="false" tts=""/>
-    <entry t="391.0" text="塔踏み" castname="心象投影" duration="3.7" tts="次は、塔踏み" gimmick_icon="tower"/>
-    <entry t="399.4" text="塔:着弾" castname="着弾" sync="false" tts="塔発動" gimmick_icon="tower"/>
+    <entry t="391.0" text="塔踏み" castname="心象投影" duration="3.7" tts="次は、塔踏み" gimmick_icon="tower.png"/>
+    <entry t="399.4" text="塔:着弾" castname="着弾" sync="false" tts="塔発動" gimmick_icon="tower.png"/>
     <entry t="410.1" text="二アファー誘導＋発動" castname="リンドブルム・グレア" sync="false" tts="二アファーわすれない"/>
     <entry t="415.5" text="空間裂断" castname="空間裂断" duration="2.7" tts="ボスを確認"/>
-    <entry t="427.1" text="散開位置へ" castname="心象投影" duration="3.7" tts="移動先を確認" gimmick_icon="spread"/>
+    <entry t="427.1" text="散開位置へ" castname="心象投影" duration="3.7" tts="移動先を確認" gimmick_icon="spread.png"/>
     <entry t="434.2" text="ダミー攻撃:前半" castname="リエナクトメント" duration="2.7"/>
-    <entry t="439.3" text="頭割り(4:4)" castname="ヘビースラム" sync="false" tts="よんよん" gimmick_icon="stack"/>
+    <entry t="439.3" text="頭割り(4:4)" castname="ヘビースラム" sync="false" tts="よんよん" gimmick_icon="stack.png"/>
     <entry t="442.4" text="島安置へ" castname="心象投影" duration="3.7"/>
     <entry t="449.9" text="ダミー攻撃:後半" castname="心象投影" duration="3.7"/>
-    <entry t="460.2" text="頭割り(4:4)" castname="ヘビースラム" sync="false" tts="よんよん" gimmick_icon="stack"/>
+    <entry t="460.2" text="頭割り(4:4)" castname="ヘビースラム" sync="false" tts="よんよん" gimmick_icon="stack.png"/>
     <entry t="465.3" text="安置へ" castname="パワーガッシャー" sync="false"/>
-    <entry t="467.4" text="全体" castname="アルカディアン・ドリーム" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="467.4" text="全体" castname="アルカディアン・ドリーム" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="475.6" text="T誘導" castname="ダブルソバット" duration="4.7" tts="タンク誘導、キック注意"/>
     <entry t="481.1" castname="ダブルソバット" sync="false"/>
     <entry t="496.9" castname="レプリケーション" duration="4.7"/>
-    <entry t="510.4" text="全体1" castname="アルカディアン・ヘル" duration="4.7" gimmick_icon="raidwide"/>
-    <entry t="526.7" text="全体2" castname="アルカディアン・ヘル" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="510.4" text="全体1" castname="アルカディアン・ヘル" duration="4.7" gimmick_icon="raidwide.png"/>
+    <entry t="526.7" text="全体2" castname="アルカディアン・ヘル" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="544.5" text="時間切れ開始 / 時間切れ" castname="アルカディアン・ヘル" duration="9.7"/>
   </phase>
 </timeline>

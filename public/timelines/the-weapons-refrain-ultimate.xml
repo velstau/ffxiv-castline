@@ -271,13 +271,13 @@
     <entry t="199.5" castname="フレイムクラッシュ" sync="false"/>
     <entry t="199.6" castname="スーパーサイクロン" sync="false"/>
     <entry t="200.7" text="魔導フレア" castname="魔導フレア" duration="3.7"/>
-    <entry t="201.6" castname="ランスラ＋頭割り" sync="false" tts="" gimmick_icon="stack"/>
+    <entry t="201.6" castname="ランスラ＋頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
     <entry t="203.2" text="フェザーレイン" castname="フェザーレイン" duration="0.7" tts="フェザー！"/>
     <entry t="211.1" text="アルテマ開始" castname="アルテマ" duration="4.7" tts="次、フルバリア"/>
     <entry t="222.4" text="エーテル波動" castname="エーテル波動" duration="3.7"/>
-    <entry t="226.3" castname="ノックバック" sync="false" tts="右上えー" gimmick_icon="knockback"/>
-    <entry t="226.3" castname="ノックバック" sync="false" tts="右下えー" gimmick_icon="knockback"/>
-    <entry t="226.3" castname="ノックバック" sync="false" tts="左下えー" gimmick_icon="knockback"/>
+    <entry t="226.3" castname="ノックバック" sync="false" tts="右上えー" gimmick_icon="knockback.png"/>
+    <entry t="226.3" castname="ノックバック" sync="false" tts="右下えー" gimmick_icon="knockback.png"/>
+    <entry t="226.3" castname="ノックバック" sync="false" tts="左下えー" gimmick_icon="knockback.png"/>
     <entry t="228.3" castname="アルテマ爆雷出現" sync="false" tts=""/>
     <entry t="241.3" castname="12時集合" sync="false" tts="12時えー"/>
     <entry t="247.5" text="吸着爆雷" castname="吸着爆雷" sync="false"/>

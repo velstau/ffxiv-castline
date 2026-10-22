@@ -78,11 +78,12 @@ def icon_for(text, castname, cast):
 
 
 def with_icon(entry, icon):
-    """属性の順（t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon。timeline-xml.js の toTimelineXml）を守って入れる"""
+    """属性の順（t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon。timeline-xml.js の toTimelineXml）を守って入れる。
+    値は「tower.png」の形（2026-10-21 のユーザーの指定。gimmick-icons.js は拡張子を見ない）"""
     entry = re.sub(r'\sgimmick_icon="[^"]*"', '', entry)
     if ' skills_icon="' in entry:
-        return entry.replace(' skills_icon="', f' gimmick_icon="{icon}" skills_icon="', 1)
-    return entry[:-2] + f' gimmick_icon="{icon}"/>'
+        return entry.replace(' skills_icon="', f' gimmick_icon="{icon}.png" skills_icon="', 1)
+    return entry[:-2] + f' gimmick_icon="{icon}.png"/>'
 
 
 def main():

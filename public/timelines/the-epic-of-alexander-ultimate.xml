@@ -7,28 +7,28 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（17:07）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Living Liquid">
-    <entry t="10.9" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster"/>
-    <entry t="15.0" text="全体範囲攻撃" castname="カスケード" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="10.9" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster.png"/>
+    <entry t="15.0" text="全体範囲攻撃" castname="カスケード" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="19.6" castname="POP：リキッドハンド" sync="false" tts=""/>
     <entry t="32.7" castname="POP：ヤークトドール" sync="false" tts=""/>
-    <entry t="33.1" text="扇誘導" castname="プロティアンウェイブ" duration="2.7" gimmick_icon="cone"/>
+    <entry t="33.1" text="扇誘導" castname="プロティアンウェイブ" duration="2.7" gimmick_icon="cone.png"/>
     <entry t="35.2" castname="ハンド・オブ・パーティング" sync="false"/>
     <entry t="35.2" text="じゃんけん" castname="ハンド・オブ・" sync="false"/>
-    <entry t="37.2" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster"/>
+    <entry t="37.2" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="37.3" castname="フルイドストライク" sync="false"/>
     <entry t="38.2" castname="プロティアンウェイブ" sync="false"/>
     <entry t="39.4" text="５％" castname="ハンド・オブ・ペイン" duration="2.7"/>
     <entry t="41.2" castname="水玉出現" sync="false" tts=""/>
-    <entry t="56.3" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster"/>
+    <entry t="56.3" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="56.6" castname="フルイドストライク" sync="false"/>
-    <entry t="66.5" text="扇誘導x3" castname="プロティアンウェイブ" duration="2.7" tts="散開、散開" window="66.6 10" gimmick_icon="cone"/>
+    <entry t="66.5" text="扇誘導x3" castname="プロティアンウェイブ" duration="2.7" tts="散開、散開" window="66.6 10" gimmick_icon="cone.png"/>
     <entry t="66.7" text="５％" castname="ハンド・オブ・ペイン" duration="2.7"/>
     <entry t="69.5" castname="プロティアンウェイブ" sync="false"/>
     <entry t="71.5" castname="プロティアンウェイブ" sync="false"/>
     <entry t="71.5" castname="スルース" duration="2.7"/>
     <entry t="74.6" castname="プロティアンウェイブ" sync="false"/>
     <entry t="74.8" castname="レンジ軽減準備" sync="false" tts="れんじけいげんじゅんびー"/>
-    <entry t="80.7" castname="全体範囲攻撃x6" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="80.7" castname="全体範囲攻撃x6" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="80.8" castname="スプラッシュ" sync="false"/>
     <entry t="81.9" castname="スプラッシュ" sync="false"/>
     <entry t="83.0" castname="スプラッシュ" sync="false"/>
@@ -37,11 +37,11 @@
     <entry t="85.9" text="５％" castname="ハンド・オブ・ペイン" duration="2.7"/>
     <entry t="86.3" castname="スプラッシュ" sync="false"/>
     <entry t="86.4" text="タンク線とり" castname="ドレナージ" sync="false"/>
-    <entry t="87.5" text="全体範囲攻撃" castname="カスケード" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="87.5" text="全体範囲攻撃" castname="カスケード" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="96.0" castname="デバフ：窒息" sync="false" tts=""/>
-    <entry t="103.7" text="扇誘導x3" castname="プロティアンウェイブ" duration="2.7" tts="散開、散開" gimmick_icon="cone"/>
+    <entry t="103.7" text="扇誘導x3" castname="プロティアンウェイブ" duration="2.7" tts="散開、散開" gimmick_icon="cone.png"/>
     <entry t="105.6" text="５％" castname="ハンド・オブ・ペイン" duration="2.7"/>
-    <entry t="108.8" text="竜巻：扇状範囲攻撃" castname="プロティアンウェイブ" sync="false" gimmick_icon="cone"/>
+    <entry t="108.8" text="竜巻：扇状範囲攻撃" castname="プロティアンウェイブ" sync="false" gimmick_icon="cone.png"/>
     <entry t="108.8" castname="スルース" duration="2.7"/>
     <entry t="111.8" castname="プロティアンウェイブ" sync="false"/>
     <entry t="114.8" castname="プロティアンウェイブ" sync="false"/>
@@ -49,11 +49,11 @@
     <entry t="123.8" text="じゃんけん" castname="ハンド・オブ・" sync="false"/>
     <entry t="125.8" text="５％" castname="ハンド・オブ・ペイン" sync="false"/>
     <entry t="127.0" castname="スプラッシュ" sync="false"/>
-    <entry t="127.0" castname="全体範囲攻撃x6" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="127.0" castname="全体範囲攻撃x6" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="128.1" castname="スプラッシュ" sync="false"/>
     <entry t="128.8" castname="ハンド・オブ・ペイン" sync="false" tts="onepoint33.wav"/>
     <entry t="129.2" castname="スプラッシュ" sync="false"/>
-    <entry t="133.6" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster"/>
+    <entry t="133.6" text="前方強攻撃" castname="フルイドスイング" sync="false" gimmick_icon="tankbuster.png"/>
     <next to="p2" time="134.5"/>
   </phase>
   <phase id="p2" name="Intermission: Limit Cut">
@@ -67,11 +67,11 @@
     <entry t="18.2" castname="スーパーブラスティ・チャージ" sync="false"/>
     <entry t="21.4" castname="アルファソード" sync="false"/>
     <entry t="22.8" castname="スーパーブラスティ・チャージ" sync="false"/>
-    <entry t="26.0" text="全体範囲攻撃" castname="ジャスティスキック" sync="false" gimmick_icon="raidwide"/>
+    <entry t="26.0" text="全体範囲攻撃" castname="ジャスティスキック" sync="false" gimmick_icon="raidwide.png"/>
     <next to="p3" at="5.2" cast="竜巻"/>
   </phase>
   <phase id="p3" name="P2: Brute Justice and Cruise Chaser">
-    <entry t="5.2" text="全体範囲攻撃" castname="竜巻" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="5.2" text="全体範囲攻撃" castname="竜巻" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="8.1" text="デバフ：最後の仮判決" castname="ジャッジメントナイサイ" duration="3.7" tts="ないしゅう散開、ないしゅう散開"/>
     <entry t="15.3" text="水・雷デバフ" castname="システムリンク" duration="2.7"/>
     <entry t="21.1" text="外周に移動" castname="ビームチャクラム" sync="false" tts="がいしゅう散開、がいしゅう散開"/>
@@ -92,16 +92,16 @@
     <entry t="120.0" text="★受渡し４回目" castname="プロペラウィンド" duration="5.7" tts="受け渡し、受け渡し"/>
     <entry t="123.0" text="最後の審判：結審" castname="最後の審判：結審" duration="4.7"/>
     <entry t="135.2" text="HP1" castname="フォトン" duration="2.7"/>
-    <entry t="142.3" text="タンク頭割り" castname="ダブルロケットパンチ" duration="3.7" gimmick_icon="tank-share"/>
+    <entry t="142.3" text="タンク頭割り" castname="ダブルロケットパンチ" duration="3.7" gimmick_icon="tank-share.png"/>
     <entry t="149.4" text="遠隔対象攻撃" castname="スーパージャンプ" duration="3.6"/>
     <entry t="153.7" castname="スーパージャンプ" sync="false"/>
     <entry t="156.1" text="前方範囲攻撃" castname="アポカリプティクレイ" sync="false"/>
     <next to="p4" at="7.5" cast="時間停止"/>
   </phase>
   <phase id="p4" name="Intermission: Temporal Stasis">
-    <entry t="3.9" text="全体範囲攻撃" castname="竜巻" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="3.9" text="全体範囲攻撃" castname="竜巻" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="7.5" text="時間停止（詠唱） / 時間停止" castname="時間停止" duration="7.7"/>
-    <entry t="11.9" text="全体範囲攻撃" castname="竜巻" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="11.9" text="全体範囲攻撃" castname="竜巻" sync="false" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="18.5" text="神判（罰着弾）" castname="誓約の神判" sync="false"/>
     <entry t="18.9" text="時間切れ詠唱" castname="死刑判決" sync="false"/>
     <entry t="20.5" text="ソード＋火炎放射1" castname="アルファソード" sync="false"/>
@@ -115,7 +115,7 @@
   </phase>
   <phase id="p5" name="P3: Alexander Prime">
     <entry t="1.2" castname="時間切れ" sync="false" tts=""/>
-    <entry t="5.3" text="単体強攻撃" castname="神罰の熱線" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="5.3" text="単体強攻撃" castname="神罰の熱線" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="13.4" text="聖なる炎1" castname="聖なる炎" sync="false"/>
     <entry t="15.5" castname="聖なる炎" sync="false"/>
     <entry t="15.5" castname="聖なる炎2" sync="false" tts=""/>
@@ -130,7 +130,7 @@
     <entry t="62.8" castname="大火炎放射" sync="false"/>
     <entry t="62.8" castname="火炎放射３" sync="false" tts=""/>
     <entry t="64.9" text="デバフ付与" castname="時空潜行" duration="4.7"/>
-    <entry t="78.2" text="十字直線範囲攻撃" castname="十字の秘蹟" sync="false" gimmick_icon="line"/>
+    <entry t="78.2" text="十字直線範囲攻撃" castname="十字の秘蹟" sync="false" gimmick_icon="line.png"/>
     <entry t="83.4" text="スーパージャンプ（着弾）" castname="スーパージャンプ" duration="3.6"/>
     <entry t="84.3" text="ソード１" castname="アルファソード" sync="false" tts="このあと中央集合、このあと中央集合"/>
     <entry t="85.3" castname="ソード２" sync="false" tts=""/>
@@ -138,7 +138,7 @@
     <entry t="86.4" castname="アルファソード" sync="false"/>
     <entry t="86.4" castname="ソード３" sync="false" tts=""/>
     <entry t="87.5" castname="スーパージャンプ" sync="false"/>
-    <entry t="94.7" text="単体強攻撃" castname="神罰の熱線" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="94.7" text="単体強攻撃" castname="神罰の熱線" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="104.8" text="聖なる炎" castname="聖なる炎" sync="false"/>
     <entry t="106.9" text="聖なる炎" castname="聖なる炎" sync="false"/>
     <entry t="109.1" text="聖なる炎" castname="聖なる炎" sync="false"/>
@@ -161,31 +161,31 @@
     <entry t="152.5" castname="ミサイル全弾発射" duration="2.7"/>
     <entry t="152.7" castname="アルファソード" sync="false"/>
     <entry t="153.0" text="懺悔３回目" castname="罪の意識" sync="false"/>
-    <entry t="154.1" text="頭割り" castname="浄化の熱線" duration="4.7" gimmick_icon="stack"/>
+    <entry t="154.1" text="頭割り" castname="浄化の熱線" duration="4.7" gimmick_icon="stack.png"/>
     <entry t="154.2" castname="スーパーブラスティ・チャージ" sync="false"/>
     <entry t="158.6" castname="カウント" sync="false" tts=""/>
-    <entry t="166.1" text="全体範囲攻撃" castname="メガホーリー" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
-    <entry t="173.2" text="全体範囲攻撃" castname="メガホーリー" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide"/>
+    <entry t="166.1" text="全体範囲攻撃" castname="メガホーリー" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="173.2" text="全体範囲攻撃" castname="メガホーリー" duration="3.7" tts="全体範囲攻撃" gimmick_icon="raidwide.png"/>
     <entry t="185.6" castname="アレキサンダー召喚" duration="2.7"/>
-    <entry t="194.9" text="全体範囲攻撃" castname="ジャスティスストーム" sync="false" gimmick_icon="raidwide"/>
+    <entry t="194.9" text="全体範囲攻撃" castname="ジャスティスストーム" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="196.1" castname="暗黒の運命" duration="24.7"/>
     <entry t="196.1" castname="聖なる審判" duration="74.7"/>
-    <entry t="200.0" text="全体範囲攻撃" castname="ジャスティスショックウェーブ" sync="false" gimmick_icon="raidwide"/>
-    <entry t="203.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="206.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="209.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="212.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="215.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="218.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="221.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="224.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="227.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="230.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="233.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="236.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="239.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="242.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
-    <entry t="245.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide"/>
+    <entry t="200.0" text="全体範囲攻撃" castname="ジャスティスショックウェーブ" sync="false" gimmick_icon="raidwide.png"/>
+    <entry t="203.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="206.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="209.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="212.1" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="215.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="218.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="221.2" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="224.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="227.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="230.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="233.3" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="236.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="239.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="242.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="245.4" castname="全体範囲攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
     <entry t="264.7" castname="聖なる審判" sync="false"/>
     <next to="p6" at="10.8" cast="確定判決"/>
   </phase>
@@ -195,8 +195,8 @@
     <entry t="29.1" text="静止or行動" castname="静止命令|行動命令" duration="3.7"/>
     <entry t="33.1" castname="行動命令" sync="false"/>
     <entry t="34.9" castname="レンジ軽減準備" sync="false" tts="れんじけいげんじゅんびー"/>
-    <entry t="40.2" text="散開or頭割り" castname="照準" duration="2.7" gimmick_icon="stack"/>
-    <entry t="46.3" text="散開or頭割り" castname="照準" duration="2.7" gimmick_icon="stack"/>
+    <entry t="40.2" text="散開or頭割り" castname="照準" duration="2.7" gimmick_icon="stack.png"/>
+    <entry t="46.3" text="散開or頭割り" castname="照準" duration="2.7" gimmick_icon="stack.png"/>
     <entry t="51.4" castname="個の断罪" sync="false"/>
     <entry t="59.3" text="未来観測アルファ" castname="未来観測α" duration="4.7"/>
     <entry t="67.5" text="未来確定アルファ" castname="未来確定α" duration="21.7"/>
@@ -204,30 +204,30 @@
     <entry t="96.7" castname="行動命令" sync="false"/>
     <entry t="100.8" castname="行動命令" sync="false"/>
     <entry t="111.9" castname="加重誅罰" duration="2.7"/>
-    <entry t="111.9" castname="タンク頭割り" sync="false" tts="" gimmick_icon="tank-share"/>
-    <entry t="119.1" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="111.9" castname="タンク頭割り" sync="false" tts="" gimmick_icon="tank-share.png"/>
+    <entry t="119.1" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="134.2" text="未来観測ベータ" castname="未来観測β" duration="4.7"/>
     <entry t="142.3" text="未来確定ベータ" castname="未来確定β" duration="34.7"/>
     <entry t="177.3" castname="未来確定β" sync="false"/>
     <entry t="211.9" castname="加重誅罰" duration="2.7"/>
-    <entry t="219.0" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="219.0" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="231.2" text="聖なる大審判" castname="聖なる大審判" duration="2.7"/>
     <entry t="237.3" castname="聖なる大審判" duration="1.2"/>
     <entry t="239.3" castname="聖なる大審判" duration="1.2"/>
     <entry t="240.3" castname="レンジ軽減準備" sync="false" tts="れんじけいげんじゅんびー"/>
     <entry t="241.3" castname="聖なる大審判" duration="1.2"/>
     <entry t="245.3" castname="聖なる大審判" sync="false"/>
-    <entry t="245.3" text="頭割り" castname="連帯刑" duration="4.7" gimmick_icon="stack"/>
+    <entry t="245.3" text="頭割り" castname="連帯刑" duration="4.7" gimmick_icon="stack.png"/>
     <entry t="247.3" castname="聖なる大審判" sync="false"/>
     <entry t="249.3" castname="聖なる大審判" sync="false"/>
     <entry t="257.5" text="加重誅罰" castname="加重誅罰" duration="2.7"/>
-    <entry t="264.6" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="264.6" text="単体強攻撃" castname="誅罰" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="276.8" text="聖なる大審判" castname="聖なる大審判" duration="2.7"/>
     <entry t="282.9" castname="聖なる大審判" duration="1.2"/>
     <entry t="284.9" castname="聖なる大審判" duration="1.2"/>
     <entry t="286.9" castname="聖なる大審判" duration="1.2"/>
     <entry t="290.9" castname="聖なる大審判" sync="false"/>
-    <entry t="290.9" text="頭割り" castname="連帯刑" duration="4.7" gimmick_icon="stack"/>
+    <entry t="290.9" text="頭割り" castname="連帯刑" duration="4.7" gimmick_icon="stack.png"/>
     <entry t="292.9" castname="聖なる大審判" sync="false"/>
     <entry t="294.9" castname="聖なる大審判" sync="false"/>
     <entry t="305.7" text="時空干渉" castname="時空干渉" duration="4.7"/>

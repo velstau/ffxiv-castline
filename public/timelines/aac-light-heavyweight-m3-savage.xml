@@ -8,18 +8,18 @@
   <note>FFLogs の公開ランキングの討伐の記録（10:42）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="5.3" castname="同期待ち2" sync="false" tts=""/>
-    <entry t="7.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="7.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="13.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="14.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="15.3" castname="スマッシュインパクト" sync="false"/>
-    <entry t="16.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="16.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="22.5" castname="ナックルパート" sync="false"/>
     <entry t="23.6" castname="ナックルパート" sync="false"/>
     <entry t="24.6" castname="ナックルパート" sync="false"/>
     <entry t="31.5" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="6.7"/>
     <entry t="41.4" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="7.7"/>
     <entry t="52.7" castname="パワーダイブ・ショック" sync="false"/>
-    <entry t="55.8" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="55.8" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="61.9" castname="スマッシュインパクト" sync="false"/>
     <entry t="63.0" castname="スマッシュインパクト" sync="false"/>
     <entry t="64.1" castname="スマッシュインパクト" sync="false"/>
@@ -37,13 +37,13 @@
     <entry t="137.6" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="6.7"/>
     <entry t="147.4" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="7.7"/>
     <entry t="158.7" castname="パワーダイブ・ショック" sync="false"/>
-    <entry t="161.9" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="161.9" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="168.0" castname="スマッシュインパクト" sync="false"/>
     <entry t="169.1" castname="スマッシュインパクト" sync="false"/>
     <entry t="170.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="171.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="172.3" castname="スマッシュインパクト" sync="false"/>
-    <entry t="173.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="173.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="179.5" castname="ナックルパート" sync="false"/>
     <entry t="180.6" castname="ナックルパート" sync="false"/>
     <entry t="181.7" castname="ナックルパート" sync="false"/>
@@ -56,7 +56,7 @@
     <entry t="216.3" text="安置へ" castname="ラリアットコンビネーション" sync="false" tts="安置へ"/>
     <entry t="219.4" text="ラリアット" castname="ラリアットコンビネーション" sync="false"/>
     <entry t="220.6" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="6.7"/>
-    <entry t="230.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃" gimmick_icon="raidwide"/>
+    <entry t="230.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃" gimmick_icon="raidwide.png"/>
     <entry t="236.1" castname="スマッシュインパクト" sync="false"/>
     <entry t="237.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="238.3" castname="スマッシュインパクト" sync="false"/>
@@ -72,7 +72,7 @@
     <entry t="299.8" castname="セリフ" sync="false" tts=""/>
     <entry t="302.0" castname="ボンバリアンファイヤー" duration="2.7"/>
     <entry t="310.8" castname="1回目爆破開始" sync="false" tts=""/>
-    <entry t="350.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="350.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="356.5" castname="ナックルパート" sync="false"/>
     <entry t="357.6" castname="ナックルパート" sync="false"/>
     <entry t="358.6" castname="ナックルパート" sync="false"/>
@@ -94,7 +94,7 @@
     <entry t="458.9" text="ラリアット" castname="ラリアットコンビネーション" sync="false" tts="ラリアット"/>
     <entry t="463.3" text="安置へ" castname="ラリアットコンビネーション" sync="false"/>
     <entry t="464.6" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="7.7"/>
-    <entry t="480.1" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="480.1" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="486.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="487.3" castname="スマッシュインパクト" sync="false"/>
     <entry t="488.4" castname="スマッシュインパクト" sync="false"/>
@@ -102,7 +102,7 @@
     <entry t="490.5" castname="スマッシュインパクト" sync="false"/>
     <entry t="491.6" castname="スマッシュインパクト" sync="false"/>
     <entry t="492.6" castname="スマッシュインパクト" sync="false"/>
-    <entry t="493.8" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="493.8" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="499.8" castname="ナックルパート" sync="false"/>
     <entry t="500.9" castname="ナックルパート" sync="false"/>
     <entry t="502.0" castname="ナックルパート" sync="false"/>
@@ -119,7 +119,7 @@
     <entry t="533.1" castname="極盛り式スピニングファイヤー" sync="false"/>
     <entry t="538.8" castname="爆発" sync="false"/>
     <entry t="542.3" text="Xラリアット" castname="8ウェイ・ダブルラリアット" duration="6.9"/>
-    <entry t="551.7" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃" gimmick_icon="raidwide"/>
+    <entry t="551.7" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体7攻撃" gimmick_icon="raidwide.png"/>
     <entry t="557.7" castname="スマッシュインパクト" sync="false"/>
     <entry t="558.8" castname="スマッシュインパクト" sync="false"/>
     <entry t="559.9" castname="スマッシュインパクト" sync="false"/>

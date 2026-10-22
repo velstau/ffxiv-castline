@@ -85,7 +85,7 @@
     <entry t="92.8" castname="雷流" sync="false"/>
     <entry t="93.0" castname="百雷4回目" sync="false" tts="雷4回目"/>
     <entry t="93.3" castname="プリンパーティー" duration="4.7"/>
-    <entry t="99.0" castname="連続頭割り" sync="false" tts="軽減忘れない" gimmick_icon="stack"/>
+    <entry t="99.0" castname="連続頭割り" sync="false" tts="軽減忘れない" gimmick_icon="stack.png"/>
     <entry t="110.7" text="アレンジ" castname="アレンジ" duration="6.7"/>
     <entry t="122.9" castname="びちゃっとムース" duration="4.7"/>
     <entry t="132.7" castname="びちゃっとムースx4" sync="false" tts="ペア受け4回"/>
@@ -97,11 +97,11 @@
     <entry t="142.1" castname="シュガーサンダー" duration="2.7"/>
     <entry t="146.0" castname="たけのこ注意！！" sync="false" tts="たけのこくるよ"/>
     <entry t="146.9" castname="爆発" sync="false"/>
-    <entry t="147.0" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower"/>
+    <entry t="147.0" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower.png"/>
     <entry t="147.2" text="ウイングマーク" castname="ウイングマーク" duration="4.6" tts="飛んだらたけのこ"/>
     <entry t="168.5" castname="シュガーサンダー" duration="2.7"/>
     <entry t="171.2" castname="たけのこ注意！！" sync="false" tts="たけのこくるよ"/>
-    <entry t="173.2" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower"/>
+    <entry t="173.2" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower.png"/>
     <entry t="173.3" castname="爆発" sync="false"/>
     <entry t="173.4" text="ムースシャワー" castname="ムースシャワー" duration="4.7" tts="全体攻撃"/>
     <entry t="183.5" text="ねばねばムース" castname="ねばねばムース" duration="5.3" tts="基本散開"/>

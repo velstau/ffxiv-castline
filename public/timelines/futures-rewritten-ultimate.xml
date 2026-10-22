@@ -7,27 +7,27 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（18:44）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Fatebreaker">
-    <entry t="8.1" text="8方向散開" castname="サイクロニックブレイク" duration="6.2" gimmick_icon="spread"/>
-    <entry t="20.1" text="連鎖爆印刻(タンク強)" castname="連鎖爆印刻" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="8.1" text="8方向散開" castname="サイクロニックブレイク" duration="6.2" gimmick_icon="spread.png"/>
+    <entry t="20.1" text="連鎖爆印刻(タンク強)" castname="連鎖爆印刻" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="31.8" text="楽園絶技" castname="楽園絶技" duration="3.7"/>
     <entry t="41.1" castname="爆印" sync="false"/>
     <entry t="51.1" castname="ブラスティングゾーン" sync="false"/>
-    <entry t="57.2" text="8方向散開" castname="サイクロニックブレイク" sync="false" gimmick_icon="spread"/>
+    <entry t="57.2" text="8方向散開" castname="サイクロニックブレイク" sync="false" gimmick_icon="spread.png"/>
     <entry t="65.2" castname="転輪召" sync="false"/>
     <entry t="66.2" text="ストライク1" castname="バーンストライク" sync="false"/>
     <entry t="72.2" text="ストライク2" castname="バーンストライク" sync="false"/>
-    <entry t="73.6" text="ノックバック" castname="バーンブラスト" sync="false" gimmick_icon="knockback"/>
+    <entry t="73.6" text="ノックバック" castname="バーンブラスト" sync="false" gimmick_icon="knockback.png"/>
     <entry t="75.6" castname="光炎" sync="false"/>
-    <entry t="79.6" text="2組頭割り" castname="チャージスラスト" sync="false" gimmick_icon="stack"/>
-    <entry t="82.2" text="全体攻撃" castname="光焔光背" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="79.6" text="2組頭割り" castname="チャージスラスト" sync="false" gimmick_icon="stack.png"/>
+    <entry t="82.2" text="全体攻撃" castname="光焔光背" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="93.7" castname="シンソイルセヴァー" duration="8.7"/>
     <entry t="103.4" castname="浮遊拘束" sync="false"/>
     <entry t="105.5" text="チャージ1" castname="チャージスラスト" sync="false"/>
     <entry t="105.5" text="チャージ2" castname="チャージスラスト" sync="false"/>
     <entry t="107.5" castname="チャージ3" sync="false" tts=""/>
     <entry t="110.5" castname="チャージ4" sync="false" tts=""/>
-    <entry t="117.7" text="全体攻撃" castname="光焔光背" duration="4.7" gimmick_icon="raidwide"/>
-    <entry t="126.2" text="連鎖爆印刻(タンク強)" castname="連鎖爆印刻" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="117.7" text="全体攻撃" castname="光焔光背" duration="4.7" gimmick_icon="raidwide.png"/>
+    <entry t="126.2" text="連鎖爆印刻(タンク強)" castname="連鎖爆印刻" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="136.2" text="バーンストライク" castname="バーンストライク" duration="6.2"/>
     <entry t="146.7" castname="爆発" sync="false"/>
     <entry t="151.9" text="最終詠唱" castname="光焔光背" duration="9.7"/>
@@ -42,21 +42,21 @@
     <entry t="34.6" castname="アイシクルインパクト" duration="8.7"/>
     <entry t="34.9" text="キック" castname="アクスキック|サイスキック" duration="5.7"/>
     <entry t="45.6" text="AoE捨て" castname="シンホーリー" duration="4.7"/>
-    <entry t="47.5" text="ノックバック" castname="ヘヴンリーストライク" sync="false" gimmick_icon="knockback"/>
+    <entry t="47.5" text="ノックバック" castname="ヘヴンリーストライク" sync="false" gimmick_icon="knockback.png"/>
     <entry t="51.5" castname="シンホーリー" sync="false"/>
-    <entry t="53.6" castname="視線注意" sync="false" tts="視線注意" gimmick_icon="gaze-away"/>
+    <entry t="53.6" castname="視線注意" sync="false" tts="視線注意" gimmick_icon="gaze-away.png"/>
     <entry t="59.9" text="アーマー" castname="ブライトアーマー" sync="false"/>
     <entry t="63.0" text="双剣技" castname="静寂の双剣技" duration="3.2"/>
     <entry t="68.5" castname="静寂の双剣技" sync="false"/>
     <entry t="69.4" castname="双剣技" sync="false" tts=""/>
-    <entry t="74.3" text="頭割り" castname="ホーリーレイ" duration="4.7" gimmick_icon="stack"/>
+    <entry t="74.3" text="頭割り" castname="ホーリーレイ" duration="4.7" gimmick_icon="stack.png"/>
     <entry t="79.9" castname="ホーリーレイ" sync="false"/>
     <entry t="86.1" text="誘導の位置に注意 / 鏡の国" castname="鏡の国" duration="2.7"/>
     <entry t="97.2" text="サイスキック" castname="サイスキック" duration="5.7" tts="1回目"/>
     <entry t="113.2" text="ミラーキック" castname="ミラーリング・サイスキック" sync="false" tts="2回目"/>
     <entry t="114.4" text="バニシュガ" castname="バニシュガ" duration="4.7"/>
     <entry t="119.4" castname="ディバイデッド・バニシュガ" sync="false"/>
-    <entry t="123.8" text="整列/散開 / 光の暴走" castname="光の暴走" duration="4.7" tts="整列、散開、光の暴走" gimmick_icon="spread"/>
+    <entry t="123.8" text="整列/散開 / 光の暴走" castname="光の暴走" duration="4.7" tts="整列、散開、光の暴走" gimmick_icon="spread.png"/>
     <entry t="136.7" castname="ルミナスイロード" sync="false"/>
     <entry t="136.8" castname="軽減つかう" sync="false" tts="けいげんつかうー"/>
     <entry t="138.3" castname="ルミナスイロード" sync="false"/>
@@ -98,13 +98,13 @@
     <entry t="62.2" castname="シャドウアイ" sync="false"/>
     <entry t="63.2" text="中央集合" castname="シェルクラッシャー" duration="2.7" tts="中央集合"/>
     <entry t="66.6" castname="シェルクラッシャー" sync="false"/>
-    <entry t="69.7" text="全体攻撃" castname="ショックウェーブ・パルサー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="77.9" text="強攻撃" castname="ブラックヘイロー" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="69.7" text="全体攻撃" castname="ショックウェーブ・パルサー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="77.9" text="強攻撃" castname="ブラックヘイロー" duration="4.7" gimmick_icon="tankbuster.png"/>
     <entry t="90.3" text="ディレイスペル" castname="ディレイスペル・リフレイン" duration="1.7"/>
     <entry t="95.5" text="ダークウォタガ" castname="ダークウォタガ" duration="4.7"/>
     <entry t="103.4" castname="アポカリプス" sync="false" tts="安置を確認"/>
     <entry t="103.6" castname="アポカリプス" duration="3.7"/>
-    <entry t="109.7" text="テイカー散開" castname="スピリットテイカー" duration="2.7" tts="散開" gimmick_icon="spread"/>
+    <entry t="109.7" text="テイカー散開" castname="スピリットテイカー" duration="2.7" tts="散開" gimmick_icon="spread.png"/>
     <entry t="111.4" castname="着弾1" sync="false" tts="ウォタガ、いち"/>
     <entry t="113.1" castname="スピリットテイカー" sync="false"/>
     <entry t="119.3" text="エラプション" castname="ダークエラプション" duration="4.7"/>
@@ -112,9 +112,9 @@
     <entry t="130.2" castname="着弾2" sync="false" tts=""/>
     <entry t="132.4" castname="暗夜の舞踏技" sync="false"/>
     <entry t="135.2" castname="暗夜の舞踏技" sync="false"/>
-    <entry t="135.3" castname="ノックバック" sync="false" tts="ノックバック" gimmick_icon="knockback"/>
+    <entry t="135.3" castname="ノックバック" sync="false" tts="ノックバック" gimmick_icon="knockback.png"/>
     <entry t="139.3" castname="着弾3" sync="false" tts="ウォタガ、さん"/>
-    <entry t="139.5" text="全体攻撃" castname="ショックウェーブ・パルサー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="139.5" text="全体攻撃" castname="ショックウェーブ・パルサー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="147.5" castname="最終詠唱開始" sync="false" tts=""/>
     <entry t="148.2" text="エンド・オブ・メモリーズ" castname="エンド・オブ・メモリーズ" duration="9.7"/>
     <entry t="161.2" castname="仮作成Pへ" sync="false" tts=""/>
@@ -122,25 +122,25 @@
   </phase>
   <phase id="p4" name="P4: Enter the Dragon">
     <entry t="5.2" text="具象化" castname="具象化" duration="2.7"/>
-    <entry t="19.4" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="19.4" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="19.5" text="移動" castname="ドラゴンアーマー" sync="false"/>
     <entry t="21.9" text="着弾" castname="アク・ラーイ" sync="false" tts="移動"/>
-    <entry t="29.0" text="(強)全体攻撃" castname="光と闇の竜詩" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="29.0" text="(強)全体攻撃" castname="光と闇の竜詩" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="34.0" castname="鎖付与" sync="false" tts="デバフ確認"/>
-    <entry t="37.2" text="扇誘導" castname="光の波動" duration="7.7" tts="扇誘導。散開" gimmick_icon="cone"/>
+    <entry t="37.2" text="扇誘導" castname="光の波動" duration="7.7" tts="扇誘導。散開" gimmick_icon="cone.png"/>
     <entry t="45.2" castname="浸食光" sync="false"/>
     <entry t="45.2" text="テイカー" castname="スピリットテイカー" duration="2.7"/>
     <entry t="48.3" text="ウィング" castname="ホーリーウィング" duration="4.7" tts="タンク誘導"/>
     <entry t="48.5" castname="スピリットテイカー" sync="false"/>
     <entry t="51.3" text="舞踏技1" castname="宵闇の舞踏技" duration="4.7"/>
     <entry t="56.7" castname="宵闇の舞踏技" sync="false"/>
-    <entry t="58.3" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="58.3" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="59.4" castname="舞踏技2" sync="false" tts=""/>
     <entry t="60.0" castname="宵闇の舞踏技" sync="false"/>
     <entry t="65.8" text="アク・モーン" castname="アク・モーン" duration="3.7" tts="4人割"/>
     <entry t="73.9" text="集合" castname="モーン・アファー" duration="5.7" tts="集合"/>
     <entry t="85.5" text="時間結晶" castname="時間結晶" duration="9.7"/>
-    <entry t="96.5" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="96.5" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="99.5" castname="紫線を確認" sync="false" tts="紫線を確認"/>
     <entry t="99.7" castname="スピード" duration="5.2"/>
     <entry t="107.6" text="砂時計1" castname="メイルシュトローム" sync="false" tts="1回目"/>
@@ -156,12 +156,12 @@
     <entry t="129.7" text="リターン設置 / テイカー" castname="スピリットテイカー" duration="2.7" tts="リターン設置、散開、軽減準備"/>
     <entry t="131.9" castname="ホーリーウィング" duration="4.4"/>
     <entry t="133.0" castname="スピリットテイカー" sync="false"/>
-    <entry t="138.0" text="ノックバック1" castname="ホーリーウィング" duration="0.2" gimmick_icon="knockback"/>
+    <entry t="138.0" text="ノックバック1" castname="ホーリーウィング" duration="0.2" gimmick_icon="knockback.png"/>
     <entry t="140.6" castname="ホーリーウィング" duration="0.2"/>
-    <entry t="142.5" castname="ノックバック2" sync="false" tts="" gimmick_icon="knockback"/>
+    <entry t="142.5" castname="ノックバック2" sync="false" tts="" gimmick_icon="knockback.png"/>
     <entry t="142.6" castname="ホーリーウィング" duration="0.2"/>
     <entry t="148.3" text="2組" castname="アク・モーン" duration="3.7" tts="ふたくみ"/>
-    <entry t="155.3" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="155.3" text="全体攻撃" castname="忘却の此方" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="156.4" text="全員" castname="モーン・アファー" duration="5.7" tts="全員"/>
     <entry t="165.6" castname="エンド・オブ・メモリーズ" duration="9.7"/>
     <entry t="165.6" text="最終詠唱 / 時間切れ" castname="絶対零度" duration="9.7"/>

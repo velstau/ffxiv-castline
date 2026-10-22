@@ -58,18 +58,18 @@
     <entry t="44.6" castname="オプチカルレーザーF" duration="1.0"/>
     <entry t="45.5" castname="ファイラ・オメガ" sync="false"/>
     <entry t="46.7" castname="オプチカルレーザー" sync="false" tts="オプチカルレーザー"/>
-    <entry t="52.7" text="ノックバック" castname="ディスチャージャー" sync="false" tts="ノックバック" gimmick_icon="knockback"/>
+    <entry t="52.7" text="ノックバック" castname="ディスチャージャー" sync="false" tts="ノックバック" gimmick_icon="knockback.png"/>
     <entry t="55.6" text="ソードアクション" castname="ソードアクション" duration="1.2"/>
     <entry t="57.0" castname="スポットライト" sync="false"/>
     <entry t="69.5" text="オプション" castname="シールドオプション" duration="0.7"/>
     <entry t="75.8" text="連携プログラムLB" castname="連携プログラムLB" duration="4.7"/>
     <entry t="85.8" castname="パッセージ・オブ・オメガ" sync="false"/>
     <entry t="85.8" text="時間切れ" castname="レーザーシャワー" duration="59.7"/>
-    <entry t="86.2" text="線取り注意" castname="サジタリウスアロー・オメガ" sync="false" tts="線取り注意、線取り注意" gimmick_icon="tether-take"/>
+    <entry t="86.2" text="線取り注意" castname="サジタリウスアロー・オメガ" sync="false" tts="線取り注意、線取り注意" gimmick_icon="tether-take.png"/>
     <entry t="94.2" text="アロー" castname="サジタリウスアロー・オメガ" sync="false"/>
     <entry t="94.4" text="ブレードダンス" castname="ブレードダンス・オメガ" sync="false"/>
-    <entry t="108.5" text="盾/メテオ着弾" castname="パイルピッチ" sync="false" gimmick_icon="meteor"/>
-    <entry t="117.3" text="全体攻撃" castname="コスモメモリー" duration="1.2" gimmick_icon="raidwide"/>
+    <entry t="108.5" text="盾/メテオ着弾" castname="パイルピッチ" sync="false" gimmick_icon="meteor.png"/>
+    <entry t="117.3" text="全体攻撃" castname="コスモメモリー" duration="1.2" gimmick_icon="raidwide.png"/>
     <next to="p3" at="17.5" cast="速射式波動砲"/>
   </phase>
   <phase id="p3" name="P3: Omega Reconfigured">
@@ -84,17 +84,17 @@
     <entry t="28.4" text="着弾+ブロー" castname="狙撃式波動砲" sync="false"/>
     <entry t="36.6" text="ハロー・ワールド" castname="ハロー・ワールド" duration="4.7"/>
     <entry t="52.6" castname="無職用タイムライン" sync="false" tts=""/>
-    <entry t="53.1" castname="シェア用タイムライン" sync="false" tts="" gimmick_icon="stack"/>
+    <entry t="53.1" castname="シェア用タイムライン" sync="false" tts="" gimmick_icon="stack.png"/>
     <entry t="53.1" castname="サークル用タイムライン" sync="false" tts=""/>
     <entry t="53.1" castname="レイテント用タイムライン" sync="false" tts=""/>
     <entry t="55.8" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="55.8" text="アクション1開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="56.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack"/>
-    <entry t="56.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack"/>
+    <entry t="56.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
+    <entry t="56.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
     <entry t="56.8" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
     <entry t="56.8" castname="サークル受ける" sync="false" tts="サークル受ける"/>
-    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
-    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
+    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="65.7" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="65.7" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="67.5" castname="エンバグ" sync="false"/>
@@ -106,13 +106,13 @@
     <entry t="73.1" castname="エンバグ処理2" sync="false" tts=""/>
     <entry t="76.8" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="76.8" text="アクション2開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="77.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack"/>
+    <entry t="77.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
     <entry t="77.8" castname="サークル受ける" sync="false" tts="サークル受ける"/>
-    <entry t="77.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack"/>
+    <entry t="77.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
     <entry t="77.8" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
-    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack"/>
+    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack.png"/>
     <entry t="86.8" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false" tts="バーストじゅんび、バーストじゅんび"/>
-    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack"/>
+    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack.png"/>
     <entry t="86.8" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false" tts="バーストじゅんび、バーストじゅんび"/>
     <entry t="88.3" castname="エンバグ" sync="false"/>
     <entry t="91.1" text="担当外エンバグ1 / エンバグ処理1" castname="エンバグ" sync="false"/>
@@ -125,12 +125,12 @@
     <entry t="97.8" text="アクション3開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="98.9" castname="サークル受ける" sync="false" tts="サークル受ける"/>
     <entry t="98.9" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
-    <entry t="98.9" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack"/>
-    <entry t="98.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
+    <entry t="98.9" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
+    <entry t="98.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="107.8" text="サークル発動" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
+    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="109.8" castname="エンバグ" sync="false"/>
     <entry t="111.8" text="エンバグ処理1 / 担当外エンバグ" castname="エンバグ" sync="false"/>
     <entry t="114.9" castname="エンバグ処理2" sync="false" tts=""/>
@@ -141,13 +141,13 @@
     <entry t="118.9" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="118.9" text="アクション4開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="119.9" castname="サークル１人受け" sync="false" tts="サークル１人受け"/>
-    <entry t="119.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack"/>
+    <entry t="119.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
     <entry t="119.9" castname="サークル避ける" sync="false" tts="サークル避ける"/>
-    <entry t="119.9" castname="シェア渡す" sync="false" tts="シェア渡す" gimmick_icon="stack"/>
+    <entry t="119.9" castname="シェア渡す" sync="false" tts="シェア渡す" gimmick_icon="stack.png"/>
     <entry t="128.9" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
+    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="128.9" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
+    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="130.9" text="担当外エンバグ1 / エンバグ処理1" castname="エンバグ" sync="false"/>
     <entry t="136.7" castname="クリティカルバグ：デグレード" sync="false"/>
     <entry t="136.9" castname="担当外エンバグ2" sync="false" tts=""/>
@@ -172,7 +172,7 @@
     <entry t="34.8" text="【散会】波動砲" castname="波動砲" sync="false" tts="散会"/>
     <entry t="36.7" castname="外に出る" sync="false" tts="そとにでる"/>
     <entry t="39.7" castname="3床" sync="false" tts=""/>
-    <entry t="39.9" text="【頭割り】波動砲" castname="波動砲" sync="false" tts="頭割り" gimmick_icon="stack"/>
+    <entry t="39.9" text="【頭割り】波動砲" castname="波動砲" sync="false" tts="頭割り" gimmick_icon="stack.png"/>
     <entry t="41.8" castname="内入る" sync="false" tts="うちはいる"/>
     <entry t="43.8" castname="4床" sync="false" tts=""/>
     <entry t="45.8" castname="5床" sync="false" tts=""/>
@@ -181,8 +181,8 @@
   </phase>
   <phase id="p5" name="P5: Run: Dynamis">
     <entry t="3.1" castname="ソーラレイ" duration="4.7"/>
-    <entry t="8.1" castname="タンク強攻撃1" sync="false" tts="タンク攻撃" gimmick_icon="tankbuster"/>
-    <entry t="11.1" castname="タンク強攻撃2" sync="false" tts="" gimmick_icon="tankbuster"/>
+    <entry t="8.1" castname="タンク強攻撃1" sync="false" tts="タンク攻撃" gimmick_icon="tankbuster.png"/>
+    <entry t="11.1" castname="タンク強攻撃2" sync="false" tts="" gimmick_icon="tankbuster.png"/>
     <entry t="11.3" castname="ソーラレイ" sync="false"/>
     <entry t="19.7" text="【デルタ】" castname="コード：＊＊＊ミ＊【デルタ】" duration="4.7" tts="デュナミス、デルタ"/>
     <entry t="34.6" castname="プリントアウト" sync="false" tts="プリントアウト。"/>
@@ -193,7 +193,7 @@
     <entry t="48.2" text="シールドコンボS" castname="シールドコンボS" duration="4.6"/>
     <entry t="53.5" castname="シールドコンボS" sync="false"/>
     <entry t="55.7" text="腕パルス開始" castname="ハイパーパルス" sync="false"/>
-    <entry t="58.1" text="検知式+頭割り" castname="検知式波動砲" sync="false" tts="検知式波動砲" gimmick_icon="stack"/>
+    <entry t="58.1" text="検知式+頭割り" castname="検知式波動砲" sync="false" tts="検知式波動砲" gimmick_icon="stack.png"/>
     <entry t="58.9" castname="パイルピッチ" sync="false"/>
     <entry t="61.1" text="【構え】旋回式波動砲" castname="旋回式波動砲" sync="false"/>
     <entry t="71.1" castname="旋回式波動砲" sync="false" tts="旋回式波動砲。"/>
@@ -204,7 +204,7 @@
     <entry t="124.7" text="トランスフォームF" castname="トランスフォームF" sync="false"/>
     <entry t="125.7" castname="サークルプログラム" sync="false" tts="サークルプログラム。"/>
     <entry t="129.7" text="波動砲" castname="波動砲" sync="false" tts="波動砲"/>
-    <entry t="138.3" text="ノックバック" castname="ディスチャージャー" sync="false" tts="ノックバック" gimmick_icon="knockback"/>
+    <entry t="138.3" text="ノックバック" castname="ディスチャージャー" sync="false" tts="ノックバック" gimmick_icon="knockback.png"/>
     <entry t="142.2" castname="記憶汚染除去S" sync="false"/>
     <entry t="153.2" text="【構え】リアレーザー" castname="リアレーザー" sync="false" tts="リアレーザー確認"/>
     <entry t="156.2" castname="リアレーザー開始" sync="false" tts=""/>
@@ -256,7 +256,7 @@
     <entry t="126.4" castname="波動砲" duration="2.7"/>
     <entry t="127.8" castname="波動砲2" sync="false" tts=""/>
     <entry t="129.8" castname="波動砲1" sync="false" tts=""/>
-    <entry t="133.5" text="【開始】波動砲 / 【頭割り】波動砲" castname="波動砲" duration="10.6" tts="散会" gimmick_icon="stack"/>
+    <entry t="133.5" text="【開始】波動砲 / 【頭割り】波動砲" castname="波動砲" duration="10.6" tts="散会" gimmick_icon="stack.png"/>
     <entry t="136.5" castname="波動砲" sync="false"/>
     <entry t="137.0" castname="波動砲1" sync="false" tts=""/>
     <entry t="138.5" castname="波動砲" sync="false"/>
@@ -267,7 +267,7 @@
     <entry t="153.0" text="コスモアロー" castname="コスモアロー" duration="5.7" tts="コスモアロー"/>
     <entry t="155.1" castname="コスモアロー" duration="7.7"/>
     <entry t="167.1" castname="コスモアロー" sync="false"/>
-    <entry t="167.2" text="【開始】波動砲 / 【頭割り】波動砲" castname="波動砲" duration="10.6" gimmick_icon="stack"/>
+    <entry t="167.2" text="【開始】波動砲 / 【頭割り】波動砲" castname="波動砲" duration="10.6" gimmick_icon="stack.png"/>
     <entry t="170.2" castname="波動砲" sync="false"/>
     <entry t="171.5" castname="【単】波動砲1" sync="false" tts=""/>
     <entry t="172.2" castname="波動砲" sync="false"/>

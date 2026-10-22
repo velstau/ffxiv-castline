@@ -7,28 +7,28 @@
   <license>CC BY-SA</license>
   <note>FFLogs の討伐の記録（9:51）から 2026-10-20 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="10.1" text="タンク強" castname="ホットインパクト" duration="4.7" gimmick_icon="tankbuster"/>
-    <entry t="23.5" text="直線範囲x4" castname="フレイムフローター" duration="6.7" gimmick_icon="line"/>
+    <entry t="10.1" text="タンク強" castname="ホットインパクト" duration="4.7" gimmick_icon="tankbuster.png"/>
+    <entry t="23.5" text="直線範囲x4" castname="フレイムフローター" duration="6.7" gimmick_icon="line.png"/>
     <entry t="30.9" castname="フレイムフローター" sync="false"/>
     <entry t="34.2" castname="フレイムフローター" sync="false"/>
     <entry t="37.6" castname="フレイムフローター" sync="false"/>
     <entry t="40.9" castname="フレイムフローター" sync="false"/>
-    <entry t="49.1" text="AoE(散開)" castname="フレイムアリウープ" duration="4.7" gimmick_icon="spread"/>
+    <entry t="49.1" text="AoE(散開)" castname="フレイムアリウープ" duration="4.7" gimmick_icon="spread.png"/>
     <entry t="58.5" text="全員集合" castname="フレイムカットバック" duration="4.7"/>
-    <entry t="65.0" text="頭割りx3" castname="パイロローテーション" duration="4.0" gimmick_icon="stack"/>
-    <entry t="78.4" text="全体攻撃(床戻る)" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide"/>
+    <entry t="65.0" text="頭割りx3" castname="パイロローテーション" duration="4.0" gimmick_icon="stack.png"/>
+    <entry t="78.4" text="全体攻撃(床戻る)" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide.png"/>
     <entry t="95.0" text="シック・スウェル(ノック予約)" castname="シック・スウェル" duration="2.7"/>
-    <entry t="95.4" text="頭割りor散開確認" castname="シック・テイクオフ" sync="false" gimmick_icon="stack"/>
+    <entry t="95.4" text="頭割りor散開確認" castname="シック・テイクオフ" sync="false" gimmick_icon="stack.png"/>
     <entry t="103.2" castname="シック・テイクオフ" duration="3.7"/>
     <entry t="115.4" castname="外周からノック" sync="false" tts=""/>
-    <entry t="118.8" text="ペアor散開" castname="ヘビー・ハイドロスプラッシュ" sync="false" gimmick_icon="spread"/>
+    <entry t="118.8" text="ペアor散開" castname="ヘビー・ハイドロスプラッシュ" sync="false" gimmick_icon="spread.png"/>
     <entry t="121.4" text="リバースorダブル" castname="リバースアリウープ|ダブルアリウープ" duration="4.7"/>
-    <entry t="132.6" text="1番遠い人吹き飛ばし(タンク誘導？)" castname="ディープインパクト" duration="4.6" gimmick_icon="knockback"/>
+    <entry t="132.6" text="1番遠い人吹き飛ばし(タンク誘導？)" castname="ディープインパクト" duration="4.6" gimmick_icon="knockback.png"/>
     <entry t="137.7" castname="ディープインパクト" sync="false"/>
-    <entry t="139.8" text="全体攻撃" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide"/>
+    <entry t="139.8" text="全体攻撃" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide.png"/>
     <entry t="154.8" castname="2人になるよ" sync="false" tts=""/>
     <entry t="158.4" castname="エクストリーム・スペクタクル" duration="3.7"/>
-    <entry t="170.0" text="距離減衰＋連続攻撃" castname="エクストリーム・スペクタクル" sync="false" gimmick_icon="proximity"/>
+    <entry t="170.0" text="距離減衰＋連続攻撃" castname="エクストリーム・スペクタクル" sync="false" gimmick_icon="proximity.png"/>
     <entry t="180.0" castname="ブラザーフッド" sync="false"/>
     <entry t="185.0" castname="インセイン準備" sync="false" tts=""/>
     <entry t="189.9" text="インセインエアー1" castname="インセインエアー" duration="5.6"/>
@@ -43,11 +43,11 @@
     <entry t="214.0" text="インセインエアー4" castname="インセインエアー" duration="5.1"/>
     <entry t="219.7" castname="フレイムスナップ" sync="false"/>
     <entry t="219.7" castname="ハイドロバーティカル" sync="false"/>
-    <entry t="225.6" text="全体攻撃" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide"/>
+    <entry t="225.6" text="全体攻撃" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide.png"/>
     <entry t="239.1" text="均等化" castname="ブラザーフッド" sync="false"/>
-    <entry t="241.3" text="全体攻撃" castname="フレイムスネーキング" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="241.3" text="全体攻撃" castname="フレイムスネーキング" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="241.3" castname="ハイドロスネーキング" duration="4.7"/>
-    <entry t="253.8" text="青: 青担当 / 青: 扇誘導" castname="ダブルアリウープ|リバースアリウープ" duration="4.7" gimmick_icon="cone"/>
+    <entry t="253.8" text="青: 青担当 / 青: 扇誘導" castname="ダブルアリウープ|リバースアリウープ" duration="4.7" gimmick_icon="cone.png"/>
     <entry t="253.9" text="赤: 赤担当 / 赤: AoE捨て" castname="フレイムアリウープ" duration="4.7"/>
     <entry t="261.0" castname="シック・スウェル" duration="2.7"/>
     <entry t="265.4" text="赤: タンクペア受け / 青: タンクペア受け+玉確認" castname="ホットインパクト" duration="4.7"/>
@@ -64,13 +64,13 @@
     <entry t="296.7" castname="フレイムエアリアル" sync="false"/>
     <entry t="298.2" castname="赤: 誘導4回目(近接)" sync="false" tts=""/>
     <entry t="303.9" text="赤: 安置誘導" castname="フレイムカットバック" duration="4.7"/>
-    <entry t="305.9" castname="青: ノックバックと玉処理" sync="false" tts="" gimmick_icon="knockback"/>
-    <entry t="306.2" castname="赤: ノックバック" sync="false" tts="" gimmick_icon="knockback"/>
+    <entry t="305.9" castname="青: ノックバックと玉処理" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="306.2" castname="赤: ノックバック" sync="false" tts="" gimmick_icon="knockback.png"/>
     <entry t="310.2" text="青: T離れる / 青: 強攻撃" castname="ディープインパクト" duration="4.6"/>
     <entry t="315.4" castname="ディープインパクト" sync="false"/>
-    <entry t="317.4" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="317.4" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="328.7" text="均等化" castname="ブラザーフッド" sync="false"/>
-    <entry t="331.0" text="水牢(塔踏み)" castname="ハイドロエアリアル" duration="4.7" tts="塔処理" window="30 30" gimmick_icon="tower"/>
+    <entry t="331.0" text="水牢(塔踏み)" castname="ハイドロエアリアル" duration="4.7" tts="塔処理" window="30 30" gimmick_icon="tower.png"/>
     <entry t="343.1" text="ウェーブ6" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="348.3" castname="エクストリームウェーブ" sync="false"/>
     <entry t="351.7" text="ウェーブ5" castname="エクストリームウェーブ" duration="4.6"/>
@@ -83,18 +83,18 @@
     <entry t="382.6" castname="エクストリームウェーブ" sync="false"/>
     <entry t="385.9" text="ウェーブ1" castname="エクストリームウェーブ" duration="4.6"/>
     <entry t="391.1" castname="エクストリームウェーブ" sync="false"/>
-    <entry t="396.4" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="396.4" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="407.6" text="均等化" castname="ブラザーフッド" sync="false"/>
     <entry t="410.0" castname="シック・スウェル" duration="2.7"/>
     <entry t="412.2" text="エリア分断" castname="フレイムフローター" duration="4.7" tts="エリア分かれるよ"/>
     <entry t="417.4" castname="フレイムフローター" sync="false"/>
     <entry t="421.5" text="AoE捨て" castname="フレイムアリウープ" duration="4.7"/>
     <entry t="426.4" text="アリウープ" castname="ダブルアリウープ|リバースアリウープ" duration="4.7"/>
-    <entry t="434.4" text="ペア頭割り" castname="フリーキー・パイロローテーション" duration="4.0" tts="ペア" gimmick_icon="stack"/>
+    <entry t="434.4" text="ペア頭割り" castname="フリーキー・パイロローテーション" duration="4.0" tts="ペア" gimmick_icon="stack.png"/>
     <entry t="434.6" text="青玉確認" castname="シック・テイクオフ" duration="3.7"/>
-    <entry t="449.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="449.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="463.5" text="均等化" castname="ブラザーフッド" sync="false"/>
-    <entry t="465.7" text="全体" castname="エクストリーム・フレイムスネーキング" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="465.7" text="全体" castname="エクストリーム・フレイムスネーキング" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="465.7" castname="エクストリーム・ハイドロスネーキング" duration="4.7"/>
     <entry t="476.7" castname="インセイン準備" sync="false" tts=""/>
     <entry t="478.6" text="インセインエアー4" castname="インセインエアー" duration="8.1"/>
@@ -109,15 +109,15 @@
     <entry t="509.7" text="インセインエアー1" castname="インセインエアー" duration="8.1"/>
     <entry t="518.4" castname="フレイムスナップ" sync="false"/>
     <entry t="518.4" castname="ハイドロスナップ" sync="false"/>
-    <entry t="524.2" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="524.2" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="535.5" text="均等化" castname="ブラザーフッド" sync="false"/>
     <entry t="539.8" text="リバースorダブル注意 / リバースorダブル" castname="リバースアリウープ|ダブルアリウープ" duration="4.7" tts="散開注意"/>
     <entry t="542.7" text="フレイムアリウープ" castname="フレイムアリウープ" duration="4.7"/>
-    <entry t="551.4" text="連続頭割り" castname="パイロローテーション" duration="4.0" tts="連続頭割り、移動注意" gimmick_icon="stack"/>
+    <entry t="551.4" text="連続頭割り" castname="パイロローテーション" duration="4.0" tts="連続頭割り、移動注意" gimmick_icon="stack.png"/>
     <entry t="551.6" text="タンク離れる / 強攻撃" castname="ディープインパクト" duration="4.6" tts="タンク離れる、強攻撃"/>
     <entry t="556.7" castname="ディープインパクト" sync="false"/>
-    <entry t="564.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="574.0" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="564.9" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="574.0" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="591.4" text="時間切れ開始 / 時間切れ" castname="オーバー・ザ・フォール" duration="8.7"/>
   </phase>
 </timeline>

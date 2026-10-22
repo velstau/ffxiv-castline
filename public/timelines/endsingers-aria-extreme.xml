@@ -14,17 +14,17 @@
     <entry t="25.1" text="エレゲイア：事象記録" castname="エレゲイア：事象記録" duration="4.7" tts="全体攻撃"/>
     <entry t="33.4" castname="エレゲイア" sync="false"/>
     <entry t="41.1" castname="天体衝突" sync="false" tts="天体衝突。"/>
-    <entry t="44.3" text="塔がPOP" castname="カタステリスモイ" duration="2.7" gimmick_icon="tower"/>
+    <entry t="44.3" text="塔がPOP" castname="カタステリスモイ" duration="2.7" gimmick_icon="tower.png"/>
     <entry t="50.5" text="中央集合" castname="絶望の鎖" duration="4.7" tts="中央集合"/>
     <entry t="59.6" text="内外確認" castname="エレンコス" duration="5.7"/>
-    <entry t="69.7" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="79.9" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="69.7" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="79.9" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="80.9" castname="ヒュブリス" duration="4.7"/>
     <entry t="92.1" text="エレゲイア：事象記録" castname="エレゲイア：事象記録" duration="4.7" tts="全体攻撃"/>
     <entry t="100.4" castname="エレゲイア" sync="false"/>
     <entry t="105.1" castname="天体衝突" sync="false" tts="天体衝突"/>
-    <entry t="106.1" castname="頭割り予兆" sync="false" tts="" gimmick_icon="stack"/>
-    <entry t="109.3" text="頭割り/2組" castname="エイロネイア" duration="4.7" tts="予告、頭割り" gimmick_icon="stack"/>
+    <entry t="106.1" castname="頭割り予兆" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="109.3" text="頭割り/2組" castname="エイロネイア" duration="4.7" tts="予告、頭割り" gimmick_icon="stack.png"/>
     <entry t="110.3" castname="エイロネイア" duration="4.7"/>
     <entry t="119.5" text="フェイタリズム" castname="フェイタリズム" duration="2.7"/>
     <entry t="139.6" text="内外確認" castname="エレンコス" duration="5.7"/>
@@ -38,9 +38,9 @@
     <entry t="189.5" text="セオロジカル・フェイタリズム" castname="セオロジカル・フェイタリズム" duration="2.7"/>
     <entry t="199.7" text="内外確認" castname="エレンコス" duration="5.7"/>
     <entry t="200.7" castname="エイロネイア" duration="4.7"/>
-    <entry t="205.7" castname="頭割り" sync="false" tts="" gimmick_icon="stack"/>
+    <entry t="205.7" castname="頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
     <entry t="209.8" castname="ヒュブリス" duration="4.7"/>
-    <entry t="210.8" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="210.8" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="222.0" text="絶望浸食1回目" castname="絶望浸食：事象記録" duration="2.7"/>
     <entry t="226.5" castname="病の激流" duration="5.7"/>
     <entry t="235.2" castname="絶望浸食：事象記録" duration="2.7"/>
@@ -52,7 +52,7 @@
     <entry t="259.9" castname="博愛" duration="5.7"/>
     <entry t="269.6" text="セオロジカル・フェイタリズム" castname="セオロジカル・フェイタリズム" duration="2.7"/>
     <entry t="280.8" castname="博愛" duration="1.7"/>
-    <entry t="284.8" text="全体4回+1" castname="テロスマニア" duration="4.7" tts="連続全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="284.8" text="全体4回+1" castname="テロスマニア" duration="4.7" tts="連続全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="291.7" castname="テロスマニア" sync="false"/>
     <entry t="293.2" castname="テロスマニア" sync="false"/>
     <entry t="294.6" castname="テロスマニア" sync="false"/>
@@ -64,24 +64,24 @@
     <entry t="342.1" castname="絶望輪唱2" sync="false" tts=""/>
     <entry t="348.3" text="内外注意" castname="エレンコス" duration="5.7"/>
     <entry t="351.1" castname="絶望輪唱1" sync="false" tts=""/>
-    <entry t="358.4" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="368.6" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="358.4" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="368.6" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="369.6" castname="ヒュブリス" duration="4.7"/>
-    <entry t="382.9" text="全体攻撃" castname="エレゲイア：事象記録" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="382.9" text="全体攻撃" castname="エレゲイア：事象記録" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="391.2" castname="エレゲイア" sync="false"/>
-    <entry t="396.9" castname="頭割り予兆" sync="false" tts="" gimmick_icon="stack"/>
-    <entry t="400.1" text="頭割り" castname="エイロネイア" duration="4.7" tts="頭割り" gimmick_icon="stack"/>
+    <entry t="396.9" castname="頭割り予兆" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="400.1" text="頭割り" castname="エイロネイア" duration="4.7" tts="頭割り" gimmick_icon="stack.png"/>
     <entry t="401.1" castname="エイロネイア" duration="4.7"/>
     <entry t="408.2" text="フェイタリズム" castname="フェイタリズム" duration="2.7"/>
     <entry t="418.4" castname="フェイタリズム" duration="2.7"/>
     <entry t="422.0" castname="天体衝突4" sync="false" tts="4連続、天体衝突。"/>
     <entry t="428.0" castname="天体衝突3" sync="false" tts=""/>
     <entry t="432.0" castname="天体衝突2" sync="false" tts=""/>
-    <entry t="432.6" text="塔がPOP" castname="カタステリスモイ" duration="2.7" gimmick_icon="tower"/>
+    <entry t="432.6" text="塔がPOP" castname="カタステリスモイ" duration="2.7" gimmick_icon="tower.png"/>
     <entry t="437.5" castname="天体衝突1" sync="false" tts=""/>
     <entry t="441.7" text="内外確認" castname="エレンコス" duration="5.7"/>
     <entry t="447.0" castname="爆発" sync="false"/>
-    <entry t="451.9" text="全体4回+1" castname="テロスマニア" duration="4.7" tts="連続全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="451.9" text="全体4回+1" castname="テロスマニア" duration="4.7" tts="連続全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="458.7" castname="テロスマニア" sync="false"/>
     <entry t="460.2" castname="テロスマニア" sync="false"/>
     <entry t="461.7" castname="テロスマニア" sync="false"/>
@@ -97,16 +97,16 @@
     <entry t="515.8" text="セオロジカル・フェイタリズム" castname="セオロジカル・フェイタリズム" duration="2.7"/>
     <entry t="525.9" text="内外注意" castname="エレンコス" duration="5.7"/>
     <entry t="528.0" castname="ディアイレシス" sync="false"/>
-    <entry t="532.9" castname="頭割り" sync="false" tts="" gimmick_icon="stack"/>
+    <entry t="532.9" castname="頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
     <entry t="536.1" castname="ヒュブリス" duration="4.7"/>
-    <entry t="537.1" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster"/>
+    <entry t="537.1" text="タンク強攻撃" castname="ヒュブリス" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="548.3" text="アポロイア：絶望輪唱" castname="アポロイア：絶望輪唱" duration="2.7"/>
     <entry t="556.4" text="絶望輪唱4" castname="絶望輪唱" duration="2.7"/>
     <entry t="569.4" castname="絶望輪唱3" sync="false" tts=""/>
     <entry t="578.4" castname="絶望輪唱2" sync="false" tts=""/>
     <entry t="585.6" text="内外注意" castname="エレンコス" duration="5.7"/>
     <entry t="587.4" castname="絶望輪唱1" sync="false" tts=""/>
-    <entry t="595.7" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="595.7" text="全体攻撃" castname="テロス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="611.0" text="フェイタリズム" castname="フェイタリズム" duration="2.7"/>
     <entry t="620.0" castname="天体衝突" sync="false" tts="4連続、天体衝突。"/>
     <entry t="621.1" castname="フェイタリズム" duration="2.7"/>

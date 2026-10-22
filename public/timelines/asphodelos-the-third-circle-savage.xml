@@ -7,13 +7,13 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:33）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Phoinix">
-    <entry t="8.9" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="8.9" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="17.1" text="【構】獄炎の炎撃 / 獄炎の炎撃" castname="獄炎の炎撃" duration="5.7" tts="線が付くよ、獄炎の炎撃"/>
     <entry t="24.2" castname="獄炎の炎撃" sync="false"/>
     <entry t="29.2" text="【構】魔力錬成 / 魔力錬成" castname="魔力錬成：劫火天焦" duration="4.7"/>
     <entry t="39.9" text="左右焼却" castname="左翼焼却|右翼焼却" duration="4.7" tts="左右注意"/>
     <entry t="53.1" text="【構】闇の炎 / 闇の炎" castname="闇の炎" duration="5.7" tts="闇の炎設置、闇の炎。"/>
-    <entry t="64.2" text="【サイコロ】" castname="光の炎" duration="4.7" tts="サイコロ確認" gimmick_icon="dice"/>
+    <entry t="64.2" text="【サイコロ】" castname="光の炎" duration="4.7" tts="サイコロ確認" gimmick_icon="dice.png"/>
     <entry t="69.4" castname="光の炎" sync="false"/>
     <entry t="70.6" castname="光の炎" sync="false"/>
     <entry t="71.7" castname="光の炎" sync="false"/>
@@ -24,7 +24,7 @@
     <entry t="77.5" castname="光の炎" sync="false"/>
     <entry t="90.7" text="【構】獄炎の炎撃 / 獄炎の炎撃" castname="獄炎の炎撃" duration="5.7" tts="線が付くよ、獄炎の炎撃。"/>
     <entry t="97.8" castname="獄炎の炎撃" sync="false"/>
-    <entry t="99.8" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="99.8" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="112.0" text="十字走火" castname="十字走火" duration="2.7" tts="十字走火"/>
     <entry t="117.1" text="【構】魔力錬成 / 魔力錬成" castname="魔力錬成：劫火天焦" duration="4.7"/>
     <entry t="122.1" castname="十字走火" sync="false"/>
@@ -84,9 +84,9 @@
     <entry t="123.3" castname="強襲滑空2" sync="false" tts=""/>
     <entry t="128.3" castname="霊泉の波動1" sync="false" tts=""/>
     <entry t="128.3" castname="強襲滑空1" sync="false" tts=""/>
-    <entry t="130.4" text="灰燼の炎2(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="130.4" text="灰燼の炎2(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="137.6" castname="灰燼の炎" duration="4.7"/>
-    <entry t="142.4" castname="灰燼の炎1(全体)" sync="false" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="142.4" castname="灰燼の炎1(全体)" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="147.7" text="【構】獄炎の炎撃 / 獄炎の炎撃" castname="獄炎の炎撃" duration="5.7" tts="線が付くよ、獄炎の炎撃。"/>
     <entry t="154.8" castname="獄炎の炎撃" sync="false"/>
     <entry t="163.3" text="辺獄の炎嵐" castname="辺獄の炎嵐" duration="4.7" tts="竜巻出るよ"/>
@@ -104,7 +104,7 @@
     <entry t="228.3" castname="熱噴射" duration="2.7"/>
     <entry t="235.2" castname="闇旋風" sync="false" tts="ノックバック"/>
     <entry t="237.2" castname="炎旋風" sync="false"/>
-    <entry t="242.4" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="242.4" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="254.6" text="死の運命" castname="死の運命" duration="5.7" tts="死の運命"/>
     <entry t="263.8" text="群鳥飛翔" castname="群鳥飛翔" duration="2.7" tts="群鳥飛翔"/>
     <entry t="268.9" text="生苦の炎" castname="生苦の炎" duration="23.7" tts="生苦の炎。"/>
@@ -132,8 +132,8 @@
     <entry t="354.7" castname="十字走火" sync="false"/>
     <entry t="358.4" castname="右翼焼却" duration="4.7"/>
     <entry t="364.2" text="左右焼却" castname="左焼却|右焼却" sync="false" tts="左右注意"/>
-    <entry t="369.6" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="382.2" text="灰燼の炎(全体)" castname="灰燼の炎" sync="false" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="369.6" text="灰燼の炎(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="382.2" text="灰燼の炎(全体)" castname="灰燼の炎" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="383.2" castname="灰燼の豪炎" sync="false"/>
     <entry t="394.2" text="時間切れ" castname="灰燼の豪炎" sync="false"/>
   </phase>

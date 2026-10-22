@@ -13,17 +13,17 @@
     <entry t="12.0" castname="アビサルエコー" duration="15.7"/>
     <entry t="28.0" castname="アビサルエコー" sync="false"/>
     <entry t="37.6" castname="【予告】漆黒の熱線" sync="false" tts="次は、直線範囲攻撃。"/>
-    <entry t="38.1" text="【直線範囲】漆黒の熱線" castname="漆黒の熱線" duration="4.7" gimmick_icon="line"/>
+    <entry t="38.1" text="【直線範囲】漆黒の熱線" castname="漆黒の熱線" duration="4.7" gimmick_icon="line.png"/>
     <entry t="44.7" castname="漆黒の熱線" sync="false"/>
     <entry t="46.1" castname="漆黒の熱線" sync="false"/>
     <entry t="47.4" castname="漆黒の熱線" sync="false"/>
     <entry t="48.8" castname="漆黒の熱線" sync="false"/>
     <entry t="50.2" castname="漆黒の熱線" sync="false"/>
-    <entry t="58.7" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster"/>
+    <entry t="58.7" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster.png"/>
     <entry t="58.7" castname="【予告】ダークマター" sync="false" tts="次は、タンク強攻撃。"/>
     <entry t="71.8" text="【予告】ヴィセラルワール / ヴィセラルワール" castname="ヴィセラルワール" duration="7.7" tts="次は、ヴィセラルワール。安置へ集合"/>
     <entry t="95.6" castname="【予告】フレア" sync="false" tts="次は、とうふみ。なんぼくにわかれる"/>
-    <entry t="96.0" text="【塔踏み】フレア" castname="フレア" duration="6.7" gimmick_icon="tower"/>
+    <entry t="96.0" text="【塔踏み】フレア" castname="フレア" duration="6.7" gimmick_icon="tower.png"/>
     <entry t="106.1" castname="プロミネンススパイン" duration="4.7"/>
     <entry t="115.9" castname="【予告】ヴォイド・バイオ" sync="false" tts="次は、ヴォイド・バイオ。玉を避ける"/>
     <entry t="116.1" text="ヴォイド・バイオ" castname="ヴォイド・バイオ" duration="4.7"/>
@@ -36,7 +36,7 @@
     <entry t="176.5" text="メテオインパクト" castname="メテオインパクト" duration="10.7"/>
     <entry t="208.7" text="【予告】ヴィセラルワール / ヴィセラルワール" castname="ヴィセラルワール" duration="7.7" tts="次は、ヴィセラルワール。安置へ集合"/>
     <entry t="231.5" castname="【予告】ダークマター" sync="false" tts="次は、タンク強攻撃。"/>
-    <entry t="231.8" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster"/>
+    <entry t="231.8" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster.png"/>
     <entry t="244.5" castname="【予告】ブラックホール" sync="false" tts="次は、ブラックホール。あおまーかーはかどへ"/>
     <entry t="244.9" text="ブラックホール" castname="ブラックホール" duration="4.7"/>
     <entry t="250.9" castname="【予告】黒竜閃" sync="false" tts="次は、黒竜閃。ビーム回避するー"/>
@@ -48,7 +48,7 @@
     <entry t="305.5" castname="アビサルエコー" duration="15.7"/>
     <entry t="321.5" castname="アビサルエコー" sync="false"/>
     <entry t="326.2" castname="【予告】漆黒の熱線" sync="false" tts="次は、直線範囲攻撃。"/>
-    <entry t="326.6" text="【直線範囲】漆黒の熱線" castname="漆黒の熱線" duration="4.7" gimmick_icon="line"/>
+    <entry t="326.6" text="【直線範囲】漆黒の熱線" castname="漆黒の熱線" duration="4.7" gimmick_icon="line.png"/>
     <entry t="333.2" castname="漆黒の熱線" sync="false"/>
     <entry t="334.6" castname="漆黒の熱線" sync="false"/>
     <entry t="335.9" castname="漆黒の熱線" sync="false"/>
@@ -65,7 +65,7 @@
     <entry t="377.8" text="ヴォイド・バイオ" castname="ヴォイド・バイオ" duration="4.7"/>
     <entry t="389.0" text="【予告】ヴィセラルワール / ヴィセラルワール" castname="ヴィセラルワール" duration="7.7" tts="次は、ヴィセラルワール。安置へ集合"/>
     <entry t="412.9" castname="【予告】ダークマター" sync="false" tts="次は、タンク強攻撃。"/>
-    <entry t="413.1" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster"/>
+    <entry t="413.1" text="【タンク強】ダークマター" castname="ダークマター" duration="3.7" gimmick_icon="tankbuster.png"/>
     <entry t="425.9" castname="【予告】フレアスパーク" sync="false" tts="次は、とうふみ。東西にわかれる"/>
     <entry t="426.3" text="フレアスパーク" castname="フレアスパーク" duration="6.7"/>
     <entry t="431.3" castname="フレアスパーク" duration="9.7"/>

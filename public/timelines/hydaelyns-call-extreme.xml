@@ -7,8 +7,8 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（11:25）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Hydaelyn's Arms">
-    <entry t="10.9" text="全体攻撃" castname="ヘロイスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="21.1" text="頭割り" castname="シャイニングセイバー" duration="4.6" gimmick_icon="stack"/>
+    <entry t="10.9" text="全体攻撃" castname="ヘロイスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="21.1" text="頭割り" castname="シャイニングセイバー" duration="4.6" gimmick_icon="stack.png"/>
     <entry t="26.4" castname="シャイニングセイバー" sync="false"/>
     <entry t="31.6" text="属性を付与" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
     <entry t="44.7" castname="アントゥヘリオン" sync="false"/>
@@ -16,7 +16,7 @@
     <entry t="62.2" castname="サイド・オーレオール" duration="4.7"/>
     <entry t="72.3" castname="クリスタライズ" duration="3.7"/>
     <entry t="85.5" castname="ハイエストホーリー" sync="false"/>
-    <entry t="92.2" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="92.2" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" gimmick_icon="raidwide.png"/>
     <entry t="102.4" text="オーレオール" castname="オーレオール" duration="4.7"/>
     <entry t="112.5" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
     <entry t="125.7" castname="エクイノックス" sync="false"/>
@@ -28,7 +28,7 @@
     <next to="p3" at="10.2" cast="ヘイロー"/>
   </phase>
   <phase id="p3" name="P3: Lightwaves">
-    <entry t="10.2" text="全体攻撃" castname="ヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="10.2" text="全体攻撃" castname="ヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="19.4" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
     <entry t="38.9" text="TDH攻撃" castname="ラテラルアーク" duration="4.6" tts="TDHに分かれる"/>
     <entry t="44.2" castname="ラテラルアーク" sync="false"/>
@@ -40,13 +40,13 @@
     <entry t="49.4" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
     <entry t="58.0" text="前方範囲(北)" castname="ヘロイスグローリー" duration="4.7" tts="前方範囲"/>
     <entry t="77.0" text="ボス移動注意 / 前方範囲" castname="ヘロイスグローリー" duration="4.7" tts="ボス居号するよ、前方攻撃"/>
-    <entry t="87.2" text="全体攻撃" castname="ヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
-    <entry t="98.3" text="タンク扇範囲" castname="ヘロイスサンダリング" duration="4.7" tts="扇範囲" gimmick_icon="cone"/>
-    <entry t="108.6" text="頭割り" castname="シャイニングセイバー" duration="4.6" gimmick_icon="stack"/>
+    <entry t="87.2" text="全体攻撃" castname="ヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="98.3" text="タンク扇範囲" castname="ヘロイスサンダリング" duration="4.7" tts="扇範囲" gimmick_icon="cone.png"/>
+    <entry t="108.6" text="頭割り" castname="シャイニングセイバー" duration="4.6" gimmick_icon="stack.png"/>
     <entry t="113.9" castname="シャイニングセイバー" sync="false"/>
     <entry t="122.4" castname="分岐待機" sync="false" tts=""/>
     <entry t="123.1" castname="アントゥヘリオン" sync="false"/>
-    <entry t="128.2" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share"/>
+    <entry t="128.2" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
     <entry t="139.9" text="チャクラム開始" castname="パルヘリオン" duration="4.7" tts="パルヘリオン。"/>
     <entry t="144.2" castname="オーレオール" sync="false"/>
     <entry t="145.9" castname="パルヘリオン3" sync="false" tts=""/>
@@ -55,10 +55,10 @@
     <entry t="148.1" castname="パルヘリオン" sync="false"/>
     <entry t="148.9" castname="パルヘリオン1" sync="false" tts=""/>
     <entry t="149.7" text="属性を確認 / 属性:水(固定)" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
-    <entry t="156.9" text="4人頭割り+チャクラム" castname="サブパルヘリオン" duration="4.7" tts="頭割り、チャクラム" gimmick_icon="stack"/>
+    <entry t="156.9" text="4人頭割り+チャクラム" castname="サブパルヘリオン" duration="4.7" tts="頭割り、チャクラム" gimmick_icon="stack.png"/>
     <entry t="167.2" text="オーレオール" castname="オーレオール" duration="4.7"/>
     <entry t="181.3" castname="ハイエストホーリー" sync="false"/>
-    <entry t="186.5" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="186.5" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="196.6" text="属性:氷(固定)" castname="クリスタライズ" duration="3.7"/>
     <entry t="205.5" text="パーヘリックサークル" castname="パーヘリックサークル" duration="5.7" tts="散開"/>
     <entry t="213.4" castname="幻閃光" sync="false" tts="幻閃光。"/>
@@ -66,20 +66,20 @@
     <entry t="217.8" castname="サイド・オーレオール" duration="4.7"/>
     <entry t="223.4" castname="オーレオール" sync="false"/>
     <entry t="232.0" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
-    <entry t="240.7" text="全体攻撃" castname="レディアントヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="240.7" text="全体攻撃" castname="レディアントヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="250.9" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
     <next to="p4" at="0" cast="エコーズ"/>
   </phase>
   <phase id="p4" name="P4: Echoes">
-    <entry t="0.0" text="連続頭割り" castname="エコーズ" duration="4.7" tts="連続頭割り" gimmick_icon="stack"/>
-    <entry t="8.4" text="散開" castname="エコーズ" sync="false" tts="散開" gimmick_icon="spread"/>
+    <entry t="0.0" text="連続頭割り" castname="エコーズ" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
+    <entry t="8.4" text="散開" castname="エコーズ" sync="false" tts="散開" gimmick_icon="spread.png"/>
     <entry t="22.2" text="属性:水(固定)" castname="クリスタライズ" duration="3.7"/>
-    <entry t="29.3" text="頭割り" castname="シャイニングセイバー" duration="4.6" tts="頭割りと4人頭割り" gimmick_icon="stack"/>
+    <entry t="29.3" text="頭割り" castname="シャイニングセイバー" duration="4.6" tts="頭割りと4人頭割り" gimmick_icon="stack.png"/>
     <entry t="34.5" castname="シャイニングセイバー" sync="false"/>
     <entry t="43.6" castname="アントゥヘリオン" sync="false"/>
     <entry t="50.9" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
-    <entry t="70.0" text="連続頭割り" castname="エコーズ" duration="4.7" tts="連続頭割り" gimmick_icon="stack"/>
-    <entry t="78.5" text="散開" castname="エコーズ" sync="false" tts="散開" gimmick_icon="spread"/>
+    <entry t="70.0" text="連続頭割り" castname="エコーズ" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
+    <entry t="78.5" text="散開" castname="エコーズ" sync="false" tts="散開" gimmick_icon="spread.png"/>
     <entry t="92.2" text="属性を確認" castname="クリスタライズ" duration="3.7"/>
     <entry t="99.4" castname="サイド・オーレオール" duration="4.7"/>
     <entry t="104.2" castname="オーレオール" sync="false"/>
