@@ -173,7 +173,7 @@
     <entry t="78.3" castname="サークル1回目爆発" sync="false" tts=""/>
     <entry t="78.4" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="86.3" castname="サークル2回目爆発" sync="false" tts=""/>
-    <entry t="86.4" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="86.4" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
     <entry t="92.5" text="クリティカルエラー" castname="クリティカルエラー" duration="4.7" tts="爆発に注意して、残りのサークル処理"/>
     <entry t="94.5" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="94.5" castname="サークル3回目爆発" sync="false" tts=""/>
@@ -215,7 +215,7 @@
     <entry t="367.2" castname="エンバグ" sync="false"/>
     <entry t="370.3" castname="イオンエフラクス" duration="5.7"/>
     <entry t="385.8" castname="ハロー・ワールド" duration="5.7"/>
-    <entry t="399.9" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="399.9" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
     <entry t="408.0" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="414.0" castname="クリティカルエラー" duration="4.7"/>
     <entry t="416.0" castname="クリティカルバグ：サークル" sync="false"/>
@@ -240,18 +240,18 @@
     <entry t="574.4" castname="エンバグ" sync="false"/>
     <entry t="577.6" castname="イオンエフラクス" duration="5.7"/>
     <entry t="587.8" text="アーカイブオール" castname="アーカイブオール" duration="3.7" tts="ボスの向きを確認"/>
-    <entry t="598.8" text="レーザー＋距離減衰" castname="リアレーザー" sync="false"/>
+    <entry t="598.8" text="レーザー＋距離減衰" castname="リアレーザー" sync="false" gimmick_icon="proximity"/>
     <entry t="599.2" text="オメガスライド" castname="オメガスライド" duration="5.7" tts="外周に集まる"/>
     <entry t="608.3" castname="デルタアタック" duration="2.7"/>
     <entry t="611.2" castname="デルタアタック" sync="false" tts="範囲が出たら散開"/>
     <entry t="611.4" castname="フラッドライト" duration="2.7"/>
-    <entry t="612.2" castname="ファイラ＋頭割り" sync="false" tts=""/>
+    <entry t="612.2" castname="ファイラ＋頭割り" sync="false" tts="" gimmick_icon="stack"/>
     <entry t="619.2" castname="ユニット自爆" sync="false" tts="爆発に注意"/>
     <entry t="624.6" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲。"/>
     <entry t="644.1" castname="ハロー・ワールド" duration="5.7"/>
     <entry t="648.6" castname="ローディング" sync="false" tts=""/>
     <entry t="658.2" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="666.2" castname="クリティカルバグ：シェア" sync="false"/>
+    <entry t="666.2" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack"/>
     <entry t="672.2" castname="クリティカルエラー" duration="4.7"/>
     <entry t="673.3" castname="レイテントバグ：デグレード" duration="6.7"/>
     <entry t="685.3" castname="クリティカルバグ：サークル" sync="false"/>

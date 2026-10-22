@@ -7,7 +7,7 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（11:03）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="9.9" text="全体攻撃" castname="メテオレイン" duration="4.7" tts="全体攻撃"/>
+    <entry t="9.9" text="全体攻撃" castname="メテオレイン" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="22.3" text="無の肥大" castname="無の肥大" duration="6.7"/>
     <entry t="36.4" text="無の活性" castname="無の活性" duration="1.7"/>
     <entry t="40.4" castname="中央集合" sync="false" tts="中央集合"/>
@@ -26,20 +26,20 @@
     <entry t="118.2" text="X波動" castname="拡散波動|収束波動" duration="3.7" tts="敵視注意"/>
     <entry t="127.2" castname="タンク移動" sync="false" tts=""/>
     <entry t="128.4" text="フリーズ" castname="ディープフリーズ" duration="4.7" tts="全体、停止注意"/>
-    <entry t="136.5" text="全体攻撃" castname="メテオレイン" duration="4.7" tts="全体攻撃"/>
+    <entry t="136.5" text="全体攻撃" castname="メテオレイン" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="150.1" text="ターゲット不可" castname="無の領域" duration="4.7"/>
     <entry t="160.1" castname="セリフ1" sync="false" tts=""/>
     <entry t="169.1" castname="セリフ2" sync="false" tts=""/>
     <entry t="175.4" text="大衝撃" castname="虚ろなる大衝撃" sync="false" tts="ノックバック"/>
-    <entry t="177.7" text="塔POP" castname="無の渦流" sync="false" tts="塔確認"/>
+    <entry t="177.7" text="塔POP" castname="無の渦流" sync="false" tts="塔確認" gimmick_icon="tower"/>
     <entry t="184.9" text="発動" castname="無の渦流" sync="false"/>
     <entry t="191.8" text="呪詛" castname="悪魔の瞳" sync="false" tts="ギミック注意"/>
-    <entry t="211.2" text="塔POP" castname="無の渦流" sync="false" tts="塔確認"/>
+    <entry t="211.2" text="塔POP" castname="無の渦流" sync="false" tts="塔確認" gimmick_icon="tower"/>
     <entry t="221.8" text="発動" castname="無の渦流" sync="false"/>
     <entry t="226.8" text="呪詛" castname="病の呪詛" sync="false" tts="ギミック注意"/>
-    <entry t="264.7" text="全体攻撃" castname="ライトレス・ワールド" duration="9.7" tts="全体攻撃"/>
+    <entry t="264.7" text="全体攻撃" castname="ライトレス・ワールド" duration="9.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="274.8" castname="終了待ち" sync="false" tts=""/>
-    <entry t="284.9" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃"/>
+    <entry t="284.9" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="295.6" text="無の肥大" castname="無の肥大" duration="6.7"/>
     <entry t="309.8" text="外周確認" castname="無の活性" duration="1.7" tts="外周確認"/>
     <entry t="313.9" castname="集積波動" duration="5.7"/>
@@ -49,7 +49,7 @@
     <entry t="330.8" castname="波動2" sync="false" tts=""/>
     <entry t="331.1" castname="シャドウホーリー" duration="4.7"/>
     <entry t="344.6" text="無の肥大" castname="無の肥大" duration="6.7"/>
-    <entry t="358.8" text="頭割り" castname="ディメンションゼロ" duration="4.7" tts="頭割り"/>
+    <entry t="358.8" text="頭割り" castname="ディメンションゼロ" duration="4.7" tts="頭割り" gimmick_icon="stack"/>
     <entry t="364.0" castname="ディメンションゼロ" sync="false"/>
     <entry t="365.4" castname="ディメンションゼロ" sync="false"/>
     <entry t="366.8" castname="ディメンションゼロ" sync="false"/>
@@ -61,7 +61,7 @@
     <entry t="398.2" castname="混沌の激流" duration="6.7"/>
     <entry t="410.8" castname="玉取り1" sync="false" tts=""/>
     <entry t="420.8" castname="玉取り2" sync="false" tts=""/>
-    <entry t="430.0" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃"/>
+    <entry t="430.0" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="443.5" text="無の活性" castname="無の活性" duration="1.7"/>
     <entry t="447.6" text="線を確認 / 無の追跡" castname="無の追跡" duration="5.7" tts="線を確認、中央安置"/>
     <entry t="448.7" castname="集積波動" duration="5.7"/>
@@ -74,12 +74,12 @@
     <entry t="508.5" castname="集積波動" duration="6.7"/>
     <entry t="513.2" castname="安置確認" sync="false" tts="外周安置へ"/>
     <entry t="516.5" text="X波動" castname="拡散波動|収束波動" duration="3.7"/>
-    <entry t="525.6" text="頭割り" castname="ディメンションゼロ" duration="4.7" tts="頭割り"/>
+    <entry t="525.6" text="頭割り" castname="ディメンションゼロ" duration="4.7" tts="頭割り" gimmick_icon="stack"/>
     <entry t="531.1" castname="ディメンションゼロ" sync="false"/>
     <entry t="532.5" castname="ディメンションゼロ" sync="false"/>
     <entry t="533.9" castname="ディメンションゼロ" sync="false"/>
     <entry t="535.2" castname="ディメンションゼロ" sync="false"/>
-    <entry t="540.7" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃"/>
+    <entry t="540.7" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="551.5" text="無の肥大" castname="無の肥大" duration="6.7"/>
     <entry t="564.5" castname="セリフ" sync="false" tts=""/>
     <entry t="565.7" castname="無の活性" duration="1.7"/>

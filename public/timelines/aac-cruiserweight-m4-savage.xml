@@ -8,15 +8,15 @@
   <note>FFLogs の公開ランキングの討伐の記録（13:57）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="Phase One">
     <entry t="0.0" castname="戦闘開始！" sync="false" tts=""/>
-    <entry t="10.9" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃"/>
+    <entry t="10.9" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="23.8" text="土/風の魔技" castname="土の魔技|風の魔技" duration="5.7"/>
     <entry t="35.0" castname="群狼剣" duration="6.3"/>
     <entry t="35.0" text="廻/薙の群狼剣" castname="廻の群狼剣|薙の群狼剣" duration="4.8"/>
     <entry t="40.3" castname="薙の群狼剣" sync="false"/>
     <entry t="43.0" castname="群狼剣" duration="1.2"/>
     <entry t="46.1" castname="群狼剣" duration="1.2"/>
-    <entry t="49.7" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃"/>
-    <entry t="62.1" text="【全体】千年の風化" castname="千年の風化" duration="4.7" tts="Aのいちチェック"/>
+    <entry t="49.7" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="62.1" text="【全体】千年の風化" castname="千年の風化" duration="4.7" tts="Aのいちチェック" gimmick_icon="raidwide"/>
     <entry t="72.8" text="エアロガ" castname="エアロガ" duration="4.7" tts="ノックバック"/>
     <entry t="79.8" text="旋風(AoE1回目)" castname="旋風" sync="false"/>
     <entry t="84.8" text="旋風(AoE2回目)" castname="旋風" sync="false"/>
@@ -30,8 +30,8 @@
     <entry t="107.9" castname="連震撃" sync="false"/>
     <entry t="109.0" castname="連震撃" sync="false"/>
     <entry t="110.0" castname="連震撃" sync="false"/>
-    <entry t="111.9" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃"/>
-    <entry t="119.6" text="タンク強攻撃" castname="一刀両断" duration="4.7" tts="タンク強"/>
+    <entry t="111.9" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="119.6" text="タンク強攻撃" castname="一刀両断" duration="4.7" tts="タンク強" gimmick_icon="tankbuster"/>
     <entry t="135.5" text="柱POP" castname="大地の呼び声" duration="3.7" tts="柱わくよ"/>
     <entry t="142.7" text="斬空剣" castname="斬空剣" duration="1.3"/>
     <entry t="147.4" text="ファンネルPOP" castname="光牙招来" sync="false" tts="安置確認"/>
@@ -68,7 +68,7 @@
     <entry t="303.3" castname="群狼剣" duration="1.2"/>
     <entry t="306.4" castname="群狼剣" duration="1.2"/>
     <entry t="310.7" text="外周注意！" castname="地烈波" sync="false" tts="外周注意"/>
-    <entry t="316.2" text="タンク強攻撃" castname="一刀両断" duration="4.7" tts="タンク強"/>
+    <entry t="316.2" text="タンク強攻撃" castname="一刀両断" duration="4.7" tts="タンク強" gimmick_icon="tankbuster"/>
     <entry t="332.6" text="幻狼招来" castname="幻狼招来" duration="2.7"/>
     <entry t="339.8" text="大地の怒り" castname="大地の怒り" duration="2.7"/>
     <entry t="348.3" castname="大岩石" sync="false"/>
@@ -85,7 +85,7 @@
     <entry t="381.4" castname="連震撃" sync="false"/>
     <entry t="382.5" castname="連震撃" sync="false"/>
     <entry t="383.5" castname="連震撃" sync="false"/>
-    <entry t="385.4" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃"/>
+    <entry t="385.4" text="【全体】空間斬り" castname="空間斬り" duration="3.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="400.2" castname="空間斬り" duration="3.7"/>
     <entry t="406.3" castname="空間斬り・滅" sync="false"/>
     <entry t="412.3" text="終了" castname="空間斬り・滅" sync="false"/>
@@ -94,7 +94,7 @@
   <phase id="p2" name="Phase Two">
     <entry t="7.2" text="クエイガ / 1島移動" castname="クエイガ" duration="4.7" tts="よんよん"/>
     <entry t="12.3" castname="クエイガ" sync="false"/>
-    <entry t="18.4" text="魔光 / このあとタンク強" castname="魔光" duration="5.7" tts="青玉つくよ"/>
+    <entry t="18.4" text="魔光 / このあとタンク強" castname="魔光" duration="5.7" tts="青玉つくよ" gimmick_icon="tankbuster"/>
     <entry t="24.5" castname="魔光" sync="false"/>
     <entry t="28.6" text="【タン強】双牙撃 / 基準島へ移動" castname="双牙撃" duration="6.7" tts="タンク強攻撃"/>
     <entry t="35.6" castname="双牙撃" sync="false"/>
@@ -107,10 +107,10 @@
     <entry t="77.4" text="島破壊 / 2島移動" castname="剛刃一閃" duration="3.7" tts="島こわれるよ"/>
     <entry t="84.5" text="風震の魔印" castname="風震の魔印" duration="4.7" tts="魔印、島チェック"/>
     <entry t="93.7" text="魔印発動" castname="貪狼の剣" sync="false"/>
-    <entry t="96.8" text="塔踏み" castname="風狼陣" duration="2.7" tts="塔踏み"/>
+    <entry t="96.8" text="塔踏み" castname="風狼陣" duration="2.7" tts="塔踏み" gimmick_icon="tower"/>
     <entry t="100.6" castname="風狼陣" duration="7.7"/>
     <entry t="104.0" castname="魔狼戦型・天嵐の相" duration="6.7"/>
-    <entry t="113.1" text="散開確認 / 双牙暴風撃1" castname="双牙暴風撃" duration="6.7" tts="散開確認、いち"/>
+    <entry t="113.1" text="散開確認 / 双牙暴風撃1" castname="双牙暴風撃" duration="6.7" tts="散開確認、いち" gimmick_icon="spread"/>
     <entry t="120.2" castname="双牙暴風撃" sync="false"/>
     <entry t="123.8" castname="風爆" sync="false"/>
     <entry t="124.9" castname="風爆" sync="false"/>
@@ -154,13 +154,13 @@
     <entry t="182.7" castname="廻天動地1" sync="false" tts=""/>
     <entry t="187.9" text="クエイガ / 1島移動" castname="クエイガ" duration="4.7" tts="よんよん割り"/>
     <entry t="193.0" castname="クエイガ" sync="false"/>
-    <entry t="201.1" text="魔光 / このあとタンク強" castname="魔光" duration="5.7" tts="青玉つくよ"/>
+    <entry t="201.1" text="魔光 / このあとタンク強" castname="魔光" duration="5.7" tts="青玉つくよ" gimmick_icon="tankbuster"/>
     <entry t="207.2" castname="魔光" sync="false"/>
     <entry t="211.3" text="【タン強】双牙撃 / 移動準備" castname="双牙撃" duration="6.7" tts="タンク強攻撃"/>
     <entry t="218.4" castname="双牙撃" sync="false"/>
     <entry t="226.5" text="Alice式準備" castname="魔狼戦型・呪刃の相" duration="6.7" tts="ありすしき準備"/>
     <entry t="235.7" text="線確認" castname="孤狼の呪い" duration="2.7" tts="線を確認"/>
-    <entry t="245.8" text="塔踏み / 安置確認" castname="風狼陣" duration="2.7" tts="塔踏み"/>
+    <entry t="245.8" text="塔踏み / 安置確認" castname="風狼陣" duration="2.7" tts="塔踏み" gimmick_icon="tower"/>
     <entry t="249.6" castname="風狼陣" duration="7.7"/>
     <entry t="260.1" text="鎧袖一触" castname="鎧袖一触" duration="5.7" tts="青玉注意"/>
     <entry t="273.3" text="魔光 / 基準島へ移動" castname="魔光" duration="5.7" tts="青玉つくよ"/>

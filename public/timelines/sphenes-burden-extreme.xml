@@ -18,51 +18,51 @@
     <entry t="23.2" castname="エーテルレヴィー" sync="false"/>
     <entry t="24.2" castname="エーテルレヴィー" sync="false"/>
     <entry t="25.3" castname="エーテルレヴィー" sync="false"/>
-    <entry t="28.2" text="4:4頭割り(左右)1回目" castname="トリビュート" sync="false"/>
+    <entry t="28.2" text="4:4頭割り(左右)1回目" castname="トリビュート" sync="false" gimmick_icon="stack"/>
     <entry t="30.2" castname="エーテルレヴィー" sync="false"/>
     <entry t="31.3" castname="エーテルレヴィー" sync="false"/>
     <entry t="32.4" castname="エーテルレヴィー" sync="false"/>
     <entry t="33.4" castname="エーテルレヴィー" sync="false"/>
     <entry t="34.5" castname="エーテルレヴィー" sync="false"/>
-    <entry t="37.3" text="4:4頭割り(左右)2回目" castname="トリビュート" sync="false"/>
+    <entry t="37.3" text="4:4頭割り(左右)2回目" castname="トリビュート" sync="false" gimmick_icon="stack"/>
     <entry t="39.4" castname="エーテルレヴィー" sync="false"/>
     <entry t="40.5" castname="エーテルレヴィー" sync="false"/>
     <entry t="41.5" castname="エーテルレヴィー" sync="false"/>
     <entry t="42.6" castname="エーテルレヴィー" sync="false"/>
     <entry t="43.7" castname="エーテルレヴィー" sync="false"/>
-    <entry t="46.5" text="4:4頭割り(左右)3回目" castname="トリビュート" sync="false"/>
+    <entry t="46.5" text="4:4頭割り(左右)3回目" castname="トリビュート" sync="false" gimmick_icon="stack"/>
     <entry t="54.8" text="フィールド変化" castname="ヴァーチャルシフト" duration="4.7"/>
-    <entry t="65.0" text="4:4頭割り(通路へ)" castname="ロウ・オブ・ウィンド" duration="3.7"/>
+    <entry t="65.0" text="4:4頭割り(通路へ)" castname="ロウ・オブ・ウィンド" duration="3.7" gimmick_icon="stack"/>
     <entry t="69.0" castname="エアロバースト" duration="4.7"/>
     <entry t="69.9" castname="中央へ集合" sync="false" tts=""/>
-    <entry t="79.1" text="鎖を切る / 半面焼き1回目" castname="レジティメート・フォース" duration="7.7"/>
-    <entry t="90.2" text="半面焼き2回目" castname="レジティメート・フォース" sync="false"/>
+    <entry t="79.1" text="鎖を切る / 半面焼き1回目" castname="レジティメート・フォース" duration="7.7" gimmick_icon="half-room"/>
+    <entry t="90.2" text="半面焼き2回目" castname="レジティメート・フォース" sync="false" gimmick_icon="half-room"/>
     <entry t="96.4" text="フィールド変化終了" castname="ワールドシャッター" duration="4.7"/>
-    <entry t="108.6" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" duration="4.7"/>
-    <entry t="116.7" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="108.6" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="116.7" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false" gimmick_icon="tankbuster"/>
     <entry t="119.8" text="ディバイド・アンド・コンカー / 8連ビーム" castname="ディバイド・アンド・コンカー" duration="7.2" tts="8連ビームくるよ"/>
     <entry t="127.3" castname="ディバイド・アンド・コンカー" sync="false"/>
     <entry t="132.4" castname="ディバイド・アンド・コンカー" sync="false"/>
     <entry t="135.5" castname="ディバイド・アンド・コンカー" duration="2.7"/>
-    <entry t="141.5" text="全体攻撃" castname="ロイヤルドメイン" duration="4.7"/>
-    <entry t="154.7" text="全体攻撃" castname="ヴァーチャルシフト" duration="4.7"/>
+    <entry t="141.5" text="全体攻撃" castname="ロイヤルドメイン" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="154.7" text="全体攻撃" castname="ヴァーチャルシフト" duration="4.7" gimmick_icon="raidwide"/>
     <entry t="164.8" text="【予告】ロウ・オブ・アース" castname="ロウ・オブ・アース" duration="3.7" tts="塔踏み準備、スプリント"/>
-    <entry t="172.0" text="半面焼き1回目" castname="レジティメート・フォース" duration="7.7"/>
-    <entry t="183.1" text="半面焼き2回目" castname="レジティメート・フォース" sync="false"/>
+    <entry t="172.0" text="半面焼き1回目" castname="レジティメート・フォース" duration="7.7" gimmick_icon="half-room"/>
+    <entry t="183.1" text="半面焼き2回目" castname="レジティメート・フォース" sync="false" gimmick_icon="half-room"/>
     <entry t="188.0" castname="爆発" sync="false"/>
-    <entry t="193.2" text="線＋円＋塔" castname="グラビティ・エンパイア" duration="6.7"/>
+    <entry t="193.2" text="線＋円＋塔" castname="グラビティ・エンパイア" duration="6.7" gimmick_icon="tower"/>
     <entry t="193.2" castname="グラビティピラー" duration="7.7"/>
-    <entry t="206.4" text="隕石設置1回目" castname="メテオインパクト" sync="false"/>
-    <entry t="213.6" text="隕石設置2回目" castname="メテオインパクト" sync="false"/>
-    <entry t="222.7" text="隕石の後ろに隠れる" castname="グラビティブロウ" duration="4.7"/>
-    <entry t="237.8" text="全体攻撃" castname="ワールドシャッター" duration="4.7"/>
-    <entry t="250.1" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" duration="4.7"/>
-    <entry t="258.2" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="206.4" text="隕石設置1回目" castname="メテオインパクト" sync="false" gimmick_icon="meteor"/>
+    <entry t="213.6" text="隕石設置2回目" castname="メテオインパクト" sync="false" gimmick_icon="meteor"/>
+    <entry t="222.7" text="隕石の後ろに隠れる" castname="グラビティブロウ" duration="4.7" gimmick_icon="meteor"/>
+    <entry t="237.8" text="全体攻撃" castname="ワールドシャッター" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="250.1" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" duration="4.7" gimmick_icon="tankbuster"/>
+    <entry t="258.2" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false" gimmick_icon="tankbuster"/>
     <entry t="261.3" text="端末射出（＃）" castname="端末射出" duration="2.7"/>
     <entry t="267.5" text="円＋ビーム着弾" castname="アトミックレイ" duration="2.7"/>
     <entry t="271.6" castname="アトミックレイ" duration="5.7"/>
     <entry t="283.7" text="【予告】アブソリュート・オーソリティ / 多段攻撃" castname="アブソリュート・オーソリティ" duration="9.7" tts="次は、パンクラ。右上集合。"/>
-    <entry t="299.8" text="前からノックバック" castname="アブソリュート・オーソリティ" sync="false" tts="前からノックバック、前に集まる"/>
+    <entry t="299.8" text="前からノックバック" castname="アブソリュート・オーソリティ" sync="false" tts="前からノックバック、前に集まる" gimmick_icon="knockback"/>
     <entry t="303.8" castname="アブソリュート・オーソリティ" sync="false"/>
     <entry t="307.9" castname="アブソリュート・オーソリティ" sync="false"/>
     <next to="p2" at="3.4" cast="エターナル・オーソリティ"/>
@@ -70,7 +70,7 @@
   <phase id="p2" name="Intermission">
     <entry t="3.4" text="！時間切れ！" castname="エターナル・オーソリティ" duration="9.7"/>
     <entry t="13.7" castname="エターナル・オーソリティ" sync="false"/>
-    <entry t="17.2" text="全体攻撃" castname="ヴァーチャルシフト" sync="false"/>
+    <entry t="17.2" text="全体攻撃" castname="ヴァーチャルシフト" sync="false" gimmick_icon="raidwide"/>
     <entry t="24.7" castname="強制同期" sync="false" tts=""/>
     <entry t="26.2" castname="ロウ・オブ・アイス" sync="false" tts="うごきつづけるー"/>
     <entry t="30.2" text="南から線付与" castname="突進" sync="false" tts="次は、突進。"/>
@@ -85,30 +85,30 @@
   <phase id="p3" name="Phase Two">
     <entry t="0.3" castname="ターゲット可能" sync="false" tts=""/>
     <entry t="4.1" text="床変化1回目" castname="ラディカルシフト" duration="10.7" tts="床かわるよ"/>
-    <entry t="11.8" text="半面焼き1回目" castname="レジティメート・フォース" sync="false"/>
-    <entry t="13.8" text="半面焼き2回目" castname="レジティメート・フォース" sync="false"/>
+    <entry t="11.8" text="半面焼き1回目" castname="レジティメート・フォース" sync="false" gimmick_icon="half-room"/>
+    <entry t="13.8" text="半面焼き2回目" castname="レジティメート・フォース" sync="false" gimmick_icon="half-room"/>
     <entry t="22.8" castname="ロウ・オブ・アイス" sync="false" tts="うごきつづけるー"/>
     <entry t="23.3" text="床変化2回目" castname="ラディカルシフト" duration="10.7" tts="床かわるよ"/>
-    <entry t="30.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false"/>
-    <entry t="36.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false"/>
-    <entry t="42.4" text="全体攻撃" castname="ワールドシャッター" duration="4.7"/>
-    <entry t="42.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false"/>
-    <entry t="48.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false"/>
-    <entry t="54.6" text="前からエクサフレア" castname="ディメンショナル・ディストーション" duration="3.7" tts="前からエクサくるよ"/>
-    <entry t="62.8" text="全体攻撃" castname="ワールドシャッター" sync="false"/>
-    <entry t="64.8" text="前面焼き＋タンク塔踏み" castname="クイーンズハンド" duration="4.7"/>
+    <entry t="30.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false" gimmick_icon="stack"/>
+    <entry t="36.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false" gimmick_icon="stack"/>
+    <entry t="42.4" text="全体攻撃" castname="ワールドシャッター" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="42.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false" gimmick_icon="stack"/>
+    <entry t="48.8" text="強攻撃＋頭割り" castname="ドゥリアリーストーム" sync="false" gimmick_icon="stack"/>
+    <entry t="54.6" text="前からエクサフレア" castname="ディメンショナル・ディストーション" duration="3.7" tts="前からエクサくるよ" gimmick_icon="exaflare"/>
+    <entry t="62.8" text="全体攻撃" castname="ワールドシャッター" sync="false" gimmick_icon="raidwide"/>
+    <entry t="64.8" text="前面焼き＋タンク塔踏み" castname="クイーンズハンド" duration="4.7" gimmick_icon="tower"/>
     <entry t="74.9" castname="ダイイングメモリー" sync="false"/>
-    <entry t="75.8" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="75.8" text="タンク強攻撃1回目" castname="プロセキューション・ウォー" sync="false" gimmick_icon="tankbuster"/>
     <entry t="76.1" text="8回攻撃" castname="ダイイングメモリー" sync="false" tts="8回攻撃、軽減しっかりー"/>
     <entry t="77.2" castname="ダイイングメモリー" sync="false"/>
     <entry t="78.3" castname="ダイイングメモリー" sync="false"/>
-    <entry t="78.8" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false"/>
+    <entry t="78.8" text="タンク強攻撃2回目" castname="プロセキューション・ウォー" sync="false" gimmick_icon="tankbuster"/>
     <entry t="79.4" castname="ダイイングメモリー" sync="false"/>
     <entry t="80.5" castname="ダイイングメモリー" sync="false"/>
     <entry t="81.6" castname="ダイイングメモリー" sync="false"/>
     <entry t="82.7" castname="ダイイングメモリー" sync="false"/>
     <entry t="85.8" text="7回＋1回攻撃" castname="バニッシュレイ" duration="4.7" tts="8回攻撃、軽減しっかりー"/>
-    <entry t="91.8" text="全体攻撃" castname="ロイヤルドメイン" sync="false"/>
+    <entry t="91.8" text="全体攻撃" castname="ロイヤルドメイン" sync="false" gimmick_icon="raidwide"/>
     <entry t="97.8" castname="最終詠唱開始" sync="false" tts=""/>
     <entry t="112.1" text="床変化1回目" castname="ラディカルシフト" duration="10.7" tts="床かわるよ"/>
     <entry t="131.3" text="床変化2回目" castname="ラディカルシフト" duration="10.7"/>

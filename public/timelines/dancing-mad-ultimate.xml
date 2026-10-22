@@ -13,14 +13,14 @@
     <entry t="27.1" text="神々の像" castname="神々の像" duration="2.7"/>
     <entry t="33.2" castname="ひろげるブリザガ" duration="4.7"/>
     <entry t="33.2" text="マジック" castname="なぞなぞマジック" duration="4.7"/>
-    <entry t="35.9" text="ノックバック" castname="波動弾" sync="false"/>
+    <entry t="35.9" text="ノックバック" castname="波動弾" sync="false" gimmick_icon="knockback"/>
     <entry t="42.4" text="トラップ付与" castname="つぎつぎトラップ" duration="2.7"/>
     <entry t="43.2" castname="波動砲" sync="false"/>
     <entry t="43.9" castname="爆発" duration="2.7"/>
     <entry t="49.5" castname="ひろげるブリザガ" duration="4.7"/>
     <entry t="49.5" text="マジック" castname="なぞなぞマジック" duration="4.7"/>
     <entry t="50.4" castname="トラップ発動" sync="false" tts="ノックバック"/>
-    <entry t="58.6" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃"/>
+    <entry t="58.6" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="66.7" text="ドライブ3" castname="ハイパードライブ" sync="false"/>
     <entry t="68.7" castname="ドライブ2" sync="false" tts=""/>
     <entry t="68.8" castname="ハイパードライブ" sync="false"/>
@@ -32,14 +32,14 @@
     <entry t="93.1" text="強攻撃2" castname="ばりばりルインガ" duration="4.7"/>
     <entry t="101.2" castname="強攻撃1" sync="false" tts=""/>
     <entry t="101.4" castname="ばりばりルインガ" sync="false"/>
-    <entry t="102.2" text="半面攻撃" castname="重力波|撲殺の神気" sync="false"/>
+    <entry t="102.2" text="半面攻撃" castname="重力波|撲殺の神気" sync="false" gimmick_icon="half-room"/>
     <entry t="106.9" castname="重力弾" sync="false"/>
     <entry t="110.9" castname="岩石弾" sync="false"/>
-    <entry t="115.3" text="半面攻撃" castname="重力波|撲殺の神気" sync="false"/>
+    <entry t="115.3" text="半面攻撃" castname="重力波|撲殺の神気" sync="false" gimmick_icon="half-room"/>
     <entry t="117.3" castname="トラップ発動" sync="false" tts="ノックバック"/>
     <entry t="119.1" castname="つぎつぎトラップ" sync="false"/>
     <entry t="122.0" castname="グラビガ" sync="false"/>
-    <entry t="128.3" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃"/>
+    <entry t="128.3" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="136.5" text="ドライブ3" castname="ハイパードライブ" sync="false"/>
     <entry t="138.5" castname="ドライブ2" sync="false" tts=""/>
     <entry t="138.6" castname="ハイパードライブ" sync="false"/>
@@ -101,7 +101,7 @@
   </phase>
   <phase id="p3" name="P3: Exdeath and Chaos">
     <entry t="0.1" text="決戦" castname="決戦" duration="2.7" tts="決戦"/>
-    <entry t="17.7" text="全体攻撃" castname="バウル・オブ・アゴニー" duration="4.7"/>
+    <entry t="17.7" text="全体攻撃" castname="バウル・オブ・アゴニー" duration="4.7" gimmick_icon="raidwide"/>
     <entry t="34.9" text="1回目+サンダガ" castname="サンダガ" duration="6.7"/>
     <entry t="46.0" text="サンダガ" castname="サンダガ" duration="4.7"/>
     <entry t="58.9" text="縦/横" castname="ホリゾンタルインプロージョン|ヴァーティカルインプロージョン" duration="4.7"/>
@@ -169,12 +169,12 @@
     <entry t="45.0" text="Gクロス3" castname="グランドクロス" duration="8.7"/>
     <entry t="61.2" castname="無の氾濫" duration="4.7"/>
     <entry t="71.9" text="水/雷" castname="マジックチャージ" duration="2.7" tts="散開注意"/>
-    <entry t="78.2" text="視線+サンダガ" castname="もりもりサンダガ" duration="4.7" tts="視線"/>
-    <entry t="88.3" text="全体攻撃" castname="どきどきアルテマ" duration="4.7" tts="全体攻撃"/>
+    <entry t="78.2" text="視線+サンダガ" castname="もりもりサンダガ" duration="4.7" tts="視線" gimmick_icon="gaze-away"/>
+    <entry t="88.3" text="全体攻撃" castname="どきどきアルテマ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="96.0" castname="混沌の炎" sync="false"/>
     <entry t="96.2" text="ブリザガ" castname="ひろげるブリザガ" duration="4.7"/>
     <entry t="100.0" castname="水/雷" sync="false" tts="散開注意"/>
-    <entry t="107.4" text="視線 / 床+水" castname="マジックアウト" duration="6.7" tts="視線"/>
+    <entry t="107.4" text="視線 / 床+水" castname="マジックアウト" duration="6.7" tts="視線" gimmick_icon="gaze-away"/>
     <entry t="123.4" text="時間切れ" castname="裁きの光" sync="false"/>
     <entry t="127.2" text="アルテマ" castname="どきどきアルテマ" duration="4.7"/>
     <entry t="155.8" castname="☆軽減注意(早炊)" sync="false" tts=""/>
@@ -216,7 +216,7 @@
     <entry t="107.1" castname="混沌の終末" duration="3.7"/>
     <entry t="113.2" castname="混沌の終末" sync="false"/>
     <entry t="115.2" castname="混沌の終末" sync="false"/>
-    <entry t="115.8" text="☆散開注意 / 混沌の渦" castname="混沌の渦" duration="4.7" tts="散開注意、散開"/>
+    <entry t="115.8" text="☆散開注意 / 混沌の渦" castname="混沌の渦" duration="4.7" tts="散開注意、散開" gimmick_icon="spread"/>
     <entry t="117.2" castname="混沌の終末" sync="false"/>
     <entry t="119.3" castname="混沌の終末" sync="false"/>
     <entry t="121.6" castname="混沌の渦" sync="false"/>

@@ -30,3 +30,6 @@ overlay tools/skeletons/aac-heavyweight-m4-savage.xml 'sources/AAC_Heavyweight_M
 
 # 技名の一覧（タイムラインを記録する画面が使う）を作り直す
 python3 tools/build-castnames.py
+
+# ギミックのアイコンを表示の文のキーワードから付ける（作り直すと消えるため）
+python3 tools/apply-gimmick-icons.py

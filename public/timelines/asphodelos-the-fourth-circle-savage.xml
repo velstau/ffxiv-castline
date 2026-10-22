@@ -20,8 +20,8 @@
     <entry t="42.7" text="ペルソナ(呪詛デバフ付与)" castname="エンチャンテッドペロネー：ペルソナ" duration="4.7"/>
     <entry t="56.9" text="線AoE＋呪詛発動" castname="インヴァースクラミュス" duration="6.7"/>
     <entry t="68.0" text="デコレーション" castname="デコレーション" duration="4.7"/>
-    <entry t="77.2" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。"/>
-    <entry t="85.2" castname="タンク強攻撃２" sync="false" tts=""/>
+    <entry t="77.2" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。" gimmick_icon="tankbuster"/>
+    <entry t="85.2" castname="タンク強攻撃２" sync="false" tts="" gimmick_icon="tankbuster"/>
     <entry t="85.3" castname="エレガントイヴィセレーション" sync="false"/>
     <entry t="96.6" text="劇場創造" castname="劇場創造" duration="3.7"/>
     <entry t="108.8" text="ピナクス" castname="ピナクス" duration="4.7" tts="次は、床を確認。"/>
@@ -31,27 +31,27 @@
     <entry t="137.2" castname="ピナクス発動３" sync="false" tts=""/>
     <entry t="139.7" castname="シフティングストライク" sync="false" tts=""/>
     <entry t="148.2" castname="ピナクス発動４" sync="false" tts=""/>
-    <entry t="151.6" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。"/>
-    <entry t="159.6" castname="タンク強攻撃２" sync="false" tts=""/>
+    <entry t="151.6" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。" gimmick_icon="tankbuster"/>
+    <entry t="159.6" castname="タンク強攻撃２" sync="false" tts="" gimmick_icon="tankbuster"/>
     <entry t="159.7" castname="エレガントイヴィセレーション" sync="false"/>
-    <entry t="163.9" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="163.9" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7" gimmick_icon="raidwide"/>
     <entry t="175.1" text="劇場創造" castname="劇場創造" duration="3.7"/>
     <entry t="187.2" text="リベンジ(デバフ付与)" castname="エンチャンテッドペロネー：リベンジ" duration="3.7"/>
     <entry t="195.3" text="エレメンタル(デバフ付与)" castname="エンチャンテッドペロネー：エレメンタル" duration="3.7"/>
-    <entry t="203.5" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7"/>
+    <entry t="203.5" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7" gimmick_icon="raidwide"/>
     <entry t="211.7" text="エクスプロージョン(玉取り)" castname="エンチャンテッドペロネー：エクスプロージョン" duration="4.7"/>
     <entry t="225.8" text="ペリアクトイ" castname="ペリアクトイ" duration="4.7"/>
-    <entry t="239.1" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7"/>
-    <entry t="246.2" text="ラウンド(塔)" castname="エンチャンテッドペロネー：ラウンド" duration="3.7"/>
+    <entry t="239.1" text="ブラッドレイク(全体)" castname="ブラッドレイク" duration="3.7" gimmick_icon="raidwide"/>
+    <entry t="246.2" text="ラウンド(塔)" castname="エンチャンテッドペロネー：ラウンド" duration="3.7" gimmick_icon="tower"/>
     <entry t="253.4" text="線AoE" castname="インヴァースクラミュス" duration="6.7"/>
     <entry t="263.5" text="エーテルクラミュス" castname="エーテルクラミュス" duration="3.7"/>
     <entry t="271.7" text="ブラッドレイク" castname="ブラッドレイク" duration="3.7"/>
-    <entry t="279.8" text="ラウンド(塔)" castname="エンチャンテッドペロネー：ラウンド" duration="3.7"/>
+    <entry t="279.8" text="ラウンド(塔)" castname="エンチャンテッドペロネー：ラウンド" duration="3.7" gimmick_icon="tower"/>
     <entry t="293.0" text="ペルソナ(呪詛デバフ付与)" castname="エンチャンテッドペロネー：ペルソナ" duration="4.7"/>
     <entry t="307.1" text="線AoE＋呪詛発動" castname="インヴァースクラミュス" duration="6.7"/>
     <entry t="318.3" text="デコレーション" castname="デコレーション" duration="4.7"/>
-    <entry t="327.5" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。"/>
-    <entry t="335.4" castname="タンク強攻撃２" sync="false" tts=""/>
+    <entry t="327.5" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。" gimmick_icon="tankbuster"/>
+    <entry t="335.4" castname="タンク強攻撃２" sync="false" tts="" gimmick_icon="tankbuster"/>
     <entry t="335.7" castname="エレガントイヴィセレーション" sync="false"/>
     <entry t="346.9" text="劇場創造" castname="劇場創造" duration="3.7"/>
     <entry t="359.1" text="ピナクス" castname="ピナクス" duration="4.7"/>
@@ -72,7 +72,7 @@
     <entry t="35.4" text="シアリングストリーム" castname="シアリングストリーム" duration="4.7"/>
     <entry t="46.6" text="ソーンヘッジ" castname="ソーンヘッジ" duration="7.7"/>
     <entry t="56.6" text="大AoE" castname="ヘーミテオス・ファイジャ" duration="0.7"/>
-    <entry t="60.6" text="塔踏み" castname="ヘーミテオス・サンダガ" sync="false"/>
+    <entry t="60.6" text="塔踏み" castname="ヘーミテオス・サンダガ" sync="false" gimmick_icon="tower"/>
     <entry t="64.6" castname="大AoE" sync="false" tts=""/>
     <entry t="64.7" text="近思or遠見" castname="近思の魔撃|遠見の魔撃" duration="4.7"/>
     <entry t="78.0" castname="茨の悲劇：第二幕" duration="4.7"/>
@@ -80,24 +80,24 @@
     <entry t="87.1" text="半神の双撃" castname="半神の双撃" duration="4.7" tts="次は、タンク強攻撃。"/>
     <entry t="96.3" text="ソーンヘッジ" castname="ソーンヘッジ" duration="5.7"/>
     <entry t="105.5" text="ダークデザイン(エラプ)" castname="ダークデザイン" duration="4.7"/>
-    <entry t="109.3" castname="紫TH：線切り" sync="false" tts=""/>
-    <entry t="114.5" castname="大AoE+塔踏み+頭割り1" sync="false" tts=""/>
+    <entry t="109.3" castname="紫TH：線切り" sync="false" tts="" gimmick_icon="tether-stretch"/>
+    <entry t="114.5" castname="大AoE+塔踏み+頭割り1" sync="false" tts="" gimmick_icon="stack"/>
     <entry t="121.4" castname="ヘーミテオス・ファイジャ" duration="0.7"/>
-    <entry t="121.5" castname="大AoE+塔踏み+頭割り2" sync="false" tts=""/>
+    <entry t="121.5" castname="大AoE+塔踏み+頭割り2" sync="false" tts="" gimmick_icon="stack"/>
     <entry t="122.6" text="アルティメットインパルス" castname="アルティメットインパルス" duration="6.7" tts="次は、全体攻撃。"/>
     <entry t="124.2" text="(エアロガ終)" castname="ヘーミテオス・エアロガ" sync="false"/>
     <entry t="137.9" text="茨の悲劇：第三幕" castname="茨の悲劇：第三幕" duration="4.7"/>
     <entry t="147.1" text="ソーンヘッジ" castname="ソーンヘッジ" duration="7.7"/>
     <entry t="158.2" text="キック１" castname="コトルヌスキック" duration="4.6"/>
     <entry t="163.3" castname="コトルヌスキック" sync="false"/>
-    <entry t="167.3" text="扇範囲誘導１" castname="コトルヌスクエイク" sync="false"/>
-    <entry t="167.3" castname="塔踏み１" sync="false" tts=""/>
-    <entry t="169.3" castname="ノックバック" sync="false" tts="次は、ノックバック。@ANTI_KNOCKBACK。"/>
+    <entry t="167.3" text="扇範囲誘導１" castname="コトルヌスクエイク" sync="false" gimmick_icon="cone"/>
+    <entry t="167.3" castname="塔踏み１" sync="false" tts="" gimmick_icon="tower"/>
+    <entry t="169.3" castname="ノックバック" sync="false" tts="次は、ノックバック。@ANTI_KNOCKBACK。" gimmick_icon="knockback"/>
     <entry t="173.1" castname="ヘーミテオス・サンダガ" duration="0.7"/>
     <entry t="173.3" castname="キック２" sync="false" tts=""/>
-    <entry t="173.3" castname="塔踏み２" sync="false" tts=""/>
+    <entry t="173.3" castname="塔踏み２" sync="false" tts="" gimmick_icon="tower"/>
     <entry t="173.4" castname="コトルヌスキック" sync="false"/>
-    <entry t="177.3" castname="扇範囲誘導２" sync="false" tts=""/>
+    <entry t="177.3" castname="扇範囲誘導２" sync="false" tts="" gimmick_icon="cone"/>
     <entry t="177.5" castname="コトルヌスクエイク" sync="false"/>
     <entry t="181.6" text="近思or遠見" castname="近思の魔撃|遠見の魔撃" duration="4.7"/>
     <entry t="196.8" text="ハートステイク(DoT)" castname="ハートステイク" duration="4.7" tts="次は、タンク強攻撃。"/>
@@ -106,7 +106,7 @@
     <entry t="218.3" text="シアリングストリーム" castname="シアリングストリーム" duration="4.7"/>
     <entry t="227.5" text="ソーンヘッジ" castname="ソーンヘッジ" duration="4.7"/>
     <entry t="235.6" text="シアリングストリーム" castname="シアリングストリーム" duration="4.7" tts="次は、ヒールを受けたら移動。"/>
-    <entry t="245.6" castname="塔＋ウォタガ目安" sync="false" tts=""/>
+    <entry t="245.6" castname="塔＋ウォタガ目安" sync="false" tts="" gimmick_icon="tower"/>
     <entry t="252.6" castname="大AoE＋ダージャ1目安" sync="false" tts=""/>
     <entry t="257.6" castname="大AoE＋ダージャ2目安" sync="false" tts=""/>
     <entry t="262.6" castname="大AoE＋ダージャ3目安" sync="false" tts=""/>
@@ -129,7 +129,7 @@
     <entry t="326.7" castname="フリーティングインパルス" sync="false"/>
     <entry t="330.4" text="ソーンヘッジ" castname="ソーンヘッジ" duration="5.7"/>
     <entry t="338.4" castname="ヘーミテオス・サンダガ" duration="0.7"/>
-    <entry t="339.4" castname="塔踏みｘ８" sync="false" tts=""/>
+    <entry t="339.4" castname="塔踏みｘ８" sync="false" tts="" gimmick_icon="tower"/>
     <entry t="347.5" text="近思or遠見" castname="近思の魔撃|遠見の魔撃" duration="4.7"/>
     <entry t="360.8" text="シアリングストリーム" castname="シアリングストリーム" duration="4.7"/>
     <entry t="370.0" text="半神の双撃" castname="半神の双撃" duration="4.7" tts="次は、タンク頭割り。"/>

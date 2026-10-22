@@ -69,7 +69,7 @@
     <entry t="19.6" castname="攻撃" sync="false"/>
     <entry t="21.6" castname="闇の戦技：三重" duration="9.7"/>
     <entry t="22.6" castname="攻撃" sync="false"/>
-    <entry t="24.7" text="塔が出現" castname="波動球" duration="5.7" tts="塔がポップ"/>
+    <entry t="24.7" text="塔が出現" castname="波動球" duration="5.7" tts="塔がポップ" gimmick_icon="tower"/>
     <entry t="32.1" castname="闇の戦技" sync="false"/>
     <entry t="34.6" castname="狙撃式 波動砲" sync="false"/>
     <entry t="34.8" castname="攻撃" sync="false"/>
@@ -139,7 +139,7 @@
     <entry t="196.4" castname="波動の呪詛" duration="1.7"/>
     <entry t="198.5" castname="攻撃" sync="false"/>
     <entry t="201.7" castname="攻撃" sync="false"/>
-    <entry t="203.7" text="塔が出現" castname="波動球" duration="5.7" tts="塔がポップ"/>
+    <entry t="203.7" text="塔が出現" castname="波動球" duration="5.7" tts="塔がポップ" gimmick_icon="tower"/>
     <entry t="204.7" castname="跳躍波動砲【正撃・側撃】" duration="5.7"/>
     <entry t="213.8" castname="攻撃" sync="false"/>
     <entry t="216.8" castname="攻撃" sync="false"/>

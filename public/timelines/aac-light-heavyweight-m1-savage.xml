@@ -8,7 +8,7 @@
   <note>FFLogs の公開ランキングの討伐の記録（9:22）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="5.8" castname="セリフ" sync="false" tts=""/>
-    <entry t="9.7" text="散開 / ネイル4" castname="クアドラプルネイル" duration="4.7" tts="誘導注意"/>
+    <entry t="9.7" text="散開 / ネイル4" castname="クアドラプルネイル" duration="4.7" tts="誘導注意" gimmick_icon="spread"/>
     <entry t="11.7" castname="セリフ" sync="false" tts=""/>
     <entry t="15.5" castname="クアドラプルネイル" sync="false"/>
     <entry t="16.7" text="ネイル3" castname="クアドラプルネイル" duration="0.7"/>
@@ -25,14 +25,14 @@
     <entry t="77.4" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
     <entry t="84.4" text="W/Qクロウ" castname="ダブルクロウ|クァッドクロウ" duration="4.7"/>
     <entry t="91.5" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="分身がポップ"/>
-    <entry t="96.6" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="96.6" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7" gimmick_icon="spread"/>
     <entry t="102.6" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="104.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="106.3" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="107.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="110.5" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="113.6" castname="W/Qクロウ" sync="false" tts=""/>
-    <entry t="118.6" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃"/>
+    <entry t="118.6" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="136.6" castname="セリフ" sync="false" tts=""/>
     <entry t="137.0" text="予兆確認 / 床破壊" castname="マウサーラッシュ" duration="9.7" tts="予兆を確認"/>
     <entry t="148.4" castname="マウサーラッシュ" sync="false"/>
@@ -64,7 +64,7 @@
     <entry t="265.4" castname="リーピング・デュアルネイル" sync="false"/>
     <entry t="270.4" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="場所を確認"/>
     <entry t="275.4" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
-    <entry t="280.7" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7"/>
+    <entry t="280.7" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7" gimmick_icon="spread"/>
     <entry t="286.7" castname="リーピング・クアドラプルネイル" sync="false"/>
     <entry t="288.7" castname="リーピング・クアドラプルネイル" duration="0.7"/>
     <entry t="290.4" castname="リーピング・クアドラプルネイル" sync="false"/>
@@ -76,7 +76,7 @@
     <entry t="326.7" castname="テンペストテアー" sync="false"/>
     <entry t="344.0" castname="ネイルチッパー" duration="6.7"/>
     <entry t="351.6" castname="予約発動2" sync="false" tts=""/>
-    <entry t="367.0" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃"/>
+    <entry t="367.0" text="全体攻撃" castname="ブラッディースクラッチ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="385.4" text="予兆確認 / 床破壊" castname="マウサーラッシュ" duration="9.7" tts="次は、マウサーラッシュ。"/>
     <entry t="396.9" castname="マウサーラッシュ" sync="false"/>
     <entry t="398.3" castname="マウサーラッシュ" sync="false"/>
@@ -106,7 +106,7 @@
     <entry t="482.4" castname="キャッタクリスム・ゲイル" sync="false"/>
     <entry t="484.4" text="衝撃波" castname="衝撃波" duration="5.7" tts="ノックバック"/>
     <entry t="490.3" castname="キャッタクリスム・ゲイル" duration="4.7"/>
-    <entry t="508.8" text="線取り / 4" castname="レイニングキャッツ" duration="5.7" tts="線取り開始"/>
+    <entry t="508.8" text="線取り / 4" castname="レイニングキャッツ" duration="5.7" tts="線取り開始" gimmick_icon="tether-take"/>
     <entry t="515.5" castname="レイニングキャッツ" sync="false"/>
     <entry t="521.5" text="3" castname="レイニングキャッツ" sync="false"/>
     <entry t="527.5" text="2" castname="レイニングキャッツ" sync="false"/>

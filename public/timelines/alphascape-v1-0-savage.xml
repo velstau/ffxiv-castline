@@ -28,7 +28,7 @@
     <entry t="135.9" text="たつまき" castname="たつまき" duration="4.7" tts="@NOTICE_TORNADO"/>
     <entry t="148.1" text="アンブラスマッシュ" castname="アンブラスマッシュ" duration="4.7"/>
     <entry t="157.3" text="ダミングイーディクト" castname="ダミングイーディクト" duration="5.7"/>
-    <entry t="166.3" castname="吹き飛ばし" sync="false" tts=""/>
+    <entry t="166.3" castname="吹き飛ばし" sync="false" tts="" gimmick_icon="knockback"/>
     <entry t="176.4" text="カオティックディスパーション" castname="カオティックディスパーション" duration="4.7" tts="次は、タンク大ダメージ。"/>
     <entry t="188.6" text="たつまき" castname="たつまき" duration="4.7" tts="次は、たつまき。"/>
     <entry t="193.7" castname="たつまき" sync="false"/>
@@ -37,8 +37,8 @@
     <entry t="206.8" castname="着弾" sync="false"/>
     <entry t="208.0" text="突出せよ" castname="突出せよ" duration="4.7"/>
     <entry t="208.1" castname="突出" duration="5.4"/>
-    <entry t="211.8" castname="吹き飛ばし" sync="false" tts=""/>
-    <entry t="220.2" text="追尾せよ（タンク線取り）" castname="追尾せよ" duration="4.7"/>
+    <entry t="211.8" castname="吹き飛ばし" sync="false" tts="" gimmick_icon="knockback"/>
+    <entry t="220.2" text="追尾せよ（タンク線取り）" castname="追尾せよ" duration="4.7" gimmick_icon="tether-take"/>
     <entry t="234.2" castname="ローディング" sync="false" tts=""/>
     <entry t="245.6" castname="バウル・オブ・アゴニー" duration="4.7"/>
     <entry t="267.7" castname="混沌の水" sync="false"/>
@@ -59,7 +59,7 @@
     <entry t="394.3" castname="混沌の水" sync="false"/>
     <entry t="395.9" text="突出せよ" castname="突出せよ" duration="4.7"/>
     <entry t="396.0" castname="突出" duration="5.4"/>
-    <entry t="408.1" text="追尾せよ(タンク線取り)" castname="追尾せよ" duration="4.7"/>
+    <entry t="408.1" text="追尾せよ(タンク線取り)" castname="追尾せよ" duration="4.7" gimmick_icon="tether-take"/>
     <entry t="430.3" text="じしん" castname="じしん" duration="4.7" tts="@NOTICE_EARTHSHAKE"/>
     <entry t="440.5" castname="じしん" duration="4.7"/>
     <entry t="444.0" castname="ホリゾンタルインプロージョン" duration="4.7"/>

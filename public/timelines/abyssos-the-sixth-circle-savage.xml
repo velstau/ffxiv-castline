@@ -7,11 +7,11 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:40）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="9.1" text="全体" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
-    <entry t="20.8" text="タンク頭割り" castname="キール・シュネルギア" duration="6.7" tts="タンク頭割り"/>
+    <entry t="9.1" text="全体" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
+    <entry t="20.8" text="タンク頭割り" castname="キール・シュネルギア" duration="6.7" tts="タンク頭割り" gimmick_icon="tank-share"/>
     <entry t="36.9" castname="セリフ" sync="false" tts=""/>
     <entry t="37.8" text="ポリオミノ" castname="エーテル・ポリオミノ" duration="3.7" tts="床を確認"/>
-    <entry t="44.4" text="【予兆】ペア頭割り" castname="ダークホーリー" duration="3.7" tts="ペアの頭割り"/>
+    <entry t="44.4" text="【予兆】ペア頭割り" castname="ダークホーリー" duration="3.7" tts="ペアの頭割り" gimmick_icon="stack"/>
     <entry t="50.5" text="エクソークリーバー" castname="エクソークリーバー" duration="3.7" tts="移動注意"/>
     <entry t="57.1" castname="エクソークリーバー" sync="false"/>
     <entry t="62.5" castname="セリフ" sync="false" tts=""/>
@@ -39,7 +39,7 @@
     <entry t="113.5" castname="ホロス・イクソス" sync="false"/>
     <entry t="113.9" castname="ホロス・イクソス1" sync="false" tts=""/>
     <entry t="121.2" text="シュネルギア" castname="キール・シュネルギア|シュネルギア" duration="6.0"/>
-    <entry t="135.4" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
+    <entry t="135.4" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="147.1" text="寄生" castname="寄生" duration="4.7" tts="デバフを確認"/>
     <entry t="160.5" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="165.5" castname="ホロス・イクソス2" sync="false" tts=""/>
@@ -52,18 +52,18 @@
     <entry t="189.4" castname="AoE注意" sync="false" tts="えーおーいー注意"/>
     <entry t="190.1" text="ダークドーム" castname="ダークドーム" duration="3.7"/>
     <entry t="195.0" castname="ダークドーム" duration="3.7"/>
-    <entry t="205.5" text="【予告】2組頭割り" castname="エーテルチェンジ" duration="2.7" tts="2組頭割り"/>
+    <entry t="205.5" text="【予告】2組頭割り" castname="エーテルチェンジ" duration="2.7" tts="2組頭割り" gimmick_icon="stack"/>
     <entry t="211.1" text="チェンジバースト" castname="チェンジバースト" duration="3.7"/>
     <entry t="216.0" castname="ダークホーリー" duration="6.7"/>
     <entry t="219.0" text="移動注意" castname="エクソークリーバー" duration="3.7" tts="移動注意"/>
     <entry t="225.6" castname="エクソークリーバー" sync="false"/>
     <entry t="231.6" text="シュネルギア" castname="キール・シュネルギア|シュネルギア" duration="6.7"/>
-    <entry t="245.8" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7"/>
-    <entry t="257.4" text="【予告】2箇所安置2頭割り" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="245.8" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" gimmick_icon="raidwide"/>
+    <entry t="257.4" text="【予告】2箇所安置2頭割り" castname="エーテルチェンジ" duration="2.7" gimmick_icon="stack"/>
     <entry t="263.1" text="エーテル・ポリオミノΣ" castname="エーテル・ポリオミノΣ" duration="3.7" tts="安置を確認"/>
-    <entry t="269.7" text="2組頭割り" castname="ダークホーリー" duration="3.7" tts="頭割り"/>
+    <entry t="269.7" text="2組頭割り" castname="ダークホーリー" duration="3.7" tts="頭割り" gimmick_icon="stack"/>
     <entry t="274.8" castname="ダークホーリー" duration="5.7"/>
-    <entry t="288.6" text="X散開" castname="ダークアッシュ" duration="3.7" tts="エックス字に散開"/>
+    <entry t="288.6" text="X散開" castname="ダークアッシュ" duration="3.7" tts="エックス字に散開" gimmick_icon="spread"/>
     <entry t="293.5" castname="ダークアッシュ" duration="7.7"/>
     <entry t="296.1" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="301.1" castname="ホロス・イクソス2" sync="false" tts=""/>
@@ -91,7 +91,7 @@
     <entry t="356.3" castname="プテラ・イクソス" sync="false"/>
     <entry t="363.5" castname="シュネルギア" duration="6.7"/>
     <entry t="370.3" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
-    <entry t="377.6" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
+    <entry t="377.6" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="388.6" castname="【予告】市松模様とAoE設置" sync="false" tts=""/>
     <entry t="389.3" text="エーテル・ポリオミノ" castname="エーテル・ポリオミノ" duration="3.7" tts="安置へ散開"/>
     <entry t="395.9" text="ダークスフィア" castname="ダークスフィア" duration="3.7"/>
@@ -110,11 +110,11 @@
     <entry t="469.7" text="ホロス・イクソス" castname="ホロス・イクソス" sync="false"/>
     <entry t="476.3" castname="シュネルギア" duration="6.7"/>
     <entry t="484.2" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
-    <entry t="490.5" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
+    <entry t="490.5" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide"/>
     <entry t="504.5" castname="カヘキシー2回目" sync="false" tts="カヘキシ2回目"/>
     <entry t="504.9" text="カヘキシー" castname="カヘキシー" duration="2.7"/>
     <entry t="510.5" text="寄生" castname="寄生" duration="4.7"/>
-    <entry t="520.2" text="予告】4か所安置ペア頭割り" castname="エーテルチェンジ" duration="2.7"/>
+    <entry t="520.2" text="予告】4か所安置ペア頭割り" castname="エーテルチェンジ" duration="2.7" gimmick_icon="stack"/>
     <entry t="525.8" text="エーテル・ポリオミノΣ" castname="エーテル・ポリオミノΣ" duration="3.7"/>
     <entry t="537.2" text="プテラ・イクソス" castname="プテラ・イクソス" duration="5.7" tts="プテライクソス"/>
     <entry t="537.2" castname="ダークホーリー" duration="5.7"/>
