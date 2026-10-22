@@ -34,14 +34,14 @@
     <entry t="93.5" text="【予告】マーカーと線" castname="エーテルチェンジ" duration="2.7" tts="マーカー入れ替えギミック"/>
     <entry t="99.2" text="チェンジバースト" castname="チェンジバースト" duration="3.7"/>
     <entry t="104.0" castname="ダークホーリー" duration="6.7"/>
-    <entry t="105.9" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="105.9" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="110.9" castname="ホロス・イクソス2" sync="false" tts=""/>
     <entry t="113.5" castname="ホロス・イクソス" sync="false"/>
     <entry t="113.9" castname="ホロス・イクソス1" sync="false" tts=""/>
     <entry t="121.2" text="シュネルギア" castname="キール・シュネルギア|シュネルギア" duration="6.0"/>
     <entry t="135.4" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
     <entry t="147.1" text="寄生" castname="寄生" duration="4.7" tts="デバフを確認"/>
-    <entry t="160.5" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="160.5" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="165.5" castname="ホロス・イクソス2" sync="false" tts=""/>
     <entry t="166.0" castname="寄生攻撃" sync="false" tts=""/>
     <entry t="168.1" castname="ホロス・イクソス" sync="false"/>
@@ -65,7 +65,7 @@
     <entry t="274.8" castname="ダークホーリー" duration="5.7"/>
     <entry t="288.6" text="X散開" castname="ダークアッシュ" duration="3.7" tts="エックス字に散開"/>
     <entry t="293.5" castname="ダークアッシュ" duration="7.7"/>
-    <entry t="296.1" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="296.1" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="301.1" castname="ホロス・イクソス2" sync="false" tts=""/>
     <entry t="303.6" castname="ホロス・イクソス" sync="false"/>
     <entry t="304.1" castname="ホロス・イクソス1" sync="false" tts=""/>
@@ -89,7 +89,7 @@
     <entry t="346.3" castname="甲殻爪撃" sync="false"/>
     <entry t="349.3" text="デバフ注意 / プテラ・イクソス" castname="プテラ・イクソス" duration="5.7" tts="プテライクソス"/>
     <entry t="356.3" castname="プテラ・イクソス" sync="false"/>
-    <entry t="363.5" castname="シュネルギア" duration="6.0"/>
+    <entry t="363.5" castname="シュネルギア" duration="6.7"/>
     <entry t="370.3" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
     <entry t="377.6" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
     <entry t="388.6" castname="【予告】市松模様とAoE設置" sync="false" tts=""/>
@@ -101,14 +101,14 @@
     <entry t="418.4" text="【予告】マーカーと線" castname="エーテルチェンジ" duration="2.7"/>
     <entry t="424.1" text="チェンジバースト" castname="チェンジバースト" duration="3.7"/>
     <entry t="429.0" castname="ダークホーリー" duration="6.7"/>
-    <entry t="430.8" text="タテヨコ確認 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="430.8" text="タテヨコ確認 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="438.4" text="ホロス・イクソス" castname="ホロス・イクソス" sync="false"/>
     <entry t="445.1" text="【予告】タテヨコと安置探し" castname="エーテルチェンジ" duration="2.7"/>
     <entry t="450.1" castname="エーテル・ポリオミノΣ" sync="false" tts=""/>
     <entry t="450.7" text="エーテル・ポリオミノΣ" castname="エーテル・ポリオミノΣ" duration="3.7"/>
-    <entry t="462.1" text="タテヨコ注意 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="462.1" text="タテヨコ注意 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="469.7" text="ホロス・イクソス" castname="ホロス・イクソス" sync="false"/>
-    <entry t="476.3" castname="シュネルギア" duration="6.0"/>
+    <entry t="476.3" castname="シュネルギア" duration="6.7"/>
     <entry t="484.2" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
     <entry t="490.5" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃"/>
     <entry t="504.5" castname="カヘキシー2回目" sync="false" tts="カヘキシ2回目"/>
@@ -125,7 +125,7 @@
     <entry t="566.1" castname="ダークドーム" duration="3.7"/>
     <entry t="570.2" castname="調査中" sync="false" tts=""/>
     <entry t="577.6" castname="エーテル・ポリオミノ" duration="3.7"/>
-    <entry t="586.4" castname="ホロス・イクソス" duration="4.2"/>
+    <entry t="586.4" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="594.0" castname="ホロス・イクソス" sync="false"/>
     <entry t="600.6" castname="キール・シュネルギア" duration="6.7"/>
     <entry t="607.2" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>

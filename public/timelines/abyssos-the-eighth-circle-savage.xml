@@ -141,7 +141,7 @@
     <entry t="97.0" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7" tts="タンク強攻撃"/>
     <entry t="107.1" castname="AA" sync="false" tts=""/>
     <entry t="109.1" castname="軽減注意" sync="false" tts=""/>
-    <entry t="109.2" text="概念支配1回目" castname="概念支配" duration="4.7" tts="概念支配"/>
+    <entry t="109.2" text="概念支配1回目" castname="概念支配" duration="9.0" tts="概念支配"/>
     <entry t="123.3" text="魔法陣起動1回目" castname="魔法陣起動" duration="2.7" tts="1回目、発動"/>
     <entry t="132.5" text="半面＋塔発動" castname="アッシュブレイズ" duration="5.7" tts="塔処理"/>
     <entry t="141.7" text="魔法陣起動2回目" castname="魔法陣起動" duration="2.7" tts="2回目、発動"/>
@@ -180,7 +180,7 @@
     <entry t="310.9" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7"/>
     <entry t="320.9" castname="AA" sync="false" tts=""/>
     <entry t="321.9" castname="軽減注意" sync="false" tts=""/>
-    <entry t="323.1" text="概念支配" castname="概念支配" duration="4.7" tts="概念支配"/>
+    <entry t="323.1" text="概念支配" castname="概念支配" duration="9.0" tts="概念支配"/>
     <entry t="337.3" text="魔法陣起動" castname="魔法陣起動" duration="2.7" tts="1回目、発動"/>
     <entry t="346.5" text="半面+塔発動" castname="アッシュブレイズ" duration="5.7"/>
     <entry t="355.6" text="魔法陣起動" castname="魔法陣起動" duration="2.7" tts="2回目、発動"/>

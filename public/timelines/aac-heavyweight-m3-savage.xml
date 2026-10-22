@@ -19,7 +19,7 @@
     <entry t="59.0" castname="ウェポンアサルト" sync="false"/>
     <entry t="60.8" text="ウェポン3" castname="重打撃|重斬波|斬波" sync="false"/>
     <entry t="70.2" castname="トロフィーウェポンズ" duration="2.7"/>
-    <entry t="76.3" castname="コメットレイン" duration="3.7"/>
+    <entry t="76.3" castname="コメットレイン" duration="4.7"/>
     <entry t="85.8" text="軽減準備" castname="ヘビーコメット" sync="false"/>
     <entry t="87.6" castname="ウェポンアサルト" duration="5.7"/>
     <entry t="90.8" text="パンクラ" castname="ヘビーコメット" sync="false"/>
@@ -52,9 +52,9 @@
     <entry t="216.4" text="ウェポン5" castname="重打撃|重斬波|斬波" sync="false"/>
     <entry t="219.7" castname="ウェポンアサルト" sync="false"/>
     <entry t="221.5" text="ウェポン6" castname="重打撃|重斬波|斬波" sync="false"/>
-    <entry t="225.9" castname="イモータルレイン" duration="2.7"/>
+    <entry t="225.9" castname="イモータルレイン" duration="3.7"/>
     <entry t="227.9" text="扇誘導" castname="強風" sync="false" tts="扇誘導忘れずに"/>
-    <entry t="233.1" text="全体攻撃" castname="ワン・アンド・オンリー" duration="5.7"/>
+    <entry t="233.1" text="全体攻撃" castname="ワン・アンド・オンリー" duration="7.7"/>
     <entry t="249.3" text="タンク強" castname="ファイアストリーム" duration="4.7" tts="タンク強2回くるよ"/>
     <entry t="254.5" castname="ファイアストリーム" sync="false"/>
     <entry t="257.7" text="タンク強" castname="ファイアストリーム" sync="false"/>
@@ -73,9 +73,9 @@
     <entry t="337.6" text="全体攻撃(隕石を壁に)" castname="トライスターズ・タイラントフォール" duration="6.7" tts="隕石に隠れる"/>
     <entry t="358.0" text="4:4エリア分断" castname="フラットライナー" duration="3.7" tts="エリアチェンジ"/>
     <entry t="373.1" text="チャンピオンズ・メテオ" castname="チャンピオンズ・メテオ" duration="4.7" tts="メテオ"/>
-    <entry t="397.3" text="ブレス" castname="ファイアブレス" duration="7.7" tts="ブレス"/>
+    <entry t="397.3" text="ブレス" castname="ファイアブレス" duration="8.7" tts="ブレス"/>
     <entry t="423.3" castname="爆発" sync="false"/>
-    <entry t="429.4" text="ブレス" castname="ファイアブレス" duration="7.7"/>
+    <entry t="429.4" text="ブレス" castname="ファイアブレス" duration="8.7"/>
     <entry t="434.3" castname="チャンピオンズ・メテオ" sync="false"/>
     <entry t="442.6" text="頭割り" castname="ヘビーメテオ" duration="4.7" tts="頭割り、5連"/>
     <entry t="456.5" text="アルカディア・クラッシュ" castname="アルカディア・クラッシュ" duration="5.7"/>
@@ -93,9 +93,9 @@
     <entry t="567.9" text="ツーウェイ・スピンファイア" castname="ツーウェイ・スピンファイア" duration="5.7"/>
     <entry t="570.4" castname="チャンピオンズ・メテオラース" sync="false"/>
     <entry t="578.0" text="全体" castname="キング・オブ・アルカディア" duration="4.7" tts="全体攻撃"/>
-    <entry t="590.9" text="ハートブレイクキックx5" castname="ハートブレイクキック" duration="4.7"/>
-    <entry t="610.0" text="ハートブレイクキックx6" castname="ハートブレイクキック" duration="4.7"/>
-    <entry t="631.2" text="ハートブレイクキックx7" castname="ハートブレイクキック" duration="4.7"/>
+    <entry t="590.9" text="ハートブレイクキックx5" castname="ハートブレイクキック" duration="5.7"/>
+    <entry t="610.0" text="ハートブレイクキックx6" castname="ハートブレイクキック" duration="5.7"/>
+    <entry t="631.2" text="ハートブレイクキックx7" castname="ハートブレイクキック" duration="5.7"/>
     <entry t="654.3" text="時間切れ開始 / 時間切れ" castname="ハートブレイカー" duration="7.7"/>
   </phase>
 </timeline>

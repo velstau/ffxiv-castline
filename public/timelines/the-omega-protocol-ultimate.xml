@@ -88,7 +88,7 @@
     <entry t="53.1" castname="サークル用タイムライン" sync="false" tts=""/>
     <entry t="53.1" castname="レイテント用タイムライン" sync="false" tts=""/>
     <entry t="55.8" castname="レイテントバグ：デグレード" duration="9.7"/>
-    <entry t="55.8" text="アクション1開始" castname="レイテントバグ" duration="8.7"/>
+    <entry t="55.8" text="アクション1開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="56.8" castname="シェア受ける" sync="false" tts="シェア受ける"/>
     <entry t="56.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す"/>
     <entry t="56.8" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
@@ -105,7 +105,7 @@
     <entry t="73.1" castname="担当外エンバグ2" sync="false" tts=""/>
     <entry t="73.1" castname="エンバグ処理2" sync="false" tts=""/>
     <entry t="76.8" castname="レイテントバグ：デグレード" duration="9.7"/>
-    <entry t="76.8" text="アクション2開始" castname="レイテントバグ" duration="8.7"/>
+    <entry t="76.8" text="アクション2開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="77.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す"/>
     <entry t="77.8" castname="サークル受ける" sync="false" tts="サークル受ける"/>
     <entry t="77.8" castname="シェア受ける" sync="false" tts="シェア受ける"/>
@@ -122,7 +122,7 @@
     <entry t="94.1" castname="担当外エンバグ2" sync="false" tts=""/>
     <entry t="94.5" castname="クリティカルバグ：デグレード" sync="false"/>
     <entry t="97.8" castname="レイテントバグ：デグレード" duration="9.7"/>
-    <entry t="97.8" text="アクション3開始" castname="レイテントバグ" duration="8.7"/>
+    <entry t="97.8" text="アクション3開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="98.9" castname="サークル受ける" sync="false" tts="サークル受ける"/>
     <entry t="98.9" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
     <entry t="98.9" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す"/>
@@ -139,7 +139,7 @@
     <entry t="114.9" castname="エンバグ処理2" sync="false" tts=""/>
     <entry t="115.6" castname="クリティカルバグ：デグレード" sync="false"/>
     <entry t="118.9" castname="レイテントバグ：デグレード" duration="9.7"/>
-    <entry t="118.9" text="アクション4開始" castname="レイテントバグ" duration="8.7"/>
+    <entry t="118.9" text="アクション4開始" castname="レイテントバグ" duration="9.7"/>
     <entry t="119.9" castname="サークル１人受け" sync="false" tts="サークル１人受け"/>
     <entry t="119.9" castname="シェア受ける" sync="false" tts="シェア受ける"/>
     <entry t="119.9" castname="サークル避ける" sync="false" tts="サークル避ける"/>
@@ -242,7 +242,7 @@
     <entry t="76.2" text="コスモアロー" castname="コスモアロー" duration="5.7" tts="コスモアロー"/>
     <entry t="78.2" castname="コスモアロー" duration="7.7"/>
     <entry t="90.3" castname="コスモアロー" sync="false"/>
-    <entry t="91.4" text="【構え】コスモダイブ / コスモダイブ" castname="コスモダイブ" duration="5.3" tts="コスモダイブ"/>
+    <entry t="91.4" text="【構え】コスモダイブ / コスモダイブ" castname="コスモダイブ" duration="7.7" tts="コスモダイブ"/>
     <entry t="94.3" castname="コスモアロー" sync="false"/>
     <entry t="98.3" castname="コスモアロー" sync="false"/>
     <entry t="106.9" castname="フラッシュウィンド" sync="false"/>
@@ -282,7 +282,7 @@
     <entry t="200.7" castname="波動砲5" sync="false" tts=""/>
     <entry t="202.7" castname="波動砲4" sync="false" tts=""/>
     <entry t="202.8" castname="波動砲" duration="2.7"/>
-    <entry t="204.9" text="【構え】コスモダイブ / コスモダイブ" castname="コスモダイブ" duration="5.3" tts="コスモダイブ"/>
+    <entry t="204.9" text="【構え】コスモダイブ / コスモダイブ" castname="コスモダイブ" duration="7.7" tts="コスモダイブ"/>
     <entry t="206.9" castname="波動砲3" sync="false" tts=""/>
     <entry t="208.9" castname="波動砲2" sync="false" tts=""/>
     <entry t="210.9" castname="波動砲1" sync="false" tts=""/>

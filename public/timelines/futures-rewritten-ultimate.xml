@@ -107,7 +107,7 @@
     <entry t="109.7" text="テイカー散開" castname="スピリットテイカー" duration="2.7" tts="散開"/>
     <entry t="111.4" castname="着弾1" sync="false" tts="ウォタガ、いち"/>
     <entry t="113.1" castname="スピリットテイカー" sync="false"/>
-    <entry t="119.3" text="エラプション" castname="ダークエラプション" duration="3.7"/>
+    <entry t="119.3" text="エラプション" castname="ダークエラプション" duration="4.7"/>
     <entry t="126.9" text="暗夜の舞踏技" castname="暗夜の舞踏技" duration="4.7"/>
     <entry t="130.2" castname="着弾2" sync="false" tts=""/>
     <entry t="132.4" castname="暗夜の舞踏技" sync="false"/>
@@ -190,16 +190,16 @@
     <entry t="63.8" castname="爆発" sync="false"/>
     <entry t="66.2" castname="攻撃" sync="false"/>
     <entry t="69.3" castname="攻撃" sync="false"/>
-    <entry t="71.5" text="【予告】星霊の剣" castname="星霊の剣" duration="6.2"/>
+    <entry t="71.5" text="【予告】星霊の剣" castname="星霊の剣" duration="6.7"/>
     <entry t="78.0" castname="闇の重波動" duration="0.2"/>
     <entry t="78.5" castname="星霊の剣1" sync="false" tts="いち"/>
-    <entry t="80.1" castname="星霊の剣" duration="2.2"/>
+    <entry t="80.1" castname="星霊の剣" duration="2.7"/>
     <entry t="80.6" castname="闇の重波動" sync="false"/>
     <entry t="83.5" castname="星霊の剣2" sync="false" tts="に"/>
-    <entry t="84.7" castname="星霊の剣" duration="2.2"/>
+    <entry t="84.7" castname="星霊の剣" duration="2.7"/>
     <entry t="87.2" castname="闇の重波動" duration="0.2"/>
     <entry t="87.5" castname="星霊の剣3" sync="false" tts="さん"/>
-    <entry t="89.3" castname="星霊の剣" duration="2.2"/>
+    <entry t="89.3" castname="星霊の剣" duration="2.7"/>
     <entry t="89.8" castname="闇の重波動" sync="false"/>
     <entry t="92.5" castname="星霊の剣4" sync="false" tts="よん"/>
     <entry t="93.9" castname="攻撃" sync="false"/>
@@ -225,16 +225,16 @@
     <entry t="177.6" castname="爆発" sync="false"/>
     <entry t="177.9" castname="光と闇の片翼" sync="false"/>
     <entry t="181.1" castname="爆発" sync="false"/>
-    <entry t="183.5" text="【予告】星霊の剣" castname="星霊の剣" duration="6.2"/>
+    <entry t="183.5" text="【予告】星霊の剣" castname="星霊の剣" duration="6.7"/>
     <entry t="190.1" castname="闇の重波動" duration="0.2"/>
     <entry t="190.6" castname="星霊の剣1" sync="false" tts="いち"/>
-    <entry t="192.2" castname="星霊の剣" duration="2.2"/>
+    <entry t="192.2" castname="星霊の剣" duration="2.7"/>
     <entry t="192.7" castname="闇の重波動" sync="false"/>
     <entry t="195.6" castname="星霊の剣2" sync="false" tts="に"/>
-    <entry t="196.8" castname="星霊の剣" duration="2.2"/>
+    <entry t="196.8" castname="星霊の剣" duration="2.7"/>
     <entry t="199.4" castname="闇の重波動" duration="0.2"/>
     <entry t="199.6" castname="星霊の剣3" sync="false" tts="さん"/>
-    <entry t="201.4" castname="星霊の剣" duration="2.2"/>
+    <entry t="201.4" castname="星霊の剣" duration="2.7"/>
     <entry t="201.9" castname="闇の重波動" sync="false"/>
     <entry t="204.6" castname="星霊の剣4" sync="false" tts="よん"/>
     <entry t="206.0" castname="攻撃" sync="false"/>

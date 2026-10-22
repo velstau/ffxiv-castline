@@ -62,8 +62,8 @@
     <entry t="147.0" text="塔発動" castname="コンヴィクション" sync="false" tts="塔を踏む"/>
     <entry t="156.5" castname="アルティメットエンド" sync="false"/>
     <entry t="165.0" castname="アルティメットエンド" sync="false"/>
-    <entry t="173.9" text="大振り2" castname="大振り" duration="2.7"/>
-    <entry t="182.4" castname="大振り" duration="2.7"/>
+    <entry t="173.9" text="大振り2" castname="大振り" duration="3.5"/>
+    <entry t="182.4" castname="大振り" duration="3.5"/>
     <entry t="186.7" castname="大振り1" sync="false" tts=""/>
     <entry t="190.5" text="時間切れ開始" castname="エーテルバースト" duration="5.7"/>
     <next to="p2" at="15.5" cast="堕天のドラゴンダイブ"/>

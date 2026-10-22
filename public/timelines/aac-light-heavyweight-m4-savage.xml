@@ -51,7 +51,7 @@
     <entry t="192.2" castname="エイトスターズ" sync="false"/>
     <entry t="196.4" castname="ライトニングケージ" duration="6.7"/>
     <entry t="202.7" text="2回目発動" castname="スパークII" sync="false" tts="あとの散開"/>
-    <entry t="205.4" text="連続頭割り" castname="ウィケッドボルト" duration="3.7" tts="連続頭割り"/>
+    <entry t="205.4" text="連続頭割り" castname="ウィケッドボルト" duration="4.7" tts="連続頭割り"/>
     <entry t="212.4" castname="タンク誘導" sync="false" tts="タンク誘導"/>
     <entry t="218.6" text="イオンクラスター" castname="イオンクラスター" duration="2.7"/>
     <entry t="225.6" castname="セリフ" sync="false" tts=""/>
@@ -100,14 +100,14 @@
     <entry t="424.3" castname="安置を確認" sync="false" tts="安置を確認"/>
     <entry t="425.5" text="頭割り4連" castname="ウィケッドブレイズ" duration="4.7" tts="頭割り、4連"/>
     <entry t="432.0" castname="ウィケッドブレイズ" sync="false"/>
-    <entry t="435.6" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="435.6" text="ボス予兆" castname="ウィケッドスペシャル" duration="5.7"/>
     <entry t="447.6" castname="タンク線取り" sync="false" tts="タンク線取り"/>
-    <entry t="448.8" text="着弾" castname="マスタードボム" duration="7.7"/>
+    <entry t="448.8" text="着弾" castname="マスタードボム" duration="8.7"/>
     <entry t="457.6" castname="キンドルファイア" sync="false"/>
     <entry t="459.8" castname="デバフ処理" sync="false" tts="デバフを処理"/>
     <entry t="466.8" castname="セリフ" sync="false" tts=""/>
     <entry t="467.9" text="属性変換" castname="属性変換" duration="6.7"/>
-    <entry t="478.1" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="478.1" text="テイル1" castname="テイルスラスト" duration="5.7"/>
     <entry t="487.2" text="テイル2" castname="テイルスラスト" sync="false"/>
     <entry t="500.4" text="全体攻撃" castname="アズールサンダー" duration="4.7" tts="全体攻撃"/>
     <entry t="508.6" text="ブラックサバト【日没】" castname="ブラックサバト【日没】" duration="2.7" tts="日没"/>
@@ -115,7 +115,7 @@
     <entry t="515.7" text="AoE捨て" castname="ウィケッドファイア" duration="3.7" tts="えーおーいー見て移動"/>
     <entry t="519.8" castname="ウィケッドファイア" duration="3.7"/>
     <entry t="522.8" text="処理1" castname="サイドスパーク" sync="false" tts="1回目"/>
-    <entry t="524.9" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="524.9" text="ボス予兆" castname="ウィケッドスペシャル" duration="5.7"/>
     <entry t="530.8" text="処理2" castname="サイドスパーク" sync="false" tts="2回目"/>
     <entry t="538.1" text="ブラックサバト【夜半】" castname="ブラックサバト【夜半】" duration="2.7" tts="夜半"/>
     <entry t="544.0" castname="集散/集散を確認" sync="false" tts=""/>
@@ -123,18 +123,18 @@
     <entry t="551.0" text="処理1" castname="リングサンダー" sync="false" tts="1回目"/>
     <entry t="552.3" castname="ウィケッドスパーク" sync="false"/>
     <entry t="555.0" text="処理2" castname="リングサンダー" sync="false" tts="2回目"/>
-    <entry t="555.4" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="555.4" text="ボス予兆" castname="ウィケッドスペシャル" duration="5.7"/>
     <entry t="556.3" castname="ウィケッドフレア" sync="false"/>
     <entry t="563.5" text="全体攻撃" castname="ウィケッドサンダー" duration="4.7" tts="全体攻撃"/>
     <entry t="572.8" text="属性変換" castname="属性変換" duration="6.7"/>
     <entry t="582.9" text="火炎斬り" castname="火炎斬り" duration="5.7" tts="左右の位置へ"/>
     <entry t="592.0" text="塔踏がPOP / 剣の雨" castname="剣の雨" duration="1.7" tts="塔踏み"/>
-    <entry t="599.2" text="予兆を確認 / チェイン開始" castname="チェインライトニング" duration="15.7" tts="予兆を確認、チェインライトニング。"/>
+    <entry t="599.2" text="予兆を確認 / チェイン開始" castname="チェインライトニング" duration="16.7" tts="予兆を確認、チェインライトニング。"/>
     <entry t="615.2" castname="チェインライトニング" sync="false"/>
-    <entry t="636.4" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="636.4" text="テイル1" castname="テイルスラスト" duration="5.7"/>
     <entry t="645.4" text="テイル2" castname="テイルスラスト" sync="false"/>
     <entry t="648.4" castname="タンク線取り" sync="false" tts="タンク線取り"/>
-    <entry t="649.5" text="着弾" castname="マスタードボム" duration="7.7"/>
+    <entry t="649.5" text="着弾" castname="マスタードボム" duration="8.7"/>
     <entry t="658.4" castname="キンドルファイア" sync="false"/>
     <entry t="660.5" castname="デバフを処理" sync="false" tts="デバフを処理"/>
     <entry t="668.7" text="属性変換" castname="属性変換" duration="6.7"/>
@@ -142,9 +142,9 @@
     <entry t="687.0" text="デバフ付与" castname="イオンクラスター" duration="2.7"/>
     <entry t="693.2" text="ブラックサバト【日出】" castname="ブラックサバト【日出】" duration="2.7" tts="日出"/>
     <entry t="709.4" text="処理1" castname="フライング・ソウルプレス" sync="false" tts="1回目"/>
-    <entry t="711.3" text="ボス予兆" castname="ウィケッドスペシャル" duration="4.7"/>
+    <entry t="711.3" text="ボス予兆" castname="ウィケッドスペシャル" duration="5.7"/>
     <entry t="726.1" text="処理2" castname="フライング・ソウルプレス" sync="false" tts="2回目"/>
-    <entry t="727.5" text="テイル1" castname="テイルスラスト" duration="4.7"/>
+    <entry t="727.5" text="テイル1" castname="テイルスラスト" duration="5.7"/>
     <entry t="736.1" text="テイル2" castname="テイルスラスト" sync="false"/>
     <entry t="749.1" castname="剣の舞" sync="false"/>
     <entry t="766.1" castname="剣の舞" sync="false"/>

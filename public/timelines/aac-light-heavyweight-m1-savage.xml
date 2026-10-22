@@ -23,7 +23,7 @@
     <entry t="53.0" text="左右注意" castname="デュアルネイル" duration="4.7"/>
     <entry t="63.0" text="分身作成" castname="ソウルシェード" duration="2.7" tts="分身がポップ"/>
     <entry t="77.4" text="ナインライヴス" castname="ナインライヴス" duration="2.7"/>
-    <entry t="84.4" text="W/Qクロウ" castname="ダブルクロウ|クァッドクロウ" duration="3.7"/>
+    <entry t="84.4" text="W/Qクロウ" castname="ダブルクロウ|クァッドクロウ" duration="4.7"/>
     <entry t="91.5" text="ソウルシェード" castname="ソウルシェード" duration="2.7" tts="分身がポップ"/>
     <entry t="96.6" text="移動して散開" castname="リーピング・クアドラプルネイル" duration="4.7"/>
     <entry t="102.6" castname="リーピング・クアドラプルネイル" sync="false"/>

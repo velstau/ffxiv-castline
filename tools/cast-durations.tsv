@@ -13,3 +13,75 @@ aac-cruiserweight-m2-savage	ダブル・グラフィティ	5.7	6.6	動画 6.57 �
 aac-cruiserweight-m2-savage	シングル・グラフィティ	5.7	6.6	動画 6.57 秒
 aac-cruiserweight-m2-savage	プリンパーティー	3.7	4.7	動画 4.67 秒
 aac-cruiserweight-m2-savage	ムース大行進	3.7	4.7	動画 4.67 秒
+
+# 2026-10-22 ほかのコンテンツ: 手元のクリア動画（movie_play）のフォーカス／ターゲットの詠唱バーを測り、技名を OCR で確かめたバーだけで集計した（tools/measure-cast-bars.py・tools/cast-name-check.py）。
+# XML より長い値だけを採る（短い値はバーが途中で切れた疑いを消せないため）。2 回以上そろった値か、1 回でも塗りの速さと長さが合い予定の時刻と 0.4 秒以内で合ったもの
+aac-cruiserweight-m1-savage	ダンシングフィールド	2.2	2.7	動画 2.70 2.71 秒（動画 30、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	アイビーラリアット	3.2	3.7	動画 3.70 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	スキャッターシード	3.7	4.7	動画 4.70 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ストーンウェポン	1.7	5.2	動画 5.20 5.20 5.20 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ソーンスマッシュ	2.7	4.8	動画 4.83 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ニア・スマッシュ|ファー・スマッシュ	2.7	3.6	動画 3.56 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートグラワー	0.4	1.7	動画 1.71 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートグラワー	2.4	3.7	動画 3.70 3.71 3.71 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートスイング	2.7	6.5	動画 6.50 6.50 6.50 6.50 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートスイング	3.7	7.5	動画 7.51 7.51 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートスパーク	5.0	6.3	動画 6.30 6.30 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m3-savage	ブルートダイブ	3.7	4.7	動画 4.70 4.70 秒（動画 15、技名を OCR で確かめた）
+aac-cruiserweight-m4-savage	空間斬り	1.3	3.7	動画 3.70 3.71 秒（動画 60、技名を OCR で確かめた）
+aac-cruiserweight-m4-savage	群狼剣	0.7	1.2	動画 1.20 1.21 秒（動画 60、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	エーテルレッティング	12.0	12.8	動画 12.85 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	クラウドキリング	0.2	5.1	動画 5.10 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	サングインスクラッチ	2.0	2.7	動画 2.70 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	ハードコア	2.7	4.7	動画 4.70 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	ハーフムーン	4.0	4.7	動画 4.70 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	バット・デスマッチ	3.5	4.8	動画 4.85 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	ブルータルレイン	3.5	4.7	動画 4.70 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m1-savage	ヴァンプストンプ	3.8	4.7	動画 4.68 4.70 秒（動画 70、技名を OCR で確かめた）
+aac-heavyweight-m2-savage	インセインエアー	3.6	5.1	動画 5.08 秒（動画 32、技名を OCR で確かめた）
+aac-heavyweight-m2-savage	インセインエアー	6.6	8.1	動画 8.06 8.10 秒（動画 32、技名を OCR で確かめた）
+aac-heavyweight-m2-savage	フレイムアリウープ	4.0	4.7	動画 4.68 4.70 4.71 4.73 秒（動画 32、技名を OCR で確かめた）
+aac-heavyweight-m2-savage	フレイムカットバック	4.0	4.7	動画 4.68 秒（動画 32、技名を OCR で確かめた）
+aac-heavyweight-m3-savage	イモータルレイン	2.7	3.7	動画 3.71 秒（動画 93、技名を OCR で確かめた）
+aac-heavyweight-m3-savage	コメットレイン	3.7	4.7	動画 4.71 秒（動画 93、技名を OCR で確かめた）
+aac-heavyweight-m3-savage	ハートブレイクキック	4.7	5.7	動画 5.70 5.70 5.71 秒（動画 93、技名を OCR で確かめた）
+aac-heavyweight-m3-savage	ファイアブレス	7.7	8.7	動画 8.70 8.71 秒（動画 93、技名を OCR で確かめた）
+aac-heavyweight-m3-savage	ワン・アンド・オンリー	5.7	7.7	動画 7.70 秒（動画 93、技名を OCR で確かめた）
+aac-light-heavyweight-m1-savage	ダブルクロウ|クァッドクロウ	3.7	4.7	動画 4.70 秒（動画 82、技名を OCR で確かめた）
+aac-light-heavyweight-m2-savage	キラースティング|キラースラッシュ	3.7	4.7	動画 4.67 4.68 4.68 4.72 秒（動画 86、技名を OCR で確かめた）
+aac-light-heavyweight-m2-savage	ハニーブラスト|ハニーツイスター	5.2	5.9	動画 5.90 5.92 5.92 5.94 秒（動画 86、技名を OCR で確かめた）
+aac-light-heavyweight-m2-savage	ビースティング	3.7	4.7	動画 4.70 秒（動画 86、技名を OCR で確かめた）
+aac-light-heavyweight-m2-savage	ポイズンスティング	4.4	6.0	動画 6.00 秒（動画 86、技名を OCR で確かめた）
+aac-light-heavyweight-m2-savage	ラブシーカー	2.7	3.7	動画 3.68 秒（動画 86、技名を OCR で確かめた）
+aac-light-heavyweight-m3-savage	8ウェイ・ダブルラリアット	5.9	6.9	動画 6.91 秒（動画 77、技名を OCR で確かめた）
+aac-light-heavyweight-m3-savage	8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット	5.9	6.7	動画 6.70 秒（動画 77、技名を OCR で確かめた）
+aac-light-heavyweight-m3-savage	8ショック・パワーダイブ|4ショック・パワーダイブ	6.9	7.7	動画 7.70 7.71 秒（動画 77、技名を OCR で確かめた）
+aac-light-heavyweight-m4-savage	ウィケッドスペシャル	4.7	5.7	動画 5.71 秒（動画 62、技名を OCR で確かめた）
+aac-light-heavyweight-m4-savage	ウィケッドボルト	3.7	4.7	動画 4.70 秒（動画 62、技名を OCR で確かめた）
+aac-light-heavyweight-m4-savage	チェインライトニング	15.7	16.7	動画 16.68 秒（動画 62、技名を OCR で確かめた）
+aac-light-heavyweight-m4-savage	テイルスラスト	4.7	5.7	動画 5.68 秒（動画 62、技名を OCR で確かめた）
+aac-light-heavyweight-m4-savage	マスタードボム	7.7	8.7	動画 8.68 8.71 秒（動画 62、技名を OCR で確かめた）
+abyssos-the-eighth-circle-savage	概念支配	4.7	9.0	動画 9.01 9.01 秒（動画 78、技名を OCR で確かめた）
+abyssos-the-seventh-circle-savage	アッティスの巨枝	5.5	6.7	動画 6.71 秒（動画 57、技名を OCR で確かめた）
+abyssos-the-seventh-circle-savage	アッティスの巨枝	5.9	6.9	動画 6.95 秒（動画 57、技名を OCR で確かめた）
+abyssos-the-seventh-circle-savage	生滅の導枝	5.2	7.2	動画 7.20 秒（動画 57、技名を OCR で確かめた）
+abyssos-the-sixth-circle-savage	シュネルギア	6.0	6.7	動画 6.71 秒（動画 21、技名を OCR で確かめた）
+abyssos-the-sixth-circle-savage	ホロス・イクソス	4.2	4.7	動画 4.70 4.70 秒（動画 21、技名を OCR で確かめた）
+anabaseios-the-ninth-circle-savage	コメット	4.7	5.7	動画 5.70 秒（動画 36、技名を OCR で確かめた）
+anabaseios-the-ninth-circle-savage	サンダーボルト	2.7	3.7	動画 3.68 3.71 秒（動画 36、技名を OCR で確かめた）
+anabaseios-the-ninth-circle-savage	古式破砕拳	3.7	4.7	動画 4.71 秒（動画 36、技名を OCR で確かめた）
+anabaseios-the-ninth-circle-savage	魂喰らい	2.7	3.7	動画 3.70 秒（動画 36、技名を OCR で確かめた）
+anabaseios-the-tenth-circle-savage	ソウルグラスプ	4.7	5.3	動画 5.28 5.30 5.30 5.30 5.30 秒（動画 99、技名を OCR で確かめた）
+anabaseios-the-tenth-circle-savage	タッチダウン	7.7	8.7	動画 8.70 8.80 秒（動画 99、技名を OCR で確かめた）
+anabaseios-the-tenth-circle-savage	パンデモニックピラー	4.7	5.9	動画 5.91 秒（動画 99、技名を OCR で確かめた）
+anabaseios-the-tenth-circle-savage	尖脚	5.7	6.8	動画 6.80 6.80 6.81 秒（動画 99、技名を OCR で確かめた）
+anabaseios-the-tenth-circle-savage	魔殿の震撃	4.7	5.5	動画 5.50 秒（動画 99、技名を OCR で確かめた）
+anabaseios-the-twelfth-circle-savage	パラスレイ	1.7	4.3	動画 4.30 4.30 秒（動画 98、技名を OCR で確かめた）
+asphodelos-the-first-circle-savage	懲罰撃	11.2	11.7	動画 11.70 11.73 秒（動画 53、技名を OCR で確かめた）
+asphodelos-the-first-circle-savage	懲罰爆鎖	11.2	11.7	動画 11.71 11.73 秒（動画 53、技名を OCR で確かめた）
+dragonsongs-reprise-ultimate	大振り	2.7	3.5	動画 3.51 3.51 秒（動画 29、技名を OCR で確かめた）
+futures-rewritten-ultimate	ダークエラプション	3.7	4.7	動画 4.71 秒（動画 18、技名を OCR で確かめた）
+futures-rewritten-ultimate	星霊の剣	2.2	2.7	動画 2.70 2.70 2.70 2.70 2.71 秒（動画 18、技名を OCR で確かめた）
+futures-rewritten-ultimate	星霊の剣	6.2	6.7	動画 6.70 秒（動画 18、技名を OCR で確かめた）
+the-omega-protocol-ultimate	コスモダイブ	5.3	7.7	動画 7.71 7.71 秒（動画 72、技名を OCR で確かめた）
+the-omega-protocol-ultimate	レイテントバグ	8.7	9.7	動画 9.70 9.70 9.70 9.71 秒（動画 72、技名を OCR で確かめた）

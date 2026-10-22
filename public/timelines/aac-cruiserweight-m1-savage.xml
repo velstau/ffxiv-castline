@@ -21,7 +21,7 @@
     <entry t="59.1" castname="ラウドジングルB" sync="false"/>
     <entry t="60.0" text="全体攻撃" castname="セレブレート・グッドタイムズ" duration="4.7" tts="全体攻撃"/>
     <entry t="73.4" text="ディスコインファーナル" castname="ディスコインファーナル" duration="3.7"/>
-    <entry t="79.5" text="ダンシングフィールド" castname="ダンシングフィールド" duration="2.2"/>
+    <entry t="79.5" text="ダンシングフィールド" castname="ダンシングフィールド" duration="2.7"/>
     <entry t="85.6" text="インorアウト" castname="インサイドアウト|アウトサイドイン" duration="4.7"/>
     <entry t="90.7" castname="アウトサイドイン" sync="false"/>
     <entry t="93.1" castname="アウトサイドイン" sync="false"/>
@@ -116,7 +116,7 @@
     <entry t="502.3" text="半面＋扇範囲避ける" castname="ドゥ・ザ・ハッスル" duration="4.7" tts="安置確認"/>
     <entry t="509.4" text="タンク強攻撃" castname="ディープカット" duration="4.7" tts="タンク強"/>
     <entry t="515.0" castname="ディープカット" sync="false"/>
-    <entry t="523.0" text="ダンシングフィールド" castname="ダンシングフィールド" duration="2.2" tts="赤い床でるよ"/>
+    <entry t="523.0" text="ダンシングフィールド" castname="ダンシングフィールド" duration="2.7" tts="赤い床でるよ"/>
     <entry t="528.6" text="nビート" castname="4ビート|8ビート" duration="4.7"/>
     <entry t="536.8" castname="インサイドアウト" duration="4.7"/>
     <entry t="541.8" castname="インサイドアウト" sync="false"/>

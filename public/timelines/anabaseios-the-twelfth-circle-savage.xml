@@ -109,7 +109,7 @@
     <entry t="89.2" text="アルテマ2" castname="アルテマ" duration="4.7" tts="全体攻撃"/>
     <entry t="94.3" castname="アルテマ" sync="false"/>
     <entry t="101.4" text="イデア・エレメンタル" castname="イデア・エレメンタル" duration="6.7" tts="全体"/>
-    <entry t="128.6" castname="パラスレイ" duration="1.7"/>
+    <entry t="128.6" castname="パラスレイ" duration="4.3"/>
     <entry t="133.3" castname="パラスレイ" sync="false"/>
     <entry t="134.8" castname="パラスレイ" sync="false"/>
     <entry t="136.0" castname="パラスレイ" sync="false"/>
@@ -147,7 +147,7 @@
     <entry t="283.7" castname="パラスの手" sync="false"/>
     <entry t="289.8" text="イデア・エレメンタル" castname="イデア・エレメンタル" duration="6.7"/>
     <entry t="304.0" text="パンタレイ" castname="パンタレイ" duration="9.7"/>
-    <entry t="318.1" text="パラスレイ" castname="パラスレイ" duration="1.7"/>
+    <entry t="318.1" text="パラスレイ" castname="パラスレイ" duration="4.3"/>
     <entry t="322.8" castname="パラスレイ" sync="false"/>
     <entry t="324.3" castname="パラスレイ" sync="false"/>
     <entry t="325.5" castname="パラスレイ" sync="false"/>
