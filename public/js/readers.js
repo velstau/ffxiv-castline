@@ -170,6 +170,17 @@ export async function readCast(detector, recognizer, source, rect, candidates, {
 }
 
 /**
+ * 詠唱バーの技名の範囲を、候補なしで 1 行として読む（タイムラインを記録する画面用）。
+ * 文字検出は使わない（2026-10-22 の検証: 利用者が指定しそうな大きさの範囲では、読める技名でも検出が何も返さないコマが多く、
+ * 138 回の詠唱のうち 92 回を読み逃した。範囲全体を読むほうが出始め・消えたの時刻もそろう）
+ * @returns {Promise<{text:string, conf:number, ms:number}>} conf は recognizer.confidence
+ */
+export async function readCastFree(recognizer, source, rect) {
+    const read = await recognizer.read(source, rect);
+    return { text: read.text, conf: recognizer.confidence(read.output), ms: read.ms };
+}
+
+/**
  * カウントダウンの吹き出し（「戦闘開始まで16秒！」「戦闘開始！」）を解釈する。
  * 「戦」を「則」と読むような誤読があるので、「(数字)秒」と「開始」だけを見る。
  * 「まで」か「秒」があれば残り秒数の吹き出しで、数字が読めなければ何も返さない（「開始」だけを見て戦闘開始にしない。2026-10-21）

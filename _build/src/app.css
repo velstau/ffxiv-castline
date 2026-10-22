@@ -1485,3 +1485,46 @@ label.field,
 .rc-card button {
     justify-self: start;
 }
+
+/* =========================================================================
+ * タイムラインを記録する（recorder.html）
+ * ========================================================================= */
+
+fieldset.field {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.rec-video video {
+    display: block;
+    width: 100%;
+    max-height: calc(360 / 16 * 1rem);
+    border-radius: var(--radius-8);
+    background-color: var(--color-black);
+}
+
+/* 候補に寄せた技名の印・読んだまま（要確認）の印 */
+.rec-snapped {
+    color: var(--vw-sub);
+}
+
+.rec-unsure {
+    color: var(--vw-mute);
+}
+
+.rec-name-input {
+    width: 100%;
+    min-width: calc(160 / 16 * 1rem);
+}
+
+/* 表の見出しと数の列は折り返さない（2 段組みの狭い列で「直 / す」のように 1 文字ずつ折れた） */
+.rec-table th,
+.rec-table td.num {
+    white-space: nowrap;
+}
+
+.rec-table td.rec-name {
+    min-width: calc(160 / 16 * 1rem);
+}

@@ -63,6 +63,11 @@ export class OcrClient {
         return lines.map((l) => ({ ...l, x: l.x + area.x, y: l.y + area.y }));
     }
 
+    /** 詠唱バーの技名の範囲を候補なしで読む（readers.js の readCastFree） */
+    async readCastFree(frame, rect) {
+        return this.call('readCastFree', await this.crop(frame, rect), { x: 0, y: 0, w: rect.w, h: rect.h });
+    }
+
     /** 範囲を 1 つ試しに読む（screen-reader.js の checkRegion） */
     async checkRegion(frame, id, rect, names) {
         return this.call('checkRegion', await this.crop(frame, rect), id, { x: 0, y: 0, w: rect.w, h: rect.h }, names);

@@ -3,6 +3,7 @@
 // 依頼は届いた順に 1 つずつ処理する（同じモデルを並行して使わない）。
 import { TextDetector, TextRecognizer } from './ocr.js';
 import { readFrame, readContentLines, scanLines, checkRegion } from './screen-reader.js';
+import { readCastFree } from './readers.js';
 
 let ocr = null;
 let queue = Promise.resolve();
@@ -21,6 +22,7 @@ const ops = {
     readContentLines: (frame, area, names) => readContentLines(ocr, frame, area, names),
     scanLines: (frame, area, castCandidates) => scanLines(ocr, frame, area, castCandidates),
     checkRegion: (frame, id, rect, names) => checkRegion(ocr, frame, id, rect, names),
+    readCastFree: (frame, rect) => readCastFree(ocr.recognizer, frame, rect),
 };
 
 self.onmessage = ({ data: { id, op, frame, args } }) => {

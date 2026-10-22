@@ -30,3 +30,6 @@ print(round(m.hojoring_length(sys.argv[1]) * 1.2))' "sources/hojoring-pc/$src")
     fi
     echo
 done
+
+# 技名の一覧（タイムラインを記録する画面が使う）を作り直す
+python3 tools/build-castnames.py

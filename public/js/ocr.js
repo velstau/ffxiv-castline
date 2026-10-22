@@ -265,6 +265,32 @@ export class TextRecognizer {
         return text;
     }
 
+    /** 貪欲復号で採った各文字の確率の平均（文字が無ければ 0）。技名が出ているかの判定に使う */
+    confidence(output) {
+        const [, steps, classes] = output.dims;
+        const probs = output.data;
+        let sum = 0;
+        let count = 0;
+        let prev = 0;
+        for (let t = 0; t < steps; t++) {
+            let best = 0;
+            let bestProb = -1;
+            for (let c = 0; c < classes; c++) {
+                const p = probs[t * classes + c];
+                if (p > bestProb) {
+                    bestProb = p;
+                    best = c;
+                }
+            }
+            if (best !== 0 && best !== prev) {
+                sum += bestProb;
+                count++;
+            }
+            prev = best;
+        }
+        return count > 0 ? sum / count : 0;
+    }
+
     /**
      * 候補の文字列それぞれについて、読んだ画像全体がその文字列である確からしさ（CTC の対数尤度）を出し、高い順に返す。
      * 読み取った文字列を照合するより、誤読しやすい字（「零式」など）を含む候補どうしを見分けやすい。

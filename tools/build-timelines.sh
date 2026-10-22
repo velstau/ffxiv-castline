@@ -27,3 +27,6 @@ overlay tools/skeletons/aac-heavyweight-m4-savage.xml 'sources/AAC_Heavyweight_M
 
 
 # Hojoring の手元のファイル（sources/hojoring-pc）からの分は tools/convert-hojoring-pc.sh（一覧は tools/hojoring-pc.tsv）
+
+# 技名の一覧（タイムラインを記録する画面が使う）を作り直す
+python3 tools/build-castnames.py
