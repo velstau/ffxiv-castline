@@ -7,6 +7,7 @@ export const GIMMICK_ICONS = [
     { id: 'tank-share', name: 'タンク頭割り' },
     { id: 'stack', name: '頭割り' },
     { id: 'spread', name: '散開' },
+    { id: 'pair-spread', name: '2:2:2:2散開' },
     { id: 'tower', name: '塔踏み' },
     { id: 'dice', name: 'サイコロ' },
     { id: 'half-room', name: '半面攻撃' },

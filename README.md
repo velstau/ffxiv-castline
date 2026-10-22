@@ -140,6 +140,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 | <img src="public/icons/gimmick/tank-share.svg" width="24" alt=""> | `tank-share` | タンク頭割り |
 | <img src="public/icons/gimmick/stack.svg" width="24" alt=""> | `stack` | 頭割り |
 | <img src="public/icons/gimmick/spread.svg" width="24" alt=""> | `spread` | 散開 |
+| <img src="public/icons/gimmick/pair-spread.svg" width="24" alt=""> | `pair-spread` | 2:2:2:2散開 |
 | <img src="public/icons/gimmick/tower.svg" width="24" alt=""> | `tower` | 塔踏み |
 | <img src="public/icons/gimmick/dice.svg" width="24" alt=""> | `dice` | サイコロ |
 | <img src="public/icons/gimmick/half-room.svg" width="24" alt=""> | `half-room` | 半面攻撃 |

@@ -29,6 +29,7 @@ RULES = [
     ('raidwide', r'全体'),
     ('tankbuster', r'^強攻撃$|^強攻撃[（(]'),
     ('stack', r'頭割り|シェア'),
+    ('pair-spread', r'2[:：]2[:：]2[:：]2'),
     ('spread', r'散開'),
     ('tower', r'塔'),
     ('gaze-away', r'視線|背を向け'),
