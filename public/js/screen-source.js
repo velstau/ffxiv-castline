@@ -6,9 +6,11 @@ import { FrameSource } from './capture.js';
 
 export class ScreenFrameSource {
     /** 共有する画面を選んでもらい、最初のコマで大きさを決める。ボタンを押した直後に呼ぶ（共有の確認はクリックの中でしか出せない）
-     * @param {() => void} [onEnded] ブラウザの「共有を停止」で止めたとき */
-    static async open(onEnded) {
+     * @param {() => void} [onEnded] ブラウザの「共有を停止」で止めたとき
+     * @param {() => void} [onShared] 画面が選ばれ、最初のコマを待ち始めたとき */
+    static async open(onEnded, onShared) {
         const capture = await FrameSource.start(onEnded);
+        onShared?.();
         const first = await capture.grab();
         if (!first) {
             throw new Error('画面を共有できませんでした');

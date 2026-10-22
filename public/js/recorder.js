@@ -121,7 +121,7 @@ async function openScreen() {
                 setStatus('video-status', '画面の共有が終わりました。');
                 updateButtons();
             }
-        });
+        }, () => setStatus('video-status', '共有した画面の最初のコマを待っています…（ゲームの画面が動いていれば、すぐに届きます）'));
     } catch (e) {
         setStatus('video-status', e.name === 'NotAllowedError' ? '画面の共有を取りやめました。' : `画面を共有できませんでした: ${e.message}`, 'ng');
         updateButtons();
