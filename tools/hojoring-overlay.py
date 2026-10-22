@@ -496,6 +496,28 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     return report
 
 
+def apply_cast_durations(skeleton, path, file):
+    """画面の詠唱バーの長さが FFLogs と違う技の duration を差し替える（tools/cast-durations.tsv）。照合の後に呼ぶ。報告の行を返す
+    （2026-10-22 クルーザー級2: ランドスケープは FFLogs 0.7 秒・画面 7.7 秒で、詠唱中なのにタイムラインでは発動済みになっていた）"""
+    table = {}
+    with open(path, encoding='utf-8') as f:
+        for line in f:
+            cols = line.rstrip('\n').split('\t')
+            if line.startswith('#') or len(cols) < 4 or cols[0] != file:
+                continue
+            table[(cols[1], f'{float(cols[2]):.1f}')] = float(cols[3])
+    count = {key: 0 for key in table}
+    for p in skeleton['phases']:
+        for e in p['entries']:
+            key = (e['name'], f'{float(e["duration"]):.1f}') if e.get('duration') else None
+            if key in table:
+                e['duration'] = table[key]
+                count[key] += 1
+    return [f'詠唱時間を画面に合わせる: {name} {old} → {table[(name, old)]:.1f} 秒（{n} 件）' if n else
+            f'詠唱時間の表に当たる予定がありません: {name} {old} 秒（骨組みを作り直して FFLogs の値が変わった可能性）'
+            for (name, old), n in count.items()]
+
+
 def write_castline(skeleton, path, title, note, author='', license=''):
     head = {**skeleton['head'], 'author': author, 'license': license}
     if title:
@@ -535,6 +557,8 @@ def main():
                     help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
                     help='Hojoring の区間を骨組みのフェーズに対応させる（省略時は最初のフェーズ。--events-all があれば自動）')
+    ap.add_argument('--cast-durations', metavar='PATH',
+                    help='画面の詠唱バーの長さが FFLogs と違う技の表（tools/cast-durations.tsv）。出力のファイル名の行だけ使う')
     args = ap.parse_args()
 
     meta, defaults, sections, dropped = load_hojoring(args.hojoring)
@@ -564,6 +588,8 @@ def main():
                      dict(r.split('=', 1) for r in args.role))
     for fid in fights:
         split_phases(skeleton, fid)
+    if args.cast_durations:
+        report += apply_cast_durations(skeleton, args.cast_durations, re.sub(r'\.xml$', '', args.out.rsplit('/', 1)[-1]))
 
     # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
     # タイムラインの作者とライセンスは <author> <license> に書く（2026-10-21 のユーザーの決定）

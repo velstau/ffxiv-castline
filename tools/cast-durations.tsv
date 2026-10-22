@@ -1,0 +1,15 @@
+# 画面の詠唱バーの長さが FFLogs の詠唱時間（begincast の duration）と違う技。tools/hojoring-overlay.py --cast-durations が、照合の後に duration を差し替える
+# 照合（Hojoring の当たった時刻との突き合わせ）は FFLogs の値のまま行う。技の当たる時刻は FFLogs のほうが合っているため
+# file（contents.json）	技名	FFLogs の詠唱時間	画面の詠唱時間	根拠
+# クルーザー級2 零式: 2026-10-22、7.2 のクリア動画（60fps）でフォーカスの詠唱バーをコマごとに測った（同じ技は何回出ても ±0.05 秒で同じ値。測った値は真の値より約 0.03 秒短く出る）
+aac-cruiserweight-m2-savage	カラーライオット	4.7	6.7	動画 6.67 秒（4 回）
+aac-cruiserweight-m2-savage	ウイングマーク	3.7	4.6	動画 4.57 秒（3 回）
+aac-cruiserweight-m2-savage	ねばねばムース	4.7	5.3	動画 5.27〜5.32 秒（3 回）
+aac-cruiserweight-m2-savage	ランドスケープ	0.7	7.7	動画 7.67〜7.68 秒（2 回）
+aac-cruiserweight-m2-savage	アレンジ	0.7	6.7	動画 6.67〜6.68 秒（4 回）
+aac-cruiserweight-m2-savage	ダブル・グラフィティ	11.7	12.6	動画 12.57〜12.58 秒（2 回）
+aac-cruiserweight-m2-savage	ダブル・グラフィティ	7.7	8.6	動画 8.58 秒
+aac-cruiserweight-m2-savage	ダブル・グラフィティ	5.7	6.6	動画 6.57 秒
+aac-cruiserweight-m2-savage	シングル・グラフィティ	5.7	6.6	動画 6.57 秒
+aac-cruiserweight-m2-savage	プリンパーティー	3.7	4.7	動画 4.67 秒
+aac-cruiserweight-m2-savage	ムース大行進	3.7	4.7	動画 4.67 秒

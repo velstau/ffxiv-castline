@@ -4,7 +4,7 @@
 # 元ファイル（sources/）は公開しないので、リポジトリだけでは実行できない。
 set -eu
 cd "$(dirname "$0")/.."
-overlay() { python3 tools/hojoring-overlay.py "$@"; echo; }
+overlay() { python3 tools/hojoring-overlay.py "$@" --cast-durations tools/cast-durations.tsv; echo; }
 
 echo '== ヘビー級1'
 overlay tools/skeletons/aac-heavyweight-m1-savage.xml 'sources/AAC_Heavyweight_M1_(Savage).xml' public/timelines/aac-heavyweight-m1-savage.xml \

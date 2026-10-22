@@ -26,7 +26,7 @@ print(round(m.hojoring_length(sys.argv[1]) * 1.2))' "sources/hojoring-pc/$src")
         # 文言はどれも Vel が書いたもの
         # shellcheck disable=SC2086
         python3 tools/hojoring-overlay.py "tools/skeletons/$file.xml" "sources/hojoring-pc/$src" "public/timelines/$file.xml" \
-            --events-all "tools/skeletons/$file.events.json" --title "$title" --author Vel $extra
+            --events-all "tools/skeletons/$file.events.json" --title "$title" --author Vel --cast-durations tools/cast-durations.tsv $extra
     fi
     echo
 done
