@@ -17,6 +17,31 @@ export function normalizeRead(text) {
 // （予定もフェーズの移り先も無い。最後のフェーズなので、HP 3% 以下の後に敵対リストが消えたら討伐で終わる）
 export const WATCH_TIMELINE = Object.freeze({ format: 'castline/1', content: '', phases: [{ id: 'p1', entries: [], next: [] }] });
 
+// 戦闘の終わりは、再生画面の判定（2 秒の暗転・HP 3% 以下の後に敵対リストが 3 秒消えた・敵対リストが 90 秒消えた）に加えて、
+// 記録用に早めに決める（2026-10-23 ユーザー指摘「戦闘終了が検知できていない」）。記録中は HP を 1 秒おきにしか読まないので
+// 3% 以下を読む前に倒してしまうことが多い。また 90 秒待つと、次の戦闘の準備の間も記録が続く
+export const REC_KILL_HP = 10; // 最後に読んだ HP がこれ以下で、敵対リストが REC_KILL_OFF_MS 消えたら討伐
+export const REC_KILL_OFF_MS = 3000;
+export const REC_GONE_MS = 30000; // 敵対リストがこれだけ消えたら終わり（ボスが消える場面より長く）
+
+/** 記録用の早めの終わり。当たれば engine を end して（状態をそろえる）、理由を返す。ms は engine の時刻 */
+export function endForRecording(engine, ms) {
+    if (engine.status(ms).state !== 'combat' || !engine.hasEnmity || engine.enmityOffSince === null) {
+        return null;
+    }
+    const off = ms - engine.enmityOffSince;
+    let reason = null;
+    if (engine.hp !== null && engine.hp <= REC_KILL_HP && off >= REC_KILL_OFF_MS) {
+        reason = `HP ${engine.hp}% の後に敵対リストが ${REC_KILL_OFF_MS / 1000} 秒消えた。討伐`;
+    } else if (off >= REC_GONE_MS) {
+        reason = `敵対リストが ${REC_GONE_MS / 1000} 秒消えた`;
+    }
+    if (reason) {
+        engine.end(ms, reason);
+    }
+    return reason;
+}
+
 export const SNAP_MISS_ANY = 0.25;
 // 候補がそのタイムラインの技名だけのとき（補正）。動画の技名の確かめ（tools/cast-name-check.py）の 0.5 より少し緩い
 // （2026-10-22 の検証: 動画 4 本で技名の正答が 97.1% → 98.4%。0.7 にしても変わらない）

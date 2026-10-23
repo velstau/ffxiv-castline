@@ -14,7 +14,7 @@ import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } fro
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, endForRecording,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -370,14 +370,16 @@ const CONTENT_EVERY_S = 5; // コンテンツ名が決まった後に読み直�
 const CONTENT_RETRY_S = 1;
 const CONTENT_COMBINE = 5; // 1 回で決まらないコンテンツ名の読みを、この回数まで足し合わせる（再生画面と同じ）
 const LIVE_RENDER_EVERY_S = 0.5;
+const LIVE_LOG_MAX = 80;
 
 function startWatching(source) {
     const live = {
         source,
-        engine: new TimelineEngine(WATCH_TIMELINE, { hasEnmity: false }),
+        engine: new TimelineEngine(WATCH_TIMELINE, { hasEnmity: false, log: (ms, message) => liveLog(live, ms / 1000, message) }),
         lastAt: 0, lastWatch: -Infinity, lastRender: -Infinity, lastContentRead: -Infinity,
-        contentReads: [], content: null, fps: 0, status: null, declined: null, missing: [],
+        contentReads: [], content: null, fps: 0, status: null, declined: null, missing: [], black: false, enmity: null,
     };
+    $('live-log').replaceChildren();
     state.live = live;
     source.run((bitmap, at) => liveFrame(live, bitmap, at), { onProgress: (at, fps) => { live.fps = fps; } })
         .catch((e) => setStatus('rec-status', `画面を読み続けられませんでした: ${e.message}`, 'ng'))
@@ -398,6 +400,13 @@ function startWatching(source) {
 
 async function liveFrame(live, bitmap, at) {
     live.lastAt = at;
+    // 暗転（全滅）はコマごとに見る（縮小して見るだけで軽い。見張りの間隔だと、短い暗転を 2 秒続いたと決められない）
+    const black = isBlackFrame(bitmap);
+    if (black !== live.black) {
+        live.black = black;
+        liveLog(live, at, black ? '画面が暗転した' : '画面の暗転が終わった');
+    }
+    live.engine.blackout(at * 1000, black);
     const rec = state.rec;
     if (rec) {
         const read = await state.ocr.readCastFree(bitmap, rec.rect);
@@ -406,9 +415,14 @@ async function liveFrame(live, bitmap, at) {
             addCasts(rec.tracker.push(at - rec.origin, { text: snapRead(normalizeRead(read.text), rec.candidates, rec.maxMiss), conf: read.conf }), rec);
         }
     }
-    if (at - live.lastWatch >= (state.rec ? WATCH_REC_EVERY_S : WATCH_EVERY_S)) {
+    // 文字認識の準備ができる前（モデルを読んでいる間）に共有を始めたら、見張りは待つ。見張りで失敗しても、読み取りは止めない
+    if (state.ocr && at - live.lastWatch >= (state.rec ? WATCH_REC_EVERY_S : WATCH_EVERY_S)) {
         live.lastWatch = at;
-        await watch(live, bitmap, at);
+        try {
+            await watch(live, bitmap, at);
+        } catch (e) {
+            liveLog(live, at, `見張りで失敗しました: ${e.message}`);
+        }
     }
     if (at - live.lastRender >= LIVE_RENDER_EVERY_S) {
         live.lastRender = at;
@@ -422,7 +436,6 @@ async function watch(live, bitmap, at) {
     const regions = regionsFor(bitmap.width, bitmap.height);
     engine.hasEnmity = Boolean(regions.enmity);
     live.missing = [!regions.content && 'コンテンツ名', !regions.countdown && !regions.enmity && 'カウントダウン・敵対リスト'].filter(Boolean);
-    engine.blackout(ms, isBlackFrame(bitmap));
     const inCombat = engine.status(ms).state === 'combat';
     const wantContent = !inCombat && Boolean(regions.content)
         && at - live.lastContentRead >= (live.content ? CONTENT_EVERY_S : CONTENT_RETRY_S);
@@ -445,8 +458,13 @@ async function watch(live, bitmap, at) {
         engine.hpPercent(ms, obs.hp);
     }
     if ('enmity' in obs) {
+        if (obs.enmity !== live.enmity) {
+            live.enmity = obs.enmity;
+            liveLog(live, at, obs.enmity ? '敵対リストが出た' : '敵対リストが消えた');
+        }
         engine.enmity(ms, obs.enmity);
     }
+    endForRecording(engine, ms);
     live.status = engine.status(ms);
     if (live.status.state === 'combat') {
         // 同じ戦闘で記録を始められなかった（範囲・タイムラインが無い）ときは、その戦闘の間は繰り返さない
@@ -455,6 +473,20 @@ async function watch(live, bitmap, at) {
         }
     } else if (state.rec?.auto) {
         finishLive();
+    }
+}
+
+// 判定の記録（画面の「判定の記録」。戦闘の始まり・終わりが合わないときに、何が見えていたかを確かめるため）
+function liveLog(live, at, message) {
+    if (state.live !== live) {
+        return;
+    }
+    live.lastLog = message;
+    const li = Object.assign(document.createElement('li'), { textContent: `${fmt(at)} ${message}` });
+    const list = $('live-log');
+    list.prepend(li);
+    while (list.children.length > LIVE_LOG_MAX) {
+        list.lastChild.remove();
     }
 }
 
@@ -562,7 +594,8 @@ function liveText() {
         const last = state.casts.at(-1);
         return {
             head: `● 記録中 ${fmt(Math.max(0, live.lastAt - rec.origin))}`,
-            detail: [`詠唱 ${state.casts.length} 回`, last && `直近: ${last.name}`, `1 秒に ${live.fps.toFixed(1)} コマ`].filter(Boolean).join('・'),
+            detail: [`詠唱 ${state.casts.length} 回`, last && `直近: ${last.name}`, `1 秒に ${live.fps.toFixed(1)} コマ`,
+                live.engine.hp !== null && `HP ${live.engine.hp}%`, live.enmity !== null && `敵対リスト ${live.enmity ? 'あり' : 'なし'}`].filter(Boolean).join('・'),
             recording: true,
         };
     }
@@ -573,6 +606,7 @@ function liveText() {
         $('auto-rec').checked ? '戦闘が始まると記録します' : '「記録を始める」で記録します',
         live.missing.length > 0 && `範囲がありません: ${live.missing.join('・')}（初期設定の画面で）`,
         state.lastSummary,
+        live.lastLog && `最後の判定: ${live.lastLog}`,
     ].filter(Boolean).join('・');
     return { head, detail, recording: false };
 }
