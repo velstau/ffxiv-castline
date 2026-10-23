@@ -335,7 +335,7 @@ export class TimelineEngine {
         if (!this.phase && this.starts.length > 1) {
             return []; // どのボスかまだ決まっていない（戦闘前も、どのボスか分からないので出さない）
         }
-        const phase = this.phase ?? this.timeline.phases[0];
+        const phase = this.phase ?? this.starts[0];
         const now = this.state === 'combat' ? this.phaseTime(at) : this.countdownTime(at);
         return phase.entries
             .map((e) => ({

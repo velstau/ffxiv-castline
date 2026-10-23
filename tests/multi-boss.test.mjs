@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { TimelineEngine, validateTimeline } from '../public/js/timeline-engine.js';
-import { draftTimeline, draftBossTimeline, looksLikeBoss } from '../public/js/cast-recorder.js';
+import { draftTimeline, draftBossTimeline, looksLikeBoss, addFight } from '../public/js/cast-recorder.js';
 
 const dungeon = {
     format: 'castline/1',
@@ -162,4 +162,47 @@ test('道中とみなすのは、詠唱が 5 回未満か 60 秒未満の戦闘'
     assert.equal(looksLikeBoss(five, 60), true);
     assert.equal(looksLikeBoss(five.slice(1), 120), false);
     assert.equal(looksLikeBoss(five, 59), false);
+});
+
+const fight = (names, seconds, content = 'X') => ({ casts: names.map((name, i) => ({ start: i * 10, duration: 3, name })), seconds, content });
+const boss1 = ['一の通常技', '一の大技', '一の全体攻撃', '一の範囲攻撃', '一の連続技'];
+const boss2 = ['二の通常技', '二の大技', '二の全体攻撃', '二の範囲攻撃', '二の連続技'];
+
+test('戦闘の一覧: 道中は外し、別のボスは両方入れる（ダンジョン）', () => {
+    const fights = [];
+    addFight(fights, fight(['雑魚の技'], 40));
+    assert.equal(fights[0].keep, true, 'ほかに無いので入れる');
+    addFight(fights, fight(boss1, 150));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true], 'ボスが来たら、ほかに無いので入れていた道中は外す');
+    addFight(fights, fight(['雑魚の技', '雑魚の魔法'], 50));
+    addFight(fights, fight(boss2, 200));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true, false, true]);
+});
+
+test('戦闘の一覧: 同じボスのやり直し（零式の全滅）は最新だけ', () => {
+    const fights = [];
+    addFight(fights, fight(boss1, 300));
+    addFight(fights, fight([...boss1, '一の後半の技'], 420));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true]);
+    // 短い全滅は、前の長い挑戦を残す
+    addFight(fights, fight(boss1.slice(0, 2), 30));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true, false]);
+});
+
+test('戦闘の一覧: 1 回だけの短い戦闘でも結果に入れる・別のコンテンツに入ったら前は外す', () => {
+    const fights = [];
+    addFight(fights, fight(['技名その一', '技名その二'], 40, 'A'));
+    assert.equal(fights[0].keep, true);
+    addFight(fights, fight(boss2, 200, 'B'));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true]);
+    addFight(fights, fight(['別の雑魚'], 20, 'C'));
+    assert.deepEqual(fights.map((f) => f.keep), [false, false, true], '別のコンテンツの戦闘は外し、ほかに無いので入れる');
+});
+
+test('start が 1 つで先頭でないとき、戦闘前の予告もそのフェーズから', () => {
+    const t = { ...dungeon, phases: [{ ...dungeon.phases[0], start: undefined }, dungeon.phases[1], dungeon.phases[2]] };
+    const e = engine(t);
+    assert.equal(e.upcoming(1000)[0].entry.name, '二の通常技');
+    pull(e, 10000);
+    assert.equal(e.status(12000).phase.id, 'b2');
 });

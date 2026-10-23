@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { TimelineEngine } from '../public/js/timeline-engine.js';
-import { WATCH_TIMELINE, killSuspected, falseStart, contentPlace, OUTSIDE_READS } from '../public/js/cast-recorder.js';
+import { WATCH_TIMELINE, killSuspected, falseStart, contentPlace } from '../public/js/cast-recorder.js';
 
 const engine = () => new TimelineEngine(WATCH_TIMELINE, { hasEnmity: true });
 const enmityOff = (e, from, to) => {
@@ -138,21 +138,15 @@ test('始まりの誤判定: HP も詠唱も読めないまま敵対リストが
     assert.equal(falseStart(real, 70000, 0), false);
 });
 
-test('コンテンツの中か外か: 申請中の表示・コンテンツ名・決まらない読みの連続', () => {
-    // 2026-10-24 ユーザーの画面（コンテンツルーレット：エキスパートの申請中）
-    const queue = { text: 'コンテンツルーレット：エキスパート', decided: null, lines: ['コンテンツ参加申請中', 'コンテンツルーレット：エキスパート', '申請時のロールでの待機順番：16番目'] };
-    assert.deepEqual(contentPlace(queue, 3), { place: 'queue', miss: 0 });
+test('申請中かどうか: 申請中の表示・コンテンツ名・ほかの文字・何も映っていない', () => {
+    // 2026-10-24 ユーザーの画面（コンテンツルーレット：エキスパートの申請中）を実際の文字認識で読んだ行
+    const queue = { text: 'コンテンツルーレット：エキスパート', decided: null, lines: ['コンテンツ参加申請中', 'コンテンツルーレット：エキスパート', '現在マッチング先選定の待機中です', '申請時のロールでの待機順番：16番目', '経過時間：2:08/平均待機時間：5分未満'] };
+    assert.equal(contentPlace(queue), 'queue');
     // 読み誤りで一部の行だけ読めても
-    assert.equal(contentPlace({ text: 'x', decided: null, lines: ['現在マッチング先選定の待機中です'] }, 0).place, 'queue');
-    assert.deepEqual(contentPlace({ text: '記憶幻想 アレクサンドリア', decided: '記憶幻想 アレクサンドリア', lines: ['記憶幻想 アレクサンドリア'] }, 4), { place: 'duty', miss: 0 });
-    assert.equal(contentPlace({ text: 'ほにゃ', decided: null, lines: ['ほにゃ'] }, 0, true).place, 'duty');
-    // 何も映っていなければ変えない
-    assert.deepEqual(contentPlace({ text: '', decided: null, lines: [] }, 2), { place: null, miss: 2 });
-    // 決まらない読みが続けば外
-    let miss = 0;
-    let place = null;
-    for (let i = 0; i < OUTSIDE_READS; i++) {
-        ({ place, miss } = contentPlace({ text: 'クエスト', decided: null, lines: ['クエスト'] }, miss));
-    }
-    assert.equal(place, 'outside');
+    assert.equal(contentPlace({ text: 'x', decided: null, lines: ['現在マッチング先選定の待機中です'] }), 'queue');
+    assert.equal(contentPlace({ text: '記憶幻想 アレクサンドリア', decided: '記憶幻想 アレクサンドリア', lines: ['記憶幻想 アレクサンドリア'] }), 'duty');
+    assert.equal(contentPlace({ text: 'ほにゃ', decided: null, lines: ['ほにゃ'] }, true), 'duty');
+    // contents.json に無いコンテンツ名などは、外とは決めない（申請中を解くだけ）
+    assert.equal(contentPlace({ text: '新しいダンジョン', decided: null, lines: ['新しいダンジョン'] }), 'other');
+    assert.equal(contentPlace({ text: '', decided: null, lines: [] }), null);
 });

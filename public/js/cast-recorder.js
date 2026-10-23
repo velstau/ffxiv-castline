@@ -414,29 +414,24 @@ export function draftTimeline(casts, { content, title, author, zero } = {}) {
 
 // コンテンツ参加申請中の表示（「コンテンツ参加申請中」「申請時のロールでの待機順番」「現在マッチング先選定の待機中です」）。読み誤りに備えて語を分ける
 export const QUEUE_PATTERN = /参加申請|申請中|待機順番|マッチング|平均待機/;
-export const OUTSIDE_READS = 5; // 文字はあるのにコンテンツ名に決まらない読みがこの回数続いたら、コンテンツの外とみなす
 
 /**
- * コンテンツ名の範囲の 1 回の読み（readContent の結果）から、コンテンツの中か外かを決める。
- * 申請中の表示があれば 'queue'、コンテンツ名に決まれば 'duty'、文字があって決まらない読みが OUTSIDE_READS 回続けば 'outside'。
- * 何も映っていない（ムービー・暗転・表示を隠した）読みでは変えない（place は null）。
+ * コンテンツ名の範囲の 1 回の読み（readContent の結果）から、いまの場所を決める。
+ * 申請中の表示があれば 'queue'、コンテンツ名に決まれば 'duty'、ほかの文字なら 'other'（申請中を解く。外とは決めない:
+ * contents.json に無いコンテンツや読みにくい名前でも記録できるように）。何も映っていない（ムービー・暗転・表示を隠した）読みは null（変えない）。
  * @param {{text:string, decided:string|null, lines?:string[]}} read
- * @param {number} miss これまで続いた、決まらない読みの回数
  * @param {boolean} combined 何回かの読みを足し合わせてコンテンツ名に決まったか
- * @returns {{place:'duty'|'queue'|'outside'|null, miss:number}}
+ * @returns {'duty'|'queue'|'other'|null}
  */
-export function contentPlace(read, miss, combined = false) {
+export function contentPlace(read, combined = false) {
     const lines = read.lines ?? [read.text];
     if (lines.some((l) => QUEUE_PATTERN.test(l))) {
-        return { place: 'queue', miss: 0 };
+        return 'queue';
     }
     if (read.decided || combined) {
-        return { place: 'duty', miss: 0 };
+        return 'duty';
     }
-    if (lines.every((l) => l.trim() === '')) {
-        return { place: null, miss };
-    }
-    return { place: miss + 1 >= OUTSIDE_READS ? 'outside' : null, miss: miss + 1 };
+    return lines.every((l) => l.trim() === '') ? null : 'other';
 }
 
 // ── ダンジョン・アライアンス: 1 つのコンテンツの戦闘をまとめる ──
@@ -444,9 +439,48 @@ export function contentPlace(read, miss, combined = false) {
 export const BOSS_MIN_CASTS = 5; // これより詠唱の少ない戦闘は道中とみなす（結果に入れる既定を外すだけ。利用者が選び直せる）
 export const BOSS_MIN_S = 60; // これより短い戦闘も道中とみなす
 
-/** 戦闘がボスらしいか（詠唱が BOSS_MIN_CASTS 回以上で、BOSS_MIN_S 秒以上続いた） */
+/** 戦闘がボスらしいか（技名の読めた詠唱が BOSS_MIN_CASTS 回以上で、BOSS_MIN_S 秒以上続いた） */
 export function looksLikeBoss(casts, seconds) {
-    return casts.length >= BOSS_MIN_CASTS && seconds >= BOSS_MIN_S;
+    return casts.filter((c) => c.name).length >= BOSS_MIN_CASTS && seconds >= BOSS_MIN_S;
+}
+
+export const SAME_BOSS_SHARE = 0.5; // 技名の種類がこの割合以上重なる戦闘は、同じボスのやり直し
+
+/** 2 つの戦闘が同じボスか（技名の種類の少ないほうの半分以上が重なる） */
+export function sameBoss(a, b) {
+    const names = (f) => new Set(f.casts.map((c) => c.name).filter(Boolean));
+    const x = names(a);
+    const y = names(b);
+    const shared = [...x].filter((n) => y.has(n)).length;
+    return shared > 0 && shared >= SAME_BOSS_SHARE * Math.min(x.size, y.size);
+}
+
+/**
+ * 記録した戦闘 fight を一覧 fights に足し、結果に入れるか（keep）を決める（fights の keep も変える）。
+ * - 前の戦闘でコンテンツ名が違うもの（別のコンテンツ）は外す
+ * - ボスらしければ入れ、同じボスのやり直し（零式の全滅など。最新を残す）と、他に無いので入れていた短い戦闘（fallback）は外す
+ * - ボスらしくなければ（道中・短い全滅）、他に入れている戦闘が無いときだけ入れる（fallback。1 体だけのコンテンツで結果が出ないことのないように）
+ * @param {{casts:object[], seconds:number, content:string, keep?:boolean, fallback?:boolean}[]} fights
+ */
+export function addFight(fights, fight) {
+    for (const f of fights) {
+        if (f.keep && fight.content && f.content && f.content !== fight.content) {
+            f.keep = false;
+        }
+    }
+    if (looksLikeBoss(fight.casts, fight.seconds)) {
+        for (const f of fights) {
+            if (f.keep && (f.fallback || sameBoss(f, fight))) {
+                f.keep = false;
+            }
+        }
+        fight.keep = true;
+        fight.fallback = false;
+    } else {
+        fight.keep = !fights.some((f) => f.keep);
+        fight.fallback = fight.keep;
+    }
+    fights.push(fight);
 }
 
 /**

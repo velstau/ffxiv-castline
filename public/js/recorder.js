@@ -15,7 +15,7 @@ import { groupTimelines } from './timeline-order.js';
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftBossTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS, looksLikeBoss, BOSS_MIN_CASTS, BOSS_MIN_S, contentPlace,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS, looksLikeBoss, addFight, contentPlace,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -400,8 +400,8 @@ function startWatching(source) {
         engine: new TimelineEngine(WATCH_TIMELINE, { hasEnmity: false, log: (ms, message) => liveLog(live, ms / 1000, message) }),
         lastAt: 0, lastWatch: -Infinity, lastRender: -Infinity, lastContentRead: -Infinity,
         contentReads: [], content: null, fps: 0, status: null, declined: null, missing: [], black: false, enmity: null,
-        // コンテンツの中か外か（contentPlace）。'queue'（参加申請中）・'outside' のときは、戦闘が始まっても自動では記録しない。null はまだ分からない
-        place: null, contentMiss: 0,
+        // いまの場所（contentPlace）。'queue'（参加申請中）のときは、戦闘が始まっても自動では記録しない。null はまだ分からない
+        place: null,
     };
     $('live-log').replaceChildren();
     state.live = live;
@@ -497,11 +497,11 @@ async function watch(live, bitmap, at) {
     if (live.status.state === 'combat') {
         // 同じ戦闘で記録を始められなかった（範囲・タイムラインが無い）ときは、その戦闘の間は繰り返さない
         if (!state.rec && $('auto-rec').checked && live.declined !== engine.startAt) {
-            const outside = live.place === 'queue' || live.place === 'outside';
-            if (outside) {
-                liveLog(live, at, `${PLACE_TEXT[live.place]}なので、この戦闘は記録しません`);
+            const queue = live.place === 'queue';
+            if (queue) {
+                liveLog(live, at, 'コンテンツ参加申請中なので、この戦闘は記録しません');
             }
-            if (outside || !beginLive({ origin: engine.startAt / 1000, auto: true })) {
+            if (queue || !beginLive({ origin: engine.startAt / 1000, auto: true })) {
                 live.declined = engine.startAt;
             }
         }
@@ -543,20 +543,22 @@ function liveLog(live, at, message) {
 }
 
 // コンテンツ名: 1 回で決まらなければ、何回かの読みを足し合わせて決める（再生画面と同じ）
-// コンテンツの中か外か（参加申請中・外の戦闘は記録しない。2026-10-24 ユーザー指摘「マッチング申請中は記録は不要」）と、コンテンツ名
-const PLACE_TEXT = { duty: 'コンテンツの中', queue: 'コンテンツ参加申請中', outside: 'コンテンツの外' };
+// 参加申請中か（申請中の戦闘は記録しない。2026-10-24 ユーザー指摘「マッチング申請中は記録は不要」）と、コンテンツ名
 function notePlace(live, at, read) {
     // 申請中の表示はコンテンツ名として足し合わせない（「コンテンツルーレット：エキスパート」が近い名前に寄るため）
-    const queue = contentPlace(read, live.contentMiss).place === 'queue';
+    const queue = contentPlace(read) === 'queue';
     const name = queue ? null : noteContent(live, read);
-    const { place, miss } = contentPlace(read, live.contentMiss, Boolean(name));
-    live.contentMiss = miss;
+    const place = contentPlace(read, Boolean(name));
     if (queue) {
         live.contentReads = [];
     }
     if (place && place !== live.place) {
+        if (place === 'queue') {
+            liveLog(live, at, 'コンテンツ参加申請中。戦闘が始まっても記録しません');
+        } else if (live.place === 'queue') {
+            liveLog(live, at, '参加申請中の表示が消えた');
+        }
         live.place = place;
-        liveLog(live, at, place === 'duty' ? `${PLACE_TEXT.duty}（${name}）` : `${PLACE_TEXT[place]}。戦闘が始まっても記録しません`);
     }
 }
 
@@ -573,7 +575,6 @@ function noteContent(live, read) {
     live.content = name;
     live.contentReads = [];
     applyContent(name);
-    noteFightsContent(name);
     return name;
 }
 
@@ -646,7 +647,7 @@ function finishLive() {
     const casts = mergeSplitCasts(state.casts);
     const seconds = rec.last - rec.origin;
     if (casts.length > 0) {
-        state.fights.push({ n: state.fights.length + 1, casts, clock: state.clock, target: rec.target, seconds, keep: looksLikeBoss(casts, seconds), content: rec.content });
+        addFight(state.fights, { n: state.fights.length + 1, casts, clock: state.clock, target: rec.target, seconds, content: rec.content });
     }
     showFights();
     if (casts.length === 0 && state.fights.length > 0) {
@@ -670,13 +671,14 @@ function showFights() {
     if (kept.length === 0) {
         $('casts-box').hidden = true;
         $('result-section').hidden = true;
-        setStatus('rec-status', `結果に入れる戦闘がありません（詠唱 ${BOSS_MIN_CASTS} 回未満か ${BOSS_MIN_S} 秒未満の戦闘は道中とみなして外しています）。「この共有で記録した戦闘」で選んでください。`);
+        setStatus('rec-status', '結果に入れる戦闘がありません。「この共有で記録した戦闘」で選んでください。');
         state.lastSummary = `記録した戦闘 ${state.fights.length}（結果に入れるものなし）`;
         return;
     }
     const clocks = new Set(kept.map((f) => f.clock));
     beginView(clocks.size === 1 ? kept[0].clock : '記録');
-    state.casts = kept.flatMap((f) => f.casts.map((c) => ({ ...c, fight: kept.length > 1 ? f.n : undefined })));
+    // zeroAtStart: その戦闘の 0 秒を戦闘開始にするか（戦闘の始まりで記録した）。一覧を空にした後に結果を直しても変わらないよう、詠唱に持たせる
+    state.casts = kept.flatMap((f) => f.casts.map((c) => ({ ...c, fight: kept.length > 1 ? f.n : undefined, zeroAtStart: f.clock === '戦闘' })));
     finishView(kept.at(-1).target);
     if (state.fights.length > 1) {
         state.lastSummary = `記録した戦闘 ${state.fights.length}（結果に入れたもの ${kept.length}・詠唱 ${state.casts.length} 回）`;
@@ -689,9 +691,10 @@ function renderFights() {
         const check = Object.assign(document.createElement('input'), { type: 'checkbox', checked: f.keep });
         check.addEventListener('change', () => {
             f.keep = check.checked;
+            f.fallback = false; // 利用者が選んだものは、後の戦闘で自動では外さない
             showFights();
         });
-        const boss = looksLikeBoss(f.casts, f.seconds) ? '' : '・道中とみなしました';
+        const boss = looksLikeBoss(f.casts, f.seconds) ? '' : f.fallback && f.keep ? '・短い戦闘（ほかに無いので入れています）' : '・短い戦闘（道中とみなしました）';
         const where = f.content && f.content !== $('content-input').value.trim() ? `・${f.content}` : '';
         const label = document.createElement('label');
         label.append(check, document.createTextNode(`${f.n} 戦目: ${fmt(f.seconds)}・詠唱 ${f.casts.length} 回・最初の技 ${f.casts[0].name}${boss}${where}`));
@@ -699,18 +702,6 @@ function renderFights() {
         li.append(label);
         return li;
     }));
-}
-
-// 別のコンテンツに入った: 前のコンテンツの戦闘は消さず、結果に入れないだけにする（保存する前に消えないように）
-function noteFightsContent(name) {
-    const other = state.fights.filter((f) => f.keep && f.content && f.content !== name);
-    if (other.length === 0) {
-        return;
-    }
-    other.forEach((f) => {
-        f.keep = false;
-    });
-    showFights();
 }
 
 function clearFights() {
@@ -753,10 +744,10 @@ function liveText() {
         };
     }
     const s = live.status?.state;
-    const outside = live.place === 'queue' || live.place === 'outside';
-    const head = s === 'countdown' ? 'カウントダウン中' : s === 'combat' ? '戦闘中（記録していません）' : outside ? `待機中（${PLACE_TEXT[live.place]}）` : '待機中';
+    const queue = live.place === 'queue';
+    const head = s === 'countdown' ? 'カウントダウン中' : s === 'combat' ? '戦闘中（記録していません）' : queue ? '待機中（コンテンツ参加申請中）' : '待機中';
     const detail = [
-        outside ? `${PLACE_TEXT[live.place]}なので、戦闘が始まっても記録しません` : live.content ? `コンテンツ: ${live.content}` : 'コンテンツ名を読んでいます',
+        queue ? 'コンテンツ参加申請中なので、戦闘が始まっても記録しません' : live.content ? `コンテンツ: ${live.content}` : 'コンテンツ名を読んでいます',
         $('auto-rec').checked ? '戦闘が始まると記録します' : '「記録を始める」で記録します',
         live.missing.length > 0 && `範囲がありません: ${live.missing.join('・')}（初期設定の画面で）`,
         state.lastSummary,
@@ -903,7 +894,7 @@ function buildNewXml() {
     const fights = byFight(state.result.casts);
     // 戦闘が 2 つ以上: 戦闘ごとのフェーズ（ボス）にする。0 秒は、戦闘の始まりで記録したなら戦闘開始、そのほかは最初の詠唱
     const drafts = fights.length > 1
-        ? fights.map((list) => ({ casts: list.filter((c) => !c.skip && c.name), zero: state.fights.find((f) => f.n === list[0].fight)?.clock === '戦闘' ? 0 : list[0].start }))
+        ? fights.map((list) => ({ casts: list.filter((c) => !c.skip && c.name), zero: list[0].zeroAtStart ? 0 : list[0].start }))
             .filter((f, i, all) => f.casts.length > 0 || (i === all.length - 1 && all.every((x) => x.casts.length === 0)))
         : [{ casts: state.result.casts.filter((c) => !c.skip && c.name), zero: Number.isFinite(zero) ? zero : undefined }];
     const casts = drafts.flatMap((f) => f.casts);
