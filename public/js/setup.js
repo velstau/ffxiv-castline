@@ -19,6 +19,7 @@ const state = {
     source: null,
     running: false,
     contents: [],
+    allNames: [], // 配信の全タイムラインの技名（data/castnames.json）。タイムラインの無いコンテンツの詠唱バーを探すのに使う
     frameSize: null,
     // 再設定: false（設定済みなら手順を出さない）・'clear'（次に取り込んだ画面の大きさの範囲を消してから始める）・true（手順を出す）
     redo: false,
@@ -182,12 +183,27 @@ function redo() {
     $('start').focus();
 }
 
+// 詠唱バーの照合に使う技名。タイムラインの無いコンテンツは、配信の全タイムラインの技名のうち 4 文字以上のもので、厳しく照合して探す
+// （2026-10-23 ノーマルの煉獄編4 で詠唱バーが見つからなかった。零式のタイムラインと技名がほぼ共通。
+// 手元の動画 8 本で、全技名のままだと 4 本で短い技名にゴミの行が当たって先に採られ、4 文字以上・厳しい照合では 8 本とも本物が先だった。
+// 技名がまったく違う新しいコンテンツでは、ほかのコンテンツの技名がバフ名などに出て当たることがまれにある。
+// 技名なしで「同じ場所に違う文字」で探す方式は、8 本のうち 5 本で DPS メーター・セリフなどを先につかんだので採らない）
+const UNKNOWN_CAST_MIN_CHARS = 4;
+const strictCast = () => !state.timeline && state.timelineChecked;
+
+function castCandidates() {
+    if (state.timeline) {
+        return castNamesOf(state.timeline);
+    }
+    return state.timelineChecked ? state.allNames.filter((n) => [...n].length >= UNKNOWN_CAST_MIN_CHARS) : [];
+}
+
 function render() {
     renderSetupDone();
     const size = state.frameSize;
     const regions = size ? regionsFor(size.width, size.height) : {};
     const key = size ? screenKey(size.width, size.height) : '';
-    // 詠唱バーは、タイムラインがあるコンテンツだけ探す（技名で見つけるため）
+    // 詠唱バーは、タイムラインの無いコンテンツでは無くても済ませる（再生には要らない。記録に使うので、配信の全技名で探しはする）
     const castNeeded = !(state.timelineChecked && !state.timeline);
     const done = {
         capture: state.running && Boolean(size),
@@ -213,9 +229,10 @@ function render() {
         ? `HP: 見つけました${state.found.hp ? state.found.hp.label.replace(/^HP/, '') : ''}`
         : 'HP: 殴って HP が減ると見つけます');
     itemState('item-enmity', Boolean(regions.enmity), regions.enmity ? `敵対リスト: 見つけました${foundText('enmity')}` : '敵対リスト: 戦闘中に見つけます');
-    itemState('item-cast', Boolean(regions.cast) || !castNeeded, regions.cast
+    itemState('item-cast', Boolean(regions.cast), regions.cast
         ? `詠唱バー: 見つけました${state.found.cast?.name ? `（${state.found.cast.name}）` : ''}`
-        : !castNeeded ? '詠唱バー: このコンテンツはタイムラインが無いので探しません（無くても使えます）'
+        : !castNeeded ? `詠唱バー: このコンテンツはタイムラインが無いので、配信のほかのタイムラインの技名（${castCandidates().length} 個）で探します。`
+            + 'ノーマルと零式のように技名が共通なら見つかります。見つけたら下の一覧で枠を確かめてください。見つからなければ、記録に使うときは拡大図で囲んでください（再生だけなら無くても使えます）'
             : !state.timelineChecked ? 'ボスの詠唱バー: コンテンツ名を読んでから探します（技名で見つけるため）'
                 : `ボスの詠唱バー: ボスが技を詠唱したときに見つけます（タイムラインの技 ${castNamesOf(state.timeline).length} 個で照合）`);
     stepState('step-done', allDone, false, allDone
@@ -368,7 +385,7 @@ async function start() {
     Object.assign(state, { source, running: true, frameSize: null, found: {}, lastContentRead: -Infinity });
     // 初期設定の画面は読み取りと競わないので、戦闘前の画面（敵対リストの候補から外す場所）も短い間隔で覚える
     state.finder = new RegionAutoFinder({
-        ocr: state.ocr, contents: () => state.contents, casts: () => castNamesOf(state.timeline), idleFullEveryMs: 6000,
+        ocr: state.ocr, contents: () => state.contents, casts: castCandidates, strictCast, idleFullEveryMs: 6000,
     });
     log(`── 取り込み開始（${source.method}）`);
     render();
@@ -598,6 +615,11 @@ async function init() {
     } catch {
         state.contents = [];
         log('コンテンツ名の一覧を読めませんでした（コンテンツ名は探せません）');
+    }
+    try {
+        state.allNames = (await (await fetch('data/castnames.json')).json()).names;
+    } catch {
+        state.allNames = [];
     }
     await loadModel();
 }

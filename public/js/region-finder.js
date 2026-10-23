@@ -156,10 +156,14 @@ export function enmityRegionFrom(line, width, height) {
  * 戦闘前にも文字があった場所（baseline）は外さない: 詠唱バーはターゲットの名前・HP の行のすぐ近くに出るので、戦闘前に
  * ボスを選んでいると重なって外れてしまう（2026-10-21 ゲーム内で、敵対リスト・HP は見つかり詠唱バーだけ見つからなかった）。
  * 技名と決まった行だけが候補なので、外さなくても取り違えは少ない。
+ * strict: 候補がそのコンテンツの技名ではない（タイムラインの無いコンテンツで、配信の全技名で探す）ときの厳しい照合。
+ * 行が技名とほぼ同じ（余計な文字は 1 文字まで・違いは技名の 3 割まで）ものだけを採る。手元の動画 8 本で、全技名で照合すると
+ * 「白光」「花粉」のような短い技名に 1〜数文字のゴミの行が当たって先に採られたため（2026-10-23。短い技名は呼び出し側で候補から外す）
  */
-export function findCastLine(lines, { near = null, enemyName = '', exclude = [] } = {}) {
+export function findCastLine(lines, { near = null, enemyName = '', exclude = [], strict = false } = {}) {
     const fits = lines.filter((l) => l.cast
-        && chars(l.text) <= chars(l.cast) + 3
+        && chars(l.text) <= chars(l.cast) + (strict ? 1 : 3)
+        && (!strict || levenshtein(l.text, l.cast) <= Math.floor(chars(l.cast) * 0.3))
         && !/[「」]/.test(l.text)
         && !(enemyName && fuzzyContains(l.text, enemyName))
         && !exclude.some((r) => r && overlaps(l, r)));
@@ -194,7 +198,7 @@ export function castRegionFrom(line, longest, width, height) {
  *          line は範囲を決めた行（確認用）
  */
 export function classifyCombatLines(lines, {
-    want, width, height, longestCast = 12, hpRect = null, enmityRect = null, enemyName = null, baseline = [],
+    want, width, height, longestCast = 12, hpRect = null, enmityRect = null, enemyName = null, baseline = [], strictCast = false,
 }) {
     const out = { enemyName };
     const hp = findHpLine(lines, { baseline, enmityRect });
@@ -215,7 +219,7 @@ export function classifyCombatLines(lines, {
     }
     if (want.has('cast')) {
         // 敵対リストにも詠唱中の技名が出るので、見つけた敵対リストの行と、保存済みの敵対リストの範囲は外す
-        const castLine = findCastLine(lines, { near, enemyName: out.enemyName, exclude: [...hpLines, enmityLine, enmityRect] });
+        const castLine = findCastLine(lines, { near, enemyName: out.enemyName, exclude: [...hpLines, enmityLine, enmityRect], strict: strictCast });
         if (castLine) {
             out.cast = { rect: castRegionFrom(castLine, longestCast, width, height), name: castLine.cast, line: castLine };
         }

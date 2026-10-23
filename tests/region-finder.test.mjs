@@ -133,3 +133,13 @@ test('詠唱バー: フォーカスが味方なら、ボスの欄（ターゲッ
     assert.equal(r.hp.focus, false);
     assert.equal(r.cast?.line.x, 990);
 });
+
+test('詠唱バー（厳しい照合）: 余計な文字は 1 文字まで・技名とほぼ同じ行だけを採る（タイムラインの無いコンテンツで全技名で探すとき）', () => {
+    const line = (text, cast) => ({ x: 1500, y: 300, w: 200, h: 24, text, cast });
+    assert.equal(findCastLine([line('コメットレイン', 'コメットレイン')], { strict: true })?.cast, 'コメットレイン');
+    assert.equal(findCastLine([line('カスケードメ', 'カスケード')], { strict: true })?.cast, 'カスケード');
+    assert.equal(findCastLine([line('ブリザガに突進', 'ブリザガ')], { strict: true }), null); // 余計な文字が多い
+    assert.equal(findCastLine([line('ナークル', 'サークル')], { strict: true })?.cast, 'サークル'); // 1 文字違いは採る（読み違い）
+    assert.equal(findCastLine([line('ブリザガに突進誘', 'ブリザガ')]), null); // 厳しくない照合でも +3 文字まで
+    assert.equal(findCastLine([line('ブリザガに', 'ブリザガ')])?.cast, 'ブリザガ');
+});

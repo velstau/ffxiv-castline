@@ -50,16 +50,18 @@ export class RegionAutoFinder {
      *   casts: () => string[],
      *   status?: (at:number) => ('idle'|'countdown'|'combat'|'ended'|null),
      *   idleFullEveryMs?: number,
+     *   strictCast?: () => boolean,
      * }} options casts: 詠唱バーとして照合する技名（タイムラインが無ければ空で、詠唱バーは探さない）。
      *   status: 戦闘の状態（null は分からない。初期設定の画面など）。カウントダウン中は読み取りを優先して、ほかを探さない。
+     *   strictCast: true のあいだは、詠唱バーを厳しく照合する（casts がそのコンテンツの技名ではないとき。region-finder.js の findCastLine）
      *   idleFullEveryMs: 戦闘外に画面全体を読む間隔（戦闘前の画面を覚えるため。読み取りと競わない初期設定の画面では短くする）
      *
      * HP・敵対リスト・詠唱バーは戦闘中（status が combat か、HP が 100% 未満の行が見えた）だけ探す。
      * 戦闘外に読んだ画面は「戦闘前から文字がある場所」として覚え、敵対リストの候補から外す（詠唱バーは名前・HP の行の近くに出るので外さない）。
      * HP は 2 回続けて同じ場所に見えたときだけ保存する（読み違いの 1 回で決めない）
      */
-    constructor({ ocr, contents, casts, status = () => null, idleFullEveryMs = FULL_IDLE_EVERY_MS }) {
-        Object.assign(this, { ocr, contents, casts, status, idleFullEveryMs });
+    constructor({ ocr, contents, casts, status = () => null, idleFullEveryMs = FULL_IDLE_EVERY_MS, strictCast = () => false }) {
+        Object.assign(this, { ocr, contents, casts, status, idleFullEveryMs, strictCast });
         this.reset();
     }
 
@@ -146,7 +148,7 @@ export class RegionAutoFinder {
             const longestCast = Math.max(1, ...casts.map((n) => [...n].length));
             const r = classifyCombatLines(lines, {
                 want, width, height, longestCast, hpRect: regions.hp ?? null, enmityRect: regions.enmity ?? null,
-                enemyName: this.enemyName, baseline: this.baseline,
+                enemyName: this.enemyName, baseline: this.baseline, strictCast: this.strictCast(),
             });
             this.enemyName = r.enemyName ?? this.enemyName;
             if (r.hp) {
