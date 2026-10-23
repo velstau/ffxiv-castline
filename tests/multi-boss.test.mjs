@@ -172,11 +172,13 @@ test('戦闘の一覧: 道中は外し、別のボスは両方入れる（ダン
     const fights = [];
     addFight(fights, fight(['雑魚の技'], 40));
     assert.equal(fights[0].keep, true, 'ほかに無いので入れる');
+    addFight(fights, fight(['雑魚の別の技'], 30));
+    assert.deepEqual(fights.map((f) => f.keep), [false, true], 'ほかに無いので入れていたものは、新しい短い戦闘に替える');
     addFight(fights, fight(boss1, 150));
-    assert.deepEqual(fights.map((f) => f.keep), [false, true], 'ボスが来たら、ほかに無いので入れていた道中は外す');
+    assert.deepEqual(fights.map((f) => f.keep), [false, false, true], 'ボスが来たら、ほかに無いので入れていた道中は外す');
     addFight(fights, fight(['雑魚の技', '雑魚の魔法'], 50));
     addFight(fights, fight(boss2, 200));
-    assert.deepEqual(fights.map((f) => f.keep), [false, true, false, true]);
+    assert.deepEqual(fights.map((f) => f.keep), [false, false, true, false, true]);
 });
 
 test('戦闘の一覧: 同じボスのやり直し（零式の全滅）は最新だけ', () => {

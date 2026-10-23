@@ -459,7 +459,8 @@ export function sameBoss(a, b) {
  * 記録した戦闘 fight を一覧 fights に足し、結果に入れるか（keep）を決める（fights の keep も変える）。
  * - 前の戦闘でコンテンツ名が違うもの（別のコンテンツ）は外す
  * - ボスらしければ入れ、同じボスのやり直し（零式の全滅など。最新を残す）と、他に無いので入れていた短い戦闘（fallback）は外す
- * - ボスらしくなければ（道中・短い全滅）、他に入れている戦闘が無いときだけ入れる（fallback。1 体だけのコンテンツで結果が出ないことのないように）
+ * - ボスらしくなければ（道中・短い全滅）、他に入れている戦闘が無いときだけ入れる（fallback。1 体だけのコンテンツで結果が出ないことのないように）。
+ *   前に fallback で入れていた短い戦闘は、新しいほうに替える（最新を残す）
  * @param {{casts:object[], seconds:number, content:string, keep?:boolean, fallback?:boolean}[]} fights
  */
 export function addFight(fights, fight) {
@@ -477,6 +478,11 @@ export function addFight(fights, fight) {
         fight.keep = true;
         fight.fallback = false;
     } else {
+        for (const f of fights) {
+            if (f.keep && f.fallback) {
+                f.keep = false;
+            }
+        }
         fight.keep = !fights.some((f) => f.keep);
         fight.fallback = fight.keep;
     }
