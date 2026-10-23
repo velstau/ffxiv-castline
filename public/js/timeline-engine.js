@@ -381,6 +381,10 @@ export class TimelineEngine {
     beginCombat(startAt, reason) {
         this.startAt = startAt;
         this.state = 'combat';
+        // 前の戦闘で読んだ HP は使わない（カウントダウンなしで続けて始めたとき、前の戦闘の HP 3% で次の戦闘がすぐ討伐になった。
+        // 2026-10-23 ユーザーのエキルレの記録で、雑魚の戦闘が始まって数秒で前の HP のまま終わった）
+        this.hp = null;
+        this.lastHpAt = null;
         this.phase = this.timeline.phases[0];
         this.phaseStartAt = startAt;
         this.synced = new Set();

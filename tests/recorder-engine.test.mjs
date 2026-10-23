@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { TimelineEngine } from '../public/js/timeline-engine.js';
-import { WATCH_TIMELINE, killSuspected } from '../public/js/cast-recorder.js';
+import { WATCH_TIMELINE, killSuspected, falseStart } from '../public/js/cast-recorder.js';
 
 const engine = () => new TimelineEngine(WATCH_TIMELINE, { hasEnmity: true });
 const enmityOff = (e, from, to) => {
@@ -99,4 +99,41 @@ test('記録用の討伐の疑い: HP 10% 以下を読んだ後に敵対リス�
     enmityOff(movie, 101000, 160000); // 1 分のムービー
     assert.equal(killSuspected(movie, 160000), false);
     assert.equal(movie.status(160000).state, 'combat');
+});
+
+test('前の戦闘の HP は次の戦闘に持ち越さない（カウントダウンなしで続けて始めても、すぐ討伐にならない）', () => {
+    const e = engine();
+    enmityOff(e, 0, 5000);
+    e.enmity(6000, true);
+    e.enmity(7200, true);
+    e.hpPercent(60000, 2);
+    enmityOff(e, 61000, 65000);
+    assert.equal(e.status(65000).state, 'ended');
+    e.enmity(70000, true);
+    e.enmity(71200, true);
+    assert.equal(e.status(71200).state, 'combat');
+    assert.equal(e.hp, null);
+    enmityOff(e, 72000, 76000);
+    assert.equal(e.status(76000).state, 'combat'); // HP 2% の持ち越しで討伐にならない
+    assert.equal(killSuspected(e, 76000), false);
+});
+
+test('始まりの誤判定: HP も詠唱も読めないまま敵対リストが 5 秒消えたら。HP を読んだ戦闘や詠唱を記録した戦闘では当たらない', () => {
+    const start = () => {
+        const e = engine();
+        enmityOff(e, 0, 5000);
+        e.enmity(6000, true);
+        e.enmity(7200, true);
+        return e;
+    };
+    const flicker = start();
+    enmityOff(flicker, 8000, 12500);
+    assert.equal(falseStart(flicker, 12500, 0), false);
+    enmityOff(flicker, 13000, 13000);
+    assert.equal(falseStart(flicker, 13000, 0), true);
+    assert.equal(falseStart(flicker, 13000, 2), false);
+    const real = start();
+    real.hpPercent(9000, 88);
+    enmityOff(real, 10000, 70000); // ムービー
+    assert.equal(falseStart(real, 70000, 0), false);
 });

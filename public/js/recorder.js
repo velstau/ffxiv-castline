@@ -14,7 +14,7 @@ import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } fro
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -282,6 +282,7 @@ function beginView(clock) {
 
 // 記録を終えた: 読みが途中で割れた同じ技名の詠唱をつなぎ、一覧を出し直して結果を出す
 function finishView(target) {
+    state.lastTarget = target;
     state.casts = mergeSplitCasts(state.casts);
     $('casts').replaceChildren();
     state.casts.forEach(renderCast);
@@ -466,6 +467,8 @@ async function watch(live, bitmap, at) {
     }
     if (killSuspected(engine, ms)) {
         await confirmKill(live, bitmap, at, regions);
+    } else if (falseStart(engine, ms, state.rec ? state.casts.length : 0)) {
+        engine.end(ms, `HP も詠唱も読めないまま敵対リストが ${FALSE_START_OFF_MS / 1000} 秒消えた。始まりの判定の誤り（敵対リストの範囲に別の表示が出た）とみなす`);
     }
     live.status = engine.status(ms);
     if (live.status.state === 'combat') {
@@ -559,7 +562,9 @@ function beginLive({ origin, auto }) {
         }
         return false;
     }
-    state.rec = { tracker: new CastTracker(), origin, auto, target, rect: state.rect, last: origin, ...snapping(target) };
+    // 前の記録の結果は、この記録で詠唱を読めなかったときに戻す（雑魚の戦闘・始まりの誤判定で、前の結果を消さない）
+    const prev = state.casts.length > 0 ? { casts: state.casts, clock: state.clock, target: state.lastTarget } : null;
+    state.rec = { tracker: new CastTracker(), origin, auto, target, rect: state.rect, last: origin, prev, ...snapping(target) };
     state.running = true;
     beginView(auto ? '戦闘' : '記録');
     setStatus('rec-status', auto ? '戦闘が始まったので記録しています…（戦闘が終わると止まります）' : '記録しています…');
@@ -590,7 +595,14 @@ function finishLive() {
     state.running = false;
     addCasts(rec.tracker.finish(rec.last - rec.origin), rec);
     updateButtons();
-    finishView(rec.target);
+    if (state.casts.length === 0 && rec.prev) {
+        beginView(rec.prev.clock); // 一覧と見出しを前の記録に戻す
+        state.casts = rec.prev.casts;
+        finishView(rec.prev.target);
+        setStatus('rec-status', '詠唱を読めないまま戦闘が終わったので、前の記録の結果のままにしました。');
+    } else {
+        finishView(rec.target);
+    }
     renderLive();
 }
 

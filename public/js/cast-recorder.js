@@ -25,6 +25,16 @@ export const WATCH_TIMELINE = Object.freeze({ format: 'castline/1', content: '',
 export const REC_KILL_HP = 10; // 最後に読んだ HP がこれ以下で、敵対リストが REC_KILL_OFF_MS 消えたら討伐の疑い
 export const REC_KILL_OFF_MS = 3000;
 
+// 敵対リストで始めた戦闘が、HP も詠唱も読めないまま敵対リストが消えたら、始まりの判定が誤り（敵対リストの範囲に別の表示が出た）として終える。
+// 本当の戦闘では HP を読めるので、ムービーで敵対リストが消えても当たらない（2026-10-23 エキルレで、戦闘の後に敵対リストの範囲の文字が出入りして記録が終わらなかった）
+export const FALSE_START_OFF_MS = 5000;
+
+/** 始まりの判定が誤りだった疑い（engine の時刻 ms で）。casts: この戦闘で記録した詠唱の回数 */
+export function falseStart(engine, ms, casts) {
+    return engine.status(ms).state === 'combat' && engine.hasEnmity && engine.hp === null && casts === 0
+        && engine.enmityOffSince !== null && ms - engine.enmityOffSince >= FALSE_START_OFF_MS;
+}
+
 /** 記録用の討伐の疑い（engine の時刻 ms で）。戦闘中で、最後に読んだ HP が REC_KILL_HP 以下、敵対リストが REC_KILL_OFF_MS 以上消えている */
 export function killSuspected(engine, ms) {
     return engine.status(ms).state === 'combat' && engine.hasEnmity && engine.enmityOffSince !== null
