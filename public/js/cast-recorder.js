@@ -446,13 +446,13 @@ export function looksLikeBoss(casts, seconds) {
 
 export const SAME_BOSS_SHARE = 0.5; // 技名の種類がこの割合以上重なる戦闘は、同じボスのやり直し
 
-/** 2 つの戦闘が同じボスか（技名の種類の少ないほうの半分以上が重なる） */
+/** 2 つの戦闘が同じボスか（技名の種類の少ないほうの半分以上、かつ 2 種類以上が重なる。ファイアのような汎用の技名 1 つでは決めない） */
 export function sameBoss(a, b) {
     const names = (f) => new Set(f.casts.map((c) => c.name).filter(Boolean));
     const x = names(a);
     const y = names(b);
     const shared = [...x].filter((n) => y.has(n)).length;
-    return shared > 0 && shared >= SAME_BOSS_SHARE * Math.min(x.size, y.size);
+    return shared >= 2 && shared >= SAME_BOSS_SHARE * Math.min(x.size, y.size);
 }
 
 /**

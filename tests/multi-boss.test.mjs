@@ -206,3 +206,10 @@ test('start が 1 つで先頭でないとき、戦闘前の予告もそのフ�
     pull(e, 10000);
     assert.equal(e.status(12000).phase.id, 'b2');
 });
+
+test('戦闘の一覧: 汎用の技名 1 つだけの重なりでは同じボスにしない', () => {
+    const fights = [];
+    addFight(fights, fight([...boss1, 'ファイア'], 150));
+    addFight(fights, fight([...boss2, 'ファイア'], 150));
+    assert.deepEqual(fights.map((f) => f.keep), [true, true]);
+});

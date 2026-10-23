@@ -429,6 +429,11 @@ async function liveFrame(live, bitmap, at) {
     if (black !== live.black) {
         live.black = black;
         liveLog(live, at, black ? '画面が暗転した' : '画面の暗転が終わった');
+        if (black && live.place === 'queue') {
+            // コンテンツに入るときは必ず暗転する。コンテンツの中の表示が範囲に映らなくても、申請中のままにしない
+            live.place = null;
+            liveLog(live, at, '暗転したので、参加申請中の判定を解く（コンテンツに入った）');
+        }
     }
     live.engine.blackout(at * 1000, black);
     const rec = state.rec;
