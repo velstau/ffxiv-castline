@@ -560,7 +560,9 @@ function buildView(now) {
     } else if (s.state === 'countdown') {
         sub = s.predictedStart ? `開始まで ${secondsText(Math.max(0, (s.predictedStart - now) / 1000))} 秒` : '';
     } else if (s.state === 'combat') {
-        const phases = engine.timeline.phases.length > 1 ? `・${s.phase.name ?? s.phase.id}` : '';
+        // ボスが何体もいるタイムラインでは、最初に読めた技でボスが決まるまで予定を出さない（道中の戦闘は決まらないまま）
+        const phases = !s.phase ? '・どのボスか判定中（ボスの技を読むと決まります）'
+            : engine.timeline.phases.length > 1 ? `・${s.phase.name ?? s.phase.id}` : '';
         sub = `${combatClock(s.combatTime)}${phases}`;
     } else if (engine.holdUntilEnmityOff) {
         sub = 'カウントダウンか敵対リストの再表示で始まります'; // 敵対リストは一度消えてからまた出たとき

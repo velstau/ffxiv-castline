@@ -68,9 +68,14 @@ export function parseTimelineXml(text) {
         syncWindow: pairOf(field('sync-window'), 'sync-window', '<timeline>'),
         phases: children(root, 'phase').map((p, i) => {
             const where = `<phase> ${i + 1} 番目（${attr(p, 'id') ?? 'id なし'}）`;
+            const start = attr(p, 'start');
+            if (start !== undefined && start !== 'true' && start !== 'false') {
+                errors.push(`${where}: start は true か false にしてください（"${start}"）`);
+            }
             return clean({
                 id: attr(p, 'id'),
                 name: attr(p, 'name'),
+                start: start === 'true' ? true : undefined,
                 entries: children(p, 'entry').map((e, j) => {
                     const at = `${where} の <entry> ${j + 1} 番目`;
                     return clean({
@@ -138,7 +143,7 @@ export function toTimelineXml(timeline) {
         }
     }
     for (const phase of timeline.phases) {
-        lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}>`);
+        lines.push(`  <phase${xmlAttr('id', phase.id)}${xmlAttr('name', phase.name)}${xmlAttr('start', phase.start ? 'true' : undefined)}>`);
         for (const e of phase.entries) {
             // 属性の順は t・text・castname・duration・sync・tts・window・gimmick_icon・skills_icon で統一する（見やすさのため。2026-10-20 のユーザーの指定）
             // t と duration は必ず小数点以下 1 桁（56 → 56.0。2026-10-20 のユーザーの指定）

@@ -11,6 +11,9 @@
 //                        when: { cast: 技名（A|B も可） } / { hp: 50 }（以下になったら）/ { time: 180 }（フェーズ内の秒）/
 //                              { hpLost: 3 }（HP が 3 秒以上読めない＝ボスが消えた）
 //                        at: 移った瞬間の、移り先フェーズでの秒（既定 0）
+//   phases[].start     … ボスの戦闘の始まりのフェーズ（ダンジョン・アライアンスのように 1 つのコンテンツにボスが何体もいるとき）。
+//                        2 つ以上あると、戦闘が始まってもどのボスかは決めず、最初に読めた技が入っている start のフェーズに決める。
+//                        決まらないまま終わった戦闘（道中）では何も出さない。start が無いか 1 つなら phases[0] から始める
 
 /** 技名の欄（「A|B」）を、照合する名前の配列にする */
 export function castNames(name) {
@@ -69,6 +72,9 @@ export function validateTimeline(data) {
         if (typeof phase.id !== 'string') {
             errors.push(`${where}: id がありません`);
         }
+        if (phase.start !== undefined && typeof phase.start !== 'boolean') {
+            errors.push(`${where}: start は true か false にしてください`);
+        }
         if (!Array.isArray(phase.entries)) {
             errors.push(`${where}: entries がありません`);
         } else {
@@ -100,6 +106,8 @@ export class TimelineEngine {
     constructor(timeline, options = {}) {
         this.timeline = timeline;
         this.phases = new Map(timeline.phases.map((p) => [p.id, p]));
+        const starts = timeline.phases.filter((p) => p.start);
+        this.starts = starts.length > 0 ? starts : [timeline.phases[0]]; // 戦闘の始まりのフェーズ（2 つ以上ならボスを技で決める）
         this.syncWindow = timeline.syncWindow ?? DEFAULT_SYNC_WINDOW;
         this.hasEnmity = options.hasEnmity ?? false;
         this.log = options.log ?? (() => {});
@@ -261,6 +269,10 @@ export class TimelineEngine {
         if (last !== undefined && at - last < CAST_REPEAT_GAP_MS) {
             return;
         }
+        if (!this.phase) {
+            this.chooseBoss(at, name);
+            return;
+        }
         const rule = this.findRule((w) => w.cast !== undefined && castNames(w.cast).includes(name));
         if (rule) {
             this.transition(rule, at, `詠唱 ${name}`);
@@ -310,6 +322,9 @@ export class TimelineEngine {
      */
     upcoming(at, count = 8, keepSeconds = 2) {
         this.advance(at);
+        if (!this.phase && this.starts.length > 1) {
+            return []; // どのボスかまだ決まっていない（戦闘前も、どのボスか分からないので出さない）
+        }
         const phase = this.phase ?? this.timeline.phases[0];
         const now = this.state === 'combat' ? this.phaseTime(at) : this.countdownTime(at);
         return phase.entries
@@ -326,9 +341,16 @@ export class TimelineEngine {
     /** いま詠唱バーで照合すべき技名（同期の窓に入っている予定と、フェーズの移り方の技名だけに絞る） */
     castCandidates(at) {
         this.advance(at);
-        const phase = this.phase ?? this.timeline.phases[0];
         const now = this.state === 'combat' ? this.phaseTime(at) : 0;
         const names = new Set();
+        if (this.state === 'combat' && !this.phase) {
+            // どのボスかまだ決まっていない: ボスの技を全部（最初の技を読み逃しても、次の技で決められるように）
+            for (const phase of this.starts) {
+                phase.entries.filter((e) => e.sync !== false).forEach((e) => castNames(e.name).forEach((n) => names.add(n)));
+            }
+            return [...names];
+        }
+        const phase = this.phase ?? this.starts[0];
         for (const e of phase.entries) {
             const [before, after] = e.window ?? this.syncWindow;
             if (e.sync !== false && !this.synced.has(e) && now >= e.t - before && now <= e.t + after) {
@@ -385,13 +407,45 @@ export class TimelineEngine {
         // 2026-10-23 ユーザーのエキルレの記録で、雑魚の戦闘が始まって数秒で前の HP のまま終わった）
         this.hp = null;
         this.lastHpAt = null;
-        this.phase = this.timeline.phases[0];
+        // ボスが何体もいるときは最初に読めた技で決める（cast）。それまでは戦闘開始を 0 秒として数える
+        this.phase = this.starts.length > 1 ? null : this.starts[0];
         this.phaseStartAt = startAt;
         this.synced = new Set();
         this.lastSyncAt = null;
         this.pendingSync = null;
         this.enmityOffSince = this.enmityShown ? null : this.enmityOffSince;
         this.log(startAt, `戦闘開始（${reason}）`);
+    }
+
+    // どのボスかを、読めた技から決める。同期の窓に入る予定があるボスを先に（XML の順）、無ければ技名が入っているボスの、
+    // いまの秒に最も近い予定に合わせる（最初の技を読み逃して、2 つ目以降の技で決まることがある）。どのボスの技でもなければ待つ（道中の雑魚）
+    chooseBoss(at, name) {
+        const now = this.phaseTime(at);
+        let found = null;
+        for (const phase of this.starts) {
+            const entry = this.syncTarget(name, now, phase);
+            if (entry) {
+                found = { phase, entry, how: '' };
+                break;
+            }
+        }
+        if (!found) {
+            for (const phase of this.starts) {
+                for (const e of phase.entries) {
+                    if (e.sync !== false && castNames(e.name).includes(name) && (!found || Math.abs(e.t - now) < Math.abs(found.entry.t - now))) {
+                        found = { phase, entry: e, how: '（同期の窓の外）' };
+                    }
+                }
+            }
+        }
+        if (!found) {
+            return;
+        }
+        this.phase = found.phase;
+        this.phaseStartAt = at - found.entry.t * 1000;
+        this.lastSyncAt = at;
+        this.synced.add(found.entry);
+        this.log(at, `ボスを決めた: ${found.phase.name ?? found.phase.id}（詠唱 ${name} → ${found.entry.t} 秒${found.how}）`);
     }
 
     findRule(test) {
@@ -409,9 +463,9 @@ export class TimelineEngine {
     }
 
     // 名前が一致し、同期の窓に入っている予定のうち、いまの秒に最も近いもの
-    syncTarget(name, now) {
+    syncTarget(name, now, phase = this.phase) {
         let best = null;
-        for (const e of this.phase.entries) {
+        for (const e of phase.entries) {
             const [before, after] = e.window ?? this.syncWindow;
             if (!castNames(e.name).includes(name) || e.sync === false || this.synced.has(e) || now < e.t - before || now > e.t + after) {
                 continue;
@@ -469,7 +523,8 @@ export class TimelineEngine {
         }
         if (this.hasEnmity && this.enmityOffSince !== null) {
             const off = at - this.enmityOffSince;
-            const lastPhase = (this.phase?.next ?? []).length === 0;
+            // ボスが決まっていない戦闘（道中）は討伐では終えない（暗転・敵対リストが消えたままで終わる）
+            const lastPhase = this.phase !== null && (this.phase.next ?? []).length === 0;
             if (lastPhase && this.hp !== null && this.hp <= KILL_HP && off >= ENMITY_OFF_END_MS) {
                 this.end(at, `最後のフェーズで HP ${this.hp}% の後に敵対リストが消えた。討伐`);
                 return;

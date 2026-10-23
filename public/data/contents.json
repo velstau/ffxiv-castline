@@ -2,6 +2,15 @@
  "_readme": "コンテンツ名の候補。tools/build-contents.py が XIVAPI（ContentFinderCondition の日本語名）から作る。手で書き換えない。en は英語の正式名、file はタイムラインのファイル名（英語名＋難易度）、id は ContentFinderCondition の行番号、territory は TerritoryType の行番号（FFLogs の gameZone.id と同じ）",
  "contents": [
   {
+   "id": 827,
+   "name": "記憶幻想 アレクサンドリア",
+   "en": "Alexandria",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1199,
+   "file": "alexandria-normal"
+  },
+  {
    "id": 833,
    "name": "極ヴァリガルマンダ討滅戦",
    "en": "Worqor Lar Dor (Extreme)",
@@ -9,6 +18,24 @@
    "level": 100,
    "territory": 1196,
    "file": "worqor-lar-dor-extreme"
+  },
+  {
+   "id": 834,
+   "name": "荒野秘境 サボテンダーバレー",
+   "en": "Tender Valley",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1203,
+   "file": "tender-valley-normal"
+  },
+  {
+   "id": 981,
+   "name": "悪夢遊園 ストレイバロー",
+   "en": "The Strayborough Deadwalk",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1204,
+   "file": "the-strayborough-deadwalk-normal"
   },
   {
    "id": 984,
@@ -110,6 +137,15 @@
    "file": "futures-rewritten-ultimate"
   },
   {
+   "id": 1008,
+   "name": "廃地討究 ユウェヤーワータ",
+   "en": "Yuweyawata Field Station",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1242,
+   "file": "yuweyawata-field-station-normal"
+  },
+  {
    "id": 1010,
    "name": "滅暗闇の雲激闘戦",
    "en": "the Cloud of Darkness (Chaotic)",
@@ -117,6 +153,15 @@
    "level": 100,
    "territory": 1241,
    "file": "the-cloud-of-darkness-chaotic"
+  },
+  {
+   "id": 1011,
+   "name": "妖異侵攻 クルティウス魔導工廠",
+   "en": "the Clyteum",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1345,
+   "file": "the-clyteum-normal"
   },
   {
    "id": 1015,
@@ -209,6 +254,24 @@
    "file": "aac-cruiserweight-m4-savage"
   },
   {
+   "id": 1027,
+   "name": "王城旧跡 アンダーキープ",
+   "en": "the Underkeep",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1266,
+   "file": "the-underkeep-normal"
+  },
+  {
+   "id": 1028,
+   "name": "永久幽界 メインターミナル",
+   "en": "the Meso Terminal",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1292,
+   "file": "the-meso-terminal-normal"
+  },
+  {
    "id": 1030,
    "name": "ゼレニア討滅戦",
    "en": "Recollection",
@@ -270,6 +333,15 @@
    "level": 100,
    "territory": 1296,
    "file": "necrons-embrace-extreme"
+  },
+  {
+   "id": 1064,
+   "name": "遺忘行路 ミストウェイク",
+   "en": "Mistwake",
+   "type": "ダンジョン",
+   "level": 100,
+   "territory": 1314,
+   "file": "mistwake-normal"
   },
   {
    "id": 1068,
@@ -407,6 +479,15 @@
    "file": "shinryus-domain-unreal"
   },
   {
+   "id": 825,
+   "name": "魂魄工廠 オリジェニクス",
+   "en": "Origenics",
+   "type": "ダンジョン",
+   "level": 99,
+   "territory": 1208,
+   "file": "origenics-normal"
+  },
+  {
    "id": 995,
    "name": "ゾラージャ討滅戦",
    "en": "Everkeep",
@@ -414,6 +495,33 @@
    "level": 99,
    "territory": 1200,
    "file": "everkeep-normal"
+  },
+  {
+   "id": 831,
+   "name": "外征前哨 ヴァンガード",
+   "en": "Vanguard",
+   "type": "ダンジョン",
+   "level": 97,
+   "territory": 1198,
+   "file": "vanguard-normal"
+  },
+  {
+   "id": 829,
+   "name": "遺産踏査 天深きセノーテ",
+   "en": "the Skydeep Cenote",
+   "type": "ダンジョン",
+   "level": 95,
+   "territory": 1194,
+   "file": "the-skydeep-cenote-normal"
+  },
+  {
+   "id": 824,
+   "name": "山嶺登頂 ウォーコー・ゾーモー",
+   "en": "Worqor Zormor",
+   "type": "ダンジョン",
+   "level": 93,
+   "territory": 1193,
+   "file": "worqor-zormor-normal"
   },
   {
    "id": 832,
@@ -425,6 +533,15 @@
    "file": "worqor-lar-dor-normal"
   },
   {
+   "id": 826,
+   "name": "濁流遡上 イフイカ・トゥム",
+   "en": "Ihuykatumu",
+   "type": "ダンジョン",
+   "level": 91,
+   "territory": 1167,
+   "file": "ihuykatumu-normal"
+  },
+  {
    "id": 69,
    "name": "アスラ討滅戦",
    "en": "The Gilded Araya",
@@ -432,6 +549,15 @@
    "level": 90,
    "territory": 509,
    "file": "the-gilded-araya-normal"
+  },
+  {
+   "id": 784,
+   "name": "電脳夢想 スティグマ・フォー",
+   "en": "the Stigma Dreamscape",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 986,
+   "file": "the-stigma-dreamscape-normal"
   },
   {
    "id": 788,
@@ -450,6 +576,24 @@
    "level": 90,
    "territory": 996,
    "file": "hydaelyns-call-extreme"
+  },
+  {
+   "id": 792,
+   "name": "最終幻想 レムナント",
+   "en": "the Dead Ends",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 973,
+   "file": "the-dead-ends-normal"
+  },
+  {
+   "id": 794,
+   "name": "楽園都市 スマイルトン",
+   "en": "Smileton",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 976,
+   "file": "smileton-normal"
   },
   {
    "id": 796,
@@ -542,6 +686,33 @@
    "file": "asphodelos-the-second-circle-savage"
   },
   {
+   "id": 822,
+   "name": "星霊間欠 ハーム島",
+   "en": "the Aetherfont",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 1126,
+   "file": "the-aetherfont-normal"
+  },
+  {
+   "id": 823,
+   "name": "深淵潜行 月の地下渓谷",
+   "en": "the Lunar Subterrane",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 1164,
+   "file": "the-lunar-subterrane-normal"
+  },
+  {
+   "id": 844,
+   "name": "近東秘宝 アルザダール海底遺跡群",
+   "en": "Alzadaal's Legacy",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 1050,
+   "file": "alzadaals-legacy-normal"
+  },
+  {
    "id": 846,
    "name": "終極の戦い",
    "en": "the Minstrel's Ballad: Endsinger's Aria",
@@ -558,6 +729,15 @@
    "level": 90,
    "territory": 1054,
    "file": "aglaia-normal"
+  },
+  {
+   "id": 869,
+   "name": "異界孤城 トロイアコート",
+   "en": "the Fell Court of Troia",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 1070,
+   "file": "the-fell-court-of-troia-normal"
   },
   {
    "id": 870,
@@ -657,6 +837,15 @@
    "level": 90,
    "territory": 1095,
    "file": "mount-ordeals-normal"
+  },
+  {
+   "id": 896,
+   "name": "雪山冥洞 ラピス・マナリス",
+   "en": "Lapis Manalis",
+   "type": "ダンジョン",
+   "level": 90,
+   "territory": 1097,
+   "file": "lapis-manalis-normal"
   },
   {
    "id": 908,
@@ -803,6 +992,15 @@
    "file": "the-abyssal-fracture-extreme"
   },
   {
+   "id": 786,
+   "name": "星海潜航 アイティオン星晶鏡",
+   "en": "the Aitiascope",
+   "type": "ダンジョン",
+   "level": 89,
+   "territory": 978,
+   "file": "the-aitiascope-normal"
+  },
+  {
    "id": 790,
    "name": "ハイデリン討滅戦",
    "en": "the Mothercrystal",
@@ -812,6 +1010,33 @@
    "file": "the-mothercrystal-normal"
   },
   {
+   "id": 787,
+   "name": "創造環境 ヒュペルボレア造物院",
+   "en": "Ktisis Hyperboreia",
+   "type": "ダンジョン",
+   "level": 87,
+   "territory": 974,
+   "file": "ktisis-hyperboreia-normal"
+  },
+  {
+   "id": 789,
+   "name": "終末樹海 ヴァナスパティ",
+   "en": "Vanaspati",
+   "type": "ダンジョン",
+   "level": 85,
+   "territory": 970,
+   "file": "vanaspati-normal"
+  },
+  {
+   "id": 785,
+   "name": "魔導神門 バブイルの塔",
+   "en": "the Tower of Babil",
+   "type": "ダンジョン",
+   "level": 83,
+   "territory": 969,
+   "file": "the-tower-of-babil-normal"
+  },
+  {
    "id": 802,
    "name": "ゾディアーク討滅戦",
    "en": "the Dark Inside",
@@ -819,6 +1044,24 @@
    "level": 83,
    "territory": 992,
    "file": "the-dark-inside-normal"
+  },
+  {
+   "id": 783,
+   "name": "異形楼閣 ゾットの塔",
+   "en": "the Tower of Zot",
+   "type": "ダンジョン",
+   "level": 81,
+   "territory": 952,
+   "file": "the-tower-of-zot-normal"
+  },
+  {
+   "id": 652,
+   "name": "終末幻想 アーモロート",
+   "en": "Amaurot",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 838,
+   "file": "amaurot-normal"
   },
   {
    "id": 653,
@@ -839,6 +1082,15 @@
    "file": "edens-gate-resurrection-savage"
   },
   {
+   "id": 655,
+   "name": "異界遺構 シルクス・ツイニング",
+   "en": "the Twinning",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 840,
+   "file": "the-twinning-normal"
+  },
+  {
    "id": 658,
    "name": "極ティターニア討滅戦",
    "en": "the Dancing Plague (Extreme)",
@@ -846,6 +1098,15 @@
    "level": 80,
    "territory": 858,
    "file": "the-dancing-plague-extreme"
+  },
+  {
+   "id": 661,
+   "name": "創造機関 アナイダアカデミア",
+   "en": "Akadaemia Anyder",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 841,
+   "file": "akadaemia-anyder-normal"
   },
   {
    "id": 667,
@@ -920,6 +1181,15 @@
    "file": "edens-gate-sepulture-savage"
   },
   {
+   "id": 692,
+   "name": "魔法宮殿 グラン・コスモス",
+   "en": "the Grand Cosmos",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 884,
+   "file": "the-grand-cosmos-normal"
+  },
+  {
    "id": 693,
    "name": "極ハーデス討滅戦",
    "en": "the Minstrel's Ballad: Hades's Elegy",
@@ -945,6 +1215,15 @@
    "level": 80,
    "territory": 882,
    "file": "the-copied-factory-normal"
+  },
+  {
+   "id": 714,
+   "name": "黒風海底 アニドラス・アナムネーシス",
+   "en": "Anamnesis Anyder",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 898,
+   "file": "anamnesis-anyder-normal"
   },
   {
    "id": 715,
@@ -1055,6 +1334,15 @@
    "file": "the-puppets-bunker-normal"
   },
   {
+   "id": 737,
+   "name": "漆黒決戦 ノルヴラント",
+   "en": "the Heroes' Gauntlet",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 916,
+   "file": "the-heroes-gauntlet-normal"
+  },
+  {
    "id": 738,
    "name": "ウォーリア・オブ・ライト討滅戦",
    "en": "the Seat of Sacrifice",
@@ -1071,6 +1359,15 @@
    "level": 80,
    "territory": 923,
    "file": "the-seat-of-sacrifice-extreme"
+  },
+  {
+   "id": 746,
+   "name": "魔術工房 マトーヤのアトリエ",
+   "en": "Matoya's Relict",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 933,
+   "file": "matoyas-relict-normal"
   },
   {
    "id": 747,
@@ -1163,6 +1460,15 @@
    "file": "castrum-marinum-extreme"
   },
   {
+   "id": 777,
+   "name": "黄金平原 パガルザン",
+   "en": "Paglth'an",
+   "type": "ダンジョン",
+   "level": 80,
+   "territory": 938,
+   "file": "paglthan-normal"
+  },
+  {
    "id": 779,
    "name": "希望ノ砲台：「塔」",
    "en": "the Tower at Paradigm's Breach",
@@ -1190,6 +1496,15 @@
    "file": "the-cloud-deck-extreme"
   },
   {
+   "id": 659,
+   "name": "偽造天界 グルグ火山",
+   "en": "Mt. Gulg",
+   "type": "ダンジョン",
+   "level": 79,
+   "territory": 822,
+   "file": "mt-gulg-normal"
+  },
+  {
    "id": 666,
    "name": "イノセンス討滅戦",
    "en": "the Crown of the Immaculate",
@@ -1197,6 +1512,24 @@
    "level": 79,
    "territory": 846,
    "file": "the-crown-of-the-immaculate-normal"
+  },
+  {
+   "id": 656,
+   "name": "爽涼離宮 マリカの大井戸",
+   "en": "Malikah's Well",
+   "type": "ダンジョン",
+   "level": 77,
+   "territory": 836,
+   "file": "malikahs-well-normal"
+  },
+  {
+   "id": 651,
+   "name": "古跡探索 キタンナ神影洞",
+   "en": "the Qitana Ravel",
+   "type": "ダンジョン",
+   "level": 75,
+   "territory": 823,
+   "file": "the-qitana-ravel-normal"
   },
   {
    "id": 71,
@@ -1208,6 +1541,15 @@
    "file": "special-event-ii-normal"
   },
   {
+   "id": 649,
+   "name": "水妖幻園 ドォーヌ・メグ",
+   "en": "Dohn Mheg",
+   "type": "ダンジョン",
+   "level": 73,
+   "territory": 821,
+   "file": "dohn-mheg-normal"
+  },
+  {
    "id": 657,
    "name": "ティターニア討滅戦",
    "en": "the Dancing Plague",
@@ -1217,6 +1559,15 @@
    "file": "the-dancing-plague-normal"
   },
   {
+   "id": 676,
+   "name": "殺戮郷村 ホルミンスター",
+   "en": "Holminster Switch",
+   "type": "ダンジョン",
+   "level": 71,
+   "territory": 837,
+   "file": "holminster-switch-normal"
+  },
+  {
    "id": 70,
    "name": "イベント用コンテンツ：1",
    "en": "Special Event I",
@@ -1224,6 +1575,15 @@
    "level": 70,
    "territory": 353,
    "file": "special-event-i-normal"
+  },
+  {
+   "id": 236,
+   "name": "壊神修行 星導山寺院",
+   "en": "the Temple of the Fist",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 663,
+   "file": "the-temple-of-the-fist-normal"
   },
   {
    "id": 239,
@@ -1242,6 +1602,15 @@
    "level": 70,
    "territory": 677,
    "file": "the-pool-of-tribute-extreme"
+  },
+  {
+   "id": 247,
+   "name": "紅蓮決戦 アラミゴ",
+   "en": "Ala Mhigo",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 1146,
+   "file": "ala-mhigo-normal"
   },
   {
    "id": 252,
@@ -1316,6 +1685,15 @@
    "file": "deltascape-v4-0-savage"
   },
   {
+   "id": 262,
+   "name": "悪党成敗 クガネ城",
+   "en": "Kugane Castle",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 662,
+   "file": "kugane-castle-normal"
+  },
+  {
    "id": 264,
    "name": "極ラクシュミ討滅戦",
    "en": "Emanation (Extreme)",
@@ -1334,6 +1712,15 @@
    "file": "shinryus-domain-extreme"
   },
   {
+   "id": 279,
+   "name": "水没遺構 スカラ",
+   "en": "the Drowned City of Skalla",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 1172,
+   "file": "the-drowned-city-of-skalla-normal"
+  },
+  {
    "id": 280,
    "name": "絶バハムート討滅戦",
    "en": "the Unending Coil of Bahamut (Ultimate)",
@@ -1350,6 +1737,24 @@
    "level": 70,
    "territory": 734,
    "file": "the-royal-city-of-rabanastre-normal"
+  },
+  {
+   "id": 284,
+   "name": "紅玉火山 獄之蓋",
+   "en": "Hells' Lid",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 742,
+   "file": "hells-lid-normal"
+  },
+  {
+   "id": 285,
+   "name": "暴走戦艦 フラクタル・コンティニアム (Hard)",
+   "en": "the Fractal Continuum (Hard)",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 743,
+   "file": "the-fractal-continuum-hard"
   },
   {
    "id": 286,
@@ -1460,6 +1865,15 @@
    "file": "the-great-hunt-extreme"
   },
   {
+   "id": 536,
+   "name": "風水霊殿 ガンエン廟",
+   "en": "the Swallow's Compass",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 768,
+   "file": "the-swallows-compass-normal"
+  },
+  {
    "id": 537,
    "name": "ツクヨミ討滅戦",
    "en": "Castrum Fluminis",
@@ -1494,6 +1908,24 @@
    "level": 70,
    "territory": 776,
    "file": "the-ridorana-lighthouse-normal"
+  },
+  {
+   "id": 584,
+   "name": "草木汚染 聖モシャーヌ植物園 (Hard)",
+   "en": "Saint Mocianne's Arboretum (Hard)",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 788,
+   "file": "saint-mociannes-arboretum-hard"
+  },
+  {
+   "id": 585,
+   "name": "永久焦土 ザ・バーン",
+   "en": "the Burn",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 1173,
+   "file": "the-burn-normal"
   },
   {
    "id": 587,
@@ -1595,6 +2027,15 @@
    "file": "hells-kier-extreme"
   },
   {
+   "id": 611,
+   "name": "境界戦線 ギムリトダーク",
+   "en": "the Ghimlyt Dark",
+   "type": "ダンジョン",
+   "level": 70,
+   "territory": 1174,
+   "file": "the-ghimlyt-dark-normal"
+  },
+  {
    "id": 636,
    "name": "楽欲の僧院 オーボンヌ",
    "en": "the Orbonne Monastery",
@@ -1622,6 +2063,24 @@
    "file": "the-wreath-of-snakes-extreme"
   },
   {
+   "id": 242,
+   "name": "巨砲要塞 カストルム・アバニア",
+   "en": "Castrum Abania",
+   "type": "ダンジョン",
+   "level": 69,
+   "territory": 1145,
+   "file": "castrum-abania-normal"
+  },
+  {
+   "id": 241,
+   "name": "解放決戦 ドマ城",
+   "en": "Doma Castle",
+   "type": "ダンジョン",
+   "level": 67,
+   "territory": 1144,
+   "file": "doma-castle-normal"
+  },
+  {
    "id": 263,
    "name": "ラクシュミ討滅戦",
    "en": "Emanation",
@@ -1631,6 +2090,24 @@
    "file": "emanation-normal"
   },
   {
+   "id": 240,
+   "name": "伝統試練 バルダム覇道",
+   "en": "Bardam's Mettle",
+   "type": "ダンジョン",
+   "level": 65,
+   "territory": 1143,
+   "file": "bardams-mettle-normal"
+  },
+  {
+   "id": 235,
+   "name": "海底宮殿 紫水宮",
+   "en": "Shisui of the Violet Tides",
+   "type": "ダンジョン",
+   "level": 63,
+   "territory": 1367,
+   "file": "shisui-of-the-violet-tides-normal"
+  },
+  {
    "id": 243,
    "name": "スサノオ討滅戦",
    "en": "the Pool of Tribute",
@@ -1638,6 +2115,60 @@
    "level": 63,
    "territory": 674,
    "file": "the-pool-of-tribute-normal"
+  },
+  {
+   "id": 238,
+   "name": "漂流海域 セイレーン海",
+   "en": "the Sirensong Sea",
+   "type": "ダンジョン",
+   "level": 61,
+   "territory": 1142,
+   "file": "the-sirensong-sea-normal"
+  },
+  {
+   "id": 33,
+   "name": "神域浮島 ネバーリープ",
+   "en": "Neverreap",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 420,
+   "file": "neverreap-normal"
+  },
+  {
+   "id": 35,
+   "name": "博物戦艦 フラクタル・コンティニアム",
+   "en": "the Fractal Continuum",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 430,
+   "file": "the-fractal-continuum-normal"
+  },
+  {
+   "id": 38,
+   "name": "蒼天聖戦 魔科学研究所",
+   "en": "the Aetherochemical Research Facility",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 1110,
+   "file": "the-aetherochemical-research-facility-normal"
+  },
+  {
+   "id": 40,
+   "name": "制圧巨塔 シリウス大灯台 (Hard)",
+   "en": "Pharos Sirius (Hard)",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 510,
+   "file": "pharos-sirius-hard"
+  },
+  {
+   "id": 41,
+   "name": "草木庭園 聖モシャーヌ植物園",
+   "en": "Saint Mocianne's Arboretum",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 511,
+   "file": "saint-mociannes-arboretum-normal"
   },
   {
    "id": 87,
@@ -1811,6 +2342,24 @@
    "file": "alexander-the-burden-of-the-son-normal"
   },
   {
+   "id": 140,
+   "name": "神聖遺跡 古アムダプール市街 (Hard)",
+   "en": "the Lost City of Amdapor (Hard)",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 519,
+   "file": "the-lost-city-of-amdapor-hard"
+  },
+  {
+   "id": 141,
+   "name": "星海観測 逆さの塔",
+   "en": "the Antitower",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 1111,
+   "file": "the-antitower-normal"
+  },
+  {
    "id": 147,
    "name": "機工城アレキサンダー零式：律動編1",
    "en": "Alexander - The Fist of the Son (Savage)",
@@ -1872,6 +2421,33 @@
    "level": 60,
    "territory": 566,
    "file": "nidhoggs-rage-extreme"
+  },
+  {
+   "id": 171,
+   "name": "天竜宮殿 ソール・カイ",
+   "en": "Sohr Khai",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 1112,
+   "file": "sohr-khai-normal"
+  },
+  {
+   "id": 172,
+   "name": "黒渦伝説 ハルブレーカー・アイル (Hard)",
+   "en": "Hullbreaker Isle (Hard)",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 557,
+   "file": "hullbreaker-isle-hard"
+  },
+  {
+   "id": 182,
+   "name": "峻厳渓谷 ゼルファトル",
+   "en": "Xelphatol",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 1113,
+   "file": "xelphatol-normal"
   },
   {
    "id": 183,
@@ -1964,6 +2540,24 @@
    "file": "alexander-the-soul-of-the-creator-savage"
   },
   {
+   "id": 196,
+   "name": "稀書回収 グブラ幻想図書館 (Hard)",
+   "en": "the Great Gubal Library (Hard)",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 578,
+   "file": "the-great-gubal-library-hard"
+  },
+  {
+   "id": 219,
+   "name": "巨大防壁 バエサルの長城",
+   "en": "Baelsar's Wall",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 1114,
+   "file": "baelsars-wall-normal"
+  },
+  {
    "id": 220,
    "name": "影の国ダン・スカー",
    "en": "Dun Scaith",
@@ -1971,6 +2565,15 @@
    "level": 60,
    "territory": 627,
    "file": "dun-scaith-normal"
+  },
+  {
+   "id": 221,
+   "name": "霊峰浄化 ソーム・アル (Hard)",
+   "en": "Sohm Al (Hard)",
+   "type": "ダンジョン",
+   "level": 60,
+   "territory": 617,
+   "file": "sohm-al-hard"
   },
   {
    "id": 223,
@@ -1991,6 +2594,24 @@
    "file": "containment-bay-z1t9-extreme"
   },
   {
+   "id": 31,
+   "name": "禁書回収 グブラ幻想図書館",
+   "en": "the Great Gubal Library",
+   "type": "ダンジョン",
+   "level": 59,
+   "territory": 1109,
+   "file": "the-great-gubal-library-normal"
+  },
+  {
+   "id": 34,
+   "name": "強硬突入 イシュガルド教皇庁",
+   "en": "the Vault",
+   "type": "ダンジョン",
+   "level": 57,
+   "territory": 1066,
+   "file": "the-vault-normal"
+  },
+  {
    "id": 88,
    "name": "真ビスマルク討滅戦",
    "en": "the Limitless Blue (Hard)",
@@ -2000,6 +2621,24 @@
    "file": "the-limitless-blue-hard"
   },
   {
+   "id": 39,
+   "name": "邪竜血戦 ドラゴンズエアリー",
+   "en": "the Aery",
+   "type": "ダンジョン",
+   "level": 55,
+   "territory": 1065,
+   "file": "the-aery-normal"
+  },
+  {
+   "id": 37,
+   "name": "霊峰踏破 ソーム・アル",
+   "en": "Sohm Al",
+   "type": "ダンジョン",
+   "level": 53,
+   "territory": 1064,
+   "file": "sohm-al-normal"
+  },
+  {
    "id": 86,
    "name": "真ラーヴァナ討滅戦",
    "en": "Thok ast Thok (Hard)",
@@ -2007,6 +2646,186 @@
    "level": 53,
    "territory": 432,
    "file": "thok-ast-thok-hard"
+  },
+  {
+   "id": 36,
+   "name": "廃砦捜索 ダスクヴィジル",
+   "en": "the Dusk Vigil",
+   "type": "ダンジョン",
+   "level": 51,
+   "territory": 1366,
+   "file": "the-dusk-vigil-normal"
+  },
+  {
+   "id": 10,
+   "name": "旅神聖域 ワンダラーパレス",
+   "en": "the Wanderer's Palace",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 159,
+   "file": "the-wanderers-palace-normal"
+  },
+  {
+   "id": 14,
+   "name": "邪教排撃 古城アムダプール",
+   "en": "Amdapor Keep",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 167,
+   "file": "amdapor-keep-normal"
+  },
+  {
+   "id": 15,
+   "name": "外郭攻略 カストルム・メリディアヌム",
+   "en": "Castrum Meridianum",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 1043,
+   "file": "castrum-meridianum-normal"
+  },
+  {
+   "id": 16,
+   "name": "最終決戦 魔導城プラエトリウム",
+   "en": "the Praetorium",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 1044,
+   "file": "the-praetorium-normal"
+  },
+  {
+   "id": 17,
+   "name": "怪鳥巨塔 シリウス大灯台",
+   "en": "Pharos Sirius",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 160,
+   "file": "pharos-sirius-normal"
+  },
+  {
+   "id": 18,
+   "name": "騒乱坑道 カッパーベル銅山 (Hard)",
+   "en": "Copperbell Mines (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 349,
+   "file": "copperbell-mines-hard"
+  },
+  {
+   "id": 19,
+   "name": "妖異屋敷 ハウケタ御用邸 (Hard)",
+   "en": "Haukke Manor (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 350,
+   "file": "haukke-manor-hard"
+  },
+  {
+   "id": 20,
+   "name": "盟友支援 ブレイフロクスの野営地 (Hard)",
+   "en": "Brayflox's Longstop (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 362,
+   "file": "brayfloxs-longstop-hard"
+  },
+  {
+   "id": 21,
+   "name": "剣闘領域 ハラタリ修練所 (Hard)",
+   "en": "Halatali (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 360,
+   "file": "halatali-hard"
+  },
+  {
+   "id": 22,
+   "name": "腐敗遺跡 古アムダプール市街",
+   "en": "the Lost City of Amdapor",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 363,
+   "file": "the-lost-city-of-amdapor-normal"
+  },
+  {
+   "id": 23,
+   "name": "財宝伝説 ハルブレーカー・アイル",
+   "en": "Hullbreaker Isle",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 361,
+   "file": "hullbreaker-isle-normal"
+  },
+  {
+   "id": 24,
+   "name": "惨劇霊殿 タムタラの墓所 (Hard)",
+   "en": "the Tam–Tara Deepcroft (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 373,
+   "file": "the-tamtara-deepcroft-hard"
+  },
+  {
+   "id": 25,
+   "name": "城塞奪回 ストーンヴィジル (Hard)",
+   "en": "the Stone Vigil (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 365,
+   "file": "the-stone-vigil-hard"
+  },
+  {
+   "id": 26,
+   "name": "遺跡救援 カルン埋没寺院 (Hard)",
+   "en": "the Sunken Temple of Qarn (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 367,
+   "file": "the-sunken-temple-of-qarn-hard"
+  },
+  {
+   "id": 27,
+   "name": "氷結潜窟 スノークローク大氷壁",
+   "en": "Snowcloak",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 1062,
+   "file": "snowcloak-normal"
+  },
+  {
+   "id": 28,
+   "name": "逆襲要害 サスタシャ浸食洞 (Hard)",
+   "en": "Sastasha (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 387,
+   "file": "sastasha-hard"
+  },
+  {
+   "id": 29,
+   "name": "邪念排撃 古城アムダプール (Hard)",
+   "en": "Amdapor Keep (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 189,
+   "file": "amdapor-keep-hard"
+  },
+  {
+   "id": 30,
+   "name": "武装聖域 ワンダラーパレス (Hard)",
+   "en": "the Wanderer's Palace (Hard)",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 188,
+   "file": "the-wanderers-palace-hard"
+  },
+  {
+   "id": 32,
+   "name": "幻龍残骸 黙約の塔",
+   "en": "the Keeper of the Lake",
+   "type": "ダンジョン",
+   "level": 50,
+   "territory": 1063,
+   "file": "the-keeper-of-the-lake-normal"
   },
   {
    "id": 59,
@@ -2396,6 +3215,24 @@
    "file": "the-porta-decumana-normal"
   },
   {
+   "id": 5,
+   "name": "霧中行軍 オーラムヴェイル",
+   "en": "the Aurum Vale",
+   "type": "ダンジョン",
+   "level": 47,
+   "territory": 1331,
+   "file": "the-aurum-vale-normal"
+  },
+  {
+   "id": 13,
+   "name": "掃討作戦 ゼーメル要塞",
+   "en": "Dzemael Darkhold",
+   "type": "ダンジョン",
+   "level": 44,
+   "territory": 1330,
+   "file": "dzemael-darkhold-normal"
+  },
+  {
    "id": 58,
    "name": "ガルーダ討伐戦",
    "en": "the Howling Eye",
@@ -2403,6 +3240,33 @@
    "level": 44,
    "territory": 1047,
    "file": "the-howling-eye-normal"
+  },
+  {
+   "id": 11,
+   "name": "城塞攻略 ストーンヴィジル",
+   "en": "the Stone Vigil",
+   "type": "ダンジョン",
+   "level": 41,
+   "territory": 1042,
+   "file": "the-stone-vigil-normal"
+  },
+  {
+   "id": 12,
+   "name": "流砂迷宮 カッターズクライ",
+   "en": "Cutter's Cry",
+   "type": "ダンジョン",
+   "level": 38,
+   "territory": 1303,
+   "file": "cutters-cry-normal"
+  },
+  {
+   "id": 9,
+   "name": "遺跡探索 カルン埋没寺院",
+   "en": "the Sunken Temple of Qarn",
+   "type": "ダンジョン",
+   "level": 35,
+   "territory": 1267,
+   "file": "the-sunken-temple-of-qarn-normal"
   },
   {
    "id": 57,
@@ -2414,6 +3278,42 @@
    "file": "the-navel-normal"
   },
   {
+   "id": 8,
+   "name": "奪還支援 ブレイフロクスの野営地",
+   "en": "Brayflox's Longstop",
+   "type": "ダンジョン",
+   "level": 32,
+   "territory": 1041,
+   "file": "brayfloxs-longstop-normal"
+  },
+  {
+   "id": 6,
+   "name": "名門屋敷 ハウケタ御用邸",
+   "en": "Haukke Manor",
+   "type": "ダンジョン",
+   "level": 28,
+   "territory": 1040,
+   "file": "haukke-manor-normal"
+  },
+  {
+   "id": 1,
+   "name": "監獄廃墟 トトラクの千獄",
+   "en": "the Thousand Maws of Toto–Rak",
+   "type": "ダンジョン",
+   "level": 24,
+   "territory": 1039,
+   "file": "the-thousand-maws-of-totorak-normal"
+  },
+  {
+   "id": 7,
+   "name": "魔獣領域 ハラタリ修練所",
+   "en": "Halatali",
+   "type": "ダンジョン",
+   "level": 20,
+   "territory": 1245,
+   "file": "halatali-normal"
+  },
+  {
    "id": 56,
    "name": "イフリート討伐戦",
    "en": "the Bowl of Embers",
@@ -2421,6 +3321,33 @@
    "level": 20,
    "territory": 1045,
    "file": "the-bowl-of-embers-normal"
+  },
+  {
+   "id": 3,
+   "name": "封鎖坑道 カッパーベル銅山",
+   "en": "Copperbell Mines",
+   "type": "ダンジョン",
+   "level": 17,
+   "territory": 1038,
+   "file": "copperbell-mines-normal"
+  },
+  {
+   "id": 2,
+   "name": "地下霊殿 タムタラの墓所",
+   "en": "the Tam–Tara Deepcroft",
+   "type": "ダンジョン",
+   "level": 16,
+   "territory": 1037,
+   "file": "the-tamtara-deepcroft-normal"
+  },
+  {
+   "id": 4,
+   "name": "天然要害 サスタシャ浸食洞",
+   "en": "Sastasha",
+   "type": "ダンジョン",
+   "level": 15,
+   "territory": 1036,
+   "file": "sastasha-normal"
   }
  ]
 }

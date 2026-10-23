@@ -409,3 +409,35 @@ export function draftTimeline(casts, { content, title, author, zero } = {}) {
         }],
     };
 }
+
+// ── ダンジョン・アライアンス: 1 つのコンテンツの戦闘をまとめる ──
+
+export const BOSS_MIN_CASTS = 5; // これより詠唱の少ない戦闘は道中とみなす（結果に入れる既定を外すだけ。利用者が選び直せる）
+export const BOSS_MIN_S = 60; // これより短い戦闘も道中とみなす
+
+/** 戦闘がボスらしいか（詠唱が BOSS_MIN_CASTS 回以上で、BOSS_MIN_S 秒以上続いた） */
+export function looksLikeBoss(casts, seconds) {
+    return casts.length >= BOSS_MIN_CASTS && seconds >= BOSS_MIN_S;
+}
+
+/**
+ * 戦闘ごとの記録を 1 本のタイムラインの下書きにする。戦闘が 1 つなら draftTimeline と同じ（フェーズ p1）。
+ * 2 つ以上なら戦闘ごとに start のフェーズ（b1, b2…、名前は「1 体目」…）にし、再生画面が最初に読めた技でボスを決める。
+ * @param {{casts:{start:number, duration:number, name:string}[], zero?:number}[]} fights casts の start はその戦闘の秒
+ * @param {{content:string, title?:string, author?:string}} meta
+ */
+export function draftBossTimeline(fights, meta = {}) {
+    if (fights.length === 1) {
+        return draftTimeline(fights[0].casts, { ...meta, zero: fights[0].zero });
+    }
+    return {
+        ...draftTimeline([], meta),
+        phases: fights.map((f, i) => ({
+            ...draftTimeline(f.casts, { zero: f.zero }).phases[0],
+            id: `b${i + 1}`,
+            name: `${i + 1} 体目`,
+            start: true,
+        })),
+    };
+}
+

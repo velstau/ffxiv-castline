@@ -117,6 +117,11 @@
             <section class="panel" aria-labelledby="h-casts">
                 <h2 id="h-casts" class="panel-head"><span class="panel-no" aria-hidden="true">3</span>記録した詠唱</h2>
                 <div class="panel-body">
+                    <div id="fights-box" class="fields" hidden>
+                        <p class="field-label">この共有で記録した戦闘（チェックした戦闘を結果に入れます。ダンジョン・アライアンスでボスが何体もいれば、ボスごとのフェーズにまとめます。詠唱 5 回未満か 60 秒未満の戦闘は道中とみなして外しています）</p>
+                        <ul id="fights" class="check-list"></ul>
+                        <div class="row"><button type="button" id="fights-clear">記録した戦闘を消す</button></div>
+                    </div>
                     <p class="empty-note" id="casts-empty">記録を始めると、読み取った詠唱がここに並びます。</p>
                     <div class="table-scroll" id="casts-box" hidden>
                         <table class="rec-table">

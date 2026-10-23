@@ -21,6 +21,7 @@ import urllib.request
 API = 'https://v2.xivapi.com/api/sheet/ContentFinderCondition'
 # ContentType の行番号 → 表示名（ContentType シートの日本語名）
 TYPES = {
+    2: 'ダンジョン',
     4: '討伐・討滅戦',
     5: 'レイド',
     28: '絶レイド',

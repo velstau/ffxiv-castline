@@ -14,8 +14,8 @@ import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } fro
 import { groupTimelines } from './timeline-order.js';
 import { toTimelineXml } from './timeline-xml.js';
 import {
-    normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS,
+    normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftBossTimeline,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS, looksLikeBoss, BOSS_MIN_CASTS, BOSS_MIN_S,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -39,7 +39,9 @@ const state = {
     contents: [],
     allNames: [], // data/castnames.json（新しいタイムラインで寄せる先）
     running: false,
-    casts: [],
+    casts: [], // 結果に使う詠唱。画面共有で戦闘が 2 つ以上なら、各詠唱に fight（何戦目か）が付き、start はその戦闘の秒
+    // 画面共有で記録した戦闘（ダンジョン・アライアンスの道中とボス）。{ n, casts, clock, target, seconds, keep, content }。共有し直すまで残す
+    fights: [],
     result: null, // { kind:'fix', timeline, summary, file } | { kind:'new', casts }
     xml: '',
     fileName: '',
@@ -144,6 +146,8 @@ async function openScreen() {
         return;
     }
     state.source = source;
+    state.fights = [];
+    renderFights();
     loadRegion();
     startWatching(source);
     renderLive();
@@ -287,10 +291,18 @@ function beginView(clock) {
     $('result-section').hidden = true;
 }
 
-// 記録を終えた: 読みが途中で割れた同じ技名の詠唱をつなぎ、一覧を出し直して結果を出す
+// 詠唱を戦闘ごとに分ける（fight の無いものは 1 つ）
+function byFight(casts) {
+    const groups = new Map();
+    for (const c of casts) {
+        groups.set(c.fight, [...(groups.get(c.fight) ?? []), c]);
+    }
+    return [...groups.values()];
+}
+
+// 記録を終えた: 読みが途中で割れた同じ技名の詠唱をつなぎ（戦闘ごとに。戦闘どうしは秒が重なる）、一覧を出し直して結果を出す
 function finishView(target) {
-    state.lastTarget = target;
-    state.casts = mergeSplitCasts(state.casts);
+    state.casts = byFight(state.casts).flatMap((casts) => mergeSplitCasts(casts));
     $('casts').replaceChildren();
     state.casts.forEach(renderCast);
     if (state.casts.length === 0) {
@@ -533,6 +545,7 @@ function noteContent(live, read) {
     live.content = name;
     live.contentReads = [];
     applyContent(name);
+    noteFightsContent(name);
 }
 
 // 読んだコンテンツ名を入れる。利用者が書いた・選んだものは上書きしない（空か、前に自動で入れたものだけ変える）
@@ -569,9 +582,7 @@ function beginLive({ origin, auto }) {
         }
         return false;
     }
-    // 前の記録の結果は、この記録で詠唱を読めなかったときに戻す（雑魚の戦闘・始まりの誤判定で、前の結果を消さない）
-    const prev = state.casts.length > 0 ? { casts: state.casts, clock: state.clock, target: state.lastTarget } : null;
-    state.rec = { tracker: new CastTracker(), origin, auto, target, rect: state.rect, last: origin, prev, ...snapping(target) };
+    state.rec = { tracker: new CastTracker(), origin, auto, target, rect: state.rect, last: origin, content: state.live?.content ?? '', ...snapping(target) };
     state.running = true;
     beginView(auto ? '戦闘' : '記録');
     setStatus('rec-status', auto ? '戦闘が始まったので記録しています…（戦闘が終わると止まります）' : '記録しています…');
@@ -602,14 +613,88 @@ function finishLive() {
     state.running = false;
     addCasts(rec.tracker.finish(rec.last - rec.origin), rec);
     updateButtons();
-    if (state.casts.length === 0 && rec.prev) {
-        beginView(rec.prev.clock); // 一覧と見出しを前の記録に戻す
-        state.casts = rec.prev.casts;
-        finishView(rec.prev.target);
-        setStatus('rec-status', '詠唱を読めないまま戦闘が終わったので、前の記録の結果のままにしました。');
-    } else {
-        finishView(rec.target);
+    // 戦闘ごとに一覧に残す（ダンジョン・アライアンスは道中とボスで何度も始まり・終わる）。詠唱の無い戦闘は残さない
+    const casts = mergeSplitCasts(state.casts);
+    const seconds = rec.last - rec.origin;
+    if (casts.length > 0) {
+        state.fights.push({ n: state.fights.length + 1, casts, clock: state.clock, target: rec.target, seconds, keep: looksLikeBoss(casts, seconds), content: rec.content });
     }
+    showFights();
+    if (casts.length === 0 && state.fights.length > 0) {
+        setStatus('rec-status', '詠唱を読めないまま戦闘が終わったので、戦闘の一覧に入れていません。');
+    }
+    renderLive();
+}
+
+// 記録した戦闘の一覧と、選んだ戦闘からの結果を出す
+function showFights() {
+    renderFights();
+    if (state.rec) {
+        return; // 記録中は一覧だけ（結果を作り直すと、記録中の詠唱を消す）。記録が終わったときに出す
+    }
+    if (state.fights.length === 0) {
+        state.casts = [];
+        finishView(null); // 「詠唱を 1 回も読めませんでした」
+        return;
+    }
+    const kept = state.fights.filter((f) => f.keep);
+    if (kept.length === 0) {
+        $('casts-box').hidden = true;
+        $('result-section').hidden = true;
+        setStatus('rec-status', `結果に入れる戦闘がありません（詠唱 ${BOSS_MIN_CASTS} 回未満か ${BOSS_MIN_S} 秒未満の戦闘は道中とみなして外しています）。「この共有で記録した戦闘」で選んでください。`);
+        state.lastSummary = `記録した戦闘 ${state.fights.length}（結果に入れるものなし）`;
+        return;
+    }
+    const clocks = new Set(kept.map((f) => f.clock));
+    beginView(clocks.size === 1 ? kept[0].clock : '記録');
+    state.casts = kept.flatMap((f) => f.casts.map((c) => ({ ...c, fight: kept.length > 1 ? f.n : undefined })));
+    finishView(kept.at(-1).target);
+    if (state.fights.length > 1) {
+        state.lastSummary = `記録した戦闘 ${state.fights.length}（結果に入れたもの ${kept.length}・詠唱 ${state.casts.length} 回）`;
+    }
+}
+
+function renderFights() {
+    $('fights-box').hidden = state.fights.length === 0;
+    $('fights').replaceChildren(...state.fights.map((f) => {
+        const check = Object.assign(document.createElement('input'), { type: 'checkbox', checked: f.keep });
+        check.addEventListener('change', () => {
+            f.keep = check.checked;
+            showFights();
+        });
+        const boss = looksLikeBoss(f.casts, f.seconds) ? '' : '・道中とみなしました';
+        const where = f.content && f.content !== $('content-input').value.trim() ? `・${f.content}` : '';
+        const label = document.createElement('label');
+        label.append(check, document.createTextNode(`${f.n} 戦目: ${fmt(f.seconds)}・詠唱 ${f.casts.length} 回・最初の技 ${f.casts[0].name}${boss}${where}`));
+        const li = document.createElement('li');
+        li.append(label);
+        return li;
+    }));
+}
+
+// 別のコンテンツに入った: 前のコンテンツの戦闘は消さず、結果に入れないだけにする（保存する前に消えないように）
+function noteFightsContent(name) {
+    const other = state.fights.filter((f) => f.keep && f.content && f.content !== name);
+    if (other.length === 0) {
+        return;
+    }
+    other.forEach((f) => {
+        f.keep = false;
+    });
+    showFights();
+}
+
+function clearFights() {
+    state.fights = [];
+    renderFights();
+    if (state.rec) {
+        return; // 記録中の戦闘は消さない（終わったら一覧に入る）
+    }
+    state.casts = [];
+    $('casts').replaceChildren();
+    $('casts-box').hidden = true;
+    $('result-section').hidden = true;
+    state.lastSummary = null;
     renderLive();
 }
 
@@ -632,7 +717,7 @@ function liveText() {
     if (rec) {
         const last = state.casts.at(-1);
         return {
-            head: `● 記録中 ${fmt(Math.max(0, live.lastAt - rec.origin))}`,
+            head: `● 記録中${state.fights.length > 0 ? ` ${state.fights.length + 1} 戦目` : ''} ${fmt(Math.max(0, live.lastAt - rec.origin))}`,
             detail: [`詠唱 ${state.casts.length} 回`, last && `直近: ${last.name}`, `1 秒に ${live.fps.toFixed(1)} コマ`,
                 live.engine.hp !== null && `HP ${live.engine.hp}%`, live.enmity !== null && `敵対リスト ${live.enmity ? 'あり' : 'なし'}`].filter(Boolean).join('・'),
             recording: true,
@@ -691,7 +776,7 @@ function renderCast(c) {
     if (!c.snapped) {
         name.title = '候補の技名に寄せていません（読んだ文字のまま）';
     }
-    tr.append(cell(fmt(c.start), 'num'), cell(c.duration.toFixed(2), 'num'), name, cell(`${c.read}（${c.votes}/${c.reads.length}）`));
+    tr.append(cell(c.fight ? `${c.fight} 戦目 ${fmt(c.start)}` : fmt(c.start), 'num'), cell(c.duration.toFixed(2), 'num'), name, cell(`${c.read}（${c.votes}/${c.reads.length}）`));
     $('casts').append(tr);
 }
 
@@ -699,13 +784,21 @@ function renderCast(c) {
 const STATUS_LABEL = { same: '合う', longer: '長い', shorter: '短い', unsure: '1 回だけ（要確認）', scattered: 'ばらつく（要確認）' };
 
 function showFix({ timeline, file }) {
-    const matched = matchTimeline(timeline, state.casts);
-    const summary = summarizeDurations(matched.rows);
+    // 戦闘が 2 つ以上なら戦闘ごとに突き合わせる（戦闘ごとに 0 秒が違う。ボスが何体もいるタイムラインは、戦闘ごとにそのボスのフェーズが当たる）
+    const fights = byFight(state.casts);
+    const matches = fights.map((casts) => matchTimeline(timeline, casts));
+    const summary = summarizeDurations(matches.flatMap((m) => m.rows));
     state.result = { kind: 'fix', timeline, summary, file };
-    const found = matched.phases.filter((p) => p.offset !== null);
-    setStatus('result-summary', `フェーズ ${found.length}/${matched.phases.length} を${state.clock}の中で見つけました`
-        + `（${matched.phases.map((p) => `${p.id}: ${p.offset === null ? '見つからない' : `${state.clock} ${fmt(p.offset)}`}`).join('・')}）。`
-        + `どの予定にも当たらない詠唱 ${matched.unused.length} 回。直す行にチェックを付けてください（2 回以上そろって長い行に最初から付けています）。`);
+    const unused = matches.reduce((n, m) => n + m.unused.length, 0);
+    const where = (m) => {
+        const found = m.phases.filter((p) => p.offset !== null);
+        return fights.length > 1 ? found.map((p) => `${p.id} ${fmt(p.offset)}`).join('・') || '見つからない'
+            : m.phases.map((p) => `${p.id}: ${p.offset === null ? '見つからない' : `${state.clock} ${fmt(p.offset)}`}`).join('・');
+    };
+    const head = fights.length > 1
+        ? `戦闘ごとに、当たったフェーズと戦闘開始からの秒（${matches.map((m, i) => `${fights[i][0].fight} 戦目: ${where(m)}`).join(' / ')}）。`
+        : `フェーズ ${matches[0].phases.filter((p) => p.offset !== null).length}/${matches[0].phases.length} を${state.clock}の中で見つけました（${where(matches[0])}）。`;
+    setStatus('result-summary', `${head}どの予定にも当たらない詠唱 ${unused} 回。直す行にチェックを付けてください（2 回以上そろって長い行に最初から付けています）。`);
     $('result-head').replaceChildren(rowOf('th', ['直す', '技名', 'XML の詠唱時間', '記録', 'そろった回数', '判定']));
     const rows = summary.map((s, i) => {
         const tr = document.createElement('tr');
@@ -738,7 +831,9 @@ function buildFixXml() {
 function showNew() {
     state.result = { kind: 'new', casts: state.casts.map((c) => ({ ...c })) };
     setStatus('result-summary', '技名は直せます。読んだ文字のまま（候補に寄せていない）の行は薄く出しています。要らない行はチェックを外してください。');
-    $('result-head').replaceChildren(rowOf('th', ['入れる', clockHead(), '詠唱時間', '技名']));
+    const fights = byFight(state.result.casts);
+    const multi = fights.length > 1;
+    $('result-head').replaceChildren(rowOf('th', ['入れる', multi ? '戦闘・戦闘開始からの秒' : clockHead(), '詠唱時間', '技名']));
     const rows = state.result.casts.map((c, i) => {
         const tr = document.createElement('tr');
         const check = Object.assign(document.createElement('input'), { type: 'checkbox', checked: true });
@@ -757,7 +852,7 @@ function showNew() {
         });
         const name = Object.assign(document.createElement('td'), { className: 'rec-name' });
         name.append(input);
-        tr.append(box, cell(fmt(c.start), 'num'), cell(c.duration.toFixed(1), 'num'), name);
+        tr.append(box, cell(multi ? `${c.fight} 戦目 ${fmt(c.start)}` : fmt(c.start), 'num'), cell(c.duration.toFixed(1), 'num'), name);
         tr.dataset.index = String(i);
         return tr;
     });
@@ -766,7 +861,8 @@ function showNew() {
     const combat = state.clock === '戦闘';
     $('zero-label').textContent = `0 秒にする時刻（${clockHead()}。既定は${combat ? ' 0（戦闘開始）' : '最初の詠唱の開始'}）`;
     $('zero-input').value = combat ? '0.0' : (Math.floor(state.result.casts[0].start * 10) / 10).toFixed(1);
-    $('zero-field').hidden = false;
+    // 戦闘が 2 つ以上なら、0 秒は戦闘ごとに決める（buildNewXml）ので欄は出さない
+    $('zero-field').hidden = multi;
     $('result-section').hidden = false;
     buildNewXml();
 }
@@ -774,12 +870,20 @@ function showNew() {
 function buildNewXml() {
     const content = $('content-input').value.trim();
     const zero = Number($('zero-input').value);
-    const casts = state.result.casts.filter((c) => !c.skip && c.name);
-    state.xml = toTimelineXml(draftTimeline(casts, { content, zero: Number.isFinite(zero) ? zero : undefined }));
+    const fights = byFight(state.result.casts);
+    // 戦闘が 2 つ以上: 戦闘ごとのフェーズ（ボス）にする。0 秒は、戦闘の始まりで記録したなら戦闘開始、そのほかは最初の詠唱
+    const drafts = fights.length > 1
+        ? fights.map((list) => ({ casts: list.filter((c) => !c.skip && c.name), zero: state.fights.find((f) => f.n === list[0].fight)?.clock === '戦闘' ? 0 : list[0].start }))
+            .filter((f, i, all) => f.casts.length > 0 || (i === all.length - 1 && all.every((x) => x.casts.length === 0)))
+        : [{ casts: state.result.casts.filter((c) => !c.skip && c.name), zero: Number.isFinite(zero) ? zero : undefined }];
+    const casts = drafts.flatMap((f) => f.casts);
+    state.xml = toTimelineXml(draftBossTimeline(drafts, { content }));
     const file = state.contents.find((c) => c.name === content)?.file;
     state.fileName = `${file ?? 'recorded'}.xml`;
     $('xml-output').value = state.xml;
-    setStatus('result-status', `詠唱 ${casts.length} 回の下書きです（フェーズは 1 つ。フェーズの分け方や表示の文は XML を直してください）。`);
+    setStatus('result-status', drafts.length > 1
+        ? `詠唱 ${casts.length} 回・ボス ${drafts.length} 体の下書きです（ボスごとに start のフェーズ。再生画面では最初に読めた技でボスが決まります。ボスの名前や表示の文は XML を直してください）。`
+        : `詠唱 ${casts.length} 回の下書きです（フェーズは 1 つ。フェーズの分け方や表示の文は XML を直してください）。`);
 }
 
 function rowOf(tag, texts) {
@@ -839,6 +943,7 @@ async function init() {
     $('rec-stop').addEventListener('click', stop);
     $('download').addEventListener('click', download);
     $('use-in-player').addEventListener('click', useInPlayer);
+    $('fights-clear').addEventListener('click', clearFights);
     // 別のタブ（初期設定の画面）で範囲を指定したら読み直す
     window.addEventListener('storage', (ev) => ev.key === 'castline.regions' && loadRegion());
     loadModels();

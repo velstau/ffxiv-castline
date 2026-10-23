@@ -33,6 +33,12 @@ test('絶・極はレベルの高い順、同じレベルなら新しい順', ()
     assert.ok(names.indexOf('極ヴァリガルマンダ討滅戦') < names.findIndex((n) => n.includes('ゼロムス')));
 });
 
+test('ノーマルのレイド・討滅戦・ダンジョンは極・滅の後', () => {
+    const pick = (name) => ({ content: contents.find((c) => c.name.includes(name)).name });
+    const groups = groupTimelines([pick('アレクサンドリア'), pick('零式：ヘビー級1'), pick('至天の座アルカディア：ヘビー級1')], contents);
+    assert.deepEqual(groups.map((g) => g.label), ['零式', 'レイド', 'ダンジョン']);
+});
+
 test('contents.json に無いコンテンツは「その他」として最後に元の順で', () => {
     const groups = groupTimelines([{ content: '知らないコンテンツB' }, ...items.slice(0, 1), { content: '知らないコンテンツA' }], contents);
     assert.equal(groups.at(-1).label, 'その他');
