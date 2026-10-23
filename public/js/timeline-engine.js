@@ -46,6 +46,7 @@ export const ENMITY_SEEN_OFF_MS = 2000;
 // 戦闘の終わり（2026-10-21 のユーザーの確認）: 全滅すると画面が暗転し、HUD も消える（「全滅」の表示は出ない）。
 // 一方、フェーズの移り変わりでも敵対リスト・HP・詠唱バーが消えるコンテンツがある（絶もうひとつの未来）ので、敵が消えただけでは終わらせない
 export const BLACKOUT_END_MS = 2000; // 戦闘中に画面全体の暗転がこれ以上続いたら、全滅とみなす
+export const BOSS_NAME_MIN = 4; // ボスを決める技名の最短の文字数（短い技名は、雑魚の技名の一部に当たりやすい）
 export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_HP 以下になった後、敵対リストがこれ以上消えたら討伐とみなす
 export const ENEMY_GONE_END_MS = 90000; // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く）
 const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなくても討伐とみなす HP
@@ -212,6 +213,15 @@ export class TimelineEngine {
         if (shown && !this.enmitySeenOff && !this.enmityStaleLogged) {
             this.enmityStaleLogged = true;
             this.log(at, '敵対リストの範囲に始めから文字があるので、一度消えるまで敵対リストでは始めない（戦闘前に文字が出ている場合は、範囲がずれています）');
+        }
+        if (shown && this.state === 'combat' && !this.phase && this.enmityOffSince !== null && at - this.enmityOffSince >= ENMITY_OFF_END_MS) {
+            // ボスが決まらないまま（道中）敵対リストが消えて、また出た: 次のプル。ボスを決めるときの秒を、ここから数え直す
+            // （道中の戦闘は討伐で終えないので、ボスのプルまで同じ戦闘が続くことがある）
+            this.startAt = at;
+            this.phaseStartAt = at;
+            this.hp = null;
+            this.lastHpAt = null;
+            this.log(at, 'ボスが決まらないまま敵対リストがまた出たので、ここから次のプルとして数える');
         }
         if (shown) {
             this.enmityOffSince = null;
@@ -417,9 +427,13 @@ export class TimelineEngine {
         this.log(startAt, `戦闘開始（${reason}）`);
     }
 
-    // どのボスかを、読めた技から決める。同期の窓に入る予定があるボスを先に（XML の順）、無ければ技名が入っているボスの、
-    // いまの秒に最も近い予定に合わせる（最初の技を読み逃して、2 つ目以降の技で決まることがある）。どのボスの技でもなければ待つ（道中の雑魚）
+    // どのボスかを、読めた技から決める。同期の窓に入る予定があるボスを先に（XML の順）、無ければ技名が入っている最初のボスの、
+    // いちばん早い予定に合わせる（いまの秒は道中から数えていることがあり当てにならない。最初に読める技は開幕に近い。外れても後の同期で戻る）。
+    // どのボスの技でもなければ待つ（道中の雑魚）。短い技名では決めない
     chooseBoss(at, name) {
+        if ([...name].length < BOSS_NAME_MIN) {
+            return;
+        }
         const now = this.phaseTime(at);
         let found = null;
         for (const phase of this.starts) {
@@ -429,13 +443,11 @@ export class TimelineEngine {
                 break;
             }
         }
-        if (!found) {
-            for (const phase of this.starts) {
-                for (const e of phase.entries) {
-                    if (e.sync !== false && castNames(e.name).includes(name) && (!found || Math.abs(e.t - now) < Math.abs(found.entry.t - now))) {
-                        found = { phase, entry: e, how: '（同期の窓の外）' };
-                    }
-                }
+        for (const phase of found ? [] : this.starts) {
+            const entry = phase.entries.filter((e) => e.sync !== false && castNames(e.name).includes(name)).sort((a, b) => a.t - b.t)[0];
+            if (entry) {
+                found = { phase, entry, how: '（同期の窓の外。いちばん早い予定に合わせた）' };
+                break;
             }
         }
         if (!found) {

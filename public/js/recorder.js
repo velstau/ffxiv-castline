@@ -163,6 +163,8 @@ function closeScreen() {
 async function openVideo(file) {
     state.source?.close();
     state.source = null;
+    state.fights = []; // 画面共有で記録した戦闘の一覧は、動画の記録では使わない（チェックを触ると動画の結果を作り直してしまう）
+    renderFights();
     $('video-box').replaceChildren();
     $('video-box').hidden = true;
     try {
