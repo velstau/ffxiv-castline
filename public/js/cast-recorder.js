@@ -410,6 +410,35 @@ export function draftTimeline(casts, { content, title, author, zero } = {}) {
     };
 }
 
+// ── コンテンツの中か外か（外の戦闘は記録しない） ──
+
+// コンテンツ参加申請中の表示（「コンテンツ参加申請中」「申請時のロールでの待機順番」「現在マッチング先選定の待機中です」）。読み誤りに備えて語を分ける
+export const QUEUE_PATTERN = /参加申請|申請中|待機順番|マッチング|平均待機/;
+export const OUTSIDE_READS = 5; // 文字はあるのにコンテンツ名に決まらない読みがこの回数続いたら、コンテンツの外とみなす
+
+/**
+ * コンテンツ名の範囲の 1 回の読み（readContent の結果）から、コンテンツの中か外かを決める。
+ * 申請中の表示があれば 'queue'、コンテンツ名に決まれば 'duty'、文字があって決まらない読みが OUTSIDE_READS 回続けば 'outside'。
+ * 何も映っていない（ムービー・暗転・表示を隠した）読みでは変えない（place は null）。
+ * @param {{text:string, decided:string|null, lines?:string[]}} read
+ * @param {number} miss これまで続いた、決まらない読みの回数
+ * @param {boolean} combined 何回かの読みを足し合わせてコンテンツ名に決まったか
+ * @returns {{place:'duty'|'queue'|'outside'|null, miss:number}}
+ */
+export function contentPlace(read, miss, combined = false) {
+    const lines = read.lines ?? [read.text];
+    if (lines.some((l) => QUEUE_PATTERN.test(l))) {
+        return { place: 'queue', miss: 0 };
+    }
+    if (read.decided || combined) {
+        return { place: 'duty', miss: 0 };
+    }
+    if (lines.every((l) => l.trim() === '')) {
+        return { place: null, miss };
+    }
+    return { place: miss + 1 >= OUTSIDE_READS ? 'outside' : null, miss: miss + 1 };
+}
+
 // ── ダンジョン・アライアンス: 1 つのコンテンツの戦闘をまとめる ──
 
 export const BOSS_MIN_CASTS = 5; // これより詠唱の少ない戦闘は道中とみなす（結果に入れる既定を外すだけ。利用者が選び直せる）

@@ -91,26 +91,29 @@ function contentBoxes(boxes) {
 /**
  * 範囲の中の文字の行を探して読み、候補のどれかに決まった行を返す。範囲は長い名前も入るよう広めに取るので、
  * 範囲全体を 1 行として読むと背景の模様まで読んでしまう。行が見つからなければ範囲全体を 1 行として読む。
- * 決まらなければ、1 位と 2 位の差がいちばん大きかった行の上位の候補（ranked）を返す（何回かの読み取りを足し合わせて決めるため）
- * @returns {Promise<{text:string, decided:string|null, ranked?:{text:string, logP:number}[]}>}
+ * 決まらなければ、1 位と 2 位の差がいちばん大きかった行の上位の候補（ranked）を返す（何回かの読み取りを足し合わせて決めるため）。
+ * lines は読んだ行の文字（決まった行まで。コンテンツ参加申請中の表示など、コンテンツ名でない文字を見分けるため）
+ * @returns {Promise<{text:string, decided:string|null, ranked?:{text:string, logP:number}[], lines:string[]}>}
  */
 export async function readContent(ocr, frame, rect, names) {
     const boxes = contentBoxes((await ocr.detector.detect(frame, rect)).boxes);
     let best = null;
+    const lines = [];
     for (const box of boxes.length > 0 ? boxes : [rect]) {
         const read = await ocr.recognizer.read(frame, box);
         if (read.text === '') {
             continue;
         }
+        lines.push(read.text);
         const pick = pickCandidate(ocr.recognizer, read, names);
         if (pick.decided) {
-            return { text: read.text, decided: pick.decided };
+            return { text: read.text, decided: pick.decided, lines };
         }
         if (!best || pick.margin > best.margin) {
             best = { text: read.text, margin: pick.margin, ranked: pick.ranked.slice(0, CONTENT_KEEP) };
         }
     }
-    return best ? { text: best.text, decided: null, ranked: best.ranked } : { text: '', decided: null };
+    return best ? { text: best.text, decided: null, ranked: best.ranked, lines } : { text: '', decided: null, lines };
 }
 
 const CONTENT_KEEP = 8; // 足し合わせるために返す上位の候補の数

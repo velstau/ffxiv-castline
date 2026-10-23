@@ -15,7 +15,7 @@ import { groupTimelines } from './timeline-order.js';
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftBossTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS, looksLikeBoss, BOSS_MIN_CASTS, BOSS_MIN_S,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected, falseStart, FALSE_START_OFF_MS, looksLikeBoss, BOSS_MIN_CASTS, BOSS_MIN_S, contentPlace,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -400,6 +400,8 @@ function startWatching(source) {
         engine: new TimelineEngine(WATCH_TIMELINE, { hasEnmity: false, log: (ms, message) => liveLog(live, ms / 1000, message) }),
         lastAt: 0, lastWatch: -Infinity, lastRender: -Infinity, lastContentRead: -Infinity,
         contentReads: [], content: null, fps: 0, status: null, declined: null, missing: [], black: false, enmity: null,
+        // コンテンツの中か外か（contentPlace）。'queue'（参加申請中）・'outside' のときは、戦闘が始まっても自動では記録しない。null はまだ分からない
+        place: null, contentMiss: 0,
     };
     $('live-log').replaceChildren();
     state.live = live;
@@ -460,7 +462,7 @@ async function watch(live, bitmap, at) {
     live.missing = [!regions.content && 'コンテンツ名', !regions.countdown && !regions.enmity && 'カウントダウン・敵対リスト'].filter(Boolean);
     const inCombat = engine.status(ms).state === 'combat';
     const wantContent = !inCombat && Boolean(regions.content)
-        && at - live.lastContentRead >= (live.content ? CONTENT_EVERY_S : CONTENT_RETRY_S);
+        && at - live.lastContentRead >= (live.content || live.place === 'queue' ? CONTENT_EVERY_S : CONTENT_RETRY_S);
     if (wantContent) {
         live.lastContentRead = at;
     }
@@ -469,7 +471,7 @@ async function watch(live, bitmap, at) {
         return;
     }
     if (obs.content) {
-        noteContent(live, obs.content);
+        notePlace(live, at, obs.content);
     }
     if (obs.countdown?.started) {
         engine.started(ms);
@@ -494,8 +496,14 @@ async function watch(live, bitmap, at) {
     live.status = engine.status(ms);
     if (live.status.state === 'combat') {
         // 同じ戦闘で記録を始められなかった（範囲・タイムラインが無い）ときは、その戦闘の間は繰り返さない
-        if (!state.rec && $('auto-rec').checked && live.declined !== engine.startAt && !beginLive({ origin: engine.startAt / 1000, auto: true })) {
-            live.declined = engine.startAt;
+        if (!state.rec && $('auto-rec').checked && live.declined !== engine.startAt) {
+            const outside = live.place === 'queue' || live.place === 'outside';
+            if (outside) {
+                liveLog(live, at, `${PLACE_TEXT[live.place]}なので、この戦闘は記録しません`);
+            }
+            if (outside || !beginLive({ origin: engine.startAt / 1000, auto: true })) {
+                live.declined = engine.startAt;
+            }
         }
     } else if (state.rec?.auto) {
         finishLive();
@@ -535,6 +543,24 @@ function liveLog(live, at, message) {
 }
 
 // コンテンツ名: 1 回で決まらなければ、何回かの読みを足し合わせて決める（再生画面と同じ）
+// コンテンツの中か外か（参加申請中・外の戦闘は記録しない。2026-10-24 ユーザー指摘「マッチング申請中は記録は不要」）と、コンテンツ名
+const PLACE_TEXT = { duty: 'コンテンツの中', queue: 'コンテンツ参加申請中', outside: 'コンテンツの外' };
+function notePlace(live, at, read) {
+    // 申請中の表示はコンテンツ名として足し合わせない（「コンテンツルーレット：エキスパート」が近い名前に寄るため）
+    const queue = contentPlace(read, live.contentMiss).place === 'queue';
+    const name = queue ? null : noteContent(live, read);
+    const { place, miss } = contentPlace(read, live.contentMiss, Boolean(name));
+    live.contentMiss = miss;
+    if (queue) {
+        live.contentReads = [];
+    }
+    if (place && place !== live.place) {
+        live.place = place;
+        liveLog(live, at, place === 'duty' ? `${PLACE_TEXT.duty}（${name}）` : `${PLACE_TEXT[place]}。戦闘が始まっても記録しません`);
+    }
+}
+
+/** 読んだコンテンツ名を足し合わせて決める。決まった名前（前と同じでも）を返す */
 function noteContent(live, read) {
     let name = read.decided;
     if (!name && read.ranked?.length > 0) {
@@ -542,12 +568,13 @@ function noteContent(live, read) {
         name = combineCandidates(live.contentReads);
     }
     if (!name || name === live.content) {
-        return;
+        return name ?? null;
     }
     live.content = name;
     live.contentReads = [];
     applyContent(name);
     noteFightsContent(name);
+    return name;
 }
 
 // 読んだコンテンツ名を入れる。利用者が書いた・選んだものは上書きしない（空か、前に自動で入れたものだけ変える）
@@ -726,9 +753,10 @@ function liveText() {
         };
     }
     const s = live.status?.state;
-    const head = s === 'countdown' ? 'カウントダウン中' : s === 'combat' ? '戦闘中（記録していません）' : '待機中';
+    const outside = live.place === 'queue' || live.place === 'outside';
+    const head = s === 'countdown' ? 'カウントダウン中' : s === 'combat' ? '戦闘中（記録していません）' : outside ? `待機中（${PLACE_TEXT[live.place]}）` : '待機中';
     const detail = [
-        live.content ? `コンテンツ: ${live.content}` : 'コンテンツ名を読んでいます',
+        outside ? `${PLACE_TEXT[live.place]}なので、戦闘が始まっても記録しません` : live.content ? `コンテンツ: ${live.content}` : 'コンテンツ名を読んでいます',
         $('auto-rec').checked ? '戦闘が始まると記録します' : '「記録を始める」で記録します',
         live.missing.length > 0 && `範囲がありません: ${live.missing.join('・')}（初期設定の画面で）`,
         state.lastSummary,
