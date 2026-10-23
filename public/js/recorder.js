@@ -5,12 +5,16 @@ import { OcrClient } from './ocr-client.js';
 import { VideoFrameSource } from './video-source.js';
 import { ScreenFrameSource } from './screen-source.js';
 import { regionsFor } from './regions.js';
+import { TimelineEngine } from './timeline-engine.js';
+import { isBlackFrame } from './blackout.js';
+import { Pip, pipSupported } from './pip.js';
+import { combineCandidates } from './readers.js';
 import { castNamesOf } from './region-auto.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -19,7 +23,15 @@ const $ = (id) => document.getElementById(id);
 const state = {
     ocr: null,
     source: null, // VideoFrameSource | ScreenFrameSource
-    clock: '動画', // 記録の時刻が何の秒か（動画ファイルは動画の秒、画面共有は記録を始めてからの秒）
+    clock: '動画', // 記録の時刻が何の秒か: '動画'（動画の秒）・'記録'（画面共有で手で始めてからの秒）・'戦闘'（戦闘開始からの秒）
+    live: null, // 画面共有の見張り（startWatching）
+    rec: null, // 画面共有で記録中のもの（beginLive）
+    targets: new Map(), // 直すタイムラインの選択肢の値 → { promise, ready }（戦闘の始まりで待たずに使えるよう、選んだときに読んでおく）
+    autoContent: '', // 画面から読んで入れたコンテンツ名（利用者が書き換えたら上書きしない）
+    autoTimeline: '', // 画面から読んで選んだタイムライン
+    contentNames: [],
+    lastSummary: null,
+    pip: new Pip(),
     rect: null, // 詠唱バー（技名）の範囲
     index: { items: [], base: '' },
     local: [],
@@ -59,13 +71,14 @@ const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, '0')
 const cell = (text, className = '') => Object.assign(document.createElement('td'), { textContent: text, className });
 
 function updateButtons() {
-    const ready = state.ocr && state.source && state.rect && !state.running
-        && (mode() === 'new' ? $('content-input').value.trim() !== '' : $('timeline-select').value !== '');
+    // コンテンツ名は無くても始められる（画面から読むか、後で入れる。無ければファイル名は recorded.xml）
+    const ready = state.ocr && state.source && state.rect && !state.running && (mode() === 'new' || $('timeline-select').value !== '');
     $('rec-start').disabled = !ready;
     $('rec-stop').disabled = !state.running;
     $('video-file').disabled = state.running;
     $('screen-start').disabled = state.running || sharing();
     $('screen-stop').disabled = !sharing();
+    $('pip-open').disabled = !sharing();
     document.querySelectorAll('input[name="input"]').forEach((r) => {
         r.disabled = state.running;
     });
@@ -85,6 +98,8 @@ async function loadModels() {
 
 // ── 映像と範囲 ──
 function closeSource() {
+    finishLive();
+    state.live = null;
     state.source?.close();
     state.source = null;
     state.rect = null;
@@ -129,6 +144,8 @@ async function openScreen() {
     }
     state.source = source;
     loadRegion();
+    startWatching(source);
+    renderLive();
 }
 
 function closeScreen() {
@@ -208,8 +225,7 @@ async function loadTimelines() {
     }
 }
 
-async function selectedTimeline() {
-    const value = $('timeline-select').value;
+async function selectedTimeline(value = $('timeline-select').value) {
     if (value.startsWith('local:')) {
         const name = value.slice('local:'.length);
         return { timeline: state.local.find((t) => t.name === name).timeline, file: name };
@@ -219,98 +235,382 @@ async function selectedTimeline() {
     return { timeline: await fetchTimeline(item, state.index.base), file };
 }
 
-// ── 記録 ──
-async function start() {
-    const fix = mode() === 'fix';
-    let target = null;
-    try {
-        target = fix ? await selectedTimeline() : null;
-    } catch (e) {
-        setStatus('rec-status', e.message, 'ng');
-        return;
+// 選んだタイムラインを読んでおく（戦闘の始まりで自動で記録を始めるときは待てないため）
+function prefetchTarget() {
+    const value = $('timeline-select').value;
+    if (!value) {
+        return Promise.resolve(null);
     }
-    const candidates = fix ? castNamesOf(target.timeline) : state.allNames;
-    const maxMiss = fix ? SNAP_MISS_OWN : SNAP_MISS_ANY;
-    const source = state.source;
-    const screen = sharing();
-    const from = screen ? 0 : Math.max(0, Number($('range-from').value) || 0);
-    const to = screen || $('range-to').value === '' ? source.duration : Math.min(source.duration, Number($('range-to').value));
-    state.clock = screen ? '記録' : '動画';
-    $('casts-time-head').textContent = `${state.clock}の秒`;
-    state.running = true;
+    let entry = state.targets.get(value);
+    if (!entry) {
+        entry = { promise: selectedTimeline(value), ready: null };
+        state.targets.set(value, entry);
+        entry.promise.then((t) => {
+            entry.ready = t;
+        }, () => state.targets.delete(value));
+    }
+    return entry.promise;
+}
+
+// ── 記録（共通） ──
+// 寄せる先の技名: 直すときはそのタイムラインの技名、新しく作るときは配信の全技名
+function snapping(target) {
+    return target ? { candidates: castNamesOf(target.timeline), maxMiss: SNAP_MISS_OWN } : { candidates: state.allNames, maxMiss: SNAP_MISS_ANY };
+}
+
+function addCasts(closed, { candidates, maxMiss }) {
+    for (const cast of closed) {
+        const item = { ...cast, ...decideName(cast.reads, candidates, maxMiss) };
+        state.casts.push(item);
+        renderCast(item);
+    }
+}
+
+// 記録の時刻が何の秒か（state.clock）の見出し
+const clockHead = () => (state.clock === '戦闘' ? '戦闘開始からの秒' : `${state.clock}の秒`);
+
+// 記録を始めた: 一覧と結果を空にする。clock: '動画' | '記録' | '戦闘'
+function beginView(clock) {
+    state.clock = clock;
+    $('casts-time-head').textContent = clockHead();
     state.casts = [];
     state.result = null;
     $('casts').replaceChildren();
     $('casts-box').hidden = false;
     $('result-section').hidden = true;
-    $('rec-progress').hidden = screen;
-    if (source.video) {
-        source.video.controls = false;
-    }
-    updateButtons();
-    setStatus('rec-status', '記録しています…');
+}
 
-    const tracker = new CastTracker();
-    const rect = state.rect;
-    const add = (closed) => {
-        for (const cast of closed) {
-            const name = decideName(cast.reads, candidates, maxMiss);
-            const item = { ...cast, ...name };
-            state.casts.push(item);
-            renderCast(item);
-        }
-    };
-    let last = from;
-    try {
-        await source.run(async (bitmap, at) => {
-            const read = await state.ocr.readCastFree(bitmap, rect);
-            add(tracker.push(at, { text: snapRead(normalizeRead(read.text), candidates, maxMiss), conf: read.conf }));
-            last = at;
-        }, {
-            from, to, step: STEP_S,
-            onProgress: screen
-                ? (at, fps) => setStatus('rec-status', `記録しています… ${fmt(at)}・1 秒に ${fps.toFixed(1)} コマ読んでいます${fps < 5 ? '（読み取りが遅く、詠唱時間が粗くなります）' : ''}・詠唱 ${state.casts.length} 回`)
-                : (at, rate) => {
-                    $('rec-progress').value = (at - from) / Math.max(1e-3, to - from);
-                    setStatus('rec-status', `記録しています… 動画 ${fmt(at)} / ${fmt(to)}（${rate.toFixed(1)} 倍速）・詠唱 ${state.casts.length} 回`);
-                },
-        });
-        add(tracker.finish(last));
-    } catch (e) {
-        setStatus('rec-status', `記録を続けられませんでした: ${e.message}`, 'ng');
-    }
-    state.running = false;
-    if (source.video) {
-        source.video.controls = true;
-    }
-    if (screen && source.ended && state.source === source) {
-        closeSource();
-        setStatus('video-status', '画面の共有が終わりました。');
-    }
-    $('rec-progress').hidden = true;
-    updateButtons();
-    // 読みが途中で割れた同じ技名の詠唱をつなぎ、一覧を出し直す
+// 記録を終えた: 読みが途中で割れた同じ技名の詠唱をつなぎ、一覧を出し直して結果を出す
+function finishView(target) {
     state.casts = mergeSplitCasts(state.casts);
     $('casts').replaceChildren();
     state.casts.forEach(renderCast);
     if (state.casts.length === 0) {
         setStatus('rec-status', '詠唱を 1 回も読めませんでした。範囲が詠唱バーの技名に合っているか、初期設定の画面で確かめてください。', 'ng');
         $('casts-box').hidden = true;
+        state.lastSummary = '前回の記録: 詠唱なし';
         return;
     }
     if (!$('rec-status').classList.contains('ng')) {
         setStatus('rec-status', `記録しました（詠唱 ${state.casts.length} 回）。`, 'ok');
     }
-    if (fix) {
+    state.lastSummary = `前回の記録: 詠唱 ${state.casts.length} 回`;
+    if (target) {
         showFix(target);
     } else {
         showNew();
     }
 }
 
+// ── 記録（動画ファイル） ──
+async function start() {
+    if (sharing()) {
+        await startLiveManually();
+        return;
+    }
+    let target = null;
+    try {
+        target = mode() === 'fix' ? await selectedTimeline() : null;
+    } catch (e) {
+        setStatus('rec-status', e.message, 'ng');
+        return;
+    }
+    const snap = snapping(target);
+    const source = state.source;
+    const from = Math.max(0, Number($('range-from').value) || 0);
+    const to = $('range-to').value === '' ? source.duration : Math.min(source.duration, Number($('range-to').value));
+    beginView('動画');
+    state.running = true;
+    $('rec-progress').hidden = false;
+    source.video.controls = false;
+    updateButtons();
+    setStatus('rec-status', '記録しています…');
+
+    const tracker = new CastTracker();
+    const rect = state.rect;
+    let last = from;
+    try {
+        await source.run(async (bitmap, at) => {
+            const read = await state.ocr.readCastFree(bitmap, rect);
+            addCasts(tracker.push(at, { text: snapRead(normalizeRead(read.text), snap.candidates, snap.maxMiss), conf: read.conf }), snap);
+            last = at;
+        }, {
+            from, to, step: STEP_S,
+            onProgress: (at, rate) => {
+                $('rec-progress').value = (at - from) / Math.max(1e-3, to - from);
+                setStatus('rec-status', `記録しています… 動画 ${fmt(at)} / ${fmt(to)}（${rate.toFixed(1)} 倍速）・詠唱 ${state.casts.length} 回`);
+            },
+        });
+        addCasts(tracker.finish(last), snap);
+    } catch (e) {
+        setStatus('rec-status', `記録を続けられませんでした: ${e.message}`, 'ng');
+    }
+    state.running = false;
+    source.video.controls = true;
+    $('rec-progress').hidden = true;
+    updateButtons();
+    finishView(target);
+}
+
 function stop() {
+    if (sharing()) {
+        stopLive();
+        return;
+    }
     state.source?.stop();
 }
+
+// ── 記録（画面共有） ──
+// 共有している間はコマを受け取り続け、記録中なら詠唱バーを読む。あわせて戦闘の始まり・終わりとコンテンツ名を見張る（watch）。
+// 戦闘の判定は再生画面と同じ TimelineEngine に、予定の無い空のタイムラインで任せる（カウントダウン・「戦闘開始！」・敵対リストで始まり、
+// 暗転で全滅、HP 3% 以下の後に敵対リストが消えたら討伐）。engine の時刻は ms（定数が ms のため。ここで秒から直す）
+const WATCH_EVERY_S = 0.5;
+const WATCH_REC_EVERY_S = 1; // 記録中は詠唱バーの読み取りを優先して、見張りの間を空ける
+const CONTENT_EVERY_S = 5; // コンテンツ名が決まった後に読み直す間隔（別のコンテンツに入ったとき）
+const CONTENT_RETRY_S = 1;
+const CONTENT_COMBINE = 5; // 1 回で決まらないコンテンツ名の読みを、この回数まで足し合わせる（再生画面と同じ）
+const LIVE_RENDER_EVERY_S = 0.5;
+
+function startWatching(source) {
+    const live = {
+        source,
+        engine: new TimelineEngine(WATCH_TIMELINE, { hasEnmity: false }),
+        lastAt: 0, lastWatch: -Infinity, lastRender: -Infinity, lastContentRead: -Infinity,
+        contentReads: [], content: null, fps: 0, status: null, declined: null, missing: [],
+    };
+    state.live = live;
+    source.run((bitmap, at) => liveFrame(live, bitmap, at), { onProgress: (at, fps) => { live.fps = fps; } })
+        .catch((e) => setStatus('rec-status', `画面を読み続けられませんでした: ${e.message}`, 'ng'))
+        .finally(() => {
+            if (state.live !== live) {
+                return;
+            }
+            finishLive();
+            state.live = null;
+            if (live.source.ended && state.source === live.source) {
+                closeSource();
+                setStatus('video-status', '画面の共有が終わりました。');
+            }
+            renderLive();
+            updateButtons();
+        });
+}
+
+async function liveFrame(live, bitmap, at) {
+    live.lastAt = at;
+    const rec = state.rec;
+    if (rec) {
+        const read = await state.ocr.readCastFree(bitmap, rec.rect);
+        if (state.rec === rec) {
+            rec.last = at;
+            addCasts(rec.tracker.push(at - rec.origin, { text: snapRead(normalizeRead(read.text), rec.candidates, rec.maxMiss), conf: read.conf }), rec);
+        }
+    }
+    if (at - live.lastWatch >= (state.rec ? WATCH_REC_EVERY_S : WATCH_EVERY_S)) {
+        live.lastWatch = at;
+        await watch(live, bitmap, at);
+    }
+    if (at - live.lastRender >= LIVE_RENDER_EVERY_S) {
+        live.lastRender = at;
+        renderLive();
+    }
+}
+
+async function watch(live, bitmap, at) {
+    const ms = at * 1000;
+    const { engine } = live;
+    const regions = regionsFor(bitmap.width, bitmap.height);
+    engine.hasEnmity = Boolean(regions.enmity);
+    live.missing = [!regions.content && 'コンテンツ名', !regions.countdown && !regions.enmity && 'カウントダウン・敵対リスト'].filter(Boolean);
+    engine.blackout(ms, isBlackFrame(bitmap));
+    const inCombat = engine.status(ms).state === 'combat';
+    const wantContent = !inCombat && Boolean(regions.content)
+        && at - live.lastContentRead >= (live.content ? CONTENT_EVERY_S : CONTENT_RETRY_S);
+    if (wantContent) {
+        live.lastContentRead = at;
+    }
+    const obs = await state.ocr.readFrame(bitmap, regions, { content: wantContent ? state.contentNames : null, countdown: !inCombat });
+    if (state.live !== live) {
+        return;
+    }
+    if (obs.content) {
+        noteContent(live, obs.content);
+    }
+    if (obs.countdown?.started) {
+        engine.started(ms);
+    } else if (obs.countdown) {
+        engine.countdown(ms, obs.countdown.seconds);
+    }
+    if ('hp' in obs) {
+        engine.hpPercent(ms, obs.hp);
+    }
+    if ('enmity' in obs) {
+        engine.enmity(ms, obs.enmity);
+    }
+    live.status = engine.status(ms);
+    if (live.status.state === 'combat') {
+        // 同じ戦闘で記録を始められなかった（範囲・タイムラインが無い）ときは、その戦闘の間は繰り返さない
+        if (!state.rec && $('auto-rec').checked && live.declined !== engine.startAt && !beginLive({ origin: engine.startAt / 1000, auto: true })) {
+            live.declined = engine.startAt;
+        }
+    } else if (state.rec?.auto) {
+        finishLive();
+    }
+}
+
+// コンテンツ名: 1 回で決まらなければ、何回かの読みを足し合わせて決める（再生画面と同じ）
+function noteContent(live, read) {
+    let name = read.decided;
+    if (!name && read.ranked?.length > 0) {
+        live.contentReads = [...live.contentReads, read].slice(-CONTENT_COMBINE);
+        name = combineCandidates(live.contentReads);
+    }
+    if (!name || name === live.content) {
+        return;
+    }
+    live.content = name;
+    live.contentReads = [];
+    applyContent(name);
+}
+
+// 読んだコンテンツ名を入れる。利用者が書いた・選んだものは上書きしない（空か、前に自動で入れたものだけ変える）
+function applyContent(name) {
+    const input = $('content-input');
+    if (input.value.trim() === '' || input.value === state.autoContent) {
+        input.value = name;
+        state.autoContent = name;
+    }
+    const select = $('timeline-select');
+    if (select.value === '' || select.value === state.autoTimeline) {
+        // 直すタイムラインも、そのコンテンツのものを選ぶ（手元を先に。再生画面と同じ順）
+        const local = state.local.find((t) => t.timeline.content === name);
+        const cloud = state.index.items.find((i) => i.content === name);
+        const value = local ? `local:${local.name}` : cloud ? `cloud:${cloud.file}` : '';
+        if (value && value !== select.value) {
+            select.value = value;
+            state.autoTimeline = value;
+            prefetchTarget();
+        }
+    }
+    updateButtons();
+}
+
+/** 記録を始める。auto: 戦闘の始まりで自動で始めた（origin は戦闘開始の時刻）。始められなければ false */
+function beginLive({ origin, auto }) {
+    const fix = mode() === 'fix';
+    const target = fix ? state.targets.get($('timeline-select').value)?.ready ?? null : null;
+    if (!state.rect || !state.ocr || (fix && !target)) {
+        if (auto) {
+            setStatus('rec-status', !state.rect ? '戦闘が始まりましたが、詠唱バーの範囲が無いので記録していません。'
+                : fix ? '戦闘が始まりましたが、直すタイムラインを選んでいない（読めていない）ので記録していません。'
+                    : '戦闘が始まりましたが、文字認識の準備ができていないので記録していません。', 'ng');
+        }
+        return false;
+    }
+    state.rec = { tracker: new CastTracker(), origin, auto, target, rect: state.rect, last: origin, ...snapping(target) };
+    state.running = true;
+    beginView(auto ? '戦闘' : '記録');
+    setStatus('rec-status', auto ? '戦闘が始まったので記録しています…（戦闘が終わると止まります）' : '記録しています…');
+    updateButtons();
+    renderLive();
+    return true;
+}
+
+async function startLiveManually() {
+    if (mode() === 'fix') {
+        try {
+            await prefetchTarget();
+        } catch (e) {
+            setStatus('rec-status', e.message, 'ng');
+            return;
+        }
+    }
+    beginLive({ origin: state.live?.lastAt ?? 0, auto: false });
+}
+
+/** 記録を終える（手で止めた・戦闘が終わった・共有が終わった。何度呼んでもよい） */
+function finishLive() {
+    const rec = state.rec;
+    if (!rec) {
+        return;
+    }
+    state.rec = null;
+    state.running = false;
+    addCasts(rec.tracker.finish(rec.last - rec.origin), rec);
+    updateButtons();
+    finishView(rec.target);
+    renderLive();
+}
+
+// 手で止めた。戦闘中なら engine も止め、次の戦闘（カウントダウンか、敵対リストが一度消えてまた出たとき）でまた自動で始める
+function stopLive() {
+    const live = state.live;
+    if (live && state.rec && live.engine.status(live.lastAt * 1000).state === 'combat') {
+        live.engine.halt(live.lastAt * 1000);
+    }
+    finishLive();
+}
+
+// 見張りの状態の文（ページと小窓に出す）
+function liveText() {
+    const live = state.live;
+    if (!live) {
+        return { head: '画面を共有していません', detail: state.lastSummary ?? '', recording: false };
+    }
+    const rec = state.rec;
+    if (rec) {
+        const last = state.casts.at(-1);
+        return {
+            head: `● 記録中 ${fmt(Math.max(0, live.lastAt - rec.origin))}`,
+            detail: [`詠唱 ${state.casts.length} 回`, last && `直近: ${last.name}`, `1 秒に ${live.fps.toFixed(1)} コマ`].filter(Boolean).join('・'),
+            recording: true,
+        };
+    }
+    const s = live.status?.state;
+    const head = s === 'countdown' ? 'カウントダウン中' : s === 'combat' ? '戦闘中（記録していません）' : '待機中';
+    const detail = [
+        live.content ? `コンテンツ: ${live.content}` : 'コンテンツ名を読んでいます',
+        $('auto-rec').checked ? '戦闘が始まると記録します' : '「記録を始める」で記録します',
+        live.missing.length > 0 && `範囲がありません: ${live.missing.join('・')}（初期設定の画面で）`,
+        state.lastSummary,
+    ].filter(Boolean).join('・');
+    return { head, detail, recording: false };
+}
+
+function renderLive() {
+    const t = liveText();
+    $('live-head').textContent = t.head;
+    $('live-detail').textContent = t.detail;
+    $('live-box').classList.toggle('rec-live-on', t.recording);
+}
+
+// ── 小窓（ゲームの上に記録の状態を出す） ──
+const PIP_HTML = '<div class="rec-pip"><p class="rec-pip-head" data-k="head"></p><p class="rec-pip-detail" data-k="detail"></p>'
+    + '<button type="button" data-k="stop">記録を止める</button></div>';
+
+async function openPip() {
+    if (!pipSupported()) {
+        setStatus('rec-status', 'このブラウザでは小窓を開けません（Chrome か Edge の新しい版で開いてください）。', 'ng');
+        return;
+    }
+    const win = await state.pip.open({ width: 360, height: 170, html: PIP_HTML, onFrame: (w) => paintPip(w.document) });
+    win.document.querySelector('[data-k="stop"]').addEventListener('click', stop);
+}
+
+function paintPip(doc) {
+    const t = liveText();
+    const set = (k, text) => {
+        const el = doc.querySelector(`[data-k="${k}"]`);
+        if (el.textContent !== text) {
+            el.textContent = text;
+        }
+    };
+    set('head', t.head);
+    set('detail', t.detail);
+    doc.querySelector('.rec-pip').classList.toggle('rec-live-on', t.recording);
+    doc.querySelector('[data-k="stop"]').disabled = !t.recording;
+}
+
 
 function renderCast(c) {
     const tr = document.createElement('tr');
@@ -365,7 +665,7 @@ function buildFixXml() {
 function showNew() {
     state.result = { kind: 'new', casts: state.casts.map((c) => ({ ...c })) };
     setStatus('result-summary', '技名は直せます。読んだ文字のまま（候補に寄せていない）の行は薄く出しています。要らない行はチェックを外してください。');
-    $('result-head').replaceChildren(rowOf('th', ['入れる', `${state.clock}の秒`, '詠唱時間', '技名']));
+    $('result-head').replaceChildren(rowOf('th', ['入れる', clockHead(), '詠唱時間', '技名']));
     const rows = state.result.casts.map((c, i) => {
         const tr = document.createElement('tr');
         const check = Object.assign(document.createElement('input'), { type: 'checkbox', checked: true });
@@ -389,8 +689,10 @@ function showNew() {
         return tr;
     });
     $('result-rows').replaceChildren(...rows);
-    $('zero-label').textContent = `0 秒にする時刻（${state.clock}の秒。既定は最初の詠唱の開始）`;
-    $('zero-input').value = (Math.floor(state.result.casts[0].start * 10) / 10).toFixed(1);
+    // 戦闘の始まりで記録を始めたときは、0 秒＝戦闘開始。そのほかは最初の詠唱の開始
+    const combat = state.clock === '戦闘';
+    $('zero-label').textContent = `0 秒にする時刻（${clockHead()}。既定は${combat ? ' 0（戦闘開始）' : '最初の詠唱の開始'}）`;
+    $('zero-input').value = combat ? '0.0' : (Math.floor(state.result.casts[0].start * 10) / 10).toFixed(1);
     $('zero-field').hidden = false;
     $('result-section').hidden = false;
     buildNewXml();
@@ -452,7 +754,12 @@ async function init() {
             updateButtons();
         });
     }
-    $('timeline-select').addEventListener('change', updateButtons);
+    $('timeline-select').addEventListener('change', () => {
+        prefetchTarget().catch(() => {});
+        updateButtons();
+    });
+    $('pip-open').addEventListener('click', openPip);
+    $('auto-rec').addEventListener('change', renderLive);
     $('content-input').addEventListener('input', updateButtons);
     $('zero-input').addEventListener('input', () => state.result?.kind === 'new' && buildNewXml());
     $('rec-start').addEventListener('click', start);
@@ -465,6 +772,7 @@ async function init() {
     loadTimelines().then(updateButtons);
     try {
         state.contents = (await (await fetch('data/contents.json')).json()).contents;
+        state.contentNames = state.contents.map((c) => c.name);
     } catch {
         state.contents = [];
     }

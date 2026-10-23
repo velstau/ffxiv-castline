@@ -1397,6 +1397,7 @@ label.field,
 .check-list label,
 .field-check {
     display: flex;
+    flex-wrap: nowrap; /* label の既定（折り返し）を消す。狭い画面で文が長いと、チェックと文が別の行に分かれるため */
     align-items: flex-start;
     gap: calc(8 / 16 * 1rem);
     min-height: calc(44 / 16 * 1rem);
@@ -1527,4 +1528,50 @@ fieldset.field {
 
 .rec-table td.rec-name {
     min-width: calc(160 / 16 * 1rem);
+}
+
+/* 画面共有の記録: 見張りの状態（ページと小窓） */
+.rec-live {
+    border: 1px solid var(--vw-line);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+}
+
+.rec-live p {
+    margin: 0;
+}
+
+.rec-live-head,
+.rec-pip-head {
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.rec-live-on {
+    border-color: var(--vw-ng);
+}
+
+.rec-live-on .rec-live-head,
+.rec-live-on .rec-pip-head {
+    color: var(--vw-ng);
+}
+
+/* 小窓: ゲームの上で一目で分かるよう大きく */
+.rec-pip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+}
+
+.rec-pip p {
+    margin: 0;
+}
+
+.rec-pip .rec-pip-head {
+    font-size: 1.75rem;
+}
+
+.rec-pip button {
+    align-self: flex-start;
 }
