@@ -8,6 +8,7 @@ import { TimelineEngine } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
 import { upcomingRows, iconProblems } from './timeline-view.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
+import { groupTimelines } from './timeline-order.js';
 import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
 import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey, savedScreens as listSavedScreens } from './regions.js';
 import { GUIDE_STEPS, guideSteps } from './player-guide.js';
@@ -32,6 +33,7 @@ const state = {
     source: null,
     running: false,
     contents: [], // コンテンツ名の候補（data/contents.json）
+    contentInfo: [], // data/contents.json の contents（配信の一覧の並べ替えに使う）
     cloud: [], // { file, content, title, timeline? }
     cloudError: '',
     cloudBase: '', // 一覧を読めた置き場所（タイムラインの XML も同じ所から読む）
@@ -186,9 +188,9 @@ function renderSelect() {
         g.append(...state.local.map((t) => option(`local:${t.name}`, `${t.timeline.title ?? t.timeline.content}（${t.name}）`)));
         groups.push(g);
     }
-    if (state.cloud.length > 0) {
-        const g = Object.assign(document.createElement('optgroup'), { label: '配信' });
-        g.append(...state.cloud.map((t) => option(`cloud:${t.file}`, t.title)));
+    for (const { label, items } of groupTimelines(state.cloud, state.contentInfo)) {
+        const g = Object.assign(document.createElement('optgroup'), { label: `配信: ${label}` });
+        g.append(...items.map((t) => option(`cloud:${t.file}`, t.title)));
         groups.push(g);
     }
     select.replaceChildren(option('auto', '読み取ったコンテンツ名から自動で選ぶ'), ...groups);
@@ -866,10 +868,11 @@ async function init() {
     });
 
     try {
-        state.contents = (await (await fetch('data/contents.json')).json()).contents.map((c) => c.name);
+        state.contentInfo = (await (await fetch('data/contents.json')).json()).contents;
     } catch {
-        state.contents = [];
+        state.contentInfo = [];
     }
+    state.contents = state.contentInfo.map((c) => c.name);
     renderMissing();
     loadLocal();
     await loadCloudIndex();

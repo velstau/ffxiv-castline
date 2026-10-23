@@ -11,6 +11,7 @@ import { Pip, pipSupported } from './pip.js';
 import { combineCandidates } from './readers.js';
 import { castNamesOf } from './region-auto.js';
 import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } from './timeline-source.js';
+import { groupTimelines } from './timeline-order.js';
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
@@ -212,12 +213,18 @@ async function saveFrame() {
 async function loadTimelines() {
     state.index = await loadTimelineIndex();
     state.local = loadLocalTimelines();
-    const options = [Object.assign(document.createElement('option'), { value: '', textContent: '選んでください' })];
-    for (const t of state.local) {
-        options.push(Object.assign(document.createElement('option'), { value: `local:${t.name}`, textContent: `手元: ${t.name}` }));
+    const option = (value, text) => Object.assign(document.createElement('option'), { value, textContent: text });
+    const group = (label, list) => {
+        const g = Object.assign(document.createElement('optgroup'), { label });
+        g.append(...list);
+        return g;
+    };
+    const options = [option('', '選んでください')];
+    if (state.local.length > 0) {
+        options.push(group('手元のファイル', state.local.map((t) => option(`local:${t.name}`, `手元: ${t.name}`))));
     }
-    for (const item of state.index.items) {
-        options.push(Object.assign(document.createElement('option'), { value: `cloud:${item.file}`, textContent: item.title }));
+    for (const { label, items } of groupTimelines(state.index.items, state.contents)) {
+        options.push(group(`配信: ${label}`, items.map((item) => option(`cloud:${item.file}`, item.title))));
     }
     $('timeline-select').replaceChildren(...options);
     if (state.index.error) {
@@ -835,13 +842,14 @@ async function init() {
     // 別のタブ（初期設定の画面）で範囲を指定したら読み直す
     window.addEventListener('storage', (ev) => ev.key === 'castline.regions' && loadRegion());
     loadModels();
-    loadTimelines().then(updateButtons);
     try {
         state.contents = (await (await fetch('data/contents.json')).json()).contents;
         state.contentNames = state.contents.map((c) => c.name);
     } catch {
         state.contents = [];
     }
+    // 配信の一覧の並べ替えに contents.json を使うので、読んでから
+    loadTimelines().then(updateButtons);
     $('content-list').replaceChildren(...state.contents.map((c) => Object.assign(document.createElement('option'), { value: c.name })));
     try {
         state.allNames = (await (await fetch('data/castnames.json')).json()).names;
