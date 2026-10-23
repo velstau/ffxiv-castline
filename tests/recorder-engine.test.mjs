@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { TimelineEngine } from '../public/js/timeline-engine.js';
-import { WATCH_TIMELINE, endForRecording } from '../public/js/cast-recorder.js';
+import { WATCH_TIMELINE, killSuspected } from '../public/js/cast-recorder.js';
 
 const engine = () => new TimelineEngine(WATCH_TIMELINE, { hasEnmity: true });
 const enmityOff = (e, from, to) => {
@@ -78,7 +78,7 @@ test('空のタイムライン: 戦闘中に手で止めたら「戦闘開始！
     assert.ok(Math.abs(e.startAt - 70000) <= 1000, `開始 ${e.startAt}`);
 });
 
-test('記録用の終わり: HP 10% 以下を読んだ後に敵対リストが 3 秒消えたら討伐、HP が高ければ 30 秒消えたら終わり', () => {
+test('記録用の討伐の疑い: HP 10% 以下を読んだ後に敵対リストが 3 秒消えたら。HP が高ければ、長く消えても疑わない（ムービー）', () => {
     const start = () => {
         const e = engine();
         enmityOff(e, 0, 5000);
@@ -89,15 +89,14 @@ test('記録用の終わり: HP 10% 以下を読んだ後に敵対リストが 3
     const kill = start();
     kill.hpPercent(100000, 7); // 3% 以下は読めなかった
     enmityOff(kill, 101000, 103500);
-    assert.equal(endForRecording(kill, 103500), null);
+    assert.equal(killSuspected(kill, 103500), false);
     enmityOff(kill, 104000, 104000);
-    assert.match(endForRecording(kill, 104000) ?? '', /討伐/);
-    assert.equal(kill.status(104000).state, 'ended');
+    assert.equal(killSuspected(kill, 104000), true);
+    assert.equal(kill.status(104000).state, 'combat'); // 終えるのは呼び出し側（画面の表示を確かめてから）
 
-    const gone = start();
-    gone.hpPercent(100000, 45);
-    enmityOff(gone, 101000, 120000);
-    assert.equal(endForRecording(gone, 120000), null); // ボスが消える場面（19 秒）では終わらない
-    enmityOff(gone, 120500, 131000);
-    assert.match(endForRecording(gone, 131000) ?? '', /30 秒/);
+    const movie = start();
+    movie.hpPercent(100000, 45);
+    enmityOff(movie, 101000, 160000); // 1 分のムービー
+    assert.equal(killSuspected(movie, 160000), false);
+    assert.equal(movie.status(160000).state, 'combat');
 });

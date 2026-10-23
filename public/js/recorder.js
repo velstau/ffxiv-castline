@@ -14,7 +14,7 @@ import { STORE_LOCAL, loadTimelineIndex, fetchTimeline, loadLocalTimelines } fro
 import { toTimelineXml } from './timeline-xml.js';
 import {
     normalizeRead, snapRead, decideName, CastTracker, mergeSplitCasts, matchTimeline, summarizeDurations, applyDurations, draftTimeline,
-    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, endForRecording,
+    SNAP_MISS_ANY, SNAP_MISS_OWN, WATCH_TIMELINE, killSuspected,
 } from './cast-recorder.js';
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
@@ -464,7 +464,9 @@ async function watch(live, bitmap, at) {
         }
         engine.enmity(ms, obs.enmity);
     }
-    endForRecording(engine, ms);
+    if (killSuspected(engine, ms)) {
+        await confirmKill(live, bitmap, at, regions);
+    }
     live.status = engine.status(ms);
     if (live.status.state === 'combat') {
         // 同じ戦闘で記録を始められなかった（範囲・タイムラインが無い）ときは、その戦闘の間は繰り返さない
@@ -473,6 +475,24 @@ async function watch(live, bitmap, at) {
         }
     } else if (state.rec?.auto) {
         finishLive();
+    }
+}
+
+// 討伐の疑い（killSuspected）を、画面の表示で確かめてから終える。ムービー中は画面の表示（コンテンツ名・ホットバーなど）が消え、
+// 討伐の後は残る。コンテンツ名の範囲に文字があれば討伐（範囲が無ければ確かめられないので討伐とする）
+async function confirmKill(live, bitmap, at, regions) {
+    const { engine } = live;
+    const ms = at * 1000;
+    let hud = true;
+    if (regions.content) {
+        const obs = await state.ocr.readFrame(bitmap, { content: regions.content }, { content: state.contentNames });
+        hud = Boolean(obs.content?.text?.trim());
+    }
+    if (hud) {
+        engine.end(ms, `HP ${engine.hp}% の後に敵対リストが消え、画面の表示は出ている。討伐`);
+    } else if (live.cutsceneFrom !== engine.enmityOffSince) {
+        live.cutsceneFrom = engine.enmityOffSince;
+        liveLog(live, at, `HP ${engine.hp}% の後に敵対リストが消えたが、画面の表示（コンテンツ名）も消えている。ムービー中とみなして続ける`);
     }
 }
 

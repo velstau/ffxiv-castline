@@ -18,28 +18,17 @@ export function normalizeRead(text) {
 export const WATCH_TIMELINE = Object.freeze({ format: 'castline/1', content: '', phases: [{ id: 'p1', entries: [], next: [] }] });
 
 // 戦闘の終わりは、再生画面の判定（2 秒の暗転・HP 3% 以下の後に敵対リストが 3 秒消えた・敵対リストが 90 秒消えた）に加えて、
-// 記録用に早めに決める（2026-10-23 ユーザー指摘「戦闘終了が検知できていない」）。記録中は HP を 1 秒おきにしか読まないので
-// 3% 以下を読む前に倒してしまうことが多い。また 90 秒待つと、次の戦闘の準備の間も記録が続く
-export const REC_KILL_HP = 10; // 最後に読んだ HP がこれ以下で、敵対リストが REC_KILL_OFF_MS 消えたら討伐
+// 記録用に討伐を早めに決める（2026-10-23 ユーザー指摘「戦闘終了が検知できていない」）。記録中は HP を 1 秒おきにしか読まないので
+// 3% 以下を読む前に倒してしまうことが多い。ただし HP が低いときのムービー（最後のフェーズへの移り変わりなど）でも敵対リストは消えるので、
+// これは「討伐の疑い」までで、呼び出し側が画面の表示（ムービー中は消える）を確かめてから終える。
+// 「敵対リストがしばらく消えたら終わり」は短くしない（ムービーのたびに終わってしまう。2026-10-23 ユーザー指摘）
+export const REC_KILL_HP = 10; // 最後に読んだ HP がこれ以下で、敵対リストが REC_KILL_OFF_MS 消えたら討伐の疑い
 export const REC_KILL_OFF_MS = 3000;
-export const REC_GONE_MS = 30000; // 敵対リストがこれだけ消えたら終わり（ボスが消える場面より長く）
 
-/** 記録用の早めの終わり。当たれば engine を end して（状態をそろえる）、理由を返す。ms は engine の時刻 */
-export function endForRecording(engine, ms) {
-    if (engine.status(ms).state !== 'combat' || !engine.hasEnmity || engine.enmityOffSince === null) {
-        return null;
-    }
-    const off = ms - engine.enmityOffSince;
-    let reason = null;
-    if (engine.hp !== null && engine.hp <= REC_KILL_HP && off >= REC_KILL_OFF_MS) {
-        reason = `HP ${engine.hp}% の後に敵対リストが ${REC_KILL_OFF_MS / 1000} 秒消えた。討伐`;
-    } else if (off >= REC_GONE_MS) {
-        reason = `敵対リストが ${REC_GONE_MS / 1000} 秒消えた`;
-    }
-    if (reason) {
-        engine.end(ms, reason);
-    }
-    return reason;
+/** 記録用の討伐の疑い（engine の時刻 ms で）。戦闘中で、最後に読んだ HP が REC_KILL_HP 以下、敵対リストが REC_KILL_OFF_MS 以上消えている */
+export function killSuspected(engine, ms) {
+    return engine.status(ms).state === 'combat' && engine.hasEnmity && engine.enmityOffSince !== null
+        && engine.hp !== null && engine.hp <= REC_KILL_HP && ms - engine.enmityOffSince >= REC_KILL_OFF_MS;
 }
 
 export const SNAP_MISS_ANY = 0.25;
