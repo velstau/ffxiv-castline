@@ -25,6 +25,7 @@ export const GUIDE_STEPS = [
  * @param {'loading'|'ready'|'error'} c.ocr 文字認識の準備
  * @param {number|null} c.ocrProgress ダウンロードの進み（0〜1）
  * @param {boolean} c.running 取り込み中か
+ * @param {boolean} [c.shared] 画面を共有しているか（共有すると自動で取り込みを始める。省略は共有済みとして扱う）
  * @param {boolean} c.pipSupported 小窓が使えるブラウザか
  * @param {boolean} c.pipOpen 小窓が開いているか
  * @param {'idle'|'countdown'|'combat'|'ended'|null} c.engineState タイムラインの状態（タイムラインが無ければ null）
@@ -71,9 +72,10 @@ export function guideSteps(c) {
 
     s.capture = c.running
         ? { done: true, text: '読み取り中です。' }
+        : c.shared === false ? { done: false, text: 'まだ画面を共有していません。「画面を共有」でゲームのウィンドウを選ぶと、自動で読み取りを始めます。' }
         : c.ocr === 'error' ? { done: false, ng: true, text: '文字認識のモデルを読み込めませんでした。ページを読み込み直してください。' }
             : c.ocr === 'loading' ? { done: false, text: `文字認識の準備をしています…${c.ocrProgress ? `（${Math.round(c.ocrProgress * 100)}%）` : ''}` }
-                : { done: false, text: '準備ができました。' };
+                : { done: false, text: '準備ができました。「読み取りを始める」を押してください。' };
 
     s.pip = !c.pipSupported
         ? { done: true, ng: true, text: 'このブラウザでは使えません（Chrome か Edge の新しい版で使えます）。この画面の「タイムライン」で見てください。' }

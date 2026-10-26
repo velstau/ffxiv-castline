@@ -242,6 +242,7 @@ function render() {
         : '');
 
     $('start').disabled = state.running || !state.ocr;
+    $('start-label').textContent = captureSession.source ? '読む範囲を自動で探す' : '画面を共有して探す';
     $('stop').disabled = !state.running;
     $('regions-grab').disabled = !state.running;
     // 取り込む前でも押せる（押すと取り込みを始めてから撮る。指定済みの範囲を確かめたいだけの人が、上のボタンを探さずに済む）
@@ -608,6 +609,7 @@ async function init() {
             $('log').select();
         }
     });
+    window.addEventListener('castline:capture', () => render()); // 共有の有無でボタンの文言が変わる
     // 再生画面（別のタブ）で範囲が変わったら表示し直す
     window.addEventListener('storage', (ev) => {
         if (ev.key === STORE_REGIONS) {

@@ -5,7 +5,8 @@ BASE = (sys.argv[1] if len(sys.argv) > 1 else 'https://192.168.11.100:8011/ff14t
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 import json
-out=Path('/tmp/castline-implemented-2026-10-25');out.mkdir(exist_ok=True)
+import os
+out=Path(os.environ.get('CASTLINE_SHOTS') or Path(__file__).resolve().parent.parent/'.shots');out.mkdir(parents=True,exist_ok=True)
 base=BASE
 with sync_playwright() as p:
  b=p.chromium.launch(args=['--no-sandbox'])
@@ -19,11 +20,11 @@ with sync_playwright() as p:
   print(v, 'message:',page.locator('#app-message').inner_text(), 'h1:',page.locator(f'#view-{v} h1').count())
   page.screenshot(path=str(out/f'{v}-desktop.png'),full_page=True)
  page.evaluate('location.hash="home"');page.wait_for_timeout(200)
- assert page.locator('#home-next').get_attribute('href')=='#setup'
+ assert 'btn-primary' in page.locator('#home-review').get_attribute('class')
  print('new user:',page.locator('#setup-summary-title').inner_text())
  sample={k:{'x':10,'y':10+i*30,'w':200,'h':20} for i,k in enumerate(['content','countdown','hp','cast','enmity'])}
  page.evaluate('(regions)=>{localStorage.setItem("castline.regions",JSON.stringify({"1920x1080":regions}));dispatchEvent(new StorageEvent("storage",{key:"castline.regions"}));}',sample)
- assert page.locator('#home-next').get_attribute('href')=='#player'
+ page.wait_for_timeout(200);assert 'btn-primary' in page.locator('#home-next').get_attribute('class')
  page.screenshot(path=str(out/'home-configured.png'),full_page=True)
  page.locator('#home-review').click();page.wait_for_timeout(300)
  assert page.locator('#setup-setup-done').is_visible()

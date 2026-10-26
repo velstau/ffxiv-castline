@@ -329,7 +329,12 @@ async function removeLocal() {
 
 // ── 読み取り ──
 function updateButtons() {
-    $('start').disabled = state.running || !state.ocr;
+    // 「次にすること」の取り込みの段は、いまできる操作だけを出す（共有前は「画面を共有」、共有後は開始、読み取り中は停止）
+    const shared = Boolean(captureSession.source);
+    $('share').hidden = shared;
+    $('start').hidden = !shared || state.running;
+    $('start').disabled = !state.ocr;
+    $('stop').hidden = !state.running;
     $('stop').disabled = !state.running;
     $('reset').disabled = !state.engine;
 }
@@ -818,6 +823,7 @@ function renderGuide(now) {
         ocr: state.ocr ? 'ready' : state.ocrError ? 'error' : 'loading',
         ocrProgress: Number($('model-progress').value) || null,
         running: state.running,
+        shared: Boolean(captureSession.source),
         pipSupported: pipSupported(),
         pipOpen: pip.isOpen,
         engineState: state.engine?.status(now).state ?? null,
@@ -829,10 +835,11 @@ function renderGuide(now) {
     state.guideKey = key;
     for (const step of steps) {
         const li = $(`guide-${step.id}`);
-        li.hidden = step.id === 'setup' && step.kind === 'done';
         li.className = [step.current ? 'current' : step.kind === 'done' ? 'done' : 'todo', step.kind === 'ng' ? 'ng' : '', step.optional ? 'optional' : '',
             'keepActions' in li.dataset ? 'keep-actions' : '']
             .filter(Boolean).join(' ');
+        // 青いボタンは「いまの手順」のものだけにする（次に押すボタンを 1 つに絞る）
+        for (const btn of li.querySelectorAll('[data-primary]')) { btn.classList.toggle('btn-primary', step.current); }
         li.querySelector('.step-mark').replaceChildren(step.kind === 'done' ? icon('check_circle') : step.kind === 'ng' ? icon('error') : li.dataset.step);
         const own = li.querySelector('[data-guide-state]'); // 取り込み・範囲は元からある状態の欄を使う
         if (own) {
@@ -975,6 +982,8 @@ async function init() {
         $('timeline-select').focus();
     });
     setupVoiceSettings();
+    $('share').addEventListener('click', () => document.getElementById('capture-start').click());
+    window.addEventListener('castline:capture', updateButtons);
     $('start').addEventListener('click', start);
     $('stop').addEventListener('click', stop);
     $('reset').addEventListener('click', halt);

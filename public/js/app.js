@@ -1,10 +1,11 @@
 import './storage-migrate.js';
 import { captureSession } from './capture.js';
 import { savedScreens, STORE_REGIONS } from './regions.js';
+import { renderHomeStatus } from './home-status.js';
+import { STORE_LOCAL } from './timeline-source.js';
 
 const $ = (id) => document.getElementById(id);
 const views = new Set(['home', 'setup', 'player', 'manage', 'recorder', 'generator', 'lab', 'timeline', 'voice']);
-const wizardRoutes = ['home', 'setup', 'player'];
 const modules = new Map();
 const FIRST_FRAME_TIMEOUT_MS = 5000; // 共有を始めて最初の映像を待つ長さ
 let current = 'home';
@@ -28,82 +29,24 @@ function renderStatus() {
     const complete = saved.filter((s) => s.complete);
     const ready = key ? complete.some((s) => s.key === key) : complete.length > 0;
     const partial = key ? saved.some((s) => s.key === key) : saved.length > 0;
-    const badge = ready ? '設定済み' : partial ? '設定途中' : '未設定';
+    const badge = ready ? '済み' : partial ? '設定途中' : 'まずはこちら';
     for (const id of ['setup-summary-badge', 'setup-nav-badge']) {
         $(id).textContent = badge;
         $(id).className = `badge ${id === 'setup-nav-badge' ? 'ms-2 ' : ''}bg-${ready ? 'green' : 'yellow'}-lt`;
     }
-    $('setup-summary-title').textContent = ready ? '初期設定は済んでいます' : '初期設定：読む場所を決めます';
+    $('setup-summary-title').textContent = ready ? '初期設定：済んでいます' : '初期設定：読む範囲を決める';
     $('setup-summary').textContent = ready
-        ? `保存済みの設定（${(key ? [key] : complete.map((s) => s.key)).join('・')}）を使えます。設定をやり直す必要はありません。画面を共有して再生へ進んでください。`
+        ? `保存済みの設定（${(key ? [key] : complete.map((s) => s.key)).join('・')}）を使えます。やり直す必要はありません。範囲がずれたときだけ開いて直します。`
         : key && saved.length > 0
-            ? `共有中の画面（${key}）の設定がまだ揃っていません。保存済みの画面サイズは ${saved.map((s) => s.key).join('・')} です。初期設定で確認してください。`
-            : '初回だけ、コンテンツ名・カウントダウン・HP・詠唱バー・敵対リストを読む場所を確認します。設定はこのブラウザに保存されます。';
-    $('home-next').href = ready ? '#player' : '#setup';
-    $('home-next').textContent = ready ? '保存済み設定で次へ進む' : partial ? '初期設定の続きを行う' : '画面共有後、初期設定へ進む';
-    $('home-review').hidden = !ready;
-    renderWizard();
-}
-
-function wizardIndex() {
-    return wizardRoutes.indexOf(location.hash.slice(1) || 'home');
-}
-function configured() {
-    const size = captureSession.size;
-    return savedScreens().some((s) => s.complete && (!size || s.key === `${size.width}x${size.height}`));
-}
-function renderWizard() {
-    const index = wizardIndex();
-    $('wizard-progress').hidden = index < 0;
-    $('wizard-controls').hidden = index < 0;
-    if (index < 0) { return; }
-    for (const marker of document.querySelectorAll('[data-wizard-marker]')) {
-        const own = Number(marker.dataset.wizardMarker);
-        marker.classList.toggle('active', own === index);
-        const link = marker.querySelector('a');
-        if (own === index) { link.setAttribute('aria-current', 'step'); }
-        else { link.removeAttribute('aria-current'); }
-        link.textContent = ['画面を共有','読み取り範囲','設定・自動再生'][own]
-            + (own === 1 && configured() ? '（設定済み）' : '');
-    }
-    for (const pane of document.querySelectorAll('[data-wizard-pane]')) {
-        const own = Number(pane.dataset.wizardPane);
-        pane.hidden = index !== 2;
-    }
-    $('view-player').classList.remove('wizard-stage');
-    $('view-player').querySelector('h1').textContent = '3. タイムライン・読み上げ・自動再生';
-    $('wizard-back').disabled = index === 0;
-    $('wizard-next').hidden = index === 2;
-    $('wizard-next').textContent = index === 0 && configured() ? '保存済み設定で自動再生へ →' : '次へ →';
-    $('wizard-count').textContent = `${index + 1} / 3`;
-}
-function wizardGo(index) {
-    // Timeline selection and voice preferences can be prepared before sharing.
-    // Sharing and range requirements apply when advancing through the wizard.
-    location.hash = wizardRoutes[index];
-}
-function advanceWizard(index) {
-    message();
-    if (!captureSession.source) {
-        message('先に「画面を共有」でゲームのウィンドウを選んでください。');
-        $('capture-start').focus(); return;
-    }
-    if (index > 1 && !configured()) {
-        if (location.hash === '#setup') {
-            message('読む範囲の設定がまだ完了していません。現在の手順を進め、右側の確認欄で検出結果を確かめてください。');
-        } else { location.hash = 'setup'; }
-        return;
-    }
-    wizardGo(index);
-}
-$('home-next').addEventListener('click', (ev) => { ev.preventDefault(); advanceWizard(configured() ? 2 : 1); });
-$('wizard-back').addEventListener('click', () => wizardGo(Math.max(0, wizardIndex() - 1)));
-$('wizard-next').addEventListener('click', () => {
-    const index = wizardIndex();
-    advanceWizard(index === 0 && configured() ? 2 : Math.min(2, index + 1));
-});
-for (const link of document.querySelectorAll('[data-wizard-link]')) {
-    link.addEventListener('click', (ev) => { ev.preventDefault(); wizardGo(Number(link.dataset.wizardLink)); });
+            ? `共有中の画面（${key}）の設定がまだ揃っていません。保存済みの画面サイズは ${saved.map((s) => s.key).join('・')} です。初期設定を開いて確認してください。`
+            : 'ゲーム画面のどこにコンテンツ名・カウントダウン・HP・詠唱バー・敵対リストが出るかを決めます。画面を共有してから、案内に沿ってゲームを操作すると自動で見つけます。';
+    // 次に押すボタンだけを塗る（済んでいない初期設定、済んでいれば再生）
+    $('home-review').className = `btn ${ready ? '' : 'btn-primary'}`.trim();
+    $('home-review').textContent = ready ? '設定を確認・調整する' : '初期設定を始める';
+    $('home-next').className = `btn ${ready ? 'btn-primary' : ''}`.trim();
+    $('home-player-badge').textContent = ready ? '次はこちら' : '初期設定のあと';
+    $('home-player-badge').className = `badge ${ready ? 'bg-blue-lt' : 'bg-secondary-lt'}`;
+    renderHomeStatus(captureSession);
 }
 
 async function navigate() {
@@ -181,7 +124,7 @@ $('capture-start').addEventListener('click', async () => {
 });
 $('capture-stop').addEventListener('click', () => captureSession.stop());
 window.addEventListener('castline:capture', renderStatus);
-window.addEventListener('storage', (ev) => { if (ev.key === STORE_REGIONS) { renderStatus(); } });
+window.addEventListener('storage', (ev) => { if ([STORE_REGIONS, STORE_LOCAL, 'castline.player.settings'].includes(ev.key)) { renderStatus(); } });
 window.addEventListener('hashchange', navigate);
 window.addEventListener('pagehide', () => captureSession.stop());
 document.addEventListener('click', (ev) => {

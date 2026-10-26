@@ -1,6 +1,6 @@
 /* Tabler owns the visual system. Only tool-specific canvas, timeline and workflow layouts live here. */
 :root { --tblr-body-font-size: 1rem; }
-body,.btn,.form-control,.form-select,.form-check-label,.badge,.form-hint,.read-status,.table thead th,.nav-link { font-size: 1rem; }
+body,.btn,.form-control,.form-select,.form-check-label,.badge,.form-hint,.read-status,.table thead th,.nav-link,.status { font-size: 1rem; }
 [hidden] { display:none!important; }
 .icon { width:1.5rem;height:1.5rem;flex-shrink:0;vertical-align:middle; }
 .card-title .icon { margin-right:.35rem; }
@@ -101,29 +101,33 @@ textarea { width:100%;min-height:12rem; }
 
 code,kbd,.small,.form-text { font-size:1rem; }
 
-/* Official Tabler Steps navigation; show one settings stage at a time. */
-#wizard-progress .steps { min-width:0; }
-#wizard-progress .step-link { display:block;color:inherit;text-decoration:none; }
-#view-player [data-wizard-redundant] { display:none!important; }
-.wizard-stage .workspace-grid { grid-template-columns:minmax(0,1fr); }
 .workspace-col:not(:has(> :not([hidden]))) { display:none; }
-.wizard-stage .workspace-col { max-width:60rem;width:100%;margin-inline:auto; }
 
-/* Workflow layout: current task + feedback; playback controls precede its output. */
-#player-toolbar { margin-bottom:1rem; }
-#player-toolbar .btn-primary { margin-right:auto; }
-#player-run-status { margin-bottom:1rem; }
-#view-player:not(.wizard-stage) .workspace-grid { align-items:start; }
+/* ホーム: 1 初期設定 → 2 再生 の番号と、「このブラウザの状態」の一覧（済み=緑・まだ=灰・使えない=赤） */
+.home-num { display:inline-flex;align-items:center;justify-content:center;width:2rem;height:2rem;margin-right:.5rem;border-radius:50%;background:var(--tblr-primary);color:#fff;font-weight:700;flex:none; }
+.home-status { display:grid;grid-template-columns:minmax(9rem,max-content) minmax(0,1fr);gap:.75rem 1.5rem;margin:0; }
+.home-status dt { font-weight:600; }
+.home-status dd { margin:0;display:grid;gap:.25rem; }
+.status-line { display:flex;align-items:flex-start;gap:.5rem; }
+.status-line .icon { flex:none;margin-top:.15rem; }
+.status-line.ok .icon { color:var(--tblr-success); }
+.status-line.ng .icon { color:var(--tblr-danger); }
+.status-line.todo .icon { color:var(--tblr-secondary); }
+@media(max-width:575px) { .home-status { grid-template-columns:minmax(0,1fr);gap:.25rem; }.home-status dd { margin-bottom:.75rem; } }
+
+/* 「次にすること」: いま行う手順を色の帯で強調し、済んだ手順は 1 行に縮める（旧 UI の再生画面と同じ考え方） */
+.player-guide>li.current { border-left:4px solid var(--tblr-primary);padding-left:.75rem;background:var(--tblr-primary-lt);border-radius:var(--tblr-border-radius); }
+.player-guide>li.ng .step-mark { color:var(--tblr-danger);border-color:var(--tblr-danger); }
+.player-guide>li.done .step-title { margin-bottom:0; }
+.player-guide>li:last-child { border-bottom:0; }
+.player-guide .step-actions:empty { display:none; }
+#view-player .workspace-grid { align-items:start; }
 .setup-flow>li:not(.current):not(.done) .step-help { display:none; }
 .setup-flow>li.done .step-help { display:none; }
 .setup-flow>li:not(.current) { padding-block:.75rem; }
 #view-setup .workspace-grid { align-items:start; }
 @media(min-width:1100px) {
-    #view-player:not(.wizard-stage) .workspace-grid { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
-}
-@media(max-width:575px) {
-    #player-toolbar .btn-primary { margin-right:0; }
-    #player-toolbar .btn { flex:1 1 calc(50% - .5rem); }
+    #view-player .workspace-grid { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); }
 }
 
 /* Narrow screens follow task order across the desktop columns. */

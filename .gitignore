@@ -10,3 +10,6 @@ __pycache__/
 
 # FFLogs の問い合わせの結果（tools/skeleton-from-fflogs.mjs。レポートの番号を含むので公開しない）
 /tools/cache/
+
+# ブラウザ確認の画面（tools/check-*.py。CASTLINE_SHOTS で場所を変えられる）
+/.shots/
