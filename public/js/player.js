@@ -335,10 +335,10 @@ function updateButtons() {
 
 // ── 読む範囲 ──
 
-// 再生できる範囲を保存してある画面の大きさ（コンテンツ名と、戦闘の開始を知る範囲がある。トップの home.js と同じ判定）
+// 再生できる範囲を保存してある画面の大きさ（コンテンツ名と、戦闘の開始を知る範囲がある。ホームの app.js と同じ判定）
 const savedScreens = () => listSavedScreens().filter((s) => s.usable).map((s) => s.key);
 
-// 指定していない範囲と、そのためにできないこと（取り込み中の画面の大きさで見る。範囲の指定は初期設定の画面 setup.html）
+// 指定していない範囲と、そのためにできないこと（取り込み中の画面の大きさで見る。範囲の指定は初期設定の画面 #setup）
 function renderMissing() {
     const size = state.frameSize;
     const el = $('regions-missing');
@@ -393,10 +393,12 @@ async function start() {
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
     autoFindLoop(state.source);
 
+    // このループが使う取り込み。止めてすぐ始め直したとき、古いループが新しい取り込みで回り続けないように比べる
+    const source = state.source;
     let nextAt = 0;
-    while (state.running && state.source) {
+    while (state.running && state.source === source) {
         // 前回のフレームから 0.5 秒以上あとに届いたフレームを待つ（ゲームが前面だとタイマーが間引かれるので使わない）
-        const grabbed = await state.source.grab(nextAt);
+        const grabbed = await source.grab(nextAt);
         if (!grabbed) {
             break;
         }
@@ -419,6 +421,7 @@ function stop() {
         return;
     }
     state.running = false;
+    voice.cancel(); // 作りかけ・読みかけの文言も止める
     state.source?.stop();
     state.source = null;
     state.frameSize = null; // 範囲の設定は、止めたあとは指定に使っている画面の大きさで見る
@@ -729,7 +732,8 @@ function renderPanel(doc, view) {
 
 function speech(now) {
     const engine = state.engine;
-    if (!settings.tts || !engine) {
+    // 読み取りを止めたら読まない（画面の時計だけで戦闘中のまま読み続けないように）
+    if (!settings.tts || !engine || !state.running) {
         return;
     }
     const s = engine.status(now).state;
@@ -835,6 +839,7 @@ function bindPanel(doc) {
 // タイムラインを手で止める。敵対リストが出たままでもすぐには始め直さず、次のカウントダウンか、敵対リストが一度消えてから始まる
 function halt() {
     state.engine?.halt(Date.now());
+    voice.cancel();
     state.spoken = new Set();
     state.spokenStartAt = null;
     log('タイムラインを手で止めました');

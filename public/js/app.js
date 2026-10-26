@@ -6,6 +6,7 @@ const $ = (id) => document.getElementById(id);
 const views = new Set(['home', 'setup', 'player', 'manage', 'recorder', 'generator', 'lab', 'timeline', 'voice']);
 const wizardRoutes = ['home', 'setup', 'player'];
 const modules = new Map();
+const FIRST_FRAME_TIMEOUT_MS = 5000; // 共有を始めて最初の映像を待つ長さ
 let current = 'home';
 let routeVersion = 0;
 
@@ -125,8 +126,8 @@ async function navigate() {
         try {
             if (!modules.has(next)) {
                 const mod = await import(`./${next}.js`);
+                await mod.ready; // 準備に失敗したものは覚えない（次に開いたときも失敗を知らせる）
                 modules.set(next, mod);
-                await mod.ready;
             } else {
                 await modules.get(next).refresh?.();
             }
@@ -159,10 +160,18 @@ $('capture-start').addEventListener('click', async () => {
     $('capture-start').disabled = true;
     try {
         const source = await captureSession.acquire();
+        let frame = null;
         try {
-            const frame = await source.grab();
+            // 最小化したウィンドウなどは映像が届かず grab が返らないので、待つのは一定の時間まで
+            const grabbing = source.grab();
+            frame = await Promise.race([grabbing, new Promise((resolve) => setTimeout(resolve, FIRST_FRAME_TIMEOUT_MS, null))]);
+            if (!frame) { grabbing.then((late) => late?.bitmap.close(), () => {}); }
             frame?.bitmap.close();
         } finally { source.stop(); }
+        if (!frame) {
+            message('共有した画面から映像が届きません。ゲームのウィンドウを最小化していないか確かめて、もう一度押してください。');
+            return;
+        }
         renderStatus();
         if (current === 'setup') { await modules.get('setup')?.attachShared(); }
         if (current === 'player') { modules.get('player')?.activateAuto(); }

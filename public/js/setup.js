@@ -39,6 +39,7 @@ const CROP_MAX_W = 640; // 確認の一覧の切り抜きの最大の大きさ�
 const CROP_MAX_H = 320;
 const CROP_ZOOM_MAX = 3;
 let editor = null;
+let starting = false; // 共有の許可を待つ間に、もう一度始めないように
 
 function setStatus(id, text, kind = '') {
     const el = $(id);
@@ -372,16 +373,20 @@ function clearSnapshots() {
 
 // ── 取り込みと自動の範囲指定 ──
 async function start() {
+    if (state.running || starting) { return; }
     if (!navigator.mediaDevices?.getDisplayMedia) {
         setStatus('model-status', 'このページでは画面を取り込めません。https か localhost で開いてください。', 'ng');
         return;
     }
     let source;
+    starting = true;
     try {
         source = await FrameSource.start(stop);
     } catch (e) {
         log(`取り込みを始められませんでした（${e.name}）`);
         return;
+    } finally {
+        starting = false;
     }
     Object.assign(state, { source, running: true, frameSize: null, found: {}, lastContentRead: -Infinity });
     // 初期設定の画面は読み取りと競わないので、戦闘前の画面（敵対リストの候補から外す場所）も短い間隔で覚える

@@ -46,10 +46,7 @@ export class Speech {
         this.speechWindows = new Set();
     }
 
-    /**
-     * 読み上げる。win は鳴らす窓（小窓が開いていれば小窓。止められにくいため）。
-     * @returns {Promise<string|undefined>} ブラウザの声は読み始めたら使った声の名前で解決する。失敗したときは例外（呼ぶ側でログに出す）
-     */
+    /** 作りかけ・読みかけの文言をすべて止める（作り終えた VOICEVOX の音声も鳴らさない） */
     cancel() {
         this.generation++;
         this.audio?.pause();
@@ -57,6 +54,10 @@ export class Speech {
         this.speechWindows.clear();
     }
 
+    /**
+     * 読み上げる。win は鳴らす窓（小窓が開いていれば小窓。止められにくいため）。
+     * @returns {Promise<string|undefined>} ブラウザの声は読み始めたら使った声の名前で解決する。失敗したときは例外（呼ぶ側でログに出す）
+     */
     async speak(text, win = window) {
         const generation = this.generation;
         for (const previous of this.speechWindows) { if (previous.closed) { this.speechWindows.delete(previous); } }
@@ -85,6 +86,7 @@ export class Speech {
         const has = (w) => w.speechSynthesis.getVoices().some((v) => v.name === s.voice);
         if (s.voice && win !== window && !has(win) && has(window)) {
             win = window;
+            this.speechWindows.add(win); // 切り替えた先も cancel で止められるように
         }
         const synth = win.speechSynthesis;
         const utterance = new win.SpeechSynthesisUtterance(text);
