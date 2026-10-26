@@ -977,6 +977,11 @@ async function init() {
         $(`guide-${g.id}`).querySelector('.step-title').textContent = g.optional ? `${g.title}（しなくてもよい）` : g.title;
     }
     $('guide-tts-test').addEventListener('click', () => say('読み上げの試験です', true));
+    // 手元の XML: 「使うタイムライン」の折りたたみを開いて、そのままファイルを選ぶ窓を出す（読み込みは local-file の change で行う）
+    $('guide-xml').addEventListener('click', () => {
+        $('local-file').closest('details').open = true;
+        $('local-file').click();
+    });
     $('guide-timeline-go').addEventListener('click', () => {
         $('timeline-select').scrollIntoView({ block: 'center' });
         $('timeline-select').focus();

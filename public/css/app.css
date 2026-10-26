@@ -13,6 +13,7 @@ body,.btn,.form-control,.form-select,.form-check-label,.badge,.form-hint,.read-s
 .read-status.ng,.undecided { color:var(--tblr-danger); }
 .read-status.warn { color:var(--tblr-warning); }
 .read-status.step-state { display:block;margin-top:.5rem; }
+.step-note { margin:.5rem 0;color:var(--tblr-secondary); }
 .fields { display:grid;gap:1rem; }
 .field { display:flex;flex-direction:column;gap:.5rem;min-width:0; }
 .field-label { font-weight:600; }

@@ -4,7 +4,7 @@
 /** 手順の順番。optional は飛ばしてよい手順（「いまの手順」にはならず、ボタンはいつでも押せる） */
 export const GUIDE_STEPS = [
     { id: 'setup', title: '読み取る範囲を決める（初期設定）' },
-    { id: 'timeline', title: '使うタイムラインを選ぶ' },
+    { id: 'timeline', title: '使うタイムライン（ふつうは自動）' },
     { id: 'tts', title: '読み上げを試す', optional: true },
     { id: 'capture', title: 'ゲーム画面の取り込みを始める' },
     { id: 'pip', title: '小窓で開く' }, // 小窓で使うのが前提（2026-10-21 のユーザーの指摘）。使えないブラウザでは飛ばす
@@ -55,11 +55,11 @@ export function guideSteps(c) {
     if (c.timelineError) {
         s.timeline = { done: false, ng: true, text: c.timelineError };
     } else if (c.timelineLabel) {
-        s.timeline = { done: true, text: `「${c.timelineLabel}」を使います。` };
+        s.timeline = { done: true, text: c.choice === 'auto' ? `自動で「${c.timelineLabel}」を選びました。` : `「${c.timelineLabel}」を使います（自分で選んだタイムライン）。` };
     } else if (c.choice === 'auto' && c.detectedContent) {
-        s.timeline = { done: false, ng: true, text: `「${c.detectedContent}」のタイムラインがありません。一覧から選ぶか、手元の XML を読み込んでください。` };
+        s.timeline = { done: false, ng: true, text: `「${c.detectedContent}」のタイムラインは配信にありません。自分で用意した XML があれば、「手元の XML を選ぶ」で読み込んでください。` };
     } else if (c.choice === 'auto') {
-        s.timeline = { done: true, text: '自動で選びます（取り込みを始めて、コンテンツ名を読み取ったら決まります）。' };
+        s.timeline = { done: true, text: '自動で選びます。何もしなくて大丈夫です（取り込みを始めると、読み取ったコンテンツ名でタイムラインが決まります）。' };
     } else {
         s.timeline = { done: false, text: '選んだタイムラインを読み込んでいます…' };
     }

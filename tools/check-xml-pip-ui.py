@@ -23,6 +23,13 @@ with sync_playwright() as p:
   page.locator('#player-pip-open').click();page.wait_for_timeout(200)
   assert page.evaluate('window.previousPip===documentPictureInPicture.window'), 'PiP was unnecessarily recreated'
   page.evaluate('documentPictureInPicture.window.close()')
+ # 「次にすること」の「手元の XML を選ぶ」から、ファイルを選ぶ窓を出して読み込める
+ page.evaluate('location.hash="player"');page.wait_for_timeout(300)
+ assert page.locator('#player-guide-timeline #player-guide-xml').is_visible()
+ with page.expect_file_chooser() as fc: page.locator('#player-guide-xml').click()
+ fc.value.set_files({'name':'guide-pick.xml','mimeType':'application/xml','buffer':xml.replace(b'UI regression',b'Guide pick')});page.wait_for_timeout(500)
+ assert page.locator('#player-timeline-select').input_value()=='local:guide-pick.xml'
+ page.wait_for_function('document.querySelector("#player-guide-timeline [data-guide-state]").textContent.includes("自分で選んだ")',timeout=5000)
  page.locator('#theme-toggle').click();assert page.locator('html').get_attribute('data-bs-theme')=='light'
  page.goto(BASE+'setup.html');page.wait_for_timeout(200);assert page.url.endswith('/#setup')
  print('XML import, retained selection, theme, old URL redirect passed. Errors:',errors)
