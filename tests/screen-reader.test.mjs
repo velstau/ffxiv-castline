@@ -1,7 +1,7 @@
 // 画面の読み取りのテスト。実行: node --test tests/
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { joinLineBoxes } from '../public/js/screen-reader.js';
+import { joinLineBoxes, looksLikeEnemyName } from '../public/js/screen-reader.js';
 
 test('行の枠: 1 行を途中で分けて見つけた部分をつなぎ、別の行や離れた文字はつながない', () => {
     const lines = joinLineBoxes([
@@ -15,4 +15,13 @@ test('行の枠: 1 行を途中で分けて見つけた部分をつなぎ、別�
         { x: 2245, y: 46, w: 285, h: 17, parts: 2 },
         { x: 2000, y: 47, w: 60, h: 16, parts: 1 },
     ]);
+});
+
+test('敵対リスト: 数字と記号だけの文字（戦利品の窓のアイテム数・値段）は敵の名前とみなさない', () => {
+    for (const text of ['83 70 16', '83 | /70', '1,234,567', '16', '', '  ']) {
+        assert.equal(looksLikeEnemyName(text), false, text);
+    }
+    for (const text of ['永遠の闇', '死を招く手', 'Cloud of Darkness', '83 永遠の闇']) {
+        assert.equal(looksLikeEnemyName(text), true, text);
+    }
 });

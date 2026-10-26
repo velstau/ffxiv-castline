@@ -2,6 +2,13 @@
 // 読み方は試験ページの連続読み取り（lab.js の watchTick）と同じ。範囲は regions.js が画面の大きさごとに保存したもの。
 import { pickCandidate, pickCast, readCast, readCountdown, parseHpPercent } from './readers.js';
 
+/**
+ * 敵対リストの範囲の文字が、敵の名前でありうるか。数字と記号だけなら名前ではない（2026-10-26 の録画: 極永遠の闇の討伐後、
+ * 敵対リストの範囲に重なった戦利品の窓のアイテム数「83 70 16」を敵対リストと読み、戦闘開始になった。マーケットの値段も同じ）
+ */
+export function looksLikeEnemyName(text) {
+    return /[^\d\s\p{P}\p{S}]/u.test(text ?? '');
+}
 
 /**
  * @param {{detector: import('./ocr.js').TextDetector, recognizer: import('./ocr.js').TextRecognizer}} ocr
@@ -29,7 +36,9 @@ export async function readFrame(ocr, frame, regions, want) {
     }
     if (regions.enmity) {
         if (castCandidates.length === 0) {
-            out.enmity = (await ocr.detector.detect(frame, regions.enmity)).boxes.length > 0;
+            // 文字の箱があるときだけ読んで、名前かを確かめる（戦闘外はたいてい空なので、読むのはまれ）
+            out.enmity = (await ocr.detector.detect(frame, regions.enmity)).boxes.length > 0
+                && looksLikeEnemyName((await ocr.recognizer.read(frame, regions.enmity)).text);
         } else {
             // 敵対リストの各行には、詠唱中の技名が途中で切れて出る（「テトラフレア・コ…」）
             const list = await readCast(ocr.detector, ocr.recognizer, frame, regions.enmity, castCandidates,
