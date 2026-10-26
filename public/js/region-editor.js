@@ -37,13 +37,13 @@ export class RegionEditor {
                 <label>高さ <input type="number" data-k="h" min="1" step="1"></label>
                 <button type="button" class="re-clear">この範囲を消す</button>
             </div>
-            <p class="status re-check" role="status"></p>
-            <p class="status re-empty"></p>
+            <p class="read-status re-check" role="status"></p>
+            <p class="read-status re-empty"></p>
             <h3 class="re-h">拡大図</h3>
-            <p class="status re-help">中をドラッグして囲み直す・矢印キーで 1px 動かす（Shift で 10px）・Alt＋矢印で右下の端を動かして大きさを変える</p>
+            <p class="read-status re-help">中をドラッグして囲み直す・矢印キーで 1px 動かす（Shift で 10px）・Alt＋矢印で右下の端を動かして大きさを変える</p>
             <canvas class="re-zoom" tabindex="0" aria-label="選んでいる範囲の拡大図"></canvas>
             <h3 class="re-h">画面の全体</h3>
-            <p class="status re-help">ドラッグで大まかに囲む。囲んである範囲をクリックすると、その範囲を選ぶ</p>
+            <p class="read-status re-help">ドラッグで大まかに囲む。囲んである範囲をクリックすると、その範囲を選ぶ</p>
             <div class="stage"><canvas class="re-overview" aria-label="取り込んだ画面"></canvas></div>`;
         const q = (sel) => this.root.querySelector(sel);
         this.el = {
@@ -166,7 +166,7 @@ export class RegionEditor {
     renderCheck() {
         const result = this.results[this.active];
         this.el.check.textContent = this.regions[this.active] ? (result?.text ?? '') : '';
-        this.el.check.className = `status re-check ${result?.ok === true ? 'ok' : result?.ok === false ? 'ng' : ''}`.trim();
+        this.el.check.className = `read-status re-check ${result?.ok === true ? 'ok' : result?.ok === false ? 'ng' : ''}`.trim();
     }
 
     drawOverview() {

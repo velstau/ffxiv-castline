@@ -1,7 +1,7 @@
 // 初期設定の画面: 読む範囲を、手順に沿ってゲーム画面に出たものから自動で見つけて保存する（region-auto.js）。
 // 手で直す画面（拡大図、region-editor.js）と、ファイルへの書き出し・読み込みもここ。再生画面は保存した範囲を使うだけ。
 import './storage-migrate.js';
-import { FrameSource } from './capture.js';
+import { FrameSource, captureSession } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { STORE_REGIONS, REGION_KINDS, regionsFor, setRegion, clearRegions, exportRegions, importRegions, loadAll, screenKey, savedScreens } from './regions.js';
 import { RegionEditor } from './region-editor.js';
@@ -13,7 +13,7 @@ const STORE_SETTINGS = 'castline.player.settings'; // 再生画面の設定（au
 const STEP_EVERY_MS = 1000;
 const CONTENT_READ_EVERY_MS = 3000; // コンテンツ名の範囲が指定済みのとき、名前を読む間隔（タイムラインの技名を知るため）
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById('setup-' + id);
 const state = {
     ocr: null,
     source: null,
@@ -43,7 +43,7 @@ let editor = null;
 function setStatus(id, text, kind = '') {
     const el = $(id);
     el.textContent = text;
-    el.className = `status ${kind}`.trim();
+    el.className = `read-status ${kind}`.trim();
 }
 
 function clock(at = Date.now()) {
@@ -141,7 +141,7 @@ function stepState(id, done, current, text) {
     const el = li.querySelector('.step-state');
     if (el) {
         el.textContent = text;
-        el.className = `status step-state ${done ? 'ok' : ''}`.trim();
+        el.className = `read-status step-state ${done ? 'ok' : ''}`.trim();
     }
 }
 
@@ -154,10 +154,11 @@ function itemState(id, done, text) {
 const foundText = (id) => (state.found[id]?.line ? `（「${state.found[id].line.text}」の行）` : '');
 
 // 初期設定が済んでいれば、手順の代わりに「設定は不要」と出す（2026-10-21 のユーザーの指定。手順 1〜4 が出ると紛らわしい）。
-// 取り込みを始めたとき・再設定のときは手順を出す
+// 同じ画面の設定が保存済みなら共有後も手順を閉じる。未設定の解像度・明示的な再設定では手順を出す
 function renderSetupDone() {
     const complete = savedScreens().filter((s) => s.complete).map((s) => s.key);
-    const showDone = complete.length > 0 && !state.redo && !state.running && !state.frameSize;
+    const currentKey = state.frameSize ? screenKey(state.frameSize.width, state.frameSize.height) : null;
+    const showDone = !state.redo && (currentKey ? complete.includes(currentKey) : complete.length > 0);
     $('setup-done').hidden = !showDone;
     $('setup-steps').hidden = showDone;
     if (showDone) {
@@ -299,7 +300,7 @@ function renderChecks() {
             // 取り込む前は、保存してある範囲があればそう出す（「まだありません」だと設定が消えたように見える）
             const savedIn = size ? [] : Object.entries(saved).filter(([, r]) => r?.[kind.id]).map(([k]) => k);
             li.append(Object.assign(document.createElement('p'), {
-                className: `status${savedIn.length > 0 ? ' ok' : ''}`,
+                className: `read-status${savedIn.length > 0 ? ' ok' : ''}`,
                 textContent: savedIn.length > 0 ? `指定済み（画面 ${savedIn.join('・')}）。取り込むと、いまのゲーム画面で確かめられます。` : 'まだありません',
             }));
             return li;
@@ -624,4 +625,11 @@ async function init() {
     await loadModel();
 }
 
-init();
+export const ready = init();
+
+export function refresh() { editor?.refresh(); render(); }
+export function leave() { stop(); }
+
+export async function attachShared() {
+    if (captureSession.source && state.ocr && !state.running) { await start(); }
+}

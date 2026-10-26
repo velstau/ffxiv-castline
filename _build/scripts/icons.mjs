@@ -1,66 +1,35 @@
-// Material Symbols（Google、Apache-2.0）をインライン SVG として使う（vel.works/_build/scripts/icons.mjs と同じ決まり）。
-//
-// (1) HTML には目印だけを書く:   <svg data-ms="timeline" class="icon"></svg>（塗りつぶし版は名前に -fill）
-//     このスクリプトが中身（path）と属性（viewBox・fill・aria-hidden）を書き込む。何度実行しても同じ結果になる。
-// (2) JS で組み立てる画面のアイコンは、下の JS_ICONS に名前を書くと public/js/icons.js に書き出す（icon(name) で使う）。
-//
-// スタイルは Rounded・字重 400（@material-symbols/svg-400/rounded）。アイコンは装飾（aria-hidden）。意味は隣の文字で伝える。
+// Preserve the existing icon(name) API while rendering official Tabler SVGs.
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const iconDir = join(root, 'node_modules/@material-symbols/svg-400/rounded');
 const publicDir = join(root, '../public');
-
-// JS で使うアイコン（setup.js の手順の印など）
-const JS_ICONS = ['check_circle', 'radio_button_unchecked', 'error', 'zoom_in'];
-
-const cache = new Map();
-function iconBody(name) {
-    if (!cache.has(name)) {
-        const svg = readFileSync(join(iconDir, `${name}.svg`), 'utf8');
-        const m = svg.match(/<svg[^>]*>([\s\S]*?)<\/svg>/);
-        if (!m) {
-            throw new Error(`SVG を読めない: ${name}`);
-        }
-        cache.set(name, m[1].trim());
-    }
-    return cache.get(name);
-}
-
-const pattern = /<svg\b([^>]*?)\bdata-ms="([a-z0-9_]+(?:-fill)?)"([^>]*)>[\s\S]*?<\/svg>/g;
-let total = 0;
-const used = new Set();
-for (const file of readdirSync(publicDir).filter((f) => f.endsWith('.html')).map((f) => join(publicDir, f))) {
-    const src = readFileSync(file, 'utf8');
-    const out = src.replace(pattern, (_all, before, name, after) => {
-        const cls = `${before} ${after}`.match(/\bclass="([^"]*)"/);
-        used.add(name);
-        total++;
-        return `<svg data-ms="${name}"${cls ? ` class="${cls[1]}"` : ''} viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" focusable="false">${iconBody(name)}</svg>`;
-    });
-    if (out !== src) {
-        writeFileSync(file, out);
-    }
-}
-
-const entries = JS_ICONS.map((name) => `    ${name}: '${iconBody(name).replaceAll("'", "\\'")}',`).join('\n');
-writeFileSync(join(publicDir, 'js/icons.js'), `// 生成ファイル（_build/scripts/icons.mjs）。手で直さない。Material Symbols Rounded 400（Apache-2.0）
-const PATHS = {
-${entries}
+const names = {
+    view_timeline:'timeline', tune:'adjustments', play_circle:'player-play', edit_note:'edit',
+    dark_mode:'moon', screen_share:'screen-share', stop_circle:'player-stop', radio_button_checked:'circle-dot',
+    build_circle:'tool', folder:'folder', checklist:'list-check', content_copy:'copy', crop:'crop',
+    download:'download', photo_camera:'camera', play_arrow:'player-play', preview:'eye', receipt_long:'list-details',
+    restart_alt:'refresh', screenshot_region:'scan', search:'search', toggle_off:'toggle-left', toggle_on:'toggle-right',
+    delete:'trash', link:'link', list_alt:'list', pause_circle:'player-pause', picture_in_picture_alt:'picture-in-picture',
+    record_voice_over:'microphone', volume_up:'volume', playlist_add:'playlist-add', refresh:'refresh',
+    bookmark_add:'bookmark-plus', key:'key', check_circle:'circle-check', radio_button_unchecked:'circle',
+    error:'alert-circle', zoom_in:'zoom-in', check:'check', arrow_forward:'arrow-right', chevron_right:'chevron-right',
+    construction:'tool', monitor_heart:'activity', rocket_launch:'rocket', science:'flask', shield:'shield',
 };
-
-/** アイコンの svg 要素（装飾。意味は隣の文字で伝える）。cls は class 属性 */
-export function icon(name, cls = 'icon', doc = document) {
-    const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('viewBox', '0 -960 960 960');
-    svg.setAttribute('fill', 'currentColor');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.setAttribute('focusable', 'false');
-    svg.setAttribute('class', cls);
-    svg.innerHTML = PATHS[name];
-    return svg;
+function body(name) {
+    const file = names[name];
+    if (!file) { throw new Error(`Unknown icon: ${name}`); }
+    const source = readFileSync(join(root, `node_modules/@tabler/icons/icons/outline/${file}.svg`), 'utf8');
+    return source.match(/<svg[^>]*>([\s\S]*?)<\/svg>/)[1].trim();
 }
-`);
-console.log(`icons: HTML ${total} 箇所・${used.size} 種類 (${[...used].sort().join(', ')})、JS ${JS_ICONS.length} 種類`);
+const attrs = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"';
+for (const file of readdirSync(publicDir).filter((f) => f.endsWith('.html'))) {
+    const path = join(publicDir, file);
+    const s = readFileSync(path, 'utf8');
+    writeFileSync(path, s.replace(/<svg\b([^>]*?)\bdata-ms="([a-z0-9_]+)"([^>]*)>[\s\S]*?<\/svg>/g, (_, before, name, after) => {
+        const cls = `${before} ${after}`.match(/\bclass="([^"]*)"/)?.[1] ?? 'icon';
+        return `<svg data-ms="${name}" class="${cls}" ${attrs}>${body(name)}</svg>`;
+    }));
+}
+const paths = Object.fromEntries(['check_circle','radio_button_unchecked','error','zoom_in'].map((n) => [n, body(n)]));
+writeFileSync(join(publicDir, 'js/icons.js'), `// Generated by _build/scripts/icons.mjs. Tabler Icons, MIT.\nconst paths = ${JSON.stringify(paths, null, 4)};\nexport function icon(name, cls = 'icon', doc = document) {\n    const svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');\n    for (const [key, value] of Object.entries({viewBox:'0 0 24 24',fill:'none',stroke:'currentColor','stroke-width':'2','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true',focusable:'false',class:cls})) { svg.setAttribute(key,value); }\n    svg.innerHTML = paths[name] ?? '';\n    return svg;\n}\n`);

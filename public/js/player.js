@@ -1,9 +1,12 @@
+import { ContentPresence } from './content-presence.js';
 // 再生画面: ゲーム画面を読み、タイムライン（これから来る技と発動までの秒）を流して読み上げる。
 import './storage-migrate.js';
-import { FrameSource } from './capture.js';
+import { FrameSource, captureSession } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { combineCandidates } from './readers.js';
 import { isBlackFrame } from './blackout.js';
+import { falseStart } from './cast-recorder.js';
+import { needsKillConfirmation, isDutyCompleteText, ClearNoticeTracker } from './combat-end.js';
 import { TimelineEngine } from './timeline-engine.js';
 import { parseTimelineXml } from './timeline-xml.js';
 import { upcomingRows, iconProblems } from './timeline-view.js';
@@ -18,7 +21,7 @@ import { Speech, DEFAULT_SPEECH, japaneseVoices, voicevoxStyles } from './speech
 
 const STORE_SETTINGS = 'castline.player.settings';
 const INTERVAL_MS = 500;
-const CONTENT_EVERY_MS = 5000; // コンテンツ名は戦闘外だけ、間引いて読む
+const CONTENT_EVERY_MS = 1000; // コンテンツ名は戦闘外だけ、間引いて読む
 const CONTENT_RETRY_MS = 1000; // まだ決まっていない間は、これごとに読む
 const CONTENT_COMBINE = 5; // 1 回で決まらない読み取りを、直近これだけ足し合わせて決める
 // コンテンツ名の範囲があるのにこれだけ読めなければ、範囲がずれているかもしれないとログに出す（範囲があると自動では探さないため）
@@ -27,7 +30,9 @@ const RENDER_EVERY_MS = 100;
 const SPEAK_LATE_MAX_S = 2; // 読み上げる時刻をこれ以上過ぎた予定は読まない（同期で時刻が飛んだとき）
 const UPCOMING_COUNT = 6;
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById('player-' + id);
+let autoRequested = false;
+let starting = false;
 const state = {
     ocr: null,
     source: null,
@@ -38,6 +43,7 @@ const state = {
     cloudError: '',
     cloudBase: '', // 一覧を読めた置き場所（タイムラインの XML も同じ所から読む）
     local: [], // { name, xml, timeline }
+    resolvedChoice: '',
     choice: 'auto', // 'auto' | 'cloud:<file>' | 'local:<name>'
     timeline: null,
     timelineLabel: '',
@@ -45,12 +51,19 @@ const state = {
     regions: null,
     regionsKey: '',
     detectedContent: null,
+    contentPresence: new ContentPresence(),
+    contentBlocked: false,
     contentReads: [], // 1 回では決まらなかったコンテンツ名の読み取り（combineCandidates で足し合わせる）
     lastContentAt: 0,
     contentMissSince: null,
     contentMissWarned: false,
     regionsLogged: '',
     lastCast: {}, // 読み取り元ごとに、最後に記録した技名（ログは変わったときだけ）
+    lastEnmity: null,
+    endDiagnosticKey: null,
+    clearNotice: new ClearNoticeTracker(),
+    clearNoticeFight: null,
+    lastClearReadAt: 0,
     lastBlack: false, // 前のフレームが暗転だったか（ログは変わったときだけ）
     spoken: new Set(),
     spokenStartAt: null,
@@ -78,7 +91,7 @@ let lastSpeechError = '';
 function say(text, report = false) {
     const target = pip.isOpen && activated(pip.win) ? pip.win : window;
     voice.speak(text, target)
-        .catch((e) => (notAllowed(e) && target !== window ? voice.speak(text, window) : Promise.reject(e)))
+        .catch((e) => (notAllowed(e) && target !== window && !state.contentBlocked ? voice.speak(text, window) : Promise.reject(e)))
         .then((name) => {
             lastSpeechError = '';
             if (report) {
@@ -115,6 +128,7 @@ function load(key, fallback) {
 function save(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
+        window.dispatchEvent(new StorageEvent('storage', { key }));
     } catch {
         // 保存できなくても、このページを開いている間は使える
     }
@@ -131,7 +145,7 @@ function log(message, at = Date.now()) {
 }
 function setStatus(id, text, kind = '') {
     $(id).textContent = text;
-    $(id).className = `status ${kind}`.trim();
+    $(id).className = `read-status ${kind}`.trim();
 }
 
 // ── モデル ──
@@ -162,6 +176,7 @@ async function loadModel() {
         setStatus('model-status', `文字認識のモデルを読み込めませんでした: ${e.message}`, 'ng');
     }
     updateButtons();
+    if (autoRequested && state.ocr && captureSession.source) { void start(); }
 }
 
 // ── タイムライン ──
@@ -194,8 +209,18 @@ function renderSelect() {
         groups.push(g);
     }
     select.replaceChildren(option('auto', '読み取ったコンテンツ名から自動で選ぶ'), ...groups);
-    select.value = [...select.options].some((o) => o.value === state.choice) ? state.choice : 'auto';
-    state.choice = select.value;
+    if (![...select.options].some((o) => o.value === state.choice)) { state.choice = 'auto'; }
+    syncTimelineSelection();
+}
+
+function syncTimelineSelection() {
+    const select = $('timeline-select');
+    const value = state.choice === 'auto' ? state.resolvedChoice || 'auto' : state.choice;
+    select.value = [...select.options].some((o) => o.value === value) ? value : 'auto';
+    $('timeline-selection-mode').textContent = state.choice === 'auto'
+        ? '自動選択中：コンテンツが変わると、対応するタイムラインに切り替わります。'
+        : '手動選択中：選んだタイムラインを使います。';
+    $('timeline-auto').hidden = state.choice === 'auto';
     $('local-remove').disabled = !state.choice.startsWith('local:');
 }
 
@@ -209,16 +234,16 @@ async function resolveTimeline() {
             const local = state.local.find((t) => t.timeline.content === state.detectedContent);
             const cloud = state.cloud.find((t) => t.content === state.detectedContent);
             if (local) {
-                found = { timeline: local.timeline, label: `${local.timeline.title ?? local.timeline.content}（手元のファイル ${local.name}）` };
+                found = { choice: `local:${local.name}`, timeline: local.timeline, label: `${local.timeline.title ?? local.timeline.content}（手元のファイル ${local.name}）` };
             } else if (cloud) {
-                found = { timeline: await cloudTimeline(cloud), label: `${cloud.title}（配信）` };
+                found = { choice: `cloud:${cloud.file}`, timeline: await cloudTimeline(cloud), label: `${cloud.title}（配信）` };
             }
         } else if (state.choice.startsWith('local:')) {
             const local = state.local.find((t) => `local:${t.name}` === state.choice);
-            found = local && { timeline: local.timeline, label: `${local.timeline.title ?? local.timeline.content}（手元のファイル ${local.name}）` };
+            found = local && { choice: `local:${local.name}`, timeline: local.timeline, label: `${local.timeline.title ?? local.timeline.content}（手元のファイル ${local.name}）` };
         } else {
             const cloud = state.cloud.find((t) => `cloud:${t.file}` === state.choice);
-            found = cloud && { timeline: await cloudTimeline(cloud), label: `${cloud.title}（配信）` };
+            found = cloud && { choice: `cloud:${cloud.file}`, timeline: await cloudTimeline(cloud), label: `${cloud.title}（配信）` };
         }
     } catch (e) {
         state.timelineError = e.message;
@@ -226,7 +251,9 @@ async function resolveTimeline() {
         return;
     }
     state.timelineError = '';
-    if (found?.timeline === state.timeline) {
+    state.resolvedChoice = found?.choice ?? '';
+    syncTimelineSelection();
+    if (found?.timeline === state.timeline && state.engine) {
         return;
     }
     state.timeline = found?.timeline ?? null;
@@ -244,6 +271,10 @@ async function resolveTimeline() {
 }
 
 function renderTimelineStatus() {
+    if (state.contentBlocked) {
+        setStatus('timeline-status', 'コンテンツ情報の確認待ちです。前のコンテンツによる自動再生は停止しました。コンテンツ名を再確認すると再開します。', 'warn');
+        return;
+    }
     const content = state.detectedContent ? `読み取ったコンテンツ名: ${state.detectedContent}` : 'コンテンツ名はまだ読み取れていません';
     if (state.cloudError && !state.timeline) {
         setStatus('timeline-status', `${content}。${state.cloudError}`, 'ng');
@@ -316,7 +347,7 @@ function renderMissing() {
         el.textContent = saved.length > 0
             ? `済み（画面 ${saved.join('・')}）。取り込みを始めると、その画面の大きさで確かめます。`
             : 'まだ決めていません。';
-        el.className = `status ${saved.length > 0 ? 'ok' : ''}`.trim();
+        el.className = `read-status ${saved.length > 0 ? 'ok' : ''}`.trim();
         return;
     }
     const key = screenKey(size.width, size.height);
@@ -326,7 +357,7 @@ function renderMissing() {
         : `画面 ${key} で未指定: ${missing.map((m) => `${m.label}（${m.lost}）`).join('、')}。`
             + (settings.autoRegions ? '取り込み中に画面に出れば、自動で探します。' : '初期設定の画面で指定してください。');
     // 開始を検知できないときだけ誤り。ほかは使えるが一部の働きが欠ける（注意）
-    el.className = `status ${missing.length === 0 ? 'ok' : missing.some((m) => m.id === 'start') ? 'ng' : 'warn'}`;
+    el.className = `read-status ${missing.length === 0 ? 'ok' : missing.some((m) => m.id === 'start') ? 'ng' : 'warn'}`;
 }
 
 function regionsChanged() {
@@ -335,18 +366,24 @@ function regionsChanged() {
 }
 
 async function start() {
+    if (state.running || starting) { return; }
+    starting = true;
     if (!navigator.mediaDevices?.getDisplayMedia) {
+        starting = false;
         setStatus('run-status', 'このページでは画面を取り込めません。https か localhost で開いてください。', 'ng');
         return;
     }
     try {
         state.source = await FrameSource.start(stop);
     } catch (e) {
+        starting = false;
         setStatus('run-status', `取り込みを始められませんでした（${e.name}）`, 'ng');
         return;
     }
     // 自動で探すかは初期設定の画面で切り替える（別のタブで変えたものを使う）
     settings.autoRegions = load(STORE_SETTINGS, {}).autoRegions ?? true;
+    starting = false;
+    state.contentPresence.reset();
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
@@ -377,6 +414,7 @@ async function start() {
 }
 
 function stop() {
+    autoRequested = false;
     if (!state.running) {
         return;
     }
@@ -421,7 +459,7 @@ async function tick({ bitmap: frame, at }) {
     const engine = state.engine;
     const inCombat = engine?.status(at).state === 'combat';
     const black = isBlackFrame(frame); // 全滅の暗転（読み取りの前に見る）
-    const wantContent = !inCombat && at - state.lastContentAt >= (state.detectedContent ? CONTENT_EVERY_MS : CONTENT_RETRY_MS);
+    const wantContent = at - state.lastContentAt >= (state.detectedContent ? CONTENT_EVERY_MS : CONTENT_RETRY_MS);
     if (wantContent) {
         state.lastContentAt = at;
     }
@@ -449,6 +487,10 @@ async function tick({ bitmap: frame, at }) {
                 + 'コンテンツの中なら範囲がずれています。「読む範囲」でコンテンツ名を選んで「この範囲を消す」を押すと、自動で探し直します', at);
         }
     }
+    if (wantContent) {
+        state.contentPresence.observe(at, Boolean(obs.content?.decided));
+        if (!obs.content?.text?.trim()) { state.contentReads = []; }
+    }
     if (obs.content && !obs.content.decided && obs.content.ranked) {
         state.contentReads = [...state.contentReads, obs.content].slice(-CONTENT_COMBINE);
         const combined = combineCandidates(state.contentReads);
@@ -459,16 +501,40 @@ async function tick({ bitmap: frame, at }) {
     }
     if (obs.content?.decided) {
         state.contentReads = [];
+        state.contentPresence.observe(at, true);
+        state.contentBlocked = false;
     }
-    if (obs.content?.decided && obs.content.decided !== state.detectedContent) {
+    if (obs.content?.decided && (obs.content.decided !== state.detectedContent || !state.engine)) {
         state.detectedContent = obs.content.decided;
         log(`コンテンツ名 ${obs.content.decided}`, at);
-        if (state.choice === 'auto') {
-            await resolveTimeline();
-        }
+        await resolveTimeline();
         renderTimelineStatus();
     }
-    if (engine && engine === state.engine) {
+    const recentHp = engine?.lastHpAt !== null && engine?.lastHpAt !== undefined && at - engine.lastHpAt <= 3000;
+    const recentCast = engine && [...engine.castSeenAt.values()].some((time) => at - time <= 5000);
+    const combatEvidence = inCombat && (Number.isFinite(obs.hp) && obs.hp > 0
+        || obs.casts.some((cast) => Boolean(cast.decided)) || recentHp || recentCast);
+    if (state.contentPresence.shouldClear(at, combatEvidence)) {
+        if (!state.contentBlocked) {
+            log('コンテンツ名を確認できず、HP・詠唱も確認できないため自動再生を解除。コンテンツ情報の再確認まで待機します', at);
+        }
+        state.contentBlocked = true;
+        state.detectedContent = null;
+        state.contentReads = [];
+        state.engine = null;
+        voice.cancel();
+        state.spoken.clear();
+        if (state.choice === 'auto') {
+            state.timeline = null;
+            state.timelineLabel = '';
+            state.resolvedChoice = '';
+        }
+        syncTimelineSelection();
+        renderTimelineStatus();
+    }
+    // An enemy-list-shaped text block in Party Finder is not permission to pull.
+    const allowObservation = state.contentPresence.canStart(at) || inCombat && !state.contentBlocked;
+    if (engine && engine === state.engine && allowObservation) {
         if (black !== state.lastBlack && engine.status(at).state === 'combat') {
             log(black ? '画面が暗転しました' : '画面の暗転が終わりました', at);
         }
@@ -483,6 +549,11 @@ async function tick({ bitmap: frame, at }) {
             engine.hpPercent(at, obs.hp);
         }
         if ('enmity' in obs) {
+            if (obs.enmity !== state.lastEnmity) {
+                state.lastEnmity = obs.enmity;
+                const hpAge = engine.lastHpAt === null ? '未読' : `${((at - engine.lastHpAt) / 1000).toFixed(1)}秒前`;
+                log(`${obs.enmity ? '敵対リストが出た' : '敵対リストが消えた'}（最終HP: ${engine.hp === null ? '未読' : `${engine.hp}%`}、HP観測: ${hpAge}、フェーズ: ${engine.phase?.id ?? '未確定'}）`, at);
+            }
             engine.enmity(at, obs.enmity);
         }
         for (const cast of obs.casts) {
@@ -495,6 +566,45 @@ async function tick({ bitmap: frame, at }) {
                 engine.cast(at, cast.decided);
             }
         }
+        const offSince = engine.enmityOffSince;
+        if (state.clearNoticeFight !== engine.startAt) {
+            state.clearNoticeFight = engine.startAt;
+            state.clearNotice.reset();
+            state.lastClearReadAt = 0;
+        }
+        if (engine.state === 'combat' && !engine.enmityShown && offSince !== null
+            && at - offSince >= 1000 && at - state.lastClearReadAt >= 1000) {
+            state.lastClearReadAt = at;
+            const area = { x: Math.round(frame.width * 0.2), y: Math.round(frame.height * 0.15),
+                w: Math.round(frame.width * 0.6), h: Math.round(frame.height * 0.45) };
+            const lines = await state.ocr.scanLines(frame, area);
+            if (engine !== state.engine || !state.running || state.regionsKey !== key) { return; }
+            if (state.clearNotice.observe(at, isDutyCompleteText(lines))) {
+                engine.end(at, '敵対リストの消失後、画面中央のコンテンツクリア表示を複数フレームで確認。討伐');
+            }
+        } else if (engine.enmityShown || engine.state !== 'combat') {
+            state.clearNotice.reset();
+        }
+        if (engine.state === 'combat' && !engine.enmityShown && offSince !== null && at - offSince >= 3000) {
+            const key = `${engine.startAt}:${offSince}`;
+            if (key !== state.endDiagnosticKey) {
+                state.endDiagnosticKey = key;
+                log(`敵対リスト消失後の終了確認: 最終HP ${engine.hp === null ? '未読' : `${engine.hp}%`}、最終フェーズ ${Boolean(engine.phase && (engine.phase.next ?? []).length === 0)}、コンテンツ情報の範囲 ${Boolean(state.regions.content)}。低HPと画面表示を確認できなければ、ムービー・フェーズ移行との区別のため終了を保留`, at);
+            }
+        }
+        if (needsKillConfirmation(engine, at, Boolean(state.regions.content))) {
+            const confirmation = await state.ocr.readFrame(frame, { content: state.regions.content }, { content: state.contents });
+            if (engine === state.engine && state.running && state.regionsKey === key
+                && confirmation.content?.text?.trim()) {
+                engine.end(at, `最後のフェーズで HP ${engine.hp}% の後に敵対リストが消え、コンテンツ情報は表示中。討伐`);
+            }
+        } else {
+            const casts = [...engine.castSeenAt.values()].filter((time) => time >= engine.startAt).length;
+            if (falseStart(engine, at, casts)) {
+                engine.end(at, 'HPも詠唱も確認できないまま敵対リストが消えた。開始の誤判定として解除');
+            }
+        }
+
     }
     updateButtons();
     update(true);
@@ -551,6 +661,7 @@ function combatClock(s) {
 function buildView(now) {
     const engine = state.engine;
     if (!engine) {
+        if (state.contentBlocked) { return { head: 'コンテンツ情報の確認待ち', sub: 'コンテンツ外、またはコンテンツ名を読み取れないため、自動再生を停止しています', items: [] }; }
         return { head: 'タイムラインがありません', sub: '一覧で選ぶか、コンテンツ名を認識すると動作待機します', items: [] };
     }
     const s = engine.status(now);
@@ -694,6 +805,7 @@ function renderGuide(now) {
     state.guideKey = key;
     for (const step of steps) {
         const li = $(`guide-${step.id}`);
+        li.hidden = step.id === 'setup' && step.kind === 'done';
         li.className = [step.current ? 'current' : step.kind === 'done' ? 'done' : 'todo', step.kind === 'ng' ? 'ng' : '', step.optional ? 'optional' : '',
             'keepActions' in li.dataset ? 'keep-actions' : '']
             .filter(Boolean).join(' ');
@@ -701,7 +813,7 @@ function renderGuide(now) {
         const own = li.querySelector('[data-guide-state]'); // 取り込み・範囲は元からある状態の欄を使う
         if (own) {
             own.textContent = step.text;
-            own.className = `status step-state ${step.kind === 'done' ? 'ok' : step.kind === 'ng' ? 'ng' : ''}`.trim();
+            own.className = `read-status step-state ${step.kind === 'done' ? 'ok' : step.kind === 'ng' ? 'ng' : ''}`.trim();
         }
     }
 }
@@ -842,6 +954,11 @@ async function init() {
     $('stop').addEventListener('click', stop);
     $('reset').addEventListener('click', halt);
     $('pip-open').addEventListener('click', openPip);
+    $('timeline-auto').addEventListener('click', async () => {
+        state.choice = 'auto';
+        await resolveTimeline();
+        updateButtons();
+    });
     $('timeline-select').addEventListener('change', async () => {
         state.choice = $('timeline-select').value;
         $('local-remove').disabled = !state.choice.startsWith('local:');
@@ -858,6 +975,8 @@ async function init() {
     window.addEventListener('storage', (ev) => {
         if (ev.key === STORE_REGIONS) {
             regionsChanged();
+        } else if (ev.key === STORE_LOCAL) {
+            loadLocal(); renderSelect(); resolveTimeline();
         }
     });
     $('log-copy').addEventListener('click', async () => {
@@ -888,4 +1007,13 @@ async function init() {
     loadModel();
 }
 
-init();
+export const ready = init();
+
+// Returning to the view must preserve the active combat engine and selected timeline.
+export function refresh() { regionsChanged(); renderTimelineStatus(); }
+
+export function activateAuto() {
+    autoRequested = true;
+    if (state.ocr && captureSession.source) { void start(); }
+}
+export function deactivateAuto() { autoRequested = false; }

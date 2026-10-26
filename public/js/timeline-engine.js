@@ -132,6 +132,7 @@ export class TimelineEngine {
         this.pendingSync = null; // ずれが大きくて保留した同期 {start, at}
         this.castSeenAt = new Map(); // 技名 → 最後に読めた時刻（同じ詠唱の続きを見分ける）
         this.enmityShown = false;
+        this.enmityObservedAt = null;
         this.enmityOnSince = null;
         this.enmityOffSince = null;
         this.holdUntilEnmityOff = false; // 手動で止めた後、敵対リストが一度消えるまで敵対リストでは始めない
@@ -202,6 +203,7 @@ export class TimelineEngine {
 
     /** 敵対リストが出ている（shown = true）か消えている。開始の判定は advance（続けて出ていた時間を見る） */
     enmity(at, shown) {
+        this.enmityObservedAt = at;
         this.enmityShown = shown;
         // 空だった長さ（また出た時刻で測る。空のままの間は advance で測る）
         if (!shown) {
@@ -214,7 +216,9 @@ export class TimelineEngine {
             this.enmityStaleLogged = true;
             this.log(at, '敵対リストの範囲に始めから文字があるので、一度消えるまで敵対リストでは始めない（戦闘前に文字が出ている場合は、範囲がずれています）');
         }
-        if (shown && this.state === 'combat' && !this.phase && this.enmityOffSince !== null && at - this.enmityOffSince >= ENMITY_OFF_END_MS) {
+        const shownLongEnough = shown && this.enmityOnSince !== null
+            && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
+        if (shownLongEnough && this.state === 'combat' && !this.phase && this.enmityOffSince !== null && at - this.enmityOffSince >= ENMITY_OFF_END_MS) {
             // ボスが決まらないまま（道中）敵対リストが消えて、また出た: 次のプル。ボスを決めるときの秒を、ここから数え直す
             // （道中の戦闘は討伐で終えないので、ボスのプルまで同じ戦闘が続くことがある）
             this.startAt = at;
@@ -224,7 +228,8 @@ export class TimelineEngine {
             this.log(at, 'ボスが決まらないまま敵対リストがまた出たので、ここから次のプルとして数える');
         }
         if (shown) {
-            this.enmityOffSince = null;
+            // During combat, a single OCR hit must not reset a long absence.
+            if (this.state !== 'combat' || shownLongEnough) { this.enmityOffSince = null; }
             this.enmityOnSince ??= at;
         } else {
             this.enmityOnSince = null;
@@ -246,6 +251,8 @@ export class TimelineEngine {
 
     end(at, reason) {
         this.state = 'ended';
+        // Do not restart on the same enemy-list observation after a wipe/end.
+        this.holdUntilEnmityOff = this.enmityShown;
         this.log(at, `戦闘終了（${reason}）`);
     }
 
@@ -502,7 +509,9 @@ export class TimelineEngine {
         }
         // 敵対リストは ENMITY_ON_MIN_MS 続いてから「出た」とみなし、開始は出始めた時刻にさかのぼる
         const usable = this.hasEnmity && this.enmitySeenOff;
-        const steady = usable && this.enmityShown && at - this.enmityOnSince >= ENMITY_ON_MIN_MS;
+        // UI rendering must not turn one OCR hit into sustained combat evidence.
+        const steady = usable && this.enmityShown
+            && this.enmityObservedAt - this.enmityOnSince >= ENMITY_ON_MIN_MS;
         if (steady && (this.state === 'idle' || this.state === 'ended') && !this.holdUntilEnmityOff) {
             this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウンなし）');
         } else if (steady && this.state === 'countdown') {
@@ -533,7 +542,7 @@ export class TimelineEngine {
             this.end(at, `画面が ${BLACKOUT_END_MS / 1000} 秒以上暗転した。全滅`);
             return;
         }
-        if (this.hasEnmity && this.enmityOffSince !== null) {
+        if (this.hasEnmity && !this.enmityShown && this.enmityOffSince !== null) {
             const off = at - this.enmityOffSince;
             // ボスが決まっていない戦闘（道中）は討伐では終えない（暗転・敵対リストが消えたままで終わる）
             const lastPhase = this.phase !== null && (this.phase.next ?? []).length === 0;

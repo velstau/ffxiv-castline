@@ -1,3 +1,5 @@
+import { CaptureSession } from './capture-session.js';
+
 // 画面の取り込み。届いたフレームのうち最新の 1 枚だけを持ち、読みたいときに取り出す。
 //
 // ゲームを前面にするとブラウザのページは「非表示」とみなされ、タイマーは 1 秒に 1 回まで間引かれ、
@@ -7,7 +9,11 @@
 
 export class FrameSource {
     /** @param {() => void} [onEnded] 利用者がブラウザの「共有を停止」で止めたとき */
-    static async start(onEnded) {
+    static start(onEnded) {
+        return captureSession.acquire(onEnded);
+    }
+
+    static async open(onEnded) {
         const stream = await navigator.mediaDevices.getDisplayMedia({ video: { frameRate: 10 }, audio: false });
         const source = new FrameSource(stream, onEnded);
         await source.ready;
@@ -111,3 +117,8 @@ export class FrameSource {
         this.waiters = [];
     }
 }
+
+export const captureSession = new CaptureSession(
+    (onEnded) => FrameSource.open(onEnded),
+    () => globalThis.dispatchEvent?.(new Event('castline:capture')),
+);

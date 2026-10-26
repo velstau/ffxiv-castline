@@ -42,16 +42,29 @@ export class Speech {
         this.getSettings = getSettings;
         this.cache = new Map(); // `${url}|${speaker}|${rate}|${text}` → Promise<Blob>
         this.audio = null;
+        this.generation = 0;
+        this.speechWindows = new Set();
     }
 
     /**
      * 読み上げる。win は鳴らす窓（小窓が開いていれば小窓。止められにくいため）。
      * @returns {Promise<string|undefined>} ブラウザの声は読み始めたら使った声の名前で解決する。失敗したときは例外（呼ぶ側でログに出す）
      */
+    cancel() {
+        this.generation++;
+        this.audio?.pause();
+        for (const win of this.speechWindows) { win.speechSynthesis?.cancel(); }
+        this.speechWindows.clear();
+    }
+
     async speak(text, win = window) {
+        const generation = this.generation;
+        for (const previous of this.speechWindows) { if (previous.closed) { this.speechWindows.delete(previous); } }
+        this.speechWindows.add(win);
         const s = { ...DEFAULT_SPEECH, ...this.getSettings() };
         if (s.engine === 'voicevox' && s.voicevoxSpeaker !== null) {
             const blob = await this.synthesize(text, s);
+            if (generation !== this.generation) { return; }
             this.audio?.pause();
             const audio = new win.Audio(URL.createObjectURL(blob));
             audio.volume = s.volume;

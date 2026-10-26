@@ -61,6 +61,9 @@ export function loadAll(storage = defaultStorage()) {
 function saveAll(all, storage) {
     try {
         storage?.setItem(STORE_REGIONS, JSON.stringify(all));
+        if (typeof window !== 'undefined' && storage === defaultStorage()) {
+            window.dispatchEvent(new StorageEvent('storage', { key: STORE_REGIONS }));
+        }
         return true;
     } catch {
         return false; // 保存できなくても、このページを開いている間は使える

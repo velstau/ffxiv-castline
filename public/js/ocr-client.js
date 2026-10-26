@@ -3,15 +3,29 @@
 // （画面全体を毎回複製しない）、返ってきた座標を画面の座標に戻す。
 import { tilesOf, contentRegionFrom } from './screen-reader.js';
 
+const sharedClients = new Map();
+
 export class OcrClient {
     /**
      * @param {{rec:string, dict:string, det:string}} urls モデルの URL（Worker からは相対 URL の基準が変わるので絶対 URL）
      * @param {(name:string, received:number, total:number) => void} [onProgress]
      */
     static async load(urls, onProgress = () => {}) {
-        const client = new OcrClient(onProgress);
-        await client.call('load', null, urls);
-        return client;
+        const key = JSON.stringify([urls.rec, urls.dict, urls.det]);
+        if (!sharedClients.has(key)) {
+            const listeners = new Set();
+            const client = new OcrClient((...args) => listeners.forEach((fn) => fn(...args)));
+            const ready = client.call('load', null, urls).then(() => client).catch((e) => {
+                sharedClients.delete(key);
+                client.worker.terminate();
+                throw e;
+            });
+            sharedClients.set(key, { listeners, ready });
+        }
+        const shared = sharedClients.get(key);
+        shared.listeners.add(onProgress);
+        try { return await shared.ready; }
+        finally { shared.listeners.delete(onProgress); }
     }
 
     constructor(onProgress) {

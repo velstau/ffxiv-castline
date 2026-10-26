@@ -7,7 +7,7 @@ import { toTimelineXml } from './timeline-xml.js';
 const STORE_KEYS = 'castline.fflogs-keys'; // { id, secret }（このブラウザにだけ保存する）
 const STORE_LOCAL = 'castline.player.local-timelines'; // 再生画面の手元のファイル
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById('generator-' + id);
 const state = {
     contents: [], // data/contents.json
     code: null,
@@ -32,6 +32,7 @@ function load(key, fallback) {
 function save(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
+        window.dispatchEvent(new StorageEvent('storage', { key }));
         return true;
     } catch {
         return false;
@@ -39,7 +40,7 @@ function save(key, value) {
 }
 function setStatus(id, text, kind = '') {
     $(id).textContent = text;
-    $(id).className = `status ${kind}`.trim();
+    $(id).className = `read-status ${kind}`.trim();
 }
 const fmtSeconds = (ms) => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
 
@@ -301,4 +302,4 @@ async function init() {
     $('content-list').replaceChildren(...state.contents.map((c) => Object.assign(document.createElement('option'), { value: c.name })));
 }
 
-init();
+export const ready = init();

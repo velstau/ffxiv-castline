@@ -7,7 +7,7 @@ import { REGION_KINDS as REGIONS, regionsFor as storedRegions, setRegion as stor
 const STORE_CANDIDATES = 'castline.lab.candidates';
 const STORE_CAST_CANDIDATES = 'castline.lab.cast-candidates';
 
-const $ = (id) => document.getElementById(id);
+const $ = (id) => document.getElementById('lab-' + id);
 const state = {
     recognizer: null,
     detector: null,
@@ -74,13 +74,13 @@ async function loadModel() {
         ]);
         progress.hidden = true;
         status.textContent = '準備できました（PP-OCRv5 mobile の認識・検出）';
-        status.className = 'status ok';
+        status.className = 'read-status ok';
         $('read-all').disabled = state.current < 0;
         updateWatchButtons();
         readAll();
     } catch (e) {
         status.textContent = `モデルを読み込めませんでした: ${e.message}`;
-        status.className = 'status ng';
+        status.className = 'read-status ng';
     }
 }
 
@@ -308,18 +308,18 @@ async function startCapture() {
     const status = $('capture-status');
     if (!navigator.mediaDevices?.getDisplayMedia) {
         status.textContent = 'このページでは画面を取り込めません。https か localhost で開いてください。';
-        status.className = 'status ng';
+        status.className = 'read-status ng';
         return;
     }
     try {
         state.source = await FrameSource.start(stopCapture);
     } catch (e) {
         status.textContent = `取り込みを始められませんでした（${e.name}）`;
-        status.className = 'status ng';
+        status.className = 'read-status ng';
         return;
     }
     status.textContent = `取り込み中です（${state.source.method}）。「今の画面を追加」で静止画として加えます。`;
-    status.className = 'status ok';
+    status.className = 'read-status ok';
     $('capture-start').disabled = true;
     $('capture-grab').disabled = false;
     $('capture-stop').disabled = false;
@@ -361,7 +361,7 @@ function updateWatchButtons() {
     $('watch-stop').disabled = !watch.running;
     if (!watch.running) {
         $('watch-status').textContent = ready ? '始められます。' : 'ゲーム画面の取り込みを始めると使えます。';
-        $('watch-status').className = 'status';
+        $('watch-status').className = 'read-status';
     }
 }
 
@@ -390,7 +390,7 @@ async function startWatch() {
     watch.lastContentAt = 0;
     updateWatchButtons();
     $('watch-status').textContent = '読み取り中…';
-    $('watch-status').className = 'status ok';
+    $('watch-status').className = 'read-status ok';
     document.addEventListener('visibilitychange', logVisibility);
 
     let nextAt = 0;
@@ -533,16 +533,24 @@ const pip = { win: null, lines: [] };
 async function openPip() {
     if (!('documentPictureInPicture' in window)) {
         $('watch-status').textContent = 'このブラウザは小窓（Document Picture-in-Picture）に対応していません。Chrome か Edge の新しい版で開いてください。';
-        $('watch-status').className = 'status ng';
+        $('watch-status').className = 'read-status ng';
         return;
     }
-    pip.win?.close();
-    const win = await documentPictureInPicture.requestWindow({ width: 440, height: 300 });
+    if (pip.win && !pip.win.closed) {
+        pip.win.focus();
+        return;
+    }
+    const win = await documentPictureInPicture.requestWindow({ width: 440, height: 300, preferInitialWindowPlacement: false });
     pip.win = win;
     const link = win.document.createElement('link');
     link.rel = 'stylesheet';
     link.href = new URL('css/app.css', location.href).href;
     win.document.head.append(link);
+    const tabler = win.document.createElement('link');
+    tabler.rel = 'stylesheet';
+    tabler.href = new URL('vendor/tabler/tabler.min.css', location.href).href;
+    win.document.head.prepend(tabler);
+    win.document.documentElement.dataset.bsTheme = 'dark';
     win.document.body.innerHTML = `
         <div class="pip">
             <div class="pip-clock" id="pip-clock">--:--:--.-</div>
@@ -660,4 +668,4 @@ async function init() {
     loadModel();
 }
 
-init();
+export const ready = init();

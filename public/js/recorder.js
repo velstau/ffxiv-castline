@@ -20,7 +20,8 @@ import {
 
 const STEP_S = 0.1; // コマどうしの間隔（動画の秒）の目安。出始め・消えたの時刻はこの間隔で決まる
 
-const $ = (id) => document.getElementById(id);
+const root = document.getElementById('view-recorder');
+const $ = (id) => document.getElementById('recorder-' + id);
 const state = {
     ocr: null,
     source: null, // VideoFrameSource | ScreenFrameSource
@@ -58,6 +59,7 @@ function load(key, fallback) {
 function save(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
+        window.dispatchEvent(new StorageEvent('storage', { key }));
         return true;
     } catch {
         return false;
@@ -65,10 +67,10 @@ function save(key, value) {
 }
 function setStatus(id, text, kind = '') {
     $(id).textContent = text;
-    $(id).className = `status ${kind}`.trim();
+    $(id).className = `read-status ${kind}`.trim();
 }
-const mode = () => document.querySelector('input[name="mode"]:checked').value;
-const inputKind = () => document.querySelector('input[name="input"]:checked').value;
+const mode = () => root.querySelector('input[name="recorder-mode"]:checked').value;
+const inputKind = () => root.querySelector('input[name="recorder-input"]:checked').value;
 const sharing = () => state.source instanceof ScreenFrameSource;
 const fmt = (s) => `${Math.floor(s / 60)}:${(s % 60).toFixed(1).padStart(4, '0')}`;
 const cell = (text, className = '') => Object.assign(document.createElement('td'), { textContent: text, className });
@@ -82,7 +84,7 @@ function updateButtons() {
     $('screen-start').disabled = state.running || sharing();
     $('screen-stop').disabled = !sharing();
     $('pip-open').disabled = !sharing();
-    document.querySelectorAll('input[name="input"]').forEach((r) => {
+    root.querySelectorAll('input[name="recorder-input"]').forEach((r) => {
         r.disabled = state.running;
     });
 }
@@ -117,7 +119,7 @@ function switchInput() {
     const screen = inputKind() === 'screen';
     $('file-field').hidden = screen;
     $('screen-field').hidden = !screen;
-    document.querySelectorAll('.file-only').forEach((el) => {
+    root.querySelectorAll('.file-only').forEach((el) => {
         el.hidden = screen;
     });
     $('region-help-file').hidden = screen;
@@ -944,13 +946,13 @@ async function init() {
         }
     });
     $('frame-save').addEventListener('click', saveFrame);
-    for (const radio of document.querySelectorAll('input[name="input"]')) {
+    for (const radio of root.querySelectorAll('input[name="recorder-input"]')) {
         radio.addEventListener('change', switchInput);
     }
     $('screen-start').addEventListener('click', openScreen);
     $('screen-stop').addEventListener('click', closeScreen);
     $('region-reload').addEventListener('click', loadRegion);
-    for (const radio of document.querySelectorAll('input[name="mode"]')) {
+    for (const radio of root.querySelectorAll('input[name="recorder-mode"]')) {
         radio.addEventListener('change', () => {
             $('timeline-field').hidden = mode() !== 'fix';
             $('content-field').hidden = mode() !== 'new';
@@ -989,4 +991,6 @@ async function init() {
     }
 }
 
-init();
+export const ready = init();
+
+export function refresh() { loadRegion(); loadTimelines().then(updateButtons); }

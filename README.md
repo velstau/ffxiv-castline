@@ -17,10 +17,10 @@ FF14 のゲーム画面に表示された文字（コンテンツ名・カウン
 
 | ページ | 内容 |
 |---|---|
-| `setup.html` | 初期設定。読む範囲を、手順に沿ってゲーム画面から自動で見つけて保存する（下の「読む範囲」） |
-| `player.html` | 再生画面。ゲーム画面を読み取り、タイムラインを流して読み上げる（下の「再生画面」） |
-| `generator.html` | FFLogs の公開レポートからタイムラインの XML を作る（下の「FFLogs からの生成」） |
-| `lab.html` | OCR 試験ページ。画像（または取り込んだ画面）の上で読む範囲を選び、読み取りと解釈の結果を表に出す |
+| `#setup` | 初期設定。読む範囲を、手順に沿ってゲーム画面から自動で見つけて保存する（下の「読む範囲」） |
+| `#player` | 再生画面。ゲーム画面を読み取り、タイムラインを流して読み上げる（下の「再生画面」） |
+| `#generator` | FFLogs の公開レポートからタイムラインの XML を作る（下の「FFLogs からの生成」） |
+| `#lab` | OCR 試験ページ。画像（または取り込んだ画面）の上で読む範囲を選び、読み取りと解釈の結果を表に出す |
 
 ## セットアップ
 
@@ -451,26 +451,36 @@ tools/build-timelines.sh   # ヘビー級1〜4 零式を作り直す（sources/ 
 
 ## 画面のデザインとビルド
 
-デジタル庁デザインシステム（DADS）準拠で、vel.works の TOP（`vel.works/_build/README.md`）と同じ決まりに従う:
-DADS 公式 Tailwind テーマのトークンだけを使う・文字は 16px 以上・役割の色（`vw-*`）・FF14 関連の差し色は lime・
-アイコンは Material Symbols（Rounded 400）のインライン SVG・ライト（既定）／ダーク。
+Tabler 1.7.1 を UI の基盤とする。ダークモードが既定。Bootstrap の CSS/JS は Tabler に含まれるため別に読み込まない。
+Laravel・React・Vue は追加していない。取り込み・OCR・同期・記録・FFLogs 生成は従来のブラウザ内処理を使う。
 
-- **CSS は `_build/src/app.css` を直し、ビルドして `public/css/app.css` を作る**（`public/css/app.css` を手で直さない）。
-  JS が状態をクラス名で切り替える要素（`.status.ok`、`.steps > li.done` など）は意味のクラスのまま app.css で見た目を決め、
-  Tailwind のユーティリティは HTML に固定で書く外枠にだけ使う（JS の `className =` でユーティリティが消えないように）
-- **アイコン**: HTML には `<svg data-ms="名前" class="icon"></svg>` とだけ書き、ビルドで中身を埋め込む。JS で組み立てる画面のアイコンは
-  `_build/scripts/icons.mjs` の `JS_ICONS` に名前を足すと `public/js/icons.js`（生成ファイル）に入り、`icon(名前)` で使える
-- **テーマ**: 選んだテーマは localStorage `vw-theme`（vel.works の TOP と同じ鍵。同じサイトなので TOP で選んだものが引き継がれる）。
-  `<head>` の 1 行スクリプトで描画前に反映し、`public/js/theme.js`（vel.works/top/assets/theme.js の写し）がボタンで切り替える。
-  **小窓はテーマに関係なくダーク**（ゲームに重ねるため。`pip.js` が小窓の html に `data-theme="dark"` を付ける）
-- **フォント**: Noto Sans JP / Mono は、このリポジトリに入れず vel.works が配信している `/assets/fonts/` を使う（日本語の分割ファイルで 6MB あるため）。
-  `@fontsource` の版を vel.works/_build と同じに固定してファイル名を揃えており、ビルドの最後（`scripts/fonts.mjs`）で有無を確かめる。
-  vel.works 以外で配信したときはシステムのフォントで表示される
+- 入口は `public/index.html`。`#home`（共有）・`#setup`（範囲）・`#player`（タイムライン・音声・自動再生）・`#manage`・`#recorder`・`#generator`・`#lab` を同じ文書内で切り替える。
+  旧 `setup.html` 等は対応するハッシュへ転送する。機能内のリンクには通常のページ遷移を使わない。
+- 再生画面はタイムライン表示と開始/停止/小窓を先頭に、タイムライン選択・音声設定を隣に常に表示する。操作ガイド・ログは補助として後方に置く。上部の「使うタイムライン」や工程番号からは、共有前でも設定画面に移動できる。
+- 再生までの導線は公式Stepsによる3工程（共有→初期設定→設定・自動再生）。範囲設定済みなら2工程目を省略する。旧 `#timeline`・`#voice` は統合した `#player` を開く。共有・範囲設定が済むまでは次工程へのボタンで案内する。
+- 各画面の ID は `setup-` 等の接頭辞を付けて一意にする。既存 JS の `$()` が接頭辞を付けて参照する。
+  画面モジュールは初回表示時に読み込み、フォームの入力・結果を保持する。初期設定の自動検出は画面を離れると止める。
+- `public/js/capture-session.js` は共有元を1つ保持し、各画面には利用権を渡す。画面側の `stop()` はその処理だけ停止する。
+  上部の「共有を停止」・ブラウザ側の停止・ページ終了で共有そのものを終了する。リロードや別サイトへの移動を越えては保持しない。
+- 保存済みの範囲は既存の `castline.regions` を継続利用する。ホームとメニューに設定済みを表示し、設定済みなら再生へ案内する。
+  共有後は実際の解像度の設定を確認する。異なる解像度では再設定を案内し、既存の設定を自動で消さない。
+- `public/js/regions.js` とタイムライン保存処理は、同じ文書内の他画面にも変更を通知する。
+- 初期設定・再生・記録の `OcrClient` は同じモデルの Worker を共有し、画面を開くたびにモデルを重複ロードしない。
+- `_build/src/app.css` はキャンバス・タイムライン等のツール固有の配置だけを定義する。
+  カード・フォーム・ボタン等は Tabler 公式クラスを使う。`public/css/app.css` は生成物なので直接直さない。
+- 操作用 SVG は Tabler Icons 3.35.0。`_build/scripts/icons.mjs` が HTML の `data-ms` と既存の `icon(name)` API を公式 SVG に置換する。
+  ギミック用の既存 SVG は維持する。MIT ライセンスは `public/licenses/` に同梱する。
+- テーマの保存先は `castline.theme`（サイト共通の `vw-theme` とは分離）。小窓は常にダークで、Tabler CSS とツール CSS の両方を読む。
+- 依存の版は `_build/package.json` と lockfile に固定し、配信アセットは `public/vendor/tabler/` に同梱する。
 
 ```bash
 cd /var/docker/docker-shared/dev-server-php8/vel.works/ff14tools/castline
-# 初回だけ npm install（同じ形で）。vel.works/top を読み取り専用で渡すのは、フォントの有無を確かめるため
-docker run --rm -u 1000:1000 -e HOME=/tmp -v $PWD:/w -v $PWD/../../top:/top:ro -w /w/_build node:24-alpine npm run build
+# 依存の復元（初回・更新時）
+docker run --rm -u 1000:1000 -e HOME=/tmp -v "$PWD":/w -w /w/_build node:24-alpine npm ci --ignore-scripts
+# HTML・CSS・アイコン変更後
+docker run --rm -u 1000:1000 -e HOME=/tmp -v "$PWD":/w -w /w/_build node:24-alpine npm run build
+# 既存ロジックと共有セッションのテスト
+docker run --rm -u 1000:1000 -v "$PWD":/w -w /w node:24-alpine sh -c 'node --test tests/*.test.mjs'
 ```
 
 ## 決まり（vel.works の FF14 関連）
@@ -478,3 +488,17 @@ docker run --rm -u 1000:1000 -e HOME=/tmp -v $PWD:/w -v $PWD/../../top:/top:ro -
 - 画面には、非公式であること・外部ツールの利用を勧めないこと（公式記事「FFXIV外部ツールの是非について」へのリンク）・© SQUARE ENIX を入れる
 - UI の文字は 1rem 以上
 - 画面 OCR が規約上認められている、とは書かない（公式にそう述べた文書は無い）
+
+統合した再生画面は共有済みならモデルの準備後に自動で読み取りを開始する。コンテンツに対応するタイムラインを選び、保存済みの音声設定を使い、従来どおり戦闘開始を検知して再生する。手動停止した読み取りを同じ画面で勝手に再開しない。
+
+### 2026-10-25 開始・終了の判定修正
+
+敵対リストでの開始は、描画時間ではなく実際の陽性観測が1秒以上続いたことを確認する。
+終了時に敵対リストが残っている場合は、一度消えるまで同じ観測で再開始しない。
+再生画面でも、最後のフェーズで直近のHPが10%以下・敵対リスト消失3秒・コンテンツ情報の表示が残ることを確認できれば討伐とする。
+HPも詠唱も確認できないまま敵対リストが消えた場合の誤開始解除も行う。
+実戦で合わない場合は診断ログの開始/終了理由と、敵対リストの出入りを確認する。
+
+討伐後の終了確認として、敵対リスト消失中は画面中央のクリア表示（DUTY COMPLETE等）も確認する。HP未読でも、定型文を別フレームで再確認できれば終了する。単発の敵対リスト陽性では終了待ちをリセットしない。診断ログに消失時のHP・観測時刻・判定保留理由を記録する。
+
+コンテンツ名は戦闘中も継続確認する。未確認/確認が途切れた間は新たな自動開始を抑止する。確認不能が6秒続き、HP/詠唱の根拠もない場合は旧コンテンツによる再生・音声を解除し、再確認待ちに戻る。自動選択は解除し、手動選択したXMLは保持する。
