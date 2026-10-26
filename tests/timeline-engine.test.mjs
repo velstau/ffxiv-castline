@@ -294,6 +294,28 @@ test('エリア転換: 全滅より長い暗転では終わらない（極永遠
     assert.equal(e.status(T(35)).state, 'combat');
 });
 
+test('開始の予想時刻の前後でコンテンツ名を一瞬読めなくても、読めた時点で予想時刻から始める', () => {
+    // 2026-10-26 の録画では、戦闘中にコンテンツ名が 1〜5 秒読めないことがある
+    let { e } = engine();
+    realCountdown(e);
+    e.startAllowed = false;
+    e.started(T(26.2)); // 読めない間の「戦闘開始！」は使わない
+    assert.equal(e.status(T(27)).state, 'countdown');
+    e.startAllowed = true;
+    assert.equal(e.status(T(28)).state, 'combat');
+    assert.equal(sec(e.startAt), 26.1);
+
+    ({ e } = engine({ hasEnmity: true }));
+    realCountdown(e);
+    e.startAllowed = false;
+    enmityFrom(e, 26.5, 27.5, true);
+    assert.equal(e.status(T(27.5)).state, 'countdown');
+    e.startAllowed = true;
+    e.enmity(T(28), true);
+    assert.equal(e.status(T(28)).state, 'combat');
+    assert.equal(sec(e.startAt), 26.1);
+});
+
 test('始めてよくない間（コンテンツ名を読めていない）は、どの経路でも始めない', () => {
     // カウントダウンの後にコンテンツ名が読めなくなった。表示のための status() でも予想時刻で始めない
     let { e } = engine();
