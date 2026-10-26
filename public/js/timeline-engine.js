@@ -46,9 +46,12 @@ export const ENMITY_SEEN_OFF_MS = 2000;
 // 戦闘の終わり（2026-10-21 のユーザーの確認）: 全滅すると画面が暗転し、HUD も消える（「全滅」の表示は出ない）。
 // 一方、フェーズの移り変わりでも敵対リスト・HP・詠唱バーが消えるコンテンツがある（絶もうひとつの未来）ので、敵が消えただけでは終わらせない
 // 暗転は明けた時点で長さを見て決める（2026-10-26 の録画: 全滅の真っ黒は 7 回とも 2.2〜2.4 秒。極永遠の闇は戦闘の途中の
-// エリア転換で 5 秒暗転する）。この範囲なら全滅、長ければエリア転換として戦闘を続ける。短いものは演出の一瞬の暗転
-export const BLACKOUT_WIPE_MIN_MS = 1500;
-export const BLACKOUT_WIPE_MAX_MS = 4000;
+// エリア転換で 5 秒暗転する）。この範囲なら全滅、長ければエリア転換として戦闘を続ける。短いものは演出の一瞬の暗転。
+// 長さは「黒かったコマの数 × 読み取りの間隔」なので、間隔（0.5〜1 秒）の分ずれる。どちらの間隔でも、一瞬の暗転（1 秒）・
+// 全滅（2.2〜2.4 秒）・エリア転換（5 秒）が分かれるように決めた
+export const BLACKOUT_WIPE_MIN_MS = 1700;
+export const BLACKOUT_WIPE_MAX_MS = 3500;
+const BLACKOUT_GAP_MAX_MS = 1500; // 暗転が明けたコマまでの間隔として使う上限（読み取りが止まっていた分は数えない）
 export const BOSS_NAME_MIN = 4; // ボスを決める技名の最短の文字数（短い技名は、雑魚の技名の一部に当たりやすい）
 export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_HP 以下になった後、敵対リストがこれ以上消えたら討伐とみなす
 // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く。2026-10-26 の録画で最長 57〜76 秒）
@@ -145,7 +148,7 @@ export class TimelineEngine {
         this.lastHpAt = null;
         this.hp = null;
         this.blackSince = null;
-        this.blackLastAt = null; // 最後に黒かったコマの時刻（暗転の長さは、明けたコマではなくここまでで測る）
+        this.blackLastAt = null; // 最後に黒かったコマの時刻
         this.haltedStart = null;
     }
 
@@ -252,8 +255,9 @@ export class TimelineEngine {
             this.blackSince ??= at;
             this.blackLastAt = at;
         } else if (this.blackSince !== null) {
-            // 読み取りの間隔の分だけ短めに測る（一瞬の暗転を全滅にしない。全滅の 2.2 秒は 0.5 秒おきでも 1.7 秒以上になる）
-            const length = this.blackLastAt - this.blackSince;
+            // 黒かった最初と最後のコマの間に、読み取りの間隔 1 つ分を足す（1 秒おきの読み取りで、2.2 秒の全滅が黒 2 コマ＝1 秒と
+            // 短く出て全滅を逃した。Codex の差分レビュー）
+            const length = this.blackLastAt - this.blackSince + Math.min(at - this.blackLastAt, BLACKOUT_GAP_MAX_MS);
             const since = this.blackSince;
             this.blackSince = null;
             this.advance(at);

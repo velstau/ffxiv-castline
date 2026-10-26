@@ -2,7 +2,7 @@
 // 時刻は 2026-10-20 の連続読み取りの実測ログ（煉獄編4 零式、カウントダウン 16 秒）をもとにしている。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS, ENEMY_GONE_END_MS, BLACKOUT_WIPE_MAX_MS } from '../public/js/timeline-engine.js';
+import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS, ENEMY_GONE_END_MS } from '../public/js/timeline-engine.js';
 
 // 19:08:00.0 を 0 とした ms
 const T = (s) => Date.UTC(2026, 9, 20, 10, 8, 0) + Math.round(s * 1000);
@@ -267,13 +267,31 @@ test('全滅: 全滅の長さの暗転が明けたら終わる。一瞬の暗転
     assert.equal(e.status(T(42.5)).state, 'ended');
 });
 
-test('エリア転換: 全滅より長い暗転では終わらない（極永遠の闇の 5 秒）', () => {
+test('全滅: 読み取りが 1 秒おきでも、2.2 秒の暗転（黒は 2 コマ）を全滅とみなす', () => {
     const { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 10, true);
+    e.blackout(T(10), false);
+    e.blackout(T(11), true);
+    e.blackout(T(12), true);
+    e.blackout(T(13), false);
+    assert.equal(e.status(T(13)).state, 'ended');
+});
+
+test('エリア転換: 全滅より長い暗転では終わらない（極永遠の闇の 5 秒）', () => {
+    let { e } = engine({ hasEnmity: true });
     enmityFrom(e, 0, 30, true);
-    blackFrom(e, 30.5, 30.5 + BLACKOUT_WIPE_MAX_MS / 1000 + 1, true);
+    blackFrom(e, 30.5, 35, true);
+    assert.equal(e.status(T(35)).state, 'combat');
+    e.blackout(T(35.5), false);
     assert.equal(e.status(T(35.5)).state, 'combat');
-    e.blackout(T(36), false);
-    assert.equal(e.status(T(36)).state, 'combat');
+    // 1 秒おきの読み取りで、5 秒の暗転の黒が 4 コマしか取れなくても続ける
+    ({ e } = engine({ hasEnmity: true }));
+    enmityFrom(e, 0, 30, true);
+    for (const s of [31, 32, 33, 34]) {
+        e.blackout(T(s), true);
+    }
+    e.blackout(T(35), false);
+    assert.equal(e.status(T(35)).state, 'combat');
 });
 
 test('始めてよくない間（コンテンツ名を読めていない）は、どの経路でも始めない', () => {
