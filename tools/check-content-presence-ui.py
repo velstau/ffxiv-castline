@@ -9,7 +9,7 @@ with sync_playwright() as p:
   state.regions={content:{x:0,y:0,w:100,h:20},enmity:{x:0,y:20,w:100,h:20}};
   state.ocr={readFrame:async()=>({content:{text:name??'',decided:name},hp,enmity:enemy,casts:[]}),scanLines:async()=>[]};
   const c=document.createElement('canvas');c.width=1920;c.height=1080;const ctx=c.getContext('2d');ctx.fillStyle='#808080';ctx.fillRect(0,0,1920,1080);const bitmap=await createImageBitmap(c);
-  try{await tick({bitmap,at});return {detected:state.detectedContent,engine:state.engine?.state??null,blocked:state.contentBlocked,value:$('timeline-select').value};}finally{bitmap.close();}
+  try{await tick({bitmap,at});return {detected:state.detectedContent,engine:state.engine?.state??null,blocked:state.contentBlocked,muted:state.contentMuted,value:$('timeline-select').value};}finally{bitmap.close();}
  };
  '''
   route.fulfill(response=r,body=source)
@@ -25,7 +25,9 @@ with sync_playwright() as p:
  r=frame(9000,name,False);assert r['detected']==name
  frame(10000,name,False);frame(12000,name,True);r=frame(13000,name,True);assert r['engine']=='combat',r
  frame(14000,None,True,90);r=frame(21000,None,True,89);assert r['engine']=='combat',r
- r=frame(25000,None,True,None);assert r['engine'] is None and r['blocked'],r
+ r=frame(25000,None,True,None);assert r['engine']=='combat' and r['muted'] and not r['blocked'],r
+ r=frame(80000,None,True,None);assert r['engine']=='combat' and r['muted'],r
+ r=frame(195000,None,True,None);assert r['engine'] is None and r['blocked'] and not r['muted'],r
  assert not errors,errors
- print('Outside/PT text does not start combat; stale timeline clears; reentry restores; real HP preserves combat; missing evidence pauses playback.')
+ print('Outside/PT text does not start combat; stale timeline clears; reentry restores; real HP preserves combat; in combat, missing evidence mutes speech and clears after 180 s.')
  b.close()

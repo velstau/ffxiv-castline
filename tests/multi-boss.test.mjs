@@ -117,9 +117,9 @@ test('次の戦闘ではボスを決め直す', () => {
     e.cast(18000, '一の通常技');
     assert.equal(e.status(18000).phase.id, 'b1');
     e.blackout(60000, true);
-    e.blackout(63000, true);
+    e.blackout(62500, true);
+    e.blackout(63000, false);
     assert.equal(e.status(63000).state, 'ended');
-    e.blackout(64000, false);
     pull(e, 100000);
     assert.equal(e.status(102000).phase, null);
     e.cast(106500, '二の通常技');

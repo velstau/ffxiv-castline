@@ -68,8 +68,9 @@ test('報告ログ再現: 10.6秒消失後の0.5秒の陽性では、終了待�
     e.enmity(103400, false);
     assert.equal(e.enmityOffSince, 92300);
     assert.equal(e.status(110000).state, 'combat'); // 消失だけでムービーを誤って終了させない
-    e.enmity(182300, false);
-    assert.equal(e.status(182300).state, 'ended');
+    assert.equal(e.status(182300).state, 'combat'); // 2026-10-26 の録画で 76 秒の消失があったので 90 秒では終えない
+    e.enmity(212300, false);
+    assert.equal(e.status(212300).state, 'ended');
 });
 
 test('実際に敵対リストが1秒以上戻った場合は、消失の待ちを解除する', () => {

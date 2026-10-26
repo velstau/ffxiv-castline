@@ -22,7 +22,8 @@ test('空のタイムライン: カウントダウンで始まり、暗転で終
     assert.equal(e.status(16000).state, 'combat');
     assert.ok(Math.abs(e.startAt - 15000) <= 1000, `開始 ${e.startAt}`);
     e.blackout(60000, true);
-    e.blackout(62500, true);
+    e.blackout(62000, true);
+    e.blackout(62500, false); // 全滅の暗転は明けた時点で長さを見て決める
     assert.equal(e.status(62500).state, 'ended');
     enmityOff(e, 63000, 70000);
     for (let s = 5; s >= 1; s--) {

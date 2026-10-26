@@ -45,10 +45,14 @@ export const ENMITY_ON_MIN_MS = 1000;
 export const ENMITY_SEEN_OFF_MS = 2000;
 // 戦闘の終わり（2026-10-21 のユーザーの確認）: 全滅すると画面が暗転し、HUD も消える（「全滅」の表示は出ない）。
 // 一方、フェーズの移り変わりでも敵対リスト・HP・詠唱バーが消えるコンテンツがある（絶もうひとつの未来）ので、敵が消えただけでは終わらせない
-export const BLACKOUT_END_MS = 2000; // 戦闘中に画面全体の暗転がこれ以上続いたら、全滅とみなす
+// 暗転は明けた時点で長さを見て決める（2026-10-26 の録画: 全滅の真っ黒は 7 回とも 2.2〜2.4 秒。極永遠の闇は戦闘の途中の
+// エリア転換で 5 秒暗転する）。この範囲なら全滅、長ければエリア転換として戦闘を続ける。短いものは演出の一瞬の暗転
+export const BLACKOUT_WIPE_MIN_MS = 1500;
+export const BLACKOUT_WIPE_MAX_MS = 4000;
 export const BOSS_NAME_MIN = 4; // ボスを決める技名の最短の文字数（短い技名は、雑魚の技名の一部に当たりやすい）
 export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_HP 以下になった後、敵対リストがこれ以上消えたら討伐とみなす
-export const ENEMY_GONE_END_MS = 90000; // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く）
+// 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く。2026-10-26 の録画で最長 57〜76 秒）
+export const ENEMY_GONE_END_MS = 120000;
 const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなくても討伐とみなす HP
 
 /** タイムラインファイルの中身を確かめる。問題があれば日本語の説明の配列を返す（空なら問題なし） */
@@ -112,6 +116,8 @@ export class TimelineEngine {
         this.syncWindow = timeline.syncWindow ?? DEFAULT_SYNC_WINDOW;
         this.hasEnmity = options.hasEnmity ?? false;
         this.log = options.log ?? (() => {});
+        // 新しい戦闘を始めてよいか。再生画面は、コンテンツ名を読めている間だけ true にする（街で始めない。reset では戻さない）
+        this.startAllowed = true;
         // 敵対リストの範囲が一度でも空だったか。始めから文字がある（範囲が別の表示にかかっている、止めた動画の画面など）うちは、
         // 敵対リストでは始めない。敵対リストは「出てきた」ときが開始（2026-10-21、止めた動画の画面で勝手に始まった）
         this.enmitySeenOff = false;
@@ -139,6 +145,7 @@ export class TimelineEngine {
         this.lastHpAt = null;
         this.hp = null;
         this.blackSince = null;
+        this.blackLastAt = null; // 最後に黒かったコマの時刻（暗転の長さは、明けたコマではなくここまでで測る）
         this.haltedStart = null;
     }
 
@@ -189,7 +196,7 @@ export class TimelineEngine {
     /** 吹き出し「戦闘開始！」を読んだ */
     started(at) {
         // 手で止めた後は、次のカウントダウン（reset で止めた状態が解ける）が出るまで「戦闘開始！」でも始めない
-        if (this.state === 'combat' || this.holdUntilEnmityOff) {
+        if (this.state === 'combat' || this.holdUntilEnmityOff || !this.startAllowed) {
             return;
         }
         // 「戦闘開始！」はカウントダウンの終わりにしか出ないので、予想より大きく早いものは読み違い（行の一部だけを読んだなど）
@@ -239,12 +246,24 @@ export class TimelineEngine {
         this.advance(at);
     }
 
-    /** 画面全体が暗転している（black = true）か。全滅の判定は advance */
+    /** 画面全体が暗転している（black = true）か。全滅かどうかは、暗転が明けたときに長さで決める */
     blackout(at, black) {
         if (black) {
             this.blackSince ??= at;
-        } else {
+            this.blackLastAt = at;
+        } else if (this.blackSince !== null) {
+            // 読み取りの間隔の分だけ短めに測る（一瞬の暗転を全滅にしない。全滅の 2.2 秒は 0.5 秒おきでも 1.7 秒以上になる）
+            const length = this.blackLastAt - this.blackSince;
+            const since = this.blackSince;
             this.blackSince = null;
+            this.advance(at);
+            if (this.state === 'combat' && length >= BLACKOUT_WIPE_MIN_MS) {
+                if (length <= BLACKOUT_WIPE_MAX_MS) {
+                    this.end(since, `画面が ${(length / 1000).toFixed(1)} 秒暗転した。全滅`);
+                } else {
+                    this.log(at, `画面が ${(length / 1000).toFixed(1)} 秒暗転した。全滅の暗転（${BLACKOUT_WIPE_MAX_MS / 1000} 秒まで）より長いので、エリア転換として続ける`);
+                }
+            }
         }
         this.advance(at);
     }
@@ -512,9 +531,11 @@ export class TimelineEngine {
         // UI rendering must not turn one OCR hit into sustained combat evidence.
         const steady = usable && this.enmityShown
             && this.enmityObservedAt - this.enmityOnSince >= ENMITY_ON_MIN_MS;
-        if (steady && (this.state === 'idle' || this.state === 'ended') && !this.holdUntilEnmityOff) {
+        // 始めてよくない間（再生画面でコンテンツ名を読めていない）は、どの経路でも始めない。表示のための status() からも同じ
+        const allowed = this.startAllowed;
+        if (allowed && steady && (this.state === 'idle' || this.state === 'ended') && !this.holdUntilEnmityOff) {
             this.beginCombat(this.enmityOnSince, '敵対リスト（カウントダウンなし）');
-        } else if (steady && this.state === 'countdown') {
+        } else if (allowed && steady && this.state === 'countdown') {
             const predicted = this.predictedStart();
             // カウントダウン前に殴ったとみなすのは、カウントダウンが出た後に敵対リストが出たときだけ（前から出ていたものは使わない）
             const appeared = this.enmityOnSince >= this.countdownSince;
@@ -525,21 +546,18 @@ export class TimelineEngine {
         if (this.state === 'countdown') {
             const predicted = this.predictedStart();
             if (predicted !== null && at >= predicted) {
-                if (!usable) {
+                if (allowed && !usable) {
                     this.beginCombat(predicted, 'カウントダウンの予想時刻');
-                } else if (steady) {
+                } else if (allowed && steady) {
                     this.beginCombat(predicted, 'カウントダウンの予想時刻と敵対リスト');
                 } else if (at >= predicted + COUNTDOWN_GIVE_UP_MS) {
-                    this.log(at, 'カウントダウンの後に敵対リストが出ないので、取り消しとみなす');
+                    this.log(at, allowed ? 'カウントダウンの後に敵対リストが出ないので、取り消しとみなす'
+                        : 'コンテンツ名を読めないまま開始の予想時刻を過ぎたので、カウントダウンを取り消しとみなす');
                     this.reset();
                 }
             }
         }
         if (this.state !== 'combat') {
-            return;
-        }
-        if (this.blackSince !== null && at - this.blackSince >= BLACKOUT_END_MS) {
-            this.end(at, `画面が ${BLACKOUT_END_MS / 1000} 秒以上暗転した。全滅`);
             return;
         }
         if (this.hasEnmity && !this.enmityShown && this.enmityOffSince !== null) {

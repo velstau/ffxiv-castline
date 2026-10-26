@@ -2,7 +2,7 @@
 // 時刻は 2026-10-20 の連続読み取りの実測ログ（煉獄編4 零式、カウントダウン 16 秒）をもとにしている。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS, ENEMY_GONE_END_MS, BLACKOUT_END_MS } from '../public/js/timeline-engine.js';
+import { TimelineEngine, validateTimeline, castNames, ENMITY_OFF_END_MS, ENEMY_GONE_END_MS, BLACKOUT_WIPE_MAX_MS } from '../public/js/timeline-engine.js';
 
 // 19:08:00.0 を 0 とした ms
 const T = (s) => Date.UTC(2026, 9, 20, 10, 8, 0) + Math.round(s * 1000);
@@ -254,14 +254,45 @@ function blackFrom(e, from, to, black) {
     }
 }
 
-test('全滅: 画面全体の暗転が続いたら終わる。一瞬の暗転では終わらない', () => {
+test('全滅: 全滅の長さの暗転が明けたら終わる。一瞬の暗転では終わらない', () => {
     const { e } = engine({ hasEnmity: true });
     enmityFrom(e, 0, 30, true);
     blackFrom(e, 30.5, 31.5, true);
     blackFrom(e, 32, 33, false);
     assert.equal(e.status(T(33)).state, 'combat');
-    blackFrom(e, 40, 40 + BLACKOUT_END_MS / 1000, true);
-    assert.equal(e.status(T(40 + BLACKOUT_END_MS / 1000)).state, 'ended');
+    // 2026-10-26 の録画: 全滅の真っ黒は 2.2〜2.4 秒。暗転している間はまだ決めない
+    blackFrom(e, 40, 42, true);
+    assert.equal(e.status(T(42)).state, 'combat');
+    e.blackout(T(42.5), false);
+    assert.equal(e.status(T(42.5)).state, 'ended');
+});
+
+test('エリア転換: 全滅より長い暗転では終わらない（極永遠の闇の 5 秒）', () => {
+    const { e } = engine({ hasEnmity: true });
+    enmityFrom(e, 0, 30, true);
+    blackFrom(e, 30.5, 30.5 + BLACKOUT_WIPE_MAX_MS / 1000 + 1, true);
+    assert.equal(e.status(T(35.5)).state, 'combat');
+    e.blackout(T(36), false);
+    assert.equal(e.status(T(36)).state, 'combat');
+});
+
+test('始めてよくない間（コンテンツ名を読めていない）は、どの経路でも始めない', () => {
+    // カウントダウンの後にコンテンツ名が読めなくなった。表示のための status() でも予想時刻で始めない
+    let { e } = engine();
+    realCountdown(e);
+    e.startAllowed = false;
+    assert.equal(e.status(T(27)).state, 'countdown');
+    assert.equal(e.status(T(31.2)).state, 'idle'); // 予想を 5 秒過ぎたので取り消し
+    // 敵対リスト・「戦闘開始！」でも始めない。読めるようになれば始める
+    ({ e } = engine({ hasEnmity: true }));
+    enmityFrom(e, 0, 3, false);
+    e.startAllowed = false;
+    enmityFrom(e, 4, 6, true);
+    e.started(T(6));
+    assert.equal(e.status(T(6)).state, 'idle');
+    e.startAllowed = true;
+    e.enmity(T(6.5), true);
+    assert.equal(e.status(T(6.5)).state, 'combat');
 });
 
 test('討伐: 最後のフェーズで HP が少ないときだけ、敵対リストが消えたら終わる', () => {
@@ -312,6 +343,7 @@ test('敵対リスト: 戦闘の後に一瞬だけ出ても、次の戦闘とは
     enmityFrom(e, 12.5, 27, true); // 実測 12.3〜27.4 に表示
     enmityFrom(e, 27.5, 32, false);
     blackFrom(e, 28, 31, true); // 全滅の暗転
+    blackFrom(e, 31.5, 32, false);
     assert.equal(e.status(T(32)).state, 'ended');
     e.enmity(T(32.5), true); // 実測 32.5〜33.0 と 37.6〜38.1 に一瞬だけ表示
     enmityFrom(e, 33, 37.5, false);

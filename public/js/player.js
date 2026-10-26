@@ -1,4 +1,4 @@
-import { ContentPresence } from './content-presence.js';
+import { ContentPresence, MISSING_CLEAR_MS, MISSING_CLEAR_COMBAT_MS } from './content-presence.js';
 // 再生画面: ゲーム画面を読み、タイムライン（これから来る技と発動までの秒）を流して読み上げる。
 import './storage-migrate.js';
 import { FrameSource, captureSession } from './capture.js';
@@ -53,6 +53,7 @@ const state = {
     detectedContent: null,
     contentPresence: new ContentPresence(),
     contentBlocked: false,
+    contentMuted: false, // 戦闘中にコンテンツ名が読めず、読み上げだけ止めている
     contentReads: [], // 1 回では決まらなかったコンテンツ名の読み取り（combineCandidates で足し合わせる）
     lastContentAt: 0,
     contentMissSince: null,
@@ -387,7 +388,7 @@ async function start() {
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
-    Object.assign(state, { contentMissSince: null, contentMissWarned: false, regionsLogged: '', contentReads: [] });
+    Object.assign(state, { contentMissSince: null, contentMissWarned: false, contentMuted: false, regionsLogged: '', contentReads: [] });
     updateButtons();
     setStatus('run-status', '読み取り中です。', 'ok');
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
@@ -460,6 +461,10 @@ async function tick({ bitmap: frame, at }) {
         }
     }
     const engine = state.engine;
+    if (engine) {
+        // 開始はコンテンツ名を読めている間だけ（表示のための status() からも、カウントダウンの予想時刻で始めない）
+        engine.startAllowed = state.contentPresence.canStart(at);
+    }
     const inCombat = engine?.status(at).state === 'combat';
     const black = isBlackFrame(frame); // 全滅の暗転（読み取りの前に見る）
     const wantContent = at - state.lastContentAt >= (state.detectedContent ? CONTENT_EVERY_MS : CONTENT_RETRY_MS);
@@ -517,11 +522,12 @@ async function tick({ bitmap: frame, at }) {
     const recentCast = engine && [...engine.castSeenAt.values()].some((time) => at - time <= 5000);
     const combatEvidence = inCombat && (Number.isFinite(obs.hp) && obs.hp > 0
         || obs.casts.some((cast) => Boolean(cast.decided)) || recentHp || recentCast);
-    if (state.contentPresence.shouldClear(at, combatEvidence)) {
+    if (state.contentPresence.shouldClear(at, combatEvidence, inCombat)) {
         if (!state.contentBlocked) {
             log('コンテンツ名を確認できず、HP・詠唱も確認できないため自動再生を解除。コンテンツ情報の再確認まで待機します', at);
         }
         state.contentBlocked = true;
+        state.contentMuted = false;
         state.detectedContent = null;
         state.contentReads = [];
         state.engine = null;
@@ -535,8 +541,22 @@ async function tick({ bitmap: frame, at }) {
         syncTimelineSelection();
         renderTimelineStatus();
     }
+    // 戦闘中にコンテンツ名・HP・詠唱が読めない間（ムービー、または気づかないうちに出た）は、解除までは待つが読み上げは止める
+    const muted = inCombat && state.engine !== null && state.contentPresence.shouldMute(at, combatEvidence);
+    if (muted !== state.contentMuted) {
+        state.contentMuted = muted;
+        if (muted) {
+            voice.cancel();
+        }
+        log(muted
+            ? `コンテンツ名を ${MISSING_CLEAR_MS / 1000} 秒読めず、HP・詠唱も確認できないため読み上げを止めます（ムービーなら戦闘の時刻は保ったまま。${MISSING_CLEAR_COMBAT_MS / 1000} 秒続けば解除）`
+            : '読み上げを再開しました', at);
+    }
     // An enemy-list-shaped text block in Party Finder is not permission to pull.
     const allowObservation = state.contentPresence.canStart(at) || inCombat && !state.contentBlocked;
+    if (state.engine) {
+        state.engine.startAllowed = state.contentPresence.canStart(at);
+    }
     if (engine && engine === state.engine && allowObservation) {
         if (black !== state.lastBlack && engine.status(at).state === 'combat') {
             log(black ? '画面が暗転しました' : '画面の暗転が終わりました', at);
@@ -733,7 +753,7 @@ function renderPanel(doc, view) {
 function speech(now) {
     const engine = state.engine;
     // 読み取りを止めたら読まない（画面の時計だけで戦闘中のまま読み続けないように）
-    if (!settings.tts || !engine || !state.running) {
+    if (!settings.tts || !engine || !state.running || state.contentMuted) {
         return;
     }
     const s = engine.status(now).state;
