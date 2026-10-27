@@ -265,6 +265,7 @@
     <entry t="201.6" castname="ランスラ＋頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="203.2" text="フェザーレイン" castname="フェザーレイン" duration="0.7" tts="フェザー！"/>
     <next to="p5b" at="0.0" cast="アルテマ"/>
+    <next to="p5b" at="11.3" cast="エーテル波動"/>
   </phase>
   <phase id="p5b" name="P5: The Ultima Weapon（アルテマ以降）">
     <entry t="0.0" text="アルテマ開始" castname="アルテマ" duration="4.7" tts="次、フルバリア"/>

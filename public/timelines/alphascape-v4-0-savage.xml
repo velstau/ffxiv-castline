@@ -33,6 +33,7 @@
     <entry t="124.1" castname="ソードアクション" sync="false"/>
     <entry t="124.1" text="ディスチャージャー" castname="ディスチャージャー" sync="false" tts="ノックバック"/>
     <next to="a-2body" at="0.0" cast="ガードプログラム"/>
+    <next to="a-2body" at="9.2" cast="レゾナンス"/>
     <next to="a-p1" at="10.0" cast="シールドオプション"/>
   </phase>
   <phase id="a-2body" name="2体フェーズ">
@@ -98,6 +99,7 @@
     <entry t="36.2" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
     <entry t="43.1" castname="レーザーシャワー" duration="3.7"/>
     <next to="a-final" at="0.0" cast="援護プログラムF"/>
+    <next to="a-final" at="3.0" cast="オプチカルレーザーF"/>
   </phase>
   <phase id="a-blade-alt" name="ブレード（先）">
     <entry t="0.0" castname="ブレードオプション" duration="1.7"/>

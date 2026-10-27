@@ -100,6 +100,7 @@
     <entry t="36.9" castname="オーレオール|サイド・オーレオール" sync="false"/>
     <entry t="45.5" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
     <next to="p3-end" at="0.0" cast="レディアントヘイロー"/>
+    <next to="p3-end" at="10.2" cast="ライトウェーブ"/>
   </phase>
   <phase id="p3-staff-alt" name="杖P3（先）">
     <entry t="0.0" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>

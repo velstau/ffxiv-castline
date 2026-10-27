@@ -92,6 +92,7 @@
     <entry t="190.3" text="追尾せよ(玉)" castname="追尾せよ" duration="2.0"/>
     <entry t="205.5" castname="ローディング" sync="false"/>
     <next to="last" at="0.0" cast="ほのお"/>
+    <next to="last" at="26.3" cast="たつまき"/>
   </phase>
   <phase id="type-b-alt" name="TYPE B（先）">
     <entry t="0.0" castname="ホリゾンタルインプロージョン|ヴァーティカルインプロージョン" duration="4.7"/>

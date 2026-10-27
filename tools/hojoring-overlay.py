@@ -754,6 +754,7 @@ def swap_branches(skeleton, specs, no_backup=frozenset()):
         report.append(f'逆の順の道筋: {pred["attrs"]["id"]} → {path}')
         backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a))]
         backups += [(a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())] if mid else [(a, b, ()), (b2, a2, ())]
+        skeleton.setdefault('_backed', set()).update((src['attrs']['id'], dst['attrs']['id']) for src, dst, _ in backups)
         for src, dst, avoid in backups:
             rule = backup_rule(src, dst, set(avoid) | set(no_backup))
             if rule:
@@ -794,6 +795,8 @@ def split_branches(skeleton, specs):
         report.append(f'フェーズを分ける: {src} の {t0:.1f} 秒「{cast}」から後を {new_id}（{len(moved)} 件）')
         if group:
             groups.setdefault(group, []).append((new_id, cut['name'], src))
+        else:
+            skeleton.setdefault('_split_pairs', []).append((src, new_id))
     for group, members in groups.items():
         rule = lambda m: {'to': m[0], 'at': '0.0', 'cast': m[1]}
         after = phases[members[-1][0]]['next']  # 組の後に続く移り方（いちばん後の区間が受け継いでいる）
@@ -847,7 +850,7 @@ def main():
     ap.add_argument('--swap', action='append', default=[], metavar='A~B',
                     help='--split で作った A →合間→ B に、逆の順の道筋を足す（両方を通り順だけが入れ替わる区間）')
     ap.add_argument('--no-backup', action='append', default=[], metavar='技',
-                    help='--swap の控えの移りに使わない技。控えは骨組みの討伐 1 本から選ぶので、別の順の討伐で枝の前にも出る技を外す'
+                    help='控えの移り（--split・--swap で、移る技を読み逃したときの移り）に使わない技。控えは骨組みの討伐 1 本から選ぶので、別の順の討伐で枝の前にも出る技を外す'
                          '（極ヴァリガルマンダの氷先は、氷の始まりの 9 秒前にノーザンクロスが来る）')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
                     help='そのフェーズの頭からやり直すことがある（アルファ編4 の前半の開幕は、削りが足りないと繰り返す）。'
@@ -915,6 +918,14 @@ def main():
         report += split_branches(skeleton, args.split)
     if args.swap:
         report += swap_branches(skeleton, args.swap, set(args.no_backup))
+    # --split の移りにも控えの移りを付ける（2 体フェーズの頭のガードプログラムを読み逃すと、後の技で戻れず、
+    # 開幕の繰り返しの技で開幕へ巻き戻っていた。Codex の指摘）。分かれ目は swap_branches が、もう片方の枝の技を避けて付けた
+    phases = {p['attrs']['id']: p for p in skeleton['phases']}
+    for src, dst in skeleton.get('_split_pairs', []):
+        if (src, dst) not in skeleton.get('_backed', set()):
+            rule = backup_rule(phases[src], phases[dst], set(args.no_backup))
+            if rule:
+                report.append(f'控えの移り: {src} →「{rule["cast"]}」{dst} の {rule["at"]} 秒')
     for spec in args.loop:
         pid, cast = spec.split('@')
         p = next(p for p in skeleton['phases'] if p['attrs']['id'] == pid)
