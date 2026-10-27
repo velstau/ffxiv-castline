@@ -100,6 +100,8 @@
     <entry t="306.0" castname="攻撃" sync="false"/>
     <next to="p3-thunder" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-ice-alt" at="0.0" cast="コールドディザスター"/>
+    <next to="p3-thunder" at="25.2" cast="災厄の落雷"/>
+    <next to="p3-ice-alt" at="35.4" cast="ノーザンクロス"/>
   </phase>
   <phase id="p3-thunder" name="P3: 雷">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>
@@ -131,6 +133,7 @@
     <entry t="101.9" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="110.0" castname="攻撃" sync="false"/>
     <next to="p3-mid" at="0.0" cast="カラミティダイヴ"/>
+    <next to="p3-mid" at="10.1" cast="リビングディザスター"/>
   </phase>
   <phase id="p3-mid" name="P3: 合間">
     <entry t="0.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
@@ -148,6 +151,7 @@
     <entry t="50.5" castname="攻撃" sync="false"/>
     <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-ice" at="0.0" cast="コールドディザスター"/>
+    <next to="p3-ice" at="15.4" cast="アイシクルスパイク"/>
   </phase>
   <phase id="p3-ice" name="P3: 氷">
     <entry t="0.0" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
@@ -222,6 +226,7 @@
     <entry t="88.5" castname="攻撃" sync="false"/>
     <entry t="90.6" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <next to="p3-mid-alt" at="0.0" cast="カラミティダイヴ"/>
+    <next to="p3-mid-alt" at="10.1" cast="リビングディザスター"/>
   </phase>
   <phase id="p3-mid-alt" name="P3: 合間（逆の順）">
     <entry t="0.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
@@ -239,6 +244,7 @@
     <entry t="50.5" castname="攻撃" sync="false"/>
     <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-thunder-2nd" at="0.0" cast="フェザーヘイル"/>
+    <next to="p3-thunder-2nd" at="25.2" cast="災厄の落雷"/>
   </phase>
   <phase id="p3-thunder-2nd" name="P3: 雷（後）">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>

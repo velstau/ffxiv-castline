@@ -699,6 +699,22 @@ def own_cast(rule, phase, phases):
     return {**rule, 'cast': e['name'], 'at': f'{e["_t"]:.1f}'}
 
 
+def synced_names(phase):
+    return {n for e in phase['entries'] if e.get('sync') != 'false' for n in e['name'].split('|')}
+
+
+def backup_rule(src, dst, avoid=frozenset()):
+    """控えの移り: src から dst へ移る技を読み逃したとき、dst にだけある最初の技（src と avoid に無い技）で dst のその時刻へ移る。
+    分かれ目では avoid にもう片方の枝の技を入れる（アルファ編1 の開幕のダミングイーディクトを読み逃すと、A の中のインプロージョンで B へ移ってしまうため）"""
+    skip = synced_names(src) | set(avoid)
+    e = next((e for e in dst['entries'] if e.get('sync') != 'false' and e['_t'] > 0 and not skip & set(e['name'].split('|'))), None)
+    if e is None or any(n.get('to') == dst['attrs']['id'] and n.get('cast') == e['name'] for n in src['next']):
+        return None
+    rule = {'to': dst['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']}
+    src['next'].append(rule)
+    return rule
+
+
 def swap_branches(skeleton, specs):
     """--swap: 「A~B」は、--split で作った A →（合間）→ B の並びに、B' →（合間'）→ A' の逆の順の道筋を足す（写しを作る）。
     両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
@@ -728,6 +744,11 @@ def swap_branches(skeleton, specs):
         skeleton['phases'][at:at] = [b2, mid2, a2]
         path = ' → '.join(f'「{n["cast"]}」{n["to"]}' for n in (pred['next'][-1], b2['next'][0], mid2['next'][0], *a2['next']))
         report.append(f'逆の順の道筋: {pred["attrs"]["id"]} → {path}')
+        backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a)), (a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())]
+        for src, dst, avoid in backups:
+            rule = backup_rule(src, dst, avoid)
+            if rule:
+                report.append(f'控えの移り: {src["attrs"]["id"]} →「{rule["cast"]}」{rule["to"]} の {rule["at"]} 秒')
     return report
 
 
