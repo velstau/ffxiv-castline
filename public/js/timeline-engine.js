@@ -286,6 +286,14 @@ export class TimelineEngine {
     }
 
     /** ボスの HP（%）。読めなければ null */
+    /**
+     * 討伐の判定に使う HP（無ければ null）。高い値を確かめ待ちの間は、古い低い値で討伐にしない
+     * （雑魚の 2% の後にボスの 83% を読み、敵対リストの読み取りが途切れたとき。Codex のレビュー）
+     */
+    hpForKill() {
+        return this.pendingHp !== null && this.pendingHp.value > this.hp ? null : this.hp;
+    }
+
     hpPercent(at, value) {
         if (value === null) {
             this.advance(at);
@@ -587,7 +595,8 @@ export class TimelineEngine {
             const off = at - this.enmityOffSince;
             // ボスが決まっていない戦闘（道中）は討伐では終えない（暗転・敵対リストが消えたままで終わる）
             const lastPhase = this.phase !== null && (this.phase.next ?? []).length === 0;
-            if (lastPhase && this.hp !== null && this.hp <= KILL_HP && off >= ENMITY_OFF_END_MS) {
+            const killHp = this.hpForKill();
+            if (lastPhase && killHp !== null && killHp <= KILL_HP && off >= ENMITY_OFF_END_MS) {
                 this.end(at, `最後のフェーズで HP ${this.hp}% の後に敵対リストが消えた。討伐`);
                 return;
             }

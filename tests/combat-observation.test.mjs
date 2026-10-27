@@ -146,3 +146,15 @@ test('討伐の直前に HP を 1 回だけ大きく読み違えても（4.7→4
     f.hpPercent(2000, 82.9);
     assert.equal(f.hp, 82.9);
 });
+
+test('雑魚の 2% の後にボスの 83% を確かめ待ちの間は、敵対リストが途切れても討伐にしない', () => {
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 2);
+    e.enmity(2500, false);
+    e.hpPercent(4500, 83);
+    assert.equal(e.hp, 2);
+    assert.equal(e.hpForKill(), null);
+    assert.equal(e.status(5500).state, 'combat');
+});

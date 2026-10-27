@@ -38,7 +38,7 @@ export function falseStart(engine, ms, casts) {
 /** 記録用の討伐の疑い（engine の時刻 ms で）。戦闘中で、最後に読んだ HP が REC_KILL_HP 以下、敵対リストが REC_KILL_OFF_MS 以上消えている */
 export function killSuspected(engine, ms) {
     return engine.status(ms).state === 'combat' && engine.hasEnmity && engine.enmityOffSince !== null
-        && engine.hp !== null && engine.hp <= REC_KILL_HP && ms - engine.enmityOffSince >= REC_KILL_OFF_MS;
+        && engine.hpForKill() !== null && engine.hpForKill() <= REC_KILL_HP && ms - engine.enmityOffSince >= REC_KILL_OFF_MS;
 }
 
 export const SNAP_MISS_ANY = 0.25;
