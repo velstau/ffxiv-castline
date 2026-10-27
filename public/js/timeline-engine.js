@@ -240,6 +240,7 @@ export class TimelineEngine {
             this.phaseStartAt = at;
             this.hp = null;
             this.lastHpAt = null;
+            this.pendingHp = null;
             this.log(at, 'ボスが決まらないまま敵対リストがまた出たので、ここから次のプルとして数える');
         }
         if (shown) {
@@ -464,6 +465,7 @@ export class TimelineEngine {
         // 2026-10-23 ユーザーのエキルレの記録で、雑魚の戦闘が始まって数秒で前の HP のまま終わった）
         this.hp = null;
         this.lastHpAt = null;
+        this.pendingHp = null;
         // ボスが何体もいるときは最初に読めた技で決める（cast）。それまでは戦闘開始を 0 秒として数える
         this.phase = this.starts.length > 1 ? null : this.starts[0];
         this.phaseStartAt = startAt;
@@ -597,8 +599,8 @@ export class TimelineEngine {
         // 時間で移るフェーズは、何度でも続けて移れる（長く止まっていた場合）
         for (let guard = 0; guard < 20; guard++) {
             const now = this.phaseTime(at);
-            // HP が読めない時間は、このフェーズに入ってから数える（前のフェーズの分は数えない）
-            const hpSeenAt = Math.max(this.lastHpAt ?? -Infinity, this.phaseStartAt);
+            // HP が読めない時間は、このフェーズに入ってから数える（前のフェーズの分は数えない）。確かめ待ちの値も読めたうちに入れる
+            const hpSeenAt = Math.max(this.lastHpAt ?? -Infinity, this.pendingHp?.at ?? -Infinity, this.phaseStartAt);
             const rule = this.findRule((w) => (w.time !== undefined && now >= w.time)
                 || (w.hpLost !== undefined && at - hpSeenAt >= w.hpLost * 1000));
             if (!rule) {

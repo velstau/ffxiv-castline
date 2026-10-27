@@ -161,6 +161,16 @@ test('フェーズの移り方: 詠唱・HP・時間・HP が読めない時間'
     e.hpPercent(T(11), null);
     assert.equal(e.status(T(12.5)).phase.id, 'p2');
     assert.equal(e.status(T(13.1)).phase.id, 'p3');
+
+    // 急に変わって確かめ待ちの HP も、読めたうちに入れる（確かめ待ちの間に「HP が読めない」で p3 へ移らない）
+    ({ e } = engine());
+    e.started(T(0));
+    e.hpPercent(T(1), 80);
+    e.hpPercent(T(10), 40); // → p2
+    e.hpPercent(T(10.5), 39);
+    e.hpPercent(T(12), 15); // 確かめ待ち
+    assert.equal(e.status(T(14)).phase.id, 'p2');
+    assert.equal(e.status(T(15.1)).phase.id, 'p3');
 });
 
 // 敵対リストを 0.5 秒ごとに読んだ結果を渡す
