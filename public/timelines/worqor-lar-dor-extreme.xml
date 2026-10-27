@@ -276,6 +276,7 @@
     <entry t="110.0" castname="攻撃" sync="false"/>
     <entry t="112.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
     <next to="p4" at="0.0" cast="ラース・アンファールド"/>
+    <next to="p4" at="15.2" cast="マウンテンファイア"/>
   </phase>
   <phase id="p4" name="P4">
     <entry t="0.0" text="ラース・アンファールド" castname="ラース・アンファールド" duration="3.7" tts="全体攻撃"/>

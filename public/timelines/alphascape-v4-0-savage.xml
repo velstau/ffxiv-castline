@@ -145,6 +145,7 @@
     <entry t="35.2" text="ソードアクション" castname="ソードアクション" sync="false" tts="ソードアクション。"/>
     <entry t="39.1" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
     <next to="a-final" at="0.0" cast="援護プログラムF"/>
+    <next to="a-final" at="3.0" cast="オプチカルレーザーF"/>
   </phase>
   <phase id="a-final" name="前半最終">
     <entry t="0.0" text="援護プログラムF" castname="援護プログラムF" duration="2.7" tts="援護プログラムF。" window="20 10"/>

@@ -754,6 +754,7 @@ def swap_branches(skeleton, specs, no_backup=frozenset()):
         report.append(f'逆の順の道筋: {pred["attrs"]["id"]} → {path}')
         backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a))]
         backups += [(a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())] if mid else [(a, b, ()), (b2, a2, ())]
+        backups += [(a2, phases[n['to']], ()) for n in a2['next'] if n.get('cast') and n['to'] in phases]  # A（後）の次へも（B の次と同じ）
         skeleton.setdefault('_backed', set()).update((src['attrs']['id'], dst['attrs']['id']) for src, dst, _ in backups)
         for src, dst, avoid in backups:
             rule = backup_rule(src, dst, set(avoid) | set(no_backup))

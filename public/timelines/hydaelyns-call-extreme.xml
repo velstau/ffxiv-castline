@@ -127,6 +127,7 @@
     <entry t="39.0" text="オーレオール" castname="オーレオール|サイド・オーレオール" duration="4.7"/>
     <entry t="53.1" castname="ハイエストホーリー" sync="false"/>
     <next to="p3-end" at="0.0" cast="レディアントヘイロー"/>
+    <next to="p3-end" at="10.2" cast="ライトウェーブ"/>
   </phase>
   <phase id="p3-end" name="P4">
     <entry t="0.0" text="全体攻撃" castname="レディアントヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
