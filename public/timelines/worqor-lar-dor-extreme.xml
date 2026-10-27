@@ -101,7 +101,6 @@
     <next to="p3-thunder" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-ice-alt" at="0.0" cast="コールドディザスター"/>
     <next to="p3-thunder" at="25.2" cast="災厄の落雷"/>
-    <next to="p3-ice-alt" at="35.4" cast="ノーザンクロス"/>
   </phase>
   <phase id="p3-thunder" name="P3: 雷">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>
@@ -132,24 +131,23 @@
     <entry t="100.9" castname="攻撃" sync="false"/>
     <entry t="101.9" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="110.0" castname="攻撃" sync="false"/>
-    <next to="p3-mid" at="0.0" cast="カラミティダイヴ"/>
-    <next to="p3-mid" at="10.1" cast="リビングディザスター"/>
+    <entry t="112.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
+    <next to="p3-mid" at="0.0" cast="リビングディザスター"/>
   </phase>
   <phase id="p3-mid" name="P3: 合間">
-    <entry t="0.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
-    <entry t="10.1" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>
-    <entry t="17.0" text="移行待ち" castname="リビングディザスター" duration="4.2" window="20 20"/>
-    <entry t="24.1" castname="攻撃" sync="false"/>
-    <entry t="27.2" text="トライスカージ" castname="トライスカージ" duration="2.7"/>
-    <entry t="32.2" castname="タンク離れる" sync="false" tts="タンク離れる、頭割り"/>
-    <entry t="35.2" castname="攻撃" sync="false"/>
-    <entry t="38.3" castname="攻撃" sync="false"/>
-    <entry t="41.3" castname="攻撃" sync="false"/>
-    <entry t="42.2" castname="スカージ・オブ・アイス" sync="false"/>
-    <entry t="44.4" castname="攻撃" sync="false"/>
-    <entry t="47.4" castname="攻撃" sync="false"/>
-    <entry t="50.5" castname="攻撃" sync="false"/>
-    <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
+    <entry t="0.0" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>
+    <entry t="6.9" text="移行待ち" castname="リビングディザスター" duration="4.2" window="20 20"/>
+    <entry t="14.0" castname="攻撃" sync="false"/>
+    <entry t="17.1" text="トライスカージ" castname="トライスカージ" duration="2.7"/>
+    <entry t="22.1" castname="タンク離れる" sync="false" tts="タンク離れる、頭割り"/>
+    <entry t="25.1" castname="攻撃" sync="false"/>
+    <entry t="28.2" castname="攻撃" sync="false"/>
+    <entry t="31.2" castname="攻撃" sync="false"/>
+    <entry t="32.1" castname="スカージ・オブ・アイス" sync="false"/>
+    <entry t="34.3" castname="攻撃" sync="false"/>
+    <entry t="37.3" castname="攻撃" sync="false"/>
+    <entry t="40.4" castname="攻撃" sync="false"/>
+    <entry t="42.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-ice" at="0.0" cast="コールドディザスター"/>
     <next to="p3-ice" at="15.4" cast="アイシクルスパイク"/>
   </phase>
@@ -188,7 +186,8 @@
     <entry t="86.8" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="88.5" castname="攻撃" sync="false"/>
     <entry t="90.6" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
-    <next to="p4" at="0.0" cast="アイスタロン"/>
+    <entry t="98.7" text="タンク強攻撃" castname="アイスタロン" duration="3.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
+    <next to="p4" at="0.0" cast="ラース・アンファールド"/>
   </phase>
   <phase id="p3-ice-alt" name="P3: 氷（先）">
     <entry t="0.0" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
@@ -225,24 +224,23 @@
     <entry t="86.8" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="88.5" castname="攻撃" sync="false"/>
     <entry t="90.6" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
-    <next to="p3-mid-alt" at="0.0" cast="カラミティダイヴ"/>
-    <next to="p3-mid-alt" at="10.1" cast="リビングディザスター"/>
+    <entry t="98.7" text="タンク強攻撃" castname="アイスタロン" duration="3.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
+    <next to="p3-mid-alt" at="0.0" cast="リビングディザスター"/>
   </phase>
   <phase id="p3-mid-alt" name="P3: 合間（逆の順）">
-    <entry t="0.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
-    <entry t="10.1" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>
-    <entry t="17.0" text="移行待ち" castname="リビングディザスター" duration="4.2" window="20 20"/>
-    <entry t="24.1" castname="攻撃" sync="false"/>
-    <entry t="27.2" text="トライスカージ" castname="トライスカージ" duration="2.7"/>
-    <entry t="32.2" castname="タンク離れる" sync="false" tts="タンク離れる、頭割り"/>
-    <entry t="35.2" castname="攻撃" sync="false"/>
-    <entry t="38.3" castname="攻撃" sync="false"/>
-    <entry t="41.3" castname="攻撃" sync="false"/>
-    <entry t="42.2" castname="スカージ・オブ・アイス" sync="false"/>
-    <entry t="44.4" castname="攻撃" sync="false"/>
-    <entry t="47.4" castname="攻撃" sync="false"/>
-    <entry t="50.5" castname="攻撃" sync="false"/>
-    <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
+    <entry t="0.0" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>
+    <entry t="6.9" text="移行待ち" castname="リビングディザスター" duration="4.2" window="20 20"/>
+    <entry t="14.0" castname="攻撃" sync="false"/>
+    <entry t="17.1" text="トライスカージ" castname="トライスカージ" duration="2.7"/>
+    <entry t="22.1" castname="タンク離れる" sync="false" tts="タンク離れる、頭割り"/>
+    <entry t="25.1" castname="攻撃" sync="false"/>
+    <entry t="28.2" castname="攻撃" sync="false"/>
+    <entry t="31.2" castname="攻撃" sync="false"/>
+    <entry t="32.1" castname="スカージ・オブ・アイス" sync="false"/>
+    <entry t="34.3" castname="攻撃" sync="false"/>
+    <entry t="37.3" castname="攻撃" sync="false"/>
+    <entry t="40.4" castname="攻撃" sync="false"/>
+    <entry t="42.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-thunder-2nd" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-thunder-2nd" at="25.2" cast="災厄の落雷"/>
   </phase>
@@ -275,27 +273,27 @@
     <entry t="100.9" castname="攻撃" sync="false"/>
     <entry t="101.9" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="110.0" castname="攻撃" sync="false"/>
-    <next to="p4" at="0.0" cast="アイスタロン"/>
+    <entry t="112.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
+    <next to="p4" at="0.0" cast="ラース・アンファールド"/>
   </phase>
   <phase id="p4" name="P4">
-    <entry t="0.0" text="タンク強攻撃" castname="アイスタロン" duration="3.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
-    <entry t="8.0" text="ラース・アンファールド" castname="ラース・アンファールド" duration="3.7" tts="全体攻撃"/>
-    <entry t="21.1" castname="攻撃" sync="false"/>
-    <entry t="23.2" text="マウンテンファイア" castname="マウンテンファイア" duration="3.7"/>
-    <entry t="29.3" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="32.3" castname="マウンテンファイア" sync="false"/>
-    <entry t="34.3" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="37.4" castname="マウンテンファイア" sync="false"/>
-    <entry t="39.3" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="42.4" castname="マウンテンファイア" sync="false"/>
-    <entry t="44.4" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="47.5" castname="マウンテンファイア" sync="false"/>
-    <entry t="49.4" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="52.5" castname="マウンテンファイア" sync="false"/>
-    <entry t="54.5" castname="マウンテンファイア" duration="3.2"/>
-    <entry t="57.5" castname="マウンテンファイア" sync="false"/>
-    <entry t="62.5" castname="攻撃" sync="false"/>
-    <entry t="64.6" castname="トラルディザスター" duration="6.7"/>
-    <entry t="74.7" castname="トラルディザスター" sync="false"/>
+    <entry t="0.0" text="ラース・アンファールド" castname="ラース・アンファールド" duration="3.7" tts="全体攻撃"/>
+    <entry t="13.1" castname="攻撃" sync="false"/>
+    <entry t="15.2" text="マウンテンファイア" castname="マウンテンファイア" duration="3.7"/>
+    <entry t="21.3" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="24.3" castname="マウンテンファイア" sync="false"/>
+    <entry t="26.3" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="29.4" castname="マウンテンファイア" sync="false"/>
+    <entry t="31.3" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="34.4" castname="マウンテンファイア" sync="false"/>
+    <entry t="36.4" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="39.5" castname="マウンテンファイア" sync="false"/>
+    <entry t="41.4" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="44.5" castname="マウンテンファイア" sync="false"/>
+    <entry t="46.5" castname="マウンテンファイア" duration="3.2"/>
+    <entry t="49.5" castname="マウンテンファイア" sync="false"/>
+    <entry t="54.5" castname="攻撃" sync="false"/>
+    <entry t="56.6" castname="トラルディザスター" duration="6.7"/>
+    <entry t="66.7" castname="トラルディザスター" sync="false"/>
   </phase>
 </timeline>

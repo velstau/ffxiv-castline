@@ -715,10 +715,10 @@ def backup_rule(src, dst, avoid=frozenset()):
     return rule
 
 
-def swap_branches(skeleton, specs):
+def swap_branches(skeleton, specs, no_backup=frozenset()):
     """--swap: 「A~B」は、--split で作った A →（合間）→ B の並びに、B' →（合間'）→ A' の逆の順の道筋を足す（写しを作る）。
     両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。合間が無く A の次が B でもよい（極ハイデリンの杖・踊）。
-    A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
+    A の前のフェーズから、B の最初の技で B' へ移る。no_backup の技は控えの移りに使わない（--no-backup）。報告の行を返す"""
     phases = {p['attrs']['id']: p for p in skeleton['phases']}
     rule_to = lambda p, target: next(n for n in p['next'] if n.get('to') == target)
     report = []
@@ -755,7 +755,7 @@ def swap_branches(skeleton, specs):
         backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a))]
         backups += [(a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())] if mid else [(a, b, ()), (b2, a2, ())]
         for src, dst, avoid in backups:
-            rule = backup_rule(src, dst, avoid)
+            rule = backup_rule(src, dst, set(avoid) | set(no_backup))
             if rule:
                 report.append(f'控えの移り: {src["attrs"]["id"]} →「{rule["cast"]}」{rule["to"]} の {rule["at"]} 秒')
     return report
@@ -846,6 +846,9 @@ def main():
                     help='文言を重ねた後で、フェーズをその技で切り分ける（ボス側の分岐）。書き方は split_branches')
     ap.add_argument('--swap', action='append', default=[], metavar='A~B',
                     help='--split で作った A →合間→ B に、逆の順の道筋を足す（両方を通り順だけが入れ替わる区間）')
+    ap.add_argument('--no-backup', action='append', default=[], metavar='技',
+                    help='--swap の控えの移りに使わない技。控えは骨組みの討伐 1 本から選ぶので、別の順の討伐で枝の前にも出る技を外す'
+                         '（極ヴァリガルマンダの氷先は、氷の始まりの 9 秒前にノーザンクロスが来る）')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
                     help='そのフェーズの頭からやり直すことがある（アルファ編4 の前半の開幕は、削りが足りないと繰り返す）。'
                          'その技を読んだら、フェーズの中のその技の時刻へ戻る。技はフェーズの中に 1 回だけのものにする')
@@ -911,7 +914,7 @@ def main():
     if args.split:
         report += split_branches(skeleton, args.split)
     if args.swap:
-        report += swap_branches(skeleton, args.swap)
+        report += swap_branches(skeleton, args.swap, set(args.no_backup))
     for spec in args.loop:
         pid, cast = spec.split('@')
         p = next(p for p in skeleton['phases'] if p['attrs']['id'] == pid)
