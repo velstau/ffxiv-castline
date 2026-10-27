@@ -717,7 +717,8 @@ def backup_rule(src, dst, avoid=frozenset()):
 
 def swap_branches(skeleton, specs):
     """--swap: 「A~B」は、--split で作った A →（合間）→ B の並びに、B' →（合間'）→ A' の逆の順の道筋を足す（写しを作る）。
-    両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
+    両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。合間が無く A の次が B でもよい（極ハイデリンの杖・踊）。
+    A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
     phases = {p['attrs']['id']: p for p in skeleton['phases']}
     rule_to = lambda p, target: next(n for n in p['next'] if n.get('to') == target)
     report = []
@@ -725,26 +726,34 @@ def swap_branches(skeleton, specs):
         a_id, b_id = spec.split('~')
         pred = next(p for p in skeleton['phases'] if any(n.get('to') == a_id for n in p['next']))
         a = phases[a_id]
-        mid = phases[a['next'][0]['to']]
-        b = phases[mid['next'][0]['to']]
+        mid = phases[a['next'][0]['to']] if a['next'][0]['to'] != b_id else None
+        b = phases[mid['next'][0]['to']] if mid else phases[b_id]
         if b['attrs']['id'] != b_id:
             raise SystemExit(f'--swap {spec}: {a_id} の次の次が {b_id} ではありません（{b["attrs"]["id"]}）')
-        cast_a, cast_m, cast_b = rule_to(pred, a_id)['cast'], rule_to(a, mid['attrs']['id'])['cast'], rule_to(mid, b_id)['cast']
+        cast_a, cast_b = rule_to(pred, a_id)['cast'], rule_to(mid or a, b_id)['cast']
         clone = lambda p, nxt: {'attrs': {**p['attrs'], 'id': p['attrs']['id'] + '-2nd' if p is a else p['attrs']['id'] + '-alt',
                                           'name': (p['attrs'].get('name') or p['attrs']['id']) + ('（後）' if p is a else '（先）' if p is b else '（逆の順）')},
                                 'entries': [dict(e) for e in p['entries']], 'next': nxt}
         a2 = clone(a, [own_cast(dict(n), a, phases) for n in b['next']])  # 2 番目の A の後は、元の B の後と同じ所へ
         phases[a2['attrs']['id']] = a2
-        mid2 = clone(mid, [own_cast({'to': a2['attrs']['id'], 'at': '0.0', 'cast': cast_a}, mid, phases)])
-        phases[mid2['attrs']['id']] = mid2
-        b2 = clone(b, [own_cast({'to': mid2['attrs']['id'], 'at': '0.0', 'cast': cast_m}, b, phases)])
+        after_b = a2
+        if mid:
+            mid2 = clone(mid, [own_cast({'to': a2['attrs']['id'], 'at': '0.0', 'cast': cast_a}, mid, phases)])
+            phases[mid2['attrs']['id']] = mid2
+            after_b = mid2
+            cast_next = rule_to(a, mid['attrs']['id'])['cast']
+        else:
+            cast_next = cast_a
+        b2 = clone(b, [own_cast({'to': after_b['attrs']['id'], 'at': '0.0', 'cast': cast_next}, b, phases)])
         phases[b2['attrs']['id']] = b2
         pred['next'].append(own_cast({'to': b2['attrs']['id'], 'at': '0.0', 'cast': cast_b}, pred, phases))
         at = skeleton['phases'].index(b) + 1
-        skeleton['phases'][at:at] = [b2, mid2, a2]
-        path = ' → '.join(f'「{n["cast"]}」{n["to"]}' for n in (pred['next'][-1], b2['next'][0], mid2['next'][0], *a2['next']))
+        added = [b2, mid2, a2] if mid else [b2, a2]
+        skeleton['phases'][at:at] = added
+        path = ' → '.join(f'「{n["cast"]}」{n["to"]}' if n.get('cast') else f'{n.get("time")} 秒で {n["to"]}' for n in (pred['next'][-1], *(p['next'][0] for p in added[:-1]), *a2['next']))
         report.append(f'逆の順の道筋: {pred["attrs"]["id"]} → {path}')
-        backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a)), (a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())]
+        backups = [(pred, a, synced_names(b)), (pred, b2, synced_names(a))]
+        backups += [(a, mid, ()), (mid, b, ()), (b2, mid2, ()), (mid2, a2, ())] if mid else [(a, b, ()), (b2, a2, ())]
         for src, dst, avoid in backups:
             rule = backup_rule(src, dst, avoid)
             if rule:

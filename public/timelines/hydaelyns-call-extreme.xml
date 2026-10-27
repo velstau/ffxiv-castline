@@ -12,16 +12,40 @@
     <entry t="26.4" castname="シャイニングセイバー" sync="false"/>
     <entry t="31.6" text="属性を付与" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
     <entry t="44.7" castname="アントゥヘリオン" sync="false"/>
-    <entry t="51.9" castname="ムーサスコーン" duration="4.7"/>
-    <entry t="62.2" castname="サイド・オーレオール" duration="4.7"/>
-    <entry t="72.3" castname="クリスタライズ" duration="3.7"/>
-    <entry t="85.5" castname="ハイエストホーリー" sync="false"/>
-    <entry t="92.2" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" gimmick_icon="raidwide.png"/>
-    <entry t="102.4" text="オーレオール" castname="オーレオール" duration="4.7"/>
-    <entry t="112.5" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
-    <entry t="125.7" castname="エクイノックス" sync="false"/>
-    <entry t="129.5" castname="分岐待機" sync="false"/>
-    <next to="p2" time="131.9"/>
+    <next to="p1-dance" at="0.0" cast="ムーサスコーン"/>
+    <next to="p1-staff-alt" at="0.0" cast="マゴスラジエンス"/>
+  </phase>
+  <phase id="p1-dance" name="踊P1">
+    <entry t="0.0" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
+    <entry t="10.3" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
+    <entry t="16.0" castname="オーレオール|サイド・オーレオール" sync="false"/>
+    <entry t="20.4" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
+    <entry t="33.6" castname="ハイエストホーリー" sync="false"/>
+    <next to="p1-staff" at="0.0" cast="マゴスラジエンス"/>
+  </phase>
+  <phase id="p1-staff" name="杖P1">
+    <entry t="0.0" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" gimmick_icon="raidwide.png"/>
+    <entry t="10.2" text="オーレオール" castname="オーレオール|サイド・オーレオール" duration="4.7"/>
+    <entry t="20.3" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
+    <entry t="33.5" castname="エクイノックス" sync="false"/>
+    <entry t="37.3" castname="分岐待機" sync="false"/>
+    <next to="p2" time="39.7"/>
+  </phase>
+  <phase id="p1-staff-alt" name="杖P1（先）">
+    <entry t="0.0" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" gimmick_icon="raidwide.png"/>
+    <entry t="10.2" text="オーレオール" castname="オーレオール|サイド・オーレオール" duration="4.7"/>
+    <entry t="20.3" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
+    <entry t="33.5" castname="エクイノックス" sync="false"/>
+    <entry t="37.3" castname="分岐待機" sync="false"/>
+    <next to="p1-dance-2nd" at="0.0" cast="ムーサスコーン"/>
+  </phase>
+  <phase id="p1-dance-2nd" name="踊P1（後）">
+    <entry t="0.0" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
+    <entry t="10.3" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
+    <entry t="16.0" castname="オーレオール|サイド・オーレオール" sync="false"/>
+    <entry t="20.4" text="属性を確認" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
+    <entry t="33.6" castname="ハイエストホーリー" sync="false"/>
+    <next to="p2" time="39.7"/>
   </phase>
   <phase id="p2" name="P2: Crystals of Light">
     <entry t="105.0" castname="エクソダス" sync="false"/>
@@ -46,28 +70,66 @@
     <entry t="113.9" castname="シャイニングセイバー" sync="false"/>
     <entry t="122.4" castname="分岐待機" sync="false"/>
     <entry t="123.1" castname="アントゥヘリオン" sync="false"/>
-    <entry t="128.2" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
-    <entry t="139.9" text="チャクラム開始" castname="パルヘリオン" duration="4.7" tts="パルヘリオン。"/>
-    <entry t="144.2" castname="オーレオール" sync="false"/>
-    <entry t="145.9" castname="パルヘリオン3" sync="false"/>
-    <entry t="146.5" castname="パルヘリオン" sync="false"/>
-    <entry t="146.9" castname="パルヘリオン2" sync="false"/>
-    <entry t="148.1" castname="パルヘリオン" sync="false"/>
-    <entry t="148.9" castname="パルヘリオン1" sync="false"/>
-    <entry t="149.7" text="属性を確認 / 属性:水(固定)" castname="クリスタライズ" duration="3.7" tts="属性を確認"/>
-    <entry t="156.9" text="4人頭割り+チャクラム" castname="サブパルヘリオン" duration="4.7" tts="頭割り、チャクラム" gimmick_icon="stack.png"/>
-    <entry t="167.2" text="オーレオール" castname="オーレオール" duration="4.7"/>
-    <entry t="181.3" castname="ハイエストホーリー" sync="false"/>
-    <entry t="186.5" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="196.6" text="属性:氷(固定)" castname="クリスタライズ" duration="3.7"/>
-    <entry t="205.5" text="パーヘリックサークル" castname="パーヘリックサークル" duration="5.7" tts="散開"/>
-    <entry t="213.4" castname="幻閃光" sync="false" tts="幻閃光。"/>
-    <entry t="216.4" castname="ブリザガ" sync="false" tts="ブリザガ"/>
-    <entry t="217.8" castname="サイド・オーレオール" duration="4.7"/>
-    <entry t="223.4" castname="オーレオール" sync="false"/>
-    <entry t="232.0" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
-    <entry t="240.7" text="全体攻撃" castname="レディアントヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="250.9" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
+    <next to="p3-dance" at="0.0" cast="ムーサスコーン"/>
+    <next to="p3-staff-alt" at="0.0" cast="マゴスラジエンス"/>
+    <next to="p3-dance" at="11.7" cast="パルヘリオン"/>
+    <next to="p3-staff-alt" at="19.0" cast="パーヘリックサークル"/>
+  </phase>
+  <phase id="p3-dance" name="踊P3">
+    <entry t="0.0" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
+    <entry t="11.7" text="チャクラム開始" castname="パルヘリオン" duration="4.7" tts="パルヘリオン。"/>
+    <entry t="17.7" castname="パルヘリオン3" sync="false"/>
+    <entry t="18.3" castname="パルヘリオン" sync="false"/>
+    <entry t="18.7" castname="パルヘリオン2" sync="false"/>
+    <entry t="19.9" castname="パルヘリオン" sync="false"/>
+    <entry t="20.7" castname="パルヘリオン1" sync="false"/>
+    <entry t="21.5" text="属性:水(固定)" castname="クリスタライズ" duration="3.7"/>
+    <entry t="28.7" text="4人頭割り+チャクラム" castname="サブパルヘリオン" duration="4.7" tts="頭割り、チャクラム" gimmick_icon="stack.png"/>
+    <entry t="39.0" text="オーレオール" castname="オーレオール|サイド・オーレオール" duration="4.7"/>
+    <entry t="53.1" castname="ハイエストホーリー" sync="false"/>
+    <next to="p3-staff" at="0.0" cast="マゴスラジエンス"/>
+    <next to="p3-staff" at="19.0" cast="パーヘリックサークル"/>
+  </phase>
+  <phase id="p3-staff" name="杖P3">
+    <entry t="0.0" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="10.1" text="属性:氷(固定)" castname="クリスタライズ" duration="3.7"/>
+    <entry t="19.0" text="パーヘリックサークル" castname="パーヘリックサークル" duration="5.7" tts="散開"/>
+    <entry t="26.9" castname="幻閃光" sync="false" tts="幻閃光。"/>
+    <entry t="29.9" castname="ブリザガ" sync="false" tts="ブリザガ"/>
+    <entry t="31.3" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
+    <entry t="36.9" castname="オーレオール|サイド・オーレオール" sync="false"/>
+    <entry t="45.5" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
+    <next to="p3-end" at="0.0" cast="レディアントヘイロー"/>
+  </phase>
+  <phase id="p3-staff-alt" name="杖P3（先）">
+    <entry t="0.0" text="全体攻撃" castname="マゴスラジエンス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="10.1" text="属性:氷(固定)" castname="クリスタライズ" duration="3.7"/>
+    <entry t="19.0" text="パーヘリックサークル" castname="パーヘリックサークル" duration="5.7" tts="散開"/>
+    <entry t="26.9" castname="幻閃光" sync="false" tts="幻閃光。"/>
+    <entry t="29.9" castname="ブリザガ" sync="false" tts="ブリザガ"/>
+    <entry t="31.3" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
+    <entry t="36.9" castname="オーレオール|サイド・オーレオール" sync="false"/>
+    <entry t="45.5" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
+    <next to="p3-dance-2nd" at="0.0" cast="ムーサスコーン"/>
+    <next to="p3-dance-2nd" at="11.7" cast="パルヘリオン"/>
+  </phase>
+  <phase id="p3-dance-2nd" name="踊P3（後）">
+    <entry t="0.0" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
+    <entry t="11.7" text="チャクラム開始" castname="パルヘリオン" duration="4.7" tts="パルヘリオン。"/>
+    <entry t="17.7" castname="パルヘリオン3" sync="false"/>
+    <entry t="18.3" castname="パルヘリオン" sync="false"/>
+    <entry t="18.7" castname="パルヘリオン2" sync="false"/>
+    <entry t="19.9" castname="パルヘリオン" sync="false"/>
+    <entry t="20.7" castname="パルヘリオン1" sync="false"/>
+    <entry t="21.5" text="属性:水(固定)" castname="クリスタライズ" duration="3.7"/>
+    <entry t="28.7" text="4人頭割り+チャクラム" castname="サブパルヘリオン" duration="4.7" tts="頭割り、チャクラム" gimmick_icon="stack.png"/>
+    <entry t="39.0" text="オーレオール" castname="オーレオール|サイド・オーレオール" duration="4.7"/>
+    <entry t="53.1" castname="ハイエストホーリー" sync="false"/>
+    <next to="p3-end" at="0.0" cast="レディアントヘイロー"/>
+  </phase>
+  <phase id="p3-end" name="P4">
+    <entry t="0.0" text="全体攻撃" castname="レディアントヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
+    <entry t="10.2" text="ライトウェーブ" castname="ライトウェーブ" duration="3.7" tts="ライトウェーブ"/>
     <next to="p4" at="0" cast="エコーズ"/>
   </phase>
   <phase id="p4" name="P4: Echoes">
@@ -81,11 +143,11 @@
     <entry t="70.0" text="連続頭割り" castname="エコーズ" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="78.5" text="散開" castname="エコーズ" sync="false" tts="散開" gimmick_icon="spread.png"/>
     <entry t="92.2" text="属性を確認" castname="クリスタライズ" duration="3.7"/>
-    <entry t="99.4" castname="サイド・オーレオール" duration="4.7"/>
-    <entry t="104.2" castname="オーレオール" sync="false"/>
+    <entry t="99.4" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
+    <entry t="104.2" castname="オーレオール|サイド・オーレオール" sync="false"/>
     <entry t="113.6" castname="ハイエストホーリー" sync="false"/>
     <entry t="120.9" castname="クリスタライズ" duration="3.7"/>
-    <entry t="128.0" castname="サイド・オーレオール" duration="4.7"/>
+    <entry t="128.0" castname="サイド・オーレオール|オーレオール" duration="4.7"/>
     <entry t="142.2" castname="エクイノックス" sync="false"/>
     <entry t="151.2" castname="時間切れ" sync="false"/>
     <entry t="152.5" castname="ヘロイスラジエンス" duration="9.7"/>
