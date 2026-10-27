@@ -534,3 +534,17 @@ test('カウントダウン中に手で止めたら、そのカウントダウ�
     e.countdown(T(40), 10); // 別のカウントダウン
     assert.equal(e.status(T(41)).state, 'countdown');
 });
+
+test('詠唱で移ったとき、きっかけの技を移り先の予定に合わせ済みにする（3 秒後の 2 回目の同じ技で時計を戻さない）', () => {
+    const tl = { format: 'castline/1', phases: [
+        { id: 'p1', entries: [], next: [{ to: 'p2', when: { cast: '大地の重み' }, at: 0 }] },
+        { id: 'p2', entries: [{ t: 0, name: '大地の重み', duration: 2 }, { t: 3, name: '大地の重み', duration: 2 }], next: [] },
+    ] };
+    const e = new TimelineEngine(tl);
+    e.started(T(0));
+    e.cast(T(20), '大地の重み');
+    assert.equal(e.status(T(20)).phase.id, 'p2');
+    assert.equal(e.transitions, 1);
+    e.cast(T(23.5), '大地の重み'); // 2 回目は 3 秒の予定に合わせる（0 秒には戻さない）
+    assert.ok(Math.abs(e.status(T(23.5)).phaseTime - 3) < 0.01);
+});

@@ -69,6 +69,7 @@ const state = {
     lastBlack: false, // 前のフレームが暗転だったか（ログは変わったときだけ）
     spoken: new Set(),
     spokenStartAt: null,
+    spokenTransitions: 0, // 読み上げ済みを消したときのフェーズの移った回数（engine.transitions）
     lastRender: 0,
     lastPrepare: 0,
     ocrError: false,
@@ -790,8 +791,14 @@ function speech(now) {
     if (engine.startAt !== state.spokenStartAt) {
         // 新しい戦闘
         state.spokenStartAt = engine.startAt;
+        state.spokenTransitions = engine.transitions;
         state.spoken = new Set();
         say('戦闘開始');
+    }
+    if (engine.transitions !== state.spokenTransitions) {
+        // フェーズが移った。同じフェーズに戻ったとき（アルファ編4 の前半の繰り返し）も、2 周目を読み上げる
+        state.spokenTransitions = engine.transitions;
+        state.spoken = new Set();
     }
     for (const u of engine.upcoming(now, 20)) {
         const e = u.entry;

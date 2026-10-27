@@ -140,6 +140,7 @@ export class TimelineEngine {
         this.startAt = null;
         this.phase = null;
         this.phaseStartAt = null;
+        this.transitions = 0; // フェーズが移った回数
         this.synced = new Set(); // 同期に使った予定（同じ予定で何度も合わせ直さない）
         this.lastSyncAt = null; // このフェーズで最後に同期した時刻（null ならまだ。最初の同期はずらす量を制限しない）
         this.pendingSync = null; // ずれが大きくて保留した同期 {start, at}
@@ -344,6 +345,12 @@ export class TimelineEngine {
         const rule = this.findRule((w) => w.cast !== undefined && castNames(w.cast).includes(name));
         if (rule) {
             this.transition(rule, at, `詠唱 ${name}`);
+            // 移るきっかけにした詠唱は、移り先の予定に合わせ済みとする（絶アルテマのラストタイタン: 3 秒後の 2 回目の大地の重みを
+            // 0 秒の予定に合わせ直して、時計が 3 秒戻った）
+            const entry = this.syncTarget(name, this.phaseTime(at));
+            if (entry) {
+                this.synced.add(entry);
+            }
             return;
         }
         const now = this.phaseTime(at);
@@ -527,6 +534,7 @@ export class TimelineEngine {
         const from = this.phase.id;
         this.phase = this.phases.get(rule.to);
         this.phaseStartAt = at - (rule.at ?? 0) * 1000;
+        this.transitions++; // 再生画面は、これが変わったら読み上げ済みを消す（同じフェーズに戻ったときも読み上げる）
         this.synced = new Set();
         this.lastSyncAt = null;
         this.pendingSync = null;
