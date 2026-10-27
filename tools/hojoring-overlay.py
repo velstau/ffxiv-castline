@@ -39,7 +39,7 @@ SYNC_WINDOW_DEFAULT = 10  # Castline の既定の同期の窓（これより広�
 ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window", "gimmick_icon", "skills_icon"]  # timeline-xml.js の toTimelineXml と同じ順
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
 # 台詞・分岐の目印で、画面に出しても意味の無い text（2026-10-27 のユーザーの了承。「セリフ1」「同期(車両2)」「シェア用タイムライン」など）
-MARKER_PATTERN = re.compile(r'^(セリフ(技)?\d*|.+のセリフ|同期待ち\d*|強制同期|同期\(.+\)|.+用タイムライン)$')
+MARKER_PATTERN = re.compile(r'^(セリフ(技)?\d*|.+のセリフ|同期待ち\d*|強制同期|同期\(.+\)|.+用タイムライン|.+フェーズへ)$')
 RAZOR_ROLES = {'TANK': 'タンク', 'HEALER': 'ヒーラー', 'DPS': 'DPS'}
 
 
@@ -388,10 +388,11 @@ def auto_phases(sections, events):
     return out
 
 
-def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
+def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=()):
     report = []
     min_offsets = {}  # フェーズごとの、前の区間のずれ（区間は文書の順に進むとみなす）
     used_roles = set()  # 表示に付けた担当名（--role とロールの条件）
+    section_ends = {}  # フェーズごとの、前の区間の終わり（--any-order の区間のずれの下限）
     for sec in sections:
         phase_id = phase_of(sec['name'])
         phase = next((p for p in skeleton['phases'] if p['attrs']['id'] == phase_id), None)
@@ -400,11 +401,17 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
             report.append(f'区間 {sec["name"]}: フェーズ {phase_id} またはその技の一覧（--events）がありません。飛ばします')
             continue
         entries = phase['entries']
-        offset, support = estimate_offset(sec['items'], events, min_offsets.get(phase_id, -1e9))
+        # どの順にも来る区間は、直前の（順に進む）区間の終わりより後にある
+        low = section_ends.get(phase_id, -1e9) if sec['name'] in any_order else min_offsets.get(phase_id, -1e9)
+        offset, support = estimate_offset(sec['items'], events, low)
         if offset is None:
             report.append(f'区間 {sec["name"]}: 技名の合う技がなく、ずれを決められません。飛ばします')
             continue
-        first_offset = min_offsets[phase_id] = offset
+        first_offset = offset
+        if sec['name'] not in any_order:
+            # どの順にも来る区間（--any-order）は、後の区間のずれの下限にしない（絶アルテマのラスト 3 体は文書の順と討伐の順が違う）
+            min_offsets[phase_id] = offset
+            section_ends[phase_id] = offset + max((it['time'] for it in sec['items']), default=0.0)
         used, last = set(), -1e9
         labeled, resyncs, wide, loose, inserted, missed, jumped = 0, [], [], [], [], [], []
         sec_roles, dropped_tts, conditional = roles.get(sec['name'], []), 0, 0
@@ -527,6 +534,7 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                 new['label'] = label
             new['_notices'] = [notice] if notice else []
             new['_no_name'] = not it['names']  # 技名が無い（台詞・同期なしの行）
+            new['_sec'] = sec['name']  # --split で区間ごとのフェーズに振り分ける
             if role_info:
                 new['_roles'] = {role_info[0]: role_info[1:]}
             entries.append(new)
@@ -655,6 +663,52 @@ def apply_cast_durations(skeleton, path, file):
             for (name, old), n in count.items()]
 
 
+SPLIT_SPEC = re.compile(r'([^@]+)@([^=]+)=([^:#]+)(?::([^#]*))?(?:#(.+))?')
+
+
+def split_branches(skeleton, specs):
+    """--split: 文言を重ねた後で、フェーズを技で切り分ける（ボス側の分岐。2026-10-28）。報告の行を返す。
+    「p5@アルテマ=p5b:名前」は、p5 の最初のアルテマ（同期する予定）から後を p5b に移し、p5 から p5b へ「アルテマ」で移る。
+    名前が Hojoring の区間名なら、その区間から足した行は時刻にかかわらずそのフェーズへ移す（区間の頭の行が切る技より前にあっても）。
+    「#組」を付けたものは、どの順にも来る区間の組（絶アルテマのラスト 3 体）。組の直前のフェーズと各区間から、組のほかの区間へ移れる。
+    区間を決める技は、移る前のフェーズに無い技にする（エンジンはフェーズ中のいつでも next の技で移るため）"""
+    phases = {p['attrs']['id']: p for p in skeleton['phases']}
+    parsed = [SPLIT_SPEC.fullmatch(spec).groups() for spec in specs]
+    names = {name for *_, name, _ in parsed if name}
+    groups, report = {}, []
+    for i, (src, cast, new_id, name, group) in enumerate(parsed):
+        later = {spec[3] for spec in parsed[i:] if spec[3]}  # このフェーズか、この後に分けるフェーズの区間（その区間の行は一緒に移す）
+        p = phases[src]
+        cut = next((e for e in p['entries'] if e.get('sync') != 'false' and cast in e['name'].split('|')), None)
+        if cut is None:
+            raise SystemExit(f'--split {src}@{cast}: {src} に同期する「{cast}」の予定がありません')
+        t0 = cut['_t']
+        mine = lambda e: e.get('_sec') in later or (e['_t'] >= t0 and e.get('_sec') not in names)
+        moved = [e for e in p['entries'] if mine(e)]
+        p['entries'] = [e for e in p['entries'] if not mine(e)]
+        for e in moved:
+            # 区間の頭の行が切る技より前にあるときは、移った瞬間に出す（技を読むまではどの区間か分からない）
+            e['_hit'] -= t0 - min(0.0, e['_t'] - t0)
+            e['_t'] = max(0.0, e['_t'] - t0)
+        moved.sort(key=lambda e: e['_t'])
+        shift = lambda n: {**n, 'time': f'{float(n["time"]) - t0:g}'} if n.get('time') else n
+        new = {'attrs': {'id': new_id, **({'name': name} if name else {})}, 'entries': moved, 'next': [shift(n) for n in p['next']]}
+        p['next'] = [{'to': new_id, 'at': '0.0', 'cast': cast}]
+        skeleton['phases'].insert(skeleton['phases'].index(p) + 1, new)
+        phases[new_id] = new
+        report.append(f'フェーズを分ける: {src} の {t0:.1f} 秒「{cast}」から後を {new_id}（{len(moved)} 件）')
+        if group:
+            groups.setdefault(group, []).append((new_id, cast, src))
+    for group, members in groups.items():
+        rule = lambda m: {'to': m[0], 'at': '0.0', 'cast': m[1]}
+        after = phases[members[-1][0]]['next']  # 組の後に続く移り方（いちばん後の区間が受け継いでいる）
+        phases[members[0][2]]['next'] = [rule(m) for m in members]
+        for mid, _, _ in members:
+            phases[mid]['next'] = [rule(m) for m in members if m[0] != mid] + after
+        report.append(f'どの順にも来る区間の組「{group}」: {"・".join(m[0] for m in members)}')
+    return report
+
+
 def write_castline(skeleton, path, title, note, author='', license=''):
     head = {**skeleton['head'], 'author': author, 'license': license}
     if title:
@@ -693,6 +747,10 @@ def main():
     ap.add_argument('--variant', action='append', default=[], metavar='区間[@秒]=型の名前',
                     help='ボスの処理の型ごとの区間（例: 絶バハ P5 のダイナモ・ダイブ）。表示は --role と同じ。'
                          '型によって詠唱の無い技の順が違うので、その技にはこの討伐の時刻で合わせない')
+    ap.add_argument('--split', action='append', default=[], metavar='フェーズ@技=新しいID[:名前][#組]',
+                    help='文言を重ねた後で、フェーズをその技で切り分ける（ボス側の分岐）。書き方は split_branches')
+    ap.add_argument('--any-order', action='append', default=[], metavar='区間',
+                    help='どの順にも来る区間。後の区間のずれの下限にしない')
     ap.add_argument('--events-all', metavar='PATH',
                     help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
@@ -730,11 +788,13 @@ def main():
         sec, _, start = where.partition('@')
         roles.setdefault(sec, []).append((float(start or 0), name, variant))
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
-                     {sec: sorted(rs) for sec, rs in roles.items()})
+                     {sec: sorted(rs) for sec, rs in roles.items()}, set(args.any_order))
     for fid in fights:
         split_phases(skeleton, fid)
     if args.cast_durations:
         report += apply_cast_durations(skeleton, args.cast_durations, re.sub(r'\.xml$', '', args.out.rsplit('/', 1)[-1]))
+    if args.split:
+        report += split_branches(skeleton, args.split)
 
     # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
     # タイムラインの作者とライセンスは <author> <license> に書く（2026-10-21 のユーザーの決定）

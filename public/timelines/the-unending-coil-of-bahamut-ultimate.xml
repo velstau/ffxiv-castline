@@ -219,7 +219,6 @@
     <next to="p4" time="338.6"/>
   </phase>
   <phase id="p4" name="P4: Triple Threat">
-    <entry t="1.2" castname="2体フェーズへ" sync="false"/>
     <entry t="9.6" castname="バハムートクロウ" sync="false"/>
     <entry t="9.6" text="プラメット＋クロウ(MTバフ受け)" castname="プラメット" sync="false" tts="MTバフ受け"/>
     <entry t="10.6" castname="ネールをスイッチ(M→S)" sync="false" tts="ネールをスイッチ"/>

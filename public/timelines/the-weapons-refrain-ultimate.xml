@@ -262,20 +262,44 @@
     <entry t="200.7" text="魔導フレア" castname="魔導フレア" duration="3.7"/>
     <entry t="201.6" castname="ランスラ＋頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="203.2" text="フェザーレイン" castname="フェザーレイン" duration="0.7" tts="フェザー！"/>
-    <entry t="211.1" text="アルテマ開始" castname="アルテマ" duration="4.7" tts="次、フルバリア"/>
-    <entry t="222.4" text="エーテル波動" castname="エーテル波動" duration="3.7"/>
-    <entry t="226.3" castname="DRK: ノックバック（右上えー）" sync="false" gimmick_icon="knockback.png"/>
-    <entry t="226.3" castname="PLD: ノックバック（右下えー）" sync="false" gimmick_icon="knockback.png"/>
-    <entry t="226.3" castname="DPS・ヒーラー: ノックバック（左下えー）" sync="false" gimmick_icon="knockback.png"/>
-    <entry t="228.3" castname="アルテマ爆雷出現" sync="false"/>
-    <entry t="241.3" castname="12時集合" sync="false" tts="12時えー"/>
-    <entry t="247.5" text="吸着爆雷" castname="吸着爆雷" sync="false"/>
-    <entry t="255.9" castname="エラプション" duration="2.2"/>
-    <entry t="263.9" castname="地獄の火炎" duration="2.7"/>
-    <entry t="275.9" castname="ウィケッドホイール" duration="2.7"/>
-    <entry t="282.8" castname="エリアルブラスト" duration="2.7"/>
-    <entry t="292.4" castname="フェザーレイン" duration="0.7"/>
-    <entry t="297.0" castname="大地の重み" duration="2.7"/>
-    <entry t="303.2" castname="大地の怒り" duration="2.7"/>
+    <next to="p5b" at="0.0" cast="アルテマ"/>
+  </phase>
+  <phase id="p5b" name="P5: The Ultima Weapon（アルテマ以降）">
+    <entry t="0.0" text="アルテマ開始" castname="アルテマ" duration="4.7" tts="次、フルバリア"/>
+    <entry t="11.3" text="エーテル波動" castname="エーテル波動" duration="3.7"/>
+    <entry t="15.2" castname="DRK: ノックバック（右上えー）" sync="false" gimmick_icon="knockback.png"/>
+    <entry t="15.2" castname="PLD: ノックバック（右下えー）" sync="false" gimmick_icon="knockback.png"/>
+    <entry t="15.2" castname="DPS・ヒーラー: ノックバック（左下えー）" sync="false" gimmick_icon="knockback.png"/>
+    <entry t="17.2" castname="アルテマ爆雷出現" sync="false"/>
+    <entry t="30.2" castname="12時集合" sync="false" tts="12時えー"/>
+    <entry t="36.4" text="吸着爆雷" castname="吸着爆雷" sync="false"/>
+    <next to="last-ifrit" at="0.0" cast="エラプション"/>
+    <next to="last-garuda" at="0.0" cast="ウィケッドホイール"/>
+    <next to="last-titan" at="0.0" cast="大地の重み"/>
+  </phase>
+  <phase id="last-ifrit" name="ラストイフリート">
+    <entry t="0.0" text="エラプション" castname="エラプション" duration="2.2" tts="右斜め前えー"/>
+    <entry t="5.5" castname="吸着爆雷起爆" sync="false" tts="次、全体攻撃"/>
+    <entry t="8.0" text="地獄の火炎" castname="地獄の火炎" duration="2.7" tts="そのままの位置でー"/>
+    <next to="last-garuda" at="0.0" cast="ウィケッドホイール"/>
+    <next to="last-titan" at="0.0" cast="大地の重み"/>
+  </phase>
+  <phase id="last-garuda" name="ラストガルーダ">
+    <entry t="0.0" text="ウィケッドホイール" castname="ウィケッドホイール" duration="2.7" tts="待機、その後アルファえー"/>
+    <entry t="6.0" castname="吸着爆雷起爆" sync="false" tts="次、全体攻撃"/>
+    <entry t="6.9" text="エリアルブラスト" castname="エリアルブラスト" duration="2.7" tts="終わったら12時に戻る、フェザー注意"/>
+    <entry t="16.5" castname="フェザーレイン" duration="0.7"/>
+    <next to="last-ifrit" at="0.0" cast="エラプション"/>
+    <next to="last-titan" at="0.0" cast="大地の重み"/>
+  </phase>
+  <phase id="last-titan" name="ラストタイタン">
+    <entry t="0.0" castname="大地の重み1" sync="false" tts="重み、右、左、右"/>
+    <entry t="0.0" castname="大地の重み" duration="2.7"/>
+    <entry t="0.1" castname="大地の重み2" sync="false"/>
+    <entry t="2.1" castname="吸着爆雷起爆" sync="false" tts="次、全体攻撃"/>
+    <entry t="3.1" castname="大地の重み3" sync="false"/>
+    <entry t="6.2" text="大地の怒り" castname="大地の怒り" duration="2.7" tts="そのままの位置でー"/>
+    <next to="last-ifrit" at="0.0" cast="エラプション"/>
+    <next to="last-garuda" at="0.0" cast="ウィケッドホイール"/>
   </phase>
 </timeline>
