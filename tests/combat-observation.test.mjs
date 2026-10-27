@@ -125,3 +125,24 @@ test('HP の 1 回だけの読み違い（67.7→2→67.2）では討伐にし�
     e.hpPercent(15000, 10);
     assert.equal(e.hp, 10);
 });
+
+test('討伐の直前に HP を 1 回だけ大きく読み違えても（4.7→47→0.4）、討伐を逃さない', () => {
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 4.7);
+    e.hpPercent(2500, 47);
+    assert.equal(e.hp, 4.7);
+    e.hpPercent(3000, 0.4);
+    assert.equal(e.hp, 0.4);
+    e.enmity(3500, false);
+    assert.equal(e.status(7000).state, 'ended');
+    // 雑魚（2%）からボス（83%）に替わったときは、次の読み取りで採る
+    const f = make();
+    f.started(0);
+    f.hpPercent(1000, 2);
+    f.hpPercent(1500, 83);
+    assert.equal(f.hp, 2);
+    f.hpPercent(2000, 82.9);
+    assert.equal(f.hp, 82.9);
+});
