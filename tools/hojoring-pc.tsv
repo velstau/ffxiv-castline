@@ -23,7 +23,8 @@ asphodelos-the-fourth-circle-savage	81,82	101	Asphodelos_The_Fourth_Circle_(Sava
 alphascape-v1-0-savage	60	100	Alphascape_V1.0_Savage.xml	'--phase=TYPE C=all' '--any-order=TYPE C@200' '--alias=ホリゾンタルインプロージョン|ヴァーティカルインプロージョン' '--split=p1@ダミングイーディクト=type-a:TYPE A' '--split=type-a@バウル・オブ・アゴニー=type-c:TYPE C' '--split=type-c@ホリゾンタルインプロージョン=type-b:TYPE B' '--split=type-b@ほのお=last:最後' --swap=type-a~type-b
 alphascape-v2-0-savage	61	100	Alphascape_V2.0_Savage.xml
 alphascape-v3-0-savage	62	100	Alphascape_V3.0_Savage.xml
-alphascape-v4-0-savage	63,64	100	Alphascape_V4.0_Savage.xml
+# アルファ編4 の骨組みは --max-length 720 --skip 2（前半はシールド先の 8:11。前半の開幕は削りが足りないと繰り返すので、繰り返しの無い討伐にする。2026-10-28）
+alphascape-v4-0-savage	63,64	100	Alphascape_V4.0_Savage.xml	--any-order=シールド@150 --any-order=連携2回目@200 --any-order=前半最終@330 '--split=a-p1@ガードプログラム=a-2body:2体フェーズ' '--split=a-2body@シールドオプション=a-shield:シールド' '--split=a-shield@ガードプログラム=a-link2:連携2回目' '--split=a-link2@ブレードオプション=a-blade:ブレード' '--split=a-blade@援護プログラムF=a-final:前半最終' --swap=a-shield~a-blade --loop=a-p1@シールドオプション
 dancing-mad-ultimate	1085	100	Dancing_Mad_(Ultimate).xml
 futures-rewritten-ultimate	1079	100	Futures_Rewritten_(Ultimate).xml
 the-omega-protocol-ultimate	1077	100	The Omega Protocol (Ultimate).xml	--role P3@47=無職 --role P3-S=シェア --role P3-C=サークル --role P3-L=レイテント

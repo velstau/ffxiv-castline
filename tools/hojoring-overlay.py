@@ -837,6 +837,9 @@ def main():
                     help='文言を重ねた後で、フェーズをその技で切り分ける（ボス側の分岐）。書き方は split_branches')
     ap.add_argument('--swap', action='append', default=[], metavar='A~B',
                     help='--split で作った A →合間→ B に、逆の順の道筋を足す（両方を通り順だけが入れ替わる区間）')
+    ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
+                    help='そのフェーズの頭からやり直すことがある（アルファ編4 の前半の開幕は、削りが足りないと繰り返す）。'
+                         'その技を読んだら、フェーズの中のその技の時刻へ戻る。技はフェーズの中に 1 回だけのものにする')
     ap.add_argument('--alias', action='append', default=[], metavar='技|技',
                     help='同じ所に来る別の技名（アルファ編1 のホリゾンタル・ヴァーティカルインプロージョン）。'
                          'どれかの名前の予定に全部の名前を付け、どれの詠唱でも合う・移るようにする')
@@ -900,6 +903,12 @@ def main():
         report += split_branches(skeleton, args.split)
     if args.swap:
         report += swap_branches(skeleton, args.swap)
+    for spec in args.loop:
+        pid, cast = spec.split('@')
+        p = next(p for p in skeleton['phases'] if p['attrs']['id'] == pid)
+        e = next(e for e in p['entries'] if e.get('sync') != 'false' and cast in e['name'].split('|'))
+        p['next'].append({'to': pid, 'at': f'{e["_t"]:.1f}', 'cast': e['name']})
+        report.append(f'繰り返し: {pid} で「{cast}」を読んだら {e["_t"]:.1f} 秒へ戻る')
 
     # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
     # タイムラインの作者とライセンスは <author> <license> に書く（2026-10-21 のユーザーの決定）
