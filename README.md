@@ -315,7 +315,7 @@ XML 1 つが 1 コンテンツ。読み込みは `public/js/timeline-xml.js`（`
 利用者が自分の FFLogs クライアントの ID と secret を入れ（client credentials。このブラウザの localStorage
 `castline.fflogs-keys` にだけ保存）、レポートの URL と戦闘を選ぶと XML を作る。通信はブラウザから
 `ja.fflogs.com` へ直接（トークンと API は vel.works・localhost からの通信を許可している。2026-10-20 確認）。
-運営者のキーは使わない。クエリの作りは logs2timeline と同じ（`translate: true`、敵の詠唱は `hostilityType: Enemies`）。
+運営者のキーは使わない。クエリの作りは partyscope（旧 logs2timeline）と同じ（`translate: true`、敵の詠唱は `hostilityType: Enemies`）。
 
 | ファイル | 役割 |
 |---|---|

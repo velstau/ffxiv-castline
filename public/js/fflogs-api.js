@@ -1,6 +1,6 @@
 // FFLogs API v2 をブラウザから直接使う（サーバーを通さない）。キーは利用者が FFLogs で作ったクライアントの ID と secret
 // （client credentials。公開のレポートだけ読める）。トークンと API は vel.works からの通信を許可している（2026-10-20 に確認）。
-// クエリの作りは logs2timeline（FFLogsService.php）と同じ: 地域は ja.fflogs.com、events は translate: true で日本語名、
+// クエリの作りは partyscope（旧 logs2timeline。FFLogsService.php）と同じ: 地域は ja.fflogs.com、events は translate: true で日本語名、
 // 敵の詠唱は hostilityType: Enemies（Casts では filterExpression の source.disposition が効かないため）。
 
 const TOKEN_URL = 'https://ja.fflogs.com/oauth/token';
