@@ -153,6 +153,7 @@ export class TimelineEngine {
         this.lastHpAt = null;
         this.hp = null;
         this.pendingHp = null; // 大きく下がって確かめ待ちの HP {at, value}
+        this.hpAliveAt = null; // 最後に KILL_HP より高い HP を採った時刻（敵対リストが消えた後なら、ボスは生きている）
         this.blackSince = null;
         this.blackLastAt = null; // 最後に黒かったコマの時刻
         this.haltedStart = null;
@@ -242,6 +243,7 @@ export class TimelineEngine {
             this.hp = null;
             this.lastHpAt = null;
             this.pendingHp = null;
+            this.hpAliveAt = null;
             this.log(at, 'ボスが決まらないまま敵対リストがまた出たので、ここから次のプルとして数える');
         }
         if (shown) {
@@ -290,11 +292,20 @@ export class TimelineEngine {
     /**
      * 討伐の判定に使う HP（無ければ null）。高い値を確かめ待ちの間は、古い低い値で討伐にしない
      * （雑魚の 2% の後にボスの 83% を読み、敵対リストの読み取りが途切れたとき。Codex のレビュー）。
-     * 確かめる期限を過ぎた値は読み違いとみなし、低い値で討伐にしてよい（討伐の直前に 2→27 と 1 回だけ読み違えたとき）
+     * 確かめる期限を過ぎた値は読み違いとみなし、低い値で討伐にしてよい（討伐の直前に 2→27 と 1 回だけ読み違えたとき）。
+     * 敵対リストが消えた後に KILL_HP より高い HP を読めていれば、ボスは生きていて敵対リストの読み取りが途切れただけなので、
+     * 討伐にしない（2026-10-28 ヘビー級1 零式の録画: HP 10.5→10→9.5 と読めている間に敵対リストを 5 秒読めず、討伐になった。
+     * 本当の討伐では、敵対リストが消えると同時に HP も読めなくなる）
      */
     hpForKill(at) {
         const pending = this.pendingHp;
-        return pending !== null && pending.value > this.hp && at - pending.at <= HP_JUMP_CONFIRM_MS ? null : this.hp;
+        if (pending !== null && pending.value > this.hp && at - pending.at <= HP_JUMP_CONFIRM_MS) {
+            return null;
+        }
+        if (this.hpAliveAt !== null && this.enmityOffSince !== null && this.hpAliveAt > this.enmityOffSince) {
+            return null;
+        }
+        return this.hp;
     }
 
     hpPercent(at, value) {
@@ -316,6 +327,9 @@ export class TimelineEngine {
         this.pendingHp = null;
         this.hp = value;
         this.lastHpAt = at;
+        if (value > KILL_HP) {
+            this.hpAliveAt = at;
+        }
         if (this.state === 'combat') {
             const rule = this.findRule((w) => w.hp !== undefined && value <= w.hp);
             if (rule) {
@@ -483,6 +497,7 @@ export class TimelineEngine {
         this.hp = null;
         this.lastHpAt = null;
         this.pendingHp = null;
+        this.hpAliveAt = null;
         // ボスが何体もいるときは最初に読めた技で決める（cast）。それまでは戦闘開始を 0 秒として数える
         this.phase = this.starts.length > 1 ? null : this.starts[0];
         this.phaseStartAt = startAt;

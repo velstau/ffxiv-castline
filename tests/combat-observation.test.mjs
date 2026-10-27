@@ -170,3 +170,23 @@ test('討伐の直前に 1 回だけ高く読み違えても（2→27）、確�
     assert.equal(e.status(7000).state, 'combat'); // 確かめ待ちの間は待つ
     assert.equal(e.status(7600).state, 'ended');
 });
+
+test('敵対リストを読めない間も 3% より高い HP を読めていれば、ボスは生きているので討伐にしない', async () => {
+    const { killSuspected } = await import('../public/js/cast-recorder.js');
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 10.5);
+    e.enmity(2500, false);
+    e.hpPercent(3000, 10.4);
+    e.hpPercent(4500, 10);
+    e.hpPercent(7000, 2.9); // 読み取りが途切れている間に 3% 以下まで減った
+    assert.equal(killSuspected(e, 8000), false);
+    assert.equal(e.status(8000).state, 'combat');
+    // 敵対リストがまた出続け、消えると同時に HP も読めなくなった（本当の討伐）
+    e.enmity(9000, true); e.enmity(9500, true); e.enmity(10000, true);
+    e.hpPercent(10000, 0.4);
+    e.enmity(10500, false);
+    e.hpPercent(10500, null);
+    assert.equal(e.status(13600).state, 'ended');
+});
