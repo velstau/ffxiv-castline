@@ -104,7 +104,7 @@ async function loadKill(client, encounter, difficulty, page, territory, maxLengt
     const ranked = [...list].sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0))
         .map((r, i) => ({ code: r.report.code, fightID: r.report.fightID, duration: r.duration, key: `kill-${encounter}-${difficulty}-${page}-${i}` }))
         .filter((c) => !(c.duration > maxLength * 1000)).slice(0, 5 + skip);
-    const kill = await tryKills(client, ranked, territory, maxLength, skip);
+    const { kill, skip: left } = await tryKills(client, ranked, territory, maxLength, skip);
     if (kill) {
         return { ...kill, encounterName: ranking?.name };
     }
@@ -115,8 +115,8 @@ async function loadKill(client, encounter, difficulty, page, territory, maxLengt
     console.warn(`  最近の討伐 ${recent.kills.length} 件（長いもの: ${recent.kills.slice(0, 3).map((k) => clock(k.duration)).join('・')}、上限 ${Number.isFinite(maxLength) ? clock(maxLength * 1000) : 'なし'}）`);
     // 保存の名前は並びの番号のまま（場所ごとの検索を保存しているので、並びは変わらない）
     const candidates = recent.kills.map((r, i) => ({ ...r, key: `kill-${encounter}-${difficulty}-recent-${i}` }))
-        .filter((c) => c.duration <= maxLength * 1000).slice(0, 8 + skip);
-    const found = await tryKills(client, candidates, territory, maxLength, skip);
+        .filter((c) => c.duration <= maxLength * 1000).slice(0, 8 + left);
+    const { kill: found } = await tryKills(client, candidates, territory, maxLength, left);
     if (found) {
         return { ...found, encounterName: recent.name };
     }
@@ -159,9 +159,9 @@ async function tryKills(client, candidates, territory, maxLength = Infinity, ski
             skip--;
             continue;
         }
-        return kill;
+        return { kill, skip };
     }
-    return null;
+    return { kill: null, skip }; // skip はまだ飛ばしていない件数（ランキングで飛ばした分を、最近の討伐で重ねて飛ばさない）
 }
 
 const RECENT_DAYS = 180;

@@ -548,6 +548,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     # 担当ごとの区間の文言がどの担当でも同じなら（絶オメガ P3 の「アクション1開始」、絶バハ P5 の「次は、ギガフレア」など）、
     # 担当名を付けずに 1 つだけ出し、読み上げも戻す
     family = {r for rs in roles.values() for _, r, _ in rs}
+    if len(family) < 2:
+        family = set()  # 担当が 1 つだけなら、その担当の行は担当専用（全担当で同じとはいえない）
     for phase in skeleton['phases']:
         phase['entries'] = [e for e in phase['entries'] if not (e.get('_shadowed') and not e.get('label') and not e.get('_notices'))]
         if family:
