@@ -302,7 +302,9 @@ export class TimelineEngine {
         if (pending !== null && pending.value > this.hp && at - pending.at <= HP_JUMP_CONFIRM_MS) {
             return null;
         }
-        if (this.hpAliveAt !== null && this.enmityOffSince !== null && this.hpAliveAt > this.enmityOffSince) {
+        // 生きている証拠は ENMITY_OFF_END_MS で切れる（4%→1%→読めない、と倒した後まで止め続けない。Codex のレビュー）
+        if (this.hpAliveAt !== null && this.enmityOffSince !== null && this.hpAliveAt > this.enmityOffSince
+            && at - this.hpAliveAt < ENMITY_OFF_END_MS) {
             return null;
         }
         return this.hp;

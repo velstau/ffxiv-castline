@@ -180,7 +180,8 @@ test('敵対リストを読めない間も 3% より高い HP を読めていれ
     e.enmity(2500, false);
     e.hpPercent(3000, 10.4);
     e.hpPercent(4500, 10);
-    e.hpPercent(7000, 2.9); // 読み取りが途切れている間に 3% 以下まで減った
+    e.hpPercent(6000, 9.6); // 敵対リストを 5 秒読めない間も、ボスの HP は読めている（2026-10-28 の録画）
+    e.hpPercent(7500, 9.5);
     assert.equal(killSuspected(e, 8000), false);
     assert.equal(e.status(8000).state, 'combat');
     // 敵対リストがまた出続け、消えると同時に HP も読めなくなった（本当の討伐）
@@ -189,4 +190,16 @@ test('敵対リストを読めない間も 3% より高い HP を読めていれ
     e.enmity(10500, false);
     e.hpPercent(10500, null);
     assert.equal(e.status(13600).state, 'ended');
+});
+
+test('敵対リストを読めない間に 4%→1% と読み、HP も読めなくなったら（倒した）、3 秒後に討伐にする', () => {
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.enmity(2000, false);
+    e.hpPercent(2500, 4);
+    e.hpPercent(3000, 1);
+    e.hpPercent(3500, null);
+    assert.equal(e.status(5400).state, 'combat'); // 4% を読んでから 3 秒たつまでは待つ
+    assert.equal(e.status(5600).state, 'ended');
 });
