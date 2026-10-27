@@ -845,20 +845,32 @@ def hub_branches(skeleton, spec):
             if all(not set(e['name'].split('|')) & names(synced(x)) for x, _ in members if x is not m):
                 own.setdefault((id(m), e['name']), (m, e['name'], f'{e["_t"]:.1f}'))
     later = decide + list(own.values())
+    # 区間から戻る待ちは、予定の無い別のフェーズにする（待ちの頭の予定は、前のフェーズから初めて入るときだけのもの。Codex 指摘 10-28）
+    hub_name = hub['attrs'].get('name') or hub_id
+    again_name = f'{hub_name[:-1]}・2 回目から）' if hub_name.endswith('）') else f'{hub_name}（2 回目から）'
+    again = {'attrs': {'id': f'{hub_id}-again', 'name': again_name},
+             'entries': [], 'next': [dict(r) for r in hub['next']]}
+    skeleton['phases'].insert(skeleton['phases'].index(hub) + 1, again)
+    for m, _ in members:
+        for r in m['next']:
+            if r['to'] == hub_id:
+                r['to'] = again['attrs']['id']
+    # 待ちに入るきっかけの技を逃しても、区間の技で移る（p1 のアルティメット・クロスオーバー）
+    before = [p for p in skeleton['phases'] if any(r.get('to') == hub_id for r in p.get('next', []))]
     dsts = {}
     for dst, cast, _ in later:
         dsts.setdefault(cast, set()).add(id(dst))
     cands = [(dst, first, '0.0') for first, dst in entry_of.items()] + [c for c in later if len(dsts[c[1]]) == 1]
-    for p in [hub, *(m for m, end in members if end), *(phases[w] for w in waits)]:
-        to = {r['cast']: r['to'] for r in p['next']}
+    for p in [*before, hub, again, *(m for m, end in members if end), *(phases[w] for w in waits)]:
+        to = {r['cast']: r['to'] for r in p['next'] if r.get('cast')}
         mine = names(p['entries'])
         inside = {x['attrs']['id'] for x in waits.get(p['attrs']['id'], [])}  # 見分け待ちは、自分の区間へは自分の決める技で移る
         for dst, cast, t in cands:
             d = dst['attrs']['id']
             if d != p['attrs']['id'] and d not in inside and not mine & set(cast.split('|')) and to.setdefault(cast, d) == d \
-                    and not any(r['cast'] == cast and r['to'] == d for r in p['next']):
+                    and not any(r.get('cast') == cast and r['to'] == d for r in p['next']):
                 p['next'].append({'to': d, 'at': t, 'cast': cast})
-    ids = {hub_id, *(m['attrs']['id'] for m, _ in members)}
+    ids = {hub_id, again['attrs']['id'], *(m['attrs']['id'] for m, _ in members)}
     skeleton.setdefault('_backed', set()).update((a, b) for a in ids for b in ids)
     report.append(f'待ち {hub_id}: {"・".join(m["attrs"]["id"] for m, _ in members)}')
     return report

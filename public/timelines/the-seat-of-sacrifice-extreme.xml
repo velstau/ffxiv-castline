@@ -62,6 +62,9 @@
     <entry t="269.2" text="タンク強攻撃" castname="漆黒の魔剣" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="285.4" text="タンク強攻撃" castname="フェイタルクリーヴ" duration="3.7" gimmick_icon="tankbuster.png"/>
     <next to="late" at="0.0" cast="アルティメット・クロスオーバー"/>
+    <next to="wol-five" at="0.0" cast="五連魔"/>
+    <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
+    <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
   <phase id="late" name="後半（次の種を待つ）">
     <entry t="0.0" castname="アルティメット・クロスオーバー" duration="4.7"/>
@@ -72,6 +75,17 @@
     <next to="late-wol-wb-wol-final" at="0.0" cast="幻光召喚"/>
     <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
+    <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
+    <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
+  </phase>
+  <phase id="late-again" name="後半（次の種を待つ・2 回目から）">
+    <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
+    <next to="wol-five" at="0.0" cast="五連魔"/>
+    <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
+    <next to="late-wol-wb-wol-final" at="0.0" cast="幻光召喚"/>
+    <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー"/>
+    <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
+    <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
@@ -111,7 +125,7 @@
     <entry t="51.1" castname="エンシェントドラゴンダイブ" duration="4.7"/>
     <entry t="58.9" castname="エンシェントドラゴンダイブ" sync="false" tts="次は、全体攻撃"/>
     <entry t="64.3" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
-    <next to="late" at="0.0" cast="エンドオール"/>
+    <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
@@ -122,7 +136,7 @@
   <phase id="wol-five" name="五連魔">
     <entry t="0.0" castname="五連魔" duration="11.7"/>
     <entry t="38.8" castname="エンシェントドラゴンダイブ" duration="4.7"/>
-    <next to="late" at="0.0" cast="エンシェントドラゴンダイブ"/>
+    <next to="late-again" at="0.0" cast="エンシェントドラゴンダイブ"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="late-wol-wb-wol-final" at="0.0" cast="幻光召喚"/>
@@ -147,7 +161,7 @@
     <entry t="45.2" castname="リミットブレイク" sync="false" tts="次は、リミットブレイク。"/>
     <entry t="46.2" castname="リミットブレイク" duration="5.7"/>
     <entry t="64.4" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。" window="20 10"/>
-    <next to="late" at="0.0" cast="エンドオール"/>
+    <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー"/>
@@ -175,7 +189,7 @@
     <entry t="54.8" text="リミットブレイク" castname="リミットブレイク" duration="5.7" tts="次は、リミットブレイク。"/>
     <entry t="61.0" castname="ブライトブレイバー" sync="false"/>
     <entry t="73.2" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
-    <next to="late" at="0.0" cast="エンドオール"/>
+    <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー"/>
@@ -203,7 +217,7 @@
     <entry t="69.7" castname="エンシェントドラゴンダイブ" duration="4.7"/>
     <entry t="81.7" castname="トゥルー・インビンシブル" sync="false"/>
     <entry t="82.3" castname="エンドオール" sync="false" tts="次は、タンク強攻撃。"/>
-    <next to="late" at="0.0" cast="エンドオール"/>
+    <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
