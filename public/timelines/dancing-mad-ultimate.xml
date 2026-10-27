@@ -61,30 +61,29 @@
   <phase id="p2" name="P2: Forsaken Kefka">
     <entry t="7.3" text="終末の双腕" castname="終末の双腕" duration="4.7"/>
     <entry t="20.5" text="ミッシング" castname="ミッシング" duration="6.7"/>
-    <entry t="40.4" castname="スペル1" sync="false" tts="いっかいめ"/>
     <entry t="40.6" castname="光の波動" sync="false"/>
+    <entry t="41.2" text="スペル1" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="いっかいめ"/>
     <entry t="43.6" text="過去/未来" castname="未来の終焉|過去の終焉" duration="6.1"/>
     <entry t="50.3" castname="過去の終焉" sync="false"/>
-    <entry t="51.3" castname="スペルハザード・ウェーブ" sync="false"/>
-    <entry t="51.6" castname="スペル2" sync="false" tts="にかいめ"/>
+    <entry t="51.3" text="スペル2" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="にかいめ"/>
     <entry t="56.4" text="誘導注意" castname="消滅の脚" duration="4.7"/>
-    <entry t="62.6" castname="スペル3" sync="false" tts="さんかいめ"/>
+    <entry t="62.3" text="スペル3" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="さんかいめ"/>
     <entry t="64.7" text="過去/未来" castname="未来の終焉|過去の終焉" duration="6.1"/>
     <entry t="71.4" castname="過去の終焉" sync="false"/>
     <entry t="71.7" castname="光の波動" sync="false"/>
-    <entry t="72.7" castname="スペル4" sync="false" tts="よんかいめ"/>
+    <entry t="72.3" text="スペル4" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="よんかいめ"/>
     <entry t="77.6" text="誘導注意" castname="消滅の脚" duration="4.7"/>
-    <entry t="82.7" castname="スペル5" sync="false" tts="ごかいめ"/>
+    <entry t="83.4" text="スペル5" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="ごかいめ"/>
     <entry t="85.6" text="過去/未来" castname="未来の終焉|過去の終焉" duration="6.1"/>
     <entry t="92.4" castname="未来の終焉" sync="false"/>
     <entry t="92.8" castname="光の波動" sync="false"/>
-    <entry t="93.6" castname="スペル6" sync="false" tts="ろくかいめ"/>
+    <entry t="93.4" text="スペル6" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="ろくかいめ"/>
     <entry t="98.6" text="誘導注意" castname="消滅の脚" duration="4.7"/>
-    <entry t="105.7" castname="スペル7" sync="false" tts="ななかいめ"/>
+    <entry t="104.4" text="スペル7" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="ななかいめ"/>
     <entry t="106.7" text="過去/未来" castname="未来の終焉|過去の終焉" duration="6.1"/>
     <entry t="113.4" castname="過去の終焉" sync="false"/>
     <entry t="113.8" castname="光の波動" sync="false"/>
-    <entry t="114.7" castname="スペル8" sync="false" tts="はちかいめ"/>
+    <entry t="114.4" text="スペル8" castname="スペルハザード・ウェーブ|スペルハザード・スキャッター|スペルハザード・ドライブ" sync="false" tts="はちかいめ"/>
     <entry t="119.6" text="誘導注意" castname="消滅の脚" duration="4.7"/>
     <entry t="128.8" text="裁きの光" castname="裁きの光" duration="4.7" tts="全体攻撃"/>
     <entry t="142.0" text="トライン" castname="トライン" duration="2.7"/>

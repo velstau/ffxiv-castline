@@ -54,6 +54,10 @@ SAY = re.compile(r'^(?P<who>[^:「」^]+?):(?P<what>.+)$')
 # 古い書き方（ACT のログの行そのもの）: 「ボス名:[0-9A-F]{4}:技名」は技の発動、「ボス名 starts using 技名 on 対象.」は詠唱開始
 HIT_ID = re.compile(r'^(?P<who>[^:「」^]+?):\[0-9A-F\]\{4\}:(?P<what>[^:]+)$')
 CAST_EN = re.compile(r'^(?P<who>[^:「」^]+?) starts using (?P<what>.+?)(?: on .*)?\.?$')
+# 技名の後ろだけの書き方（「インプロージョン」の構え」で、ホリゾンタル・ヴァーティカルの両方に当てる）。名前は頭に * を付けて返し、infer_names で技名にする
+CAST_TAIL = re.compile(r'^(?P<what>[^:「」^]+)」の構え。?$')
+# 技名の前だけの書き方（「イフリートの「フレイムクラッ」）。名前は後ろに * を付けて返す
+HIT_HEAD = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>[^」]+)$')
 
 
 def expand(pattern):
@@ -77,6 +81,12 @@ def classify(sync):
         m = rx.match(sync)
         if m:
             return kind, expand(m.group('what'))
+    m = CAST_TAIL.match(sync)
+    if m:
+        return 'cast', ['*' + n for n in expand(m.group('what'))]
+    m = HIT_HEAD.match(sync)
+    if m:
+        return 'hit', [n + '*' for n in expand(m.group('what'))]
     if SAY.match(sync):
         return 'say', []
     return 'log', []
@@ -362,9 +372,13 @@ TEXT_SPLIT = re.compile(r'[+＋/／()（）【】「」\s]')
 
 
 def infer_names(sections, names):
-    """同期の指定（sync）が無い行で、表示の文言に技名があれば、その技の発動で合わせる"""
+    """同期の指定（sync）が無い行で、表示の文言に技名があれば、その技の発動で合わせる。
+    技名の後ろだけ・前だけの同期（classify の * 付きの名前）は、その後ろで終わる・前で始まる技名すべてにする"""
+    part = lambda n, m: m.endswith(n[1:]) if n.startswith('*') else m.startswith(n[:-1]) if n.endswith('*') else m == n
     for sec in sections:
         for it in sec['items']:
+            if any(n.startswith('*') or n.endswith('*') for n in it['names']):
+                it['names'] = sorted({m for n in it['names'] for m in names if part(n, m)}) or [n.strip('*') for n in it['names']]
             if it['kind'] != 'none' or not it['text']:
                 continue
             found = [w for w in TEXT_SPLIT.split(it['text']) if w in names]
@@ -388,7 +402,7 @@ def auto_phases(sections, events):
     return out
 
 
-def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=()):
+def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order={}):
     report = []
     min_offsets = {}  # フェーズごとの、前の区間のずれ（区間は文書の順に進むとみなす）
     used_roles = set()  # 表示に付けた担当名（--role とロールの条件）
@@ -401,8 +415,11 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=
             report.append(f'区間 {sec["name"]}: フェーズ {phase_id} またはその技の一覧（--events）がありません。飛ばします')
             continue
         entries = phase['entries']
-        # どの順にも来る区間は、直前の（順に進む）区間の終わりより後にある
-        low = section_ends.get(phase_id, -1e9) if sec['name'] in any_order else min_offsets.get(phase_id, -1e9)
+        # どの順にも来る区間は、直前の（順に進む）区間の終わりより後にある。下限の秒の指定（TYPE C@200）があればそれ
+        if sec['name'] in any_order:
+            low = section_ends.get(phase_id, -1e9) if any_order[sec['name']] is None else any_order[sec['name']]
+        else:
+            low = min_offsets.get(phase_id, -1e9)
         offset, support = estimate_offset(sec['items'], events, low)
         if offset is None:
             report.append(f'区間 {sec["name"]}: 技名の合う技がなく、ずれを決められません。飛ばします')
@@ -668,6 +685,20 @@ def apply_cast_durations(skeleton, path, file):
 SPLIT_SPEC = re.compile(r'([^@]+)@([^=]+)=([^:#]+)(?::([^#]*))?(?:#(.+))?')
 
 
+def own_cast(rule, phase, phases):
+    """移る技が phase の中にもあるとき（B の後へ移る「ほのお」が A にもある）は、移り先の予定のうち phase に無い最初の技で移る"""
+    if not rule.get('cast'):
+        return rule
+    here = {n for e in phase['entries'] if e.get('sync') != 'false' for n in e['name'].split('|')}
+    if not here & set(rule['cast'].split('|')):
+        return rule
+    target = phases[rule['to']]
+    e = next((e for e in target['entries'] if e.get('sync') != 'false' and not here & set(e['name'].split('|'))), None)
+    if e is None:
+        raise SystemExit(f'{phase["attrs"]["id"]} → {rule["to"]}: 移り先に {phase["attrs"]["id"]} に無い技がありません')
+    return {**rule, 'cast': e['name'], 'at': f'{e["_t"]:.1f}'}
+
+
 def swap_branches(skeleton, specs):
     """--swap: 「A~B」は、--split で作った A →（合間）→ B の並びに、B' →（合間'）→ A' の逆の順の道筋を足す（写しを作る）。
     両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
@@ -686,13 +717,17 @@ def swap_branches(skeleton, specs):
         clone = lambda p, nxt: {'attrs': {**p['attrs'], 'id': p['attrs']['id'] + '-2nd' if p is a else p['attrs']['id'] + '-alt',
                                           'name': (p['attrs'].get('name') or p['attrs']['id']) + ('（後）' if p is a else '（先）' if p is b else '（逆の順）')},
                                 'entries': [dict(e) for e in p['entries']], 'next': nxt}
-        a2 = clone(a, [dict(n) for n in b['next']])  # 2 番目の A の後は、元の B の後と同じ所へ
-        mid2 = clone(mid, [{'to': a2['attrs']['id'], 'at': '0.0', 'cast': cast_a}])
-        b2 = clone(b, [{'to': mid2['attrs']['id'], 'at': '0.0', 'cast': cast_m}])
-        pred['next'].append({'to': b2['attrs']['id'], 'at': '0.0', 'cast': cast_b})
+        a2 = clone(a, [own_cast(dict(n), a, phases) for n in b['next']])  # 2 番目の A の後は、元の B の後と同じ所へ
+        phases[a2['attrs']['id']] = a2
+        mid2 = clone(mid, [own_cast({'to': a2['attrs']['id'], 'at': '0.0', 'cast': cast_a}, mid, phases)])
+        phases[mid2['attrs']['id']] = mid2
+        b2 = clone(b, [own_cast({'to': mid2['attrs']['id'], 'at': '0.0', 'cast': cast_m}, b, phases)])
+        phases[b2['attrs']['id']] = b2
+        pred['next'].append(own_cast({'to': b2['attrs']['id'], 'at': '0.0', 'cast': cast_b}, pred, phases))
         at = skeleton['phases'].index(b) + 1
         skeleton['phases'][at:at] = [b2, mid2, a2]
-        report.append(f'逆の順の道筋: {pred["attrs"]["id"]} →「{cast_b}」{b2["attrs"]["id"]} →「{cast_m}」{mid2["attrs"]["id"]} →「{cast_a}」{a2["attrs"]["id"]}')
+        path = ' → '.join(f'「{n["cast"]}」{n["to"]}' for n in (pred['next'][-1], b2['next'][0], mid2['next'][0], *a2['next']))
+        report.append(f'逆の順の道筋: {pred["attrs"]["id"]} → {path}')
     return report
 
 
@@ -723,12 +758,12 @@ def split_branches(skeleton, specs):
         moved.sort(key=lambda e: e['_t'])
         shift = lambda n: {**n, 'time': f'{float(n["time"]) - t0:g}'} if n.get('time') else n
         new = {'attrs': {'id': new_id, **({'name': name} if name else {})}, 'entries': moved, 'next': [shift(n) for n in p['next']]}
-        p['next'] = [{'to': new_id, 'at': '0.0', 'cast': cast}]
+        p['next'] = [{'to': new_id, 'at': '0.0', 'cast': cut['name']}]  # 別名（--alias）があればそれでも移る
         skeleton['phases'].insert(skeleton['phases'].index(p) + 1, new)
         phases[new_id] = new
         report.append(f'フェーズを分ける: {src} の {t0:.1f} 秒「{cast}」から後を {new_id}（{len(moved)} 件）')
         if group:
-            groups.setdefault(group, []).append((new_id, cast, src))
+            groups.setdefault(group, []).append((new_id, cut['name'], src))
     for group, members in groups.items():
         rule = lambda m: {'to': m[0], 'at': '0.0', 'cast': m[1]}
         after = phases[members[-1][0]]['next']  # 組の後に続く移り方（いちばん後の区間が受け継いでいる）
@@ -781,8 +816,12 @@ def main():
                     help='文言を重ねた後で、フェーズをその技で切り分ける（ボス側の分岐）。書き方は split_branches')
     ap.add_argument('--swap', action='append', default=[], metavar='A~B',
                     help='--split で作った A →合間→ B に、逆の順の道筋を足す（両方を通り順だけが入れ替わる区間）')
-    ap.add_argument('--any-order', action='append', default=[], metavar='区間',
-                    help='どの順にも来る区間。後の区間のずれの下限にしない')
+    ap.add_argument('--alias', action='append', default=[], metavar='技|技',
+                    help='同じ所に来る別の技名（アルファ編1 のホリゾンタル・ヴァーティカルインプロージョン）。'
+                         'どれかの名前の予定に全部の名前を付け、どれの詠唱でも合う・移るようにする')
+    ap.add_argument('--any-order', action='append', default=[], metavar='区間[@秒]',
+                    help='どの順にも来る区間。後の区間のずれの下限にしない。'
+                         '@秒 はずれの下限（省略時は直前の区間の終わり。元ファイルの区間の並びと討伐の順が違うとき）')
     ap.add_argument('--events-all', metavar='PATH',
                     help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
@@ -819,12 +858,23 @@ def main():
         where, name = r.split('=', 1)
         sec, _, start = where.partition('@')
         roles.setdefault(sec, []).append((float(start or 0), name, variant))
+    any_order = {}
+    for spec in args.any_order:
+        name, _, low = spec.partition('@')
+        any_order[name] = float(low) if low else None
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
-                     {sec: sorted(rs) for sec, rs in roles.items()}, set(args.any_order))
+                     {sec: sorted(rs) for sec, rs in roles.items()}, any_order)
     for fid in fights:
         split_phases(skeleton, fid)
     if args.cast_durations:
         report += apply_cast_durations(skeleton, args.cast_durations, re.sub(r'\.xml$', '', args.out.rsplit('/', 1)[-1]))
+    for group in args.alias:
+        group = group.split('|')
+        for p in skeleton['phases']:
+            for e in p['entries']:
+                names = e['name'].split('|')
+                if set(names) & set(group):
+                    e['name'] = '|'.join(names + [n for n in group if n not in names])
     if args.split:
         report += split_branches(skeleton, args.split)
     if args.swap:

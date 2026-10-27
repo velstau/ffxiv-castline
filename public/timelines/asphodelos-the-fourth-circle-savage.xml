@@ -27,10 +27,9 @@
     <entry t="108.8" text="ピナクス" castname="ピナクス" duration="4.7" tts="次は、床を確認。"/>
     <entry t="124.2" castname="ピナクス発動１" sync="false"/>
     <entry t="127.2" castname="ピナクス発動２" sync="false"/>
-    <entry t="130.4" castname="シフティングストライクS" duration="7.7"/>
+    <entry t="130.4" text="シフティングストライク" castname="シフティングストライク|シフティングストライクS|シフティングストライクW" duration="7.7"/>
     <entry t="137.2" castname="ピナクス発動３" sync="false"/>
-    <entry t="139.7" castname="シフティングストライク" sync="false"/>
-    <entry t="148.2" castname="ピナクス発動４" sync="false"/>
+    <entry t="148.4" castname="ピナクス発動４" sync="false"/>
     <entry t="151.6" text="タンク強攻撃１" castname="エレガントイヴィセレーション" duration="4.7" tts="次は、タンク強攻撃2回。" gimmick_icon="tankbuster.png"/>
     <entry t="159.6" castname="タンク強攻撃２" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="159.7" castname="エレガントイヴィセレーション" sync="false"/>
@@ -57,11 +56,10 @@
     <entry t="359.1" text="ピナクス" castname="ピナクス" duration="4.7"/>
     <entry t="374.0" castname="ピナクス発動１" sync="false"/>
     <entry t="377.0" castname="ピナクス発動２" sync="false"/>
-    <entry t="380.9" castname="シフティングストライクW" duration="7.7"/>
+    <entry t="380.9" text="シフティングストライク" castname="シフティングストライク|シフティングストライクS|シフティングストライクW" duration="7.7"/>
     <entry t="387.0" castname="ピナクス発動３" sync="false"/>
-    <entry t="390.0" castname="シフティングストライク" sync="false"/>
-    <entry t="398.0" castname="ピナクス発動４" sync="false"/>
     <entry t="398.1" text="デコレーション" castname="デコレーション" duration="4.7"/>
+    <entry t="398.7" castname="ピナクス発動４" sync="false"/>
     <entry t="407.3" text="デコレーション" castname="デコレーション" duration="4.7"/>
     <entry t="416.5" text="デコレーション" castname="デコレーション" duration="4.7"/>
     <entry t="431.4" castname="時間切れ" sync="false"/>

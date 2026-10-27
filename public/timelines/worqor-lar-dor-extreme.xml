@@ -29,9 +29,8 @@
     <entry t="65.5" castname="火山弾" duration="2.2"/>
     <entry t="65.5" castname="攻撃" sync="false"/>
     <entry t="68.6" castname="攻撃" sync="false"/>
-    <entry t="71.6" castname="スリザーストライク" duration="6.2"/>
-    <entry t="77.4" castname="スリザーXXX" sync="false"/>
-    <entry t="78.4" castname="氷注意" sync="false" tts="氷注意"/>
+    <entry t="71.6" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
+    <entry t="79.1" castname="氷注意" sync="false" tts="氷注意"/>
     <entry t="84.7" castname="攻撃" sync="false"/>
     <entry t="87.7" castname="攻撃" sync="false"/>
     <entry t="90.8" text="マウンテンファイア / 7" castname="マウンテンファイア" duration="3.7" tts="連続塔処理"/>
@@ -64,9 +63,8 @@
     <entry t="157.5" castname="攻撃" sync="false"/>
     <entry t="158.5" castname="火山弾" duration="2.2"/>
     <entry t="160.5" castname="攻撃" sync="false"/>
-    <entry t="162.6" castname="スリザーブレス" duration="6.2"/>
-    <entry t="169.2" castname="スリザーXXX" sync="false"/>
-    <entry t="174.2" castname="雷:散開" sync="false" tts="散開" gimmick_icon="spread.png"/>
+    <entry t="162.6" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
+    <entry t="174.0" castname="雷:散開" sync="false" tts="散開" gimmick_icon="spread.png"/>
     <entry t="174.6" castname="攻撃" sync="false"/>
     <entry t="177.7" castname="攻撃" sync="false"/>
     <entry t="180.4" castname="スカージ・オブ・サンダー" sync="false"/>
@@ -118,8 +116,7 @@
     <entry t="40.7" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="42.3" castname="攻撃" sync="false"/>
     <entry t="45.4" castname="攻撃" sync="false"/>
-    <entry t="48.4" castname="スリザーコイル" duration="6.2"/>
-    <entry t="55.2" castname="スリザーXXX" sync="false"/>
+    <entry t="48.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="60.5" castname="攻撃" sync="false"/>
     <entry t="62.5" text="サンダーブレス" castname="サンダーブレス" duration="6.7"/>
     <entry t="73.5" castname="氷:上 雷:下" sync="false" tts="氷は上へ　雷は下"/>
@@ -129,8 +126,7 @@
     <entry t="80.8" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="83.7" castname="攻撃" sync="false"/>
     <entry t="86.8" castname="攻撃" sync="false"/>
-    <entry t="88.8" castname="スリザーストライク" duration="6.2"/>
-    <entry t="95.5" castname="スリザーXXX" sync="false"/>
+    <entry t="88.8" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="100.9" castname="攻撃" sync="false"/>
     <entry t="101.9" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="110.0" castname="攻撃" sync="false"/>
@@ -150,8 +146,7 @@
     <entry t="44.4" castname="攻撃" sync="false"/>
     <entry t="47.4" castname="攻撃" sync="false"/>
     <entry t="50.5" castname="攻撃" sync="false"/>
-    <entry t="52.5" castname="スリザーコイル" duration="6.2"/>
-    <entry t="59.2" castname="スリザーXXX" sync="false"/>
+    <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-ice" at="0.0" cast="コールドディザスター"/>
   </phase>
   <phase id="p3-ice" name="P3: 氷">
@@ -178,8 +173,7 @@
     <entry t="46.1" castname="攻撃" sync="false"/>
     <entry t="49.1" castname="攻撃" sync="false"/>
     <entry t="52.2" castname="攻撃" sync="false"/>
-    <entry t="54.2" castname="スリザーブレス" duration="6.2"/>
-    <entry t="61.4" castname="スリザーXXX" sync="false"/>
+    <entry t="54.2" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="66.1" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
     <entry t="66.3" castname="攻撃" sync="false"/>
     <entry t="69.3" castname="ノーザンクロス" duration="2.7"/>
@@ -216,8 +210,7 @@
     <entry t="46.1" castname="攻撃" sync="false"/>
     <entry t="49.1" castname="攻撃" sync="false"/>
     <entry t="52.2" castname="攻撃" sync="false"/>
-    <entry t="54.2" castname="スリザーブレス" duration="6.2"/>
-    <entry t="61.4" castname="スリザーXXX" sync="false"/>
+    <entry t="54.2" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="66.1" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
     <entry t="66.3" castname="攻撃" sync="false"/>
     <entry t="69.3" castname="ノーザンクロス" duration="2.7"/>
@@ -244,8 +237,7 @@
     <entry t="44.4" castname="攻撃" sync="false"/>
     <entry t="47.4" castname="攻撃" sync="false"/>
     <entry t="50.5" castname="攻撃" sync="false"/>
-    <entry t="52.5" castname="スリザーコイル" duration="6.2"/>
-    <entry t="59.2" castname="スリザーXXX" sync="false"/>
+    <entry t="52.5" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-thunder-2nd" at="0.0" cast="フェザーヘイル"/>
   </phase>
   <phase id="p3-thunder-2nd" name="P3: 雷（後）">
@@ -263,8 +255,7 @@
     <entry t="40.7" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="42.3" castname="攻撃" sync="false"/>
     <entry t="45.4" castname="攻撃" sync="false"/>
-    <entry t="48.4" castname="スリザーコイル" duration="6.2"/>
-    <entry t="55.2" castname="スリザーXXX" sync="false"/>
+    <entry t="48.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="60.5" castname="攻撃" sync="false"/>
     <entry t="62.5" text="サンダーブレス" castname="サンダーブレス" duration="6.7"/>
     <entry t="73.5" castname="氷:上 雷:下" sync="false" tts="氷は上へ　雷は下"/>
@@ -274,8 +265,7 @@
     <entry t="80.8" castname="スカージ・オブ・サンダー" sync="false"/>
     <entry t="83.7" castname="攻撃" sync="false"/>
     <entry t="86.8" castname="攻撃" sync="false"/>
-    <entry t="88.8" castname="スリザーストライク" duration="6.2"/>
-    <entry t="95.5" castname="スリザーXXX" sync="false"/>
+    <entry t="88.8" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <entry t="100.9" castname="攻撃" sync="false"/>
     <entry t="101.9" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="110.0" castname="攻撃" sync="false"/>
