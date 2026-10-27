@@ -411,7 +411,6 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=
         if sec['name'] not in any_order:
             # どの順にも来る区間（--any-order）は、後の区間のずれの下限にしない（絶アルテマのラスト 3 体は文書の順と討伐の順が違う）
             min_offsets[phase_id] = offset
-            section_ends[phase_id] = offset + max((it['time'] for it in sec['items']), default=0.0)
         used, last = set(), -1e9
         labeled, resyncs, wide, loose, inserted, missed, jumped = 0, [], [], [], [], [], []
         sec_roles, dropped_tts, conditional = roles.get(sec['name'], []), 0, 0
@@ -540,6 +539,9 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=
             entries.append(new)
             inserted.append(f'{it["time"]:g}→{at:.1f} {name}（{it["kind"]}{"・FFLogs で確認" if ev else ""}）')
         entries.sort(key=lambda e: e['_t'])
+        if sec['name'] not in any_order:
+            # 区間の終わりは、最後に合わせ直したずれで（Hojoring の時刻と討伐が数秒ずれていく区間がある。極ヴァリガルマンダ P3T は 8.6 秒）
+            section_ends[phase_id] = offset + max((it['time'] for it in sec['items']), default=0.0)
         report.append(f'区間 {sec["name"]} → フェーズ {phase_id}: 最初のずれ {first_offset:+.1f} 秒（{support} 行がそろう）、'
                       f'骨組みに付けた {labeled} 行、表示だけで足した {len(inserted)} 行、FFLogs で見つからない {len(missed)} 行'
                       + (f'、担当「{"・".join(r for _, r, _ in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else '')
@@ -666,6 +668,34 @@ def apply_cast_durations(skeleton, path, file):
 SPLIT_SPEC = re.compile(r'([^@]+)@([^=]+)=([^:#]+)(?::([^#]*))?(?:#(.+))?')
 
 
+def swap_branches(skeleton, specs):
+    """--swap: 「A~B」は、--split で作った A →（合間）→ B の並びに、B' →（合間'）→ A' の逆の順の道筋を足す（写しを作る）。
+    両方を必ず通り、順だけが入れ替わる型（極ヴァリガルマンダ P3 の雷・氷）。A の前のフェーズから、B の最初の技で B' へ移る。報告の行を返す"""
+    phases = {p['attrs']['id']: p for p in skeleton['phases']}
+    rule_to = lambda p, target: next(n for n in p['next'] if n.get('to') == target)
+    report = []
+    for spec in specs:
+        a_id, b_id = spec.split('~')
+        pred = next(p for p in skeleton['phases'] if any(n.get('to') == a_id for n in p['next']))
+        a = phases[a_id]
+        mid = phases[a['next'][0]['to']]
+        b = phases[mid['next'][0]['to']]
+        if b['attrs']['id'] != b_id:
+            raise SystemExit(f'--swap {spec}: {a_id} の次の次が {b_id} ではありません（{b["attrs"]["id"]}）')
+        cast_a, cast_m, cast_b = rule_to(pred, a_id)['cast'], rule_to(a, mid['attrs']['id'])['cast'], rule_to(mid, b_id)['cast']
+        clone = lambda p, nxt: {'attrs': {**p['attrs'], 'id': p['attrs']['id'] + '-2nd' if p is a else p['attrs']['id'] + '-alt',
+                                          'name': (p['attrs'].get('name') or p['attrs']['id']) + ('（後）' if p is a else '（先）' if p is b else '（逆の順）')},
+                                'entries': [dict(e) for e in p['entries']], 'next': nxt}
+        a2 = clone(a, [dict(n) for n in b['next']])  # 2 番目の A の後は、元の B の後と同じ所へ
+        mid2 = clone(mid, [{'to': a2['attrs']['id'], 'at': '0.0', 'cast': cast_a}])
+        b2 = clone(b, [{'to': mid2['attrs']['id'], 'at': '0.0', 'cast': cast_m}])
+        pred['next'].append({'to': b2['attrs']['id'], 'at': '0.0', 'cast': cast_b})
+        at = skeleton['phases'].index(b) + 1
+        skeleton['phases'][at:at] = [b2, mid2, a2]
+        report.append(f'逆の順の道筋: {pred["attrs"]["id"]} →「{cast_b}」{b2["attrs"]["id"]} →「{cast_m}」{mid2["attrs"]["id"]} →「{cast_a}」{a2["attrs"]["id"]}')
+    return report
+
+
 def split_branches(skeleton, specs):
     """--split: 文言を重ねた後で、フェーズを技で切り分ける（ボス側の分岐。2026-10-28）。報告の行を返す。
     「p5@アルテマ=p5b:名前」は、p5 の最初のアルテマ（同期する予定）から後を p5b に移し、p5 から p5b へ「アルテマ」で移る。
@@ -749,6 +779,8 @@ def main():
                          '型によって詠唱の無い技の順が違うので、その技にはこの討伐の時刻で合わせない')
     ap.add_argument('--split', action='append', default=[], metavar='フェーズ@技=新しいID[:名前][#組]',
                     help='文言を重ねた後で、フェーズをその技で切り分ける（ボス側の分岐）。書き方は split_branches')
+    ap.add_argument('--swap', action='append', default=[], metavar='A~B',
+                    help='--split で作った A →合間→ B に、逆の順の道筋を足す（両方を通り順だけが入れ替わる区間）')
     ap.add_argument('--any-order', action='append', default=[], metavar='区間',
                     help='どの順にも来る区間。後の区間のずれの下限にしない')
     ap.add_argument('--events-all', metavar='PATH',
@@ -795,6 +827,8 @@ def main():
         report += apply_cast_durations(skeleton, args.cast_durations, re.sub(r'\.xml$', '', args.out.rsplit('/', 1)[-1]))
     if args.split:
         report += split_branches(skeleton, args.split)
+    if args.swap:
+        report += swap_branches(skeleton, args.swap)
 
     # note に元ファイル（Hojoring）の名前は書かない。利用者は Hojoring のファイルを扱わないため（2026-10-20 のユーザーの決定）。
     # タイムラインの作者とライセンスは <author> <license> に書く（2026-10-21 のユーザーの決定）
