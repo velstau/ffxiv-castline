@@ -172,8 +172,6 @@
     <entry t="132.3" text="ギガフレア" castname="ギガフレア" duration="5.7" tts="次は、ギガフレア" window="20 10"/>
     <entry t="133.2" castname="エーテリックP" sync="false" tts="拘束具えー。"/>
     <entry t="133.3" castname="バフつかう" sync="false" tts="ランパつかって"/>
-    <entry t="133.3" castname="バフつかう" sync="false" tts="ランパつかって"/>
-    <entry t="133.4" castname="メテオストリーム" sync="false"/>
     <entry t="133.4" castname="メテオストリーム" sync="false"/>
     <entry t="143.6" text="フレアブレス" castname="フレアブレス" sync="false"/>
     <entry t="148.8" text="フラッテン" castname="フラッテン" duration="3.7" window="20 10"/>
@@ -240,7 +238,6 @@
     <entry t="40.0" castname="サーミオニックビーム" sync="false"/>
     <entry t="41.1" text="ツイスター" castname="ツイスター" duration="1.7"/>
     <entry t="49.1" castname="メガフレア" duration="4.7"/>
-    <entry t="49.1" castname="メガフレア" sync="false"/>
     <entry t="53.1" castname="誘導チャンス" sync="false" tts="誘導チャンス"/>
     <entry t="58.3" text="ビーク/デスセン" castname="レイヴェンズビーク" duration="3.7" tts="タニアを挑発するー"/>
     <entry t="58.3" castname="デスセンテンス" duration="3.7"/>
@@ -286,7 +283,6 @@
   <phase id="p5" name="P5: Reborn!">
     <entry t="12.4" castname="終了待ち" sync="false"/>
     <entry t="19.9" text="モーン・アファー1" castname="モーン・アファー" duration="5.7"/>
-    <entry t="19.9" text="モーン・アファー1" castname="モーン・アファー" sync="false"/>
     <entry t="26.4" castname="転生の炎" sync="false"/>
     <entry t="28.1" text="アク・モーン1" castname="アク・モーン" duration="3.7"/>
     <entry t="34.3" castname="アク・モーン" sync="false"/>
@@ -301,7 +297,6 @@
     <entry t="77.0" castname="真ん中誘導" sync="false" tts="真ん中誘導、真ん中誘導"/>
     <entry t="89.2" text="エクサフレア" castname="エクサフレア" duration="3.7" gimmick_icon="exaflare.png"/>
     <entry t="108.4" text="モーン・アファー3" castname="モーン・アファー" duration="5.7"/>
-    <entry t="108.4" text="モーン・アファー3" castname="モーン・アファー" sync="false"/>
     <entry t="122.5" text="アク・モーン3" castname="アク・モーン" duration="3.7"/>
     <entry t="128.6" castname="アク・モーン" sync="false"/>
     <entry t="129.5" castname="真ん中誘導" sync="false" tts="真ん中誘導、真ん中誘導"/>

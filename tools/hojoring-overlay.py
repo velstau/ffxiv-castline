@@ -39,6 +39,13 @@ ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window", "gi
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
 # 台詞・分岐の目印で、画面に出しても意味の無い text（2026-10-27 のユーザーの了承。「セリフ1」「同期(車両2)」「シェア用タイムライン」など）
 MARKER_PATTERN = re.compile(r'^(セリフ(技)?\d*|.+のセリフ|同期待ち\d*|強制同期|同期\(.+\)|.+用タイムライン)$')
+RAZOR_ROLES = {'TANK': 'タンク', 'HEALER': 'ヒーラー', 'DPS': 'DPS'}
+
+
+def razor_role(line):
+    """「@if (Model.Player.InRole("DPS", "HEALER")) {」「@if (Model.Player.InJob("PLD")) {」の条件を担当名（DPS・ヒーラー、PLD）にする"""
+    names = re.findall(r'"([^"]+)"', line)
+    return '・'.join(RAZOR_ROLES.get(n.upper(), n) for n in names) or '条件付き'
 
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')
 CAST = re.compile(r'^(?P<who>[^:「」^]+?)は「(?P<what>.+)」の構え。?$')
@@ -118,17 +125,23 @@ def balanced(text, start, open_ch, close_ch):
 def strip_razor(text):
     """Hojoring の Razor（C#）の書き方を、XML として読める形にする。
     @{ … } のコードは取り除き、その中の「変数 = 数式;」だけを覚える。@( … ) は覚えた変数で計算して数に置き換える（できなければ空）。
-    @if / else の行は取り除き、中身は両方残す（中は担当ごとのトリガー <t> がほとんどで、使わない）"""
+    @if / else の行は取り除き、中身は両方残す（中は担当ごとのトリガー <t> がほとんどで、使わない。予定 <a> には担当名を付ける）"""
     text = re.sub(r'@\*.*?\*@', '', text, flags=re.S)
-    lines, depth = [], 0
+    # ロール・ジョブの条件（InRole・InJob）は、その位置に <castline-if role="担当名"/> を置いて残す（load_hojoring が表示に担当名を付ける）
+    lines, conds = [], []
+    mark = lambda: '<castline-if role=' + quoteattr(conds[-1] if conds else '') + '/>'
     for line in text.split('\n'):
         if RAZOR_IF.match(line):
-            depth += 1
+            conds.append(razor_role(line))
+            lines.append(mark())
             continue
-        if depth and RAZOR_ELSE.match(line):
+        if conds and RAZOR_ELSE.match(line):
+            conds[-1] = razor_role(line) if re.search(r'\bif\b', line) else 'その他'
+            lines.append(mark())
             continue
-        if depth and RAZOR_CLOSE.match(line):
-            depth -= 1
+        if conds and RAZOR_CLOSE.match(line):
+            conds.pop()
+            lines.append(mark())
             continue
         lines.append(line)
     text = '\n'.join(lines)
@@ -180,11 +193,21 @@ def load_hojoring(path):
 
     def items(parent):
         out = []
-        for a in parent.findall('a'):
+        cond = None  # いまのロール・ジョブの条件（strip_razor が置いた <castline-if>）
+        for child in parent:
+            if child.tag == 'castline-if':
+                cond = child.get('role') or None
+                continue
+            if child.tag != 'a':
+                continue
+            a = child
             kind, names = classify(a.get('sync'))
             dropped['v-notice'] += len(a.findall('v-notice'))
             dropped['icon'] += 1 if a.get('icon') else 0
             out.append({
+                'cond_role': cond,
+                # <pre> は Hojoring の変数（トリガーで決まるデバフなど）の条件。Castline では判定できない
+                'conditional': a.find('expressions/pre') is not None,
                 'time': num(a.get('time'), 0.0),
                 'text': (a.get('text') or '').strip(),
                 'notice': (a.get('notice') or '').strip(),
@@ -367,6 +390,7 @@ def auto_phases(sections, events):
 def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     report = []
     min_offsets = {}  # フェーズごとの、前の区間のずれ（区間は文書の順に進むとみなす）
+    used_roles = set()  # 表示に付けた担当名（--role とロールの条件）
     for sec in sections:
         phase_id = phase_of(sec['name'])
         phase = next((p for p in skeleton['phases'] if p['attrs']['id'] == phase_id), None)
@@ -382,15 +406,25 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         first_offset = min_offsets[phase_id] = offset
         used, last = set(), -1e9
         labeled, resyncs, wide, loose, inserted, missed, jumped = 0, [], [], [], [], [], []
-        sec_roles, dropped_tts = roles.get(sec['name'], []), 0
+        sec_roles, dropped_tts, conditional = roles.get(sec['name'], []), 0, 0
         for idx, it in enumerate(sec['items']):
             label = '' if it['text'] in MARKER_TEXTS or MARKER_PATTERN.match(it['text']) else it['text']
             notice = it['notice']
-            role = next((r for start, r in reversed(sec_roles) if it['time'] >= start), None)
+            role = it['cond_role'] or next((r for start, r in reversed(sec_roles) if it['time'] >= start), None)
             if role:
-                # 担当ごとの区間: どの担当でも同じ画面に出るので、表示に担当名を付け、読み上げはしない
-                label = f'{role}: {label}' if label else ''
+                # 担当ごとの区間・ロールの条件の行: どの担当でも同じ画面に出るので、表示に担当名を付け、読み上げはしない。
+                # ロールの条件の行は読み上げの文（「右上えー」など向きの指示）が要なので、表示に添える
+                used_roles.add(role)
+                said = f'（{notice}）' if it['cond_role'] and label and notice and notice != label else ''
+                label = f'{role}: {label or notice}{said}' if label or notice else ''
                 dropped_tts += 1 if notice else 0
+                conditional += 1 if it['cond_role'] else 0
+                notice = ''
+            elif it['conditional']:
+                # 変数の条件の行（絶アレキの雷・水デバフ、絶アルテマの誘導の向きなど）: どれに当たるか分からないので、読み上げずに表示する。
+                # text は「次の誘導3」のような目印のことが多いので、指示である読み上げの文を表示にする
+                label = notice or label
+                conditional += 1
                 notice = ''
             ev = None
             if it['kind'] in ('hit', 'cast'):
@@ -481,7 +515,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         entries.sort(key=lambda e: e['_t'])
         report.append(f'区間 {sec["name"]} → フェーズ {phase_id}: 最初のずれ {first_offset:+.1f} 秒（{support} 行がそろう）、'
                       f'骨組みに付けた {labeled} 行、表示だけで足した {len(inserted)} 行、FFLogs で見つからない {len(missed)} 行'
-                      + (f'、担当「{"・".join(r for _, r in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else ''))
+                      + (f'、担当「{"・".join(r for _, r in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else '')
+                      + (f'、条件付き（ロール・デバフ）で表示だけにした {conditional} 行' if conditional else ''))
         report += [f'    合わせ直し（2 秒超）: {x}' for x in resyncs]
         report += [f'    広い窓で見つけた: {x}' for x in wide]
         report += [f'    離れた所で合わせ直した: {x}' for x in jumped]
@@ -492,8 +527,23 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）ので、読まない予定には tts を書かない（2026-10-27 のユーザーの指定）。
     # 「@ANTI_KNOCKBACK」のような Hojoring の置き換えの印が入った notice は、そのまま読むと意味が通らないので使わない（同日のユーザーの指定）
     # 担当ごとの区間の文言がどの担当でも同じなら（絶オメガ P3 の「アクション1開始」など）、担当名を付けずに 1 つだけ出す
-    role_names = {r for rs in roles.values() for _, r in rs}
+    role_names = used_roles
     for phase in skeleton['phases']:
+        # 同じ時刻・技名・表示の予定が重なったら 1 つにする（表示だけで足した予定が、骨組みの予定や別の区間の行と重なったもの）。
+        # 同期する予定を残し、読み上げは合わせる
+        kept, order = {}, []
+        for e in phase['entries']:
+            key = (round(e['_t'], 1), e['name'], e.get('label'))  # t の文字はフェーズの中の秒のことがあるので、通しの秒で比べる
+            if key not in kept:
+                kept[key] = e
+                order.append(key)
+                continue
+            keep, drop = (e, kept[key]) if kept[key].get('sync') == 'false' and e.get('sync') != 'false' else (kept[key], e)
+            for n in drop.get('_notices', []):
+                if n not in keep.setdefault('_notices', []):
+                    keep['_notices'].append(n)
+            kept[key] = keep
+        phase['entries'] = [kept[k] for k in order]
         for e in phase['entries']:
             notices = [n for n in e.get('_notices', []) if '@' not in n]
             if notices:
