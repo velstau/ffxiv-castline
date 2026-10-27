@@ -155,7 +155,6 @@
     <entry t="75.1" text="ハイパーディメンション2" castname="ハイパーディメンション" sync="false" tts="ハイパーディメンション。"/>
     <entry t="76.4" castname="アスカロンマイト" sync="false"/>
     <entry t="78.0" castname="アスカロンマイト" sync="false"/>
-    <entry t="79.9" castname="セリフ" sync="false"/>
     <entry t="82.0" castname="ナイツ・オブ・ラウンド" sync="false"/>
     <entry t="82.1" castname="ハイパーディメンション1" sync="false" tts="ハイパーディメンション。"/>
     <entry t="85.1" castname="至天の陣：死刻" duration="3.7"/>
@@ -168,7 +167,6 @@
     <entry t="100.1" text="(MT)エクスキューション" castname="エクスキューション" sync="false" tts="エクスキューション。"/>
     <entry t="100.2" castname="百雷" duration="5.4"/>
     <entry t="102.1" castname="！沈黙！" sync="false" tts="タンクが沈黙！"/>
-    <entry t="105.8" castname="セリフ" sync="false"/>
     <entry t="111.1" castname="鎖の予兆" sync="false" tts="鎖がつくよ"/>
     <entry t="114.3" castname="竜の邪眼" duration="3.7"/>
     <entry t="119.3" castname="フェイスアンムーブ" sync="false" tts="ノックバック"/>
@@ -235,11 +233,7 @@
     <entry t="157.3" castname="タッチダウン" sync="false"/>
     <entry t="159.4" castname="最期の咆哮" duration="24.7"/>
     <entry t="161.8" castname="滅殺の誓い" sync="false"/>
-    <entry t="178.3" castname="セリフ4" sync="false"/>
-    <entry t="182.3" castname="セリフ3" sync="false"/>
     <entry t="185.3" castname="盟友の想い" sync="false" tts="盟友の想い。"/>
-    <entry t="186.3" castname="セリフ2" sync="false"/>
-    <entry t="192.3" castname="セリフ1" sync="false"/>
     <entry t="193.3" text="全体攻撃" castname="苦悶の咆哮" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="197.3" text="線が付与" castname="邪竜爪牙" sync="false" tts="線が付くよ"/>
     <entry t="201.3" castname="邪竜爪牙" sync="false"/>

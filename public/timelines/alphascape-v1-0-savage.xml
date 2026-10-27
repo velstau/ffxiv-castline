@@ -8,14 +8,14 @@
   <note>FFLogs の公開ランキングの討伐の記録（9:46）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="11.3" castname="ダミングイーディクト" duration="5.7"/>
-    <entry t="25.4" text="ほのお" castname="ほのお" duration="4.7" />
+    <entry t="25.4" text="ほのお" castname="ほのお" duration="4.7"/>
     <entry t="42.4" castname="Ｔ＆Ｈ爆発" sync="false" tts="次は、タンクヒラ爆発。"/>
     <entry t="42.4" castname="インプロージョン" sync="false"/>
     <entry t="43.1" castname="ホリゾンタルインプロージョン" duration="4.7"/>
     <entry t="43.1" castname="衝撃波" duration="5.4"/>
     <entry t="54.4" castname="ＤＰＳ爆発" sync="false" tts="次は、DPS爆発。"/>
     <entry t="62.2" text="カオティックディスパーション" castname="カオティックディスパーション" duration="4.7" tts="次は、タンク大ダメージ。"/>
-    <entry t="74.4" text="ほのお" castname="ほのお" duration="4.7" />
+    <entry t="74.4" text="ほのお" castname="ほのお" duration="4.7"/>
     <entry t="79.4" castname="ほのお" sync="false"/>
     <entry t="91.1" castname="カオススフィア" sync="false"/>
     <entry t="93.2" text="着弾せよ" castname="着弾せよ" duration="4.7"/>
@@ -25,7 +25,7 @@
     <entry t="106.3" castname="突出" duration="3.4"/>
     <entry t="111.2" castname="ＤＰＳ爆発" sync="false" tts="次は、DPS爆発。"/>
     <entry t="116.4" text="追尾せよ" castname="追尾せよ" duration="2.0"/>
-    <entry t="135.9" text="たつまき" castname="たつまき" duration="4.7" />
+    <entry t="135.9" text="たつまき" castname="たつまき" duration="4.7"/>
     <entry t="148.1" text="アンブラスマッシュ" castname="アンブラスマッシュ" duration="4.7"/>
     <entry t="157.3" text="ダミングイーディクト" castname="ダミングイーディクト" duration="5.7"/>
     <entry t="166.3" castname="吹き飛ばし" sync="false" gimmick_icon="knockback.png"/>

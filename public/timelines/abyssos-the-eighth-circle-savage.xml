@@ -15,9 +15,7 @@
   <phase id="a-p1" name="前半">
     <entry t="7.2" text="全体攻撃" castname="創世の真炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="15.3" text="【記憶】オクタCorテトラC" castname="オクタフレア・コンシーヴ|テトラフレア・コンシーヴ" duration="2.7"/>
-    <entry t="21.3" castname="セリフ" sync="false"/>
     <entry t="21.5" text="熾炎創火" castname="熾炎創火" duration="2.7" tts="熾炎創火"/>
-    <entry t="32.5" castname="セリフ" sync="false"/>
     <entry t="33.1" text="創獣炎舞" castname="創獣炎舞" duration="6.7"/>
     <entry t="42.0" castname="【予告】炎蛇砲" sync="false" tts="ポンブレじゅんびー"/>
     <entry t="43.2" castname="炎蛇砲" duration="4.7"/>
@@ -36,7 +34,6 @@
     <entry t="94.6" castname="フェイタルストンプ" sync="false"/>
     <entry t="96.9" castname="フェイタルストンプ" sync="false"/>
     <entry t="111.3" text="幻影創造" castname="幻影創造" duration="2.7"/>
-    <entry t="117.3" castname="セリフ" sync="false"/>
     <entry t="117.3" castname="幻影がPOP" sync="false" tts="幻影がPOP"/>
     <entry t="117.4" castname="創造命令" duration="2.7"/>
     <entry t="120.3" castname="外周を確認" sync="false"/>
@@ -54,7 +51,6 @@
     <entry t="181.1" text="ゴルゴンの呪詛" castname="ゴルゴンの呪詛" duration="2.7" tts="デバフを確認"/>
     <entry t="183.6" text="ランページ1" castname="リアリングランページ" sync="false"/>
     <entry t="185.6" castname="ランページ2" sync="false"/>
-    <entry t="187.1" castname="セリフ" sync="false"/>
     <entry t="187.2" text="イントゥシャドウ" castname="イントゥシャドウ" duration="2.7"/>
     <entry t="187.6" castname="ランページ3" sync="false"/>
     <entry t="189.6" castname="ランページ4" sync="false"/>
@@ -185,10 +181,8 @@
     <entry t="346.5" text="半面+塔発動" castname="アッシュブレイズ" duration="5.7" gimmick_icon="tower.png"/>
     <entry t="355.6" text="魔法陣起動" castname="魔法陣起動" duration="2.7" tts="2回目、発動"/>
     <entry t="370.9" text="塔と線処理" castname="メギドフレイム" sync="false" tts="発動" gimmick_icon="tower.png"/>
-    <entry t="379.9" castname="セリフ" sync="false"/>
     <entry t="380.8" text="自己概念崩壊" castname="自己概念崩壊" duration="9.7" tts="概念崩壊"/>
     <entry t="391.1" castname="自己概念崩壊" sync="false"/>
-    <entry t="410.8" castname="セリフ" sync="false"/>
     <entry t="417.3" text="全体攻撃" castname="アイオンアゴニア" duration="7.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="428.5" text="散開 / 支配者の一撃" castname="支配者の一撃" duration="6.7" tts="支配者の一撃" gimmick_icon="spread.png"/>
     <entry t="443.6" castname="地盤隆起" sync="false"/>

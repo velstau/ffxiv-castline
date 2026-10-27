@@ -74,86 +74,80 @@
   </phase>
   <phase id="p3" name="P3: Omega Reconfigured">
     <entry t="9.9" castname="デバフつくよ" sync="false" tts="デバフ付与"/>
-    <entry t="11.9" castname="セリフ3" sync="false"/>
     <entry t="17.5" castname="速射式波動砲" duration="4.7"/>
-    <entry t="17.9" castname="セリフ2" sync="false" tts="内に入る"/>
+    <entry t="17.9" castname="内に入る" sync="false" tts="内に入る"/>
     <entry t="19.9" castname="外に出る" sync="false" tts="外に出る"/>
-    <entry t="25.9" castname="セリフ1" sync="false"/>
     <entry t="26.4" castname="コロッサスブロー" sync="false" tts="内に入る"/>
     <entry t="28.4" castname="狙撃式高出力波動砲" sync="false"/>
     <entry t="28.4" text="着弾+ブロー" castname="狙撃式波動砲" sync="false"/>
     <entry t="36.6" text="ハロー・ワールド" castname="ハロー・ワールド" duration="4.7"/>
-    <entry t="52.6" castname="無職用タイムライン" sync="false"/>
-    <entry t="53.1" castname="シェア用タイムライン" sync="false" gimmick_icon="stack.png"/>
-    <entry t="53.1" castname="サークル用タイムライン" sync="false"/>
-    <entry t="53.1" castname="レイテント用タイムライン" sync="false"/>
     <entry t="55.8" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="55.8" text="アクション1開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="56.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
-    <entry t="56.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
-    <entry t="56.8" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
-    <entry t="56.8" castname="サークル受ける" sync="false" tts="サークル受ける"/>
-    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="65.7" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="65.7" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="65.7" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="56.8" castname="無職: シェア受ける" sync="false" gimmick_icon="stack.png"/>
+    <entry t="56.8" castname="シェア: 床踏み+シェア渡す" sync="false" gimmick_icon="stack.png"/>
+    <entry t="56.8" castname="サークル: 床踏み+サークル渡す" sync="false"/>
+    <entry t="56.8" castname="レイテント: サークル受ける" sync="false"/>
+    <entry t="65.7" text="無職: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="65.7" text="シェア: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="65.7" text="サークル: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="65.7" text="レイテント: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="67.5" castname="エンバグ" sync="false"/>
-    <entry t="70.1" text="エンバグ処理1 / 担当外エンバグ1" castname="エンバグ" sync="false"/>
+    <entry t="70.1" text="無職: エンバグ処理1 / シェア: 担当外エンバグ1 / サークル: 担当外エンバグ1 / レイテント: エンバグ処理1" castname="エンバグ" sync="false" gimmick_icon="stack.png"/>
     <entry t="71.7" castname="クリティカルバグ：デグレード" sync="false"/>
-    <entry t="73.1" castname="エンバグ処理2" sync="false"/>
-    <entry t="73.1" castname="担当外エンバグ2" sync="false"/>
-    <entry t="73.1" castname="担当外エンバグ2" sync="false"/>
-    <entry t="73.1" castname="エンバグ処理2" sync="false"/>
+    <entry t="73.1" castname="無職: エンバグ処理2" sync="false"/>
+    <entry t="73.1" castname="シェア: 担当外エンバグ2" sync="false" gimmick_icon="stack.png"/>
+    <entry t="73.1" castname="サークル: 担当外エンバグ2" sync="false"/>
+    <entry t="73.1" castname="レイテント: エンバグ処理2" sync="false"/>
     <entry t="76.8" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="76.8" text="アクション2開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="77.8" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
-    <entry t="77.8" castname="サークル受ける" sync="false" tts="サークル受ける"/>
-    <entry t="77.8" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
-    <entry t="77.8" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
-    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack.png"/>
-    <entry t="86.8" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false" tts="バーストじゅんび、バーストじゅんび"/>
-    <entry t="86.8" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" tts="バーストじゅんび、バーストじゅんび" gimmick_icon="stack.png"/>
-    <entry t="86.8" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false" tts="バーストじゅんび、バーストじゅんび"/>
+    <entry t="77.8" castname="無職: 床踏み+シェア渡す" sync="false" gimmick_icon="stack.png"/>
+    <entry t="77.8" castname="シェア: サークル受ける" sync="false" gimmick_icon="stack.png"/>
+    <entry t="77.8" castname="サークル: シェア受ける" sync="false" gimmick_icon="stack.png"/>
+    <entry t="77.8" castname="レイテント: 床踏み+サークル渡す" sync="false"/>
+    <entry t="86.8" text="無職: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="シェア: サークル着弾" castname="クリティカルバグ：サークル" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="サークル: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="レイテント: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="88.3" castname="エンバグ" sync="false"/>
-    <entry t="91.1" text="担当外エンバグ1 / エンバグ処理1" castname="エンバグ" sync="false"/>
-    <entry t="94.1" castname="担当外エンバグ2" sync="false"/>
-    <entry t="94.1" castname="エンバグ処理2" sync="false"/>
-    <entry t="94.1" castname="エンバグ処理2" sync="false"/>
-    <entry t="94.1" castname="担当外エンバグ2" sync="false"/>
+    <entry t="91.1" text="無職: 担当外エンバグ1 / シェア: エンバグ処理1 / サークル: エンバグ処理1 / レイテント: 担当外エンバグ1" castname="エンバグ" sync="false" gimmick_icon="stack.png"/>
+    <entry t="94.1" castname="無職: 担当外エンバグ2" sync="false"/>
+    <entry t="94.1" castname="シェア: エンバグ処理2" sync="false" gimmick_icon="stack.png"/>
+    <entry t="94.1" castname="サークル: エンバグ処理2" sync="false"/>
+    <entry t="94.1" castname="レイテント: 担当外エンバグ2" sync="false"/>
     <entry t="94.5" castname="クリティカルバグ：デグレード" sync="false"/>
     <entry t="97.8" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="97.8" text="アクション3開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="98.9" castname="サークル受ける" sync="false" tts="サークル受ける"/>
-    <entry t="98.9" castname="床踏み+サークル渡す" sync="false" tts="床踏みとサークル渡す"/>
-    <entry t="98.9" castname="床踏み+シェア渡す" sync="false" tts="床踏みとシェア渡す" gimmick_icon="stack.png"/>
-    <entry t="98.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="107.8" text="サークル発動" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="107.8" text="シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="98.9" castname="無職: サークル受ける" sync="false"/>
+    <entry t="98.9" castname="シェア: 床踏み+サークル渡す" sync="false" gimmick_icon="stack.png"/>
+    <entry t="98.9" castname="サークル: 床踏み+シェア渡す" sync="false" gimmick_icon="stack.png"/>
+    <entry t="98.9" castname="レイテント: シェア受ける" sync="false" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="無職: シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="シェア: サークル発動" castname="クリティカルバグ：サークル" sync="false" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="サークル: シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="107.8" text="レイテント: シェア発動" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="109.8" castname="エンバグ" sync="false"/>
-    <entry t="111.8" text="エンバグ処理1 / 担当外エンバグ" castname="エンバグ" sync="false"/>
-    <entry t="114.9" castname="エンバグ処理2" sync="false"/>
-    <entry t="114.9" castname="担当外エンバグ" sync="false"/>
-    <entry t="114.9" castname="担当外エンバグ" sync="false"/>
-    <entry t="114.9" castname="エンバグ処理2" sync="false"/>
+    <entry t="111.8" text="無職: エンバグ処理1 / シェア: 担当外エンバグ / サークル: 担当外エンバグ / レイテント: エンバグ処理1" castname="エンバグ" sync="false" gimmick_icon="stack.png"/>
+    <entry t="114.9" castname="無職: エンバグ処理2" sync="false"/>
+    <entry t="114.9" castname="シェア: 担当外エンバグ" sync="false" gimmick_icon="stack.png"/>
+    <entry t="114.9" castname="サークル: 担当外エンバグ" sync="false"/>
+    <entry t="114.9" castname="レイテント: エンバグ処理2" sync="false"/>
     <entry t="115.6" castname="クリティカルバグ：デグレード" sync="false"/>
     <entry t="118.9" castname="レイテントバグ：デグレード" duration="9.7"/>
     <entry t="118.9" text="アクション4開始" castname="レイテントバグ" duration="9.7"/>
-    <entry t="119.9" castname="サークル１人受け" sync="false" tts="サークル１人受け"/>
-    <entry t="119.9" castname="シェア受ける" sync="false" tts="シェア受ける" gimmick_icon="stack.png"/>
-    <entry t="119.9" castname="サークル避ける" sync="false" tts="サークル避ける"/>
-    <entry t="119.9" castname="シェア渡す" sync="false" tts="シェア渡す" gimmick_icon="stack.png"/>
-    <entry t="128.9" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="128.9" text="サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="128.9" text="シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="130.9" text="担当外エンバグ1 / エンバグ処理1" castname="エンバグ" sync="false"/>
+    <entry t="119.9" castname="無職: サークル１人受け" sync="false"/>
+    <entry t="119.9" castname="シェア: シェア受ける" sync="false" gimmick_icon="stack.png"/>
+    <entry t="119.9" castname="サークル: サークル避ける" sync="false"/>
+    <entry t="119.9" castname="レイテント: シェア渡す" sync="false" gimmick_icon="stack.png"/>
+    <entry t="128.9" text="無職: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="128.9" text="シェア: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="128.9" text="サークル: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="128.9" text="レイテント: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="130.9" text="無職: 担当外エンバグ1 / シェア: エンバグ処理1 / サークル: エンバグ処理1 / レイテント: 担当外エンバグ1" castname="エンバグ" sync="false" gimmick_icon="stack.png"/>
     <entry t="136.7" castname="クリティカルバグ：デグレード" sync="false"/>
-    <entry t="136.9" castname="担当外エンバグ2" sync="false"/>
-    <entry t="136.9" castname="エンバグ処理" sync="false"/>
-    <entry t="136.9" castname="エンバグ処理" sync="false"/>
-    <entry t="136.9" castname="担当外エンバグ2" sync="false"/>
+    <entry t="136.9" castname="無職: 担当外エンバグ2" sync="false"/>
+    <entry t="136.9" castname="シェア: エンバグ処理" sync="false" gimmick_icon="stack.png"/>
+    <entry t="136.9" castname="サークル: エンバグ処理" sync="false"/>
+    <entry t="136.9" castname="レイテント: 担当外エンバグ2" sync="false"/>
     <entry t="142.1" text="クリティカルエラー" castname="クリティカルエラー" duration="7.7"/>
     <entry t="161.4" text="【構え】検知式波動砲 / 検知式波動砲" castname="検知式波動砲" duration="9.7" tts="デバフ確認、デバフ確認、検知式波動砲。"/>
     <entry t="171.5" castname="検知式波動砲" sync="false"/>

@@ -12,7 +12,6 @@
     <entry t="31.4" text="刃葉" castname="アッティスの刃葉" duration="2.7" tts="安置確認"/>
     <entry t="37.4" castname="アッティスの刃葉" duration="7.2"/>
     <entry t="37.5" text="床破壊+打ち上げ" castname="生滅の導枝" duration="7.2" tts="打ち上げ"/>
-    <entry t="38.4" castname="セリフ" sync="false"/>
     <entry t="46.9" castname="アッティスの刃葉" sync="false"/>
     <entry t="48.8" castname="アッティスの刃葉" sync="false"/>
     <entry t="50.8" castname="アッティスの刃葉" sync="false"/>
@@ -39,7 +38,6 @@
     <entry t="129.9" castname="パンチ" sync="false" tts="安置へ移動"/>
     <entry t="133.0" castname="ヘーミテオス・エアロガ" sync="false"/>
     <entry t="135.7" text="通路破壊" castname="アッティスの根" duration="2.7" tts="通路破壊"/>
-    <entry t="144.7" castname="セリフ" sync="false"/>
     <entry t="150.2" text="エアロラ" castname="スプレッド・エアロラ|アグリゲート・エアロラ" duration="6.7"/>
     <entry t="158.3" castname="スプレッド・エアロラ" sync="false"/>
     <entry t="160.2" castname="【予告】ノックバックと散開" sync="false" gimmick_icon="knockback.png"/>
@@ -49,14 +47,12 @@
     <entry t="180.8" castname="ヘーミテオス・ホーリー" duration="4.7"/>
     <entry t="183.8" text="ノックバック / 散開" castname="バードストライク" duration="2.7" gimmick_icon="knockback.png"/>
     <entry t="191.1" text="通路破壊" castname="アッティスの根" duration="2.7" tts="通路破壊"/>
-    <entry t="200.0" castname="セリフ" sync="false"/>
     <entry t="201.0" castname="【予告】新通路で頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="201.4" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="207.5" castname="生命の果実" duration="2.7"/>
     <entry t="214.3" castname="ヘーミテオス・ホーリガ" duration="2.7"/>
     <entry t="214.4" castname="2組頭割り" sync="false" tts="2組頭割り" gimmick_icon="stack.png"/>
     <entry t="217.3" castname="ヘーミテオス・ホーリガ" duration="5.7"/>
-    <entry t="219.4" castname="セリフ" sync="false"/>
     <entry t="234.7" text="アッティスの巨枝" castname="アッティスの巨枝" duration="6.7"/>
     <entry t="244.1" castname="アッティスの巨枝" duration="3.7"/>
     <entry t="249.7" castname="パンチ" sync="false" tts="安置へ異動"/>

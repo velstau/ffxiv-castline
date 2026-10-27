@@ -50,7 +50,6 @@
     <entry t="226.2" text="オン・ザ・ソウル4" castname="オン・ザ・ソウル" duration="4.7" tts="全体攻撃"/>
     <entry t="238.3" text="タンクスイッチ" castname="グラウコピス" duration="4.7" tts="タンク攻撃"/>
     <entry t="246.6" text="グラウコピス" castname="グラウコピス" sync="false"/>
-    <entry t="256.6" castname="セリフ" sync="false"/>
     <entry t="260.6" castname="履行技6秒前" sync="false"/>
     <entry t="261.2" castname="アルテマブレイド" sync="false"/>
     <entry t="283.8" text="パラディオン1" castname="パラディオン" duration="7.7"/>
@@ -71,7 +70,6 @@
     <entry t="313.5" castname="パラディオン" sync="false"/>
     <entry t="313.8" castname="パラディオン8" sync="false"/>
     <entry t="318.7" castname="パラディオン" sync="false"/>
-    <entry t="326.8" castname="セリフ" sync="false"/>
     <entry t="327.5" text="テオス・アルテマ" castname="テオス・アルテマ" duration="6.7"/>
     <entry t="349.0" text="セオリーIIA" castname="スーパーチェイン・セオリーIIA" duration="4.7"/>
     <entry t="357.1" text="トリニティ・ソウル1" castname="トリニティ・ソウル" duration="9.7"/>
@@ -187,7 +185,6 @@
     <entry t="490.1" text="アルテマ8" castname="アルテマ" duration="4.7"/>
     <entry t="495.2" castname="アルテマ" sync="false"/>
     <entry t="508.9" text="時間切れ開始" castname="イグノラビムス" duration="14.7"/>
-    <entry t="512.9" castname="セリフ" sync="false"/>
     <entry t="523.9" castname="時間切れ" sync="false"/>
   </phase>
 </timeline>

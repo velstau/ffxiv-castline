@@ -67,7 +67,6 @@
     <entry t="5.3" castname="バハムートクロウ" sync="false"/>
     <entry t="8.2" text="龍神の加護" castname="龍神の加護" duration="2.7"/>
     <entry t="18.2" castname="サンダーウィング" sync="false"/>
-    <entry t="19.2" castname="セリフ" sync="false"/>
     <entry t="24.4" text="ルナダイナモ" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
     <entry t="27.6" castname="サーミオニックビーム" sync="false"/>
     <entry t="28.2" text="サルヴェーションウィング" castname="サルヴェーションウィング" duration="2.7"/>
@@ -81,7 +80,6 @@
     <entry t="42.0" castname="バハムートクロウ" sync="false"/>
     <entry t="44.3" castname="サンダーウィング" sync="false" tts="サンダー確認"/>
     <entry t="45.4" text="ファイアボール(1人受け)" castname="ファイアボール" sync="false" tts="線だけファイア"/>
-    <entry t="47.4" castname="セリフ" sync="false"/>
     <entry t="52.9" text="サーミオニックビーム" castname="サーミオニックビーム" sync="false"/>
     <entry t="55.9" castname="離れるorダイナモ" sync="false" gimmick_icon="dynamo.png"/>
     <entry t="56.0" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
@@ -95,7 +93,6 @@
     <entry t="76.7" castname="バハムートクロウ" sync="false"/>
     <entry t="77.8" castname="バハムートクロウ5連" sync="false" tts="5連クロウ"/>
     <entry t="78.3" castname="バハムートクロウ" sync="false"/>
-    <entry t="82.8" castname="セリフ" sync="false"/>
     <entry t="86.4" text="レイヴンダイブ" castname="レイヴンダイブ" sync="false"/>
     <entry t="89.4" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
     <entry t="89.4" castname="離れるorダイナモ" sync="false" gimmick_icon="dynamo.png"/>
@@ -107,7 +104,6 @@
     <entry t="97.1" text="サルヴェーションウィング" castname="サルヴェーションウィング" duration="2.7"/>
     <entry t="101.2" castname="サルヴェーションウィング" duration="2.7"/>
     <entry t="110.6" text="レイヴェンズビーク(S→M)" castname="レイヴェンズビーク" duration="3.7" tts="MTにスイッチ"/>
-    <entry t="119.6" castname="セリフ" sync="false"/>
     <entry t="124.9" text="スーパーノヴァ" castname="スーパーノヴァ" sync="false"/>
     <entry t="126.4" castname="スーパーノヴァ" sync="false"/>
     <entry t="126.9" castname="カータライズ１" sync="false"/>
@@ -122,10 +118,8 @@
     <entry t="141.5" castname="バハムートクロウ" sync="false"/>
     <entry t="143.1" castname="バハムートクロウ" sync="false"/>
     <entry t="144.7" castname="バハムートクロウ" sync="false"/>
-    <entry t="153.1" castname="セリフ" sync="false"/>
     <entry t="158.6" castname="サーミオニックビーム" sync="false"/>
     <entry t="161.7" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
-    <entry t="164.1" castname="セリフ" sync="false"/>
     <entry t="173.7" castname="災いの炎x3" sync="false" tts="飛んだらタンクエルビー"/>
     <entry t="177.1" castname="レイヴェンズビーク(M→S)" sync="false" tts="STにスイッチ"/>
     <entry t="178.0" castname="災いの焔" sync="false"/>
@@ -242,11 +236,8 @@
     <entry t="24.0" text="ツイスター" castname="ツイスター" duration="1.7"/>
     <entry t="32.0" castname="シェイク使って" sync="false" tts="シェイク使って"/>
     <entry t="33.7" castname="アイアンチャリオット" sync="false" gimmick_icon="chariot.png"/>
-    <entry t="35.0" castname="セリフ技1" sync="false"/>
     <entry t="36.8" castname="レイヴンダイブ" sync="false"/>
-    <entry t="38.0" castname="セリフ技2" sync="false"/>
     <entry t="40.0" castname="サーミオニックビーム" sync="false"/>
-    <entry t="41.0" castname="セリフ技3" sync="false"/>
     <entry t="41.1" text="ツイスター" castname="ツイスター" duration="1.7"/>
     <entry t="49.1" castname="メガフレア" duration="4.7"/>
     <entry t="49.1" castname="メガフレア" sync="false"/>
@@ -267,11 +258,8 @@
     <entry t="86.7" text="ツイスター" castname="ツイスター" duration="1.7"/>
     <entry t="94.5" castname="ファイアボール" sync="false"/>
     <entry t="96.5" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
-    <entry t="97.7" castname="セリフ技1" sync="false"/>
     <entry t="99.6" castname="レイヴンダイブ" sync="false"/>
     <entry t="100.5" text="デスセンテンス(M→S)" castname="デスセンテンス" sync="false" tts="STにスイッチ"/>
-    <entry t="100.7" castname="セリフ技2" sync="false"/>
-    <entry t="102.7" castname="セリフ技3" sync="false"/>
     <entry t="102.8" castname="サーミオニックビーム" sync="false"/>
     <entry t="103.9" text="ツイスター" castname="ツイスター" duration="1.7"/>
     <entry t="109.5" castname="プラメット" sync="false"/>

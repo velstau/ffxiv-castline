@@ -28,8 +28,6 @@
     <entry t="128.4" text="フリーズ" castname="ディープフリーズ" duration="4.7" tts="全体、停止注意"/>
     <entry t="136.5" text="全体攻撃" castname="メテオレイン" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="150.1" text="ターゲット不可" castname="無の領域" duration="4.7"/>
-    <entry t="160.1" castname="セリフ1" sync="false"/>
-    <entry t="169.1" castname="セリフ2" sync="false"/>
     <entry t="175.4" text="大衝撃" castname="虚ろなる大衝撃" sync="false" tts="ノックバック"/>
     <entry t="177.7" text="塔POP" castname="無の渦流" sync="false" tts="塔確認" gimmick_icon="tower.png"/>
     <entry t="184.9" text="発動" castname="無の渦流" sync="false"/>
@@ -81,7 +79,6 @@
     <entry t="535.2" castname="ディメンションゼロ" sync="false"/>
     <entry t="540.7" text="全体攻撃" castname="アルマゲスト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="551.5" text="無の肥大" castname="無の肥大" duration="6.7"/>
-    <entry t="564.5" castname="セリフ" sync="false"/>
     <entry t="565.7" castname="無の活性" duration="1.7"/>
     <entry t="568.7" castname="集積波動" duration="6.7"/>
     <entry t="569.8" castname="集積波動" duration="5.7"/>

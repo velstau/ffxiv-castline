@@ -7,7 +7,6 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:42）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="5.3" castname="同期待ち2" sync="false"/>
     <entry t="7.0" text="全体攻撃" castname="スマッシュインパクト" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="13.2" castname="スマッシュインパクト" sync="false"/>
     <entry t="14.2" castname="スマッシュインパクト" sync="false"/>
@@ -29,11 +28,6 @@
     <entry t="91.4" castname="爆発" sync="false"/>
     <entry t="94.3" castname="爆発" sync="false"/>
     <entry t="106.4" text="ドーピング" castname="ドーピング" duration="3.7"/>
-    <entry t="106.5" castname="セリフ1" sync="false"/>
-    <entry t="118.5" castname="セリフ2" sync="false"/>
-    <entry t="123.5" castname="セリフ3" sync="false"/>
-    <entry t="129.5" castname="セリフ4" sync="false"/>
-    <entry t="134.5" castname="セリフ5" sync="false"/>
     <entry t="137.6" text="Xラリアット" castname="8ウェイ・ダブルラリアット|4ウェイ・ダブルラリアット" duration="6.7"/>
     <entry t="147.4" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="7.7"/>
     <entry t="158.7" castname="パワーダイブ・ショック" sync="false"/>
@@ -67,9 +61,7 @@
     <entry t="266.9" castname="自爆" sync="false"/>
     <entry t="271.9" text="Xダイブ" castname="8ショック・パワーダイブ|4ショック・パワーダイブ" duration="7.7"/>
     <entry t="271.9" castname="自爆" sync="false"/>
-    <entry t="294.8" castname="セリフ" sync="false"/>
     <entry t="294.9" text="フューズフィールド" castname="フューズフィールド" duration="3.7"/>
-    <entry t="299.8" castname="セリフ" sync="false"/>
     <entry t="302.0" castname="ボンバリアンファイヤー" duration="2.7"/>
     <entry t="310.8" castname="1回目爆破開始" sync="false"/>
     <entry t="350.4" text="強攻撃" castname="ナックルパート" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
@@ -78,10 +70,7 @@
     <entry t="358.6" castname="ナックルパート" sync="false"/>
     <entry t="359.7" castname="ナックルパート" sync="false"/>
     <entry t="360.8" castname="ナックルパート" sync="false"/>
-    <entry t="368.5" castname="セリフ" sync="false"/>
     <entry t="368.6" text="ドーピング2回目" castname="ドーピング" duration="3.7"/>
-    <entry t="381.5" castname="セリフ2" sync="false"/>
-    <entry t="385.5" castname="セリフ3" sync="false"/>
     <entry t="385.9" text="ボンバリアンスペシャル" castname="8ショック・ボンバリアンスペシャル|4ショック・ボンバリアンスペシャル" duration="5.7"/>
     <entry t="385.9" castname="ボンバリアンスペシャル" duration="6.7"/>
     <entry t="416.0" castname="ボンバリアン・ショック" sync="false"/>

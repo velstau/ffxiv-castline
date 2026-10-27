@@ -37,6 +37,8 @@ JUMP_MIN_SUPPORT = 2  # 窓の外へ合わせ直すのは、続く 3 行のう�
 SYNC_WINDOW_DEFAULT = 10  # Castline の既定の同期の窓（これより広い指定だけ window に移す）
 ENTRY_ORDER = ["t", "text", "castname", "duration", "sync", "tts", "window", "gimmick_icon", "skills_icon"]  # timeline-xml.js の toTimelineXml と同じ順
 MARKER_TEXTS = {'同期', '同期待ち', '開始待ち'}
+# 台詞・分岐の目印で、画面に出しても意味の無い text（2026-10-27 のユーザーの了承。「セリフ1」「同期(車両2)」「シェア用タイムライン」など）
+MARKER_PATTERN = re.compile(r'^(セリフ(技)?\d*|.+のセリフ|同期待ち\d*|強制同期|同期\(.+\)|.+用タイムライン)$')
 
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')
 CAST = re.compile(r'^(?P<who>[^:「」^]+?)は「(?P<what>.+)」の構え。?$')
@@ -380,10 +382,11 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         first_offset = min_offsets[phase_id] = offset
         used, last = set(), -1e9
         labeled, resyncs, wide, loose, inserted, missed, jumped = 0, [], [], [], [], [], []
-        role, dropped_tts = roles.get(sec['name']), 0
+        sec_roles, dropped_tts = roles.get(sec['name'], []), 0
         for idx, it in enumerate(sec['items']):
-            label = '' if it['text'] in MARKER_TEXTS else it['text']
+            label = '' if it['text'] in MARKER_TEXTS or MARKER_PATTERN.match(it['text']) else it['text']
             notice = it['notice']
+            role = next((r for start, r in reversed(sec_roles) if it['time'] >= start), None)
             if role:
                 # 担当ごとの区間: どの担当でも同じ画面に出るので、表示に担当名を付け、読み上げはしない
                 label = f'{role}: {label}' if label else ''
@@ -478,7 +481,7 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         entries.sort(key=lambda e: e['_t'])
         report.append(f'区間 {sec["name"]} → フェーズ {phase_id}: 最初のずれ {first_offset:+.1f} 秒（{support} 行がそろう）、'
                       f'骨組みに付けた {labeled} 行、表示だけで足した {len(inserted)} 行、FFLogs で見つからない {len(missed)} 行'
-                      + (f'、担当「{role}」として読み上げを外した {dropped_tts} 行' if role else ''))
+                      + (f'、担当「{"・".join(r for _, r in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else ''))
         report += [f'    合わせ直し（2 秒超）: {x}' for x in resyncs]
         report += [f'    広い窓で見つけた: {x}' for x in wide]
         report += [f'    離れた所で合わせ直した: {x}' for x in jumped]
@@ -488,11 +491,16 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使う。
     # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）ので、読まない予定には tts を書かない（2026-10-27 のユーザーの指定）。
     # 「@ANTI_KNOCKBACK」のような Hojoring の置き換えの印が入った notice は、そのまま読むと意味が通らないので使わない（同日のユーザーの指定）
+    # 担当ごとの区間の文言がどの担当でも同じなら（絶オメガ P3 の「アクション1開始」など）、担当名を付けずに 1 つだけ出す
+    role_names = {r for rs in roles.values() for _, r in rs}
     for phase in skeleton['phases']:
         for e in phase['entries']:
             notices = [n for n in e.get('_notices', []) if '@' not in n]
             if notices:
                 e['tts'] = '、'.join(notices)
+            parts = [p.split(': ', 1) for p in (e.get('label') or '').split(' / ')]
+            if len(parts) > 1 and all(len(p) == 2 and p[0] in role_names for p in parts) and len({p[1] for p in parts}) == 1:
+                e['label'] = parts[0][1]
     return report
 
 
@@ -550,8 +558,9 @@ def main():
     ap.add_argument('--author', help='タイムラインの作者（省略時は元ファイルの author）')
     ap.add_argument('--events', action='append', default=[], metavar='フェーズID=PATH',
                     help='そのフェーズの FFLogs の技の一覧（tools/fflogs-events.py の出力）')
-    ap.add_argument('--role', action='append', default=[], metavar='区間=担当名',
-                    help='担当ごとの区間（例: RED=赤）。表示に担当名を付け、読み上げはしない')
+    ap.add_argument('--role', action='append', default=[], metavar='区間[@秒]=担当名',
+                    help='担当ごとの区間（例: RED=赤）。表示に担当名を付け、読み上げはしない。'
+                         '「P3@47=無職」は区間の 47 秒以降の行だけ（区間の途中から担当ごとに分かれるとき）')
     ap.add_argument('--events-all', metavar='PATH',
                     help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
@@ -583,8 +592,13 @@ def main():
                 events[pid] = [tuple(e) for e in p['events']]
         infer_names(sections, {e[2] for evs in events.values() for e in evs})
         mapping = {**auto_phases(sections, {k: v for k, v in events.items() if not fights or k in fights}), **mapping}
+    roles = {}
+    for r in args.role:
+        where, name = r.split('=', 1)
+        sec, _, start = where.partition('@')
+        roles.setdefault(sec, []).append((float(start or 0), name))
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
-                     dict(r.split('=', 1) for r in args.role))
+                     {sec: sorted(rs) for sec, rs in roles.items()})
     for fid in fights:
         split_phases(skeleton, fid)
     if args.cast_durations:

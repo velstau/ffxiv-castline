@@ -13,7 +13,6 @@
     <next to="b-p1" at="23.2" cast="エンバグ"/>
   </phase>
   <phase id="a-p1" name="前半">
-    <entry t="0.7" castname="オメガのセリフ" sync="false"/>
     <entry t="9.8" text="シールドオプション" castname="シールドオプション" duration="1.7" tts="次は、シールドオプション。" window="20 10"/>
     <entry t="16.9" text="援護プログラムF" castname="援護プログラムF" duration="2.7" window="30 10"/>
     <entry t="20.9" castname="オプチカルレーザーf" sync="false"/>

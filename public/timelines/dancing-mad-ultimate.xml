@@ -117,7 +117,6 @@
     <entry t="111.6" castname="サンダガ2" sync="false"/>
     <entry t="114.6" text="決戦" castname="決戦" duration="2.7"/>
     <entry t="121.9" text="サンダガ" castname="サンダガ" duration="4.7" tts="サンダガ"/>
-    <entry t="123.6" castname="セリフ" sync="false"/>
     <entry t="126.9" castname="じしん" duration="4.7"/>
     <entry t="130.9" castname="じしん開始" sync="false"/>
     <entry t="148.0" text="ブラックホール" castname="ブラックホール" duration="2.7"/>

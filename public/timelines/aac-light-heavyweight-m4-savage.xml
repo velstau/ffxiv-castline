@@ -54,8 +54,6 @@
     <entry t="205.4" text="連続頭割り" castname="ウィケッドボルト" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="212.4" castname="タンク誘導" sync="false" tts="タンク誘導"/>
     <entry t="218.6" text="イオンクラスター" castname="イオンクラスター" duration="2.7"/>
-    <entry t="225.6" castname="セリフ" sync="false"/>
-    <entry t="232.6" castname="セリフ2" sync="false"/>
     <entry t="233.3" castname="レフトロール" sync="false"/>
     <entry t="235.3" text="移動" castname="カノンスタンピード" sync="false" tts="移動"/>
     <entry t="246.8" text="エレクトロンストリーム1" castname="エレクトロンストリーム" duration="5.7"/>
@@ -105,7 +103,6 @@
     <entry t="448.8" text="着弾" castname="マスタードボム" duration="8.7"/>
     <entry t="457.6" castname="キンドルファイア" sync="false"/>
     <entry t="459.8" castname="デバフ処理" sync="false" tts="デバフを処理"/>
-    <entry t="466.8" castname="セリフ" sync="false"/>
     <entry t="467.9" text="属性変換" castname="属性変換" duration="6.7"/>
     <entry t="478.1" text="テイル1" castname="テイルスラスト" duration="5.7"/>
     <entry t="487.2" text="テイル2" castname="テイルスラスト" sync="false"/>
