@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>次元の狭間オメガ零式：アルファ編2</content>
+  <title>次元の狭間オメガ零式：アルファ編2（FFLogs から生成）</title>
+  <note>FFLogs の公開ランキングの討伐の記録（10:37）から 2026-10-27 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync=&quot;false&quot;（表示だけ）</note>
+  <phase id="p1">
+    <entry t="12.7" castname="Coil" sync="false"/>
+    <entry t="23.9" castname="Azure Wings" sync="false"/>
+    <entry t="27.9" castname="紅翼の焔" sync="false"/>
+    <entry t="36.2" castname="Coil" sync="false"/>
+    <entry t="42.6" castname="アク・モーン" duration="4.7"/>
+    <entry t="49.6" castname="アク・モーン" sync="false"/>
+    <entry t="50.7" castname="アク・モーン" sync="false"/>
+    <entry t="51.8" castname="アク・モーン" sync="false"/>
+    <entry t="54.0" castname="Azure Wings" sync="false"/>
+    <entry t="57.6" castname="蒼翼の焔" sync="false"/>
+    <entry t="66.2" castname="テイルエンド" duration="3.7"/>
+    <entry t="78.6" castname="Coil" sync="false"/>
+    <entry t="89.7" castname="Stygian Maw" sync="false"/>
+    <entry t="93.3" castname="アースシェイカー" sync="false"/>
+    <entry t="102.1" castname="Coil" sync="false"/>
+    <entry t="108.2" castname="テイルエンド" duration="3.7"/>
+    <entry t="113.9" castname="サンダーストーム" duration="4.7"/>
+    <entry t="114.3" castname="Stygian Maw" sync="false"/>
+    <entry t="126.5" castname="天地開闢" duration="4.7"/>
+    <entry t="131.6" castname="天地開闢" sync="false"/>
+    <entry t="137.7" castname="テイルエンド" duration="3.7"/>
+    <entry t="150.1" castname="Coil" sync="false"/>
+    <entry t="156.2" castname="ノーザンクロス" duration="2.7"/>
+    <entry t="163.4" castname="Azure Wings" sync="false"/>
+    <entry t="166.9" castname="蒼翼の焔" sync="false"/>
+    <entry t="170.6" castname="アク・ラーイ" duration="2.7"/>
+    <entry t="175.7" castname="フリージングダスト" sync="false"/>
+    <entry t="179.9" castname="Coil" sync="false"/>
+    <entry t="191.1" castname="Stygian Maw" sync="false"/>
+    <entry t="194.6" castname="黒牙の焔" sync="false"/>
+    <entry t="215.9" castname="フロストブレス" sync="false"/>
+    <entry t="219.9" castname="ライムリリース" duration="1.7"/>
+    <entry t="226.0" castname="フロストブレス" sync="false"/>
+    <entry t="236.1" castname="ライムリリース" duration="1.7"/>
+    <entry t="240.2" castname="フロストブレス" sync="false"/>
+    <entry t="250.3" castname="フロストブレス" sync="false"/>
+    <entry t="252.4" castname="ライムリリース" duration="1.7"/>
+    <entry t="260.4" castname="フロストブレス" sync="false"/>
+    <entry t="261.9" castname="ダークウェーブ" duration="2.7"/>
+    <entry t="277.7" castname="プロトスター" sync="false"/>
+    <entry t="278.8" castname="プロトスター" sync="false"/>
+    <entry t="279.8" castname="プロトスター" sync="false"/>
+    <entry t="290.2" castname="サンダーストーム" duration="4.7"/>
+    <entry t="291.3" castname="カータライズ" duration="4.2"/>
+    <entry t="293.7" castname="ホリッドロア" sync="false"/>
+    <entry t="301.0" castname="ホリッドロア" duration="3.2"/>
+    <entry t="302.1" castname="カータライズ" duration="4.2"/>
+    <entry t="311.0" castname="タッチダウン" sync="false"/>
+    <entry t="317.2" castname="天地開闢" duration="4.7"/>
+    <entry t="333.5" castname="クリムゾンブレス" sync="false"/>
+    <entry t="340.7" castname="クリムゾンブレス" sync="false"/>
+    <entry t="347.9" castname="クリムゾンブレス" sync="false"/>
+    <entry t="355.1" castname="クリムゾンブレス" sync="false"/>
+    <entry t="369.5" castname="ホリッドロア" duration="3.2"/>
+    <entry t="379.6" castname="ヒートテイル" sync="false"/>
+    <entry t="393.0" castname="カータライズ" duration="4.2"/>
+    <entry t="403.1" castname="エクサフレア" duration="3.7"/>
+    <entry t="403.8" castname="カータライズ" duration="4.2"/>
+    <entry t="408.6" castname="エクサフレア" sync="false"/>
+    <entry t="410.1" castname="エクサフレア" sync="false"/>
+    <entry t="411.6" castname="エクサフレア" sync="false"/>
+    <entry t="413.0" castname="エクサフレア" sync="false"/>
+    <entry t="423.2" castname="テイルエンド" duration="3.7"/>
+    <entry t="433.6" castname="アク・モーン" duration="4.7"/>
+    <entry t="440.7" castname="アク・モーン" sync="false"/>
+    <entry t="441.8" castname="アク・モーン" sync="false"/>
+    <entry t="442.8" castname="アク・モーン" sync="false"/>
+    <entry t="445.1" castname="ホリッドロア" duration="3.2"/>
+    <entry t="457.0" castname="Coil" sync="false"/>
+    <entry t="463.1" castname="テイルエンド" duration="3.7"/>
+    <entry t="469.2" castname="Azure Wings" sync="false"/>
+    <entry t="479.7" castname="天地開闢" duration="4.7"/>
+    <entry t="490.9" castname="エクサフレア" duration="2.7"/>
+    <entry t="498.3" castname="アク・モーン" duration="4.7"/>
+    <entry t="505.5" castname="アク・モーン" sync="false"/>
+    <entry t="506.5" castname="アク・モーン" sync="false"/>
+    <entry t="507.6" castname="アク・モーン" sync="false"/>
+    <entry t="519.4" castname="Coil" sync="false"/>
+    <entry t="525.5" castname="ノーザンクロス" duration="2.7"/>
+    <entry t="532.7" castname="Azure Wings" sync="false"/>
+    <entry t="541.3" castname="ホリッドロア" duration="3.2"/>
+    <entry t="553.0" castname="アク・ラーイ" duration="2.7"/>
+    <entry t="558.1" castname="テイルエンド" duration="3.7"/>
+    <entry t="570.5" castname="Coil" sync="false"/>
+    <entry t="576.6" castname="テイルエンド" duration="3.7"/>
+    <entry t="582.8" castname="Stygian Maw" sync="false"/>
+    <entry t="593.3" castname="天地開闢" duration="4.7"/>
+    <entry t="604.5" castname="エクサフレア" duration="2.7"/>
+    <entry t="611.8" castname="アク・モーン" duration="4.7"/>
+    <entry t="618.9" castname="アク・モーン" sync="false"/>
+    <entry t="620.0" castname="アク・モーン" sync="false"/>
+    <entry t="621.1" castname="アク・モーン" sync="false"/>
+    <entry t="631.1" castname="アク・モーン" duration="4.7"/>
+  </phase>
+</timeline>

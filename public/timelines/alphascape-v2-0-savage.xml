@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<timeline>
+  <format>castline/1</format>
+  <content>次元の狭間オメガ零式：アルファ編2</content>
+  <title>次元の狭間オメガ零式：アルファ編2</title>
+  <author>Vel</author>
+  <note>FFLogs の公開ランキングの討伐の記録（10:37）から 2026-10-27 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
+  <phase id="p1">
+    <entry t="12.7" castname="Coil" sync="false"/>
+    <entry t="15.6" castname="縦回転(1回目)" sync="false"/>
+    <entry t="23.9" castname="Azure Wings" sync="false"/>
+    <entry t="27.6" castname="縦回転(2回目)" sync="false"/>
+    <entry t="27.9" castname="紅翼の焔" sync="false"/>
+    <entry t="36.2" castname="Coil" sync="false"/>
+    <entry t="38.6" castname="横回転(1回目)" sync="false"/>
+    <entry t="42.6" text="アク・モーン" castname="アク・モーン" duration="4.7"/>
+    <entry t="49.6" castname="アク・モーン" sync="false"/>
+    <entry t="50.7" castname="アク・モーン" sync="false"/>
+    <entry t="51.8" castname="アク・モーン" sync="false"/>
+    <entry t="54.0" castname="Azure Wings" sync="false"/>
+    <entry t="57.6" castname="蒼翼の焔" sync="false"/>
+    <entry t="57.6" castname="横回転(2回目)" sync="false"/>
+    <entry t="66.2" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
+    <entry t="78.6" castname="Coil" sync="false"/>
+    <entry t="82.2" castname="横回転(1回目)" sync="false"/>
+    <entry t="89.7" castname="Stygian Maw" sync="false"/>
+    <entry t="93.3" castname="アースシェイカー" sync="false"/>
+    <entry t="94.2" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="102.1" castname="Coil" sync="false"/>
+    <entry t="106.2" castname="縦回転(1回目)" sync="false"/>
+    <entry t="108.2" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
+    <entry t="113.9" castname="サンダーストーム" duration="4.7"/>
+    <entry t="114.2" text="サンダーストーム" castname="サンダーストーム on" sync="false" tts="雷きます"/>
+    <entry t="114.3" castname="Stygian Maw" sync="false"/>
+    <entry t="118.2" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="126.5" text="天地開闢" castname="天地開闢" duration="4.7" tts="青、天ならシャーク"/>
+    <entry t="131.6" castname="天地開闢" sync="false"/>
+    <entry t="137.7" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
+    <entry t="150.1" castname="Coil" sync="false"/>
+    <entry t="153.7" castname="横回転(1回目)" sync="false"/>
+    <entry t="156.2" castname="ノーザンクロス" duration="2.7"/>
+    <entry t="156.7" castname="ノーザンクロス" sync="false" tts="床凍ります"/>
+    <entry t="163.4" castname="Azure Wings" sync="false"/>
+    <entry t="166.7" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="166.9" castname="蒼翼の焔" sync="false"/>
+    <entry t="170.6" text="アク・ラーイ" castname="アク・ラーイ" duration="2.7"/>
+    <entry t="175.7" castname="フリージングダスト" sync="false"/>
+    <entry t="179.9" castname="Coil" sync="false"/>
+    <entry t="182.6" castname="横回転(1回目)" sync="false"/>
+    <entry t="191.1" castname="Stygian Maw" sync="false"/>
+    <entry t="191.6" castname="ホリッドロア" sync="false" tts="AOEきます"/>
+    <entry t="193.6" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="194.6" castname="黒牙の焔" sync="false"/>
+    <entry t="202.6" castname="STなら、雑魚にアルティメイテム" sync="false" tts="STなら、雑魚にアルティメイテム"/>
+    <entry t="215.9" text="フロストブレス" castname="フロストブレス" sync="false"/>
+    <entry t="219.9" castname="ライムリリース" duration="1.7"/>
+    <entry t="226.0" text="フロストブレス" castname="フロストブレス" sync="false"/>
+    <entry t="236.1" castname="ライムリリース" duration="1.7"/>
+    <entry t="240.2" text="フロストブレス" castname="フロストブレス" sync="false"/>
+    <entry t="250.3" text="フロストブレス" castname="フロストブレス" sync="false"/>
+    <entry t="252.4" castname="ライムリリース" duration="1.7"/>
+    <entry t="260.4" text="フロストブレス" castname="フロストブレス" sync="false"/>
+    <entry t="261.9" castname="ダークウェーブ" duration="2.7"/>
+    <entry t="277.7" castname="プロトスター" sync="false"/>
+    <entry t="278.8" castname="プロトスター" sync="false"/>
+    <entry t="279.8" castname="プロトスター" sync="false"/>
+    <entry t="290.2" castname="サンダーストーム" duration="4.7"/>
+    <entry t="291.3" text="カータライズ" castname="カータライズ" duration="4.2"/>
+    <entry t="293.7" castname="ホリッドロア" sync="false"/>
+    <entry t="301.0" castname="ホリッドロア" duration="3.2"/>
+    <entry t="302.1" text="カータライズ" castname="カータライズ" duration="4.2"/>
+    <entry t="311.0" text="タッチダウン" castname="タッチダウン" sync="false" tts="地ならシャーク"/>
+    <entry t="317.2" text="天地開闢" castname="天地開闢" duration="4.7" tts="天なら挑発、かぶったらみえにくいから注意"/>
+    <entry t="333.5" text="クリムゾンブレス" castname="クリムゾンブレス" sync="false"/>
+    <entry t="340.7" text="クリムゾンブレス" castname="クリムゾンブレス" sync="false"/>
+    <entry t="347.9" text="クリムゾンブレス" castname="クリムゾンブレス" sync="false"/>
+    <entry t="355.1" text="クリムゾンブレス" castname="クリムゾンブレス" sync="false"/>
+    <entry t="369.5" castname="ホリッドロア" duration="3.2"/>
+    <entry t="379.6" text="ヒートテイル" castname="ヒートテイル" sync="false"/>
+    <entry t="393.0" text="カータライズ" castname="カータライズ" duration="4.2"/>
+    <entry t="403.1" castname="エクサフレア" duration="3.7" gimmick_icon="exaflare.png"/>
+    <entry t="403.8" text="カータライズ" castname="カータライズ" duration="4.2"/>
+    <entry t="408.6" castname="エクサフレア" sync="false" gimmick_icon="exaflare.png"/>
+    <entry t="410.1" castname="エクサフレア" sync="false" gimmick_icon="exaflare.png"/>
+    <entry t="411.6" castname="エクサフレア" sync="false" gimmick_icon="exaflare.png"/>
+    <entry t="413.0" castname="エクサフレア" sync="false" gimmick_icon="exaflare.png"/>
+    <entry t="423.2" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="天ならシャーク、地なら挑発、テイルエンドきます"/>
+    <entry t="433.6" text="アク・モーン" castname="アク・モーン" duration="4.7"/>
+    <entry t="440.7" castname="アク・モーン" sync="false"/>
+    <entry t="441.8" castname="アク・モーン" sync="false"/>
+    <entry t="442.8" castname="アク・モーン" sync="false"/>
+    <entry t="445.1" text="ホリッドロア" castname="ホリッドロア" duration="3.2"/>
+    <entry t="445.6" text="サンダーストーム" castname="サンダーストーム on" sync="false" tts="指定位置に散開"/>
+    <entry t="457.0" castname="Coil" sync="false"/>
+    <entry t="460.1" castname="ランダム回転(1回目)" sync="false"/>
+    <entry t="463.1" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
+    <entry t="469.2" castname="Azure Wings" sync="false"/>
+    <entry t="472.1" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="479.7" text="天地開闢" castname="天地開闢" duration="4.7" tts="天ならシャーク、地なら挑発"/>
+    <entry t="490.9" text="エクサフレア" castname="エクサフレア" duration="2.7" gimmick_icon="exaflare.png"/>
+    <entry t="498.3" text="アク・モーン" castname="アク・モーン" duration="4.7"/>
+    <entry t="505.5" castname="アク・モーン" sync="false"/>
+    <entry t="506.5" castname="アク・モーン" sync="false"/>
+    <entry t="507.6" castname="アク・モーン" sync="false"/>
+    <entry t="519.4" castname="Coil" sync="false"/>
+    <entry t="522.3" castname="ランダム回転(1回目)" sync="false"/>
+    <entry t="525.3" castname="ノーザンクロス" sync="false" tts="床凍ります"/>
+    <entry t="525.5" castname="ノーザンクロス" duration="2.7"/>
+    <entry t="532.7" castname="Azure Wings" sync="false"/>
+    <entry t="533.3" text="サンダーストーム" castname="サンダーストーム on" sync="false"/>
+    <entry t="536.3" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="541.3" text="ホリッドロア" castname="ホリッドロア" duration="3.2" tts="AOEきます"/>
+    <entry t="553.0" text="アク・ラーイ" castname="アク・ラーイ" duration="2.7"/>
+    <entry t="558.1" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンド連続できます、テイルエンドきます"/>
+    <entry t="570.5" castname="Coil" sync="false"/>
+    <entry t="573.2" castname="ランダム回転(1回目)" sync="false"/>
+    <entry t="576.6" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
+    <entry t="582.8" castname="Stygian Maw" sync="false"/>
+    <entry t="586.6" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="593.3" text="天地開闢" castname="天地開闢" duration="4.7" tts="天ならシャーク、地なら挑発"/>
+    <entry t="604.5" text="エクサフレア" castname="エクサフレア" duration="2.7" gimmick_icon="exaflare.png"/>
+    <entry t="611.8" text="アク・モーン" castname="アク・モーン" duration="4.7"/>
+    <entry t="618.9" castname="アク・モーン" sync="false"/>
+    <entry t="620.0" castname="アク・モーン" sync="false"/>
+    <entry t="621.1" castname="アク・モーン" sync="false"/>
+    <entry t="631.1" castname="アク・モーン" duration="4.7"/>
+    <entry t="632.8" castname="がんばれ！" sync="false"/>
+  </phase>
+</timeline>
