@@ -200,6 +200,19 @@ test('敵対リストを読めない間に 4%→1% と読み、HP も読めな�
     e.hpPercent(2500, 4);
     e.hpPercent(3000, 1);
     e.hpPercent(3500, null);
-    assert.equal(e.status(5400).state, 'combat'); // 4% を読んでから 3 秒たつまでは待つ
-    assert.equal(e.status(5600).state, 'ended');
+    assert.equal(e.status(5900).state, 'combat'); // 最後に HP（1%）を読んでから 3 秒たつまでは待つ
+    assert.equal(e.status(6100).state, 'ended');
+});
+
+test('3% 以下でも HP を読み続けている間は、敵対リストを読めなくても討伐にしない', () => {
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.enmity(2000, false);
+    e.hpPercent(2500, 4);
+    [2.9, 2.8, 2.7, 2.6].forEach((hp, i) => e.hpPercent(3000 + i * 1000, hp));
+    assert.equal(e.status(6000).state, 'combat');
+    e.hpPercent(7000, null); // 倒して HP も読めなくなった
+    assert.equal(e.status(8900).state, 'combat');
+    assert.equal(e.status(9100).state, 'ended');
 });
