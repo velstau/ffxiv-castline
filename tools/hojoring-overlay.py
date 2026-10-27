@@ -31,6 +31,7 @@ MIN_WINDOW = 3.0  # 照合の窓の最小（Hojoring の時刻は整数秒）
 FALLBACK_WINDOW = 6.0  # Hojoring の窓で見つからないとき、FFLogs の技を探す広さ
 LOOSE_WINDOW = 10.0  # FFLogs でも見つからない技を、同名の予定に付けてよい差
 OFFSET_TOLERANCE = 1.5  # 区間の最初のずれの推定で「そろっている」とみなす差
+ROLE_MERGE_S = 1.0  # 担当ごとの同じ行を 1 つにまとめる時刻の差（担当ごとの区間のずれの差）
 SKELETON_TOLERANCE = 1.5  # FFLogs の技と骨組みの予定（詠唱開始＋詠唱時間）を同じものとみなす差
 AFTER_CAST_MAX = 6.0  # 詠唱の終わりからこれ以内に当たった同名の技は、その詠唱の予定に付ける（2 撃目・遅れて当たる技）
 JUMP_MIN_SUPPORT = 2  # 窓の外へ合わせ直すのは、続く 3 行のうちこれだけそろうとき
@@ -410,12 +411,19 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         for idx, it in enumerate(sec['items']):
             label = '' if it['text'] in MARKER_TEXTS or MARKER_PATTERN.match(it['text']) else it['text']
             notice = it['notice']
-            role = it['cond_role'] or next((r for start, r in reversed(sec_roles) if it['time'] >= start), None)
+            role, variant = next(((r, v) for start, r, v in reversed(sec_roles) if it['time'] >= start), (None, False))
+            role = it['cond_role'] or role
+            role_info = None
             if role:
                 # 担当ごとの区間・ロールの条件の行: どの担当でも同じ画面に出るので、表示に担当名を付け、読み上げはしない。
                 # ロールの条件の行は読み上げの文（「右上えー」など向きの指示）が要なので、表示に添える
                 used_roles.add(role)
                 said = f'（{notice}）' if it['cond_role'] and label and notice and notice != label else ''
+                # 全担当で同じ文言・読み上げの行は、後で担当名を外して 1 つにする（collapse_roles）。そのための元の文言と読み上げ
+                if not said and label and notice and squash(notice) not in squash(label) and squash(label) not in squash(notice):
+                    said = f'（{notice}）'  # 読み上げの文が表示と違う指示なら、読み上げない代わりに表示に添える（絶バハ P5 の「散開。」）
+                role_info = None if it['cond_role'] else (role, f'{role}: {label or notice}{said}', label or notice, notice)
+                variant = variant and not it['cond_role']
                 label = f'{role}: {label or notice}{said}' if label or notice else ''
                 dropped_tts += 1 if notice else 0
                 conditional += 1 if it['cond_role'] else 0
@@ -427,7 +435,9 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                 conditional += 1
                 notice = ''
             ev = None
-            if it['kind'] in ('hit', 'cast'):
+            # 型（--variant）の行は、詠唱バーに出る技（詠唱開始の記録）でだけ合わせる。詠唱の無い技は型によって順が違い、
+            # この討伐の別の型の技に合うとずれる（絶バハ P5 のルナダイナモとレイヴンダイブ）。担当（--role）はボスの技が同じなので合わせる
+            if it['kind'] == 'cast' or (it['kind'] == 'hit' and not variant):
                 before, after = hojoring_window(it, defaults)
                 target = it['time'] + offset
 
@@ -437,7 +447,7 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                     return min(cands, key=lambda e: abs(e[0] - target), default=None)
 
                 # 「構え」でも FFLogs に詠唱開始の記録が無い技（分身が使う技など）は、発動の記録で探す
-                types = ['b', 'c'] if it['kind'] == 'cast' else ['c']
+                types = ['b'] if variant else ['b', 'c'] if it['kind'] == 'cast' else ['c']
                 ev = find(types[:1], before, after) or (find(types[1:], before, after) if len(types) > 1 else None)
                 if ev is not None:
                     if abs(ev[0] - target) > 2:
@@ -489,6 +499,11 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                 hit = min(cands, key=lambda e: (e.get('sync') == 'false', abs(key_time(e, kind) - at)), default=None)
                 if hit is not None:
                     loose.append(f'{it["time"]:g} {"|".join(it["names"])} {key_time(hit, kind) - at:+.1f}')
+            if hit is not None and variant and hit.get('sync') == 'false':
+                # 型ごとの区間の、詠唱の無い技: 型によって順が違う（絶バハ P5 のルナダイナモとレイヴンダイブ）ので、
+                # この討伐の時刻に合わせず元ファイルの時刻で足し、担当名の無い元の予定は外す
+                hit['_shadowed'] = True
+                hit, at = None, it['time'] + offset
             if hit is not None:
                 used.add((id(hit), kind))  # 同じ詠唱の「構え」と発動は、どちらも同じ予定に付けてよい
                 labeled += 1
@@ -496,6 +511,8 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                     names = hit['name'].split('|')
                     hit['name'] = '|'.join(it['names'] + [n for n in names if n not in it['names']])
                 add_text(hit, 'label', label, ' / ')
+                if role_info:
+                    hit.setdefault('_roles', {})[role_info[0]] = role_info[1:]
                 hit.setdefault('_notices', [])
                 if notice and notice not in hit['_notices']:
                     hit['_notices'].append(notice)
@@ -510,12 +527,14 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
                 new['label'] = label
             new['_notices'] = [notice] if notice else []
             new['_no_name'] = not it['names']  # 技名が無い（台詞・同期なしの行）
+            if role_info:
+                new['_roles'] = {role_info[0]: role_info[1:]}
             entries.append(new)
             inserted.append(f'{it["time"]:g}→{at:.1f} {name}（{it["kind"]}{"・FFLogs で確認" if ev else ""}）')
         entries.sort(key=lambda e: e['_t'])
         report.append(f'区間 {sec["name"]} → フェーズ {phase_id}: 最初のずれ {first_offset:+.1f} 秒（{support} 行がそろう）、'
                       f'骨組みに付けた {labeled} 行、表示だけで足した {len(inserted)} 行、FFLogs で見つからない {len(missed)} 行'
-                      + (f'、担当「{"・".join(r for _, r in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else '')
+                      + (f'、担当「{"・".join(r for _, r, _ in sec_roles)}」として読み上げを外した {dropped_tts} 行' if sec_roles else '')
                       + (f'、条件付き（ロール・デバフ）で表示だけにした {conditional} 行' if conditional else ''))
         report += [f'    合わせ直し（2 秒超）: {x}' for x in resyncs]
         report += [f'    広い窓で見つけた: {x}' for x in wide]
@@ -526,9 +545,13 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
     # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使う。
     # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）ので、読まない予定には tts を書かない（2026-10-27 のユーザーの指定）。
     # 「@ANTI_KNOCKBACK」のような Hojoring の置き換えの印が入った notice は、そのまま読むと意味が通らないので使わない（同日のユーザーの指定）
-    # 担当ごとの区間の文言がどの担当でも同じなら（絶オメガ P3 の「アクション1開始」など）、担当名を付けずに 1 つだけ出す
-    role_names = used_roles
+    # 担当ごとの区間の文言がどの担当でも同じなら（絶オメガ P3 の「アクション1開始」、絶バハ P5 の「次は、ギガフレア」など）、
+    # 担当名を付けずに 1 つだけ出し、読み上げも戻す
+    family = {r for rs in roles.values() for _, r, _ in rs}
     for phase in skeleton['phases']:
+        phase['entries'] = [e for e in phase['entries'] if not (e.get('_shadowed') and not e.get('label') and not e.get('_notices'))]
+        if family:
+            collapse_roles(phase, family)
         # 同じ時刻・技名・表示の予定が重なったら 1 つにする（表示だけで足した予定が、骨組みの予定や別の区間の行と重なったもの）。
         # 同期する予定を残し、読み上げは合わせる
         kept, order = {}, []
@@ -548,10 +571,64 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
             notices = [n for n in e.get('_notices', []) if '@' not in n]
             if notices:
                 e['tts'] = '、'.join(notices)
-            parts = [p.split(': ', 1) for p in (e.get('label') or '').split(' / ')]
-            if len(parts) > 1 and all(len(p) == 2 and p[0] in role_names for p in parts) and len({p[1] for p in parts}) == 1:
-                e['label'] = parts[0][1]
     return report
+
+
+def squash(text):
+    """表示と読み上げの文を比べるときの形（句読点・長音・「+」「と」を除く）"""
+    return re.sub(r'[、。ー＋+と\s]', '', text)
+
+
+def collapse_roles(phase, family):
+    """担当（--role）の全部で同じ文言・同じ読み上げの行を、担当名の無い 1 つにする。
+    1 つの予定に全担当の文言が付いたもの（「シェア: X / サークル: X」）と、担当ごとに別の予定として足したものの両方"""
+    def unrole(e, tag, base, said):
+        if e['name'] == tag:
+            e['name'] = base
+        parts = [base if p == tag else p for p in (e.get('label') or '').split(' / ') if p]
+        parts = [p for i, p in enumerate(parts) if p not in parts[:i]]
+        if parts and parts != [e['name']]:
+            e['label'] = ' / '.join(parts)
+        else:
+            e.pop('label', None)
+        if said and said not in e.setdefault('_notices', []):
+            e['_notices'].append(said)
+
+    for e in phase['entries']:
+        got = e.get('_roles', {})
+        if set(got) == family and len({v[1:] for v in got.values()}) == 1:
+            for tag, base, said in got.values():
+                unrole(e, tag, base, said)
+            e.pop('_roles')
+    # 担当ごとに別の予定になったもの: 同じ技名・文言・読み上げで、時刻が ROLE_MERGE_S 秒以内（区間ごとのずれの差）
+    groups = {}
+    for e in phase['entries']:
+        got = e.get('_roles', {})
+        if len(got) == 1:
+            (tag, base, said), = got.values()
+            name = base if e['name'] == tag else e['name']
+            groups.setdefault((name, base, said), []).append(e)
+    clusters = []
+    for (_, base, said), es in groups.items():
+        es.sort(key=lambda e: e['_t'])
+        cur = []
+        for e in es:
+            if cur and (e['_t'] - cur[0]['_t'] > ROLE_MERGE_S or any(r in e['_roles'] for c in cur for r in c['_roles'])):
+                clusters.append((base, said, cur))
+                cur = []
+            cur.append(e)
+        clusters.append((base, said, cur))
+    drop = set()
+    for base, said, es in clusters:
+        if sorted(r for e in es for r in e['_roles']) != sorted(family):
+            continue
+        keep = es[0]
+        unrole(keep, next(iter(keep.pop('_roles').values()))[0], base, said)
+        for e in es[1:]:
+            drop.add(id(e))
+            if not keep.get('gimmick_icon') and e.get('gimmick_icon'):
+                keep['gimmick_icon'] = e['gimmick_icon']
+    phase['entries'] = [e for e in phase['entries'] if id(e) not in drop]
 
 
 def apply_cast_durations(skeleton, path, file):
@@ -611,6 +688,9 @@ def main():
     ap.add_argument('--role', action='append', default=[], metavar='区間[@秒]=担当名',
                     help='担当ごとの区間（例: RED=赤）。表示に担当名を付け、読み上げはしない。'
                          '「P3@47=無職」は区間の 47 秒以降の行だけ（区間の途中から担当ごとに分かれるとき）')
+    ap.add_argument('--variant', action='append', default=[], metavar='区間[@秒]=型の名前',
+                    help='ボスの処理の型ごとの区間（例: 絶バハ P5 のダイナモ・ダイブ）。表示は --role と同じ。'
+                         '型によって詠唱の無い技の順が違うので、その技にはこの討伐の時刻で合わせない')
     ap.add_argument('--events-all', metavar='PATH',
                     help='全フェーズの技の一覧（tools/skeleton-from-fflogs.mjs の出力）。--phase の無い区間は、技が最も多くそろうフェーズに自動で対応させる')
     ap.add_argument('--phase', action='append', default=[], metavar='区間=フェーズID',
@@ -643,10 +723,10 @@ def main():
         infer_names(sections, {e[2] for evs in events.values() for e in evs})
         mapping = {**auto_phases(sections, {k: v for k, v in events.items() if not fights or k in fights}), **mapping}
     roles = {}
-    for r in args.role:
+    for r, variant in [(r, False) for r in args.role] + [(r, True) for r in args.variant]:
         where, name = r.split('=', 1)
         sec, _, start = where.partition('@')
-        roles.setdefault(sec, []).append((float(start or 0), name))
+        roles.setdefault(sec, []).append((float(start or 0), name, variant))
     report = overlay(skeleton, sections, defaults, lambda name: mapping.get(name, first), events.get,
                      {sec: sorted(rs) for sec, rs in roles.items()})
     for fid in fights:

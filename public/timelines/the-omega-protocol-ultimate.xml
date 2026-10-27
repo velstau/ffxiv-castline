@@ -104,10 +104,10 @@
     <entry t="77.8" castname="シェア: サークル受ける" sync="false" gimmick_icon="stack.png"/>
     <entry t="77.8" castname="サークル: シェア受ける" sync="false" gimmick_icon="stack.png"/>
     <entry t="77.8" castname="レイテント: 床踏み+サークル渡す" sync="false"/>
-    <entry t="86.8" text="無職: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="86.8" text="シェア: サークル着弾" castname="クリティカルバグ：サークル" sync="false" gimmick_icon="stack.png"/>
-    <entry t="86.8" text="サークル: シェア着弾" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
-    <entry t="86.8" text="レイテント: サークル着弾" castname="クリティカルバグ：サークル" sync="false"/>
+    <entry t="86.8" text="無職: シェア着弾（バーストじゅんび、バーストじゅんび）" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="シェア: サークル着弾（バーストじゅんび、バーストじゅんび）" castname="クリティカルバグ：サークル" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="サークル: シェア着弾（バーストじゅんび、バーストじゅんび）" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
+    <entry t="86.8" text="レイテント: サークル着弾（バーストじゅんび、バーストじゅんび）" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="88.3" castname="エンバグ" sync="false"/>
     <entry t="91.1" text="無職: 担当外エンバグ1 / シェア: エンバグ処理1 / サークル: エンバグ処理1 / レイテント: 担当外エンバグ1" castname="エンバグ" sync="false" gimmick_icon="stack.png"/>
     <entry t="94.1" castname="無職: 担当外エンバグ2" sync="false"/>

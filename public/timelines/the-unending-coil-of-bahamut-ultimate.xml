@@ -164,18 +164,20 @@
     <entry t="100.6" castname="フレアブレス" sync="false"/>
     <entry t="109.7" text="厄災の三重奏" castname="厄災の三重奏" duration="3.7" tts="ネールに集合"/>
     <entry t="118.7" castname="分岐待ち" sync="false"/>
-    <entry t="123.1" text="レイヴンダイブ" castname="レイヴンダイブ" sync="false" tts="散開。"/>
+    <entry t="124.3" text="ダイブ: レイヴンダイブ" castname="レイヴンダイブ" sync="false"/>
+    <entry t="124.7" text="ダイナモ: ルナダイナモ" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
     <entry t="125.1" castname="エーテリックプロフュージョン" duration="4.7"/>
-    <entry t="126.2" text="ルナダイナモ" castname="ルナダイナモ" sync="false" tts="ダイナモ、集まる。" gimmick_icon="dynamo.png"/>
+    <entry t="127.3" text="ダイブ: ルナダイナモ（ダイナモ、集まる。）" castname="ルナダイナモ" sync="false" gimmick_icon="dynamo.png"/>
+    <entry t="127.7" text="ダイナモ: レイヴンダイブ（散開。）" castname="レイヴンダイブ" sync="false" gimmick_icon="spread.png"/>
     <entry t="129.2" castname="テンペストウィング" sync="false"/>
-    <entry t="130.2" castname="エーテリックP" sync="false" tts="拘束具へー。"/>
-    <entry t="132.3" text="ギガフレア" castname="ギガフレア" duration="5.7" tts="次は、ギガフレア" window="20 10"/>
-    <entry t="133.2" castname="エーテリックP" sync="false" tts="拘束具えー。"/>
+    <entry t="131.3" castname="ダイブ: エーテリックP（拘束具へー。）" sync="false"/>
+    <entry t="131.7" castname="ダイナモ: エーテリックP（拘束具えー。）" sync="false" gimmick_icon="dynamo.png"/>
+    <entry t="132.3" castname="ギガフレア" duration="5.7" tts="次は、ギガフレア" window="20 10"/>
     <entry t="133.3" castname="バフつかう" sync="false" tts="ランパつかって"/>
-    <entry t="133.4" castname="メテオストリーム" sync="false"/>
-    <entry t="143.6" text="フレアブレス" castname="フレアブレス" sync="false"/>
-    <entry t="148.8" text="フラッテン" castname="フラッテン" duration="3.7" window="20 10"/>
-    <entry t="157.9" text="フレアブレス" castname="フレアブレス" sync="false"/>
+    <entry t="134.3" castname="メテオストリーム" sync="false"/>
+    <entry t="143.3" castname="フレアブレス" sync="false"/>
+    <entry t="148.8" castname="フラッテン" duration="3.7" window="20 10"/>
+    <entry t="157.8" castname="フレアブレス" sync="false"/>
     <entry t="162.0" text="天地の三重奏へ" castname="天地の三重奏" duration="3.7" window="30 10"/>
     <entry t="170.4" text="メガフレアダイブ" castname="メガフレアダイブ" duration="3.7"/>
     <entry t="170.4" castname="ツイスターダイブ" duration="3.7"/>

@@ -9,6 +9,8 @@
 //   difficulty 零式 101、ほかは 100（FFLogs の難易度）
 //   max-length これより長い（秒）討伐の記録は使わない（何十分もかかった外れ値の記録を避ける。convert-hojoring-pc.sh は Hojoring の最後の時刻の 1.2 倍を渡す）
 //   page       ランキングの何ページ目から選ぶか。省略時は最後のページ（上位の記録は速く、終盤の技が出ないため、遅い記録から採る）
+//   skip       使える討伐をこの件数だけ飛ばして、次のものを使う（分岐のあるコンテンツで、別の順の討伐を探すとき。2026-10-27）
+//   out        出力の名前（tools/skeletons/<out>.xml・.events.json）。省略時は file（分岐の別の討伐は <file>.k2 などにする）
 //
 // 問い合わせの結果は tools/cache/ に保存し、次からはそれを使う（FFLogs の利用回数の上限があるため。git の対象外）。
 // 生成物にはレポートの番号を書かない（ランキングから選んだほかの人の記録でも同じ）。
@@ -40,7 +42,8 @@ function args() {
         const i = rest.indexOf(`--${name}`);
         return i >= 0 ? Number(rest[i + 1]) : def;
     };
-    return { file, encounters: encounters.split(',').map(Number), difficulty: opt('difficulty', 100), page: opt('page', 0), maxLength: opt('max-length', 0) || Infinity };
+    const out = rest.includes('--out') ? rest[rest.indexOf('--out') + 1] : file;
+    return { file, encounters: encounters.split(',').map(Number), difficulty: opt('difficulty', 100), page: opt('page', 0), maxLength: opt('max-length', 0) || Infinity, skip: opt('skip', 0), out };
 }
 
 async function cached(name, fetcher, keep = () => true) {
@@ -78,7 +81,7 @@ async function loadAllCasts(client, code, fight) {
 }
 
 /** ランキングの記録を 1 つ選んで、レポート・戦闘・技を取る（場所がコンテンツと違う記録は飛ばす） */
-async function loadKill(client, encounter, difficulty, page, territory, maxLength) {
+async function loadKill(client, encounter, difficulty, page, territory, maxLength, skip = 0) {
     // ランキングは速い順なので、指定が無ければ最後のページ（遅い記録ほど終盤の技まで出る）。空のページは手前へ戻す（空の結果は保存しない）
     const fetchPage = (n) => cached(`rank-${encounter}-${difficulty}-${n}`, async () => (await client.query(
         `query($id: Int!, $difficulty: Int, $page: Int) { worldData { encounter(id: $id) { name fightRankings(difficulty: $difficulty, page: $page) } } }`,
@@ -100,8 +103,8 @@ async function loadKill(client, encounter, difficulty, page, territory, maxLengt
     // 長い記録ほど後半の技まで出るので、長い順に試す
     const ranked = [...list].sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0))
         .map((r, i) => ({ code: r.report.code, fightID: r.report.fightID, duration: r.duration, key: `kill-${encounter}-${difficulty}-${page}-${i}` }))
-        .filter((c) => !(c.duration > maxLength * 1000)).slice(0, 5);
-    const kill = await tryKills(client, ranked, territory, maxLength);
+        .filter((c) => !(c.duration > maxLength * 1000)).slice(0, 5 + skip);
+    const kill = await tryKills(client, ranked, territory, maxLength, skip);
     if (kill) {
         return { ...kill, encounterName: ranking?.name };
     }
@@ -112,15 +115,15 @@ async function loadKill(client, encounter, difficulty, page, territory, maxLengt
     console.warn(`  最近の討伐 ${recent.kills.length} 件（長いもの: ${recent.kills.slice(0, 3).map((k) => clock(k.duration)).join('・')}、上限 ${Number.isFinite(maxLength) ? clock(maxLength * 1000) : 'なし'}）`);
     // 保存の名前は並びの番号のまま（場所ごとの検索を保存しているので、並びは変わらない）
     const candidates = recent.kills.map((r, i) => ({ ...r, key: `kill-${encounter}-${difficulty}-recent-${i}` }))
-        .filter((c) => c.duration <= maxLength * 1000).slice(0, 8);
-    const found = await tryKills(client, candidates, territory, maxLength);
+        .filter((c) => c.duration <= maxLength * 1000).slice(0, 8 + skip);
+    const found = await tryKills(client, candidates, territory, maxLength, skip);
     if (found) {
         return { ...found, encounterName: recent.name };
     }
     throw new Error(`encounter ${encounter} に使える記録がありません`);
 }
 
-async function tryKills(client, candidates, territory, maxLength = Infinity) {
+async function tryKills(client, candidates, territory, maxLength = Infinity, skip = 0) {
     for (const [i, c] of candidates.entries()) {
         const kill = await cached(c.key, async () => {
             try {
@@ -149,6 +152,11 @@ async function tryKills(client, candidates, territory, maxLength = Infinity) {
         }
         if (territory && kill.fight.gameZone?.id !== territory) {
             console.warn(`  記録 ${i + 1}: 場所 ${kill.fight.gameZone?.id}（${kill.fight.gameZone?.name}）がコンテンツの場所 ${territory} と違うので使わない`);
+            continue;
+        }
+        if (skip > 0) {
+            console.warn(`  記録 ${i + 1}: 使えるが --skip で飛ばす`);
+            skip--;
             continue;
         }
         return kill;
@@ -265,7 +273,7 @@ function eventsPhases(phases) {
 }
 
 async function main() {
-    const { file, encounters, difficulty, page, maxLength } = args();
+    const { file, encounters, difficulty, page, maxLength, skip, out } = args();
     const contents = JSON.parse(readFileSync(join(root, 'public/data/contents.json'), 'utf8')).contents;
     const content = contents.find((c) => c.file === file);
     if (!content) {
@@ -277,7 +285,7 @@ async function main() {
     const allEvents = {};
     const allFights = {};
     for (const [i, encounter] of encounters.entries()) {
-        const kill = await loadKill(client, encounter, difficulty, page, content.territory, maxLength);
+        const kill = await loadKill(client, encounter, difficulty, page, content.territory, maxLength, skip);
         const { fight, report, events } = kill;
         const enemies = summarizeEnemies({ actors: report.masterData.actors, abilities: report.masterData.abilities, events });
         const most = Math.max(0, ...enemies.map((e) => e.casts));
@@ -315,9 +323,9 @@ async function main() {
         }
         timeline = merged.timeline;
     }
-    writeFileSync(join(outDir, `${file}.xml`), toTimelineXml(timeline));
-    writeFileSync(join(outDir, `${file}.events.json`), eventsFile(allEvents, allFights));
-    console.log(`→ tools/skeletons/${file}.xml・${file}.events.json`);
+    writeFileSync(join(outDir, `${out}.xml`), toTimelineXml(timeline));
+    writeFileSync(join(outDir, `${out}.events.json`), eventsFile(allEvents, allFights));
+    console.log(`→ tools/skeletons/${out}.xml・${out}.events.json`);
 }
 
 main().catch((e) => {
