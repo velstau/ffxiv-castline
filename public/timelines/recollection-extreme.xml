@@ -29,7 +29,7 @@
     <entry t="148.5" castname="クワイタスローズ" duration="2.7"/>
     <entry t="157.7" castname="クワイタスローズ" sync="false"/>
     <entry t="169.9" text="一式(回転AoE)" castname="魔法陣展開" duration="2.3" tts="回転えーおーいー" gimmick_icon="rotation.png"/>
-    <entry t="171.7" castname="南北確認" sync="false" tts=""/>
+    <entry t="171.7" castname="南北確認" sync="false"/>
     <entry t="176.1" text="開始" castname="キングダム・サンダラ" duration="4.7"/>
     <entry t="183.9" castname="キングダム・サンダラ" sync="false"/>
     <entry t="185.9" castname="キングダム・サンダラ" sync="false"/>
@@ -94,7 +94,7 @@
     <entry t="546.0" castname="キングダム・サンダラ" sync="false"/>
     <entry t="561.0" castname="散開" sync="false" tts="次は、キングダム・サンダガ。" gimmick_icon="spread.png"/>
     <entry t="566.0" text="着弾" castname="キングダム・サンダガ" sync="false"/>
-    <entry t="574.0" castname="全体攻撃" sync="false" tts="" gimmick_icon="raidwide.png"/>
-    <entry t="601.0" castname="以後調査中" sync="false" tts=""/>
+    <entry t="574.0" castname="全体攻撃" sync="false" gimmick_icon="raidwide.png"/>
+    <entry t="601.0" castname="以後調査中" sync="false"/>
   </phase>
 </timeline>

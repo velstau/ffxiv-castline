@@ -7,7 +7,7 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（11:14）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="5.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="5.6" castname="セリフ" sync="false"/>
     <entry t="10.0" text="全体" castname="ヴォイド・エアロジャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="22.1" text="全体" castname="レイジングストーム" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="25.4" text="サベッジバルバリー" castname="サベッジバルバリー" duration="5.7"/>
@@ -31,7 +31,7 @@
     <entry t="121.5" castname="シークレットブリーズ" sync="false"/>
     <entry t="125.7" text="全体" castname="ヴォイド・エアロジャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="137.9" text="全体" castname="レイジングストーム" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="139.9" castname="移行待ち" sync="false" tts=""/>
+    <entry t="139.9" castname="移行待ち" sync="false"/>
     <entry t="141.3" text="呪髪装衣" castname="呪髪装衣" duration="4.7"/>
     <entry t="153.1" castname="ヴォイドストーム" sync="false"/>
     <entry t="154.5" castname="呪髪装衣" sync="false"/>
@@ -40,14 +40,14 @@
     <entry t="176.0" text="ラッシュ4" castname="ブルータルラッシュ" sync="false" tts="ブルータルラッシュ。"/>
     <entry t="176.3" castname="ブルータルガスト" duration="1.7"/>
     <entry t="177.8" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="178.0" castname="ラッシュ3" sync="false" tts=""/>
+    <entry t="178.0" castname="ラッシュ3" sync="false"/>
     <entry t="179.4" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="180.0" castname="ラッシュ2" sync="false" tts=""/>
+    <entry t="180.0" castname="ラッシュ2" sync="false"/>
     <entry t="181.2" castname="ブルータルラッシュ" sync="false"/>
     <entry t="181.5" castname="ブルータルガスト" duration="1.7"/>
-    <entry t="182.0" castname="ラッシュ1" sync="false" tts=""/>
+    <entry t="182.0" castname="ラッシュ1" sync="false"/>
     <entry t="182.8" text="タンク頭割り" castname="重岩礫" sync="false" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
-    <entry t="183.0" castname="【予告】AoE中央捨て、散開" sync="false" tts="" gimmick_icon="spread.png"/>
+    <entry t="183.0" castname="【予告】AoE中央捨て、散開" sync="false" gimmick_icon="spread.png"/>
     <entry t="184.8" castname="中央集合" sync="false" tts="えーおーいー捨てる"/>
     <entry t="185.0" castname="ウィンディングゲイル" duration="4.7"/>
     <entry t="189.0" text="散開" castname="ワーニングゲイル" sync="false" tts="散開" gimmick_icon="spread.png"/>
@@ -55,22 +55,22 @@
     <entry t="193.6" castname="ウィンディングゲイル" duration="2.2"/>
     <entry t="195.7" castname="岩礫" sync="false"/>
     <entry t="199.5" castname="ウィンディングゲイル" duration="4.7"/>
-    <entry t="203.6" castname="【予兆】AoE" sync="false" tts=""/>
+    <entry t="203.6" castname="【予兆】AoE" sync="false"/>
     <entry t="203.9" castname="ワーニングゲイル" sync="false"/>
     <entry t="207.5" castname="チェイントルネード" sync="false"/>
     <entry t="210.1" castname="チェイントルネード" sync="false"/>
-    <entry t="211.6" castname="ペア処理" sync="false" tts=""/>
+    <entry t="211.6" castname="ペア処理" sync="false"/>
     <entry t="214.9" text="ラッシュ4" castname="ブルータルラッシュ" sync="false" tts="ブルータルラッシュ。"/>
     <entry t="215.2" castname="ブルータルガスト" duration="1.7"/>
-    <entry t="215.9" castname="ラッシュ3" sync="false" tts=""/>
+    <entry t="215.9" castname="ラッシュ3" sync="false"/>
     <entry t="216.7" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="217.9" castname="ラッシュ2" sync="false" tts=""/>
+    <entry t="217.9" castname="ラッシュ2" sync="false"/>
     <entry t="218.3" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="219.9" castname="ラッシュ1" sync="false" tts=""/>
+    <entry t="219.9" castname="ラッシュ1" sync="false"/>
     <entry t="220.1" castname="ブルータルラッシュ" sync="false"/>
     <entry t="220.4" castname="ブルータルガスト" duration="1.7"/>
     <entry t="222.9" text="ナックルビート" castname="ナックルビート" sync="false" tts="ナックルビート。"/>
-    <entry t="224.9" castname="【予告】AoE捨て、距離減+頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="224.9" castname="【予告】AoE捨て、距離減+頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="226.1" castname="ナックルビート" sync="false"/>
     <entry t="227.9" castname="ナックルビート" sync="false"/>
     <entry t="229.2" castname="ナックルビート" sync="false"/>
@@ -91,15 +91,15 @@
     <entry t="259.3" text="ラッシュ4" castname="ブルータルラッシュ" sync="false" tts="ブルータルラッシュ。"/>
     <entry t="259.7" castname="ブルータルガスト" duration="1.7"/>
     <entry t="260.9" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="261.3" castname="ラッシュ3" sync="false" tts=""/>
-    <entry t="262.3" castname="ラッシュ2" sync="false" tts=""/>
+    <entry t="261.3" castname="ラッシュ3" sync="false"/>
+    <entry t="262.3" castname="ラッシュ2" sync="false"/>
     <entry t="262.6" castname="ブルータルラッシュ" sync="false"/>
     <entry t="263.3" castname="呪髪" duration="4.3"/>
     <entry t="264.3" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="264.3" castname="ラッシュ1" sync="false" tts=""/>
+    <entry t="264.3" castname="ラッシュ1" sync="false"/>
     <entry t="264.6" castname="ブルータルガスト" duration="1.7"/>
     <entry t="267.0" text="呪髪拘束" castname="呪髪拘束" sync="false" tts="拘束。"/>
-    <entry t="267.0" castname="【予告】竜巻中にペア処理" sync="false" tts=""/>
+    <entry t="267.0" castname="【予告】竜巻中にペア処理" sync="false"/>
     <entry t="271.1" text="竜巻開始" castname="ブロウルーラー" sync="false" tts="竜巻"/>
     <entry t="274.7" castname="拳震" sync="false"/>
     <entry t="276.7" castname="拳震" duration="2.7"/>
@@ -144,12 +144,12 @@
     <entry t="470.1" castname="ブルータルラッシュ" sync="false"/>
     <entry t="470.4" castname="ブルータルガスト" duration="1.7"/>
     <entry t="471.8" text="ラッシュ4" castname="ブルータルラッシュ" sync="false" tts="ブルータルラッシュ。"/>
-    <entry t="472.8" castname="ラッシュ3" sync="false" tts=""/>
+    <entry t="472.8" castname="ラッシュ3" sync="false"/>
     <entry t="473.5" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="474.8" castname="ラッシュ2" sync="false" tts=""/>
+    <entry t="474.8" castname="ラッシュ2" sync="false"/>
     <entry t="475.2" castname="ブルータルラッシュ" sync="false"/>
     <entry t="475.5" castname="ブルータルガスト" duration="1.7"/>
-    <entry t="475.8" castname="ラッシュ1" sync="false" tts=""/>
+    <entry t="475.8" castname="ラッシュ1" sync="false"/>
     <entry t="478.2" castname="ナックルビート" sync="false"/>
     <entry t="481.4" text="ナックルビート" castname="ナックルビート" sync="false" tts="ナックルビート。"/>
     <entry t="483.1" castname="ナックルビート" sync="false"/>
@@ -175,10 +175,10 @@
     <entry t="524.1" text="ラッシュ4" castname="ブルータルラッシュ" sync="false" tts="ブルータルラッシュ。"/>
     <entry t="524.4" castname="ブルータルガスト" duration="1.7"/>
     <entry t="525.8" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="526.1" castname="ラッシュ3" sync="false" tts=""/>
+    <entry t="526.1" castname="ラッシュ3" sync="false"/>
     <entry t="527.5" castname="ブルータルラッシュ" sync="false"/>
-    <entry t="528.1" castname="ラッシュ2" sync="false" tts=""/>
-    <entry t="529.1" castname="ラッシュ1" sync="false" tts=""/>
+    <entry t="528.1" castname="ラッシュ2" sync="false"/>
+    <entry t="529.1" castname="ラッシュ1" sync="false"/>
     <entry t="529.2" castname="ブルータルラッシュ" sync="false"/>
     <entry t="529.5" castname="ブルータルガスト" duration="1.7"/>
     <entry t="531.9" text="竜巻開始" castname="ブロウルーラー" sync="false"/>
@@ -192,9 +192,9 @@
     <entry t="554.5" castname="ワーニングゲイル" sync="false"/>
     <entry t="558.1" castname="大岩礫" sync="false"/>
     <entry t="559.1" castname="ウィンディングゲイル" duration="2.2"/>
-    <entry t="559.1" castname="中央注意、距離減と頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="559.1" castname="中央注意、距離減と頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="563.2" castname="チェイントルネード" sync="false"/>
-    <entry t="564.1" castname="【予告】距離減と頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="564.1" castname="【予告】距離減と頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="565.4" castname="ウィンディングゲイル" duration="4.7"/>
     <entry t="565.8" castname="チェイントルネード" sync="false"/>
     <entry t="569.4" castname="ワーニングゲイル" sync="false"/>
@@ -218,12 +218,12 @@
     <entry t="640.8" text="ヘアレイド" castname="ヘアレイド" duration="5.7"/>
     <entry t="643.0" castname="呪髪穿" duration="7.7"/>
     <entry t="654.9" castname="ヴォイド・エアロジャ" duration="4.7"/>
-    <entry t="658.7" castname="全体" sync="false" tts="" gimmick_icon="raidwide.png"/>
-    <entry t="660.7" castname="全体" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="658.7" castname="全体" sync="false" gimmick_icon="raidwide.png"/>
+    <entry t="660.7" castname="全体" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="662.1" castname="レイジングストーム" sync="false"/>
-    <entry t="663.7" castname="時間切れ開始" sync="false" tts=""/>
+    <entry t="663.7" castname="時間切れ開始" sync="false"/>
     <entry t="665.4" castname="ミールストーム" duration="8.7"/>
-    <entry t="668.7" castname="詠唱開始" sync="false" tts=""/>
-    <entry t="673.7" castname="時間切れ" sync="false" tts=""/>
+    <entry t="668.7" castname="詠唱開始" sync="false"/>
+    <entry t="673.7" castname="時間切れ" sync="false"/>
   </phase>
 </timeline>

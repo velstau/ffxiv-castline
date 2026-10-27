@@ -20,17 +20,17 @@
     <entry t="95.0" text="シック・スウェル(ノック予約)" castname="シック・スウェル" duration="2.7"/>
     <entry t="95.4" text="頭割りor散開確認" castname="シック・テイクオフ" sync="false" gimmick_icon="stack.png"/>
     <entry t="103.2" castname="シック・テイクオフ" duration="3.7"/>
-    <entry t="115.4" castname="外周からノック" sync="false" tts=""/>
+    <entry t="115.4" castname="外周からノック" sync="false"/>
     <entry t="118.8" text="ペアor散開" castname="ヘビー・ハイドロスプラッシュ" sync="false" gimmick_icon="spread.png"/>
     <entry t="121.4" text="リバースorダブル" castname="リバースアリウープ|ダブルアリウープ" duration="4.7"/>
     <entry t="132.6" text="1番遠い人吹き飛ばし(タンク誘導？)" castname="ディープインパクト" duration="4.6" gimmick_icon="knockback.png"/>
     <entry t="137.7" castname="ディープインパクト" sync="false"/>
     <entry t="139.8" text="全体攻撃" castname="ファイティングスピリット" duration="4.7" window="20 20" gimmick_icon="raidwide.png"/>
-    <entry t="154.8" castname="2人になるよ" sync="false" tts=""/>
+    <entry t="154.8" castname="2人になるよ" sync="false"/>
     <entry t="158.4" castname="エクストリーム・スペクタクル" duration="3.7"/>
     <entry t="170.0" text="距離減衰＋連続攻撃" castname="エクストリーム・スペクタクル" sync="false" gimmick_icon="proximity.png"/>
     <entry t="180.0" castname="ブラザーフッド" sync="false"/>
-    <entry t="185.0" castname="インセイン準備" sync="false" tts=""/>
+    <entry t="185.0" castname="インセイン準備" sync="false"/>
     <entry t="189.9" text="インセインエアー1" castname="インセインエアー" duration="5.6"/>
     <entry t="197.7" castname="フレイムバーティカル" sync="false"/>
     <entry t="197.7" castname="ハイドロスナップ" sync="false"/>
@@ -56,16 +56,16 @@
     <entry t="285.2" text="赤: 誘導注意" castname="フレイムエアリアル" duration="4.7"/>
     <entry t="289.9" text="青: テイクオフ" castname="シック・テイクオフ" duration="3.7"/>
     <entry t="290.5" castname="フレイムエアリアル" sync="false"/>
-    <entry t="291.2" castname="赤: 誘導1回目(タンク)" sync="false" tts=""/>
+    <entry t="291.2" castname="赤: 誘導1回目(タンク)" sync="false"/>
     <entry t="292.5" castname="フレイムエアリアル" sync="false"/>
-    <entry t="293.2" castname="赤: 誘導2回目(ヒラ)" sync="false" tts=""/>
+    <entry t="293.2" castname="赤: 誘導2回目(ヒラ)" sync="false"/>
     <entry t="294.6" castname="フレイムエアリアル" sync="false"/>
-    <entry t="296.2" castname="赤: 誘導3回目(遠隔)" sync="false" tts=""/>
+    <entry t="296.2" castname="赤: 誘導3回目(遠隔)" sync="false"/>
     <entry t="296.7" castname="フレイムエアリアル" sync="false"/>
-    <entry t="298.2" castname="赤: 誘導4回目(近接)" sync="false" tts=""/>
+    <entry t="298.2" castname="赤: 誘導4回目(近接)" sync="false"/>
     <entry t="303.9" text="赤: 安置誘導" castname="フレイムカットバック" duration="4.7"/>
-    <entry t="305.9" castname="青: ノックバックと玉処理" sync="false" tts="" gimmick_icon="knockback.png"/>
-    <entry t="306.2" castname="赤: ノックバック" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="305.9" castname="青: ノックバックと玉処理" sync="false" gimmick_icon="knockback.png"/>
+    <entry t="306.2" castname="赤: ノックバック" sync="false" gimmick_icon="knockback.png"/>
     <entry t="310.2" text="青: T離れる / 青: 強攻撃" castname="ディープインパクト" duration="4.6"/>
     <entry t="315.4" castname="ディープインパクト" sync="false"/>
     <entry t="317.4" text="全体" castname="ファイティングスピリット" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
@@ -96,7 +96,7 @@
     <entry t="463.5" text="均等化" castname="ブラザーフッド" sync="false"/>
     <entry t="465.7" text="全体" castname="エクストリーム・フレイムスネーキング" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="465.7" castname="エクストリーム・ハイドロスネーキング" duration="4.7"/>
-    <entry t="476.7" castname="インセイン準備" sync="false" tts=""/>
+    <entry t="476.7" castname="インセイン準備" sync="false"/>
     <entry t="478.6" text="インセインエアー4" castname="インセインエアー" duration="8.1"/>
     <entry t="487.4" castname="フレイムリエントリー" sync="false"/>
     <entry t="487.4" castname="ハイドロリエントリー" sync="false"/>

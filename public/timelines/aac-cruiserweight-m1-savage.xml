@@ -64,7 +64,7 @@
     <entry t="246.4" text="nビート" castname="4ビート|8ビート" duration="4.7"/>
     <entry t="256.8" castname="アウトサイドイン" duration="4.7"/>
     <entry t="261.9" castname="アウトサイドイン" sync="false"/>
-    <entry t="262.4" castname="インorアウト" sync="false" tts=""/>
+    <entry t="262.4" castname="インorアウト" sync="false"/>
     <entry t="264.3" castname="アウトサイドイン" sync="false"/>
     <entry t="266.8" text="nポイント、ポーズ＆ジングル" castname="2ポイント、ポーズ＆ジングル|3ポイント、ポーズ＆ジングル|4ポイント、ポーズ＆ジングル" duration="4.7"/>
     <entry t="271.9" castname="3ポイント、ポーズ＆ジングル" duration="1.6"/>
@@ -120,7 +120,7 @@
     <entry t="528.6" text="nビート" castname="4ビート|8ビート" duration="4.7"/>
     <entry t="536.8" castname="インサイドアウト" duration="4.7"/>
     <entry t="541.8" castname="インサイドアウト" sync="false"/>
-    <entry t="542.6" castname="インorアウト" sync="false" tts=""/>
+    <entry t="542.6" castname="インorアウト" sync="false"/>
     <entry t="544.2" castname="インサイドアウト" sync="false"/>
     <entry t="548.7" text="nビート" castname="4ビート|8ビート" duration="4.7"/>
     <entry t="555.8" text="全体攻撃" castname="セレブレート・グッドタイムズ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>

@@ -83,7 +83,7 @@
     <entry t="488.9" text="強攻撃1" castname="ファイアストリーム" duration="4.7" tts="強攻撃"/>
     <entry t="494.1" castname="ファイアストリーム" sync="false"/>
     <entry t="497.3" castname="ファイアストリーム" sync="false"/>
-    <entry t="497.9" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="497.9" castname="強攻撃2" sync="false"/>
     <entry t="502.5" text="オービタルライン2回目" castname="オービタルライン" duration="4.7" tts="移動確"/>
     <entry t="512.1" text="MT誘導" castname="ファイア・アンド・テイル" duration="3.7"/>
     <entry t="520.3" text="全体攻撃" castname="キング・オブ・アルカディア" duration="4.7" gimmick_icon="raidwide.png"/>

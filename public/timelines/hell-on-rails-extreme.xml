@@ -13,7 +13,7 @@
     <entry t="34.1" text="ブーステッドX" castname="ブーステッド・エクスプレス|ブーステッド・バキューム" duration="5.7"/>
     <entry t="42.1" castname="ブーステッド・エミッション" sync="false"/>
     <entry t="47.1" text="アンリミテッド" castname="アンリミテッドエクスプレス" duration="4.7" tts="吹き飛ばし"/>
-    <entry t="59.1" castname="同期(車両2)" sync="false" tts=""/>
+    <entry t="59.1" castname="同期(車両2)" sync="false"/>
     <entry t="61.2" text="ブースト" castname="オーバーブースト" duration="3.7"/>
     <entry t="67.2" text="随伴機出撃" castname="随伴機出撃" duration="2.7"/>
     <entry t="74.2" text="ブーステッドX" castname="ブーステッド・エクスプレス|ブーステッド・バキューム" duration="5.7"/>
@@ -25,7 +25,7 @@
     <entry t="102.4" text="ブーステッドX" castname="ブーステッド・エクスプレス" duration="5.7"/>
     <entry t="107.6" castname="エレクトロレイ" sync="false"/>
     <entry t="115.5" text="アンリミテッドエクスプレス" castname="アンリミテッドエクスプレス" duration="4.7"/>
-    <entry t="121.4" castname="同期(車両3)" sync="false" tts=""/>
+    <entry t="121.4" castname="同期(車両3)" sync="false"/>
     <entry t="131.5" text="T強攻撃" castname="サンダーバースト" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="144.7" text="果てしなき暴走" castname="果てしなき暴走" duration="4.7"/>
     <entry t="176.5" text="レイ１回目" castname="エーテルレイ" sync="false" tts="エーテルレイ"/>
@@ -37,7 +37,7 @@
     <entry t="269.2" text="T強攻撃" castname="サンダーバースト" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="276.3" text="頭割" castname="ディレールパウンド" duration="5.7" tts="頭割り"/>
     <entry t="286.4" text="ディレール" castname="ディレール" duration="4.8" tts="頭割りから車両移動"/>
-    <entry t="297.4" castname="同期(車両4)" sync="false" tts=""/>
+    <entry t="297.4" castname="同期(車両4)" sync="false"/>
     <entry t="302.7" text="タケノコ" castname="フラッシュサンダー" sync="false" tts="移動"/>
     <entry t="309.7" text="上or下" castname="ヘッドライト|サンダーブレス" duration="5.7"/>
     <entry t="318.2" castname="ヘッドライト" sync="false"/>
@@ -54,7 +54,7 @@
     <entry t="389.2" text="T強攻撃" castname="サンダーバースト" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
     <entry t="398.3" text="頭割り" castname="ディレールパウンド" duration="5.7" tts="頭割り" gimmick_icon="stack.png"/>
     <entry t="410.6" text="ディレール" castname="ディレール" duration="4.8" tts="頭割りから車両移動"/>
-    <entry t="421.6" castname="同期(車両5)" sync="false" tts=""/>
+    <entry t="421.6" castname="同期(車両5)" sync="false"/>
     <entry t="425.9" text="散開" castname="サイコキネシス" duration="6.7" gimmick_icon="spread.png"/>
     <entry t="434.9" text="タケノコ" castname="フラッシュサンダー" sync="false" tts="移動"/>
     <entry t="441.0" text="散開" castname="サイコキネシス" duration="6.7" gimmick_icon="spread.png"/>
@@ -63,7 +63,7 @@
     <entry t="466.2" text="タケノコ" castname="フラッシュサンダー" sync="false" tts="移動"/>
     <entry t="475.3" text="頭割り" castname="ディレールパウンド" duration="5.7" tts="頭割り" gimmick_icon="stack.png"/>
     <entry t="487.9" text="ディレール" castname="ディレール" duration="4.8" tts="頭割りから車両移動"/>
-    <entry t="499.9" castname="同期(最終車両)" sync="false" tts=""/>
+    <entry t="499.9" castname="同期(最終車両)" sync="false"/>
     <entry t="503.1" text="ブースト" castname="オーバーブースト" duration="3.7"/>
     <entry t="509.2" text="随伴機出撃" castname="随伴機出撃" duration="2.7"/>
     <entry t="518.2" text="上or下" castname="ヘッドライト|サンダーブレス" duration="5.7"/>

@@ -27,9 +27,9 @@
     <entry t="14.7" text="多重刻印" castname="多重刻印" duration="3.7"/>
     <entry t="28.1" text="ブレスorウイング / ブレスorウイング発動" castname="ブレス＆カタラクティス|ウィング＆カタラクティス" duration="7.7"/>
     <entry t="42.8" castname="激流衝" sync="false"/>
-    <entry t="43.2" castname="多重刻印：発動" sync="false" tts=""/>
+    <entry t="43.2" castname="多重刻印：発動" sync="false"/>
     <entry t="50.8" text="チャネリングフロウ" castname="チャネリングフロウ" duration="4.7" tts="次は、矢印。"/>
-    <entry t="69.9" castname="スタン・強制移動" sync="false" tts="" gimmick_icon="forced-march.png"/>
+    <entry t="69.9" castname="スタン・強制移動" sync="false" gimmick_icon="forced-march.png"/>
     <entry t="71.0" castname="荒波" sync="false"/>
     <entry t="80.9" text="ダブルインパクト" castname="ダブルインパクト" duration="4.7" tts="次は、タンク頭割り。"/>
     <entry t="91.2" text="マーキーディープ" castname="マーキーディープ" duration="4.7"/>
@@ -43,36 +43,36 @@
   <phase id="p5" name="P1: Hippokampos">
     <entry t="4.5" text="サイコロ付与" castname="カンペオスハルマ" duration="8.2" tts="次は、サイコロ。" gimmick_icon="dice.png"/>
     <entry t="13.4" castname="カンペオスハルマ" sync="false"/>
-    <entry t="13.9" castname="突進＋AoE(1)" sync="false" tts=""/>
+    <entry t="13.9" castname="突進＋AoE(1)" sync="false"/>
     <entry t="15.1" castname="カンペオスハルマ" sync="false"/>
-    <entry t="15.7" castname="突進＋AoE(2)" sync="false" tts=""/>
+    <entry t="15.7" castname="突進＋AoE(2)" sync="false"/>
     <entry t="16.8" castname="カンペオスハルマ" sync="false"/>
-    <entry t="17.5" castname="突進＋AoE(3)" sync="false" tts=""/>
+    <entry t="17.5" castname="突進＋AoE(3)" sync="false"/>
     <entry t="18.4" castname="カンペオスハルマ" sync="false"/>
-    <entry t="19.3" castname="突進＋AoE(4)" sync="false" tts=""/>
+    <entry t="19.3" castname="突進＋AoE(4)" sync="false"/>
     <entry t="30.4" text="ダブルインパクト" castname="ダブルインパクト" duration="4.7" tts="次は、タンク頭割り。"/>
     <entry t="39.6" text="マーキーディープ" castname="マーキーディープ" duration="4.7"/>
     <entry t="53.2" text="チャネリングオーバーフロウ" castname="チャネリングオーバーフロウ" duration="4.7" tts="次は、矢印。"/>
     <entry t="62.4" castname="テインテッドフラッド" duration="2.7"/>
     <entry t="67.4" castname="テインテッドフラッド" duration="4.7"/>
-    <entry t="72.8" castname="強制移動１回目＋AoE着弾" sync="false" tts="" gimmick_icon="forced-march.png"/>
+    <entry t="72.8" castname="強制移動１回目＋AoE着弾" sync="false" gimmick_icon="forced-march.png"/>
     <entry t="77.7" castname="テインテッドフラッド" duration="2.7"/>
     <entry t="82.8" castname="テインテッドフラッド" duration="4.7"/>
-    <entry t="88.2" castname="強制移動２回目＋AoE着弾" sync="false" tts="" gimmick_icon="forced-march.png"/>
+    <entry t="88.2" castname="強制移動２回目＋AoE着弾" sync="false" gimmick_icon="forced-march.png"/>
     <entry t="91.0" text="ブレスorウイング / ブレスorウイング発動" castname="ブレス＆カタラクティス|ウィング＆カタラクティス" duration="7.7"/>
     <entry t="114.2" text="多重刻印" castname="多重刻印" duration="3.7"/>
     <entry t="120.6" text="ディソシエーション" castname="ディソシエーション" duration="3.7"/>
     <entry t="124.8" castname="次は、外周を確認。" sync="false" tts="次は、外周を確認。"/>
     <entry t="134.7" text="ブレスorウイング" castname="ブレス＆カタラクティス|ウィング＆カタラクティス" duration="7.7"/>
     <entry t="142.2" castname="激流衝" sync="false"/>
-    <entry t="143.6" castname="多重刻印：発動" sync="false" tts=""/>
+    <entry t="143.6" castname="多重刻印：発動" sync="false"/>
     <entry t="152.4" text="ディソシエーション" castname="ディソシエーション" duration="3.7" tts="次は、外周を確認。"/>
     <entry t="164.6" text="エラプション３回" castname="スウェッジエラプション" duration="4.7" tts="次は、連続AoE。"/>
     <entry t="170.6" castname="スウェッジエラプション" duration="2.7"/>
     <entry t="171.9" text="フラッド(AoE散開)" castname="テインテッドフラッド" duration="2.7" tts="次は、散開。" gimmick_icon="spread.png"/>
     <entry t="177.0" castname="テインテッドフラッド" duration="4.7"/>
     <entry t="179.6" text="距離減衰＋タンク先頭頭割り" castname="コヒーレンス" duration="11.7" tts="次は、距離減衰と頭割り。" gimmick_icon="stack.png"/>
-    <entry t="182.0" castname="AoE着弾" sync="false" tts=""/>
+    <entry t="182.0" castname="AoE着弾" sync="false"/>
     <entry t="192.2" castname="コヒーレンス" sync="false"/>
     <entry t="194.8" castname="コヒーレンス" sync="false"/>
     <entry t="201.9" text="ダブルインパクト" castname="ダブルインパクト" duration="4.7" tts="次は、タンク頭割り。"/>
@@ -83,12 +83,12 @@
   <phase id="p6" name="P2: Flooding">
     <entry t="11.7" text="チャネリングオーバーフロウ" castname="チャネリングオーバーフロウ" duration="4.7" tts="次は、矢印。"/>
     <entry t="22.1" text="距離減衰＋タンク先頭頭割り" castname="コヒーレンス" duration="11.7" gimmick_icon="stack.png"/>
-    <entry t="31.7" castname="強制移動１回目" sync="false" tts="" gimmick_icon="forced-march.png"/>
+    <entry t="31.7" castname="強制移動１回目" sync="false" gimmick_icon="forced-march.png"/>
     <entry t="31.9" castname="荒波" sync="false"/>
     <entry t="34.8" castname="コヒーレンス" sync="false"/>
     <entry t="37.3" castname="コヒーレンス" sync="false"/>
     <entry t="46.9" castname="荒波" sync="false"/>
-    <entry t="47.2" castname="強制移動２回目" sync="false" tts="" gimmick_icon="forced-march.png"/>
+    <entry t="47.2" castname="強制移動２回目" sync="false" gimmick_icon="forced-march.png"/>
     <entry t="55.6" text="ディソシエーション" castname="ディソシエーション" duration="3.7" tts="次は、外周を確認。"/>
     <entry t="67.9" text="エラプション３回" castname="スウェッジエラプション" duration="4.7" tts="次は、連続AoE。"/>
     <entry t="73.9" castname="スウェッジエラプション" duration="2.7"/>

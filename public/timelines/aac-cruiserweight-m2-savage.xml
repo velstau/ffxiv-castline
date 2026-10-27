@@ -12,7 +12,7 @@
     <entry t="25.1" castname="ウォームペイントボム" sync="false"/>
     <entry t="31.6" text="ウイングマーク" castname="ウイングマーク" duration="4.6" tts="羽生えるよ"/>
     <entry t="38.7" castname="カラークラッシュ" duration="2.7"/>
-    <entry t="42.6" castname="【予約】ペアか1人受け" sync="false" tts=""/>
+    <entry t="42.6" castname="【予約】ペアか1人受け" sync="false"/>
     <entry t="46.0" text="ダブル・グラフィティ" castname="ダブル・グラフィティ" duration="12.6" tts="絵を描くよ"/>
     <entry t="62.8" text="カラークラッシュ(着弾)" castname="カラークラッシュ" sync="false"/>
     <entry t="65.1" text="ねばねばムース" castname="ねばねばムース" duration="5.3" tts="基本散開"/>
@@ -26,7 +26,7 @@
     <entry t="124.3" castname="針飛ばし" duration="6.7"/>
     <entry t="137.3" text="針飛ばし(終了)" castname="針飛ばし" sync="false"/>
     <entry t="141.9" castname="重熱放散" sync="false"/>
-    <entry t="142.3" castname="デバフ発動" sync="false" tts=""/>
+    <entry t="142.3" castname="デバフ発動" sync="false"/>
     <entry t="144.6" text="ねばねばムース" castname="ねばねばムース" duration="5.3" tts="基本散開"/>
     <entry t="150.4" castname="ねばねばムース" sync="false"/>
     <entry t="156.3" text="爆発" castname="爆発" sync="false"/>
@@ -97,11 +97,11 @@
     <entry t="142.1" castname="シュガーサンダー" duration="2.7"/>
     <entry t="146.0" castname="たけのこ注意！！" sync="false" tts="たけのこくるよ"/>
     <entry t="146.9" castname="爆発" sync="false"/>
-    <entry t="147.0" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="147.0" castname="たけのこ→塔に入る" sync="false" gimmick_icon="tower.png"/>
     <entry t="147.2" text="ウイングマーク" castname="ウイングマーク" duration="4.6" tts="飛んだらたけのこ"/>
     <entry t="168.5" castname="シュガーサンダー" duration="2.7"/>
     <entry t="171.2" castname="たけのこ注意！！" sync="false" tts="たけのこくるよ"/>
-    <entry t="173.2" castname="たけのこ→塔に入る" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="173.2" castname="たけのこ→塔に入る" sync="false" gimmick_icon="tower.png"/>
     <entry t="173.3" castname="爆発" sync="false"/>
     <entry t="173.4" text="ムースシャワー" castname="ムースシャワー" duration="4.7" tts="全体攻撃"/>
     <entry t="183.5" text="ねばねばムース" castname="ねばねばムース" duration="5.3" tts="基本散開"/>
@@ -114,6 +114,6 @@
     <entry t="224.0" text="ダブル・グラフィティ" castname="ダブル・グラフィティ" duration="12.6"/>
     <entry t="240.6" text="カラークラッシュ(着弾)" castname="カラークラッシュ" sync="false"/>
     <entry t="249.7" text="【時間切れ】アーティスティック・アナーキー" castname="アーティスティック・アナーキー" duration="7.7"/>
-    <entry t="268.6" castname="着弾" sync="false" tts=""/>
+    <entry t="268.6" castname="着弾" sync="false"/>
   </phase>
 </timeline>

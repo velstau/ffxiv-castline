@@ -13,7 +13,7 @@
     <next to="b-p1" at="23.2" cast="エンバグ"/>
   </phase>
   <phase id="a-p1" name="前半">
-    <entry t="0.7" castname="オメガのセリフ" sync="false" tts=""/>
+    <entry t="0.7" castname="オメガのセリフ" sync="false"/>
     <entry t="9.8" text="シールドオプション" castname="シールドオプション" duration="1.7" tts="次は、シールドオプション。" window="20 10"/>
     <entry t="16.9" text="援護プログラムF" castname="援護プログラムF" duration="2.7" window="30 10"/>
     <entry t="20.9" castname="オプチカルレーザーf" sync="false"/>
@@ -43,7 +43,7 @@
     <entry t="177.9" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
     <entry t="186.0" text="ソーラレイ" castname="ソーラレイ" duration="4.7" tts="次は、ソーラレイ。"/>
     <entry t="200.2" castname="シールドオプション" duration="1.7"/>
-    <entry t="204.0" castname="分岐待ち" sync="false" tts=""/>
+    <entry t="204.0" castname="分岐待ち" sync="false"/>
     <entry t="208.5" text="ブレード開始" castname="連携プログラムW" duration="4.7" window="20 10"/>
     <entry t="215.5" castname="ブレードコンボB" sync="false" tts="頭割り"/>
     <entry t="215.7" castname="シールドコンボS" duration="4.6"/>
@@ -170,17 +170,17 @@
     <entry t="45.8" castname="エンバグ" sync="false"/>
     <entry t="48.6" text="イオンエフラクス" castname="イオンエフラクス" duration="5.7" tts="イオンエフラクス"/>
     <entry t="64.3" text="ハロー・ワールド / デバフ付与" castname="ハロー・ワールド" duration="5.7" tts="ハローワールド。"/>
-    <entry t="78.3" castname="サークル1回目爆発" sync="false" tts=""/>
+    <entry t="78.3" castname="サークル1回目爆発" sync="false"/>
     <entry t="78.4" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="86.3" castname="サークル2回目爆発" sync="false" tts=""/>
+    <entry t="86.3" castname="サークル2回目爆発" sync="false"/>
     <entry t="86.4" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="92.5" text="クリティカルエラー" castname="クリティカルエラー" duration="4.7" tts="爆発に注意して、残りのサークル処理"/>
     <entry t="94.5" castname="クリティカルバグ：サークル" sync="false"/>
-    <entry t="94.5" castname="サークル3回目爆発" sync="false" tts=""/>
+    <entry t="94.5" castname="サークル3回目爆発" sync="false"/>
     <entry t="105.6" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="107.6" text="イオンエフラクス" castname="イオンエフラクス" duration="5.7" tts="イオンエフラクス"/>
-    <entry t="108.5" castname="サークル4回目爆発" sync="false" tts=""/>
-    <entry t="111.0" castname="アーム処理開始" sync="false" tts=""/>
+    <entry t="108.5" castname="サークル4回目爆発" sync="false"/>
+    <entry t="111.0" castname="アーム処理開始" sync="false"/>
     <entry t="117.6" castname="アーカイブフェーズ" sync="false" tts="次は、アーカイブアーム。"/>
     <entry t="120.9" text="アーカイブアーム" castname="アーカイブアーム" duration="3.7"/>
     <entry t="131.1" text="ビーム開始" castname="ハイパーパルス" sync="false" tts="ビーム開始"/>
@@ -245,11 +245,11 @@
     <entry t="608.3" castname="デルタアタック" duration="2.7"/>
     <entry t="611.2" castname="デルタアタック" sync="false" tts="範囲が出たら散開"/>
     <entry t="611.4" castname="フラッドライト" duration="2.7"/>
-    <entry t="612.2" castname="ファイラ＋頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="612.2" castname="ファイラ＋頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="619.2" castname="ユニット自爆" sync="false" tts="爆発に注意"/>
     <entry t="624.6" text="拡散波動砲" castname="拡散波動砲" duration="4.7" tts="拡散波動砲。"/>
     <entry t="644.1" castname="ハロー・ワールド" duration="5.7"/>
-    <entry t="648.6" castname="ローディング" sync="false" tts=""/>
+    <entry t="648.6" castname="ローディング" sync="false"/>
     <entry t="658.2" castname="クリティカルバグ：サークル" sync="false"/>
     <entry t="666.2" castname="クリティカルバグ：シェア" sync="false" gimmick_icon="stack.png"/>
     <entry t="672.2" castname="クリティカルエラー" duration="4.7"/>

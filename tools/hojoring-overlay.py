@@ -8,7 +8,7 @@ Hojoring の時刻は技が当たった時刻（「Xの「Y」」のログ）な
   Hojoring 本体と同じく、技が合うたびにずれを合わせ直す（記録した戦闘ごとにフェーズの進み方が違うため）。
   窓は Hojoring の sync-s / sync-e（既定は <default>）。区間の最初のずれは、同じ技名の差が最も多くそろう値
 - 合った技が骨組みの予定（同名で、詠唱の終わりから AFTER_CAST_MAX 秒以内に当たったもの）なら、text を text（表示だけ）、notice を tts として付ける。
-  Hojoring と同じく読み上げるのは notice だけ。notice の無い予定は技名を読む（技名の無い行は読まない）
+  Hojoring と同じく読み上げるのは notice だけ。notice の無い予定と、「@」の入った notice（Hojoring の置き換えの印）には tts を書かない
   Hojoring で「(A|B)」と書かれた技は、骨組みの技名を「A|B」に広げる（ログには片方しか残らないため）
 - 骨組みに無い技（補助の敵の技など）・台詞・ログ ID・バフで合わせているもの・同期なしの行は、
   その時刻に表示だけの予定（sync="false"）として足す
@@ -486,13 +486,13 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles):
         report += [f'    見つからない: {x}' for x in missed]
         report += [f'    足した: {x}' for x in inserted]
     # 読み上げは Hojoring と同じく notice だけ。text は表示だけに使う。
-    # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）。技名の無い行の tts="" は以前の決まり（tts が無いと技名を読んだ）の名残で、害は無い
+    # 再生画面は tts に文がある予定だけ読む（2026-10-21 のユーザーの指定）ので、読まない予定には tts を書かない（2026-10-27 のユーザーの指定）。
+    # 「@ANTI_KNOCKBACK」のような Hojoring の置き換えの印が入った notice は、そのまま読むと意味が通らないので使わない（同日のユーザーの指定）
     for phase in skeleton['phases']:
         for e in phase['entries']:
-            if e.get('_notices'):
-                e['tts'] = '、'.join(e['_notices'])
-            elif e.get('_no_name'):
-                e['tts'] = ''  # 台詞・同期なしの行は読まない
+            notices = [n for n in e.get('_notices', []) if '@' not in n]
+            if notices:
+                e['tts'] = '、'.join(notices)
     return report
 
 
@@ -522,8 +522,7 @@ def write_castline(skeleton, path, title, note, author='', license=''):
     head = {**skeleton['head'], 'author': author, 'license': license}
     if title:
         head['title'] = title
-    # tts="" は「読み上げない」なので残す
-    attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) is not None and (d[k] != '' or k == 'tts'))
+    attr = lambda d, keys: ''.join(f' {k}={quoteattr(d[k])}' for k in keys if d.get(k) is not None and d[k] != '')
     lines = ['<?xml version="1.0" encoding="utf-8"?>',
              '<timeline>']
     lines += [f'  <{k}>{escape(head[k])}</{k}>' for k in ('format', 'content', 'title', 'author', 'license', 'sync-window') if head.get(k)]

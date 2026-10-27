@@ -71,19 +71,19 @@
     <entry t="59.8" castname="闇の瞳" sync="false" tts="闇の瞳。"/>
     <entry t="67.9" text="魔力錬成2連" castname="魔力錬成：炎闇劫火" duration="4.7" tts="魔力錬成"/>
     <entry t="75.5" castname="魔力錬成：炎闇劫火" sync="false"/>
-    <entry t="75.8" castname="魔力錬成" sync="false" tts=""/>
+    <entry t="75.8" castname="魔力錬成" sync="false"/>
     <entry t="98.2" text="霊泉の炎" castname="霊泉の炎" duration="5.7" tts="霊泉の炎"/>
     <entry t="106.3" text="陽炎の翼" castname="陽炎の翼" duration="5.7"/>
     <entry t="112.3" castname="陽炎の翼" sync="false"/>
     <entry t="114.1" text="霊泉の波動4" castname="霊泉の波動" sync="false" tts="霊泉の波動。"/>
     <entry t="117.3" castname="陽炎の翼" sync="false"/>
     <entry t="118.3" text="強襲滑空3" castname="強襲滑空" sync="false" tts="強襲滑空、3連"/>
-    <entry t="119.1" castname="霊泉の波動3" sync="false" tts=""/>
+    <entry t="119.1" castname="霊泉の波動3" sync="false"/>
     <entry t="122.3" castname="陽炎の翼" sync="false"/>
-    <entry t="123.3" castname="霊泉の波動2" sync="false" tts=""/>
-    <entry t="123.3" castname="強襲滑空2" sync="false" tts=""/>
-    <entry t="128.3" castname="霊泉の波動1" sync="false" tts=""/>
-    <entry t="128.3" castname="強襲滑空1" sync="false" tts=""/>
+    <entry t="123.3" castname="霊泉の波動2" sync="false"/>
+    <entry t="123.3" castname="強襲滑空2" sync="false"/>
+    <entry t="128.3" castname="霊泉の波動1" sync="false"/>
+    <entry t="128.3" castname="強襲滑空1" sync="false"/>
     <entry t="130.4" text="灰燼の炎2(全体)" castname="灰燼の炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="137.6" castname="灰燼の炎" duration="4.7"/>
     <entry t="142.4" castname="灰燼の炎1(全体)" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
@@ -109,13 +109,13 @@
     <entry t="263.8" text="群鳥飛翔" castname="群鳥飛翔" duration="2.7" tts="群鳥飛翔"/>
     <entry t="268.9" text="生苦の炎" castname="生苦の炎" duration="23.7" tts="生苦の炎。"/>
     <entry t="281.0" text="闇の瞳4" castname="闇の瞳" sync="false"/>
-    <entry t="282.0" castname="闇の瞳3" sync="false" tts=""/>
-    <entry t="283.0" castname="闇の瞳2" sync="false" tts=""/>
-    <entry t="284.0" castname="闇の瞳1" sync="false" tts=""/>
+    <entry t="282.0" castname="闇の瞳3" sync="false"/>
+    <entry t="283.0" castname="闇の瞳2" sync="false"/>
+    <entry t="284.0" castname="闇の瞳1" sync="false"/>
     <entry t="292.9" castname="生苦の炎" sync="false"/>
     <entry t="300.2" text="魔力錬成2連" castname="魔力錬成：炎闇劫火" duration="4.7" tts="魔力錬成2連"/>
     <entry t="307.8" castname="魔力錬成：炎闇劫火" sync="false"/>
-    <entry t="308.1" castname="魔力錬成" sync="false" tts=""/>
+    <entry t="308.1" castname="魔力錬成" sync="false"/>
     <entry t="319.1" text="【構】獄炎の焔 / 獄炎の焔" castname="獄炎の焔" duration="5.7" tts="外周注意、獄炎の焔"/>
     <entry t="334.9" text="十字走火" castname="十字走火" duration="2.7" tts="十字走火"/>
     <entry t="340.1" text="【構】魔力錬成 / 魔力錬成" castname="魔力錬成：劫火天焦" duration="4.7"/>

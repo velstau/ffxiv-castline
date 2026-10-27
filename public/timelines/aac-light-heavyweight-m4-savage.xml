@@ -7,7 +7,7 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（12:09）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="5.5" castname="戦闘開始実況" sync="false" tts=""/>
+    <entry t="5.5" castname="戦闘開始実況" sync="false"/>
     <entry t="11.2" text="全体攻撃" castname="ラス・オブ・ゼウス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="32.9" text="安置を確認" castname="フライングウィッチ" duration="6.7" tts="安置を確認"/>
     <entry t="45.4" text="誘導対象者を確認" castname="ライトニング・ウィッチハント" duration="4.7" tts="誘導ロール確認"/>
@@ -32,17 +32,17 @@
     <entry t="129.7" text="スパーク" castname="サイドスパーク" duration="6.7"/>
     <entry t="136.7" castname="エイトスターズ" sync="false"/>
     <entry t="139.8" text="強攻撃" castname="ウィケッドジョルト" duration="4.7" tts="強攻撃" gimmick_icon="tankbuster.png"/>
-    <entry t="147.9" castname="強攻撃2" sync="false" tts=""/>
+    <entry t="147.9" castname="強攻撃2" sync="false"/>
     <entry t="148.1" castname="ウィケッドジョルト" sync="false"/>
     <entry t="156.5" text="エレクトロープ展開" castname="エレクトロープ展開" duration="2.7" tts="8方向散開、8方向散開"/>
     <entry t="161.5" castname="被弾を数える" sync="false" tts="被弾を数える"/>
     <entry t="162.7" castname="シャインスパーク" duration="2.7"/>
-    <entry t="165.5" castname="4" sync="false" tts=""/>
-    <entry t="166.5" castname="3" sync="false" tts=""/>
+    <entry t="165.5" castname="4" sync="false"/>
+    <entry t="166.5" castname="3" sync="false"/>
     <entry t="167.3" castname="シャインスパーク" sync="false"/>
-    <entry t="168.5" castname="2" sync="false" tts=""/>
+    <entry t="168.5" castname="2" sync="false"/>
     <entry t="168.8" castname="シャインスパーク" sync="false"/>
-    <entry t="169.5" castname="1" sync="false" tts=""/>
+    <entry t="169.5" castname="1" sync="false"/>
     <entry t="170.4" castname="シャインスパーク" sync="false"/>
     <entry t="172.0" castname="ライトニングケージ" duration="2.7"/>
     <entry t="176.0" castname="ライトニングケージ" duration="6.7"/>
@@ -54,8 +54,8 @@
     <entry t="205.4" text="連続頭割り" castname="ウィケッドボルト" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="212.4" castname="タンク誘導" sync="false" tts="タンク誘導"/>
     <entry t="218.6" text="イオンクラスター" castname="イオンクラスター" duration="2.7"/>
-    <entry t="225.6" castname="セリフ" sync="false" tts=""/>
-    <entry t="232.6" castname="セリフ2" sync="false" tts=""/>
+    <entry t="225.6" castname="セリフ" sync="false"/>
+    <entry t="232.6" castname="セリフ2" sync="false"/>
     <entry t="233.3" castname="レフトロール" sync="false"/>
     <entry t="235.3" text="移動" castname="カノンスタンピード" sync="false" tts="移動"/>
     <entry t="246.8" text="エレクトロンストリーム1" castname="エレクトロンストリーム" duration="5.7"/>
@@ -79,7 +79,7 @@
     <entry t="342.8" castname="ライトニングフィールド" sync="false"/>
     <entry t="347.9" castname="ライトニングフィールド" duration="2.7"/>
     <entry t="353.9" castname="ライトニングフィールド" sync="false"/>
-    <entry t="355.8" castname="2回目開始" sync="false" tts=""/>
+    <entry t="355.8" castname="2回目開始" sync="false"/>
     <entry t="357.0" castname="ライトニングフィールド" sync="false"/>
     <entry t="360.0" castname="ライトニングフィールド" sync="false"/>
     <entry t="363.0" castname="ライトニングフィールド" sync="false"/>
@@ -90,12 +90,12 @@
     <entry t="369.1" castname="ライトニングフィールド" sync="false"/>
     <entry t="379.5" text="全体3" castname="ソウルショック" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="382.8" text="全体2" castname="衝撃" sync="false" gimmick_icon="raidwide.png"/>
-    <entry t="385.8" castname="全体1" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="385.8" castname="全体1" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="388.1" text="吹飛ばし" castname="キャノンボルト" sync="false" tts="吹飛ばし"/>
     <entry t="396.1" castname="インプロ踏む" sync="false" tts="インプロ踏む"/>
     <entry t="406.5" castname="ｵﾘｬｱｱｱ!" sync="false" tts="おりゃアアア！"/>
     <entry t="407.3" text="クロステイル・スペシャル" castname="クロステイル・スペシャル" duration="4.7" tts="強全体攻撃"/>
-    <entry t="421.1" castname="移行待ち" sync="false" tts=""/>
+    <entry t="421.1" castname="移行待ち" sync="false"/>
     <entry t="422.7" castname="セイバーテイル" duration="7.7"/>
     <entry t="424.3" castname="安置を確認" sync="false" tts="安置を確認"/>
     <entry t="425.5" text="頭割り4連" castname="ウィケッドブレイズ" duration="4.7" tts="頭割り、4連" gimmick_icon="stack.png"/>
@@ -105,7 +105,7 @@
     <entry t="448.8" text="着弾" castname="マスタードボム" duration="8.7"/>
     <entry t="457.6" castname="キンドルファイア" sync="false"/>
     <entry t="459.8" castname="デバフ処理" sync="false" tts="デバフを処理"/>
-    <entry t="466.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="466.8" castname="セリフ" sync="false"/>
     <entry t="467.9" text="属性変換" castname="属性変換" duration="6.7"/>
     <entry t="478.1" text="テイル1" castname="テイルスラスト" duration="5.7"/>
     <entry t="487.2" text="テイル2" castname="テイルスラスト" sync="false"/>
@@ -118,7 +118,7 @@
     <entry t="524.9" text="ボス予兆" castname="ウィケッドスペシャル" duration="5.7"/>
     <entry t="530.8" text="処理2" castname="サイドスパーク" sync="false" tts="2回目"/>
     <entry t="538.1" text="ブラックサバト【夜半】" castname="ブラックサバト【夜半】" duration="2.7" tts="夜半"/>
-    <entry t="544.0" castname="集散/集散を確認" sync="false" tts=""/>
+    <entry t="544.0" castname="集散/集散を確認" sync="false"/>
     <entry t="545.2" castname="散集式ブラスター" duration="6.7"/>
     <entry t="551.0" text="処理1" castname="リングサンダー" sync="false" tts="1回目"/>
     <entry t="552.3" castname="ウィケッドスパーク" sync="false"/>

@@ -15,16 +15,16 @@
   <phase id="a-p1" name="前半">
     <entry t="7.2" text="全体攻撃" castname="創世の真炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="15.3" text="【記憶】オクタCorテトラC" castname="オクタフレア・コンシーヴ|テトラフレア・コンシーヴ" duration="2.7"/>
-    <entry t="21.3" castname="セリフ" sync="false" tts=""/>
+    <entry t="21.3" castname="セリフ" sync="false"/>
     <entry t="21.5" text="熾炎創火" castname="熾炎創火" duration="2.7" tts="熾炎創火"/>
-    <entry t="32.5" castname="セリフ" sync="false" tts=""/>
+    <entry t="32.5" castname="セリフ" sync="false"/>
     <entry t="33.1" text="創獣炎舞" castname="創獣炎舞" duration="6.7"/>
     <entry t="42.0" castname="【予告】炎蛇砲" sync="false" tts="ポンブレじゅんびー"/>
     <entry t="43.2" castname="炎蛇砲" duration="4.7"/>
-    <entry t="48.0" castname="炎蛇砲1" sync="false" tts=""/>
-    <entry t="51.0" castname="炎蛇砲2" sync="false" tts=""/>
+    <entry t="48.0" castname="炎蛇砲1" sync="false"/>
+    <entry t="51.0" castname="炎蛇砲2" sync="false"/>
     <entry t="51.5" castname="炎蛇砲" sync="false"/>
-    <entry t="60.0" castname="移行待ち" sync="false" tts=""/>
+    <entry t="60.0" castname="移行待ち" sync="false"/>
     <entry t="60.9" text="強制移行待ち" castname="変異創身" duration="2.7"/>
     <entry t="71.4" castname="リアリングランページ" duration="4.7"/>
     <entry t="78.5" castname="リアリングランページ" sync="false"/>
@@ -36,10 +36,10 @@
     <entry t="94.6" castname="フェイタルストンプ" sync="false"/>
     <entry t="96.9" castname="フェイタルストンプ" sync="false"/>
     <entry t="111.3" text="幻影創造" castname="幻影創造" duration="2.7"/>
-    <entry t="117.3" castname="セリフ" sync="false" tts=""/>
+    <entry t="117.3" castname="セリフ" sync="false"/>
     <entry t="117.3" castname="幻影がPOP" sync="false" tts="幻影がPOP"/>
     <entry t="117.4" castname="創造命令" duration="2.7"/>
-    <entry t="120.3" castname="外周を確認" sync="false" tts=""/>
+    <entry t="120.3" castname="外周を確認" sync="false"/>
     <entry t="123.6" text="創獣炎舞+多重操炎" castname="多重操炎" duration="4.7" tts="単体を確認"/>
     <entry t="132.7" castname="多重操炎" sync="false"/>
     <entry t="133.6" castname="直線誘導" sync="false" tts="直線誘導注意" gimmick_icon="line.png"/>
@@ -47,27 +47,27 @@
     <entry t="140.6" text="創獣炎舞+フレア" castname="創獣炎舞" sync="false"/>
     <entry t="152.6" castname="安置に入る" sync="false" tts="安置に入る"/>
     <entry t="153.1" text="全体攻撃" castname="創世の真炎" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="167.1" castname="移行待ち" sync="false" tts=""/>
+    <entry t="167.1" castname="移行待ち" sync="false"/>
     <entry t="167.6" text="変異創身" castname="変異創身" duration="2.7"/>
     <entry t="177.6" castname="リアリングランページ" sync="false" tts="ポンブレじゅんびー"/>
     <entry t="177.9" text="スネークキック" castname="スネークキック" sync="false" tts="スネークキック。"/>
     <entry t="181.1" text="ゴルゴンの呪詛" castname="ゴルゴンの呪詛" duration="2.7" tts="デバフを確認"/>
     <entry t="183.6" text="ランページ1" castname="リアリングランページ" sync="false"/>
-    <entry t="185.6" castname="ランページ2" sync="false" tts=""/>
-    <entry t="187.1" castname="セリフ" sync="false" tts=""/>
+    <entry t="185.6" castname="ランページ2" sync="false"/>
+    <entry t="187.1" castname="セリフ" sync="false"/>
     <entry t="187.2" text="イントゥシャドウ" castname="イントゥシャドウ" duration="2.7"/>
-    <entry t="187.6" castname="ランページ3" sync="false" tts=""/>
-    <entry t="189.6" castname="ランページ4" sync="false" tts=""/>
+    <entry t="187.6" castname="ランページ3" sync="false"/>
+    <entry t="189.6" castname="ランページ4" sync="false"/>
     <entry t="191.6" castname="神に逆らうなど、愚かしい！" sync="false" tts="タクティシャンじゅんびー"/>
     <entry t="197.6" text="ストンプ1" castname="フェイタルストンプ" sync="false"/>
-    <entry t="199.6" castname="ストンプ2" sync="false" tts=""/>
-    <entry t="201.6" castname="ストンプ3" sync="false" tts=""/>
-    <entry t="204.6" castname="ストンプ4" sync="false" tts=""/>
+    <entry t="199.6" castname="ストンプ2" sync="false"/>
+    <entry t="201.6" castname="ストンプ3" sync="false"/>
+    <entry t="204.6" castname="ストンプ4" sync="false"/>
     <entry t="206.2" castname="蛇1回目" sync="false" tts="タクティシャンじゅんびー"/>
-    <entry t="214.2" castname="蛇2回目" sync="false" tts=""/>
-    <entry t="217.6" castname="移行待ち" sync="false" tts=""/>
+    <entry t="214.2" castname="蛇2回目" sync="false"/>
+    <entry t="217.6" castname="移行待ち" sync="false"/>
     <entry t="223.5" text="爆炎波動" castname="爆炎波動" duration="4.7" tts="全体攻撃"/>
-    <entry t="243.5" castname="移行待ち" sync="false" tts=""/>
+    <entry t="243.5" castname="移行待ち" sync="false"/>
     <entry t="243.9" castname="オクタフレア・コンシーヴ" duration="2.7"/>
     <entry t="250.1" castname="四重炎嵐" duration="2.7"/>
     <entry t="259.3" castname="噴炎昇蛇" duration="2.7"/>
@@ -80,19 +80,19 @@
     <entry t="331.1" text="【記憶】オクタCorテトラC" castname="オクタフレア・コンシーヴ|テトラフレア・コンシーヴ" duration="2.7"/>
     <entry t="337.3" castname="ブレイジングフィート" duration="11.7"/>
     <entry t="340.1" text="中央集合" castname="四重炎嵐" sync="false" tts="中央集合"/>
-    <entry t="345.1" castname="噴炎昇蛇" sync="false" tts=""/>
+    <entry t="345.1" castname="噴炎昇蛇" sync="false"/>
     <entry t="354.0" castname="フィートクラッシュ" sync="false"/>
     <entry t="357.9" castname="トレイルブレイズ" sync="false"/>
-    <entry t="359.1" castname="オクタorテトラ" sync="false" tts=""/>
+    <entry t="359.1" castname="オクタorテトラ" sync="false"/>
     <entry t="360.5" castname="フィートインパクト" sync="false"/>
     <entry t="373.1" castname="炎蛇砲" duration="4.7"/>
     <entry t="378.1" castname="創獣炎舞" sync="false"/>
     <entry t="380.1" castname="【予告】炎蛇砲" sync="false" tts="ポンブレじゅんびー"/>
     <entry t="381.4" castname="炎蛇砲" sync="false"/>
-    <entry t="386.1" castname="炎蛇砲1" sync="false" tts=""/>
-    <entry t="389.1" castname="炎蛇砲2" sync="false" tts=""/>
+    <entry t="386.1" castname="炎蛇砲1" sync="false"/>
+    <entry t="389.1" castname="炎蛇砲2" sync="false"/>
     <entry t="390.8" text="変異創身" castname="変異創身" duration="2.7"/>
-    <entry t="398.1" castname="変異創身" sync="false" tts=""/>
+    <entry t="398.1" castname="変異創身" sync="false"/>
     <entry t="401.1" text="スネークキック" castname="スネークキック" sync="false" tts="スネークキック。"/>
     <entry t="401.8" text="【予告】離れるorノックバック" castname="フィートクラッシュ|フィートインパクト" sync="false" gimmick_icon="knockback.png"/>
     <entry t="404.3" text="ゴルゴンの呪詛" castname="ゴルゴンの呪詛" duration="2.7"/>
@@ -104,9 +104,9 @@
     <entry t="428.8" castname="ブレイジングフィート" sync="false" tts="突進"/>
     <entry t="429.4" text="外周注意" castname="ゴルゴンスピット" sync="false"/>
     <entry t="432.7" castname="幻影創造" duration="2.7"/>
-    <entry t="433.8" castname="フィート1" sync="false" tts=""/>
+    <entry t="433.8" castname="フィート1" sync="false"/>
     <entry t="437.8" text="突進" castname="トレイルブレイズ" sync="false"/>
-    <entry t="440.8" castname="フィート2" sync="false" tts=""/>
+    <entry t="440.8" castname="フィート2" sync="false"/>
     <entry t="451.8" castname="【予告】炎蛇砲" sync="false" tts="タンクスイッチ"/>
     <entry t="453.4" castname="【予告】炎蛇砲" sync="false" tts="ポンブレじゅんびー"/>
     <entry t="455.1" castname="創世の真炎" duration="4.7"/>
@@ -116,18 +116,18 @@
     <entry t="462.4" castname="炎蛇砲" sync="false"/>
   </phase>
   <phase id="b-p1" name="後半">
-    <entry t="4.7" castname="AA" sync="false" tts=""/>
-    <entry t="7.7" castname="AA" sync="false" tts=""/>
+    <entry t="4.7" castname="AA" sync="false"/>
+    <entry t="7.7" castname="AA" sync="false"/>
     <entry t="9.7" castname="ポンブレじゅんびー" sync="false" tts="ポンブレじゅんびー"/>
-    <entry t="10.7" castname="AA" sync="false" tts=""/>
+    <entry t="10.7" castname="AA" sync="false"/>
     <entry t="10.8" text="全体攻撃" castname="アイオンピュール" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="18.7" castname="AA" sync="false" tts=""/>
-    <entry t="21.7" castname="AA" sync="false" tts=""/>
+    <entry t="18.7" castname="AA" sync="false"/>
+    <entry t="21.7" castname="AA" sync="false"/>
     <entry t="21.9" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
-    <entry t="31.9" castname="AA" sync="false" tts=""/>
-    <entry t="34.9" castname="AA" sync="false" tts=""/>
+    <entry t="31.9" castname="AA" sync="false"/>
+    <entry t="34.9" castname="AA" sync="false"/>
     <entry t="35.2" text="術式記述" castname="術式記述" duration="4.7" tts="術式記述。"/>
-    <entry t="45.2" castname="【予告】散開or頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="45.2" castname="【予告】散開or頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="46.4" text="強制詠唱" castname="強制詠唱" duration="2.7" tts="強制詠唱開始"/>
     <entry t="51.4" castname="【予告】AoE設置" sync="false" tts="えーおーいー注意"/>
     <entry t="52.5" text="AoE" castname="タイラント・フレア" duration="2.7" tts="移動"/>
@@ -136,11 +136,11 @@
     <entry t="76.6" text="1回目処理" castname="メギドフレイム" sync="false" tts="1回目"/>
     <entry t="82.6" text="2回目処理" castname="メギドフレイム" sync="false" tts="2回目"/>
     <entry t="83.9" text="全体攻撃" castname="アイオンピュール" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="91.8" castname="AA" sync="false" tts=""/>
-    <entry t="94.8" castname="AA" sync="false" tts=""/>
+    <entry t="91.8" castname="AA" sync="false"/>
+    <entry t="94.8" castname="AA" sync="false"/>
     <entry t="97.0" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
-    <entry t="107.1" castname="AA" sync="false" tts=""/>
-    <entry t="109.1" castname="軽減注意" sync="false" tts=""/>
+    <entry t="107.1" castname="AA" sync="false"/>
+    <entry t="109.1" castname="軽減注意" sync="false"/>
     <entry t="109.2" text="概念支配1回目" castname="概念支配" duration="9.0" tts="概念支配"/>
     <entry t="123.3" text="魔法陣起動1回目" castname="魔法陣起動" duration="2.7" tts="1回目、発動"/>
     <entry t="132.5" text="半面＋塔発動" castname="アッシュブレイズ" duration="5.7" tts="塔処理" gimmick_icon="tower.png"/>
@@ -148,47 +148,47 @@
     <entry t="150.9" text="半面＋塔発動" castname="アッシュブレイズ" duration="5.7" tts="塔処理" gimmick_icon="tower.png"/>
     <entry t="160.0" text="概念消去" castname="概念消去" duration="2.7" tts="概念消去、軽減もりじゅんびー"/>
     <entry t="166.2" text="全体攻撃" castname="アイオンピュール" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="174.2" castname="AA" sync="false" tts=""/>
-    <entry t="177.2" castname="AA" sync="false" tts=""/>
-    <entry t="179.2" castname="【予告】AoE処理＋塔踏み" sync="false" tts="" gimmick_icon="tower.png"/>
-    <entry t="180.2" castname="AA" sync="false" tts=""/>
+    <entry t="174.2" castname="AA" sync="false"/>
+    <entry t="177.2" castname="AA" sync="false"/>
+    <entry t="179.2" castname="【予告】AoE処理＋塔踏み" sync="false" gimmick_icon="tower.png"/>
+    <entry t="180.2" castname="AA" sync="false"/>
     <entry t="180.6" text="万象灰燼" castname="万象灰燼" duration="4.7" tts="順番を確認"/>
-    <entry t="186.6" castname="1ファイガ" sync="false" tts=""/>
-    <entry t="189.6" castname="2ファイガ" sync="false" tts=""/>
-    <entry t="192.6" castname="3ファイガ" sync="false" tts=""/>
-    <entry t="195.6" castname="4ファイガ" sync="false" tts=""/>
-    <entry t="197.6" castname="1フレアII" sync="false" tts=""/>
-    <entry t="200.6" castname="2フレアII" sync="false" tts=""/>
-    <entry t="203.6" castname="3フレアII" sync="false" tts=""/>
-    <entry t="206.6" castname="4フレアII" sync="false" tts=""/>
+    <entry t="186.6" castname="1ファイガ" sync="false"/>
+    <entry t="189.6" castname="2ファイガ" sync="false"/>
+    <entry t="192.6" castname="3ファイガ" sync="false"/>
+    <entry t="195.6" castname="4ファイガ" sync="false"/>
+    <entry t="197.6" castname="1フレアII" sync="false"/>
+    <entry t="200.6" castname="2フレアII" sync="false"/>
+    <entry t="203.6" castname="3フレアII" sync="false"/>
+    <entry t="206.6" castname="4フレアII" sync="false"/>
     <entry t="208.8" text="全体攻撃" castname="アイオンピュール" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="216.7" castname="AA" sync="false" tts=""/>
-    <entry t="219.7" castname="AA" sync="false" tts=""/>
+    <entry t="216.7" castname="AA" sync="false"/>
+    <entry t="219.7" castname="AA" sync="false"/>
     <entry t="221.9" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
-    <entry t="231.8" castname="AA" sync="false" tts=""/>
-    <entry t="234.8" castname="AA" sync="false" tts=""/>
+    <entry t="231.8" castname="AA" sync="false"/>
+    <entry t="234.8" castname="AA" sync="false"/>
     <entry t="237.1" text="術式記述" castname="術式記述" duration="4.7"/>
     <entry t="245.2" castname="マジックインヴァージョン" duration="2.7"/>
-    <entry t="250.0" castname="【予告】逆詠唱" sync="false" tts=""/>
+    <entry t="250.0" castname="【予告】逆詠唱" sync="false"/>
     <entry t="251.4" text="強制詠唱" castname="強制詠唱" duration="2.7" tts="強制詠唱開始、タクティシャンじゅんびー"/>
     <entry t="263.4" text="1回目" castname="メギドフレイム" sync="false" tts="1回目"/>
     <entry t="282.4" text="2回目" castname="メギドフレイム" sync="false" tts="2回目"/>
     <entry t="288.6" text="半面攻撃" castname="アッシュブレイズ" duration="5.7" tts="ポンブレじゅんびー" gimmick_icon="half-room.png"/>
     <entry t="297.7" text="全体攻撃" castname="アイオンピュール" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="305.7" castname="AA" sync="false" tts=""/>
-    <entry t="308.7" castname="AA" sync="false" tts=""/>
+    <entry t="305.7" castname="AA" sync="false"/>
+    <entry t="308.7" castname="AA" sync="false"/>
     <entry t="310.9" text="タンク強攻撃" castname="タイラント・ダークホーリー" duration="4.7" gimmick_icon="tankbuster.png"/>
-    <entry t="320.9" castname="AA" sync="false" tts=""/>
-    <entry t="321.9" castname="軽減注意" sync="false" tts=""/>
+    <entry t="320.9" castname="AA" sync="false"/>
+    <entry t="321.9" castname="軽減注意" sync="false"/>
     <entry t="323.1" text="概念支配" castname="概念支配" duration="9.0" tts="概念支配"/>
     <entry t="337.3" text="魔法陣起動" castname="魔法陣起動" duration="2.7" tts="1回目、発動"/>
     <entry t="346.5" text="半面+塔発動" castname="アッシュブレイズ" duration="5.7" gimmick_icon="tower.png"/>
     <entry t="355.6" text="魔法陣起動" castname="魔法陣起動" duration="2.7" tts="2回目、発動"/>
     <entry t="370.9" text="塔と線処理" castname="メギドフレイム" sync="false" tts="発動" gimmick_icon="tower.png"/>
-    <entry t="379.9" castname="セリフ" sync="false" tts=""/>
+    <entry t="379.9" castname="セリフ" sync="false"/>
     <entry t="380.8" text="自己概念崩壊" castname="自己概念崩壊" duration="9.7" tts="概念崩壊"/>
     <entry t="391.1" castname="自己概念崩壊" sync="false"/>
-    <entry t="410.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="410.8" castname="セリフ" sync="false"/>
     <entry t="417.3" text="全体攻撃" castname="アイオンアゴニア" duration="7.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="428.5" text="散開 / 支配者の一撃" castname="支配者の一撃" duration="6.7" tts="支配者の一撃" gimmick_icon="spread.png"/>
     <entry t="443.6" castname="地盤隆起" sync="false"/>

@@ -12,18 +12,18 @@
     <entry t="31.4" text="刃葉" castname="アッティスの刃葉" duration="2.7" tts="安置確認"/>
     <entry t="37.4" castname="アッティスの刃葉" duration="7.2"/>
     <entry t="37.5" text="床破壊+打ち上げ" castname="生滅の導枝" duration="7.2" tts="打ち上げ"/>
-    <entry t="38.4" castname="セリフ" sync="false" tts=""/>
+    <entry t="38.4" castname="セリフ" sync="false"/>
     <entry t="46.9" castname="アッティスの刃葉" sync="false"/>
     <entry t="48.8" castname="アッティスの刃葉" sync="false"/>
     <entry t="50.8" castname="アッティスの刃葉" sync="false"/>
     <entry t="52.8" castname="アッティスの刃葉" sync="false"/>
     <entry t="54.7" castname="アッティスの刃葉" sync="false"/>
-    <entry t="55.0" castname="【予告】外周鳥のみの床へ" sync="false" tts=""/>
+    <entry t="55.0" castname="【予告】外周鳥のみの床へ" sync="false"/>
     <entry t="55.5" text="生命の果実" castname="生命の果実" duration="3.7" tts="雑魚を確認"/>
     <entry t="56.7" castname="アッティスの刃葉" sync="false"/>
     <entry t="58.6" castname="アッティスの刃葉" sync="false"/>
     <entry t="61.6" castname="生命の果実" duration="2.7"/>
-    <entry t="67.5" castname="【予兆】2組頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="67.5" castname="【予兆】2組頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="67.8" castname="ヘーミテオス・ホーリガ" duration="2.7"/>
     <entry t="74.0" text="巨枝" castname="アッティスの巨枝" duration="6.9"/>
     <entry t="74.0" castname="ヘーミテオス・ホーリガ" duration="5.7"/>
@@ -32,44 +32,44 @@
     <entry t="84.8" text="エアロラ" castname="スプレッド・エアロラ|アグリゲート・エアロラ" duration="6.7"/>
     <entry t="92.9" castname="スプレッド・エアロラ" sync="false"/>
     <entry t="97.6" text="全体攻撃" castname="生命の光芒" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="106.6" castname="【予告】散開/頭割り 2連" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="106.6" castname="【予告】散開/頭割り 2連" sync="false" gimmick_icon="stack.png"/>
     <entry t="107.9" text="魔印創成" castname="魔印創成" duration="3.7" tts="デバフを確認"/>
     <entry t="116.1" text="巨枝" castname="アッティスの巨枝" duration="6.7"/>
     <entry t="125.5" castname="アッティスの巨枝" duration="3.7"/>
     <entry t="129.9" castname="パンチ" sync="false" tts="安置へ移動"/>
     <entry t="133.0" castname="ヘーミテオス・エアロガ" sync="false"/>
     <entry t="135.7" text="通路破壊" castname="アッティスの根" duration="2.7" tts="通路破壊"/>
-    <entry t="144.7" castname="セリフ" sync="false" tts=""/>
+    <entry t="144.7" castname="セリフ" sync="false"/>
     <entry t="150.2" text="エアロラ" castname="スプレッド・エアロラ|アグリゲート・エアロラ" duration="6.7"/>
     <entry t="158.3" castname="スプレッド・エアロラ" sync="false"/>
-    <entry t="160.2" castname="【予告】ノックバックと散開" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="160.2" castname="【予告】ノックバックと散開" sync="false" gimmick_icon="knockback.png"/>
     <entry t="161.9" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="167.9" castname="生命の果実" duration="2.7"/>
     <entry t="173.0" text="マルチキャスト" castname="マルチキャスト" duration="2.7"/>
     <entry t="180.8" castname="ヘーミテオス・ホーリー" duration="4.7"/>
     <entry t="183.8" text="ノックバック / 散開" castname="バードストライク" duration="2.7" gimmick_icon="knockback.png"/>
     <entry t="191.1" text="通路破壊" castname="アッティスの根" duration="2.7" tts="通路破壊"/>
-    <entry t="200.0" castname="セリフ" sync="false" tts=""/>
-    <entry t="201.0" castname="【予告】新通路で頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="200.0" castname="セリフ" sync="false"/>
+    <entry t="201.0" castname="【予告】新通路で頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="201.4" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="207.5" castname="生命の果実" duration="2.7"/>
     <entry t="214.3" castname="ヘーミテオス・ホーリガ" duration="2.7"/>
     <entry t="214.4" castname="2組頭割り" sync="false" tts="2組頭割り" gimmick_icon="stack.png"/>
     <entry t="217.3" castname="ヘーミテオス・ホーリガ" duration="5.7"/>
-    <entry t="219.4" castname="セリフ" sync="false" tts=""/>
+    <entry t="219.4" castname="セリフ" sync="false"/>
     <entry t="234.7" text="アッティスの巨枝" castname="アッティスの巨枝" duration="6.7"/>
     <entry t="244.1" castname="アッティスの巨枝" duration="3.7"/>
     <entry t="249.7" castname="パンチ" sync="false" tts="安置へ異動"/>
     <entry t="251.3" text="エアロラ" castname="スプレッド・エアロラ|アグリゲート・エアロラ" duration="6.7"/>
     <entry t="259.3" castname="スプレッド・エアロラ" sync="false"/>
-    <entry t="261.3" castname="【予告】牛:線 ミノ:誘導" sync="false" tts=""/>
+    <entry t="261.3" castname="【予告】牛:線 ミノ:誘導" sync="false"/>
     <entry t="261.9" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="268.0" castname="生命の果実" duration="2.7"/>
     <entry t="286.9" text="スワイプ" castname="ブルスワイプ" sync="false" tts="スワイプ"/>
     <entry t="291.7" text="【予告】ノックバックと頭割り / 刃葉" castname="アッティスの刃葉" duration="2.7" gimmick_icon="knockback.png"/>
     <entry t="297.7" castname="アッティスの刃葉" duration="7.2"/>
     <entry t="297.8" text="マルチキャスト" castname="マルチキャスト" duration="2.7"/>
-    <entry t="306.8" castname="ノックバック" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="306.8" castname="ノックバック" sync="false" gimmick_icon="knockback.png"/>
     <entry t="307.2" castname="アッティスの刃葉" sync="false"/>
     <entry t="309.2" castname="アッティスの刃葉" sync="false"/>
     <entry t="311.1" castname="アッティスの刃葉" sync="false"/>
@@ -79,7 +79,7 @@
     <entry t="317.0" castname="アッティスの刃葉" sync="false"/>
     <entry t="319.0" castname="アッティスの刃葉" sync="false"/>
     <entry t="324.9" castname="スプレッド・エアロラ" sync="false"/>
-    <entry t="328.9" castname="【予告】塔と線処理" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="328.9" castname="【予告】塔と線処理" sync="false" gimmick_icon="tower.png"/>
     <entry t="329.6" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="335.6" castname="生命の果実" duration="2.7"/>
     <entry t="342.3" text="塔が出る" castname="アッティスの光雫" sync="false" tts="塔が出る" gimmick_icon="tower.png"/>
@@ -87,7 +87,7 @@
     <entry t="354.3" castname="爆発" sync="false"/>
     <entry t="357.8" text="全体攻撃" castname="生命の光芒" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="370.1" text="【予告】床破壊 / 打ち上げ" castname="生滅の導枝" duration="7.2" tts="安置へ移動、打ち上げ"/>
-    <entry t="380.6" castname="【予告】連続の頭割り/散開" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="380.6" castname="【予告】連続の頭割り/散開" sync="false" gimmick_icon="stack.png"/>
     <entry t="380.7" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="386.8" castname="生命の果実" duration="2.7"/>
     <entry t="391.9" text="魔印創成・獄" castname="魔印創成・獄" duration="3.7" tts="デバフを確認"/>
@@ -104,7 +104,7 @@
     <entry t="452.0" castname="ヘーミテオス・トルネド" sync="false"/>
     <entry t="460.3" castname="生命の極光" sync="false"/>
     <entry t="466.3" castname="AoE注意" sync="false" tts="AoE注意"/>
-    <entry t="470.3" castname="【予告】追尾AoE捨て" sync="false" tts=""/>
+    <entry t="470.3" castname="【予告】追尾AoE捨て" sync="false"/>
     <entry t="471.8" text="生命の果実" castname="生命の果実" duration="3.7"/>
     <entry t="477.9" castname="生命の果実" duration="2.7"/>
     <entry t="483.0" text="通路破壊" castname="アッティスの根" duration="2.7" tts="通路破壊"/>
@@ -114,19 +114,19 @@
     <entry t="499.6" castname="ヘーミテオス・グレア" sync="false"/>
     <entry t="500.9" castname="ヘーミテオス・グレア" sync="false"/>
     <entry t="502.3" castname="ヘーミテオス・グレア" sync="false"/>
-    <entry t="502.8" castname="【予告】ミノ:三カ所誘導" sync="false" tts=""/>
+    <entry t="502.8" castname="【予告】ミノ:三カ所誘導" sync="false"/>
     <entry t="503.6" text="生命の繁茂【猛】" castname="生命の繁茂【猛】" duration="3.7" tts="生命の繁茂、猛"/>
     <entry t="503.7" castname="ヘーミテオス・グレア" sync="false"/>
     <entry t="509.7" castname="生命の果実" duration="2.7"/>
     <entry t="525.6" castname="バードストライク" duration="2.7"/>
     <entry t="525.6" castname="ブルスワイプ" duration="2.7"/>
     <entry t="528.3" text="スラッシュ" castname="ブルスラッシュ" sync="false" tts="スラッシュ。"/>
-    <entry t="535.3" castname="【予告】牛:線4x2" sync="false" tts=""/>
+    <entry t="535.3" castname="【予告】牛:線4x2" sync="false"/>
     <entry t="536.3" text="生命の繁茂【凶】" castname="生命の繁茂【凶】" duration="3.7" tts="生命の繁茂、凶"/>
     <entry t="542.4" castname="生命の果実" duration="2.7"/>
     <entry t="558.3" castname="バードストライク" duration="2.7"/>
     <entry t="561.0" castname="スタティックパース" sync="false" tts="スタティックパース。"/>
-    <entry t="568.0" castname="【予告】牛から鳥からミノから線" sync="false" tts=""/>
+    <entry t="568.0" castname="【予告】牛から鳥からミノから線" sync="false"/>
     <entry t="569.0" text="生命の繁茂【乱】" castname="生命の繁茂【乱】" duration="3.7" tts="生命の繁茂、乱"/>
     <entry t="575.1" castname="生命の果実" duration="2.7"/>
     <entry t="593.7" castname="ガストストライク" sync="false"/>
@@ -136,7 +136,7 @@
     <entry t="614.0" castname="ヘーミテオス・ホーリガ" duration="2.7"/>
     <entry t="620.2" text="巨枝+頭割り" castname="アッティスの巨枝" duration="6.7" tts="頭割り注意" gimmick_icon="stack.png"/>
     <entry t="629.6" castname="アッティスの巨枝" duration="3.7"/>
-    <entry t="634.0" castname="パンチ" sync="false" tts=""/>
+    <entry t="634.0" castname="パンチ" sync="false"/>
     <entry t="637.8" text="生命の光芒" castname="生命の光芒" duration="4.7" tts="全体攻撃"/>
     <entry t="651.1" text="生命の光芒" castname="生命の光芒" duration="4.7" tts="全体攻撃"/>
     <entry t="663.1" castname="時間切れ詠唱" sync="false" tts="時間切れ、開始"/>

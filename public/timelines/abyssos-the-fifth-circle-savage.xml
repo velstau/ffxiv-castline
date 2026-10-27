@@ -22,14 +22,14 @@
     <entry t="101.6" castname="ベノムクランチ" sync="false"/>
     <entry t="110.8" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
     <entry t="118.9" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="安置を確認"/>
-    <entry t="120.8" castname="【予告】突進" sync="false" tts=""/>
+    <entry t="120.8" castname="【予告】突進" sync="false"/>
     <entry t="127.3" text="突進確認 / ノックバック" castname="ダブルラッシュ" duration="5.7" tts="突進を確認、ノックバック" gimmick_icon="knockback.png"/>
     <entry t="135.4" castname="ダブルラッシュ" sync="false"/>
     <entry t="137.0" castname="ルビーリフレクション" sync="false"/>
     <entry t="141.6" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
     <entry t="154.9" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
     <entry t="162.0" text="トパーズクラスター" castname="トパーズクラスター" duration="3.7" tts="安置を確認"/>
-    <entry t="162.8" castname="【予告】3連クラスター" sync="false" tts=""/>
+    <entry t="162.8" castname="【予告】3連クラスター" sync="false"/>
     <entry t="170.0" castname="トパーズレイ" duration="8.7"/>
     <entry t="182.0" castname="ルビーリフレクション" sync="false"/>
     <entry t="184.5" castname="ルビーリフレクション" sync="false"/>
@@ -46,7 +46,7 @@
     <entry t="233.3" castname="レイジングクロウ" sync="false"/>
     <entry t="234.3" castname="レイジングクロウ" sync="false"/>
     <entry t="236.8" castname="レイジングテイル" sync="false"/>
-    <entry t="244.7" castname="捕食ギミック開始" sync="false" tts=""/>
+    <entry t="244.7" castname="捕食ギミック開始" sync="false"/>
     <entry t="255.4" castname="スターヴィング・スタンピード" duration="1.5"/>
     <entry t="256.5" castname="スターヴィング・スタンピード" sync="false"/>
     <entry t="257.8" castname="スターヴィング・スタンピード" sync="false"/>
@@ -61,7 +61,7 @@
     <entry t="280.9" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃" window="30 10"/>
     <entry t="288.0" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
     <entry t="295.2" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="範囲を当てる"/>
-    <entry t="296.0" castname="【予告】石に範囲当て" sync="false" tts=""/>
+    <entry t="296.0" castname="【予告】石に範囲当て" sync="false"/>
     <entry t="301.3" text="ベノムスプラッシュ" castname="ベノムスプラッシュ" duration="4.7"/>
     <entry t="310.1" castname="ベノムスプラッシュ" sync="false"/>
     <entry t="313.2" castname="ルビーリフレクション" sync="false"/>
@@ -73,7 +73,7 @@
     <entry t="340.0" castname="ベノムクランチ" sync="false"/>
     <entry t="348.2" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
     <entry t="356.4" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="2箇所に分かれる"/>
-    <entry t="357.2" castname="【予告】2箇所安置に分かれる" sync="false" tts=""/>
+    <entry t="357.2" castname="【予告】2箇所安置に分かれる" sync="false"/>
     <entry t="369.6" text="スコールorサージ" castname="ベノムスコール|ベノムサージ" duration="4.7"/>
     <entry t="374.5" castname="ルビーリフレクション" sync="false"/>
     <entry t="378.4" castname="ベノムレイン" sync="false"/>
@@ -92,7 +92,7 @@
     <entry t="431.8" text="ソニックハウル" castname="ソニックハウル" duration="4.7" tts="全体攻撃"/>
     <entry t="439.0" text="ルビーの光" castname="ルビーの光" duration="4.7" tts="ルビーの光"/>
     <entry t="446.1" text="トパーズストーン" castname="トパーズストーン" duration="3.7" tts="範囲を当てる"/>
-    <entry t="446.9" castname="【予告】範囲を当てる" sync="false" tts=""/>
+    <entry t="446.9" castname="【予告】範囲を当てる" sync="false"/>
     <entry t="452.2" text="ベノムスプラッシュ" castname="ベノムスプラッシュ" duration="4.7"/>
     <entry t="461.0" castname="ベノムスプラッシュ" sync="false"/>
     <entry t="464.1" castname="ルビーリフレクション" sync="false"/>
@@ -118,6 +118,6 @@
     <entry t="573.4" castname="ソニックシャッター" sync="false"/>
     <entry t="576.5" castname="ソニックシャッター" sync="false"/>
     <entry t="579.7" castname="ソニックシャッター" sync="false"/>
-    <entry t="592.8" castname="時間切れ調査中" sync="false" tts=""/>
+    <entry t="592.8" castname="時間切れ調査中" sync="false"/>
   </phase>
 </timeline>

@@ -9,43 +9,43 @@
   <phase id="p1">
     <entry t="9.1" text="全体" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="20.8" text="タンク頭割り" castname="キール・シュネルギア" duration="6.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>
-    <entry t="36.9" castname="セリフ" sync="false" tts=""/>
+    <entry t="36.9" castname="セリフ" sync="false"/>
     <entry t="37.8" text="ポリオミノ" castname="エーテル・ポリオミノ" duration="3.7" tts="床を確認"/>
     <entry t="44.4" text="【予兆】ペア頭割り" castname="ダークホーリー" duration="3.7" tts="ペアの頭割り" gimmick_icon="stack.png"/>
     <entry t="50.5" text="エクソークリーバー" castname="エクソークリーバー" duration="3.7" tts="移動注意"/>
     <entry t="57.1" castname="エクソークリーバー" sync="false"/>
-    <entry t="62.5" castname="セリフ" sync="false" tts=""/>
+    <entry t="62.5" castname="セリフ" sync="false"/>
     <entry t="63.2" text="軟体細胞流1" castname="軟体細胞流" duration="7.7"/>
     <entry t="71.7" castname="軟体細胞流" sync="false"/>
     <entry t="73.6" castname="軟体細胞流" sync="false"/>
-    <entry t="73.7" castname="軟体細胞流2" sync="false" tts=""/>
+    <entry t="73.7" castname="軟体細胞流2" sync="false"/>
     <entry t="75.5" castname="軟体細胞流" sync="false"/>
-    <entry t="75.7" castname="軟体細胞流3" sync="false" tts=""/>
+    <entry t="75.7" castname="軟体細胞流3" sync="false"/>
     <entry t="77.5" castname="軟体細胞流" sync="false"/>
-    <entry t="77.7" castname="軟体細胞流4" sync="false" tts=""/>
+    <entry t="77.7" castname="軟体細胞流4" sync="false"/>
     <entry t="79.4" castname="軟体細胞流" sync="false"/>
-    <entry t="79.7" castname="軟体細胞流5" sync="false" tts=""/>
-    <entry t="80.7" castname="軟体細胞流6" sync="false" tts=""/>
+    <entry t="79.7" castname="軟体細胞流5" sync="false"/>
+    <entry t="80.7" castname="軟体細胞流6" sync="false"/>
     <entry t="81.3" castname="軟体細胞流" sync="false"/>
-    <entry t="82.7" castname="軟体細胞流7" sync="false" tts=""/>
+    <entry t="82.7" castname="軟体細胞流7" sync="false"/>
     <entry t="83.3" castname="軟体細胞流" sync="false"/>
-    <entry t="84.7" castname="軟体細胞流8" sync="false" tts=""/>
+    <entry t="84.7" castname="軟体細胞流8" sync="false"/>
     <entry t="85.2" castname="軟体細胞流" sync="false"/>
     <entry t="93.5" text="【予告】マーカーと線" castname="エーテルチェンジ" duration="2.7" tts="マーカー入れ替えギミック"/>
     <entry t="99.2" text="チェンジバースト" castname="チェンジバースト" duration="3.7"/>
     <entry t="104.0" castname="ダークホーリー" duration="6.7"/>
     <entry t="105.9" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
-    <entry t="110.9" castname="ホロス・イクソス2" sync="false" tts=""/>
+    <entry t="110.9" castname="ホロス・イクソス2" sync="false"/>
     <entry t="113.5" castname="ホロス・イクソス" sync="false"/>
-    <entry t="113.9" castname="ホロス・イクソス1" sync="false" tts=""/>
+    <entry t="113.9" castname="ホロス・イクソス1" sync="false"/>
     <entry t="121.2" text="シュネルギア" castname="キール・シュネルギア|シュネルギア" duration="6.0"/>
     <entry t="135.4" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="147.1" text="寄生" castname="寄生" duration="4.7" tts="デバフを確認"/>
     <entry t="160.5" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
-    <entry t="165.5" castname="ホロス・イクソス2" sync="false" tts=""/>
-    <entry t="166.0" castname="寄生攻撃" sync="false" tts=""/>
+    <entry t="165.5" castname="ホロス・イクソス2" sync="false"/>
+    <entry t="166.0" castname="寄生攻撃" sync="false"/>
     <entry t="168.1" castname="ホロス・イクソス" sync="false"/>
-    <entry t="168.5" castname="ホロス・イクソス1" sync="false" tts=""/>
+    <entry t="168.5" castname="ホロス・イクソス1" sync="false"/>
     <entry t="174.8" text="【予告】安置1、AoE設置" castname="エーテルチェンジ" duration="2.7"/>
     <entry t="179.8" castname="安置が１つ、ダークドーム" sync="false" tts="安置が１つ、ダークドーム"/>
     <entry t="180.4" text="エーテル・ポリオミノΣ" castname="エーテル・ポリオミノΣ" duration="3.7" tts="床を確認"/>
@@ -66,9 +66,9 @@
     <entry t="288.6" text="X散開" castname="ダークアッシュ" duration="3.7" tts="エックス字に散開" gimmick_icon="spread.png"/>
     <entry t="293.5" castname="ダークアッシュ" duration="7.7"/>
     <entry t="296.1" text="タテヨコ確認" castname="ホロス・イクソス" duration="4.7"/>
-    <entry t="301.1" castname="ホロス・イクソス2" sync="false" tts=""/>
+    <entry t="301.1" castname="ホロス・イクソス2" sync="false"/>
     <entry t="303.6" castname="ホロス・イクソス" sync="false"/>
-    <entry t="304.1" castname="ホロス・イクソス1" sync="false" tts=""/>
+    <entry t="304.1" castname="ホロス・イクソス1" sync="false"/>
     <entry t="313.1" text="カヘキシー" castname="カヘキシー" duration="2.7"/>
     <entry t="313.1" castname="カヘキシー1回目" sync="false" tts="カヘキシー1回目"/>
     <entry t="325.0" castname="魔活細胞" sync="false"/>
@@ -76,23 +76,23 @@
     <entry t="328.9" castname="魔活細胞" sync="false"/>
     <entry t="333.0" castname="魔活細胞" sync="false"/>
     <entry t="334.2" castname="甲殻爪撃" sync="false"/>
-    <entry t="334.2" castname="甲軟双撃1" sync="false" tts=""/>
+    <entry t="334.2" castname="甲軟双撃1" sync="false"/>
     <entry t="337.0" castname="魔活細胞" sync="false"/>
     <entry t="337.3" castname="甲軟双撃" sync="false"/>
     <entry t="338.2" castname="甲殻爪撃" sync="false"/>
-    <entry t="338.2" castname="甲軟双撃2" sync="false" tts=""/>
+    <entry t="338.2" castname="甲軟双撃2" sync="false"/>
     <entry t="341.3" castname="甲軟双撃" sync="false"/>
     <entry t="342.2" castname="甲殻爪撃" sync="false"/>
-    <entry t="342.2" castname="甲軟双撃3" sync="false" tts=""/>
+    <entry t="342.2" castname="甲軟双撃3" sync="false"/>
     <entry t="345.3" castname="甲軟双撃" sync="false"/>
-    <entry t="346.2" castname="甲軟双撃4" sync="false" tts=""/>
+    <entry t="346.2" castname="甲軟双撃4" sync="false"/>
     <entry t="346.3" castname="甲殻爪撃" sync="false"/>
     <entry t="349.3" text="デバフ注意 / プテラ・イクソス" castname="プテラ・イクソス" duration="5.7" tts="プテライクソス"/>
     <entry t="356.3" castname="プテラ・イクソス" sync="false"/>
     <entry t="363.5" castname="シュネルギア" duration="6.7"/>
     <entry t="370.3" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
     <entry t="377.6" text="全体攻撃" castname="ヘーミテオス・ダージャ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
-    <entry t="388.6" castname="【予告】市松模様とAoE設置" sync="false" tts=""/>
+    <entry t="388.6" castname="【予告】市松模様とAoE設置" sync="false"/>
     <entry t="389.3" text="エーテル・ポリオミノ" castname="エーテル・ポリオミノ" duration="3.7" tts="安置へ散開"/>
     <entry t="395.9" text="ダークスフィア" castname="ダークスフィア" duration="3.7"/>
     <entry t="400.8" castname="ダークスフィア" duration="5.7"/>
@@ -104,7 +104,7 @@
     <entry t="430.8" text="タテヨコ確認 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="438.4" text="ホロス・イクソス" castname="ホロス・イクソス" sync="false"/>
     <entry t="445.1" text="【予告】タテヨコと安置探し" castname="エーテルチェンジ" duration="2.7"/>
-    <entry t="450.1" castname="エーテル・ポリオミノΣ" sync="false" tts=""/>
+    <entry t="450.1" castname="エーテル・ポリオミノΣ" sync="false"/>
     <entry t="450.7" text="エーテル・ポリオミノΣ" castname="エーテル・ポリオミノΣ" duration="3.7"/>
     <entry t="462.1" text="タテヨコ注意 / ホロス・イクソス" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="469.7" text="ホロス・イクソス" castname="ホロス・イクソス" sync="false"/>
@@ -123,14 +123,14 @@
     <entry t="560.5" castname="AoE注意" sync="false" tts="えーおーいー注意"/>
     <entry t="561.2" text="ダークドーム" castname="ダークドーム" duration="3.7"/>
     <entry t="566.1" castname="ダークドーム" duration="3.7"/>
-    <entry t="570.2" castname="調査中" sync="false" tts=""/>
+    <entry t="570.2" castname="調査中" sync="false"/>
     <entry t="577.6" castname="エーテル・ポリオミノ" duration="3.7"/>
     <entry t="586.4" castname="ホロス・イクソス" duration="4.7"/>
     <entry t="594.0" castname="ホロス・イクソス" sync="false"/>
     <entry t="600.6" castname="キール・シュネルギア" duration="6.7"/>
     <entry t="607.2" text="シュネルギア" castname="キール・シュネルギア」|シュネルギア」" sync="false"/>
     <entry t="614.9" castname="ヘーミテオス・ダージャ" duration="4.7"/>
-    <entry t="629.2" castname="時間切れ開始" sync="false" tts=""/>
+    <entry t="629.2" castname="時間切れ開始" sync="false"/>
     <entry t="630.1" castname="ヘーミテオス・ダージャ" duration="9.7"/>
   </phase>
 </timeline>

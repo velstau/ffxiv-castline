@@ -16,34 +16,34 @@
     <entry t="33.1" castname="アブソリュートストンガ" sync="false"/>
     <entry t="35.5" castname="LB（メテオ）" sync="false" tts="次は、メテオ。四隅えー。"/>
     <entry t="36.2" castname="リミットブレイク" duration="5.7"/>
-    <entry t="51.5" castname="魔法剣１" sync="false" tts=""/>
+    <entry t="51.5" castname="魔法剣１" sync="false"/>
     <entry t="52.5" castname="魔法剣" duration="2.7"/>
-    <entry t="60.5" castname="魔法剣２" sync="false" tts=""/>
+    <entry t="60.5" castname="魔法剣２" sync="false"/>
     <entry t="61.6" castname="魔法剣" duration="2.7"/>
     <entry t="70.8" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
     <entry t="77.8" castname="アブソリュートストンガ" sync="false"/>
     <entry t="81.9" castname="リミットチャージ" duration="2.7"/>
-    <entry t="82.8" castname="リミットチャージ" sync="false" tts=""/>
+    <entry t="82.8" castname="リミットチャージ" sync="false"/>
     <entry t="90.1" castname="ソード・オブ・ライト" duration="2.7"/>
     <entry t="90.8" castname="ソード・オブ・ライト" sync="false" tts="次は、あんちを探す。"/>
     <entry t="105.3" castname="アブソリュートホーリー" duration="4.7"/>
-    <entry t="105.8" castname="頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="105.8" castname="頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="113.5" text="リミットブレイク" castname="リミットブレイク" duration="5.7" tts="次は、頭割り二回。"/>
     <entry t="119.8" text="デスペラード１" castname="ブライトデスペラード" sync="false"/>
     <entry t="124.1" text="デスペラード２" castname="ブライトデスペラード" sync="false"/>
-    <entry t="128.1" castname="リミットチャージ" sync="false" tts=""/>
+    <entry t="128.1" castname="リミットチャージ" sync="false"/>
     <entry t="130.4" castname="リミットチャージ" duration="2.7"/>
-    <entry t="136.1" castname="魔法剣１" sync="false" tts=""/>
+    <entry t="136.1" castname="魔法剣１" sync="false"/>
     <entry t="138.5" castname="魔法剣" duration="2.7"/>
-    <entry t="145.1" castname="魔法剣２" sync="false" tts=""/>
+    <entry t="145.1" castname="魔法剣２" sync="false"/>
     <entry t="147.7" castname="魔法剣" duration="2.7"/>
     <entry t="156.8" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
     <entry t="167.9" text="LB（ブレイバー）" castname="リミットブレイク" duration="5.7" tts="次は、ロールごとに散開。"/>
     <entry t="174.2" castname="ブライトブレイバー" sync="false"/>
     <entry t="182.3" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
-    <entry t="190.3" castname="サモン・ウィルム" sync="false" tts=""/>
+    <entry t="190.3" castname="サモン・ウィルム" sync="false"/>
     <entry t="190.5" castname="サモン・ウィルム" duration="2.7"/>
-    <entry t="196.3" castname="フラッシュ（視線）" sync="false" tts="" gimmick_icon="gaze-away.png"/>
+    <entry t="196.3" castname="フラッシュ（視線）" sync="false" gimmick_icon="gaze-away.png"/>
     <entry t="196.6" castname="アブソリュートフラッシュ" duration="4.7"/>
     <entry t="196.6" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7" tts="AOEが出たら移動。"/>
     <entry t="199.7" castname="カータライズ" sync="false"/>
@@ -57,7 +57,7 @@
     <entry t="250.1" text="バハ召喚" castname="召喚" sync="false"/>
     <entry t="254.1" castname="バーサク" duration="4.7"/>
     <entry t="254.1" text="真暗黒・バーサク" castname="真暗黒" sync="false"/>
-    <entry t="254.1" castname="フレアブレス" sync="false" tts=""/>
+    <entry t="254.1" castname="フレアブレス" sync="false"/>
     <entry t="269.2" castname="フェイタルクリーヴ" duration="3.7"/>
     <entry t="269.2" text="タンク強攻撃" castname="漆黒の魔剣" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="285.4" text="タンク強攻撃" castname="フェイタルクリーヴ" duration="3.7" gimmick_icon="tankbuster.png"/>
@@ -88,39 +88,39 @@
     <entry t="598.7" castname="ブライトブレイバー" sync="false"/>
     <entry t="610.9" castname="エンドオール" duration="4.7"/>
     <entry t="621.3" text="魔法剣" castname="魔法剣" duration="2.7"/>
-    <entry t="622.4" castname="リミットチャージ" sync="false" tts=""/>
+    <entry t="622.4" castname="リミットチャージ" sync="false"/>
     <entry t="630.4" text="幻光召喚" castname="幻光召喚" duration="2.7" tts="次は、召喚。、次は、暗黒騎士"/>
-    <entry t="636.4" castname="ソーレムコンフィテオル" sync="false" tts=""/>
-    <entry t="636.4" castname="リミットチャージ" sync="false" tts=""/>
+    <entry t="636.4" castname="ソーレムコンフィテオル" sync="false"/>
+    <entry t="636.4" castname="リミットチャージ" sync="false"/>
     <entry t="639.4" castname="ふたりがけ" sync="false" tts="次は、塔踏み。"/>
     <entry t="639.6" castname="ブリムストーンアース" sync="false" tts="次は、広がるAOE。"/>
     <entry t="640.4" castname="水遁の術：参" sync="false"/>
-    <entry t="646.4" castname="ソーレムコンフィテオル" sync="false" tts=""/>
+    <entry t="646.4" castname="ソーレムコンフィテオル" sync="false"/>
     <entry t="647.4" castname="火遁の術：参" sync="false"/>
     <entry t="648.4" castname="ヘビーレイン・オブ・デス" sync="false"/>
     <entry t="649.4" text="デシメート" castname="パーフェクトデシメート" duration="4.7"/>
-    <entry t="649.4" castname="フレアブレス" sync="false" tts=""/>
+    <entry t="649.4" castname="フレアブレス" sync="false"/>
     <entry t="649.8" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="650.4" castname="ソーレムコンフィテオル" sync="false" tts=""/>
+    <entry t="650.4" castname="ソーレムコンフィテオル" sync="false"/>
     <entry t="653.4" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="654.4" castname="ホーリー（頭割り）" sync="false" tts="次は、頭割り。" gimmick_icon="stack.png"/>
     <entry t="656.2" castname="フレアブレス" sync="false"/>
-    <entry t="657.4" castname="塔着弾１" sync="false" tts="" gimmick_icon="tower.png"/>
-    <entry t="659.4" castname="塔着弾２" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="657.4" castname="塔着弾１" sync="false" gimmick_icon="tower.png"/>
+    <entry t="659.4" castname="塔着弾２" sync="false" gimmick_icon="tower.png"/>
     <entry t="661.1" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="661.4" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" sync="false"/>
-    <entry t="661.4" castname="塔着弾３" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="661.4" castname="塔着弾３" sync="false" gimmick_icon="tower.png"/>
     <entry t="661.6" text="デシメート" castname="パーフェクトデシメート" duration="4.7"/>
-    <entry t="663.4" castname="塔着弾４" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="663.4" castname="塔着弾４" sync="false" gimmick_icon="tower.png"/>
     <entry t="664.7" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="665.4" castname="塔着弾５" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="665.4" castname="塔着弾５" sync="false" gimmick_icon="tower.png"/>
     <entry t="665.4" castname="サモン・ウィルム" sync="false" tts="次は、サモン・ウィルム。"/>
-    <entry t="667.4" castname="塔着弾６" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="667.4" castname="塔着弾６" sync="false" gimmick_icon="tower.png"/>
     <entry t="668.4" castname="リミットブレイク" sync="false" tts="次は、リミットブレイク。"/>
-    <entry t="669.4" castname="塔着弾７" sync="false" tts="" gimmick_icon="tower.png"/>
-    <entry t="670.1" castname="サモン・ウィルム" sync="false" tts=""/>
+    <entry t="669.4" castname="塔着弾７" sync="false" gimmick_icon="tower.png"/>
+    <entry t="670.1" castname="サモン・ウィルム" sync="false"/>
     <entry t="671.3" castname="サモン・ウィルム" duration="2.7"/>
-    <entry t="671.4" castname="塔着弾８" sync="false" tts="" gimmick_icon="tower.png"/>
+    <entry t="671.4" castname="塔着弾８" sync="false" gimmick_icon="tower.png"/>
     <entry t="672.4" castname="ブライトセイバー" sync="false"/>
     <entry t="673.4" castname="エンシェントドラゴンダイブ" sync="false" tts="次は、全体攻撃"/>
     <entry t="679.8" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>

@@ -8,7 +8,7 @@
   <note>FFLogs の公開ランキングの討伐の記録（18:48）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1" name="P1: Kefka">
     <entry t="11.0" text="強攻撃2" castname="ばりばりルインガ" duration="4.7"/>
-    <entry t="19.1" castname="強攻撃1" sync="false" tts=""/>
+    <entry t="19.1" castname="強攻撃1" sync="false"/>
     <entry t="19.2" castname="ばりばりルインガ" sync="false"/>
     <entry t="27.1" text="神々の像" castname="神々の像" duration="2.7"/>
     <entry t="33.2" castname="ひろげるブリザガ" duration="4.7"/>
@@ -22,15 +22,15 @@
     <entry t="50.4" castname="トラップ発動" sync="false" tts="ノックバック"/>
     <entry t="58.6" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="66.7" text="ドライブ3" castname="ハイパードライブ" sync="false"/>
-    <entry t="68.7" castname="ドライブ2" sync="false" tts=""/>
+    <entry t="68.7" castname="ドライブ2" sync="false"/>
     <entry t="68.8" castname="ハイパードライブ" sync="false"/>
-    <entry t="70.7" castname="ドライブ1" sync="false" tts=""/>
+    <entry t="70.7" castname="ドライブ1" sync="false"/>
     <entry t="70.9" castname="ハイパードライブ" sync="false"/>
     <entry t="78.1" text="神々の像" castname="神々の像" duration="2.7"/>
     <entry t="83.3" text="重力弾+ブリザガ" castname="ひろげるブリザガ" duration="4.7"/>
     <entry t="92.4" castname="岩石弾" sync="false"/>
     <entry t="93.1" text="強攻撃2" castname="ばりばりルインガ" duration="4.7"/>
-    <entry t="101.2" castname="強攻撃1" sync="false" tts=""/>
+    <entry t="101.2" castname="強攻撃1" sync="false"/>
     <entry t="101.4" castname="ばりばりルインガ" sync="false"/>
     <entry t="102.2" text="半面攻撃" castname="重力波|撲殺の神気" sync="false" gimmick_icon="half-room.png"/>
     <entry t="106.9" castname="重力弾" sync="false"/>
@@ -41,21 +41,21 @@
     <entry t="122.0" castname="グラビガ" sync="false"/>
     <entry t="128.3" text="全体攻撃" castname="裁きの光" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="136.5" text="ドライブ3" castname="ハイパードライブ" sync="false"/>
-    <entry t="138.5" castname="ドライブ2" sync="false" tts=""/>
+    <entry t="138.5" castname="ドライブ2" sync="false"/>
     <entry t="138.6" castname="ハイパードライブ" sync="false"/>
-    <entry t="140.5" castname="ドライブ1" sync="false" tts=""/>
+    <entry t="140.5" castname="ドライブ1" sync="false"/>
     <entry t="140.7" castname="ハイパードライブ" sync="false"/>
     <entry t="147.6" text="テレポ" castname="ずびずばテレポ" duration="4.7" tts="デバフ確認"/>
-    <entry t="159.6" castname="設置1" sync="false" tts=""/>
+    <entry t="159.6" castname="設置1" sync="false"/>
     <entry t="160.4" castname="ずびずばテレポ" sync="false"/>
     <entry t="161.7" text="神々の像" castname="神々の像" duration="2.7"/>
-    <entry t="162.6" castname="設置2" sync="false" tts=""/>
+    <entry t="162.6" castname="設置2" sync="false"/>
     <entry t="163.4" castname="ずびずばテレポ" sync="false"/>
     <entry t="165.7" castname="トラップ発動" sync="false" tts="ノックバック"/>
     <entry t="168.8" castname="つぎつぎトラップ" sync="false"/>
     <entry t="182.5" castname="もりもりサンダガ" duration="4.7"/>
     <entry t="182.5" text="なぞなぞマジック" castname="なぞなぞマジック" duration="4.7"/>
-    <entry t="200.5" castname="終了待ち" sync="false" tts=""/>
+    <entry t="200.5" castname="終了待ち" sync="false"/>
     <next to="p2" at="7.3" cast="終末の双腕"/>
   </phase>
   <phase id="p2" name="P2: Forsaken Kefka">
@@ -94,9 +94,9 @@
     <entry t="159.9" castname="トライン" sync="false"/>
     <entry t="161.9" castname="トライン" sync="false"/>
     <entry t="164.6" text="終末の双腕" castname="終末の双腕" duration="4.7"/>
-    <entry t="172.5" castname="時間切れ" sync="false" tts=""/>
+    <entry t="172.5" castname="時間切れ" sync="false"/>
     <entry t="216.6" castname="再構築" sync="false"/>
-    <entry t="219.5" castname="移行待ち" sync="false" tts=""/>
+    <entry t="219.5" castname="移行待ち" sync="false"/>
     <next to="p3" at="0.1" cast="決戦"/>
   </phase>
   <phase id="p3" name="P3: Exdeath and Chaos">
@@ -107,19 +107,19 @@
     <entry t="58.9" text="縦/横" castname="ホリゾンタルインプロージョン|ヴァーティカルインプロージョン" duration="4.7"/>
     <entry t="62.6" text="ケフカ発光" castname="トランス" sync="false"/>
     <entry t="68.7" text="2回目" castname="混沌の炎|混沌の水" sync="false"/>
-    <entry t="72.7" castname="カオス誘導" sync="false" tts=""/>
+    <entry t="72.7" castname="カオス誘導" sync="false"/>
     <entry t="79.2" text="真空波" castname="真空波" duration="7.7"/>
     <entry t="79.3" text="誘導確定" castname="アンブラスマッシュ" duration="4.7" tts="誘導確定"/>
-    <entry t="80.2" castname="突進開始" sync="false" tts=""/>
+    <entry t="80.2" castname="突進開始" sync="false"/>
     <entry t="92.4" text="エーテルリンク" castname="エーテルリンク" sync="false"/>
-    <entry t="100.4" castname="突進開始" sync="false" tts=""/>
+    <entry t="100.4" castname="突進開始" sync="false"/>
     <entry t="104.6" text="サンダガ1" castname="サンダガ" duration="4.7" tts="サンダガ"/>
-    <entry t="111.6" castname="サンダガ2" sync="false" tts=""/>
+    <entry t="111.6" castname="サンダガ2" sync="false"/>
     <entry t="114.6" text="決戦" castname="決戦" duration="2.7"/>
     <entry t="121.9" text="サンダガ" castname="サンダガ" duration="4.7" tts="サンダガ"/>
-    <entry t="123.6" castname="セリフ" sync="false" tts=""/>
+    <entry t="123.6" castname="セリフ" sync="false"/>
     <entry t="126.9" castname="じしん" duration="4.7"/>
-    <entry t="130.9" castname="じしん開始" sync="false" tts=""/>
+    <entry t="130.9" castname="じしん開始" sync="false"/>
     <entry t="148.0" text="ブラックホール" castname="ブラックホール" duration="2.7"/>
     <entry t="148.7" text="びんびんビンタ" castname="びんびんビンタ" sync="false"/>
     <entry t="150.8" castname="衝撃波" sync="false"/>
@@ -151,7 +151,7 @@
     <entry t="283.0" text="移動注意" castname="ブリザガ" duration="3.7" tts="移動注意"/>
     <entry t="283.3" text="中央注意" castname="突出せよ" duration="4.7"/>
     <entry t="300.1" castname="メテオ" duration="9.7"/>
-    <entry t="301.3" castname="時間切れ" sync="false" tts=""/>
+    <entry t="301.3" castname="時間切れ" sync="false"/>
     <next to="p4" at="5.2" cast="おちょくりソウル"/>
   </phase>
   <phase id="p4" name="P4: Kefka Says">
@@ -177,11 +177,11 @@
     <entry t="107.4" text="視線 / 床+水" castname="マジックアウト" duration="6.7" tts="視線" gimmick_icon="gaze-away.png"/>
     <entry t="123.4" text="時間切れ" castname="裁きの光" sync="false"/>
     <entry t="127.2" text="アルテマ" castname="どきどきアルテマ" duration="4.7"/>
-    <entry t="155.8" castname="☆軽減注意(早炊)" sync="false" tts=""/>
+    <entry t="155.8" castname="☆軽減注意(早炊)" sync="false"/>
     <next to="p5" at="3.1" cast="連続アルテマ"/>
   </phase>
   <phase id="p5" name="P5: Ultima Kefka">
-    <entry t="2.6" castname="ターゲット可" sync="false" tts=""/>
+    <entry t="2.6" castname="ターゲット可" sync="false"/>
     <entry t="3.1" text="連続アルテマ" castname="連続アルテマ" duration="3.7" tts="アルテマ"/>
     <entry t="8.9" castname="連続アルテマ" sync="false"/>
     <entry t="13.1" castname="魔撃" sync="false"/>
@@ -193,7 +193,7 @@
     <entry t="27.8" castname="フラッド" sync="false"/>
     <entry t="32.8" text="オーケストラ1" castname="狂気のオーケストラ" duration="4.7" tts="オーケストラ、散開"/>
     <entry t="38.7" castname="フレア" sync="false"/>
-    <entry t="40.8" castname="オーケストラ2" sync="false" tts=""/>
+    <entry t="40.8" castname="オーケストラ2" sync="false"/>
     <entry t="41.0" castname="狂気のオーケストラ" sync="false"/>
     <entry t="41.9" castname="ホーリー" sync="false"/>
     <entry t="45.4" text="離れる注意" castname="カオティックホーリー" sync="false" tts="離れる"/>
@@ -222,7 +222,7 @@
     <entry t="121.6" castname="混沌の渦" sync="false"/>
     <entry t="125.0" text="オーケストラ1" castname="狂気のオーケストラ" duration="4.7" tts="オーケストラ、散開"/>
     <entry t="130.8" castname="フレア" sync="false"/>
-    <entry t="132.9" castname="オーケストラ2" sync="false" tts=""/>
+    <entry t="132.9" castname="オーケストラ2" sync="false"/>
     <entry t="133.1" castname="狂気のオーケストラ" sync="false"/>
     <entry t="134.0" castname="ホーリー" sync="false"/>
     <entry t="137.4" text="離れる注意" castname="カオティックホーリー" sync="false" tts="離れる"/>

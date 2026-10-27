@@ -30,11 +30,11 @@
     <entry t="198.6" text="全体攻撃" castname="アクチュアライズ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="210.8" text="連続頭割り" castname="プロジェクション・バースト" duration="4.7" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="261.0" text="タンク連続攻撃" castname="ビターウィンド" duration="4.7" gimmick_icon="tankbuster.png"/>
-    <entry t="267.0" castname="3" sync="false" tts=""/>
+    <entry t="267.0" castname="3" sync="false"/>
     <entry t="269.1" castname="ビターウィンド" sync="false"/>
-    <entry t="270.0" castname="2" sync="false" tts=""/>
+    <entry t="270.0" castname="2" sync="false"/>
     <entry t="272.3" castname="ビターウィンド" sync="false"/>
-    <entry t="273.0" castname="1" sync="false" tts=""/>
+    <entry t="273.0" castname="1" sync="false"/>
     <entry t="280.7" text="全体攻撃" castname="ドーン・エイジ" duration="6.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="297.9" text="散開位置へ / ノック・オブ・ヴォロク" castname="ノック・オブ・ヴォロク" duration="7.1" tts="散開位置へ" gimmick_icon="spread.png"/>
     <entry t="312.0" text="剣を確認" castname="エッジ・ザ・ヴォロク" duration="4.7" tts="剣を確認"/>
@@ -44,13 +44,13 @@
     <entry t="341.6" text="Xルーズハーフ" castname="フォワード・ルーズハーフ|バックワード・ルーズハーフ" duration="8.7"/>
     <entry t="353.7" text="連続頭割り" castname="デューティエッジ" duration="4.6" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="358.9" castname="デューティエッジ" sync="false"/>
-    <entry t="359.7" castname="デューティエッジ4" sync="false" tts=""/>
+    <entry t="359.7" castname="デューティエッジ4" sync="false"/>
     <entry t="361.0" castname="デューティエッジ" sync="false"/>
-    <entry t="361.7" castname="デューティエッジ3" sync="false" tts=""/>
+    <entry t="361.7" castname="デューティエッジ3" sync="false"/>
     <entry t="363.1" castname="デューティエッジ" sync="false"/>
-    <entry t="364.7" castname="デューティエッジ2" sync="false" tts=""/>
+    <entry t="364.7" castname="デューティエッジ2" sync="false"/>
     <entry t="365.2" castname="デューティエッジ" sync="false"/>
-    <entry t="366.7" castname="デューティエッジ1" sync="false" tts=""/>
+    <entry t="366.7" castname="デューティエッジ1" sync="false"/>
     <entry t="367.3" text="炎の鎖" castname="炎の鎖" duration="4.7" tts="炎の鎖"/>
     <entry t="387.4" text="全体攻撃" castname="アクチュアライズ" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="400.7" text="プロジェクション・エッジ" castname="プロジェクション・エッジ" duration="4.7"/>
@@ -62,10 +62,10 @@
     <entry t="481.8" text="ルーズハーフ" castname="ルーズハーフ" duration="5.7"/>
     <entry t="492.2" text="ルーズハーフ" castname="ルーズハーフ" duration="5.7"/>
     <entry t="502.4" castname="ビターウィンド" duration="4.7"/>
-    <entry t="507.5" castname="3" sync="false" tts=""/>
+    <entry t="507.5" castname="3" sync="false"/>
     <entry t="510.5" castname="ビターウィンド" sync="false"/>
-    <entry t="510.5" castname="2" sync="false" tts=""/>
-    <entry t="513.5" castname="1" sync="false" tts=""/>
+    <entry t="510.5" castname="2" sync="false"/>
+    <entry t="513.5" castname="1" sync="false"/>
     <entry t="513.7" castname="ビターウィンド" sync="false"/>
     <entry t="522.1" text="全体攻撃" castname="ドーン・エイジ" duration="6.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="539.2" text="エッジ・ザ・ヴォロク" castname="エッジ・ザ・ヴォロク" duration="3.7"/>
@@ -75,14 +75,14 @@
     <entry t="564.6" text="連続頭割り" castname="デューティエッジ" duration="4.6" tts="連続頭割り" gimmick_icon="stack.png"/>
     <entry t="564.6" castname="ピット・オブ・ヴォロク" sync="false"/>
     <entry t="569.8" castname="デューティエッジ" sync="false"/>
-    <entry t="571.6" castname="4" sync="false" tts=""/>
+    <entry t="571.6" castname="4" sync="false"/>
     <entry t="571.9" castname="デューティエッジ" sync="false"/>
-    <entry t="573.6" castname="3" sync="false" tts=""/>
+    <entry t="573.6" castname="3" sync="false"/>
     <entry t="574.0" castname="デューティエッジ" sync="false"/>
-    <entry t="575.6" castname="2" sync="false" tts=""/>
+    <entry t="575.6" castname="2" sync="false"/>
     <entry t="576.1" castname="デューティエッジ" sync="false"/>
-    <entry t="577.6" castname="1" sync="false" tts=""/>
-    <entry t="580.6" castname="調査中" sync="false" tts=""/>
+    <entry t="577.6" castname="1" sync="false"/>
+    <entry t="580.6" castname="調査中" sync="false"/>
     <entry t="581.2" castname="エンチャント・ゲートウェイ" duration="3.7"/>
     <entry t="589.4" castname="サモンエッジ" duration="3.7"/>
     <entry t="597.6" castname="エッジトラック" duration="3.7"/>

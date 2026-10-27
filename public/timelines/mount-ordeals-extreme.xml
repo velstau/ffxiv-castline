@@ -9,7 +9,7 @@
   <phase id="p1">
     <entry t="5.4" castname="[予告]火燕流" sync="false" tts="次は、全体攻撃"/>
     <entry t="6.8" text="火燕流(全体)" castname="火燕流" duration="4.7" gimmick_icon="raidwide.png"/>
-    <entry t="16.8" castname="セリフ" sync="false" tts=""/>
+    <entry t="16.8" castname="セリフ" sync="false"/>
     <entry t="17.2" text="煉獄招来" castname="煉獄招来" sync="false"/>
     <entry t="26.7" text="魔法陣展開" castname="魔法陣展開" sync="false"/>
     <entry t="34.8" text="魔陣拡張1" castname="魔陣拡張" sync="false" tts="あみだくじ、かいしー"/>
@@ -39,25 +39,25 @@
     <entry t="178.3" text="煉獄の朱炎" castname="煉獄の朱炎" duration="11.7" tts="あみだくじかくてい"/>
     <entry t="202.5" text="魔陣拡張" castname="魔陣拡張" sync="false" tts="あみだくじ、かいしー"/>
     <entry t="204.7" text="煉獄の朱炎" castname="煉獄の朱炎" duration="11.7" tts="あみだくじかくてい"/>
-    <entry t="229.7" castname="移行待ち" sync="false" tts=""/>
+    <entry t="229.7" castname="移行待ち" sync="false"/>
     <entry t="240.5" castname="妖火炎" duration="3.7"/>
     <entry t="240.8" text="AoE" castname="妖火" sync="false"/>
-    <entry t="245.8" castname="全体" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="245.8" castname="全体" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="246.6" castname="妖火炎" duration="3.7"/>
     <entry t="247.6" text="1回目線" castname="妖火風" sync="false"/>
-    <entry t="251.6" castname="全体" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="251.6" castname="全体" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="252.7" castname="妖火炎" duration="3.7"/>
-    <entry t="257.6" castname="全体" sync="false" tts="" gimmick_icon="raidwide.png"/>
+    <entry t="257.6" castname="全体" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="258.9" castname="妖火炎" duration="3.7"/>
     <entry t="260.0" text="タンク" castname="炎撃" sync="false"/>
     <entry t="271.0" text="AoE" castname="妖火" sync="false"/>
     <entry t="275.6" text="2回目線" castname="妖火風" sync="false"/>
     <entry t="287.6" text="タンク" castname="炎撃" sync="false"/>
     <entry t="290.5" castname="狂える炎" duration="3.7"/>
-    <entry t="298.3" castname="セリフ5" sync="false" tts=""/>
-    <entry t="308.3" castname="セリフ4" sync="false" tts=""/>
-    <entry t="313.3" castname="セリフ3" sync="false" tts=""/>
-    <entry t="318.3" castname="セリフ2" sync="false" tts=""/>
+    <entry t="298.3" castname="セリフ5" sync="false"/>
+    <entry t="308.3" castname="セリフ4" sync="false"/>
+    <entry t="313.3" castname="セリフ3" sync="false"/>
+    <entry t="318.3" castname="セリフ2" sync="false"/>
     <entry t="331.2" text="デバフを確認" castname="炎禍の呪い" duration="3.7" tts="デバフを確認"/>
     <entry t="337.3" castname="烈火赤滅爪" duration="5.7"/>
     <entry t="343.5" text="烈火赤滅爪" castname="烈火赤滅爪" duration="0.2" tts="範囲を確認"/>
@@ -98,7 +98,7 @@
     <entry t="558.6" text="散会" castname="爆炎撃" sync="false" tts="たんくはまええー"/>
     <entry t="561.7" text="双炎流" castname="双炎流" duration="4.7" tts="タンク離れるー"/>
     <entry t="567.6" castname="双炎流" sync="false"/>
-    <entry t="578.7" castname="そろそろ時間切れ" sync="false" tts=""/>
+    <entry t="578.7" castname="そろそろ時間切れ" sync="false"/>
     <entry t="579.2" castname="煉獄招来" sync="false"/>
     <entry t="588.7" castname="魔法陣展開" sync="false"/>
     <entry t="596.8" castname="魔陣拡張" sync="false"/>

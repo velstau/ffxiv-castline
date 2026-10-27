@@ -10,7 +10,7 @@
     <entry t="11.3" castname="ダミングイーディクト" duration="5.7"/>
     <entry t="25.4" text="ほのお" castname="ほのお" duration="4.7" />
     <entry t="42.4" castname="Ｔ＆Ｈ爆発" sync="false" tts="次は、タンクヒラ爆発。"/>
-    <entry t="42.4" castname="インプロージョン" sync="false" tts=""/>
+    <entry t="42.4" castname="インプロージョン" sync="false"/>
     <entry t="43.1" castname="ホリゾンタルインプロージョン" duration="4.7"/>
     <entry t="43.1" castname="衝撃波" duration="5.4"/>
     <entry t="54.4" castname="ＤＰＳ爆発" sync="false" tts="次は、DPS爆発。"/>
@@ -28,7 +28,7 @@
     <entry t="135.9" text="たつまき" castname="たつまき" duration="4.7" />
     <entry t="148.1" text="アンブラスマッシュ" castname="アンブラスマッシュ" duration="4.7"/>
     <entry t="157.3" text="ダミングイーディクト" castname="ダミングイーディクト" duration="5.7"/>
-    <entry t="166.3" castname="吹き飛ばし" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="166.3" castname="吹き飛ばし" sync="false" gimmick_icon="knockback.png"/>
     <entry t="176.4" text="カオティックディスパーション" castname="カオティックディスパーション" duration="4.7" tts="次は、タンク大ダメージ。"/>
     <entry t="188.6" text="たつまき" castname="たつまき" duration="4.7" tts="次は、たつまき。"/>
     <entry t="193.7" castname="たつまき" sync="false"/>
@@ -37,9 +37,9 @@
     <entry t="206.8" castname="着弾" sync="false"/>
     <entry t="208.0" text="突出せよ" castname="突出せよ" duration="4.7"/>
     <entry t="208.1" castname="突出" duration="5.4"/>
-    <entry t="211.8" castname="吹き飛ばし" sync="false" tts="" gimmick_icon="knockback.png"/>
+    <entry t="211.8" castname="吹き飛ばし" sync="false" gimmick_icon="knockback.png"/>
     <entry t="220.2" text="追尾せよ（タンク線取り）" castname="追尾せよ" duration="4.7" gimmick_icon="tether-take.png"/>
-    <entry t="234.2" castname="ローディング" sync="false" tts=""/>
+    <entry t="234.2" castname="ローディング" sync="false"/>
     <entry t="245.6" castname="バウル・オブ・アゴニー" duration="4.7"/>
     <entry t="267.7" castname="混沌の水" sync="false"/>
     <entry t="270.7" castname="混沌の土" sync="false"/>
@@ -63,7 +63,7 @@
     <entry t="430.3" text="じしん" castname="じしん" duration="4.7"/>
     <entry t="440.5" castname="じしん" duration="4.7"/>
     <entry t="444.0" castname="ホリゾンタルインプロージョン" duration="4.7"/>
-    <entry t="444.3" castname="インプロージョン" sync="false" tts=""/>
+    <entry t="444.3" castname="インプロージョン" sync="false"/>
     <entry t="457.7" castname="混沌の土" sync="false"/>
     <entry t="463.2" text="カオティックディスパーション" castname="カオティックディスパーション" duration="4.7" tts="次は、タンク大ダメージ。"/>
     <entry t="475.3" text="じしん" castname="じしん" duration="4.7"/>
@@ -76,7 +76,7 @@
     <entry t="494.7" castname="突出" duration="3.4"/>
     <entry t="502.8" castname="混沌の土" sync="false"/>
     <entry t="504.9" text="追尾せよ(玉)" castname="追尾せよ" duration="2.0"/>
-    <entry t="520.1" castname="ローディング" sync="false" tts=""/>
+    <entry t="520.1" castname="ローディング" sync="false"/>
     <entry t="527.5" castname="ほのお" duration="9.7"/>
     <entry t="537.6" castname="ほのお" sync="false"/>
     <entry t="540.7" castname="つなみ" duration="9.7"/>

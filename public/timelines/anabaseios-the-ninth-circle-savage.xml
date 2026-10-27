@@ -7,7 +7,7 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（7:35）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="0.6" castname="3秒前にサンバ" sync="false" tts=""/>
+    <entry t="0.6" castname="3秒前にサンバ" sync="false"/>
     <entry t="7.5" text="グラトニーズアーガー1" castname="グラトニーズアーガー" duration="4.7" tts="全体攻撃くるよ"/>
     <entry t="13.0" castname="グラトニーズアーガー" sync="false"/>
     <entry t="21.3" text="魂喰らい / ソウルサージ" castname="魂喰らい" duration="3.7" tts="全体攻撃くるよ"/>
@@ -31,10 +31,10 @@
     <entry t="149.1" castname="古式地烈斬" sync="false"/>
     <entry t="149.4" text="X方連転脚" castname="前方連転脚|後方連転脚" duration="5.7"/>
     <entry t="155.7" castname="内転脚" sync="false"/>
-    <entry t="157.0" castname="X転脚" sync="false" tts=""/>
+    <entry t="157.0" castname="X転脚" sync="false"/>
     <entry t="158.8" text="旋身撃" castname="旋身撃" sync="false"/>
     <entry t="161.7" castname="外転脚" sync="false"/>
-    <entry t="161.8" castname="X転脚" sync="false" tts=""/>
+    <entry t="161.8" castname="X転脚" sync="false"/>
     <entry t="164.8" text="古式破砕拳" castname="古式破砕拳" duration="4.7" tts="東西であたまわり"/>
     <entry t="169.9" castname="古式破砕拳" sync="false"/>
     <entry t="170.9" text="グラトニーズアーガー2" castname="グラトニーズアーガー" duration="4.7" tts="全体攻撃くるよ"/>
@@ -47,16 +47,16 @@
     <entry t="224.0" text="ジャンブルコンボ" castname="ジャンブルコンボ" duration="9.7" tts="サイコロチェック、サイコロチェック"/>
     <entry t="237.9" castname="放電" duration="1.7"/>
     <entry t="238.9" castname="炎魔衝" sync="false"/>
-    <entry t="238.9" castname="2番" sync="false" tts=""/>
+    <entry t="238.9" castname="2番" sync="false"/>
     <entry t="243.6" castname="放電" duration="1.7"/>
     <entry t="244.5" castname="炎魔衝" sync="false"/>
-    <entry t="244.9" castname="4番" sync="false" tts=""/>
+    <entry t="244.9" castname="4番" sync="false"/>
     <entry t="249.2" castname="放電" duration="1.7"/>
-    <entry t="249.9" castname="6番" sync="false" tts=""/>
+    <entry t="249.9" castname="6番" sync="false"/>
     <entry t="250.1" castname="炎魔衝" sync="false"/>
     <entry t="254.8" castname="放電" duration="1.7"/>
     <entry t="255.8" castname="炎魔衝" sync="false"/>
-    <entry t="255.9" castname="8番" sync="false" tts=""/>
+    <entry t="255.9" castname="8番" sync="false"/>
     <entry t="258.3" text="憑魔双撃" castname="憑魔双撃" duration="6.7"/>
     <entry t="266.5" castname="パイリングフレイム" sync="false"/>
     <entry t="267.5" text="グラトニーズアーガー3" castname="グラトニーズアーガー" duration="4.7" tts="全体攻撃くるよ"/>
@@ -93,17 +93,17 @@
     <entry t="426.9" castname="グラトニーズアーガー" sync="false"/>
     <entry t="433.9" text="キメリックコンボ" castname="キメリックコンボ" duration="4.7" tts="サイコロ誘導、サイコロ誘導"/>
     <entry t="446.4" castname="前方炎連撃" duration="7.7"/>
-    <entry t="449.9" castname="1回目着弾" sync="false" tts=""/>
-    <entry t="452.4" castname="2回目着弾" sync="false" tts=""/>
+    <entry t="449.9" castname="1回目着弾" sync="false"/>
+    <entry t="452.4" castname="2回目着弾" sync="false"/>
     <entry t="454.8" castname="重炎撃" sync="false"/>
-    <entry t="454.9" castname="3回目着弾" sync="false" tts=""/>
-    <entry t="457.4" castname="4回目着弾" sync="false" tts=""/>
+    <entry t="454.9" castname="3回目着弾" sync="false"/>
+    <entry t="457.4" castname="4回目着弾" sync="false"/>
     <entry t="470.9" castname="憑魔双撃" sync="false"/>
     <entry t="474.9" castname="ソウルリバース" sync="false"/>
     <entry t="481.9" castname="魂喰らい" sync="false"/>
     <entry t="482.9" castname="ソウルサージ" sync="false" tts="全体攻撃くるよ"/>
     <entry t="500.9" castname="ダブルスペル" sync="false"/>
-    <entry t="505.9" castname="軽減うつ準備" sync="false" tts=""/>
+    <entry t="505.9" castname="軽減うつ準備" sync="false"/>
     <entry t="513.9" text="グラトニーズアーガー5" castname="グラトニーズアーガー" sync="false" tts="全体攻撃くるよ"/>
     <entry t="520.9" castname="ダブルスペル" sync="false"/>
     <entry t="534.9" castname="デストゥワイス" sync="false" tts="タンクに連続攻撃"/>

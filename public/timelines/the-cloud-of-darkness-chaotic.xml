@@ -191,6 +191,6 @@
     <next to="p5" time="314.5"/>
   </phase>
   <phase id="p5" name="Intermission Three">
-    <entry t="34.0" castname="移行待ち" sync="false" tts=""/>
+    <entry t="34.0" castname="移行待ち" sync="false"/>
   </phase>
 </timeline>

@@ -10,88 +10,88 @@
     <entry t="1.7" text="痛撃" castname="痛撃" duration="4.7"/>
     <entry t="12.7" text="結呪の魔鎖" castname="結呪の魔鎖" duration="2.7"/>
     <entry t="19.9" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
-    <entry t="30.0" castname="近呪/遠呪 対象確定" sync="false" tts=""/>
-    <entry t="35.1" castname="近呪/遠呪 発動" sync="false" tts=""/>
+    <entry t="30.0" castname="近呪/遠呪 対象確定" sync="false"/>
+    <entry t="35.1" castname="近呪/遠呪 発動" sync="false"/>
     <entry t="39.2" text="懲罰撃１" castname="懲罰撃" duration="11.7"/>
-    <entry t="53.6" castname="懲罰撃２" sync="false" tts=""/>
+    <entry t="53.6" castname="懲罰撃２" sync="false"/>
     <entry t="53.8" castname="懲罰撃" sync="false"/>
     <entry t="60.0" castname="懲罰連撃・聖" duration="4.7"/>
     <entry t="65.6" castname="懲罰連撃(MT)" sync="false" tts="次は、タンク強攻撃。"/>
     <entry t="68.5" castname="トゥルー・ホーリー" sync="false"/>
-    <entry t="68.7" castname="距離減衰or頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="68.7" castname="距離減衰or頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="72.6" text="懲罰撃１" castname="懲罰撃" duration="11.7"/>
     <entry t="87.2" castname="懲罰撃" sync="false"/>
-    <entry t="87.9" castname="懲罰撃２" sync="false" tts=""/>
+    <entry t="87.9" castname="懲罰撃２" sync="false"/>
     <entry t="93.4" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="109.6" text="氷火の侵食" castname="氷火の侵食" duration="1.7"/>
     <entry t="117.3" castname="侵食執行" duration="9.7"/>
-    <entry t="129.2" castname="火/氷１着弾" sync="false" tts=""/>
+    <entry t="129.2" castname="火/氷１着弾" sync="false"/>
     <entry t="129.5" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="139.7" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
-    <entry t="139.8" castname="火/氷２着弾" sync="false" tts=""/>
-    <entry t="150.9" castname="火/氷３着弾" sync="false" tts=""/>
+    <entry t="139.8" castname="火/氷２着弾" sync="false"/>
+    <entry t="150.9" castname="火/氷３着弾" sync="false"/>
     <entry t="155.9" castname="懲罰連撃・炎" duration="4.7"/>
     <entry t="161.6" castname="懲罰連撃(MT)" sync="false" tts="次は、タンク強攻撃。"/>
     <entry t="164.3" castname="トゥルー・フレア" sync="false"/>
-    <entry t="165.7" castname="距離減衰or頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="165.7" castname="距離減衰or頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="174.4" text="光炎監獄" castname="光炎監獄" duration="6.7"/>
     <entry t="189.5" text="鎖＋床 発動１" castname="懲罰爆鎖" duration="11.7"/>
-    <entry t="189.7" castname="鎖＋床 構え" sync="false" tts=""/>
-    <entry t="204.0" castname="鎖＋床 発動２" sync="false" tts=""/>
+    <entry t="189.7" castname="鎖＋床 構え" sync="false"/>
+    <entry t="204.0" castname="鎖＋床 発動２" sync="false"/>
     <entry t="204.1" castname="懲罰爆鎖" sync="false"/>
     <entry t="212.3" castname="懲罰連撃・聖" duration="4.7"/>
     <entry t="217.0" text="懲罰連撃(MT)" castname="懲罰連撃" sync="false" tts="次は、タンク強攻撃。"/>
     <entry t="220.9" castname="トゥルー・ホーリー" sync="false"/>
-    <entry t="221.5" castname="距離減衰or頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
-    <entry t="224.0" castname="鎖＋床 構え" sync="false" tts=""/>
+    <entry t="221.5" castname="距離減衰or頭割り" sync="false" gimmick_icon="stack.png"/>
+    <entry t="224.0" castname="鎖＋床 構え" sync="false"/>
     <entry t="224.8" text="鎖＋床 発動１" castname="懲罰爆鎖" duration="11.7"/>
-    <entry t="239.3" castname="鎖＋床 発動２" sync="false" tts=""/>
+    <entry t="239.3" castname="鎖＋床 発動２" sync="false"/>
     <entry t="239.4" castname="懲罰爆鎖" sync="false"/>
     <entry t="244.6" text="時限の魔鎖(付与)" castname="時限の魔鎖" duration="3.7"/>
     <entry t="253.7" text="痛撃" castname="痛撃" duration="4.7"/>
     <entry t="264.0" text="時限の魔鎖(発動)" castname="時限の魔鎖" sync="false"/>
     <entry t="264.9" text="監獄閉塞" castname="監獄閉塞" duration="6.7"/>
     <entry t="284.7" text="結呪の四連魔鎖" castname="結呪の四連魔鎖" duration="2.7"/>
-    <entry t="297.1" castname="四連魔鎖 発動１" sync="false" tts=""/>
-    <entry t="302.1" castname="四連魔鎖 発動２" sync="false" tts=""/>
-    <entry t="307.1" castname="四連魔鎖 発動３" sync="false" tts=""/>
-    <entry t="312.1" castname="四連魔鎖 発動４" sync="false" tts=""/>
+    <entry t="297.1" castname="四連魔鎖 発動１" sync="false"/>
+    <entry t="302.1" castname="四連魔鎖 発動２" sync="false"/>
+    <entry t="307.1" castname="四連魔鎖 発動３" sync="false"/>
+    <entry t="312.1" castname="四連魔鎖 発動４" sync="false"/>
     <entry t="316.9" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="333.1" text="氷火の侵食" castname="氷火の侵食" duration="1.7"/>
     <entry t="340.9" castname="侵食執行" duration="9.7"/>
-    <entry t="351.8" castname="火/氷１着弾" sync="false" tts=""/>
+    <entry t="351.8" castname="火/氷１着弾" sync="false"/>
     <entry t="355.1" text="懲罰撃１" castname="懲罰撃" duration="11.7"/>
-    <entry t="362.8" castname="火/氷２着弾" sync="false" tts=""/>
-    <entry t="369.5" castname="懲罰撃２" sync="false" tts=""/>
+    <entry t="362.8" castname="火/氷２着弾" sync="false"/>
+    <entry t="369.5" castname="懲罰撃２" sync="false"/>
     <entry t="369.7" castname="懲罰撃" sync="false"/>
-    <entry t="374.2" castname="火/氷３着弾" sync="false" tts=""/>
+    <entry t="374.2" castname="火/氷３着弾" sync="false"/>
     <entry t="377.8" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="394.1" text="光炎監獄" castname="光炎監獄" duration="6.7"/>
     <entry t="408.9" text="結呪の魔鎖" castname="結呪の魔鎖" duration="2.7"/>
     <entry t="418.0" text="床爆発１" castname="爆鎖" duration="4.7"/>
-    <entry t="425.3" castname="近呪/遠呪 対象確定" sync="false" tts=""/>
+    <entry t="425.3" castname="近呪/遠呪 対象確定" sync="false"/>
     <entry t="426.2" text="床爆発２" castname="爆鎖" duration="4.7"/>
-    <entry t="430.5" castname="近呪/遠呪 発動" sync="false" tts=""/>
+    <entry t="430.5" castname="近呪/遠呪 発動" sync="false"/>
     <entry t="436.4" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="448.6" text="時限の魔鎖(付与)" castname="時限の魔鎖" duration="3.7"/>
     <entry t="454.7" castname="懲罰連撃・炎" duration="4.7"/>
     <entry t="460.6" castname="懲罰連撃(MT)" sync="false" tts="次は、タンク強攻撃。"/>
     <entry t="463.2" castname="トゥルー・フレア" sync="false"/>
-    <entry t="464.5" castname="距離減衰or頭割り" sync="false" tts="" gimmick_icon="stack.png"/>
+    <entry t="464.5" castname="距離減衰or頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="467.7" text="時限の魔鎖(発動)" castname="時限の魔鎖" sync="false"/>
     <entry t="473.4" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="487.3" text="鎖＋床 構え" castname="懲罰爆鎖" duration="11.7"/>
-    <entry t="498.3" castname="鎖＋床 発動１" sync="false" tts=""/>
-    <entry t="501.3" castname="鎖＋床 発動２" sync="false" tts=""/>
+    <entry t="498.3" castname="鎖＋床 発動１" sync="false"/>
+    <entry t="501.3" castname="鎖＋床 発動２" sync="false"/>
     <entry t="501.9" castname="懲罰爆鎖" sync="false"/>
     <entry t="505.0" text="鎖＋床 構え" castname="懲罰爆鎖" duration="11.7"/>
-    <entry t="517.0" castname="鎖＋床 発動１" sync="false" tts=""/>
+    <entry t="517.0" castname="鎖＋床 発動１" sync="false"/>
     <entry t="519.7" castname="懲罰爆鎖" sync="false"/>
-    <entry t="520.0" castname="鎖＋床 発動２" sync="false" tts=""/>
+    <entry t="520.0" castname="鎖＋床 発動２" sync="false"/>
     <entry t="522.8" text="鎖＋床 構え" castname="懲罰爆鎖" duration="11.7"/>
-    <entry t="534.8" castname="鎖＋床 発動１" sync="false" tts=""/>
+    <entry t="534.8" castname="鎖＋床 発動１" sync="false"/>
     <entry t="537.4" castname="懲罰爆鎖" sync="false"/>
-    <entry t="537.8" castname="鎖＋床 発動２" sync="false" tts=""/>
+    <entry t="537.8" castname="鎖＋床 発動２" sync="false"/>
     <entry t="548.6" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
     <entry t="553.6" castname="魔鎖乱流" sync="false"/>
     <entry t="557.8" text="魔鎖乱流" castname="魔鎖乱流" duration="4.7"/>
