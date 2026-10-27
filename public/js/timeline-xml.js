@@ -84,7 +84,7 @@ export function parseTimelineXml(text) {
                         // XML の castname（詠唱バーの技名）と text（表示の文言）を、エンジンの name・label にする
                         name: attr(e, 'castname'),
                         label: attr(e, 'text'),
-                        tts: attr(e, 'tts'),
+                        tts: attr(e, 'tts') || undefined, // tts="" は読まないので、無いのと同じにする（書き出しで tts="" を作らない）
                         sync: attr(e, 'sync') === 'false' ? false : undefined,
                         window: pair(e, 'window', at),
                         // アイコン: gimmick_icon はギミック 1 つ、skills_icon はスキル（カンマ区切り）。画像のファイル（この XML からの相対パスか URL）、
