@@ -103,3 +103,25 @@ test('クリア表示は別フレームで再確認し、読めない/間隔が�
     assert.equal(t.observe(3000,true),false);
     assert.equal(t.observe(10000,true),false);
 });
+
+test('HP の 1 回だけの読み違い（67.7→2→67.2）では討伐にしない。続けて近い値を読めば大きく下がった値も採る', () => {
+    const e = make();
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 67.7);
+    e.hpPercent(2500, 2);
+    assert.equal(e.hp, 67.7);
+    e.enmity(3000, false);
+    e.hpPercent(3000, 67.2);
+    assert.equal(e.hp, 67.2);
+    assert.equal(e.status(7000).state, 'combat');
+    // ターゲットが雑魚に替わった（83.5→37.7）ような本当の変化は、次の読み取りで採る
+    e.hpPercent(8000, 83.5);
+    e.hpPercent(8500, 37.7);
+    assert.equal(e.hp, 83.5);
+    e.hpPercent(9000, 37.5);
+    assert.equal(e.hp, 37.5);
+    // HP を何秒も読めなかった後は、大きく下がっていてもそのまま採る
+    e.hpPercent(15000, 10);
+    assert.equal(e.hp, 10);
+});

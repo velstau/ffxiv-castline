@@ -57,6 +57,10 @@ export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_H
 // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く。2026-10-26 の録画で最長 57〜76 秒）
 export const ENEMY_GONE_END_MS = 120000;
 const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなくても討伐とみなす HP
+// HP_JUMP_CONFIRM_MS 以内に前の値からこれ以上下がった HP は、HP_JUMP_CONFIRM_MS 以内の次の読み取りでも近い値（差がこれ未満）のときだけ採る。
+// 1 回だけの読み違い（67.7→2→67.2、25.4→2→24.9。2026-10-27 ヘビー級1 零式の録画）で、討伐やフェーズ移行にしないため
+export const HP_JUMP_MIN = 20;
+const HP_JUMP_CONFIRM_MS = 5000; // 読み取りの間隔は OCR が遅れると 2 秒を超える（録画で 2.4 秒）
 
 /** タイムラインファイルの中身を確かめる。問題があれば日本語の説明の配列を返す（空なら問題なし） */
 export function validateTimeline(data) {
@@ -147,6 +151,7 @@ export class TimelineEngine {
         this.holdUntilEnmityOff = false; // 手動で止めた後、敵対リストが一度消えるまで敵対リストでは始めない
         this.lastHpAt = null;
         this.hp = null;
+        this.pendingHp = null; // 大きく下がって確かめ待ちの HP {at, value}
         this.blackSince = null;
         this.blackLastAt = null; // 最後に黒かったコマの時刻
         this.haltedStart = null;
@@ -285,6 +290,17 @@ export class TimelineEngine {
             this.advance(at);
             return;
         }
+        // 疑うのは直前に読めていた値からの急な低下だけ（HP を何秒も読めなかった後なら、その間に大きく減っていてよい）
+        if (this.hp !== null && at - this.lastHpAt <= HP_JUMP_CONFIRM_MS && this.hp - value >= HP_JUMP_MIN) {
+            const pending = this.pendingHp;
+            const confirmed = pending && at - pending.at <= HP_JUMP_CONFIRM_MS && Math.abs(pending.value - value) < HP_JUMP_MIN;
+            if (!confirmed) {
+                this.pendingHp = { at, value };
+                this.advance(at);
+                return;
+            }
+        }
+        this.pendingHp = null;
         this.hp = value;
         this.lastHpAt = at;
         if (this.state === 'combat') {
