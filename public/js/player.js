@@ -1,4 +1,4 @@
-import { ContentPresence, MISSING_CLEAR_MS, MISSING_CLEAR_COMBAT_MS } from './content-presence.js';
+import { ContentPresence, MISSING_CLEAR_MS, MISSING_CLEAR_COMBAT_MS, acceptContentName } from './content-presence.js';
 // 再生画面: ゲーム画面を読み、タイムライン（これから来る技と発動までの秒）を流して読み上げる。
 import './storage-migrate.js';
 import { FrameSource, captureSession } from './capture.js';
@@ -55,6 +55,7 @@ const state = {
     contentBlocked: false,
     contentMuted: false, // 戦闘中にコンテンツ名が読めず、読み上げだけ止めている
     contentReads: [], // 1 回では決まらなかったコンテンツ名の読み取り（combineCandidates で足し合わせる）
+    heldContent: null, // 戦闘中に読んだ別のコンテンツ名（ログを 1 回だけ出すため）
     lastContentAt: 0,
     contentMissSince: null,
     contentMissWarned: false,
@@ -393,7 +394,7 @@ async function start() {
     state.running = true;
     state.regionsKey = '';
     state.lastContentAt = 0;
-    Object.assign(state, { contentMissSince: null, contentMissWarned: false, contentMuted: false, regionsLogged: '', contentReads: [] });
+    Object.assign(state, { contentMissSince: null, contentMissWarned: false, contentMuted: false, regionsLogged: '', contentReads: [], heldContent: null });
     updateButtons();
     setStatus('run-status', '読み取り中です。', 'ok');
     log(`── 読み取り開始（取り込み ${state.source.method}）`);
@@ -500,21 +501,32 @@ async function tick({ bitmap: frame, at }) {
                 + 'コンテンツの中なら範囲がずれています。「読む範囲」でコンテンツ名を選んで「この範囲を消す」を押すと、自動で探し直します', at);
         }
     }
-    if (wantContent) {
-        state.contentPresence.observe(at, Boolean(obs.content?.decided));
-        if (!obs.content?.text?.trim()) { state.contentReads = []; }
+    if (wantContent && !obs.content?.text?.trim()) {
+        state.contentReads = [];
     }
-    if (obs.content && !obs.content.decided && obs.content.ranked) {
-        state.contentReads = [...state.contentReads, obs.content].slice(-CONTENT_COMBINE);
-        const combined = combineCandidates(state.contentReads);
-        if (combined) {
-            obs.content.decided = combined;
+    if (obs.content) {
+        let combined = null;
+        if (!obs.content.decided && obs.content.ranked) {
+            state.contentReads = [...state.contentReads, obs.content].slice(-CONTENT_COMBINE);
+            combined = combineCandidates(state.contentReads);
+        }
+        const accepted = acceptContentName({ single: obs.content.decided, combined, current: state.detectedContent, inCombat });
+        if (accepted === null && obs.content.decided && obs.content.decided !== state.heldContent) {
+            state.heldContent = obs.content.decided;
+            log(`コンテンツ名を ${obs.content.decided} と読んだが、戦闘中なので ${state.detectedContent} のまま続けます`, at);
+        }
+        if (accepted !== null && !obs.content.decided && accepted !== state.detectedContent) {
             log(`コンテンツ名を ${state.contentReads.length} 回の読み取りを合わせて決めました`, at);
         }
+        obs.content.decided = accepted;
+    }
+    if (wantContent) {
+        // 確認できたとみなすのは採った名前だけ（戦闘中に読んだ別の名前で、消音・解除の判定を止めない）
+        state.contentPresence.observe(at, Boolean(obs.content?.decided));
     }
     if (obs.content?.decided) {
+        state.heldContent = null;
         state.contentReads = [];
-        state.contentPresence.observe(at, true);
         state.contentBlocked = false;
     }
     if (obs.content?.decided && (obs.content.decided !== state.detectedContent || !state.engine)) {
@@ -527,7 +539,10 @@ async function tick({ bitmap: frame, at }) {
     const recentCast = engine && [...engine.castSeenAt.values()].some((time) => at - time <= 5000);
     const combatEvidence = inCombat && (Number.isFinite(obs.hp) && obs.hp > 0
         || obs.casts.some((cast) => Boolean(cast.decided)) || recentHp || recentCast);
-    if (state.contentPresence.shouldClear(at, combatEvidence, inCombat)) {
+    // カウントダウン中は解除しない（解除するとカウントダウンの予想時刻も消える。2026-10-27 ヘビー級1 零式で、戦闘開始の 4 秒後に
+    // 解除されて開始を 35 秒逃した）。予想時刻を過ぎても始まらなければ、エンジンがカウントダウンを取り消すので、その後に解除する
+    const countingDown = state.engine?.status(at).state === 'countdown';
+    if (!countingDown && state.contentPresence.shouldClear(at, combatEvidence, inCombat)) {
         if (!state.contentBlocked) {
             log('コンテンツ名を確認できず、HP・詠唱も確認できないため自動再生を解除。コンテンツ情報の再確認まで待機します', at);
         }
