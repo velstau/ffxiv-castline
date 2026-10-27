@@ -763,6 +763,107 @@ def swap_branches(skeleton, specs, no_backup=frozenset()):
     return report
 
 
+HUB_DECIDE = 2  # 見分け待ちで、各区間を決める技の数（1 つ目を読み逃しても 2 つ目で入れる）
+HUB_MARGIN_S = 5.0  # 見分ける技が、ほかの区間でこの秒より前に出ないこと（ほかの区間を決める技の後、少しの余裕）
+
+
+def hub_branches(skeleton, spec):
+    """--hub: 「待ち=区間:終わりの技,区間:終わりの技,…,区間」は、どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ
+    （極ウォーリア・オブ・ライトの後半 5 種。2026-10-28）。区間は終わりの技で待ちへ戻る。終わりの技の無い区間は最後（戻らない）。
+    区間の途中にもほかの区間の最初の技が出る（幻光召喚・リミットチャージ）ので、--split の #組 のように区間どうしを直接つながない。
+    最初の技が同じ区間（魔法剣で始まる忍者と召喚士・狂戦士）は、共通の頭だけを置いた見分け待ちのフェーズへ移り、
+    ほかの区間には（ほかの区間を決める技より前には）出ない技で、その区間のその時刻へ移る。報告の行を返す"""
+    phases = {p['attrs']['id']: p for p in skeleton['phases']}
+    hub_id, _, rest = spec.partition('=')
+    hub = phases[hub_id]
+    members = []
+    for part in rest.split(','):
+        mid, _, end = part.partition(':')
+        members.append((phases[mid], end or None))
+    synced = lambda p: [e for e in p['entries'] if e.get('sync') != 'false']
+    names = lambda es: {n for e in es for n in e['name'].split('|')}
+    report = []
+    hub['next'] = []
+    groups = {}
+    for m, end in members:
+        groups.setdefault(synced(m)[0]['name'], []).append(m)
+        if end:
+            # 骨組みの討伐で最後に来た区間には終わりの技が無い（最後の種の後はエンドオールなしで最後へ進む）ので、そのときは技名だけで
+            e = next((e for e in reversed(synced(m)) if end in e['name'].split('|')), None)
+            m['next'] = [{'to': hub_id, 'at': '0.0', 'cast': e['name'] if e else end}]
+        else:
+            m['next'] = []
+    entry_of = {}  # 待ちから、その最初の技で入る先（区間か見分け待ち）
+    decide = []  # 見分け待ちから区間へ移る技のうち、ほかのフェーズの控えにも使うもの（区間, 技, 時刻）
+    waits = {}  # 見分け待ちの id → その区間
+    at = skeleton['phases'].index(hub) + 1
+    for first, ms in groups.items():
+        if len(ms) == 1:
+            hub['next'].append({'to': ms[0]['attrs']['id'], 'at': '0.0', 'cast': first})
+            entry_of[first] = ms[0]
+            continue
+        # 共通の頭: どの区間にも、同じ名前の同期する予定が 2 秒以内にある間
+        head = []
+        for e in synced(ms[0]):
+            if all(any(o['name'] == e['name'] and abs(o['_t'] - e['_t']) <= 2.0 for o in synced(x)) for x in ms[1:]):
+                head.append({k: v for k, v in e.items() if k not in ('label', '_notices', '_roles')})
+            else:
+                break
+        head_end = head[-1]['_t']
+        after = lambda x: [e for e in synced(x) if e['_t'] > head_end + 0.5 and not names(head) & set(e['name'].split('|'))]
+        unique = {id(x): [e for e in after(x) if not any(names(synced(y)) & set(e['name'].split('|')) for y in ms if y is not x)][:HUB_DECIDE]
+                  for x in ms}
+        until = {id(x): max((e['_t'] for e in unique[id(x)]), default=float('inf')) + HUB_MARGIN_S for x in ms}
+        wait_id = f'{hub_id}-{"-".join(x["attrs"]["id"] for x in ms)}'
+        wait = {'attrs': {'id': wait_id, 'name': '・'.join((x['attrs'].get('name') or x['attrs']['id']) for x in ms) + '（見分け待ち）'},
+                'entries': head, 'next': []}
+        for x in ms:
+            ok = [e for e in after(x)
+                  if not any(set(e['name'].split('|')) & names(o for o in synced(y) if o['_t'] < until[id(y)]) for y in ms if y is not x)]
+            ok = [e for i, e in enumerate(ok) if e['name'] not in {o['name'] for o in ok[:i]}]  # 2 回目の同じ技は、1 回目で移るので要らない
+            if not ok:
+                raise SystemExit(f'--hub: {x["attrs"]["id"]} をほかの区間と見分ける技がありません')
+            for e in ok[:HUB_DECIDE]:
+                wait['next'].append({'to': x['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']})
+                if not any(set(e['name'].split('|')) & names(synced(y)) for y, _ in members if y not in ms):
+                    decide.append((x, e['name'], f'{e["_t"]:.1f}'))  # 組の外の区間に出ない技は、ほかのフェーズからの控えにも使う
+            report.append(f'見分け待ち {wait_id} →「{"」「".join(e["name"] for e in ok[:HUB_DECIDE])}」{x["attrs"]["id"]}')
+        hub['next'].append({'to': wait_id, 'at': '0.0', 'cast': first})
+        skeleton['phases'].insert(at, wait)
+        phases[wait_id] = wait
+        entry_of[first] = wait
+        waits[wait_id] = ms
+    # 控えの移り: 技を 1 つ読み逃しても、後の技で正しい区間へ移る。区間の終わりの技（最後に来た区間には無い）、
+    # 待ちから入る最初の技、見分け待ちの最初の技を逃したとき（2026-10-28 に討伐 6 件で 1 つずつ抜いて確かめた）。
+    # 使う技は、区間の最初の技・見分け待ちで決める技（組の外の区間に出ないもの。エンシェントドラゴンダイブは五連魔の終わりの技）・
+    # その区間にしか出ない技（暗黒騎士のアブソリュートホーリー）。
+    # 移る前のフェーズに出る技と、同じ技で別の先へ移るものは使わない（最初の技を優先。リミットチャージは暗黒騎士の最初の技で、
+    # 白黒魔道士を決める技でもある。サモン・ウィルムは召喚士・狂戦士と白黒魔道士を決める技）
+    own = {}
+    for m, _ in members:
+        for e in synced(m):
+            if all(not set(e['name'].split('|')) & names(synced(x)) for x, _ in members if x is not m):
+                own.setdefault((id(m), e['name']), (m, e['name'], f'{e["_t"]:.1f}'))
+    later = decide + list(own.values())
+    dsts = {}
+    for dst, cast, _ in later:
+        dsts.setdefault(cast, set()).add(id(dst))
+    cands = [(dst, first, '0.0') for first, dst in entry_of.items()] + [c for c in later if len(dsts[c[1]]) == 1]
+    for p in [hub, *(m for m, end in members if end), *(phases[w] for w in waits)]:
+        to = {r['cast']: r['to'] for r in p['next']}
+        mine = names(p['entries'])
+        inside = {x['attrs']['id'] for x in waits.get(p['attrs']['id'], [])}  # 見分け待ちは、自分の区間へは自分の決める技で移る
+        for dst, cast, t in cands:
+            d = dst['attrs']['id']
+            if d != p['attrs']['id'] and d not in inside and not mine & set(cast.split('|')) and to.setdefault(cast, d) == d \
+                    and not any(r['cast'] == cast and r['to'] == d for r in p['next']):
+                p['next'].append({'to': d, 'at': t, 'cast': cast})
+    ids = {hub_id, *(m['attrs']['id'] for m, _ in members)}
+    skeleton.setdefault('_backed', set()).update((a, b) for a in ids for b in ids)
+    report.append(f'待ち {hub_id}: {"・".join(m["attrs"]["id"] for m, _ in members)}')
+    return report
+
+
 def split_branches(skeleton, specs):
     """--split: 文言を重ねた後で、フェーズを技で切り分ける（ボス側の分岐。2026-10-28）。報告の行を返す。
     「p5@アルテマ=p5b:名前」は、p5 の最初のアルテマ（同期する予定）から後を p5b に移し、p5 から p5b へ「アルテマ」で移る。
@@ -776,7 +877,9 @@ def split_branches(skeleton, specs):
     for i, (src, cast, new_id, name, group) in enumerate(parsed):
         later = {spec[3] for spec in parsed[i:] if spec[3]}  # このフェーズか、この後に分けるフェーズの区間（その区間の行は一緒に移す）
         p = phases[src]
-        cut = next((e for e in p['entries'] if e.get('sync') != 'false' and cast in e['name'].split('|')), None)
+        cast, _, nth = cast.partition('*')  # 「幻光召喚*2」は、そのフェーズの 2 回目の幻光召喚で切る
+        hits = [e for e in p['entries'] if e.get('sync') != 'false' and cast in e['name'].split('|')]
+        cut = hits[int(nth or 1) - 1] if len(hits) >= int(nth or 1) else None
         if cut is None:
             raise SystemExit(f'--split {src}@{cast}: {src} に同期する「{cast}」の予定がありません')
         t0 = cut['_t']
@@ -853,6 +956,8 @@ def main():
     ap.add_argument('--no-backup', action='append', default=[], metavar='技',
                     help='控えの移り（--split・--swap で、移る技を読み逃したときの移り）に使わない技。控えは骨組みの討伐 1 本から選ぶので、別の順の討伐で枝の前にも出る技を外す'
                          '（極ヴァリガルマンダの氷先は、氷の始まりの 9 秒前にノーザンクロスが来る）')
+    ap.add_argument('--hub', action='append', default=[], metavar='待ち=区間:終わりの技,…,区間',
+                    help='どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ（極ウォーリア・オブ・ライトの後半）。書き方は hub_branches')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
                     help='そのフェーズの頭からやり直すことがある（アルファ編4 の前半の開幕は、削りが足りないと繰り返す）。'
                          'その技を読んだら、フェーズの中のその技の時刻へ戻る。技はフェーズの中に 1 回だけのものにする')
@@ -919,6 +1024,8 @@ def main():
         report += split_branches(skeleton, args.split)
     if args.swap:
         report += swap_branches(skeleton, args.swap, set(args.no_backup))
+    for spec in args.hub:
+        report += hub_branches(skeleton, spec)
     # --split の移りにも控えの移りを付ける（2 体フェーズの頭のガードプログラムを読み逃すと、後の技で戻れず、
     # 開幕の繰り返しの技で開幕へ巻き戻っていた。Codex の指摘）。分かれ目は swap_branches が、もう片方の枝の技を避けて付けた
     phases = {p['attrs']['id']: p for p in skeleton['phases']}

@@ -47,4 +47,4 @@ storms-crown-extreme	1066	100	Storm's_Crown_(Extreme).xml
 mount-ordeals-extreme	1067	100	Mount_Ordeals_(Extreme).xml
 the-voidcast-dais-extreme	1069	100	The_Voidcast_Dais_(Extreme).xml
 the-abyssal-fracture-extreme	1070	100	The_Abyssal_Fracture_(Extreme).xml
-the-seat-of-sacrifice-extreme	1054	100	trials_The_Seat_Of_Sacrifice_(Extreme).xml
+the-seat-of-sacrifice-extreme	1054	100	trials_The_Seat_Of_Sacrifice_(Extreme).xml	--phase=五連魔=all --any-order=忍者@300 --any-order=五連魔@395 --any-order=暗黒騎士@450 --any-order=白黒魔道士@530 '--any-order=召喚士・狂戦士@600' '--split=p1@アルティメット・クロスオーバー=late:後半（次の種を待つ）' --split=late@魔法剣=wol-ninja:忍者 --split=wol-ninja@五連魔=wol-five:五連魔 --split=wol-five@リミットチャージ=wol-dk:暗黒騎士 '--split=wol-dk@幻光召喚*2=wol-wb:白黒魔道士' '--split=wol-wb@魔法剣=wol-sb:召喚士・狂戦士' '--split=wol-sb@幻光召喚*2=wol-final:最後' --hub=late=wol-ninja:エンドオール,wol-five:エンシェントドラゴンダイブ,wol-dk:エンドオール,wol-wb:エンドオール,wol-sb:エンドオール,wol-final
