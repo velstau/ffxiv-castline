@@ -45,3 +45,9 @@ test('XML: gimmick_icon・skills_icon（カンマ区切り）は window の後�
     const xml = toTimelineXml(tl([{ t: 1, name: 'x', label: 'タンク強', gimmickIcon: 'tankbuster.png', skillIcons: ['rampart.png', 'rampart2.png'] }]));
     assert.match(xml, /<entry t="1.0" text="タンク強" castname="x" gimmick_icon="tankbuster.png" skills_icon="rampart.png,rampart2.png"\/>/);
 });
+
+test('XML: 詠唱で移る条件の時刻の範囲 from・until は cast の後に書く', () => {
+    const t = tl([{ t: 1, name: 'x' }]);
+    t.phases[0].next = [{ to: t.phases[0].id, at: 28.1, when: { cast: 'パーフェクトデシメート' }, until: 34 }];
+    assert.match(toTimelineXml(t), /<next to="[^"]+" at="28.1" cast="パーフェクトデシメート" until="34"\/>/);
+});

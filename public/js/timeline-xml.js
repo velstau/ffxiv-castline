@@ -98,6 +98,8 @@ export function parseTimelineXml(text) {
                     return clean({
                         to: attr(n, 'to'),
                         at: num(n, 'at', at),
+                        from: num(n, 'from', at),
+                        until: num(n, 'until', at),
                         when: clean({
                             cast: attr(n, 'cast'),
                             hp: num(n, 'hp', at),
@@ -153,7 +155,7 @@ export function toTimelineXml(timeline) {
         }
         for (const rule of phase.next ?? []) {
             const w = rule.when;
-            lines.push(`    <next${xmlAttr('to', rule.to)}${xmlAttr('at', rule.at)}${xmlAttr('cast', w.cast)}${xmlAttr('hp', w.hp)}`
+            lines.push(`    <next${xmlAttr('to', rule.to)}${xmlAttr('at', rule.at)}${xmlAttr('cast', w.cast)}${xmlAttr('from', rule.from)}${xmlAttr('until', rule.until)}${xmlAttr('hp', w.hp)}`
                 + `${xmlAttr('time', w.time)}${xmlAttr('hp-lost', w.hpLost)}/>`);
         }
         lines.push('  </phase>');

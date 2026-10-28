@@ -104,6 +104,12 @@ export function validateTimeline(data) {
             if (keys.length !== 1 || !['cast', 'hp', 'time', 'hpLost'].includes(keys[0])) {
                 errors.push(`${where}.next: when は cast・hp・time・hpLost のどれか 1 つにしてください`);
             }
+            if ((rule.from !== undefined || rule.until !== undefined) && rule.when?.cast === undefined) {
+                errors.push(`${where}.next: from・until（時刻の範囲）は cast の移り方にだけ書けます`);
+            }
+            if (rule.from !== undefined && rule.until !== undefined && rule.from > rule.until) {
+                errors.push(`${where}.next: from（${rule.from}）が until（${rule.until}）より後です`);
+            }
         }
     });
     return errors;
@@ -359,7 +365,11 @@ export class TimelineEngine {
             this.chooseBoss(at, name);
             return;
         }
-        const rule = this.findRule((w) => w.cast !== undefined && castNames(w.cast).includes(name));
+        // from・until があれば、フェーズの秒がその範囲のときだけ移る（区間の中で 2 回出る技の 2 回目で移って、時計がずれないように。
+        // 2026-10-28 極ウォーリア・オブ・ライトのパーフェクトデシメート: 28.1 秒と 40.3 秒）
+        const now = this.phaseTime(at);
+        const rule = this.findRule((w, r) => w.cast !== undefined && castNames(w.cast).includes(name)
+            && (r.from === undefined || now >= r.from) && (r.until === undefined || now <= r.until));
         if (rule) {
             this.transition(rule, at, `詠唱 ${name}`);
             // 移るきっかけにした詠唱は、移り先の予定に合わせ済みとする（絶アルテマのラストタイタン: 3 秒後の 2 回目の大地の重みを
@@ -370,7 +380,6 @@ export class TimelineEngine {
             }
             return;
         }
-        const now = this.phaseTime(at);
         const entry = this.syncTarget(name, now);
         if (!entry) {
             return;
@@ -545,7 +554,7 @@ export class TimelineEngine {
     }
 
     findRule(test) {
-        return (this.phase?.next ?? []).find((rule) => test(rule.when));
+        return (this.phase?.next ?? []).find((rule) => test(rule.when, rule));
     }
 
     transition(rule, at, reason) {

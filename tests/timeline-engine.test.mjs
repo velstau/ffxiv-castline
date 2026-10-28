@@ -548,3 +548,22 @@ test('詠唱で移ったとき、きっかけの技を移り先の予定に合�
     e.cast(T(23.5), '大地の重み'); // 2 回目は 3 秒の予定に合わせる（0 秒には戻さない）
     assert.ok(Math.abs(e.status(T(23.5)).phaseTime - 3) < 0.01);
 });
+
+test('詠唱で移る条件の時刻の範囲（from・until）: 区間の中で 2 回出る技の 2 回目では移らない', () => {
+    const tl = { format: 'castline/1', content: 'c', phases: [
+        { id: 'wait', entries: [{ t: 28.1, name: 'パーフェクトデシメート' }, { t: 40.3, name: 'パーフェクトデシメート' }],
+            next: [{ to: 'sb', when: { cast: 'パーフェクトデシメート' }, at: 28.1, until: 34 }] },
+        { id: 'sb', entries: [], next: [] },
+    ] };
+    assert.deepEqual(validateTimeline(tl), []);
+    let e = new TimelineEngine(tl);
+    e.started(T(0));
+    e.cast(T(40.3), 'パーフェクトデシメート'); // 1 回目を読み逃して、2 回目だけ読めた
+    assert.equal(e.status(T(41)).phase.id, 'wait');
+    e = new TimelineEngine(tl);
+    e.started(T(0));
+    e.cast(T(28.3), 'パーフェクトデシメート');
+    assert.equal(e.status(T(29)).phase.id, 'sb');
+    assert.ok(validateTimeline({ ...tl, phases: [{ id: 'a', entries: [], next: [{ to: 'a', when: { hp: 50 }, from: 1 }] }] }).length > 0);
+    assert.ok(validateTimeline({ ...tl, phases: [{ id: 'a', entries: [], next: [{ to: 'a', when: { cast: 'x' }, from: 9, until: 3 }] }] }).length > 0);
+});
