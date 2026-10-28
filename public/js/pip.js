@@ -13,7 +13,7 @@ export const PIP_FONTS = [
     { id: 'meiryo', label: 'メイリオ', css: 'Meiryo, "メイリオ"' },
     { id: 'yu-gothic', label: '游ゴシック', css: '"Yu Gothic UI", "Yu Gothic", YuGothic, "游ゴシック"' },
     { id: 'ud-kyokasho', label: 'UD デジタル 教科書体', css: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R"' },
-    { id: 'custom', label: '名前を入れる（PC に入っている書体）', css: '' },
+    { id: 'custom', label: 'ほかの書体（名前で指定）', css: '' },
 ];
 
 /** 選んだ大きさ（%）を、範囲内の刻みに丸める */
