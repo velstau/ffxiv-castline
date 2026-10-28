@@ -931,7 +931,15 @@ def hub_branches(skeleton, spec):
     for dst, cast, _ in later:
         dsts.setdefault(cast, set()).add(id(dst))
     cands = [(dst, first, '0.0') for first, dst in entry_of.items()] + [c for c in later if len(dsts[c[1]]) == 1]
+    # 最初の技がほかの区間の途中にも出るときは、その区間の最初の技でも移れるフェーズでだけ使う（そちらが先に働く）。
+    # p1 は幻光召喚では移れないので、白黒魔道士の 6.1 秒のリミットチャージで暗黒騎士へ移ってしまう（Codex 指摘 10-28）
+    first_of = {id(m): first for first, ms in groups.items() for m in ms}
+    group_of = lambda d: [*waits.get(d['attrs']['id'], []), d]
+    shadows = {(id(dst), first): [x for x, _ in members if x not in group_of(dst)
+                                  and any(e['_t'] > 0 and set(e['name'].split('|')) & set(first.split('|')) for e in synced(x))]
+               for first, dst in entry_of.items()}
     for p in [*before, hub, again, *(m for m, end in members if end), *(phases[w] for w in waits)]:
+        firsts = []
         to = {r['cast']: r['to'] for r in p['next'] if r.get('cast')}
         inside = {x['attrs']['id'] for x in waits.get(p['attrs']['id'], [])}  # 見分け待ちは、自分の区間へは自分の決める技で移る
         for dst, cast, t in cands:
@@ -943,6 +951,12 @@ def hub_branches(skeleton, spec):
             if d != p['attrs']['id'] and d not in inside and ok and to.setdefault(cast, d) == d \
                     and not any(r.get('cast') == cast and r['to'] == d for r in p['next']):
                 p['next'].append({'to': d, 'at': t, 'cast': cast, **({'from': since} if since else {})})
+                if (id(dst), cast) in shadows:
+                    firsts.append((p['next'][-1], shadows[(id(dst), cast)]))
+        heads = {r['cast'] for r in p['next'] if r.get('cast')}
+        for r, xs in firsts:
+            if any(first_of[id(x)] not in heads for x in xs):
+                p['next'].remove(r)
     ids = {hub_id, again['attrs']['id'], *(m['attrs']['id'] for m, _ in members)}
     skeleton.setdefault('_backed', set()).update((a, b) for a in ids for b in ids)
     report.append(f'待ち {hub_id}: {"・".join(m["attrs"]["id"] for m, _ in members)}')

@@ -51,7 +51,6 @@
     <next to="late" at="0.0" cast="アルティメット・クロスオーバー"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣" from="162.7"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
-    <next to="wol-dk" at="0.0" cast="リミットチャージ" from="145.4"/>
     <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー" from="171.8"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー" from="120.3"/>
@@ -98,7 +97,6 @@
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート" until="33.1"/>
     <next to="wol-sb" at="50.0" cast="サモン・ウィルム"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
-    <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
@@ -115,7 +113,6 @@
     <entry t="64.3" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
     <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
-    <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
     <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
@@ -204,7 +201,6 @@
     <entry t="87.6" castname="エンドオール" sync="false" tts="次は、タンク強攻撃。"/>
     <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
-    <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
