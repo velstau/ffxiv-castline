@@ -4,7 +4,7 @@ import './storage-migrate.js';
 import { FrameSource, captureSession } from './capture.js';
 import { OcrClient } from './ocr-client.js';
 import { combineCandidates } from './readers.js';
-import { isBlackFrame } from './blackout.js';
+import { isBlackFrame, isDimFrame } from './blackout.js';
 import { falseStart } from './cast-recorder.js';
 import { needsKillConfirmation, isDutyCompleteText, ClearNoticeTracker } from './combat-end.js';
 import { TimelineEngine } from './timeline-engine.js';
@@ -67,6 +67,7 @@ const state = {
     clearNoticeFight: null,
     lastClearReadAt: 0,
     lastBlack: false, // 前のフレームが暗転だったか（ログは変わったときだけ）
+    lastDim: false, // 前のフレームが暗くなっていたか（同じ）
     spoken: new Set(),
     spokenStartAt: null,
     spokenTransitions: 0, // 読み上げ済みを消したときのフェーズの移った回数（engine.transitions）
@@ -474,6 +475,7 @@ async function tick({ bitmap: frame, at }) {
     }
     const inCombat = engine?.status(at).state === 'combat';
     const black = isBlackFrame(frame); // 全滅の暗転（読み取りの前に見る）
+    const dim = black || isDimFrame(frame); // 討伐の瞬間に暗くなる（HUD は残る）
     const wantContent = at - state.lastContentAt >= (state.detectedContent ? CONTENT_EVERY_MS : CONTENT_RETRY_MS);
     if (wantContent) {
         state.lastContentAt = at;
@@ -583,6 +585,11 @@ async function tick({ bitmap: frame, at }) {
             log(black ? '画面が暗転しました' : '画面の暗転が終わりました', at);
         }
         state.lastBlack = black;
+        if (dim && !black && !state.lastDim && engine.status(at).state === 'combat') {
+            log('画面が暗くなりました', at);
+        }
+        state.lastDim = dim;
+        engine.dim(at, dim);
         engine.blackout(at, black);
         if (obs.countdown?.started) {
             engine.started(at);

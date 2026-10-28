@@ -18,3 +18,10 @@ test('暗転: ほぼ全部が真っ黒なら暗転。HUD の明るい点が少�
     const dim = new Uint8ClampedArray(9216 * 4).fill(30); // 暗い戦場（真っ黒ではない）
     assert.equal(isBlackPixels(dim), false);
 });
+
+test('暗くなった: HUD が残っていても、6 割以上が黒なら暗くなった（討伐の瞬間）。暗い演出（3 割ほど）では暗くならない', async () => {
+    const { isDimPixels } = await import('../public/js/blackout.js');
+    assert.equal(isDimPixels(pixels(9216, Array.from({ length: 1400 }, (_, i) => i))), true); // HUD が 15%
+    assert.equal(isDimPixels(pixels(9216, Array.from({ length: 6400 }, (_, i) => i))), false); // 黒は 3 割
+    assert.equal(isDimPixels(pixels(9216)), true); // 真っ黒の暗転も含む
+});

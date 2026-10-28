@@ -216,3 +216,30 @@ test('3% 以下でも HP を読み続けている間は、敵対リストを読�
     assert.equal(e.status(8900).state, 'combat');
     assert.equal(e.status(9100).state, 'ended');
 });
+
+test('画面が暗くなったら、最後のフェーズでなくても HP 3% 以下と敵対リストの消失で討伐にする', () => {
+    const tl = { phases: [{ id: 'a', entries: [], next: [{ to: 'b', when: { cast: 'x' } }] }, { id: 'b', entries: [], next: [] }] };
+    const e = new TimelineEngine(tl, { hasEnmity: true });
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 0.3);
+    e.dim(2500, true); // 討伐の瞬間に暗くなる
+    e.hpPercent(2500, null);
+    e.enmity(2500, false);
+    assert.equal(e.status(2500).state, 'ended');
+    // 暗くならなければ、最後のフェーズでないので終わらない（区間の切れ目・フェーズの移り変わり）
+    const f = new TimelineEngine(tl, { hasEnmity: true });
+    f.started(0);
+    f.enmity(500, true); f.enmity(1500, true);
+    f.hpPercent(2000, 0.3);
+    f.enmity(2500, false);
+    assert.equal(f.status(8000).state, 'combat');
+    // 暗くなっても HP が高ければ終わらない（エリア転換）
+    const g = new TimelineEngine(tl, { hasEnmity: true });
+    g.started(0);
+    g.enmity(500, true); g.enmity(1500, true);
+    g.hpPercent(2000, 40);
+    g.dim(2500, true);
+    g.enmity(2500, false);
+    assert.equal(g.status(3000).state, 'combat');
+});

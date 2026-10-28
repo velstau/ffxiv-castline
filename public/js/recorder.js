@@ -6,7 +6,7 @@ import { VideoFrameSource } from './video-source.js';
 import { ScreenFrameSource } from './screen-source.js';
 import { regionsFor } from './regions.js';
 import { TimelineEngine } from './timeline-engine.js';
-import { isBlackFrame } from './blackout.js';
+import { isBlackFrame, isDimFrame } from './blackout.js';
 import { Pip, pipSupported } from './pip.js';
 import { combineCandidates } from './readers.js';
 import { castNamesOf } from './region-auto.js';
@@ -437,6 +437,7 @@ async function liveFrame(live, bitmap, at) {
             liveLog(live, at, '暗転したので、参加申請中の判定を解く（コンテンツに入った）');
         }
     }
+    live.engine.dim(at * 1000, black || isDimFrame(bitmap)); // 討伐の瞬間に暗くなる（HUD は残る）
     live.engine.blackout(at * 1000, black);
     const rec = state.rec;
     if (rec) {

@@ -57,6 +57,9 @@ export const ENMITY_OFF_END_MS = 3000; // 最後のフェーズで HP が KILL_H
 // 敵対リストがこれ以上消えたままなら、終わったとみなす（フェーズの移り変わりより十分長く。2026-10-26 の録画で最長 57〜76 秒）
 export const ENEMY_GONE_END_MS = 120000;
 const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなくても討伐とみなす HP
+// 討伐の瞬間は画面が暗くなる（2 回目以降の討伐は HUD を残して約 1.5 秒、初回はそのままクリアのムービー。絶のフェーズの移り変わりや
+// ムービーではない演出では暗くならない。2026-10-28 ユーザー）。敵対リストが消えたのと、この前後で暗くなったら討伐
+export const DIM_KILL_WINDOW_MS = 2000;
 // HP_JUMP_CONFIRM_MS 以内に前の値からこれ以上変わった HP は、HP_JUMP_CONFIRM_MS 以内の次の読み取りでも近い値（差がこれ未満）のときだけ採る。
 // 1 回だけの読み違い（67.7→2→67.2、4.7→47→4.4。2026-10-27 ヘビー級1 零式の録画）で、討伐やフェーズ移行にしない・討伐を逃さないため
 export const HP_JUMP_MIN = 20;
@@ -162,6 +165,7 @@ export class TimelineEngine {
         this.hpAliveAt = null; // 最後に 0% より高い HP を採った時刻（敵対リストが消えた後なら、ボスは生きている）
         this.blackSince = null;
         this.blackLastAt = null; // 最後に黒かったコマの時刻
+        this.lastDimAt = null; // 最後に画面が暗くなっていたコマの時刻（討伐の瞬間）
         this.haltedStart = null;
     }
 
@@ -260,6 +264,14 @@ export class TimelineEngine {
             this.enmityOnSince = null;
             this.enmityOffSince ??= at;
             this.holdUntilEnmityOff = false;
+        }
+        this.advance(at);
+    }
+
+    /** 画面が暗くなっている（HUD が残っていてもよい）か。討伐の判定に使う */
+    dim(at, dimmed) {
+        if (dimmed) {
+            this.lastDimAt = at;
         }
         this.advance(at);
     }
@@ -509,6 +521,7 @@ export class TimelineEngine {
         this.hp = null;
         this.lastHpAt = null;
         this.pendingHp = null;
+        this.lastDimAt = null;
         this.hpAliveAt = null;
         // ボスが何体もいるときは最初に読めた技で決める（cast）。それまでは戦闘開始を 0 秒として数える
         this.phase = this.starts.length > 1 ? null : this.starts[0];
@@ -635,6 +648,13 @@ export class TimelineEngine {
             const killHp = this.hpForKill(at);
             if (lastPhase && killHp !== null && killHp <= KILL_HP && off >= ENMITY_OFF_END_MS) {
                 this.end(at, `最後のフェーズで HP ${this.hp}% の後に敵対リストが消えた。討伐`);
+                return;
+            }
+            // 画面が暗くなったら、最後のフェーズでなくても討伐（区間ごとに分岐のある極ウォーリア・オブ・ライトなどで、
+            // 最後以外の区間で倒したとき）。HP が低いときの全滅も暗くなるが、どちらでも戦闘は終わる
+            const dimmed = this.lastDimAt !== null && this.lastDimAt >= this.enmityOffSince - DIM_KILL_WINDOW_MS;
+            if (this.phase !== null && dimmed && killHp !== null && killHp <= KILL_HP) {
+                this.end(at, `HP ${this.hp}% の後に敵対リストが消え、画面が暗くなった。討伐`);
                 return;
             }
             if (off >= ENEMY_GONE_END_MS) {
