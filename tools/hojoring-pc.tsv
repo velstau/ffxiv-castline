@@ -30,7 +30,7 @@ futures-rewritten-ultimate	1079	100	Futures_Rewritten_(Ultimate).xml
 the-omega-protocol-ultimate	1077	100	The Omega Protocol (Ultimate).xml	--role P3@47=無職 --role P3-S=シェア --role P3-C=サークル --role P3-L=レイテント
 dragonsongs-reprise-ultimate	1076	100	Dragonsong's Reprise (Ultimate).xml
 the-epic-of-alexander-ultimate	1075	100	The_Epic_Of_Alexander_Ultimate.xml
-the-weapons-refrain-ultimate	1074	100	The_Weapons_Refrain_Ultimate.xml	--phase=ラストガルーダ=all --phase=ラストイフリート=all --phase=ラストタイタン=all --any-order=ラストガルーダ --any-order=ラストイフリート --any-order=ラストタイタン '--split=p5@アルテマ=p5b:P5: The Ultima Weapon（アルテマ以降）' --split=p5b@エラプション=last-ifrit:ラストイフリート#ラスト --split=last-ifrit@ウィケッドホイール=last-garuda:ラストガルーダ#ラスト --split=last-garuda@大地の重み=last-titan:ラストタイタン#ラスト --enter=p4@爆発霧散
+the-weapons-refrain-ultimate	1074	100	The_Weapons_Refrain_Ultimate.xml	--phase=ラストガルーダ=all --phase=ラストイフリート=all --phase=ラストタイタン=all --any-order=ラストガルーダ --any-order=ラストイフリート --any-order=ラストタイタン '--split=p5@アルテマ=p5b:P5: The Ultima Weapon（アルテマ以降）' --split=p5b@エラプション=last-ifrit:ラストイフリート#ラスト --split=last-ifrit@ウィケッドホイール=last-garuda:ラストガルーダ#ラスト --split=last-garuda@大地の重み=last-titan:ラストタイタン#ラスト --enter=p4@ダージャ
 the-unending-coil-of-bahamut-ultimate	1073	100	The_Unending_Coil_Of_Bahamut(Ultimate).xml	'--variant=P5 厄災の三重奏ダイナモ=ダイナモ' '--variant=P5 厄災の三重奏ダイブ=ダイブ'
 worqor-lar-dor-extreme	1071	100	Worqor_Lar_Dor(Extreme).xml	--any-order=P3I --any-order=P3interval '--split=p1@フェザーヘイル=p3-thunder:P3: 雷' '--split=p3-thunder@リビングディザスター=p3-mid:P3: 合間' '--split=p3-mid@コールドディザスター=p3-ice:P3: 氷' '--split=p3-ice@ラース・アンファールド=p4:P4' --swap=p3-thunder~p3-ice --no-backup=ノーザンクロス
 everkeep-extreme	1072	100	Everkeep(Extreme).xml

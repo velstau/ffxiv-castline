@@ -101,6 +101,7 @@
     <next to="p3-thunder" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-ice-alt" at="0.0" cast="コールドディザスター"/>
     <next to="p3-thunder" at="25.2" cast="災厄の落雷"/>
+    <next to="p3-ice-alt" at="15.4" cast="アイシクルスパイク" from="46.0"/>
   </phase>
   <phase id="p3-thunder" name="P3: 雷">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>
@@ -133,6 +134,7 @@
     <entry t="110.0" castname="攻撃" sync="false"/>
     <entry t="112.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
     <next to="p3-mid" at="0.0" cast="リビングディザスター"/>
+    <next to="p3-mid" at="17.1" cast="トライスカージ"/>
   </phase>
   <phase id="p3-mid" name="P3: 合間">
     <entry t="0.0" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>
@@ -227,6 +229,7 @@
     <entry t="90.6" text="移行待ち / 全体攻撃" castname="ディザスターゾーン" duration="2.7" window="50 30" gimmick_icon="raidwide.png"/>
     <entry t="98.7" text="タンク強攻撃" castname="アイスタロン" duration="3.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <next to="p3-mid-alt" at="0.0" cast="リビングディザスター"/>
+    <next to="p3-mid-alt" at="17.1" cast="トライスカージ"/>
   </phase>
   <phase id="p3-mid-alt" name="P3: 合間（逆の順）">
     <entry t="0.0" text="全体攻撃" castname="リビングディザスター" duration="5.7" gimmick_icon="raidwide.png"/>

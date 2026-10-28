@@ -712,14 +712,34 @@ def synced_names(phase):
     return {n for e in phase['entries'] if e.get('sync') != 'false' for n in e['name'].split('|')}
 
 
+BACKUP_FROM_GAP_S = 120.0  # 控えの移りに、移る前のフェーズにもある技を使うのは、そこでの最後の出番がフェーズの終わりのこれだけ前のとき
+BACKUP_FROM_MARGIN_S = 15.0  # そのとき、最後の出番のこの秒後から移れる（from）
+
+
 def backup_rule(src, dst, avoid=frozenset()):
     """控えの移り: src から dst へ移る技を読み逃したとき、dst にだけある最初の技（src と avoid に無い技）で dst のその時刻へ移る。
     分かれ目では avoid にもう片方の枝の技を入れる（アルファ編1 の開幕のダミングイーディクトを読み逃すと、A の中のインプロージョンで B へ移ってしまうため）"""
-    skip = synced_names(src) | set(avoid)
-    e = next((e for e in dst['entries'] if e.get('sync') != 'false' and e['_t'] > 0 and not skip & set(e['name'].split('|'))), None)
-    if e is None or any(n.get('to') == dst['attrs']['id'] and n.get('cast') == e['name'] for n in src['next']):
+    # 移りの技そのもの（2 回目）は飛ばして次の技にする（極ヴァリガルマンダの氷先は 66.1 秒にまたコールドディザスターがあり、
+    # 控えが付いていなかった。コールドディザスターは画面に詠唱バーが出ない。2026-10-28 録画で確認）
+    # src にもある技でも、src での最後の出番がフェーズの終わりより BACKUP_FROM_GAP_S 以上前なら、from を付けてそれより後だけで移る
+    # （極ヴァリガルマンダの氷先: p1 のアイシクルスパイクは 31 秒まで。氷の 15.4 秒のアイシクルスパイクで入れる。フリジングダストは 71.4 秒）
+    avoid = set(avoid) | {n['cast'] for n in src['next'] if n.get('to') == dst['attrs']['id'] and n.get('cast')}
+    src_synced = [x for x in src['entries'] if x.get('sync') != 'false']
+    src_end = max((x['_t'] for x in src_synced), default=0.0)
+    last_in_src = lambda e: max((x['_t'] for x in src_synced if set(x['name'].split('|')) & set(e['name'].split('|'))), default=None)
+    e, since = None, None
+    for x in dst['entries']:
+        if x.get('sync') == 'false' or x['_t'] <= 0 or avoid & set(x['name'].split('|')):
+            continue
+        last = last_in_src(x)
+        if last is None or last + BACKUP_FROM_GAP_S <= src_end:
+            e, since = x, (None if last is None else last + BACKUP_FROM_MARGIN_S)
+            break
+    if e is None:
         return None
     rule = {'to': dst['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']}
+    if since is not None:
+        rule['from'] = f'{since:.1f}'
     src['next'].append(rule)
     return rule
 
@@ -1006,7 +1026,7 @@ def main():
     ap.add_argument('--enter', action='append', default=[], metavar='フェーズ@技',
                     help='そのフェーズへ移る前のフェーズに、その技の詠唱でも移る移りを足す。時刻は --events-all の討伐で、そのフェーズの'
                          '始まりから数える。骨組みはボスの詠唱だけを使うので、フェーズの頭がボス以外の技だと、ボスの最初の詠唱まで移れない'
-                         '（絶アルテマ p4: 移りが 40.4 秒のアルテマで、頭の LB の知らせが出なかった。0 秒の爆発霧散でも移る）')
+                         '（絶アルテマ p4: 移りが 40.4 秒のアルテマで、頭の LB の知らせが出なかった。22.3 秒のダージャでも移る。0 秒の爆発霧散は録画の画面に詠唱バーが出なかった。ダージャはアシエン・ラハブレアのターゲットバーに出る。2026-10-28）')
     ap.add_argument('--hub', action='append', default=[], metavar='待ち=区間:終わりの技,…,区間',
                     help='どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ（極ウォーリア・オブ・ライトの後半）。書き方は hub_branches')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',

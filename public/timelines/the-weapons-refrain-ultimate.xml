@@ -155,7 +155,7 @@
     <entry t="160.9" castname="覚醒確認" sync="false"/>
     <entry t="161.8" castname="誘爆" sync="false"/>
     <next to="p4" at="40.4" cast="アルテマ"/>
-    <next to="p4" at="0.0" cast="爆発霧散"/>
+    <next to="p4" at="22.3" cast="ダージャ"/>
   </phase>
   <phase id="p4" name="Magitek Bits">
     <entry t="5.2" castname="自爆" sync="false" tts="次、キャスLB"/>
