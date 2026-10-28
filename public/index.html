@@ -458,6 +458,30 @@
   <path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" /></svg>読み上げの試験</button></div>
 </div>
 </section>
+<section aria-labelledby="player-h-pip-style" class="card mb-3" data-flow-order="4">
+<h2 class="card-header card-title" id="player-h-pip-style"><svg data-ms="tune" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 10a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M6 4v4" />
+  <path d="M6 12v8" />
+  <path d="M10 16a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M12 4v10" />
+  <path d="M12 18v2" />
+  <path d="M16 7a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+  <path d="M18 4v1" />
+  <path d="M18 9v11" /></svg>小窓の表示</h2>
+<div class="card-body fields">
+<label class="field-range"><span class="field-label">文字</span><input class="form-range" id="player-pip-scale" type="range"/><span class="field-value" id="player-pip-scale-value"></span></label>
+<label class="field">
+<span class="field-label">書体</span>
+<select class="form-select" id="player-pip-font"></select>
+</label>
+<label class="field" hidden="" id="player-pip-font-name-field">
+<span class="field-label">書体の名前</span>
+<input class="form-control" id="player-pip-font-name" placeholder="例: Noto Sans JP" spellcheck="false" type="text"/>
+</label>
+<p class="read-status">小窓を開いたままでも変えられます。文字を大きくして小窓に収まらないときは、小窓の端をつかんで広げてください。書体は PC に入っているものだけ使えます（無い書体は既定の書体で出ます）。</p>
+</div>
+</section>
 </div>
 </div>
 </section>

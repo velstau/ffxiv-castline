@@ -16,7 +16,7 @@ import { RegionAutoFinder, castNamesOf, foundDetail } from './region-auto.js';
 import { REGION_KINDS, STORE_REGIONS, regionsFor, missingRegions, screenKey, savedScreens as listSavedScreens } from './regions.js';
 import { GUIDE_STEPS, guideSteps } from './player-guide.js';
 import { icon } from './icons.js';
-import { Pip, pipSupported } from './pip.js';
+import { Pip, pipSupported, PIP_SCALE, PIP_FONTS, pipScale, applyPipStyle } from './pip.js';
 import { Speech, DEFAULT_SPEECH, japaneseVoices, voicevoxStyles } from './speech.js';
 
 const STORE_SETTINGS = 'castline.player.settings';
@@ -78,7 +78,7 @@ const state = {
     ttsTested: null, // 読み上げの試験の結果（'ok' | 'ng'）
     guideKey: '',
 };
-const settings = { tts: true, lead: 5, autoRegions: true, ...load(STORE_SETTINGS, {}) };
+const settings = { tts: true, lead: 5, autoRegions: true, pipScale: PIP_SCALE.default, pipFont: '', pipFontName: '', ...load(STORE_SETTINGS, {}) };
 settings.speech = { ...DEFAULT_SPEECH, ...(settings.speech ?? {}) };
 const pip = new Pip();
 const voice = new Speech(() => settings.speech);
@@ -883,9 +883,39 @@ async function openPip() {
         setStatus('run-status', 'このブラウザは小窓（Document Picture-in-Picture）に対応していません。Chrome か Edge の新しい版で開いてください。', 'ng');
         return;
     }
-    const win = await pip.open({ width: 380, height: 300, html: PANEL_HTML, onFrame: () => update() });
+    // 文字を大きくしたときは、初めの大きさも合わせて広げる（ブラウザが前の大きさを覚えていればそちらになる）
+    const zoom = pipScale(settings.pipScale) / 100;
+    const win = await pip.open({ width: Math.round(380 * zoom), height: Math.round(300 * zoom), html: PANEL_HTML, onFrame: () => update() });
+    applyPipStyle(win.document, pipStyleSettings());
     bindPanel(win.document);
     update(true);
+}
+
+const pipStyleSettings = () => ({ scale: settings.pipScale, font: settings.pipFont, fontName: settings.pipFontName });
+
+// ── 小窓の文字 ──
+function setupPipStyle() {
+    $('pip-font').replaceChildren(...PIP_FONTS.map((f) => Object.assign(document.createElement('option'), { value: f.id, textContent: f.label })));
+    Object.assign($('pip-scale'), { min: PIP_SCALE.min, max: PIP_SCALE.max, step: PIP_SCALE.step });
+    const render = () => {
+        $('pip-scale').value = pipScale(settings.pipScale);
+        $('pip-scale-value').textContent = `${pipScale(settings.pipScale)}%`;
+        $('pip-font').value = PIP_FONTS.some((f) => f.id === settings.pipFont) ? settings.pipFont : '';
+        $('pip-font-name-field').hidden = settings.pipFont !== 'custom';
+        $('pip-font-name').value = settings.pipFontName;
+    };
+    const change = (patch) => {
+        Object.assign(settings, patch);
+        save(STORE_SETTINGS, settings);
+        render();
+        if (pip.isOpen) {
+            applyPipStyle(pip.win.document, pipStyleSettings());
+        }
+    };
+    $('pip-scale').addEventListener('input', () => change({ pipScale: pipScale($('pip-scale').value) }));
+    $('pip-font').addEventListener('change', () => change({ pipFont: $('pip-font').value }));
+    $('pip-font-name').addEventListener('change', () => change({ pipFontName: $('pip-font-name').value.trim() }));
+    render();
 }
 
 function bindPanel(doc) {
@@ -1016,6 +1046,7 @@ async function init() {
         $('timeline-select').focus();
     });
     setupVoiceSettings();
+    setupPipStyle();
     $('share').addEventListener('click', () => document.getElementById('capture-start').click());
     window.addEventListener('castline:capture', updateButtons);
     $('start').addEventListener('click', start);

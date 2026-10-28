@@ -16,6 +16,7 @@ with sync_playwright() as p:
  selected=page.locator('#player-timeline-select').input_value()
  page.locator('#player-tts').uncheck();assert not page.locator('#player-tts').is_checked()
  page.locator('#player-tts-engine').select_option('voicevox');assert page.locator('#player-voicevox-url').is_visible();page.locator('#player-tts-engine').select_option('browser')
+ page.locator('#player-pip-font').select_option('custom');assert page.locator('#player-pip-font-name').is_visible();page.locator('#player-pip-font').select_option('');assert not page.locator('#player-pip-font-name').is_visible()
  page.evaluate('location.hash="manage"');page.wait_for_timeout(200);page.evaluate('location.hash="player"');page.wait_for_timeout(200)
  assert page.locator('#player-timeline-select').input_value()==selected
  page.evaluate('location.hash="recorder"');page.wait_for_timeout(600)
