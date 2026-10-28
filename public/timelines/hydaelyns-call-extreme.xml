@@ -50,6 +50,8 @@
   <phase id="p2" name="P2: Crystals of Light">
     <entry t="105.0" castname="エクソダス" sync="false"/>
     <next to="p3" at="10.2" cast="ヘイロー"/>
+    <next to="p3" at="19.4" cast="ライトウェーブ"/>
+    <next to="p3" at="38.9" cast="ラテラルアーク"/>
   </phase>
   <phase id="p3" name="P3: Lightwaves">
     <entry t="10.2" text="全体攻撃" castname="ヘイロー" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
@@ -73,6 +75,7 @@
     <next to="p3-dance" at="0.0" cast="ムーサスコーン"/>
     <next to="p3-staff-alt" at="0.0" cast="マゴスラジエンス"/>
     <next to="p3-dance" at="11.7" cast="パルヘリオン"/>
+    <next to="p3-dance" at="28.7" cast="サブパルヘリオン"/>
     <next to="p3-staff-alt" at="19.0" cast="パーヘリックサークル"/>
   </phase>
   <phase id="p3-dance" name="踊P3">
@@ -113,6 +116,7 @@
     <entry t="45.5" text="移行後の修正待ち" castname="エクイノックス" sync="false"/>
     <next to="p3-dance-2nd" at="0.0" cast="ムーサスコーン"/>
     <next to="p3-dance-2nd" at="11.7" cast="パルヘリオン"/>
+    <next to="p3-dance-2nd" at="28.7" cast="サブパルヘリオン"/>
   </phase>
   <phase id="p3-dance-2nd" name="踊P3（後）">
     <entry t="0.0" text="タンク頭割り" castname="ムーサスコーン" duration="4.7" tts="タンク頭割り" gimmick_icon="tank-share.png"/>

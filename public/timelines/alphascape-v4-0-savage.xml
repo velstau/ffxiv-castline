@@ -34,6 +34,7 @@
     <entry t="124.1" text="ディスチャージャー" castname="ディスチャージャー" sync="false" tts="ノックバック"/>
     <next to="a-2body" at="0.0" cast="ガードプログラム"/>
     <next to="a-2body" at="9.2" cast="レゾナンス"/>
+    <next to="a-2body" at="21.5" cast="連携プログラムC"/>
     <next to="a-p1" at="10.0" cast="シールドオプション"/>
   </phase>
   <phase id="a-2body" name="2体フェーズ">
@@ -53,7 +54,9 @@
     <next to="a-shield" at="0.0" cast="シールドオプション"/>
     <next to="a-blade-alt" at="0.0" cast="ブレードオプション"/>
     <next to="a-shield" at="15.4" cast="シールドコンボS"/>
+    <next to="a-shield" at="17.7" cast="ブリザガ・オメガ"/>
     <next to="a-blade-alt" at="15.4" cast="ブレードコンボB"/>
+    <next to="a-blade-alt" at="16.5" cast="パイルピッチ"/>
   </phase>
   <phase id="a-shield" name="シールド">
     <entry t="0.0" castname="シールドオプション" duration="1.7"/>
@@ -69,6 +72,7 @@
     <entry t="39.1" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
     <next to="a-link2" at="0.0" cast="ガードプログラム"/>
     <next to="a-link2" at="9.2" cast="レゾナンス"/>
+    <next to="a-link2" at="21.5" cast="連携プログラムC"/>
   </phase>
   <phase id="a-link2" name="連携2回目">
     <entry t="0.0" text="ガードプログラム" castname="ガードプログラム" duration="2.7" tts="ガードプログラム。" window="20 10"/>
@@ -85,6 +89,7 @@
     <entry t="55.5" text="ソーラレイ" castname="ソーラレイ" duration="4.7" tts="ソーラレイ。"/>
     <next to="a-blade" at="0.0" cast="ブレードオプション"/>
     <next to="a-blade" at="8.3" cast="連携プログラムW"/>
+    <next to="a-blade" at="15.4" cast="ブレードコンボB"/>
   </phase>
   <phase id="a-blade" name="ブレード">
     <entry t="0.0" castname="ブレードオプション" duration="1.7"/>
@@ -100,6 +105,7 @@
     <entry t="43.1" castname="レーザーシャワー" duration="3.7"/>
     <next to="a-final" at="0.0" cast="援護プログラムF"/>
     <next to="a-final" at="3.0" cast="オプチカルレーザーF"/>
+    <next to="a-final" at="5.2" cast="サジタリウスアロー・オメガ"/>
   </phase>
   <phase id="a-blade-alt" name="ブレード（先）">
     <entry t="0.0" castname="ブレードオプション" duration="1.7"/>
@@ -115,6 +121,7 @@
     <entry t="43.1" castname="レーザーシャワー" duration="3.7"/>
     <next to="a-link2-alt" at="0.0" cast="ガードプログラム"/>
     <next to="a-link2-alt" at="9.2" cast="レゾナンス"/>
+    <next to="a-link2-alt" at="21.5" cast="連携プログラムC"/>
   </phase>
   <phase id="a-link2-alt" name="連携2回目（逆の順）">
     <entry t="0.0" text="ガードプログラム" castname="ガードプログラム" duration="2.7" tts="ガードプログラム。" window="20 10"/>
@@ -131,6 +138,7 @@
     <entry t="55.5" text="ソーラレイ" castname="ソーラレイ" duration="4.7" tts="ソーラレイ。"/>
     <next to="a-shield-2nd" at="0.0" cast="シールドオプション"/>
     <next to="a-shield-2nd" at="8.3" cast="連携プログラムW"/>
+    <next to="a-shield-2nd" at="15.4" cast="シールドコンボS"/>
   </phase>
   <phase id="a-shield-2nd" name="シールド（後）">
     <entry t="0.0" castname="シールドオプション" duration="1.7"/>
@@ -146,6 +154,7 @@
     <entry t="39.1" text="レーザーシャワー" castname="レーザーシャワー" duration="3.7" tts="レーザーシャワー。"/>
     <next to="a-final" at="0.0" cast="援護プログラムF"/>
     <next to="a-final" at="3.0" cast="オプチカルレーザーF"/>
+    <next to="a-final" at="5.2" cast="サジタリウスアロー・オメガ"/>
   </phase>
   <phase id="a-final" name="前半最終">
     <entry t="0.0" text="援護プログラムF" castname="援護プログラムF" duration="2.7" tts="援護プログラムF。" window="20 10"/>

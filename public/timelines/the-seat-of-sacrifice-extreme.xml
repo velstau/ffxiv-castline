@@ -49,8 +49,12 @@
     <entry t="273.3" text="タンク強攻撃" castname="漆黒の魔剣" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="285.4" text="タンク強攻撃" castname="フェイタルクリーヴ" duration="3.7" gimmick_icon="tankbuster.png"/>
     <next to="late" at="0.0" cast="アルティメット・クロスオーバー"/>
+    <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣" from="162.7"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
+    <next to="wol-dk" at="0.0" cast="リミットチャージ" from="145.4"/>
+    <next to="wol-ninja" at="39.9" cast="魔法剣技：ブライトセイバー" from="171.8"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
+    <next to="wol-dk" at="31.9" cast="アブソリュートホーリー" from="120.3"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
   <phase id="late" name="後半（次の種を待つ）">

@@ -716,32 +716,52 @@ BACKUP_FROM_GAP_S = 120.0  # 控えの移りに、移る前のフェーズにも
 BACKUP_FROM_MARGIN_S = 15.0  # そのとき、最後の出番のこの秒後から移れる（from）
 
 
+def since_ok(src, cast):
+    """src から cast で移ってよいか、と from の秒（いつでもよいなら None）。src での最後の出番がフェーズの終わりより
+    BACKUP_FROM_GAP_S 以上前なら、その BACKUP_FROM_MARGIN_S 秒後から"""
+    synced = [x for x in src['entries'] if x.get('sync') != 'false']
+    last = max((x['_t'] for x in synced if set(x['name'].split('|')) & set(cast.split('|'))), default=None)
+    if last is None:
+        return True, None
+    if last + BACKUP_FROM_GAP_S <= max(x['_t'] for x in synced):
+        return True, f'{last + BACKUP_FROM_MARGIN_S:.1f}'
+    return False, None
+
+
+BACKUP_COUNT = 2  # 控えの移りに使う技の数（アルファ編4 の YouTube の録画で、シールドの頭のシールドオプションとシールドコンボS が
+                  # 白飛びで 2 つとも読めず、2 体フェーズから出られなかった。3 つ目のブリザガ・オメガは読めた。2026-10-28）
+
+
 def backup_rule(src, dst, avoid=frozenset()):
-    """控えの移り: src から dst へ移る技を読み逃したとき、dst にだけある最初の技（src と avoid に無い技）で dst のその時刻へ移る。
+    """控えの移り: src から dst へ移る技を読み逃したとき、dst にだけある技（src と avoid に無い技）の初めの BACKUP_COUNT 個で
+    dst のその時刻へ移る。足した移りの一覧を返す。
     分かれ目では avoid にもう片方の枝の技を入れる（アルファ編1 の開幕のダミングイーディクトを読み逃すと、A の中のインプロージョンで B へ移ってしまうため）"""
     # 移りの技そのもの（2 回目）は飛ばして次の技にする（極ヴァリガルマンダの氷先は 66.1 秒にまたコールドディザスターがあり、
     # 控えが付いていなかった。コールドディザスターは画面に詠唱バーが出ない。2026-10-28 録画で確認）
     # src にもある技でも、src での最後の出番がフェーズの終わりより BACKUP_FROM_GAP_S 以上前なら、from を付けてそれより後だけで移る
     # （極ヴァリガルマンダの氷先: p1 のアイシクルスパイクは 31 秒まで。氷の 15.4 秒のアイシクルスパイクで入れる。フリジングダストは 71.4 秒）
     avoid = set(avoid) | {n['cast'] for n in src['next'] if n.get('to') == dst['attrs']['id'] and n.get('cast')}
-    src_synced = [x for x in src['entries'] if x.get('sync') != 'false']
-    src_end = max((x['_t'] for x in src_synced), default=0.0)
-    last_in_src = lambda e: max((x['_t'] for x in src_synced if set(x['name'].split('|')) & set(e['name'].split('|'))), default=None)
-    e, since = None, None
+    added = []
     for x in dst['entries']:
+        if len(added) >= BACKUP_COUNT:
+            break
         if x.get('sync') == 'false' or x['_t'] <= 0 or avoid & set(x['name'].split('|')):
             continue
-        last = last_in_src(x)
-        if last is None or last + BACKUP_FROM_GAP_S <= src_end:
-            e, since = x, (None if last is None else last + BACKUP_FROM_MARGIN_S)
-            break
-    if e is None:
-        return None
-    rule = {'to': dst['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']}
-    if since is not None:
-        rule['from'] = f'{since:.1f}'
-    src['next'].append(rule)
-    return rule
+        ok, since = since_ok(src, x['name'])
+        if not ok:
+            continue
+        rule = {'to': dst['attrs']['id'], 'at': f'{x["_t"]:.1f}', 'cast': x['name']}
+        if since is not None:
+            rule['from'] = since
+        src['next'].append(rule)
+        added.append(rule)
+        avoid |= set(x['name'].split('|'))  # 同じ技の 2 回目は使わない（1 回目の時刻で移るため）
+    return added
+
+
+def backup_report(src_id, rules):
+    return [f'控えの移り: {src_id} →「{r["cast"]}」{r["to"]} の {r["at"]} 秒' + (f'（{r["from"]} 秒より後）' if 'from' in r else '')
+            for r in rules]
 
 
 def swap_branches(skeleton, specs, no_backup=frozenset()):
@@ -786,9 +806,7 @@ def swap_branches(skeleton, specs, no_backup=frozenset()):
         backups += [(a2, phases[n['to']], ()) for n in a2['next'] if n.get('cast') and n['to'] in phases]  # A（後）の次へも（B の次と同じ）
         skeleton.setdefault('_backed', set()).update((src['attrs']['id'], dst['attrs']['id']) for src, dst, _ in backups)
         for src, dst, avoid in backups:
-            rule = backup_rule(src, dst, set(avoid) | set(no_backup))
-            if rule:
-                report.append(f'控えの移り: {src["attrs"]["id"]} →「{rule["cast"]}」{rule["to"]} の {rule["at"]} 秒')
+            report += backup_report(src['attrs']['id'], backup_rule(src, dst, set(avoid) | set(no_backup)))
     return report
 
 
@@ -915,13 +933,16 @@ def hub_branches(skeleton, spec):
     cands = [(dst, first, '0.0') for first, dst in entry_of.items()] + [c for c in later if len(dsts[c[1]]) == 1]
     for p in [*before, hub, again, *(m for m, end in members if end), *(phases[w] for w in waits)]:
         to = {r['cast']: r['to'] for r in p['next'] if r.get('cast')}
-        mine = names(synced(p))  # 表示だけの予定は、そのフェーズで出る技とはみなさない（Codex 指摘 10-28）
         inside = {x['attrs']['id'] for x in waits.get(p['attrs']['id'], [])}  # 見分け待ちは、自分の区間へは自分の決める技で移る
         for dst, cast, t in cands:
             d = dst['attrs']['id']
-            if d != p['attrs']['id'] and d not in inside and not mine & set(cast.split('|')) and to.setdefault(cast, d) == d \
+            # 表示だけの予定は、そのフェーズで出る技とはみなさない（Codex 指摘 10-28）。フェーズにある技でも、最後の出番が
+            # フェーズの終わりより BACKUP_FROM_GAP_S 以上前なら from を付けて使う（極ウォーリア・オブ・ライトの p1 は、後半に入る
+            # アルティメット・クロスオーバーが YouTube の録画で読めず、p1 の魔法剣・リミットチャージは 140 秒ごろまで）
+            ok, since = since_ok(p, cast)
+            if d != p['attrs']['id'] and d not in inside and ok and to.setdefault(cast, d) == d \
                     and not any(r.get('cast') == cast and r['to'] == d for r in p['next']):
-                p['next'].append({'to': d, 'at': t, 'cast': cast})
+                p['next'].append({'to': d, 'at': t, 'cast': cast, **({'from': since} if since else {})})
     ids = {hub_id, again['attrs']['id'], *(m['attrs']['id'] for m, _ in members)}
     skeleton.setdefault('_backed', set()).update((a, b) for a in ids for b in ids)
     report.append(f'待ち {hub_id}: {"・".join(m["attrs"]["id"] for m, _ in members)}')
@@ -1027,6 +1048,8 @@ def main():
                     help='そのフェーズへ移る前のフェーズに、その技の詠唱でも移る移りを足す。時刻は --events-all の討伐で、そのフェーズの'
                          '始まりから数える。骨組みはボスの詠唱だけを使うので、フェーズの頭がボス以外の技だと、ボスの最初の詠唱まで移れない'
                          '（絶アルテマ p4: 移りが 40.4 秒のアルテマで、頭の LB の知らせが出なかった。22.3 秒のダージャでも移る。0 秒の爆発霧散は録画の画面に詠唱バーが出なかった。ダージャはアシエン・ラハブレアのターゲットバーに出る。2026-10-28）')
+    ap.add_argument('--backup', action='append', default=[], metavar='移る前~移った先',
+                    help='分岐でない移りにも控えの移りを付ける（極ハイデリン p2→p3: 移る技のヘイローが YouTube の録画で読めなかった）')
     ap.add_argument('--hub', action='append', default=[], metavar='待ち=区間:終わりの技,…,区間',
                     help='どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ（極ウォーリア・オブ・ライトの後半）。書き方は hub_branches')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
@@ -1104,9 +1127,13 @@ def main():
     phases = {p['attrs']['id']: p for p in skeleton['phases']}
     for src, dst in skeleton.get('_split_pairs', []):
         if (src, dst) not in skeleton.get('_backed', set()):
-            rule = backup_rule(phases[src], phases[dst], set(args.no_backup))
-            if rule:
-                report.append(f'控えの移り: {src} →「{rule["cast"]}」{dst} の {rule["at"]} 秒')
+            report += backup_report(src, backup_rule(phases[src], phases[dst], set(args.no_backup)))
+    for spec in args.backup:
+        src, dst = spec.split('~')
+        rules = backup_rule(phases[src], phases[dst], set(args.no_backup))
+        if not rules:
+            raise SystemExit(f'--backup {spec}: {dst} に控えに使える技がありません')
+        report += backup_report(src, rules)
     for spec in args.enter:
         pid, cast = spec.split('@')
         at = None

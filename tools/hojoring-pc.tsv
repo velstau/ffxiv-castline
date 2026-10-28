@@ -41,7 +41,7 @@ the-windward-wilds-extreme	1082	100	the_Windward_Wilds_(Extreme).xml
 hell-on-rails-extreme	1083	100	Hell_on_Rails_(Extreme).xml
 the-unmaking-extreme	1084	100	the_Unmaking_(Extreme).xml
 the-cloud-of-darkness-chaotic	2061	100	The_Cloud_of_Darkness_(Chaotic).xml
-hydaelyns-call-extreme	1059	100	The_Minstrel's_Ballad_Hydaelyn's_Call(Extreme).xml	--any-order=踊P1@20 '--alias=オーレオール|サイド・オーレオール' --split=p1@ムーサスコーン=p1-dance:踊P1 --split=p1-dance@マゴスラジエンス=p1-staff:杖P1 --split=p3@ムーサスコーン=p3-dance:踊P3 --split=p3-dance@マゴスラジエンス=p3-staff:杖P3 --split=p3-staff@レディアントヘイロー=p3-end:P4 --swap=p1-dance~p1-staff --swap=p3-dance~p3-staff
+hydaelyns-call-extreme	1059	100	The_Minstrel's_Ballad_Hydaelyn's_Call(Extreme).xml	--any-order=踊P1@20 '--alias=オーレオール|サイド・オーレオール' --split=p1@ムーサスコーン=p1-dance:踊P1 --split=p1-dance@マゴスラジエンス=p1-staff:杖P1 --split=p3@ムーサスコーン=p3-dance:踊P3 --split=p3-dance@マゴスラジエンス=p3-staff:杖P3 --split=p3-staff@レディアントヘイロー=p3-end:P4 --swap=p1-dance~p1-staff --swap=p3-dance~p3-staff --backup=p2~p3
 endsingers-aria-extreme	1063	100	The_Minstrel's_Ballad_Endsinger's_Aria(Savage).xml
 storms-crown-extreme	1066	100	Storm's_Crown_(Extreme).xml
 mount-ordeals-extreme	1067	100	Mount_Ordeals_(Extreme).xml

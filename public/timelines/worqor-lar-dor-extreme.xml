@@ -101,7 +101,9 @@
     <next to="p3-thunder" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-ice-alt" at="0.0" cast="コールドディザスター"/>
     <next to="p3-thunder" at="25.2" cast="災厄の落雷"/>
+    <next to="p3-thunder" at="62.5" cast="サンダーブレス"/>
     <next to="p3-ice-alt" at="15.4" cast="アイシクルスパイク" from="46.0"/>
+    <next to="p3-ice-alt" at="71.4" cast="フリジングダスト"/>
   </phase>
   <phase id="p3-thunder" name="P3: 雷">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>
@@ -152,6 +154,7 @@
     <entry t="42.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-ice" at="0.0" cast="コールドディザスター"/>
     <next to="p3-ice" at="15.4" cast="アイシクルスパイク"/>
+    <next to="p3-ice" at="71.4" cast="フリジングダスト"/>
   </phase>
   <phase id="p3-ice" name="P3: 氷">
     <entry t="0.0" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
@@ -191,6 +194,7 @@
     <entry t="98.7" text="タンク強攻撃" castname="アイスタロン" duration="3.7" tts="タンク強攻撃" gimmick_icon="tankbuster.png"/>
     <next to="p4" at="0.0" cast="ラース・アンファールド"/>
     <next to="p4" at="15.2" cast="マウンテンファイア"/>
+    <next to="p4" at="56.6" cast="トラルディザスター"/>
   </phase>
   <phase id="p3-ice-alt" name="P3: 氷（先）">
     <entry t="0.0" text="コールドディザスター" castname="コールドディザスター" duration="1.2"/>
@@ -247,6 +251,7 @@
     <entry t="42.4" text="スリザーXXX" castname="スリザーコイル|スリザーストライク|スリザーブレス" duration="6.2"/>
     <next to="p3-thunder-2nd" at="0.0" cast="フェザーヘイル"/>
     <next to="p3-thunder-2nd" at="25.2" cast="災厄の落雷"/>
+    <next to="p3-thunder-2nd" at="62.5" cast="サンダーブレス"/>
   </phase>
   <phase id="p3-thunder-2nd" name="P3: 雷（後）">
     <entry t="0.0" text="連続距離減" castname="フェザーヘイル" duration="3.7" tts="連続距離げん"/>
@@ -280,6 +285,7 @@
     <entry t="112.0" text="塔踏み" castname="カラミティダイヴ" duration="3.7" tts="タンク塔からノックバック" gimmick_icon="tower.png"/>
     <next to="p4" at="0.0" cast="ラース・アンファールド"/>
     <next to="p4" at="15.2" cast="マウンテンファイア"/>
+    <next to="p4" at="56.6" cast="トラルディザスター"/>
   </phase>
   <phase id="p4" name="P4">
     <entry t="0.0" text="ラース・アンファールド" castname="ラース・アンファールド" duration="3.7" tts="全体攻撃"/>
