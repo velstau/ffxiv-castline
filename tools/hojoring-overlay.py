@@ -824,7 +824,13 @@ def hub_branches(skeleton, spec):
             if not ok:
                 raise SystemExit(f'--hub: {x["attrs"]["id"]} をほかの区間と見分ける技がありません')
             for e in ok[:HUB_DECIDE]:
-                wait['next'].append({'to': x['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']})
+                rule = {'to': x['attrs']['id'], 'at': f'{e["_t"]:.1f}', 'cast': e['name']}
+                # 区間に 2 回出る技は、1 回目のころだけで移る（1 回目を逃して 2 回目で移ると、時計が 2 回目との差だけ遅れる。
+                # パーフェクトデシメートは 28.1 秒と 40.3 秒。見分け待ちの時計は区間と同じ頭から数えるので、区間の秒で書ける。3c の 307a003）
+                again_t = [o['_t'] for o in synced(x) if o['name'] == e['name'] and o['_t'] > e['_t']]
+                if again_t:
+                    rule['until'] = f'{min(e["_t"] + HUB_MARGIN_S, again_t[0] - 0.5):.1f}'
+                wait['next'].append(rule)
                 if not any(set(e['name'].split('|')) & names(synced(y)) for y, _ in members if y not in ms):
                     decide.append((x, e['name'], f'{e["_t"]:.1f}'))  # 組の外の区間に出ない技は、ほかのフェーズからの控えにも使う
             report.append(f'見分け待ち {wait_id} →「{"」「".join(e["name"] for e in ok[:HUB_DECIDE])}」{x["attrs"]["id"]}')
@@ -939,7 +945,7 @@ def write_castline(skeleton, path, title, note, author='', license=''):
                    'duration': f'{float(e["duration"]):.1f}' if e.get('duration') else None}  # t・duration は必ず小数点以下 1 桁
             lines.append(f'    <entry{attr(out, ENTRY_ORDER)}/>')
         for n in p['next']:
-            lines.append(f'    <next{attr(n, ["to", "at", "cast", "hp", "time", "hp-lost"])}/>')
+            lines.append(f'    <next{attr(n, ["to", "at", "cast", "from", "until", "hp", "time", "hp-lost"])}/>')
         lines.append('  </phase>')
     lines += ['</timeline>', '']
     with open(path, 'w', encoding='utf-8') as f:
