@@ -1003,6 +1003,10 @@ def main():
     ap.add_argument('--no-spell-sync', action='store_true',
                     help='「〜を唱えた。」の同期文を同期に使わない（煉獄編4。扉ボスの区間はこの討伐に無いものがあり、'
                          '唱えたの技名が別の所に合って区間がずれる。古いコンテンツなので分岐は作らず、前の出力のままにする）')
+    ap.add_argument('--enter', action='append', default=[], metavar='フェーズ@技',
+                    help='そのフェーズへ移る前のフェーズに、その技の詠唱でも移る移りを足す。時刻は --events-all の討伐で、そのフェーズの'
+                         '始まりから数える。骨組みはボスの詠唱だけを使うので、フェーズの頭がボス以外の技だと、ボスの最初の詠唱まで移れない'
+                         '（絶アルテマ p4: 移りが 40.4 秒のアルテマで、頭の LB の知らせが出なかった。0 秒の爆発霧散でも移る）')
     ap.add_argument('--hub', action='append', default=[], metavar='待ち=区間:終わりの技,…,区間',
                     help='どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ（極ウォーリア・オブ・ライトの後半）。書き方は hub_branches')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
@@ -1083,6 +1087,25 @@ def main():
             rule = backup_rule(phases[src], phases[dst], set(args.no_backup))
             if rule:
                 report.append(f'控えの移り: {src} →「{rule["cast"]}」{dst} の {rule["at"]} 秒')
+    for spec in args.enter:
+        pid, cast = spec.split('@')
+        at = None
+        for fight in (data.get('fights', {}).values() if args.events_all else []):
+            start = fight['starts'].get(pid)
+            if start is None:
+                continue
+            end = min((t for t in fight['starts'].values() if t > start), default=float('inf'))
+            at = next((t - start for t, kind, name in fight['events'] if kind == 'b' and name == cast and start - 0.5 <= t < end), None)
+            if at is not None:
+                break
+        if at is None:
+            raise SystemExit(f'--enter {spec}: --events-all の討伐の {pid} に「{cast}」の詠唱がありません')
+        for p in skeleton['phases']:
+            if any(r.get('to') == pid for r in p['next']) and p['attrs']['id'] != pid:
+                if cast in {n for e in p['entries'] if e.get('sync') != 'false' for n in e['name'].split('|')}:
+                    raise SystemExit(f'--enter {spec}: 移る前の {p["attrs"]["id"]} にも「{cast}」があります')
+                p['next'].append({'to': pid, 'at': f'{at:.1f}', 'cast': cast})
+                report.append(f'入り口: {p["attrs"]["id"]} →「{cast}」{pid} の {at:.1f} 秒')
     for spec in args.loop:
         pid, cast = spec.split('@')
         p = next(p for p in skeleton['phases'] if p['attrs']['id'] == pid)
