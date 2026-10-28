@@ -792,6 +792,23 @@ def hub_branches(skeleton, spec):
     synced = lambda p: [e for e in p['entries'] if e.get('sync') != 'false']
     names = lambda es: {n for e in es for n in e['name'].split('|')}
     report = []
+    # 区間の外（前の中継）の表示だけの行が、骨組みの討伐の時刻で区間のフェーズへこぼれたものは、区間に置かない。
+    # 待ちに同じ技の詠唱があればその予定に文言を付ける（中継の最後の「全体攻撃」は、待ちの頭のアルティメット・クロスオーバー。
+    # この討伐では Hojoring より 22 秒早く来ていて、忍者の頭に入っていた。2026-10-28）
+    member_secs = {m['attrs'].get('name') for m, _ in members}
+    for m, _ in members:
+        keep = []
+        for e in m['entries']:
+            if not (e.get('_added') and e.get('_sec') and e['_sec'] not in member_secs):
+                keep.append(e)
+                continue
+            target = next((h for h in synced(hub) if names([h]) & names([e])), None)
+            if target is not None:
+                add_text(target, 'label', e.get('label'), ' / ')
+                target.setdefault('_notices', []).extend(n for n in e.get('_notices', []) if n not in target['_notices'])
+            report.append(f'待ち {hub_id}: {m["attrs"]["id"]} にこぼれた {e["_sec"]} の行「{e.get("label") or e["name"]}」を'
+                          + (f'待ちの「{target["name"]}」に付けた' if target is not None else '外した'))
+        m['entries'] = keep
     hub['next'] = []
     groups = {}
     for m, end in members:
@@ -878,7 +895,7 @@ def hub_branches(skeleton, spec):
     cands = [(dst, first, '0.0') for first, dst in entry_of.items()] + [c for c in later if len(dsts[c[1]]) == 1]
     for p in [*before, hub, again, *(m for m, end in members if end), *(phases[w] for w in waits)]:
         to = {r['cast']: r['to'] for r in p['next'] if r.get('cast')}
-        mine = names(p['entries'])
+        mine = names(synced(p))  # 表示だけの予定は、そのフェーズで出る技とはみなさない（Codex 指摘 10-28）
         inside = {x['attrs']['id'] for x in waits.get(p['attrs']['id'], [])}  # 見分け待ちは、自分の区間へは自分の決める技で移る
         for dst, cast, t in cands:
             d = dst['attrs']['id']

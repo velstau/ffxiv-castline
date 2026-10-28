@@ -54,7 +54,7 @@
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
   <phase id="late" name="後半（次の種を待つ）">
-    <entry t="0.0" castname="アルティメット・クロスオーバー" duration="4.7"/>
+    <entry t="0.0" text="全体攻撃" castname="アルティメット・クロスオーバー" duration="4.7" gimmick_icon="raidwide.png"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
@@ -101,7 +101,6 @@
   </phase>
   <phase id="wol-ninja" name="忍者">
     <entry t="0.0" text="魔法剣" castname="魔法剣" duration="2.7"/>
-    <entry t="1.8" text="全体攻撃" castname="アルティメット・クロスオーバー" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="9.1" text="幻光召喚" castname="幻光召喚" duration="2.7"/>
     <entry t="24.4" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="24.6" castname="水遁の術：参" sync="false"/>
@@ -114,6 +113,7 @@
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
+    <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
