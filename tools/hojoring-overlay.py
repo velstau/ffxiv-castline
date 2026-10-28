@@ -50,6 +50,9 @@ def razor_role(line):
 
 HIT = re.compile(r'^(?P<who>[^:「」^]+?)の「(?P<what>.+)」$')
 CAST = re.compile(r'^(?P<who>[^:「」^]+?)は「(?P<what>.+)」の構え。?$')
+# 魔法の詠唱開始（「ウォーリア・オブ・ライトは「五連魔」を唱えた。」。話者の無い「「サンダガ」を唱えた」も。2026-10-28）
+CAST_SPELL = re.compile(r'^(?:(?P<who>[^:「」^]+?)は)?「(?P<what>[^」]+)」を唱えた。?$')
+SPELL_SYNC = True  # --no-spell-sync で、「唱えた」を前のように同期に使わない
 SAY = re.compile(r'^(?P<who>[^:「」^]+?):(?P<what>.+)$')
 # 古い書き方（ACT のログの行そのもの）: 「ボス名:[0-9A-F]{4}:技名」は技の発動、「ボス名 starts using 技名 on 対象.」は詠唱開始
 HIT_ID = re.compile(r'^(?P<who>[^:「」^]+?):\[0-9A-F\]\{4\}:(?P<what>[^:]+)$')
@@ -77,7 +80,9 @@ def classify(sync):
         return 'none', []
     if sync.startswith('^'):
         return 'log', []
-    for kind, rx in (('cast', CAST), ('hit', HIT), ('hit', HIT_ID), ('cast', CAST_EN)):
+    for kind, rx in (('cast', CAST), ('cast', CAST_SPELL if SPELL_SYNC else None), ('hit', HIT), ('hit', HIT_ID), ('cast', CAST_EN)):
+        if rx is None:
+            continue
         m = rx.match(sync)
         if m:
             return kind, expand(m.group('what'))
@@ -492,8 +497,12 @@ def overlay(skeleton, sections, defaults, phase_of, events_of, roles, any_order=
                         # 記録した戦闘が技のまとまりを飛ばした・順番が違うとき: 窓の外の同名の技で、続く行がそろうなら、そこへ合わせ直す
                         rest = sec['items'][idx + 1:]
                         here = lookahead(rest, events, defaults, offset, last)
+                        # 詠唱開始の行は、後の行が今のずれのまま合う技へは飛ばない（極アビサルフラクチャー: この討伐に無い 349 秒の
+                        # フレアスパークの予告が、426 秒の行の詠唱へ飛んでいた。2026-10-28）。発動の行は前のまま（絶バハのプラメット）
+                        later = lambda e: it['kind'] == 'cast' and any(r['kind'] in ('hit', 'cast') and e[2] in r['names'] and e[1] == event_type(r['kind'])
+                                              and abs(r['time'] + offset - e[0]) <= FALLBACK_WINDOW for r in rest)
                         jumps = [(lookahead(rest, events, defaults, e[0] - it['time'], e[0]), e) for e in events
-                                 if e[1] in types and e[2] in it['names'] and e[0] >= last - 0.5]
+                                 if e[1] in types and e[2] in it['names'] and e[0] >= last - 0.5 and not later(e)]
                         score, ev = max(jumps, key=lambda j: (j[0], -abs(j[1][0] - target)), default=(0, None))
                         if ev is not None and score >= JUMP_MIN_SUPPORT and score > here:
                             jumped.append(f'{it["time"]:g} {ev[2]} {ev[0] - target:+.1f}')
@@ -974,6 +983,9 @@ def main():
     ap.add_argument('--no-backup', action='append', default=[], metavar='技',
                     help='控えの移り（--split・--swap で、移る技を読み逃したときの移り）に使わない技。控えは骨組みの討伐 1 本から選ぶので、別の順の討伐で枝の前にも出る技を外す'
                          '（極ヴァリガルマンダの氷先は、氷の始まりの 9 秒前にノーザンクロスが来る）')
+    ap.add_argument('--no-spell-sync', action='store_true',
+                    help='「〜を唱えた。」の同期文を同期に使わない（煉獄編4。扉ボスの区間はこの討伐に無いものがあり、'
+                         '唱えたの技名が別の所に合って区間がずれる。古いコンテンツなので分岐は作らず、前の出力のままにする）')
     ap.add_argument('--hub', action='append', default=[], metavar='待ち=区間:終わりの技,…,区間',
                     help='どの順にも来る区間を、待ちのフェーズから最初の技で選ぶ（極ウォーリア・オブ・ライトの後半）。書き方は hub_branches')
     ap.add_argument('--loop', action='append', default=[], metavar='フェーズ@技',
@@ -992,6 +1004,8 @@ def main():
     ap.add_argument('--cast-durations', metavar='PATH',
                     help='画面の詠唱バーの長さが FFLogs と違う技の表（tools/cast-durations.tsv）。出力のファイル名の行だけ使う')
     args = ap.parse_args()
+    global SPELL_SYNC
+    SPELL_SYNC = not args.no_spell_sync
 
     meta, defaults, sections, dropped = load_hojoring(args.hojoring)
     skeleton = load_skeleton(args.skeleton)

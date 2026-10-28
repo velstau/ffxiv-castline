@@ -106,8 +106,7 @@
     <entry t="111.4" castname="攻撃" sync="false"/>
     <entry t="114.4" castname="攻撃" sync="false"/>
     <entry t="117.5" castname="攻撃" sync="false"/>
-    <entry t="118.3" castname="【沈黙】闇の氾濫" sync="false" tts="沈黙"/>
-    <entry t="119.5" castname="闇の氾濫" duration="5.7"/>
+    <entry t="119.5" text="【沈黙】闇の氾濫" castname="闇の氾濫" duration="5.7" tts="沈黙"/>
     <entry t="120.5" castname="攻撃" sync="false"/>
     <entry t="123.5" castname="攻撃" sync="false"/>
     <entry t="126.5" castname="攻撃" sync="false"/>
@@ -179,8 +178,7 @@
     <entry t="281.2" text="波動砲" castname="分散式波動砲|凝縮式波動砲" duration="7.7"/>
     <entry t="288.7" castname="攻撃" sync="false"/>
     <entry t="291.7" castname="攻撃" sync="false"/>
-    <entry t="292.8" castname="闇の氾濫" duration="5.7"/>
-    <entry t="293.0" castname="【沈黙】闇の氾濫" sync="false" tts="沈黙"/>
+    <entry t="292.8" text="【沈黙】闇の氾濫" castname="闇の氾濫" duration="5.7" tts="沈黙"/>
     <entry t="293.3" castname="攻撃" sync="false"/>
     <entry t="296.3" castname="攻撃" sync="false"/>
     <entry t="299.3" castname="攻撃" sync="false"/>
@@ -191,6 +189,6 @@
     <next to="p5" time="314.5"/>
   </phase>
   <phase id="p5" name="Intermission Three">
-    <entry t="34.0" castname="移行待ち" sync="false"/>
+    <entry t="34.0" text="移行待ち" castname="闇の大氾濫" sync="false"/>
   </phase>
 </timeline>

@@ -22,8 +22,7 @@
     <entry t="42.5" castname="スパイラルスラスト" sync="false"/>
     <entry t="44.5" text="◇範囲誘導◇ / I,Aメルシー" castname="インビジブル・アスカロンメルシー" duration="2.7" tts="アスカロンメルシー"/>
     <entry t="49.6" text="マーカー注意" castname="ディメンションクラッシュ" sync="false" tts="マーカーつくよ"/>
-    <entry t="52.3" castname="線取り注意" sync="false" tts="線取り注意" gimmick_icon="tether-take.png"/>
-    <entry t="52.9" text="邪竜の魔炎" castname="邪竜の魔炎" duration="4.4" tts="頭割りとバッシュ"/>
+    <entry t="52.9" text="線取り注意 / 邪竜の魔炎" castname="邪竜の魔炎" duration="4.4" tts="線取り注意、頭割りとバッシュ" gimmick_icon="tether-take.png"/>
     <entry t="58.5" text="ディメンション" castname="ディメンションクラッシュ" sync="false"/>
     <entry t="58.9" text="バッシュ" castname="ホーリーシールドバッシュ" sync="false"/>
     <entry t="61.0" text="ブレードダンス" castname="ホーリーブレードダンス" sync="false"/>
@@ -166,12 +165,12 @@
     <entry t="97.1" castname="シャイニングブレード1" sync="false"/>
     <entry t="100.1" text="(MT)エクスキューション" castname="エクスキューション" sync="false" tts="エクスキューション。"/>
     <entry t="100.2" castname="百雷" duration="5.4"/>
-    <entry t="102.1" castname="！沈黙！" sync="false" tts="タンクが沈黙！"/>
-    <entry t="111.1" castname="鎖の予兆" sync="false" tts="鎖がつくよ"/>
+    <entry t="102.1" text="！沈黙！" castname="ホリエストブレッシング" sync="false" tts="タンクが沈黙！"/>
+    <entry t="114.2" text="鎖の予兆" castname="ヘヴンフレイム" sync="false" tts="鎖がつくよ"/>
     <entry t="114.3" castname="竜の邪眼" duration="3.7"/>
     <entry t="119.3" castname="フェイスアンムーブ" sync="false" tts="ノックバック"/>
     <entry t="121.2" castname="ヘヴンフレイム" sync="false"/>
-    <entry t="122.2" castname="！沈黙！" sync="false" tts="レンジが沈黙！"/>
+    <entry t="122.2" text="！沈黙！" castname="ホリエストブレッシング" sync="false" tts="レンジが沈黙！"/>
     <entry t="131.2" text="内外確認" castname="フルディメンション" sync="false"/>
     <entry t="135.2" text="全体攻撃" castname="ホリエストホーリー" sync="false" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="137.2" text="E/Fディメンション" castname="フルディメンション" sync="false"/>

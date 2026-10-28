@@ -7,12 +7,12 @@
   <note>FFLogs の公開ランキングの討伐の記録（10:37）から 2026-10-27 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
     <entry t="12.7" castname="Coil" sync="false"/>
-    <entry t="15.6" castname="縦回転(1回目)" sync="false"/>
+    <entry t="15.5" castname="縦回転(1回目)" sync="false"/>
     <entry t="23.9" castname="Azure Wings" sync="false"/>
-    <entry t="27.6" castname="縦回転(2回目)" sync="false"/>
+    <entry t="27.5" castname="縦回転(2回目)" sync="false"/>
     <entry t="27.9" castname="紅翼の焔" sync="false"/>
     <entry t="36.2" castname="Coil" sync="false"/>
-    <entry t="38.6" castname="横回転(1回目)" sync="false"/>
+    <entry t="38.5" castname="横回転(1回目)" sync="false"/>
     <entry t="42.6" text="アク・モーン" castname="アク・モーン" duration="4.7"/>
     <entry t="49.6" castname="アク・モーン" sync="false"/>
     <entry t="50.7" castname="アク・モーン" sync="false"/>
@@ -38,10 +38,9 @@
     <entry t="137.7" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンドきます"/>
     <entry t="150.1" castname="Coil" sync="false"/>
     <entry t="153.7" castname="横回転(1回目)" sync="false"/>
-    <entry t="156.2" castname="ノーザンクロス" duration="2.7"/>
-    <entry t="156.7" castname="ノーザンクロス" sync="false" tts="床凍ります"/>
+    <entry t="156.2" text="ノーザンクロス" castname="ノーザンクロス" duration="2.7" tts="床凍ります"/>
     <entry t="163.4" castname="Azure Wings" sync="false"/>
-    <entry t="166.7" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="166.2" castname="ランダム回転(2回目)" sync="false"/>
     <entry t="166.9" castname="蒼翼の焔" sync="false"/>
     <entry t="170.6" text="アク・ラーイ" castname="アク・ラーイ" duration="2.7"/>
     <entry t="175.7" castname="フリージングダスト" sync="false"/>
@@ -104,11 +103,10 @@
     <entry t="507.6" castname="アク・モーン" sync="false"/>
     <entry t="519.4" castname="Coil" sync="false"/>
     <entry t="522.3" castname="ランダム回転(1回目)" sync="false"/>
-    <entry t="525.3" castname="ノーザンクロス" sync="false" tts="床凍ります"/>
-    <entry t="525.5" castname="ノーザンクロス" duration="2.7"/>
+    <entry t="525.5" text="ノーザンクロス" castname="ノーザンクロス" duration="2.7" tts="床凍ります"/>
     <entry t="532.7" castname="Azure Wings" sync="false"/>
-    <entry t="533.3" text="サンダーストーム" castname="サンダーストーム on" sync="false"/>
-    <entry t="536.3" castname="ランダム回転(2回目)" sync="false"/>
+    <entry t="533.5" text="サンダーストーム" castname="サンダーストーム on" sync="false"/>
+    <entry t="536.5" castname="ランダム回転(2回目)" sync="false"/>
     <entry t="541.3" text="ホリッドロア" castname="ホリッドロア" duration="3.2" tts="AOEきます"/>
     <entry t="553.0" text="アク・ラーイ" castname="アク・ラーイ" duration="2.7"/>
     <entry t="558.1" text="テイルエンド" castname="テイルエンド" duration="3.7" tts="テイルエンド連続できます、テイルエンドきます"/>

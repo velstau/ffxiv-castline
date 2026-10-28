@@ -38,8 +38,7 @@
     <entry t="191.9" castname="キングダム・サンダラ" sync="false"/>
     <entry t="193.9" castname="キングダム・サンダラ" sync="false"/>
     <entry t="195.9" castname="キングダム・サンダラ" sync="false"/>
-    <entry t="196.6" text="着弾" castname="キングダム・サンダガ" duration="4.0"/>
-    <entry t="196.8" castname="散開" sync="false" tts="散開" gimmick_icon="spread.png"/>
+    <entry t="196.6" text="散開 / 着弾" castname="キングダム・サンダガ" duration="4.0" tts="散開" gimmick_icon="spread.png"/>
     <entry t="204.0" text="全体攻撃" castname="ローズ・カタルシス" duration="4.7" tts="全体攻撃" gimmick_icon="raidwide.png"/>
     <entry t="216.4" text="二式(AoE避け)" castname="魔法陣展開・二式" duration="2.3" tts="AoE避け"/>
     <entry t="222.6" text="雷鳴剣" castname="雷鳴剣" duration="5.7"/>
@@ -92,7 +91,7 @@
     <entry t="522.0" text="開始" castname="ホーリーハザード" sync="false"/>
     <entry t="537.0" text="魔法陣(回転AoE)" castname="魔法陣展開" sync="false" tts="回転えーおーいー" gimmick_icon="rotation.png"/>
     <entry t="546.0" castname="キングダム・サンダラ" sync="false"/>
-    <entry t="561.0" castname="散開" sync="false" tts="次は、キングダム・サンダガ。" gimmick_icon="spread.png"/>
+    <entry t="561.0" text="散開" castname="キングダム・サンダガ" sync="false" tts="次は、キングダム・サンダガ。" gimmick_icon="spread.png"/>
     <entry t="566.0" text="着弾" castname="キングダム・サンダガ" sync="false"/>
     <entry t="574.0" castname="全体攻撃" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="601.0" castname="以後調査中" sync="false"/>

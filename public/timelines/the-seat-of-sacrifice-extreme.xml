@@ -11,44 +11,31 @@
     <entry t="13.7" text="リミットチャージ" castname="リミットチャージ" duration="2.7"/>
     <entry t="21.9" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="25.5" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="27.5" castname="ストンガ" sync="false" tts="次は、散開。"/>
-    <entry t="28.0" castname="アブソリュートストンガ" duration="4.7"/>
+    <entry t="28.0" text="ストンガ" castname="アブソリュートストンガ" duration="4.7" tts="次は、散開。"/>
     <entry t="33.1" castname="アブソリュートストンガ" sync="false"/>
-    <entry t="35.5" castname="LB（メテオ）" sync="false" tts="次は、メテオ。四隅えー。"/>
-    <entry t="36.2" castname="リミットブレイク" duration="5.7"/>
-    <entry t="51.5" castname="魔法剣１" sync="false"/>
-    <entry t="52.5" castname="魔法剣" duration="2.7"/>
-    <entry t="60.5" castname="魔法剣２" sync="false"/>
-    <entry t="61.6" castname="魔法剣" duration="2.7"/>
+    <entry t="36.2" text="LB（メテオ）" castname="リミットブレイク" duration="5.7" tts="次は、メテオ。四隅えー。"/>
+    <entry t="52.5" text="魔法剣１" castname="魔法剣" duration="2.7"/>
+    <entry t="61.6" text="魔法剣２" castname="魔法剣" duration="2.7"/>
     <entry t="70.8" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
     <entry t="77.8" castname="アブソリュートストンガ" sync="false"/>
-    <entry t="81.9" castname="リミットチャージ" duration="2.7"/>
-    <entry t="82.8" castname="リミットチャージ" sync="false"/>
-    <entry t="90.1" castname="ソード・オブ・ライト" duration="2.7"/>
-    <entry t="90.8" castname="ソード・オブ・ライト" sync="false" tts="次は、あんちを探す。"/>
-    <entry t="105.3" castname="アブソリュートホーリー" duration="4.7"/>
-    <entry t="105.8" castname="頭割り" sync="false" gimmick_icon="stack.png"/>
+    <entry t="81.9" text="リミットチャージ" castname="リミットチャージ" duration="2.7"/>
+    <entry t="90.1" text="ソード・オブ・ライト" castname="ソード・オブ・ライト" duration="2.7" tts="次は、あんちを探す。"/>
+    <entry t="105.3" text="頭割り" castname="アブソリュートホーリー" duration="4.7" gimmick_icon="stack.png"/>
     <entry t="113.5" text="リミットブレイク" castname="リミットブレイク" duration="5.7" tts="次は、頭割り二回。"/>
     <entry t="119.8" text="デスペラード１" castname="ブライトデスペラード" sync="false"/>
     <entry t="124.1" text="デスペラード２" castname="ブライトデスペラード" sync="false"/>
-    <entry t="128.1" castname="リミットチャージ" sync="false"/>
-    <entry t="130.4" castname="リミットチャージ" duration="2.7"/>
-    <entry t="136.1" castname="魔法剣１" sync="false"/>
-    <entry t="138.5" castname="魔法剣" duration="2.7"/>
-    <entry t="145.1" castname="魔法剣２" sync="false"/>
-    <entry t="147.7" castname="魔法剣" duration="2.7"/>
+    <entry t="130.4" text="リミットチャージ" castname="リミットチャージ" duration="2.7"/>
+    <entry t="138.5" text="魔法剣１" castname="魔法剣" duration="2.7"/>
+    <entry t="147.7" text="魔法剣２" castname="魔法剣" duration="2.7"/>
     <entry t="156.8" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
     <entry t="167.9" text="LB（ブレイバー）" castname="リミットブレイク" duration="5.7" tts="次は、ロールごとに散開。"/>
     <entry t="174.2" castname="ブライトブレイバー" sync="false"/>
     <entry t="182.3" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
-    <entry t="190.3" castname="サモン・ウィルム" sync="false"/>
-    <entry t="190.5" castname="サモン・ウィルム" duration="2.7"/>
-    <entry t="196.3" castname="フラッシュ（視線）" sync="false" gimmick_icon="gaze-away.png"/>
-    <entry t="196.6" castname="アブソリュートフラッシュ" duration="4.7"/>
+    <entry t="190.5" text="サモン・ウィルム" castname="サモン・ウィルム" duration="2.7"/>
+    <entry t="196.6" text="フラッシュ（視線）" castname="アブソリュートフラッシュ" duration="4.7" gimmick_icon="gaze-away.png"/>
     <entry t="196.6" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7" tts="AOEが出たら移動。"/>
     <entry t="199.7" castname="カータライズ" sync="false"/>
-    <entry t="204.3" castname="エンシェントドラゴンダイブ" sync="false" tts="次は、全体強攻撃。"/>
-    <entry t="204.8" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="204.8" text="エンシェントドラゴンダイブ" castname="エンシェントドラゴンダイブ" duration="4.7" tts="次は、全体強攻撃。"/>
     <entry t="220.5" text="幻光召喚" castname="幻光召喚" duration="2.7"/>
     <entry t="241.9" text="タンク強攻撃" castname="フェイタルクリーヴ" duration="3.7" gimmick_icon="tankbuster.png"/>
     <entry t="243.1" text="DPS散開" castname="ヘビーレイン・オブ・デス" sync="false" gimmick_icon="spread.png"/>
@@ -57,9 +44,9 @@
     <entry t="250.1" text="バハ召喚" castname="召喚" sync="false"/>
     <entry t="254.1" castname="バーサク" duration="4.7"/>
     <entry t="254.1" text="真暗黒・バーサク" castname="真暗黒" sync="false"/>
-    <entry t="254.1" castname="フレアブレス" sync="false"/>
+    <entry t="261.3" castname="フレアブレス" sync="false"/>
     <entry t="269.2" castname="フェイタルクリーヴ" duration="3.7"/>
-    <entry t="269.2" text="タンク強攻撃" castname="漆黒の魔剣" sync="false" gimmick_icon="tankbuster.png"/>
+    <entry t="273.3" text="タンク強攻撃" castname="漆黒の魔剣" sync="false" gimmick_icon="tankbuster.png"/>
     <entry t="285.4" text="タンク強攻撃" castname="フェイタルクリーヴ" duration="3.7" gimmick_icon="tankbuster.png"/>
     <next to="late" at="0.0" cast="アルティメット・クロスオーバー"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
@@ -68,7 +55,6 @@
   </phase>
   <phase id="late" name="後半（次の種を待つ）">
     <entry t="0.0" castname="アルティメット・クロスオーバー" duration="4.7"/>
-    <entry t="22.5" text="全体攻撃" castname="アルティメット・クロスオーバー" sync="false" gimmick_icon="raidwide.png"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
@@ -115,27 +101,31 @@
   </phase>
   <phase id="wol-ninja" name="忍者">
     <entry t="0.0" text="魔法剣" castname="魔法剣" duration="2.7"/>
+    <entry t="1.8" text="全体攻撃" castname="アルティメット・クロスオーバー" sync="false" gimmick_icon="raidwide.png"/>
     <entry t="9.1" text="幻光召喚" castname="幻光召喚" duration="2.7"/>
     <entry t="24.4" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="24.6" castname="水遁の術：参" sync="false"/>
-    <entry t="28.0" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="30.6" castname="ソーレムコンフィテオル" sync="false"/>
+    <entry t="28.0" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="32.7" castname="火遁の術：参" sync="false"/>
     <entry t="39.9" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
-    <entry t="51.1" castname="エンシェントドラゴンダイブ" duration="4.7"/>
-    <entry t="58.9" castname="エンシェントドラゴンダイブ" sync="false" tts="次は、全体攻撃"/>
+    <entry t="51.1" text="エンシェントドラゴンダイブ" castname="エンシェントドラゴンダイブ" duration="4.7" tts="次は、全体攻撃"/>
     <entry t="64.3" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。"/>
     <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
     <next to="wol-sb" at="28.1" cast="パーフェクトデシメート"/>
-    <next to="wol-final" at="11.3" cast="アルティメット・クロスオーバー"/>
     <next to="wol-dk" at="31.9" cast="アブソリュートホーリー"/>
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
   <phase id="wol-five" name="五連魔">
-    <entry t="0.0" castname="五連魔" duration="11.7"/>
-    <entry t="38.8" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="0.0" text="五連魔" castname="五連魔" duration="11.7" tts="次は、五連魔。"/>
+    <entry t="15.7" castname="発動１" sync="false"/>
+    <entry t="18.9" castname="発動２" sync="false"/>
+    <entry t="22.0" castname="発動３" sync="false"/>
+    <entry t="25.1" castname="発動４" sync="false"/>
+    <entry t="28.2" castname="発動５" sync="false"/>
+    <entry t="35.0" castname="ソード・オブ・ライト" sync="false" tts="次は、あんちを探す。"/>
+    <entry t="38.8" text="エンシェントドラゴンダイブ" castname="エンシェントドラゴンダイブ" duration="4.7" tts="次は、全体攻撃。"/>
     <next to="late-again" at="0.0" cast="エンシェントドラゴンダイブ"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>
@@ -147,19 +137,15 @@
     <next to="wol-wb" at="41.5" cast="ブライトセイバー"/>
   </phase>
   <phase id="wol-dk" name="暗黒騎士">
-    <entry t="0.0" castname="リミットチャージ" sync="false"/>
-    <entry t="0.0" castname="リミットチャージ" duration="2.7"/>
+    <entry t="0.0" text="リミットチャージ" castname="リミットチャージ" duration="2.7"/>
     <entry t="8.1" text="幻光召喚" castname="幻光召喚" duration="2.7" tts="次は、暗黒騎士"/>
-    <entry t="14.1" castname="ソーレムコンフィテオル" sync="false"/>
-    <entry t="14.3" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="14.3" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="16.4" castname="ブリムストーンアース" sync="false" tts="次は、広がるAOE。"/>
     <entry t="17.9" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="25.2" castname="ヘビーレイン・オブ・デス" sync="false"/>
-    <entry t="31.2" castname="ホーリー（頭割り）" sync="false" tts="次は、頭割り。" gimmick_icon="stack.png"/>
-    <entry t="31.9" castname="アブソリュートホーリー" duration="4.7"/>
+    <entry t="31.9" text="ホーリー（頭割り）" castname="アブソリュートホーリー" duration="4.7" tts="次は、頭割り。" gimmick_icon="stack.png"/>
     <entry t="36.9" castname="アブソリュートホーリー" sync="false"/>
-    <entry t="45.2" castname="リミットブレイク" sync="false" tts="次は、リミットブレイク。"/>
-    <entry t="46.2" castname="リミットブレイク" duration="5.7"/>
+    <entry t="46.2" text="リミットブレイク" castname="リミットブレイク" duration="5.7" tts="次は、リミットブレイク。"/>
     <entry t="64.4" text="エンドオール" castname="エンドオール" duration="4.7" tts="次は、タンク強攻撃。" window="20 10"/>
     <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="late-wol-ninja-wol-sb" at="0.0" cast="魔法剣"/>
@@ -171,19 +157,17 @@
   </phase>
   <phase id="wol-wb" name="白黒魔道士">
     <entry t="0.0" text="幻光召喚" castname="幻光召喚" duration="2.7"/>
-    <entry t="6.0" castname="リミットチャージ" sync="false"/>
-    <entry t="6.1" castname="リミットチャージ" duration="2.7"/>
-    <entry t="9.0" castname="ふたりがけ" sync="false" tts="次は、塔踏み。"/>
-    <entry t="27.0" castname="塔着弾１" sync="false" gimmick_icon="tower.png"/>
-    <entry t="29.0" castname="塔着弾２" sync="false" gimmick_icon="tower.png"/>
-    <entry t="31.0" castname="塔着弾３" sync="false" gimmick_icon="tower.png"/>
-    <entry t="33.0" castname="塔着弾４" sync="false" gimmick_icon="tower.png"/>
-    <entry t="35.0" castname="塔着弾５" sync="false" gimmick_icon="tower.png"/>
-    <entry t="35.0" castname="サモン・ウィルム" sync="false" tts="次は、サモン・ウィルム。"/>
-    <entry t="35.4" castname="サモン・ウィルム" duration="2.7"/>
-    <entry t="37.0" castname="塔着弾６" sync="false" gimmick_icon="tower.png"/>
-    <entry t="39.0" castname="塔着弾７" sync="false" gimmick_icon="tower.png"/>
-    <entry t="41.0" castname="塔着弾８" sync="false" gimmick_icon="tower.png"/>
+    <entry t="6.1" text="リミットチャージ" castname="リミットチャージ" duration="2.7"/>
+    <entry t="9.1" castname="ふたりがけ" sync="false" tts="次は、塔踏み。"/>
+    <entry t="27.1" castname="塔着弾１" sync="false" gimmick_icon="tower.png"/>
+    <entry t="29.1" castname="塔着弾２" sync="false" gimmick_icon="tower.png"/>
+    <entry t="31.1" castname="塔着弾３" sync="false" gimmick_icon="tower.png"/>
+    <entry t="33.1" castname="塔着弾４" sync="false" gimmick_icon="tower.png"/>
+    <entry t="35.1" castname="塔着弾５" sync="false" gimmick_icon="tower.png"/>
+    <entry t="35.4" text="サモン・ウィルム" castname="サモン・ウィルム" duration="2.7" tts="次は、サモン・ウィルム。"/>
+    <entry t="37.4" castname="塔着弾６" sync="false" gimmick_icon="tower.png"/>
+    <entry t="39.4" castname="塔着弾７" sync="false" gimmick_icon="tower.png"/>
+    <entry t="41.4" castname="塔着弾８" sync="false" gimmick_icon="tower.png"/>
     <entry t="41.5" text="ブライトセイバー" castname="ブライトセイバー" duration="6.7"/>
     <entry t="44.6" castname="カータライズ" sync="false"/>
     <entry t="54.8" text="リミットブレイク" castname="リミットブレイク" duration="5.7" tts="次は、リミットブレイク。"/>
@@ -201,22 +185,19 @@
     <entry t="0.0" text="魔法剣" castname="魔法剣" duration="2.7"/>
     <entry t="9.1" text="幻光召喚" castname="幻光召喚" duration="2.7" tts="次は、召喚。"/>
     <entry t="28.1" text="デシメート" castname="パーフェクトデシメート" duration="4.7"/>
-    <entry t="28.1" castname="フレアブレス" sync="false"/>
     <entry t="28.5" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="29.1" castname="ソーレムコンフィテオル" sync="false"/>
-    <entry t="32.1" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="34.9" castname="フレアブレス" sync="false"/>
-    <entry t="39.8" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="32.1" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="34.7" castname="フレアブレス" sync="false"/>
+    <entry t="39.8" castname="ソーレムコンフィテオル" duration="2.7"/>
     <entry t="40.3" text="デシメート" castname="パーフェクトデシメート" duration="4.7"/>
-    <entry t="43.4" castname="ソーレムコンフィテオル" duration="2.7"/>
-    <entry t="48.8" castname="サモン・ウィルム" sync="false"/>
-    <entry t="50.0" castname="サモン・ウィルム" duration="2.7"/>
+    <entry t="43.4" text="ソーレムコンフィテオル" castname="ソーレムコンフィテオル" duration="2.7"/>
+    <entry t="46.8" castname="フレアブレス" sync="false"/>
+    <entry t="50.0" text="サモン・ウィルム" castname="サモン・ウィルム" duration="2.7"/>
     <entry t="58.5" text="ブライトセイバー" castname="魔法剣技：ブライトセイバー" duration="6.7"/>
-    <entry t="59.3" castname="カータライズ" sync="false"/>
-    <entry t="69.3" castname="エンシェントドラゴンダイブ" sync="false" tts="次は、全体攻撃。"/>
-    <entry t="69.7" castname="エンシェントドラゴンダイブ" duration="4.7"/>
+    <entry t="63.2" castname="カータライズ" sync="false"/>
+    <entry t="69.7" text="エンシェントドラゴンダイブ" castname="エンシェントドラゴンダイブ" duration="4.7" tts="次は、全体攻撃。"/>
     <entry t="81.7" castname="トゥルー・インビンシブル" sync="false"/>
-    <entry t="82.3" castname="エンドオール" sync="false" tts="次は、タンク強攻撃。"/>
+    <entry t="87.6" castname="エンドオール" sync="false" tts="次は、タンク強攻撃。"/>
     <next to="late-again" at="0.0" cast="エンドオール"/>
     <next to="wol-five" at="0.0" cast="五連魔"/>
     <next to="wol-dk" at="0.0" cast="リミットチャージ"/>

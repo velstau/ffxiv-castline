@@ -215,7 +215,7 @@
     <entry t="318.8" text="ツイスターダイブ" castname="ツイスターダイブ" duration="3.7" tts="ツイスター。"/>
     <entry t="320.8" castname="メガフレア頭割り" sync="false" gimmick_icon="stack.png"/>
     <entry t="321.8" castname="メガフレア塔踏み" sync="false" gimmick_icon="tower.png"/>
-    <entry t="338.0" castname="バフ忘れないで！！" sync="false" tts="バフ忘れない、バフ忘れない"/>
+    <entry t="337.9" castname="バフ忘れないで！！" sync="false" tts="バフ忘れない、バフ忘れない"/>
     <next to="p4" time="338.6"/>
   </phase>
   <phase id="p4" name="P4: Triple Threat">
@@ -238,7 +238,7 @@
     <entry t="36.8" castname="レイヴンダイブ" sync="false"/>
     <entry t="40.0" castname="サーミオニックビーム" sync="false"/>
     <entry t="41.1" text="ツイスター" castname="ツイスター" duration="1.7"/>
-    <entry t="49.1" castname="メガフレア" duration="4.7"/>
+    <entry t="49.1" text="メガフレア" castname="メガフレア" duration="4.7"/>
     <entry t="53.1" castname="誘導チャンス" sync="false" tts="誘導チャンス"/>
     <entry t="58.3" text="ビーク/デスセン" castname="レイヴェンズビーク" duration="3.7" tts="タニアを挑発するー"/>
     <entry t="58.3" castname="デスセンテンス" duration="3.7"/>
@@ -267,14 +267,13 @@
     <entry t="115.0" text="ビーク/デスセン" castname="レイヴェンズビーク" duration="3.7" tts="ネールを挑発するー"/>
     <entry t="116.5" castname="ツイスター" sync="false"/>
     <entry t="124.5" castname="プラメット" sync="false"/>
-    <entry t="126.1" castname="メガフレア" duration="4.7"/>
+    <entry t="126.1" text="メガフレア" castname="メガフレア" duration="4.7"/>
     <entry t="126.5" text="【誘導】ヘルリキッド" castname="ヘルリキッド" sync="false"/>
-    <entry t="127.0" castname="メガフレア" sync="false"/>
     <entry t="132.5" castname="魔力錬成x2" sync="false"/>
     <entry t="138.5" text="【ランダム】ヘルリキッド" castname="ヘルリキッド" sync="false"/>
     <entry t="138.5" castname="ファイアボール" sync="false"/>
     <entry t="140.5" castname="ネールの憤怒" duration="2.7"/>
-    <entry t="149.0" castname="時間切れ" sync="false"/>
+    <entry t="148.1" castname="時間切れ" sync="false"/>
     <entry t="150.5" text="デスセンテンス(S→M)" castname="デスセンテンス" sync="false"/>
     <entry t="158.5" castname="プラメット" sync="false"/>
     <entry t="159.5" castname="テラフレア" sync="false"/>
@@ -282,9 +281,9 @@
     <next to="p5" at="19.9" cast="モーン・アファー"/>
   </phase>
   <phase id="p5" name="P5: Reborn!">
-    <entry t="12.4" castname="終了待ち" sync="false"/>
+    <entry t="11.5" castname="終了待ち" sync="false"/>
     <entry t="19.9" text="モーン・アファー1" castname="モーン・アファー" duration="5.7"/>
-    <entry t="26.4" castname="転生の炎" sync="false"/>
+    <entry t="25.5" castname="転生の炎" sync="false"/>
     <entry t="28.1" text="アク・モーン1" castname="アク・モーン" duration="3.7"/>
     <entry t="34.3" castname="アク・モーン" sync="false"/>
     <entry t="35.4" castname="アク・モーン" sync="false"/>

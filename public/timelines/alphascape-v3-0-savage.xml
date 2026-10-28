@@ -19,24 +19,21 @@
     <entry t="88.5" text="サークルプログラム" castname="サークルプログラム" duration="3.7"/>
     <entry t="101.5" castname="フェーズ移行待機" sync="false"/>
     <entry t="102.7" text="プログラム実行" castname="プログラム実行" duration="4.7"/>
-    <entry t="109.7" castname="マグネット" duration="6.7"/>
-    <entry t="110.7" castname="マグネット" sync="false"/>
-    <entry t="111.7" castname="Marker:00A2" sync="false"/>
-    <entry t="111.7" castname="Marker:00A3" sync="false"/>
+    <entry t="109.7" text="マグネット" castname="マグネット" duration="6.7"/>
+    <entry t="110.7" castname="Marker:00A2" sync="false"/>
+    <entry t="110.7" castname="Marker:00A3" sync="false"/>
     <entry t="119.8" castname="記憶汚染除去P" sync="false"/>
     <entry t="124.9" text="プログラム実行" castname="プログラム実行" duration="4.7"/>
-    <entry t="156.9" castname="初期化（周辺円範囲）" sync="false" tts="次は、外周あんち。"/>
-    <entry t="157.0" castname="初期化" duration="2.7"/>
-    <entry t="163.1" castname="最適化" duration="2.7"/>
-    <entry t="163.9" castname="最適化（ドーナツ範囲）" sync="false" tts="次は、ドーナツ範囲。" gimmick_icon="dynamo.png"/>
+    <entry t="157.0" text="初期化（周辺円範囲）" castname="初期化" duration="2.7" tts="次は、外周あんち。"/>
+    <entry t="163.1" text="最適化（ドーナツ範囲）" castname="最適化" duration="2.7" tts="次は、ドーナツ範囲。" gimmick_icon="dynamo.png"/>
     <entry t="198.1" castname="アトミックレイ" duration="3.7"/>
     <entry t="209.2" castname="マスタードボム" duration="4.7"/>
-    <entry t="211.9" castname="強制終了" sync="false"/>
+    <entry t="211.1" castname="強制終了" sync="false"/>
     <entry t="216.4" castname="火炎放射" duration="3.7"/>
     <entry t="220.5" castname="アフターバーナー" duration="1.7"/>
     <entry t="225.1" castname="右舷斉射・波動砲" duration="4.7"/>
     <entry t="232.7" castname="左舷斉射・波動砲" duration="2.7"/>
-    <entry t="238.9" text="フェーズ移行" castname="デルタアタック" sync="false"/>
+    <entry t="238.1" text="フェーズ移行" castname="デルタアタック" sync="false"/>
     <entry t="244.4" castname="プリントアウト" duration="2.7"/>
     <entry t="258.6" castname="マスタードボム" duration="4.7"/>
     <entry t="278.7" castname="サークルプログラム" duration="3.7"/>
@@ -110,8 +107,7 @@
     <entry t="782.6" castname="右舷斉射・零式波動砲" duration="3.7"/>
     <entry t="786.4" castname="零式波動砲（逆側に移動）" sync="false"/>
     <entry t="789.2" castname="右舷斉射・零式波動砲" sync="false"/>
-    <entry t="796.4" castname="ミールストーム" sync="false"/>
-    <entry t="797.8" castname="ミールストーム" duration="3.7"/>
+    <entry t="797.8" text="ミールストーム" castname="ミールストーム" duration="3.7"/>
     <entry t="811.0" text="マスタードボム" castname="マスタードボム" duration="4.7" tts="次は、マスタードボム。"/>
     <entry t="818.2" text="ブラスター（線取り）" castname="ブラスター" sync="false" gimmick_icon="tether-take.png"/>
     <entry t="822.3" text="アトミックレイ" castname="アトミックレイ" duration="3.7"/>

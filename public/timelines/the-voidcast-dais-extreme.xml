@@ -7,23 +7,19 @@
   <license>CC BY-SA</license>
   <note>FFLogs の公開ランキングの討伐の記録（10:58）から 2026-10-21 に生成。t は詠唱開始、duration は詠唱時間。詠唱の無い技は sync="false"（表示だけ） text は表示、tts は読み上げの文言。sync="false" の予定には、補助の敵の技や台詞など、詠唱バーで合わせられないものも含む</note>
   <phase id="p1">
-    <entry t="11.9" castname="【予告】ディレイアース" sync="false" tts="たまの位置をチェックー"/>
-    <entry t="13.1" text="ディレイアース" castname="ディレイアース" duration="2.7"/>
+    <entry t="13.1" text="【予告】ディレイアース / ディレイアース" castname="ディレイアース" duration="2.7" tts="たまの位置をチェックー"/>
     <entry t="17.2" castname="ディレイアース" duration="7.7"/>
-    <entry t="23.0" castname="【予告】ディレイスパーク" sync="false" tts="次は、たけのこちゅういー"/>
-    <entry t="23.2" text="ディレイスパーク" castname="ディレイスパーク" duration="2.7"/>
+    <entry t="23.2" text="【予告】ディレイスパーク / ディレイスパーク" castname="ディレイスパーク" duration="2.7" tts="次は、たけのこちゅういー"/>
     <entry t="27.4" castname="ディレイスパーク" duration="2.7"/>
     <entry t="30.6" text="【予告】弦月連剣 / 弦月連剣" castname="弦月連剣" duration="4.7" tts="次は、2連続範囲"/>
     <entry t="37.4" castname="弦月連剣" sync="false"/>
     <entry t="43.5" text="【予告】呪縛の冷気 / 呪縛の冷気" castname="呪縛の冷気" duration="4.7" tts="次は、全体攻撃"/>
     <entry t="59.0" text="【予告】ウィンドスフィア / ウィンドスフィア" castname="ウィンドスフィア" duration="2.7" tts="次、外周のゴルベーザをチェックー"/>
-    <entry t="74.0" castname="【予告】コールドブラスト" sync="false" tts="トゲに注意、トゲに注意、"/>
-    <entry t="74.7" text="コールドブラスト" castname="コールドブラスト" duration="2.7"/>
+    <entry t="74.7" text="【予告】コールドブラスト / コールドブラスト" castname="コールドブラスト" duration="2.7" tts="トゲに注意、トゲに注意、"/>
     <entry t="86.0" text="【予告】弦月連剣 / 弦月連剣" castname="弦月連剣" duration="4.7" tts="次は、2連続範囲"/>
     <entry t="92.8" castname="弦月連剣" sync="false"/>
     <entry t="98.9" text="【予告】呪縛の冷気 / 呪縛の冷気" castname="呪縛の冷気" duration="4.7" tts="次は、全体攻撃"/>
-    <entry t="106.9" castname="【予告】ヴォイド・メテオ" sync="false" tts="次は、タンクにきょう攻撃"/>
-    <entry t="107.1" text="ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7"/>
+    <entry t="107.1" text="【予告】ヴォイド・メテオ / ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7" tts="次は、タンクにきょう攻撃"/>
     <entry t="112.1" castname="ヴォイド・コメット" sync="false"/>
     <entry t="114.2" castname="ヴォイド・コメット" sync="false"/>
     <entry t="116.2" castname="ヴォイド・メテオ" sync="false"/>
@@ -38,16 +34,14 @@
     <entry t="179.8" text="【予告】弦月黒竜連剣 / 弦月黒竜連剣" castname="弦月黒竜連剣" duration="4.7" tts="次は、2連続範囲、ディレイギミックにちゅういー"/>
     <entry t="179.9" castname="昇竜輪火" duration="9.3"/>
     <entry t="186.6" castname="弦月黒竜連剣" sync="false"/>
-    <entry t="195.1" text="ダブルメテオ" castname="ダブルメテオ" duration="10.7"/>
+    <entry t="195.1" text="【予告】ダブルメテオ / ダブルメテオ" castname="ダブルメテオ" duration="10.7" tts="次は、ノックバック、とうふみー"/>
     <entry t="195.1" castname="爆発" duration="10.2"/>
-    <entry t="195.6" castname="【予告】ダブルメテオ" sync="false" tts="次は、ノックバック、とうふみー"/>
     <entry t="207.8" text="【ヒラ誘導】カータライズ" castname="カータライズ" sync="false"/>
     <entry t="221.5" text="【予告】黒竜剣アジュダヤ / 黒竜剣アジュダヤ" castname="黒竜剣アジュダヤ" duration="7.7" tts="次、たんくすいっちあるよー"/>
     <entry t="234.6" text="黒竜炎" castname="黒竜炎" sync="false"/>
     <entry t="237.7" text="黒竜炎" castname="黒竜炎" sync="false"/>
     <entry t="240.8" text="黒竜炎" castname="黒竜炎" sync="false"/>
-    <entry t="244.8" castname="【予告】ヴォイド・コメットレイン" sync="false" tts="次は、コメットレイン、あんちかくにんー"/>
-    <entry t="245.3" text="ヴォイド・コメットレイン" castname="ヴォイド・コメットレイン" duration="2.7"/>
+    <entry t="245.3" text="【予告】ヴォイド・コメットレイン / ヴォイド・コメットレイン" castname="ヴォイド・コメットレイン" duration="2.7" tts="次は、コメットレイン、あんちかくにんー"/>
     <entry t="248.8" castname="ヴォイド・コメットレイン" duration="5.5"/>
     <entry t="255.9" castname="ヴォイド・コメットレイン" sync="false"/>
     <entry t="257.1" castname="ヴォイド・コメットレイン" sync="false"/>
@@ -56,24 +50,20 @@
     <entry t="267.9" castname="三連黒竜閃" sync="false"/>
     <entry t="269.8" castname="三連黒竜閃" sync="false"/>
     <entry t="273.4" text="【予告】呪縛の冷気 / 呪縛の冷気" castname="呪縛の冷気" duration="4.7" tts="次は、全体攻撃"/>
-    <entry t="280.4" castname="【予告】ヴォイド・メテオ" sync="false" tts="次は、タンクにきょう攻撃"/>
-    <entry t="281.6" text="ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7"/>
+    <entry t="281.6" text="【予告】ヴォイド・メテオ / ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7" tts="次は、タンクにきょう攻撃"/>
     <entry t="286.7" castname="ヴォイド・コメット" sync="false"/>
     <entry t="288.7" castname="ヴォイド・コメット" sync="false"/>
     <entry t="290.7" castname="ヴォイド・メテオ" sync="false"/>
     <entry t="294.9" text="【予告】弦月黒竜連剣 / 弦月黒竜連剣" castname="弦月黒竜連剣" duration="4.7" tts="次は、2連続範囲、ディレイギミックにちゅういー"/>
     <entry t="295.1" castname="昇竜烽火" duration="9.3"/>
     <entry t="301.7" castname="弦月黒竜連剣" sync="false"/>
-    <entry t="317.2" text="ディレイアース" castname="ディレイアース" duration="2.7"/>
-    <entry t="318.7" castname="【予告】ディレイアース" sync="false" tts="たまの位置をチェックー、よんよんであたまわりちゅういー"/>
+    <entry t="317.2" text="【予告】ディレイアース / ディレイアース" castname="ディレイアース" duration="2.7" tts="たまの位置をチェックー、よんよんであたまわりちゅういー"/>
     <entry t="321.4" castname="ディレイアース" duration="7.7"/>
-    <entry t="322.2" castname="【予告】コールドブラスト" sync="false" tts="あたまわりくるよー"/>
-    <entry t="323.4" text="コールドブラスト" castname="コールドブラスト" duration="2.7"/>
+    <entry t="323.4" text="【予告】コールドブラスト / コールドブラスト" castname="コールドブラスト" duration="2.7" tts="あたまわりくるよー"/>
     <entry t="331.5" text="【予告】呪縛の冷気 / 呪縛の冷気" castname="呪縛の冷気" duration="4.7" tts="次は、全体攻撃"/>
     <entry t="344.9" text="【予告】ウィンドスフィア2回目 / ウィンドスフィア2回目" castname="ウィンドスフィア" duration="2.7" tts="次、外周のゴルベーザをチェックー"/>
     <entry t="354.9" castname="ヴォイド・トルネド" duration="5.7"/>
-    <entry t="358.9" castname="【予告】コールドブラスト" sync="false" tts="トゲ注意、トゲ注意"/>
-    <entry t="360.6" text="コールドブラスト" castname="コールドブラスト" duration="2.7"/>
+    <entry t="360.6" text="【予告】コールドブラスト / コールドブラスト" castname="コールドブラスト" duration="2.7" tts="トゲ注意、トゲ注意"/>
     <entry t="366.9" castname="ヴォイド・エアロガ" duration="5.7"/>
     <entry t="372.1" text="【予告】弦月連剣 / 弦月連剣" castname="弦月連剣" duration="4.7" tts="次は、2連続範囲、2連続範囲"/>
     <entry t="378.9" castname="弦月連剣" sync="false"/>
@@ -82,13 +72,11 @@
     <entry t="411.4" text="黒竜炎" castname="黒竜炎" sync="false"/>
     <entry t="414.5" text="黒竜炎" castname="黒竜炎" sync="false"/>
     <entry t="417.6" text="黒竜炎" castname="黒竜炎" sync="false"/>
-    <entry t="420.6" castname="【予告】ヴォイド・コメットレイン" sync="false" tts="次は、コメットレイン、よすみからていいちへー"/>
-    <entry t="421.9" text="ヴォイド・コメットレイン" castname="ヴォイド・コメットレイン" duration="2.7"/>
+    <entry t="421.9" text="【予告】ヴォイド・コメットレイン / ヴォイド・コメットレイン" castname="ヴォイド・コメットレイン" duration="2.7" tts="次は、コメットレイン、よすみからていいちへー"/>
     <entry t="425.4" castname="ヴォイド・コメットレイン" duration="5.5"/>
     <entry t="432.5" castname="ヴォイド・コメットレイン" sync="false"/>
     <entry t="433.7" castname="ヴォイド・コメットレイン" sync="false"/>
-    <entry t="434.9" castname="【予告】ディレイスパーク" sync="false" tts="次は、たけのこちゅういー"/>
-    <entry t="435.1" text="ディレイスパーク" castname="ディレイスパーク" duration="2.7"/>
+    <entry t="435.1" text="【予告】ディレイスパーク / ディレイスパーク" castname="ディレイスパーク" duration="2.7" tts="次は、たけのこちゅういー"/>
     <entry t="439.3" castname="ディレイスパーク" duration="2.7"/>
     <entry t="442.3" text="【予告】黒竜閃 / 黒竜閃" castname="集束黒竜閃|三連黒竜閃" duration="4.7"/>
     <entry t="447.8" castname="集束黒竜閃" sync="false"/>
@@ -98,15 +86,13 @@
     <entry t="460.5" castname="弦月黒竜連剣" sync="false"/>
     <entry t="469.0" text="ダブルメテオ" castname="ダブルメテオ" duration="10.7" tts="次は、ノックバック、とうふみー"/>
     <entry t="469.0" castname="爆発" duration="10.2"/>
-    <entry t="490.0" castname="【予告】ヴォイド・メテオ" sync="false" tts="次は、タンクにきょう攻撃"/>
-    <entry t="490.3" text="ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7"/>
+    <entry t="490.3" text="【予告】ヴォイド・メテオ / ヴォイド・メテオ" castname="ヴォイド・メテオ" duration="4.7" tts="次は、タンクにきょう攻撃"/>
     <entry t="495.4" castname="ヴォイド・コメット" sync="false"/>
     <entry t="497.4" castname="ヴォイド・コメット" sync="false"/>
     <entry t="499.4" castname="ヴォイド・メテオ" sync="false"/>
     <entry t="508.9" text="【予告】ウィンドスフィア / ウィンドスフィア" castname="ウィンドスフィア" duration="2.7" tts="次、外周のゴルベーザをチェックー"/>
     <entry t="519.0" castname="ヴォイド・トルネド" duration="5.7"/>
-    <entry t="523.9" castname="【予告】コールドブラスト" sync="false" tts="トゲ注意、トゲ注意"/>
-    <entry t="524.7" text="コールドブラスト" castname="コールドブラスト" duration="2.7"/>
+    <entry t="524.7" text="【予告】コールドブラスト / コールドブラスト" castname="コールドブラスト" duration="2.7" tts="トゲ注意、トゲ注意"/>
     <entry t="531.0" castname="ヴォイド・エアロガ" duration="5.7"/>
     <entry t="536.1" text="【予告】弦月連剣 / 弦月連剣" castname="弦月連剣" duration="4.7" tts="次は、2連続範囲、2連続範囲"/>
     <entry t="542.9" castname="弦月連剣" sync="false"/>
