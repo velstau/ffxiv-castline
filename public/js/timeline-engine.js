@@ -60,6 +60,9 @@ const KILL_HP = 3; // 読み取りの間隔があるので、0% を読めなく�
 // 討伐の瞬間は画面が暗くなる（2 回目以降の討伐は HUD を残して約 1.5 秒、初回はそのままクリアのムービー。絶のフェーズの移り変わりや
 // ムービーではない演出では暗くならない。2026-10-28 ユーザー）。敵対リストが消えたのと、この前後で暗くなったら討伐
 export const DIM_KILL_WINDOW_MS = 2000;
+// 暗くなったのが、最後に HP を読んでからこれより後なら討伐の暗さとみなさない（敵対リストが消えて 30 秒後の別の暗転など。Codex のレビュー）。
+// 敵対リストの消失からは測らない（討伐の 2 秒前から敵対リストを読めず、HP だけ 0.6→0.4% と読めていた録画がある）
+const DIM_AFTER_HP_MS = 5000;
 // HP_JUMP_CONFIRM_MS 以内に前の値からこれ以上変わった HP は、HP_JUMP_CONFIRM_MS 以内の次の読み取りでも近い値（差がこれ未満）のときだけ採る。
 // 1 回だけの読み違い（67.7→2→67.2、4.7→47→4.4。2026-10-27 ヘビー級1 零式の録画）で、討伐やフェーズ移行にしない・討伐を逃さないため
 export const HP_JUMP_MIN = 20;
@@ -268,12 +271,14 @@ export class TimelineEngine {
         this.advance(at);
     }
 
-    /** 画面が暗くなっている（HUD が残っていてもよい）か。討伐の判定に使う */
+    /**
+     * 画面が暗くなっている（HUD が残っていてもよい）か。討伐の判定に使う。ここでは時刻を覚えるだけで、判定は同じコマの HP・敵対リストを
+     * 受け取ってから行う（先に判定すると、同じコマで読んだ高い HP の確かめ待ちより前に、古い低い HP で討伐になる。Codex のレビュー）
+     */
     dim(at, dimmed) {
         if (dimmed) {
             this.lastDimAt = at;
         }
-        this.advance(at);
     }
 
     /** 画面全体が暗転している（black = true）か。全滅かどうかは、暗転が明けたときに長さで決める */
@@ -652,7 +657,8 @@ export class TimelineEngine {
             }
             // 画面が暗くなったら、最後のフェーズでなくても討伐（区間ごとに分岐のある極ウォーリア・オブ・ライトなどで、
             // 最後以外の区間で倒したとき）。HP が低いときの全滅も暗くなるが、どちらでも戦闘は終わる
-            const dimmed = this.lastDimAt !== null && this.lastDimAt >= this.enmityOffSince - DIM_KILL_WINDOW_MS;
+            const dimmed = this.lastDimAt !== null && this.lastDimAt >= this.enmityOffSince - DIM_KILL_WINDOW_MS
+                && this.lastHpAt !== null && this.lastDimAt <= this.lastHpAt + DIM_AFTER_HP_MS;
             if (this.phase !== null && dimmed && killHp !== null && killHp <= KILL_HP) {
                 this.end(at, `HP ${this.hp}% の後に敵対リストが消え、画面が暗くなった。討伐`);
                 return;

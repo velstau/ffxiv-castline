@@ -243,3 +243,39 @@ test('画面が暗くなったら、最後のフェーズでなくても HP 3% �
     g.enmity(2500, false);
     assert.equal(g.status(3000).state, 'combat');
 });
+
+test('暗くなったのが敵対リストが消えて 2 秒より後なら討伐にしない。同じコマの高い HP は暗さより先に効く', () => {
+    const tl = { phases: [{ id: 'a', entries: [], next: [{ to: 'b', when: { cast: 'x' } }] }, { id: 'b', entries: [], next: [] }] };
+    const e = new TimelineEngine(tl, { hasEnmity: true });
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(2000, 2);
+    e.enmity(2000, false);
+    e.dim(32000, true); // 30 秒後の暗転（フェーズの移り変わりの途中など）
+    e.hpPercent(32000, null);
+    assert.equal(e.status(32000).state, 'combat');
+    // 前のコマが HP 2%・敵対リストなし、次のコマで暗さと HP 83% を読んだ（再生画面は暗さ → HP → 敵対リストの順に渡す）
+    const f = new TimelineEngine(tl, { hasEnmity: true });
+    f.started(0);
+    f.enmity(500, true); f.enmity(1500, true);
+    f.hpPercent(2000, 2);
+    f.enmity(2000, false);
+    f.dim(2500, true);
+    f.hpPercent(2500, 83);
+    f.enmity(2500, false);
+    assert.equal(f.status(2500).state, 'combat');
+});
+
+test('敵対リストが討伐の 2 秒前から読めず、HP だけ読めていても、暗くなれば討伐にする（2026-10-28 の録画）', () => {
+    const tl = { phases: [{ id: 'a', entries: [], next: [{ to: 'b', when: { cast: 'x' } }] }, { id: 'b', entries: [], next: [] }] };
+    const e = new TimelineEngine(tl, { hasEnmity: true });
+    e.started(0);
+    e.enmity(500, true); e.enmity(1500, true);
+    e.hpPercent(6000, 0.9);
+    e.hpPercent(6700, 0.6); e.enmity(6700, false);
+    e.hpPercent(7800, 0.4); e.enmity(7800, false);
+    e.dim(9600, true); e.hpPercent(9600, null); e.enmity(9600, false);
+    assert.equal(e.status(10700).state, 'combat'); // 0.4% を読んでから 3 秒は生きている扱い
+    e.hpPercent(10900, null); e.enmity(10900, false);
+    assert.equal(e.status(10900).state, 'ended');
+});
